@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <title>Site étu : Le nouveau Face-Twit-Goog-Micro-LinuxFr</title>
-  
+
   <link rel="shortcut icon" href="<%= image_path 'favicon.gif' %>">
-  
+
   <%= stylesheet_link_tag :all %>
   <%= csrf_meta_tag %>
 </head>
-<body>  
+<body>
   <header>
     <section id="quote">Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?</section>
 
@@ -28,13 +28,13 @@
   <div id="wrap">
     <aside id="sidebar">
       <section id="login_box">
-        
+
         <% if current_user %>
           <%= render :partial => 'user_sessions/menu' %>
         <% else %>
           <%= render :partial => 'user_sessions/login' %>
         <% end %>
-        
+
         <!--
         <h2>Login</h2>
         <form method="post" action="#">
