@@ -1,24 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SiteEtu</title>
+  <meta charset="utf-8" />
+  <title>Site étu : Le nouveau Face-Twit-Goog-Micro-LinuxFr</title>
+  
+  <link rel="shortcut icon" href="<%= image_path 'favicon.gif' %>">
+  
   <%= stylesheet_link_tag :all %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body>  
+  <header>
+    <section id="quote">Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?</section>
 
-<h1>Le site étu</h1>
-<h2>Le nouveau Face-Twit-Goog-Micro-LinuxFr</h2>
+    <div id="banner">
+      <%= image_tag 'banner.jpg' %>
+    </div>
 
-<% if current_user %>
-  <%= link_to current_user.login, current_user %>
-  <%= link_to 'Se déconnecter', :logout %>
-<% else %>
-  <%= link_to 'Se connecter', :login %>
-<% end %>
+    <nav id="menubar">
+      <%= link_to image_tag('accueil.png') + ' Accueil', :root, :title => "Revenir à la page d'accueil." %>
+      <%= link_to image_tag('annonces.png') + ' Annonces', :root, :title => 'Pour vendre ton Mac !' %>
+      <%= link_to image_tag('buckutt.png') + ' Buckutt', :root, :title => 'Recharge ton compte pour payer au foyer.' %>
+      <%= link_to image_tag('mails.png') + ' Mails', :root, :title => 'Accède à tes mails depuis le site étu.' %>
+    </nav>
+  </header>
 
-<%= yield %>
+  <div id="wrap">
+    <aside id="sidebar">
+      <section id="login_box">
+        
+        <% if current_user %>
+          <%= render :partial => 'user_sessions/menu' %>
+        <% else %>
+          <%= render :partial => 'user_sessions/login' %>
+        <% end %>
+        
+        <!--
+        <h2>Login</h2>
+        <form method="post" action="#">
+          <input type="text" id="login" name="login" placeholder="Identifiant" autofocus="true" required="required" />
+          <label for="login">Login</label>
+          <br />
+          <input type="password" id="password" name="password" required="required" />
+          <label for="password">Mot de passe</label>
+          <br />
+          <input type="submit" name="login_submit" value="Connexion" />
+        </form>
+        <br />
+        <%= link_to 'Créer mon compte', new_user_path %>
+        <br />
+        <a href="">J'ai oublié mon mot de passe</a>
+        -->
+      </section>
 
-<%= javascript_include_tag :defaults %>
+      <nav>
+        <h2>Services</h2>
+        <ul>
+          <li><a href="">ENT</a></li>
+          <li><a href="">Covoiturage</a></li>
+          <li><a href="">Journal</a></li>
+        </ul>
+      </nav>
+
+      <nav>
+        <h2>Assos &amp; Clubs</h2>
+
+        <ul>
+          <li><a href="">BDE</a></li>
+          <li><a href="">Gala</a></li>
+          <li><a href="">Inté</a></li>
+          <li><a href="">UNG</a></li>
+          <li><a href="">Robotik</a></li>
+
+          <li><a href="">La roue verte</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section id="content">
+      <%= yield %>
+    </section>
+  </div>
+
+  <footer>
+    <ul>
+      <li>Version 9.0.0.0.0.0.0-alpha</li>
+      <li><a href="">Signaler un bug</a></li>
+      <li>UTT Net Group</li>
+    </ul>
+    <span onclick="this.innerHTML='&#9786;'; alert('Congratz! U found the secret l3v3l!')">&#9785;</span>
+  </footer>
+
+  <%= javascript_include_tag :defaults %>
 </body>
 </html>

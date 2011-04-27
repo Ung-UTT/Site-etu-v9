@@ -25,7 +25,6 @@ more separate. Each of these packages can be used independently outside of
 Rails. You can read more about Action Pack in
 link:files/vendor/rails/actionpack/README.html.
 
-
 == Getting Started
 
 1. At the command prompt, create a new Rails application:
@@ -42,7 +41,6 @@ the following resources handy:
 
 * The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
 * Ruby on Rails Tutorial Book: http://www.railstutorial.org/
-
 
 == Debugging Rails
 
@@ -80,7 +78,6 @@ several books available online as well:
 These two books will bring you up to speed on the Ruby language and also on
 programming in general.
 
-
 == Debugger
 
 Debugger support is available through the debugger command when you start your
@@ -116,7 +113,6 @@ with a IRB prompt in the server window. Here you can do things like:
 
 Finally, when you're ready to resume execution, you can enter "cont".
 
-
 == Console
 
 The console is a Ruby shell, which allows you to interact with your
@@ -140,7 +136,6 @@ To reload your controllers and models after launching the console run
 
 More information about irb can be found at:
 link:http://www.rubycentral.com/pickaxe/irb.html
-
 
 == dbconsole
 
