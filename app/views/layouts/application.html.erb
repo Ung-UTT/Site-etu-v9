@@ -38,23 +38,21 @@
       <nav>
         <h2>Services</h2>
         <ul>
-          <li><a href="">ENT</a></li>
-          <li><a href="">Covoiturage</a></li>
-          <li><a href="">Journal</a></li>
+          <li><%= link_to 'ENT', :root %></li>
+          <li><%= link_to 'Covoiturage', :root %></li>
+          <li><%= link_to 'Journal', :root %></li>
         </ul>
       </nav>
 
       <nav>
         <h2>Assos &amp; Clubs</h2>
-
         <ul>
-          <li><a href="">BDE</a></li>
-          <li><a href="">Gala</a></li>
-          <li><a href="">Inté</a></li>
-          <li><a href="">UNG</a></li>
-          <li><a href="">Robotik</a></li>
-
-          <li><a href="">La roue verte</a></li>
+          <li><%= link_to 'BDE', :root %></li>
+          <li><%= link_to 'Gala', :root %></li>
+          <li><%= link_to 'Inté', :root %></li>
+          <li><%= link_to 'UNG', :root %></li>
+          <li><%= link_to 'Robotik', :root %></li>
+          <li><%= link_to 'La roue verte', :root %></li>
         </ul>
       </nav>
     </aside>
@@ -66,8 +64,8 @@
 
   <footer>
     <ul>
-      <li>Version 9.0.0.0.0.0.0-alpha</li>
-      <li><a href="">Signaler un bug</a></li>
+      <li>Version 9.0.0-alpha</li>
+      <li><%= link_to 'Signaler un bug', :root %></li>
       <li>UTT Net Group</li>
     </ul>
     <span onclick="this.innerHTML='&#9786;'; alert('Congratz! U found the secret l3v3l!')">&#9785;</span>

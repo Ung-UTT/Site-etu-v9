@@ -1,88 +1,26 @@
-<!-- TODO: include two partials -->
-
 <section>
-    <h1>Bienvenue</h1>
-    <article>
-        <figure>
-            <%= image_tag 'home/logo_ung.png', {:alt => 'UNG', :align => 'right'} %>
-        </figure>
-        <p>
-            UTTien (ancien, actuel ou futur), ou curieux... l'UNG te souhaite la
-            bienvenue sur LE site des tudiants de l'Université de technologie de
-            Troyes...
-        </p>
-        <p>
-            Pourquoi un site étudiant ? Peut être pour trouver pleins d'infos
-            indispensables à la vie d'UTTien (Mails, Trombinoscope, Emploi du
-            temps, Agenda, Clubs &amp; Assos...) pouvoir exprimer le dynamisme de
-            notre vie étudiante ! (Album photo, Forum) et nous rendre pleins de
-            services (Petites annonces, Covoiturage, Annales ...)
-        </p>
-        <p>
-            A très bientôt ... à Troyes ou ailleurs ... l'UTT Net Group<br />
-            <a href="#" title="">Association étudiante informatique de l'UTT</a>
-        </p>
-    </article>
+  <h1>Bienvenue</h1>
+  <article>
+    <figure>
+      <%= image_tag 'home/logo_ung.png', {:alt => 'UNG', :align => 'right'} %>
+    </figure>
+    <p>
+      UTTien (ancien, actuel ou futur), ou curieux… l'UNG te souhaite la
+      bienvenue sur LE site des tudiants de l'Université de technologie de
+      Troyes…
+    </p>
+    <p>
+      Pourquoi un site étudiant ? Peut être pour trouver pleins d'infos
+      indispensables à la vie d'UTTien (Mails, Trombinoscope, Emploi du
+      temps, Agenda, Clubs &amp; Assos…) pouvoir exprimer le dynamisme de
+      notre vie étudiante ! (Album photo, Forum) et nous rendre pleins de
+      services (Petites annonces, Covoiturage, Annales…)
+    </p>
+    <p>
+      A très bientôt… à Troyes ou ailleurs… l'UTT Net Group<br />
+      <%= link_to "Association étudiante informatique de l'UTT", :root %>
+    </p>
+  </article>
 </section>
 
-<section id="news">
-    <h1>Les News</h1>
-    <article class="news">
-        <header>
-            <h1>Apéro Haut Chic, Bas Choc</h1>
-            <dl>
-<dt class="date">Date</dt><dd class="date"><time datetime="2010-10-21">21 0ct</time></dd><dt>Heure</dt><dd><time
-datetime="2010-10-21T21:00:00+01:00">21h</time></dd><dt>Auteur</dt><dd>UNG</dd><dt>Tags</dt><dd>Apéro</dd><dt>Lieu</dt><dd class="last">Foyer de l'UTT</dd>
-            </dl>
-        </header>
-
-        Toi aussi tu te sens d'humeur Haut chic Bas choc ces temps-ci ? Cet apéro est fait pour toi.. ISM,
-        ISF et la Roue Verte te donnent rendez vous au foyer de l'UTT dès 21h pour un apéro de puuuure follie !<br />
-        Réveille ton côté chic comme Barney, Marion Cotillard ou M.Carquin
-        Ainsi que ton côté choc comme Clara Morgane, Pamela Anderson ou Marylin Manson<br />
-        <br />
-        Tarifs :<br />
-        1€ + 1€ après 23h<br />
-        Réduction de 50 cts si déguisé<br />
-        Navettes UTT / centre-ville
-    </article>
-
-    <hr />
-    
-    <article class="news">
-        <header>
-            <h1>Rattrapage de maths &amp; physique</h1>
-            <dl>
-<dt class="date">Date</dt><dd class="date"><time datetime="2010-09-20">20 Sep</time></dd><dt>Heure</dt><dd><time
-datetime="2010-09-20T08:00:00+01:00">8h</time></dd><dt>Auteur</dt><dd>Profs</dd><dt>Tags</dt><dd>Aïe</dd><dt>Lieu</dt><dd
-class="last">DTC</dd>
-            </dl>
-        </header>
-
-        Toi aussi tu te sens d'humeur joyeuse ? Alors viens faire des intégrales triples avec nous !
-        Les profs te donnent rendez vous DTC dès 8h pour un rattrapage de puuuure follie !<br />
-    </article>
-
-    <hr />
-
-    <article class="news">
-        <header>
-            <h1>Apéro des biatches</h1>
-            <dl>
-<dt class="date">Date</dt><dd class="date"><time datetime="2009-01-08">08 Jan</time></dd><dt>Heure</dt><dd><time
-datetime="2009-01-08T22:00:00+01:00">22h</time></dd><dt>Auteur</dt><dd>UNG</dd><dt>Tags</dt><dd>Apéro, Orgie</dd><dt>Lieu</dt><dd
-class="last">Dehors</dd>
-            </dl>
-        </header>
-
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec facilisis semper
-varius. Morbi sed porttitor tellus. Vestibulum nibh magna, venenatis at sagittis eu, eleifend facilisis leo. Vestibulum
-ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas ut ligula lectus. Phasellus nulla
-nibh, tempus eget lacinia vitae, condimentum ut mi. Nulla aliquet facilisis luctus. Nam placerat justo sit amet enim
-semper non varius risus facilisis. Sed fermentum turpis ut elit varius vulputate. Vestibulum eleifend laoreet
-ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel
-enim eget ligula suscipit tempor. Nam ut mauris vitae elit imperdiet egestas. Vivamus mollis vulputate vulputate. Sed at
-dui vitae elit blandit dapibus. Aliquam cursus ante nec nisi tincidunt eget ullamcorper mi adipiscing.
-
-    </article>
-</section>
+<%= render :template => 'news/index' %>

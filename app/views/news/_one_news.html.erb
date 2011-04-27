@@ -5,11 +5,11 @@
     </h1>
     <dl>
       <dt class="date">Date</dt>
-        <dd class="date"><time datetime="echo date('c', $time)">echo date('j M', $time)</time></dd>
+        <dd class="date"><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%e %b' %></time></dd>
       <dt>Heure</dt>
-        <dd><time datetime="echo date('c', $time)">echo date('G\h', $time)</time></dd>
+        <dd><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%Hh' %></time></dd>
       <dt>Auteur</dt>
-        <dd class="last">echo $news->getUser()</dd>
+        <dd class="last"><%= news.user.login %></dd>
     </dl>
   </header>
   <%= news.content %>

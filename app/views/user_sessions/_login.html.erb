@@ -1,21 +1,21 @@
 <h2>Connexion</h2>
 
-<!-- TODO: placeholder, autofocus, required, créer compte, mot de passe oublié -->
+<!-- TODO: mot de passe oublié, améliorer l'affichage des erreurs (surtout box VS login) -->
 <%= form_for @user_session, :url => {:controller => 'user_sessions', :action => "create"} do |f| %>
   <%= f.error_messages %>
   <div>
-    <%= f.label :login %>
-    <%= f.text_field :login %>
+    <%= f.text_field :login, { :placeholder => 'Identifiant', :autofocus => 'true', :required => 'required' } %>
   </div>
   <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, { :placeholder => 'Mot de passe', :required => 'required' } %>
   </div>
   <div>
     <%= f.check_box :remember_me %>
-    <%= f.label :remember_me %>
+    <%= f.label :remember_me, 'Rester connecté' %>
   </div>
   <div>
     <%= f.submit 'Login' %>
   </div>
 <% end %>
+
+<%= link_to 'Créer un compte', new_user_path %>

@@ -1,12 +1,12 @@
+<h2><%= @user.login %></h2>
 <p>
-  <b>Login:</b>
-  <%= @user.login %>
-</p>
-
-<p>
-  <b>Email:</b>
+  <strong>Email :</strong>
   <%= @user.email %>
 </p>
+<p>
+  <strong>ID :</strong>
+  <%= @user.id %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Modifier le profil', edit_user_path(@user) %> |
+<%= link_to 'Retourner à la liste des profils', users_path %>
