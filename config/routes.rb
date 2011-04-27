@@ -1,4 +1,5 @@
 SiteEtu::Application.routes.draw do
+  resources :news
   resources :users
   resources :user_sessions
 

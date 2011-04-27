@@ -1,0 +1,9 @@
+<section id="news">
+  <h1>Les news</h1>
+
+  <% @news.each do |news| %>
+    <%= render 'one_news', {:news => news} %>
+  <% end %>
+
+  <%= link_to 'New News', new_news_path %>
+</section>

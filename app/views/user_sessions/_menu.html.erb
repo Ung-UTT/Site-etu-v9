@@ -1,5 +1,6 @@
 <h2><%= link_to current_user.login, current_user %></h2>
 <p>
   Votre email : <%= current_user.email %> <br />
+  Votre ID : <%= current_user.id %> <br />
   <%= link_to 'Se déconnecter', :logout %>
 </p>

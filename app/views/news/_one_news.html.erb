@@ -1,0 +1,18 @@
+<article class="news">
+  <header>
+    <h1>
+      <%= link_to news.title, news %>
+    </h1>
+    <dl>
+      <dt class="date">Date</dt>
+        <dd class="date"><time datetime="echo date('c', $time)">echo date('j M', $time)</time></dd>
+      <dt>Heure</dt>
+        <dd><time datetime="echo date('c', $time)">echo date('G\h', $time)</time></dd>
+      <dt>Auteur</dt>
+        <dd class="last">echo $news->getUser()</dd>
+    </dl>
+  </header>
+  <%= news.content %>
+</article>
+
+<hr />

@@ -28,29 +28,11 @@
   <div id="wrap">
     <aside id="sidebar">
       <section id="login_box">
-
         <% if current_user %>
           <%= render :partial => 'user_sessions/menu' %>
         <% else %>
           <%= render :partial => 'user_sessions/login' %>
         <% end %>
-
-        <!--
-        <h2>Login</h2>
-        <form method="post" action="#">
-          <input type="text" id="login" name="login" placeholder="Identifiant" autofocus="true" required="required" />
-          <label for="login">Login</label>
-          <br />
-          <input type="password" id="password" name="password" required="required" />
-          <label for="password">Mot de passe</label>
-          <br />
-          <input type="submit" name="login_submit" value="Connexion" />
-        </form>
-        <br />
-        <%= link_to 'Créer mon compte', new_user_path %>
-        <br />
-        <a href="">J'ai oublié mon mot de passe</a>
-        -->
       </section>
 
       <nav>

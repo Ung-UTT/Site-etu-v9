@@ -1,0 +1,6 @@
+<section id="news">
+  <%= render 'one_news', {:news => @news} %>
+
+  <%= link_to 'Edit', edit_news_path(@news) %> |
+  <%= link_to 'Back', news_index_path %>
+</section>
