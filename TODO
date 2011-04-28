@@ -1,19 +1,43 @@
-TODO:
+À faire :
+=========
 
-"J'ai oublié mon mot de passe"
+User :
+  += avatar, …
 
-Éditeur WYSIWYG
+Daymail :
+  /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
 
-Préférences menu ?
+Images (avatars, images dans news, pour annonces, …), fichiers (annales ?) :
+  Direct sur disque : attachment-fu
 
-"modules" : Event, Association, …
+Event :
+  title, content, user_id (celui qui a créé l'evênement), location, date, users_id (ceux qui y participent)
 
-Daymail, BuckUTT, CAS, Pense-bête, Météo, Forum, Covoiturage, Annonces, … WTF ?
+Association :
+  title, content, logo, roles_id
 
-Préférences utilisateur
+Roles :
+  user_id, role_id
 
-Citations
+Citations :
+  content, user_id (plus simple que les news !)
 
-Droits
+Droits :
+  SuperAdmin, Admin, Modérateur (ahah)
 
-UVs + Commentaires
+UVs :
+  name
+
+Commentaires :
+  content, user_id (?), rank, uv_id (seulement les UVs ?)
+
+À préciser :
+============
+
+* "J'ai oublié mon mot de passe" : Par ent ?
+* Éditeur WYSIWYG : lequel (TinyMCE, Markdown, BBCode, … ?) ?
+* Préférences menu : utile ?
+* Mails : frame vers Roundcube ?
+* Annonces : Pareil que News ! (tags ?)
+* Préférences utilisateur : quoi ? les cases pour le Daymail, … ?
+* BuckUTT, CAS, Pense-bête, Météo, Forum, Covoiturage, … WTF ?
