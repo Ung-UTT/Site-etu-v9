@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  check_authorization
+
   before_filter :set_user_session
   helper_method :current_user_session, :current_user
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
 
   private
     def set_user_session

@@ -1,4 +1,6 @@
 class NewsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /news
   # GET /news.xml
   def index
@@ -42,7 +44,7 @@ class NewsController < ApplicationController
   def create
     @news = News.new(params[:news])
     @news.user_id = current_user.id
-    
+
     respond_to do |format|
       if @news.save
         format.html { redirect_to(@news, :notice => 'News was successfully created.') }

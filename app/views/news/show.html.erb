@@ -1,6 +1,9 @@
 <section id="news">
   <%= render 'one_news', {:news => @news} %>
 
-  <%= link_to 'Modifier', edit_news_path(@news) %> |
+  
+  <% if can? :update, @news %>
+    <%= link_to 'Modifier', edit_news_path(@news) %> |
+  <% end %>
   <%= link_to 'Retourner à la liste des news', news_index_path %>
 </section>

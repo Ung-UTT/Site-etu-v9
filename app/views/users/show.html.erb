@@ -8,5 +8,8 @@
   <%= @user.id %>
 </p>
 
-<%= link_to 'Modifier le profil', edit_user_path(@user) %> |
+
+<% if can? :update, @user %>
+  <%= link_to 'Modifier le profil', edit_user_path(@user) %> |
+<% end %>
 <%= link_to 'Retourner à la liste des profils', users_path %>

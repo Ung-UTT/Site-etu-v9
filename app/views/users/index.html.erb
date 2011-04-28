@@ -8,4 +8,6 @@
 
 <br />
 
-<%= link_to 'Ajouter un utilisateur', new_user_path %>
+<% if can? :create, User %>
+  <%= link_to 'Ajouter un utilisateur', new_user_path %>
+<% end %>

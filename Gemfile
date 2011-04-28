@@ -10,6 +10,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'authlogic'
 gem 'rails3-generators'
 
+gem 'cancan'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

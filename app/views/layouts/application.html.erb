@@ -58,6 +58,14 @@
     </aside>
 
     <section id="content">
+      <% unless notice.nil? %>
+      <div id="notice"><%= notice %></div>
+      <% end %>
+
+      <% unless alert.nil? %>
+      <div id="alert"><%= alert %></div>
+      <% end %>
+
       <%= yield %>
     </section>
   </div>
