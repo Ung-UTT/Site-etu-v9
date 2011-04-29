@@ -1,0 +1,11 @@
+<%= form_for(@quote) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
