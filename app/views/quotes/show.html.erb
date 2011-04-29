@@ -1,7 +1,6 @@
-<p>
-  <blockquote><%= quote.content %></blockquote>
-  Par <%= quote.user.login %>.
-</p>
+<%= render 'one_quote', {:quote => @quote} %>
 
-<%= link_to 'Modifier cette citation', edit_quote_path(@quote) %> |
+<% if can? :update, @quote %>
+  <%= link_to 'Modifier cette citation', edit_quote_path(@quote) %> |
+<% end %>
 <%= link_to 'Retourner à la liste des citations', quotes_path %>

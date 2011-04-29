@@ -2,10 +2,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, :all
+    can [:read, :random], :all
     if user
-      can :create, News
-      can [:update, :destroy], News, :user_id => user.id
+      can :create, [News, Quote]
+      can [:update, :destroy], [News, Quote], :user_id => user.id
       can [:update, :destroy], User, :id => user.id
       can :destroy, UserSession
     else

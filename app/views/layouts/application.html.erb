@@ -11,7 +11,7 @@
 </head>
 <body>
   <header>
-    <section id="quote">Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?</section>
+    <section id="quote"><%= @random_quote.content %></section>
 
     <div id="banner">
       <%= image_tag 'banner.jpg' %>
@@ -35,6 +35,15 @@
           <%= render :partial => 'user_sessions/login' %>
         <% end %>
       </section>
+
+      <nav>
+        <h2>Modules</h2>
+        <ul>
+          <li><%= link_to 'Trombi', users_path %></li>
+          <li><%= link_to 'News', :controller => :news %></li>
+          <li><%= link_to 'Citations', quotes_path %></li>
+        </ul>
+      </nav>
 
       <nav>
         <h2>Services</h2>

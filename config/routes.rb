@@ -1,4 +1,6 @@
 SiteEtu::Application.routes.draw do
+  match 'quotes/random' => 'quotes#random'
+
   resources :quotes
   resources :news
   resources :users

@@ -3,12 +3,13 @@
 <ul>
 <% @quotes.each do |quote| %>
   <li>
-    <blockquote>« <%= quote.content %> »</blockquote>
-    Par <%= quote.user.login %>.
+    <%= render 'one_quote', {:quote => quote} %>
   </li>
 <% end %>
 </ul>
 
 <br />
 
-<%= link_to 'Ajouter une citation', new_quote_path %>
+<% if can? :create, Quote %>
+  <%= link_to 'Ajouter une citation', new_quote_path %>
+<% end %>
