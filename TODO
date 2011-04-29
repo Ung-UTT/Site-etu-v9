@@ -14,34 +14,62 @@ Images (avatars, images dans news, pour annonces, …), fichiers (annales ?) :
     Annals
   WTF ? 2 modèles, ou 6 ! (Entity ?) (:polymorphic !)
 
-Association :
-  title, content, logo, (has_many :roles)
+Association : (bloqué pour logo)
+  title, content, logo, (has_and_belongs_to_many :roles)
 
-Roles :
+AssociationRoles :
   association_id, user_id, role_id
 
 Droits :
   SuperAdmin, Admin, Modérateur (ahah)
 
 UVs :
-  name, description
+  name, description, users_id, schedules_id
+
+Schedule :
+  uv_id, from, to
 
 Commentaires :
   content, user_id (anonyme ?), rank, uv_id (seulement les UVs ?)
 
-Category : (seulement news ?)
+Category : (seulement news ? annonces ?)
   name
 
 Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
+
+BuckUTT :
+  Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
+
+CAS :
+  authlogic-cas → pas de mdp stockés pour eux !
+
+Annonces :
+  title, content, price, location
+
+Pense-bête :
+  content, user_id
+
+Météo :
+  Récupérer depuis yahoo-weather http://yahoo-weather.rubyforge.org/
+  http://weather.yahoo.com/france/champagne-ardenne/troyes-629484/
+
+Forum :
+  phpBB avec le plugin d'authentification qui va bien (?)
+
+Covoiturage
+  content, location(s ?), date, is_driver, user_id (Beaucoup d'infos dans content : répétitions, nombre de passagers)
+
+Annales
+  title, content, uv_id, date, file
+
+Planning
+  user_id, uvs_id (has_and_belongs_to_many :uv (and choice in uvs))
 
 À préciser :
 ============
 
 * "J'ai oublié mon mot de passe" : Par ent ?
 * Éditeur WYSIWYG : lequel (TinyMCE, Markdown, BBCode, … ?) ?
-* Préférences menu : utile ?
 * Mails : frame vers Roundcube ?
-* Annonces : Pareil que News ! (tags ?)
-* Préférences utilisateur : quoi ? les cases pour le Daymail, … ?
-* BuckUTT, CAS, Pense-bête, Météo, Forum, Covoiturage, … WTF ?
+* Préférences utilisateur (dont menu) : quoi ? les cases pour le Daymail, … ?
 * Emploi du temps (+ cumul)
