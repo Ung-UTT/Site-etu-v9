@@ -1,0 +1,48 @@
+<p>
+  <b>Nom :</b>
+  <%= @event.title %>
+</p>
+
+<p>
+  <b>Description :</b>
+  <%= @event.content %>
+</p>
+
+<p>
+  <b>Organisateur :</b>
+  <%= @event.organizer.login %>
+</p>
+
+<p>
+  <b>Lieu :</b>
+  <%= @event.location %>
+</p>
+
+<p>
+  <b>Date :</b>
+  <%= @event.date.strftime 'le %d %B à %Hh' %>
+</p>
+
+<p>
+  <b>Participants :</b>
+  <% @event.users.each do |user| %>
+    <%= link_to user.login, user %>
+  <% end %>
+</p>
+
+<% if @event.users.exists?(current_user) %>
+  <%= form_tag(disjoin_event_path(@event), :method => 'PUT') do %>
+    <div class="actions">
+      <%= submit_tag 'Ne plus participer' %>
+    </div>
+  <% end %>
+<% else %>
+  <%= form_tag(join_event_path(@event), :method => 'PUT') do %>
+    <div class="actions">
+      <%= submit_tag 'Participer' %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Modifier cet événement', edit_event_path(@event) %> |
+<%= link_to 'Retourner à la liste des événements', events_path %>

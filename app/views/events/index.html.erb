@@ -1,0 +1,13 @@
+<h1>Les événements</h1>
+
+<ul>
+<% @events.each do |event| %>
+  <li>
+    <%= event.date.strftime 'le %d %B à %Hh' %> : <%= link_to event.title, event %>
+  </li>
+<% end %>
+</ul>
+
+<br />
+
+<%= link_to 'Ajouter un événement', new_event_path %>

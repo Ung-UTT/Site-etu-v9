@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+party:
+  title: Hip Hip Hip
+  content: Houra, venez vite au foyez !
+  organizer: admin
+  location: Foyer
+  date: 2011-04-29 12:58:35
+
+urgent:
+  title: Fuyez ! Vite ! (plus vite !)
+  content: C'est bientôt 2012 !
+  organizer: admin
+  location: Partout
+  date: 2012-04-29 12:58:35

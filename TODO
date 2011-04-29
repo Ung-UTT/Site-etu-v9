@@ -12,19 +12,13 @@ Images (avatars, images dans news, pour annonces, …), fichiers (annales ?) :
   Direct sur disque : attachment-fu, paperclip ?
     Images (Users, News, Event, Association, UV ?)
     Annals
-  WTF ? 2 modèles, ou 6 ! (Entity ?)
-
-Event :
-  title, content, user_id (celui qui a créé l'evênement), location, date, users_id (ceux qui y participent) (has_many_and_belongs_to)
+  WTF ? 2 modèles, ou 6 ! (Entity ?) (:polymorphic !)
 
 Association :
   title, content, logo, (has_many :roles)
 
 Roles :
   association_id, user_id, role_id
-
-Citations :
-  content, user_id (plus simple que les news !)
 
 Droits :
   SuperAdmin, Admin, Modérateur (ahah)
@@ -33,10 +27,12 @@ UVs :
   name, description
 
 Commentaires :
-  content, user_id (?), rank, uv_id (seulement les UVs ?)
+  content, user_id (anonyme ?), rank, uv_id (seulement les UVs ?)
 
 Category : (seulement news ?)
   name
+
+Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
 
 À préciser :
 ============
