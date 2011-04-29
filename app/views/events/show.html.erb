@@ -20,7 +20,7 @@
 
 <p>
   <b>Date :</b>
-  <%= @event.date.strftime 'le %d %B à %Hh' %>
+  <%= @event.date.strftime 'le %d %B %Y à %Hh%M' %>
 </p>
 
 <p>
@@ -30,13 +30,13 @@
   <% end %>
 </p>
 
-<% if @event.users.exists?(current_user) %>
+<% if @event.users.exists?(current_user) and can? :disjoin, Event %>
   <%= form_tag(disjoin_event_path(@event), :method => 'PUT') do %>
     <div class="actions">
       <%= submit_tag 'Ne plus participer' %>
     </div>
   <% end %>
-<% else %>
+<% elsif can? 'join'.to_sym, Event %>
   <%= form_tag(join_event_path(@event), :method => 'PUT') do %>
     <div class="actions">
       <%= submit_tag 'Participer' %>
@@ -44,5 +44,8 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Modifier cet événement', edit_event_path(@event) %> |
+<% if can? :update, @event %>
+  <%= link_to 'Modifier cet événement', edit_event_path(@event) %> |
+<% end %>
+
 <%= link_to 'Retourner à la liste des événements', events_path %>

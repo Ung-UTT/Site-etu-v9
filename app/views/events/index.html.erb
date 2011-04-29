@@ -10,4 +10,6 @@
 
 <br />
 
-<%= link_to 'Ajouter un événement', new_event_path %>
+<% if can? :create, Event %>
+  <%= link_to 'Ajouter un événement', new_event_path %>
+<% end %>

@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
-  skip_authorization_check
+  load_and_authorize_resource
 
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.all
+    @events = Event.order('date desc')
 
     respond_to do |format|
       format.html # index.html.erb
