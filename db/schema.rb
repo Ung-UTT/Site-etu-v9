@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110429105942) do
+ActiveRecord::Schema.define(:version => 20110430071459) do
+
+  create_table "classifieds", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "price"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", :force => true do |t|
     t.string   "title"

@@ -3,6 +3,7 @@
 
 User :
   += avatar, …
+  += vérifier confirmation de mot de passe
 
 Daymail :
   /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
@@ -72,4 +73,4 @@ Planning
 * Éditeur WYSIWYG : lequel (TinyMCE, Markdown, BBCode, … ?) ?
 * Mails : frame vers Roundcube ?
 * Préférences utilisateur (dont menu) : quoi ? les cases pour le Daymail, … ?
-* Emploi du temps (+ cumul)
+* Emploi du temps (+ cumul) (relations compliquées)
