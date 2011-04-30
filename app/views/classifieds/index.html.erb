@@ -1,0 +1,13 @@
+<h1>Les annonces</h1>
+
+<ul>
+<% @classifieds.each do |classified| %>
+  <li><%= link_to classified.title, classified %> (<%= classified.price %>€)</li>
+<% end %>
+</ul>
+
+<br />
+
+<% if can? :create, Classified %>
+  <%= link_to 'Ajouter une annonce', new_classified_path %>
+<% end %>

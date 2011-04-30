@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+bike:
+  title: Vélo presque neuf
+  content: Rouge à pois vert
+  price: 50
+  location: 42, rue de la petite Auberge. 10000 Troyes.
+  user: admin
+
+magic:
+  title: Poudre magique
+  content: Elle vous rendra "magique"
+  price: 135
+  location: Au RU
+  user: admin

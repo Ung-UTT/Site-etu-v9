@@ -1,0 +1,29 @@
+<p>
+  <b>Titre :</b>
+  <%= @classified.title %>
+</p>
+
+<p>
+  <b>Description :</b>
+  <%= @classified.content %>
+</p>
+
+<p>
+  <b>Prix :</b>
+  <%= @classified.price %>
+</p>
+
+<p>
+  <b>Lieu :</b>
+  <%= @classified.location %>
+</p>
+
+<p>
+  <b>Appartient à :</b>
+  <%= link_to @classified.user.login, @classified.user %>
+</p>
+
+<% if can? :update, @classified %>
+  <%= link_to 'Modifier cette annonce', edit_classified_path(@classified) %> |
+<% end %>
+<%= link_to 'Retourner à la liste des annonces', classifieds_path %>
