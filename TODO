@@ -3,7 +3,6 @@
 
 User :
   += avatar, …
-  += vérifier confirmation de mot de passe
 
 Daymail :
   /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
