@@ -41,7 +41,8 @@ BuckUTT :
   Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
 
 CAS :
-  authlogic-cas → pas de mdp stockés pour eux !
+  Utiliser LDAP !
+  (mettre pseudo comme nom de compte pour Twitter)
 
 Annonces :
   title, content, price, location
