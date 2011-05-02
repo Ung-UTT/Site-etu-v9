@@ -21,4 +21,6 @@
 
 <% if can? :create, User %>
   <%= link_to 'Créer un compte', new_user_path %>
+  ou se connecter via un service :
+  <%= render 'users/connect' %>
 <% end %>

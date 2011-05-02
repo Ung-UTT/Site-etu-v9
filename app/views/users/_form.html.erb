@@ -21,3 +21,12 @@
     <%= f.submit 'Envoyer' %>
   </div>
 <% end %>
+
+<% if @authorizations && !@authorizations.empty? %>
+  Vous pouvez utiliser :
+  <% for authorization in @authorizations %>
+    <%= button_to "Enlever #{authorization.provider}", authorization, :method => 'delete' %>
+  <% end %>
+<% end %>
+Ajouter un service :
+<%= render 'connect' %>

@@ -10,4 +10,6 @@
 
 <% if can? :create, User %>
   <%= link_to 'Ajouter un utilisateur', new_user_path %>
+  ou se connecter via un service :
+  <%= render 'connect' %>
 <% end %>

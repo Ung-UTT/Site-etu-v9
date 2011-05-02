@@ -4,7 +4,10 @@ SiteEtu::Application.routes.draw do
   match 'events/:id/disjoin' => 'events#disjoin', :as => 'disjoin_event'
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
+  match '/auth/:provider/callback' => 'authorizations#create'
+  match '/auth/failure' => 'authorizations#failure'
 
+  resources :authorizations
   resources :classifieds
   resources :events
   resources :quotes

@@ -1,0 +1,34 @@
+class AuthorizationsController < ApplicationController
+  load_and_authorize_resource
+
+  def create
+    # On récupère les infos de l'authentification
+    omniauth = request.env['rack.auth']
+    @auth = Authorization.find_from_hash(omniauth)
+
+    if current_user
+      flash[:notice] = "L'authentication via #{omniauth['provider']} à été ajoutée"
+      current_user.authorizations.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    elsif @auth
+      flash[:notice] = "Bienvenue à toi, de nouveau depuis #{omniauth['provider']}"
+      UserSession.create(@auth.user, true)
+    else
+      @new_auth = Authorization.create_from_hash(omniauth, current_user)
+      flash[:notice] = "Bienvenue utilisateur de #{omniauth['provider']}. Un compte a été créé pour toi !"
+      UserSession.create(@new_auth.user, true)
+    end
+    redirect_to :root
+  end
+
+  def failure
+    flash[:notice] = "Mince, l'authentification a échouée"
+    redirect_to :root
+  end
+
+  def destroy
+    @authorization = current_user.authorizations.find(params[:id])
+    flash[:notice] = "La connexion avec #{@authorization.provider} a été supprimée."
+    @authorization.destroy
+    redirect_to :root
+  end
+end

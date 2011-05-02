@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_authentic
 
+  has_many :authorizations
   has_many :classifieds
   has_many :news
   has_many :quotes

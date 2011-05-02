@@ -3,13 +3,14 @@ class Ability
 
   def initialize(user)
     can [:read, :random], :all
+    can [:create, :failure], Authorization
     if user
       can :create, [News, Quote, Event, Classified]
       can [:update, :destroy], [News, Quote, Classified], :user_id => user.id
       can [:update, :destroy], Event, :organizer_id => user.id
       can [:update, :destroy], User, :id => user.id
       can [:join, :disjoin], Event
-      can :destroy, UserSession
+      can :destroy, [UserSession, Authorization]
     else
       can :create, User
       can [:new, :create], UserSession
