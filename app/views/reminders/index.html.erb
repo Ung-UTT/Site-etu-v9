@@ -8,6 +8,4 @@
 
 <br />
 
-<% if can? :create, Reminder %>
-  <%= link_to 'Ajouter un truc à faire', new_reminder_path %>
-<% end %>
+<%= render 'form' %>

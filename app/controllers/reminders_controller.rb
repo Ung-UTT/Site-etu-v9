@@ -5,6 +5,7 @@ class RemindersController < ApplicationController
   # GET /reminders.xml
   def index
     @reminders = current_user.reminders
+    @reminder = Reminder.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,8 +48,8 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.save
-        format.html { redirect_to(@reminder, :notice => 'Reminder was successfully created.') }
-        format.xml  { render :xml => @reminder, :status => :created, :location => @reminder }
+        format.html { redirect_to(reminders_url, :notice => 'Reminder was successfully created.') }
+        format.xml  { render :xml => @reminder, :status => :created, :location => reminders_url }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @reminder.errors, :status => :unprocessable_entity }

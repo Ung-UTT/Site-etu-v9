@@ -2,7 +2,8 @@
 =========
 
 User :
-  += avatar, …
+  += infos via LDAP (avatar, UVs, …)
+  (mettre pseudo comme nom de compte pour Twitter)
 
 Daymail :
   /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
@@ -11,44 +12,36 @@ Daymail :
 Images, fichiers :
   Images (Users, News, Event, Association, UV ?)
   Annals
-  → Paperclip ! (:polymorphic ?)
-    
+  → Paperclip ! (:polymorphic : _id, _type)
+
 Association :
-  title, content, logo, (has_and_belongs_to_many :roles)
+  title, content, logo, users
 
 Roles :
-  association_id, user_id, role_id
+  SuperAdmin, Admin, Modérateur (pour site)
+  Président, vice-, trésorier, … (pour assos)
+  name, content, association_id
 
-Droits :
-  SuperAdmin, Admin, Modérateur (ahah)
+UsersRoles :
+  user_id, role_id
 
 UVs :
   name, description, users_id, schedules_id
 
+Planning
+  user_id, uvs_id
+
 Schedule :
-  uv_id, from, to
+  uv_id, location (B201, …), week (A or B), from, to
+  → Via dump à récupérer
 
 Commentaires :
-  content, user_id (anonyme ?), rank, uv_id (seulement les UVs ?)
+  content, user_id (anonyme ?), rank, _id, _type
+  (:polymorphic (News, UVs, …))
 
-Category : (seulement news ? annonces ?)
+Category :
   name
-
-Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
-
-BuckUTT :
-  Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
-
-CAS :
-  Utiliser LDAP !
-  (mettre pseudo comme nom de compte pour Twitter)
-
-Météo :
-  Récupérer depuis yahoo-weather http://yahoo-weather.rubyforge.org/
-  http://weather.yahoo.com/france/champagne-ardenne/troyes-629484/
-
-Forum :
-  phpBB avec le plugin d'authentification qui va bien (?)
+  (ajouter à News, …)
 
 Covoiturage
   content, location(s ?), date, is_driver, user_id (Beaucoup d'infos dans content : répétitions, nombre de passagers)
@@ -56,13 +49,22 @@ Covoiturage
 Annales
   title, content, uv_id, date, file
 
-Planning
-  user_id, uvs_id (has_and_belongs_to_many :uv (and choice in uvs))
+BuckUTT :
+  Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
+
+Forum :
+  phpBB avec le plugin d'authentification qui va bien (?)
+
+Météo :
+  Récupérer depuis yahoo-weather http://yahoo-weather.rubyforge.org/
+  http://weather.yahoo.com/france/champagne-ardenne/troyes-629484/
+
+Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
 
 À préciser :
 ============
 
-* "J'ai oublié mon mot de passe" : Par ent ?
+* "J'ai oublié mon mot de passe" : Par ent ? (ou regénérer mot de passe pour compte du site étu)
 * Éditeur WYSIWYG : lequel (TinyMCE, Markdown, BBCode, … ?) ?
 * Mails : frame vers Roundcube ?
 * Préférences utilisateur (dont menu) : quoi ? les cases pour le Daymail, … ?
