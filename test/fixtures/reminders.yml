@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+buy:
+  content: Aller faire les courses
+  user: admin
+
+sell:
+  content: Vendre les vieux portables
+  user: admin

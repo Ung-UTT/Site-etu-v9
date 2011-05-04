@@ -12,6 +12,7 @@ SiteEtu::Application.routes.draw do
   resources :events
   resources :quotes
   resources :news
+  resources :reminders
   resources :users
   resources :user_sessions, :only => :create
 

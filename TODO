@@ -8,16 +8,15 @@ Daymail :
   /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
   News du jour ?
 
-Images (avatars, images dans news, pour annonces, …), fichiers (annales ?) :
-  Direct sur disque : attachment-fu, paperclip ?
-    Images (Users, News, Event, Association, UV ?)
-    Annals
-  WTF ? 2 modèles, ou 6 ! (Entity ?) (:polymorphic !)
-
-Association : (bloqué pour logo)
+Images, fichiers :
+  Images (Users, News, Event, Association, UV ?)
+  Annals
+  → Paperclip ! (:polymorphic ?)
+    
+Association :
   title, content, logo, (has_and_belongs_to_many :roles)
 
-AssociationRoles :
+Roles :
   association_id, user_id, role_id
 
 Droits :
@@ -43,12 +42,6 @@ BuckUTT :
 CAS :
   Utiliser LDAP !
   (mettre pseudo comme nom de compte pour Twitter)
-
-Annonces :
-  title, content, price, location
-
-Pense-bête :
-  content, user_id
 
 Météo :
   Récupérer depuis yahoo-weather http://yahoo-weather.rubyforge.org/

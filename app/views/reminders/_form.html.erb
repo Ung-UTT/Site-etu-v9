@@ -1,0 +1,11 @@
+<%= form_for(@reminder) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :content, 'Contenu' %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Envoyer' %>
+  </div>
+<% end %>
