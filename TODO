@@ -55,10 +55,6 @@ BuckUTT :
 Forum :
   phpBB avec le plugin d'authentification qui va bien (?)
 
-Météo :
-  Récupérer depuis yahoo-weather http://yahoo-weather.rubyforge.org/
-  http://weather.yahoo.com/france/champagne-ardenne/troyes-629484/
-
 Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
 
 À préciser :

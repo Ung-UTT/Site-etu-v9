@@ -9,9 +9,11 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'authlogic'
 gem 'omniauth'
-gem 'rails3-generators'
-
 gem 'cancan'
+gem 'yahoo-weather'
+
+# For compatibility with Authlogic generators
+gem 'rails3-generators'
 
 # Use unicorn as the web server
 # gem 'unicorn'

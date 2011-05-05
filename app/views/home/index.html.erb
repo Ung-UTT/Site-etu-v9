@@ -20,6 +20,12 @@
       A très bientôt… à Troyes ou ailleurs… l'UTT Net Group<br />
       <%= link_to "Association étudiante informatique de l'UTT", :root %>
     </p>
+    <h2>Météo à Troyes</h2>
+    <p>
+      Aujourd'hui : <%= @weather.condition.temp %> °C : <%= @weather.condition.text %>. <br />
+      Demain : de <%= @weather.forecasts[0].low %> à <%= @weather.forecasts[0].high %> °C : <%= @weather.forecasts[0].text %><br />
+      Après-demain : de <%= @weather.forecasts[1].low %> à <%= @weather.forecasts[1].high %> °C : <%= @weather.forecasts[1].text %><br />
+    </p>
   </article>
 </section>
 
