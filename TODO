@@ -49,12 +49,6 @@ Covoiturage
 Annales
   title, content, uv_id, date, file
 
-BuckUTT :
-  Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
-
-Forum :
-  phpBB avec le plugin d'authentification qui va bien (?)
-
 Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
 
 À préciser :
@@ -65,3 +59,5 @@ Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
 * Mails : frame vers Roundcube ?
 * Préférences utilisateur (dont menu) : quoi ? les cases pour le Daymail, … ?
 * Emploi du temps (+ cumul) (relations compliquées)
+* BuckUTT : Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
+* Forum : phpBB avec le plugin d'authentification qui va bien (?)
