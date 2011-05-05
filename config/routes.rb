@@ -8,6 +8,7 @@ SiteEtu::Application.routes.draw do
   match '/auth/failure' => 'authorizations#failure'
 
   resources :authorizations
+  resources :carpools
   resources :classifieds
   resources :events
   resources :quotes

@@ -1,0 +1,24 @@
+<p>
+  <b>Description :</b>
+  <%= @carpool.content %>
+</p>
+
+<p>
+  <b>Lieu :</b>
+  <%= @carpool.location %>
+</p>
+
+<p>
+  <b>Date :</b>
+  <%= @carpool.date %>
+</p>
+
+<p>
+  <b>Conducteur ? </b>
+  <%= @carpool.is_driver %>
+</p>
+
+<% if can? :update, @carpool %>
+  <%= link_to 'Modifier', edit_carpool_path(@carpool) %> |
+<% end %>
+<%= link_to 'Liste des covoiturages', carpools_path %>

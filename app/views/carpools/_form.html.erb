@@ -1,0 +1,23 @@
+<%= form_for(@carpool) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :content, 'Description' %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :location, 'Lieu' %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :date, 'Date' %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :is_driver, 'Êtes-tu le conducteur ?' %><br />
+    <%= f.check_box :is_driver %>
+  </div>
+  <div class="actions">
+    <%= f.submit, 'Envoyer' %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+paris:
+  content: Voiture de compétition !
+  location: Paris, 16ème
+  date: 2011-05-05 22:55:39
+  is_driver: false
+  user: admin
+
+USA:
+  content: Il y a de la place dans mon bateau ;)
+  location: New York, USA
+  date: 2011-04-05 20:55:39
+  is_driver: true
+  user: admin

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   acts_as_authentic
 
   has_many :authorizations
+  has_many :carpools
   has_many :classifieds
   has_many :quotes
   has_many :reminders

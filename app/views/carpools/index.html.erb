@@ -1,0 +1,11 @@
+<h1>Liste des covoiturages</h1>
+
+<ul>
+<% @carpools.each do |carpool| %>
+    <li><%= link_to carpool.location, carpool %></li>
+<% end %>
+</ul>
+
+<% if can? :create, Carpool %>
+  <%= link_to 'Ajouter', new_carpool_path %>
+<% end %>

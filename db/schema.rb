@@ -10,11 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110504002914) do
+ActiveRecord::Schema.define(:version => 20110505205539) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carpools", :force => true do |t|
+    t.text     "content"
+    t.string   "location"
+    t.datetime "date"
+    t.boolean  "is_driver"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -43,6 +53,16 @@ ActiveRecord::Schema.define(:version => 20110504002914) do
   create_table "events_users", :id => false, :force => true do |t|
     t.integer "event_id"
     t.integer "user_id"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "file_name"
+    t.string   "content_type"
+    t.integer  "avatar_file_size"
+    t.integer  "imageable_id"
+    t.integer  "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "news", :force => true do |t|
