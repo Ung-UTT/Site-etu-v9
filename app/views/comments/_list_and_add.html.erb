@@ -6,7 +6,9 @@
   <% end %>
 </ul>
 
-<% form_for [commentable, Comment.new] do |form| %>
-    <%= form.text_area :content, :rows => 3 %>
-    <%= submit_tag "Ajouter un commenaire" %>
+<% if can? :create, Comment %>
+  <% form_for [commentable, Comment.new] do |form| %>
+      <%= form.text_area :content, :rows => 3 %>
+      <%= submit_tag "Ajouter un commenaire" %>
+  <% end %>
 <% end %>

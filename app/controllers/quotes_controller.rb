@@ -16,6 +16,7 @@ class QuotesController < ApplicationController
   # GET /quotes/1.xml
   def show
     @quote = Quote.find(params[:id])
+    @comments = @quote.comments
 
     respond_to do |format|
       format.html # show.html.erb

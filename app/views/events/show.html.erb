@@ -49,3 +49,5 @@
 <% end %>
 
 <%= link_to 'Retourner à la liste des événements', events_path %>
+
+<%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>

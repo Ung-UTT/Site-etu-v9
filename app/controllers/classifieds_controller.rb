@@ -16,6 +16,7 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds/1.xml
   def show
     @classified = Classified.find(params[:id])
+    @comments = @classified.comments
 
     respond_to do |format|
       format.html # show.html.erb

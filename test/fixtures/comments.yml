@@ -1,11 +1,11 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+joke:
+  content: Moi avec Lynx le design est tout cassé !
+  user: admin
+  commentable: omg
+  commentable_type: News
 
-one:
-  content: MyText
-  commentable_id: 1
-  commentable_type: MyString
-
-two:
-  content: MyText
-  commentable_id: 1
-  commentable_type: MyString
+lol:
+  content: LOL !
+  user: kevin
+  commentable: omg
+  commentable_type: News

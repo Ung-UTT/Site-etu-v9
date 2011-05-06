@@ -5,3 +5,11 @@ admin:
   crypted_password: b52f33017533308562775b48e2700f4b97d5be87ee641f476b2d3a178a72741940b091792956361d1826201ffba93c877bbee09b621a2440c70c33ec04a9764b
   password_salt: lcKbRCMOyjHU709ovI8D
   persistence_token: 908a2f34c215a0bde3e976fd132a6395487e3ecba0cdf21de6682a7273b9aff7ef13dd824b63e632c6ee01bb5a8fcd9ff847cccc4409f9095dc110b0fb6f8599
+
+kevin:
+  login: kevin
+  email: kevin@mail.com
+  # password : kevin
+  crypted_password: 0b1e521433bebbaee737144179912efae7e164dcabafa2beff49bbfc37062b7b26aeb86684dee600f0b56a263f3b3a1ac495be00a3c6312a9799a8734c95503d
+  password_salt: RjlAKiLVagZmnU5DaTp
+  persistence_token: 1afd78dea278a575a5669612958af05cd6d83704b003e8b7fb3e2ddc2b4edf511e9b1633f0d8f9efd5acf4d83cdc0b0b65d3da878bb97a24a2920c8ee7da50ac

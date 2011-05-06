@@ -16,6 +16,7 @@ class CarpoolsController < ApplicationController
   # GET /carpools/1.xml
   def show
     @carpool = Carpool.find(params[:id])
+    @comments = @carpool.comments
 
     respond_to do |format|
       format.html # show.html.erb

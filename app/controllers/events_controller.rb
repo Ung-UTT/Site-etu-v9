@@ -16,6 +16,7 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
+    @comments = @event.comments
 
     respond_to do |format|
       format.html # show.html.erb

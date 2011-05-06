@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  skip_authorization_check
+  load_and_authorize_resource
 
-  # TODO : Ajouté RSS pour suivre les commentaires
+  # TODO : Ajouter RSS pour suivre les commentaires
   def index
     @commentable = find_commentable
     @comments = @commentable.comments
