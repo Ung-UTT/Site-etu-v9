@@ -16,6 +16,7 @@ class NewsController < ApplicationController
   # GET /news/1.xml
   def show
     @news = News.find(params[:id])
+    @comments = @news.comments
 
     respond_to do |format|
       format.html # show.html.erb

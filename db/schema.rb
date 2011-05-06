@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505205539) do
+ActiveRecord::Schema.define(:version => 20110506215513) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20110505205539) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -53,16 +62,6 @@ ActiveRecord::Schema.define(:version => 20110505205539) do
   create_table "events_users", :id => false, :force => true do |t|
     t.integer "event_id"
     t.integer "user_id"
-  end
-
-  create_table "images", :force => true do |t|
-    t.string   "file_name"
-    t.string   "content_type"
-    t.integer  "avatar_file_size"
-    t.integer  "imageable_id"
-    t.integer  "imageable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "news", :force => true do |t|
