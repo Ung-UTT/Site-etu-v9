@@ -7,6 +7,11 @@ class CommentsController < ApplicationController
     @comments = @commentable.comments
   end
 
+  def show
+    @commentable = find_commentable
+    @comment = @commentable.comments.find(params[:id])
+  end
+
   def create
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])
@@ -14,6 +19,13 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = 'Commentaire ajouté'
     end
+    redirect_to @commentable
+  end
+
+  def destroy
+    @commentable = find_commentable
+    @comment = @commentable.comments.find(params[:id])
+    @comment.destroy
     redirect_to @commentable
   end
 

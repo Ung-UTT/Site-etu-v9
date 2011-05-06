@@ -5,6 +5,7 @@ class Ability
     can [:read, :random], :all
     cannot :read, Reminder
     can [:create, :failure], Authorization
+
     if user
       can :read, Reminder, :user_id => user.id
       can :create, [News, Quote, Event, Classified, Reminder, Comment]
@@ -13,6 +14,7 @@ class Ability
       can [:update, :destroy], User, :id => user.id
       can [:join, :disjoin], Event
       can :destroy, [UserSession, Authorization]
+      can :destroy, Comment, :user_id => user.id
     else
       can :create, User
       can [:new, :create], UserSession
