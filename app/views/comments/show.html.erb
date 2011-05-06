@@ -1,1 +1,1 @@
-<%= link_to @comment.user.login, @comment.user %> : <%= @comment.content %>
+<%= render 'one_comment', {:commentable => @commentable, :comment => @comment} %>

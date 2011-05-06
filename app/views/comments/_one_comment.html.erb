@@ -1,0 +1,5 @@
+<%= link_to '#', [commentable, comment] %>
+<%= link_to comment.user.login, comment.user %> : <%= comment.content %>
+<% if can? :destroy, comment %>
+  <%= link_to 'X', [commentable, comment], :confirm => 'Sûr ?', :method => :delete %>
+<% end %>

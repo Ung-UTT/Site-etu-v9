@@ -1,12 +1,9 @@
-<h3>Commentaires</h3>
+<h3><%= link_to 'Commentaires', [commentable, Comment] %></h3>
 
 <ul class="comments">
   <% comments.each do |comment| %>
     <li>
-      <%= link_to comment.user.login, comment.user %> : <%= comment.content %>
-      <% if can? :destroy, comment %>
-        <%= link_to 'X', [commentable, comment], :confirm => 'Sûr ?', :method => :delete %>
-      <% end %>
+      <%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %>
     </li>
   <% end %>
 </ul>
