@@ -23,7 +23,7 @@ class QuotesController < ApplicationController
       format.xml  { render :xml => @quote }
     end
   end
-  
+
   # GET /quotes/random
   # GET /quotes/random.xml
   def random

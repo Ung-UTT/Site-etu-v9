@@ -28,7 +28,7 @@ class AssociationsController < ApplicationController
   # PUT /associations/1/join.xml
   def join
     @association = Association.find(params[:id])
-    
+
     # TODO :
     # @assication.users : Utilisateurs qui ont un Droit (membre, président, …) dans l'association
     # Si est déjà dans l'asso : … "Vous êtes déjà membre"
@@ -39,7 +39,7 @@ class AssociationsController < ApplicationController
   # PUT /associations/1/disjoin.xml
   def disjoin
     @association = Association.find(params[:id])
-    
+
     # TODO :
     # @assication.users : Utilisateurs qui ont un Droit (membre, président, …) dans l'association
     # Si n'est pas dans l'asso : … "Vous ne faîtes pas parti de cette association"

@@ -1,0 +1,24 @@
+[1m[37m      invoke[0m  active_record
+[1m[32m      create[0m    db/migrate/20110507134827_create_courses.rb
+[1m[32m      create[0m    app/models/course.rb
+[1m[37m      invoke[0m    test_unit
+[1m[32m      create[0m      test/unit/course_test.rb
+[1m[32m      create[0m      test/fixtures/courses.yml
+[1m[32m       route[0m  resources :courses
+[1m[37m      invoke[0m  scaffold_controller
+[1m[32m      create[0m    app/controllers/courses_controller.rb
+[1m[37m      invoke[0m    erb
+[1m[32m      create[0m      app/views/courses
+[1m[32m      create[0m      app/views/courses/index.html.erb
+[1m[32m      create[0m      app/views/courses/edit.html.erb
+[1m[32m      create[0m      app/views/courses/show.html.erb
+[1m[32m      create[0m      app/views/courses/new.html.erb
+[1m[32m      create[0m      app/views/courses/_form.html.erb
+[1m[37m      invoke[0m    test_unit
+[1m[32m      create[0m      test/functional/courses_controller_test.rb
+[1m[37m      invoke[0m    helper
+[1m[32m      create[0m      app/helpers/courses_helper.rb
+[1m[37m      invoke[0m      test_unit
+[1m[32m      create[0m        test/unit/helpers/courses_helper_test.rb
+[1m[37m      invoke[0m  stylesheets
+[1m[32m      create[0m    public/stylesheets/scaffold.css

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+MA01:
+  name: MA01
+  description: Premiers cours de Maths : assertions, développement de Taylor, limites, …
+  user: admin
+
+LE00:
+  name: LE00
+  description: What's your name ? My name is Bond, James Bond.
+  user: kevin

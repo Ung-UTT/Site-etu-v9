@@ -1,0 +1,24 @@
+<p>
+  <b>Nom :</b>
+  <%= @course.name %>
+</p>
+
+<p>
+  <b>Description :</b>
+  <%= @course.description %>
+</p>
+
+<p>
+  <b>Responsable de l'UV :</b>
+  <%= link_to @course.user.login, @course.user %>
+</p>
+
+<% if can? :update, @course %>
+  <%= link_to 'Modifier', edit_course_path(@course) %> |
+<% end %>
+<% if can? :destroy, @course %>
+  <%= link_to 'Supprimer', @course, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
+<%= link_to 'Liste des cours', courses_path %>
+
+<%= render 'comments/list_and_add', {:commentable => @course, :comments => @comments} %>

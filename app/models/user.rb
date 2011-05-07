@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :carpools
   has_many :classifieds
   has_many :comments
+  has_many :courses
   has_many :quotes
   has_many :reminders
   has_many :news

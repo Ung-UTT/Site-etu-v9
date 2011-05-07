@@ -28,24 +28,24 @@ class EventsController < ApplicationController
   # PUT /events/1/join.xml
   def join
     @event = Event.find(params[:id])
-    
+
     if @event.users.exists?(current_user)
       redirect_to @event, :notice => 'Vous participez déjà à cet événement'
     else
       @event.users << current_user
       @event.save
       redirect_to @event, :notice => 'Vous participez désormais à cet événement'
-    end    
+    end
   end
 
   # PUT /events/1/disjoin
   # PUT /events/1/disjoin.xml
   def disjoin
     @event = Event.find(params[:id])
-    
+
     @event.users.delete(current_user)
     @event.save
-    
+
     redirect_to @event, :notice => 'Vous ne participez plus à cet événement'
   end
 

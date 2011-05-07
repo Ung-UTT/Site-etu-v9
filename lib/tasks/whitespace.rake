@@ -17,4 +17,10 @@ namespace :whitespace do
           do cat $f | sed '/./,/^$/!d' > tmpfile; cp tmpfile $f; rm tmpfile; echo -n .;
         done}
   end
+  desc 'Execute all tasks'
+  task :all do
+    Rake::Task['whitespace:cleanup'].execute
+    Rake::Task['whitespace:retab'].execute
+    Rake::Task['whitespace:scrub_gratuitous_newlines'].execute
+  end
 end

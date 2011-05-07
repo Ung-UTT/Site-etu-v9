@@ -1,0 +1,15 @@
+<h1>UVs</h1>
+
+<ul>
+<% @courses.each do |course| %>
+  <li>
+    <%= link_to course.name, course %></td>
+  </li>
+<% end %>
+</ul>
+
+<br />
+
+<% if can? :create, Course %>
+  <%= link_to 'Ajouter un cours', new_course_path %>
+<% end %>

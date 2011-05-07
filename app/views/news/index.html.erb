@@ -4,7 +4,7 @@
   <% @news.each do |news| %>
     <%= render 'news/one_news', {:news => news} %>
   <% end %>
-  
+
   <% if can? :create, News %>
     <%= link_to 'Ajouter une news', new_news_path %>
   <% end %>

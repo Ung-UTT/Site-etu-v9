@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110507092655) do
+ActiveRecord::Schema.define(:version => 20110507134827) do
 
   create_table "associations", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20110507092655) do
     t.integer  "user_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

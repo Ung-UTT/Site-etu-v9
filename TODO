@@ -13,38 +13,33 @@ Images, fichiers :
   Annals
   → Paperclip ! (:polymorphic : _id, _type)
 
+Annales
+  title, content, uv_id, date, file
+
 Association :
   += logo
   (Membres selon droits (si a un droit associé à l'asso))
 
 Roles :
-  name, content
-  SuperAdmin, Admin, Modérateur (pour site)
-  Président, vice-, trésorier, … (pour assos)
   name, content, association_id
+    SuperAdmin, Admin, Modérateur (pour site)
+    Président, vice-, trésorier, … (pour assos)
 
 UsersRoles :
   user_id, role_id
 
-UVs :
-  name, description, users_id, schedules_id
+Via dump à récupérer
+  UVs :
+    += members_id, schedules_id (has_and_belongs_to_many pour les deux !)
 
-Planning
-  user_id, uvs_id
+  Planning
+    user_id, uvs_id
 
-Schedule :
-  uv_id, location (B201, …), week (A or B), from, to
-  → Via dump à récupérer
+  Schedule :
+    uv_id, location (B201, …), week (A or B), from, to
 
 Category :
-  name
-  (ajouter à News, …)
-
-Covoiturage
-  content, location(s ?), date, is_driver, user_id (Beaucoup d'infos dans content : répétitions, nombre de passagers)
-
-Annales
-  title, content, uv_id, date, file
+  name (:polymorphic)
 
 /!\ Facile (mais long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)

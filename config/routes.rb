@@ -9,7 +9,7 @@ SiteEtu::Application.routes.draw do
 
   resources :authorizations, :reminders, :users
   resources :user_sessions, :only => :create
-  resources :news, :quotes, :events, :classifieds, :carpools, :associations do
+  resources :associations, :classifieds, :carpools, :courses, :events, :quotes, :news do
     resources :comments
   end
 
