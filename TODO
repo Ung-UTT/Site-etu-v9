@@ -3,7 +3,6 @@
 
 User :
   += infos via LDAP (avatar, UVs, …) (dump à faire)
-  (mettre pseudo comme nom de compte pour Twitter)
 
 Daymail :
   /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
@@ -15,9 +14,10 @@ Images, fichiers :
   → Paperclip ! (:polymorphic : _id, _type)
 
 Association :
-  title, content, logo, users
+  += logo
 
 Roles :
+  name, content
   SuperAdmin, Admin, Modérateur (pour site)
   Président, vice-, trésorier, … (pour assos)
   name, content, association_id

@@ -44,7 +44,7 @@ class NewsController < ApplicationController
   # POST /news.xml
   def create
     @news = News.new(params[:news])
-    @news.user_id = current_user.id
+    @news.user = current_user
 
     respond_to do |format|
       if @news.save

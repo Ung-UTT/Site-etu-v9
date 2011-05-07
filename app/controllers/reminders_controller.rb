@@ -44,7 +44,7 @@ class RemindersController < ApplicationController
   # POST /reminders.xml
   def create
     @reminder = Reminder.new(params[:reminder])
-    @reminder.user_id = current_user.id
+    @reminder.user = current_user
 
     respond_to do |format|
       if @reminder.save

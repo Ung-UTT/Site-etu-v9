@@ -44,7 +44,7 @@ class CarpoolsController < ApplicationController
   # POST /carpools.xml
   def create
     @carpool = Carpool.new(params[:carpool])
-    @carpool.user_id = current_user.id
+    @carpool.user = current_user
 
     respond_to do |format|
       if @carpool.save

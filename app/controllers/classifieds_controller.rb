@@ -44,7 +44,7 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds.xml
   def create
     @classified = Classified.new(params[:classified])
-    @classified.user_id = current_user.id
+    @classified.user = current_user
 
     respond_to do |format|
       if @classified.save

@@ -1,0 +1,24 @@
+<p>
+  <b>Nom :</b>
+  <%= @association.name %>
+</p>
+
+<p>
+  <b>Description :</b>
+  <%= @association.description %>
+</p>
+
+<p>
+  <b>Président :</b>
+  <%= link_to @association.president.login, @association.president %>
+</p>
+
+<% if can? :update, @association %>
+  <%= link_to 'Modifier cette annonce', edit_association_path(@association) %> |
+<% end %>
+<% if can? :destroy, @association %>
+  <%= link_to 'Supprimer', @association, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
+<%= link_to 'Liste des associations', associations_path %>
+
+<%= render 'comments/list_and_add', {:commentable => @association, :comments => @comments} %>

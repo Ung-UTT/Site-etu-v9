@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :reminders
   has_many :news
 
+  has_many :created_associations, :foreign_key => 'president_id', :class_name => 'Association'
   has_many :created_events, :foreign_key => 'organizer_id', :class_name => 'Event'
   has_and_belongs_to_many :events
 end

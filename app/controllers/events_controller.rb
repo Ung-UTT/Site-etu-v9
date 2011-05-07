@@ -69,7 +69,7 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-    @event.organizer_id = current_user.id
+    @event.organizer = current_user
 
     respond_to do |format|
       if @event.save

@@ -7,13 +7,11 @@ SiteEtu::Application.routes.draw do
   match '/auth/:provider/callback' => 'authorizations#create'
   match '/auth/failure' => 'authorizations#failure'
 
-  resources :authorizations
-  resources :news, :quotes, :events, :classifieds, :carpools do
+  resources :authorizations, :reminders, :users
+  resources :user_sessions, :only => :create
+  resources :news, :quotes, :events, :classifieds, :carpools, :associations do
     resources :comments
   end
-  resources :reminders
-  resources :users
-  resources :user_sessions, :only => :create
 
   root :to => 'home#index'
 end

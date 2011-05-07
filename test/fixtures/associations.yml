@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+FritUTT:
+  name: FritUTT
+  description: Mangeur de frites ? Venez faire des frites-party avec nous :)
+  president: kevin
+
+LibrUTT:
+  name: LibrUTT
+  description: |
+    Oh mais que vois-je là ? Windows sur votre ordi, venez vite corriger
+    cette erreur !
+  president: admin
