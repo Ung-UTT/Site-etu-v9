@@ -7,7 +7,7 @@ class Authorization < ActiveRecord::Base
 
   def self.create_from_hash(hash, password, user = nil)
     if hash['provider'] == 'twitter'
-      login = hash['user_info']['name']
+      login = hash['user_info']['nickname']
     else
       login = hash['uid']
     end

@@ -12,4 +12,7 @@
 <% if can? :update, @user %>
   <%= link_to 'Modifier le profil', edit_user_path(@user) %> |
 <% end %>
+<% if can? :destroy, @user %>
+  <%= link_to 'Supprimer', @user, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
 <%= link_to 'Retourner à la liste des profils', users_path %>

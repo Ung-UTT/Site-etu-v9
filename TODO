@@ -2,7 +2,7 @@
 =========
 
 User :
-  += infos via LDAP (avatar, UVs, …)
+  += infos via LDAP (avatar, UVs, …) (dump à faire)
   (mettre pseudo comme nom de compte pour Twitter)
 
 Daymail :
@@ -35,10 +35,6 @@ Schedule :
   uv_id, location (B201, …), week (A or B), from, to
   → Via dump à récupérer
 
-Commentaires :
-  content, user_id (anonyme ?), rank, _id, _type
-  (:polymorphic (News, UVs, …))
-
 Category :
   name
   (ajouter à News, …)
@@ -50,6 +46,8 @@ Annales
   title, content, uv_id, date, file
 
 Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
+
+Ajouter les :dependent => :destroy
 
 À préciser :
 ============

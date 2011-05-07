@@ -26,6 +26,9 @@
 <% if can? :update, @classified %>
   <%= link_to 'Modifier cette annonce', edit_classified_path(@classified) %> |
 <% end %>
+<% if can? :destroy, @classified %>
+  <%= link_to 'Supprimer', @classified, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
 <%= link_to 'Retourner à la liste des annonces', classifieds_path %>
 
 <%= render 'comments/list_and_add', {:commentable => @classified, :comments => @comments} %>

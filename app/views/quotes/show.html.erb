@@ -3,6 +3,9 @@
 <% if can? :update, @quote %>
   <%= link_to 'Modifier cette citation', edit_quote_path(@quote) %> |
 <% end %>
+<% if can? :destroy, @quote %>
+  <%= link_to 'Supprimer', @quote, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
 <%= link_to 'Retourner à la liste des citations', quotes_path %>
 
 <%= render 'comments/list_and_add', {:commentable => @quote, :comments => @comments} %>
