@@ -4,6 +4,8 @@ FritUTT:
   name: FritUTT
   description: Mangeur de frites ? Venez faire des frites-party avec nous :)
   president: kevin
+  lft: 1
+  rgt: 4
 
 LibrUTT:
   name: LibrUTT
@@ -11,3 +13,6 @@ LibrUTT:
     Oh mais que vois-je là ? Windows sur votre ordi, venez vite corriger
     cette erreur !
   president: admin
+  parent: FritUTT
+  lft: 2
+  rgt: 3

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/collectiveidea/awesome_nested_set.git
+  revision: 7b2e4e8e3ad3de0d296f46c3af5aac6a72316d56
+  specs:
+    awesome_nested_set (2.0.0.pre)
+      activerecord (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -128,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
+  awesome_nested_set!
   cancan
   omniauth
   rails (= 3.0.3)

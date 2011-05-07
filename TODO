@@ -15,6 +15,7 @@ Images, fichiers :
 
 Association :
   += logo
+  (Membres selon droits (si a un droit associé à l'asso))
 
 Roles :
   name, content
@@ -45,9 +46,10 @@ Covoiturage
 Annales
   title, content, uv_id, date, file
 
-Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
-
-Ajouter les :dependent => :destroy
+/!\ Facile (mais long) ! /!\
+  Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
+  Ajouter les :dependent => :destroy
+  Jolis titres pour toute les pages
 
 À préciser :
 ============

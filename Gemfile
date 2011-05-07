@@ -11,6 +11,8 @@ gem 'authlogic'
 gem 'omniauth'
 gem 'cancan'
 gem 'yahoo-weather'
+# TODO : Vérifier quand la version pour Rails 3 est dans les dépôts
+gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 # For compatibility with Authlogic generators
 gem 'rails3-generators'

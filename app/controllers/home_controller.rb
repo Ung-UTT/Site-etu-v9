@@ -3,6 +3,8 @@ class HomeController < ApplicationController
 
   def index
     @news = News.order('created_at desc')
-    @weather = YahooWeather::Client.new.lookup_by_woeid(629484, 'c')
+    if connected?
+      @weather = YahooWeather::Client.new.lookup_by_woeid(629484, 'c')
+    end
   end
 end

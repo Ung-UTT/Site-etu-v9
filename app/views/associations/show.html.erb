@@ -13,6 +13,13 @@
   <%= link_to @association.president.login, @association.president %>
 </p>
 
+<% if @association.parent %>
+<p>
+  <b>Parent :</b>
+  <%= link_to @association.parent.name, @association.parent %>
+</p>
+<% end %>
+
 <% if can? :update, @association %>
   <%= link_to 'Modifier cette annonce', edit_association_path(@association) %> |
 <% end %>

@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(:version => 20110507092655) do
     t.string   "name"
     t.text     "description"
     t.integer  "president_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

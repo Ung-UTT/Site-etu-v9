@@ -66,7 +66,7 @@ class AssociationsController < ApplicationController
   # POST /associations.xml
   def create
     @association = Association.new(params[:association])
-    @association.user = current_user
+    @association.president = current_user
 
     respond_to do |format|
       if @association.save

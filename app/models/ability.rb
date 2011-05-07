@@ -8,7 +8,7 @@ class Ability
 
     if user
       can :read, Reminder, :user_id => user.id
-      can :create, [News, Quote, Event, Classified, Reminder, Comment]
+      can :create, [News, Quote, Event, Classified, Reminder, Comment, Association]
       can [:update, :destroy], [News, Quote, Classified, Reminder, Carpool], :user_id => user.id
       can [:update, :destroy], Event, :organizer_id => user.id
       can [:update, :destroy], Association, :president_id => user.id
