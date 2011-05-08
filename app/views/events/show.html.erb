@@ -1,7 +1,4 @@
-<p>
-  <b>Nom :</b>
-  <%= @event.title %>
-</p>
+<h2><%= @event.title %></h2>
 
 <p>
   <b>Description :</b>
@@ -10,7 +7,7 @@
 
 <p>
   <b>Organisateur :</b>
-  <%= link_to @event.organizer.login, @event.organizer %>
+  <%= link_to_user @event.organizer %>
 </p>
 
 <p>
@@ -26,7 +23,7 @@
 <p>
   <b>Participants :</b>
   <% @event.users.each do |user| %>
-    <%= link_to user.login, user %>
+    <%= link_to_user user %>
   <% end %>
 </p>
 

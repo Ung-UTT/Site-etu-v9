@@ -1,0 +1,15 @@
+<h1>Rôles</h1>
+
+<ul>
+<% @roles.each do |role| %>
+  <li>
+    <%= link_to role.name, role %></td>
+  </li>
+<% end %>
+</ul>
+
+<br />
+
+<% if can? :create, Role %>
+  <%= link_to 'Ajouter un rôle', new_role_path %>
+<% end %>

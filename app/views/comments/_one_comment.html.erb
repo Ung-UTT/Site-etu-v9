@@ -1,7 +1,8 @@
 <%= link_to '#', [commentable, comment] %>
-<% if commentable.class == Course # Commentaires
-  link_to comment.user.login, comment.user
-    end %> : <%= comment.content %>
+<% if comment.user %>
+  <%= link_to_user comment.user %> :
+<% end %>
+<%= comment.content %>
 <% if can? :destroy, comment %>
   <%= link_to 'X', [commentable, comment], :confirm => 'Sûr ?', :method => :delete %>
 <% end %>

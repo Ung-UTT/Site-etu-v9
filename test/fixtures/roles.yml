@@ -1,0 +1,12 @@
+superAdmin:
+  name: Super-Administrateur
+
+admin:
+  name: Administrateur
+
+moderator:
+  name: Modérateur
+
+collaborator:
+  name: Collaborateur
+  association: FritUTT

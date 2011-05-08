@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   def create
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])
-    @comment.user = current_user
+    @comment.user = current_user unless @commentable.class == Course # Commentaires anonymes sur les UVs
 
     if @comment.save
       flash[:notice] = 'Commentaire ajouté'

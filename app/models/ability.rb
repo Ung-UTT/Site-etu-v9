@@ -7,6 +7,8 @@ class Ability
     can [:create, :failure], Authorization
 
     if user
+      can :manage, Role # TODO : Only for admins !
+
       can :read, Reminder, :user_id => user.id
       can :create, [News, Quote, Event, Classified, Reminder, Comment, Association, Course]
       can [:update, :destroy], [News, Quote, Classified, Reminder, Carpool, Course], :user_id => user.id

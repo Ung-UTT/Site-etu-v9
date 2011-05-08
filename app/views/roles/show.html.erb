@@ -1,0 +1,25 @@
+<h2><%= @role.name %></h2>
+
+<% if @role.association %>
+<p>
+  <b>Association associée :</b>
+  <%= link_to @role.association.name, @role.association %>
+</p>
+<% end %>
+
+<% if @role.users %>
+<p>
+  <b>Utilisateurs ayant ce rôle :</b>
+  <% @role.users.each do |user| %>
+    <%= link_to_user user  %>
+  <% end %>
+</p>
+<% end %>
+
+<% if can? :update, @role %>
+  <%= link_to 'Modifier', edit_role_path(@role) %> |
+<% end %>
+<% if can? :destroy, @role %>
+  <%= link_to 'Supprimer', @role, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
+<%= link_to 'Liste des rôles', roles_path %>

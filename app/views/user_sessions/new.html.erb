@@ -1,1 +1,24 @@
-<%= render 'login' %>
+<h2>Connexion</h2>
+
+<%= form_for @user_session, :url => {:controller => 'user_sessions', :action => "create"} do |f| %>
+  <%= f.error_messages %>
+  <div>
+    <%= f.text_field :login, { :placeholder => 'Identifiant', :autofocus => 'true', :required => 'required' } %>
+  </div>
+  <div>
+    <%= f.password_field :password, { :placeholder => 'Mot de passe', :required => 'required' } %>
+  </div>
+  <div>
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me, 'Rester connecté' %>
+  </div>
+  <div>
+    <%= f.submit 'Login' %>
+  </div>
+<% end %>
+
+<% if can? :create, User %>
+  <%= link_to 'Créer un compte', new_user_path %>
+  ou se connecter via un service :
+  <%= render 'users/connect' %>
+<% end %>

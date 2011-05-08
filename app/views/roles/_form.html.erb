@@ -1,0 +1,15 @@
+<%= form_for(@role) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :name, 'Nom' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :association_id, 'Association associée' %><br />
+    <%= f.select :association_id, parent_select_options(Association) %>
+  </div>
+  <div class="actions">
+    <%= f.submit, 'Envoyer' %>
+  </div>
+<% end %>

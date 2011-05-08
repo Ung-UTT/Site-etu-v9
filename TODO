@@ -18,15 +18,10 @@ Annales
 
 Association :
   += logo
-  (Membres selon droits (si a un droit associé à l'asso))
 
 Roles :
-  name, content, association_id
-    SuperAdmin, Admin, Modérateur (pour site)
-    Président, vice-, trésorier, … (pour assos)
-
-UsersRoles :
-  user_id, role_id
+  += Permissions selon rôle
+  += Pouvoir ajouter des membres aux rôles facilement
 
 Via dump à récupérer
   UVs :
@@ -39,7 +34,7 @@ Via dump à récupérer
     uv_id, location (B201, …), week (A or B), from, to
 
 Category :
-  name (:polymorphic)
+  name (:polymorphic) (et :has_many) (pas facile !)
 
 /!\ Facile (mais long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)

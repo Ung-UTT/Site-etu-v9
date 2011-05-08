@@ -1,7 +1,4 @@
-<p>
-  <b>Nom :</b>
-  <%= @association.name %>
-</p>
+<h2><%= @association.name %></h2>
 
 <p>
   <b>Description :</b>
@@ -21,7 +18,7 @@
 <% end %>
 
 <% if can? :update, @association %>
-  <%= link_to 'Modifier cette annonce', edit_association_path(@association) %> |
+  <%= link_to 'Modifier', edit_association_path(@association) %> |
 <% end %>
 <% if can? :destroy, @association %>
   <%= link_to 'Supprimer', @association, :confirm => 'Sûr ?', :method => :delete %> |

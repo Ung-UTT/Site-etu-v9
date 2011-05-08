@@ -7,7 +7,7 @@
   <% if can? :destroy, @news %>
     <%= link_to 'Supprimer', @news, :confirm => 'Sûr ?', :method => :delete %> |
   <% end %>
-  <%= link_to 'Retourner à la liste des news', news_index_path %>
+  <%= link_to 'Liste des news', news_index_path %>
 </section>
 
 <%= render 'comments/list_and_add', {:commentable => @news, :comments => @comments} %>

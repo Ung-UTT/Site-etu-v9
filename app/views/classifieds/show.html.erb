@@ -1,7 +1,4 @@
-<p>
-  <b>Titre :</b>
-  <%= @classified.title %>
-</p>
+<h2><%= @classified.title %></h2>
 
 <p>
   <b>Description :</b>
@@ -20,15 +17,15 @@
 
 <p>
   <b>Appartient à :</b>
-  <%= link_to @classified.user.login, @classified.user %>
+  <%= link_to_user @classified.user %>
 </p>
 
 <% if can? :update, @classified %>
-  <%= link_to 'Modifier cette annonce', edit_classified_path(@classified) %> |
+  <%= link_to 'Modifier', edit_classified_path(@classified) %> |
 <% end %>
 <% if can? :destroy, @classified %>
   <%= link_to 'Supprimer', @classified, :confirm => 'Sûr ?', :method => :delete %> |
 <% end %>
-<%= link_to 'Retourner à la liste des annonces', classifieds_path %>
+<%= link_to 'Liste des annonces', classifieds_path %>
 
 <%= render 'comments/list_and_add', {:commentable => @classified, :comments => @comments} %>

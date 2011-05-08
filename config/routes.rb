@@ -7,7 +7,7 @@ SiteEtu::Application.routes.draw do
   match '/auth/:provider/callback' => 'authorizations#create'
   match '/auth/failure' => 'authorizations#failure'
 
-  resources :authorizations, :reminders, :users
+  resources :authorizations, :users, :reminders, :roles
   resources :user_sessions, :only => :create
   resources :associations, :classifieds, :carpools, :courses, :events, :quotes, :news do
     resources :comments
