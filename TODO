@@ -38,8 +38,8 @@ Category :
 
 /!\ Facile (mais long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
-  Ajouter les :dependent => :destroy
   Jolis titres pour toute les pages
+  Des tests ! Beaucoup de tests !
 
 À préciser :
 ============
