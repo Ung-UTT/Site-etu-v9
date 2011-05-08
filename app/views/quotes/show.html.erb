@@ -1,3 +1,5 @@
+<% title 'Citation : ' + @quote.content %>
+
 <%= render 'one_quote', {:quote => @quote} %>
 
 <% if can? :update, @quote %>

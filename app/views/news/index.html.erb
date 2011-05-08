@@ -1,5 +1,7 @@
 <section id="news">
-  <h1>Les news</h1>
+  <% if controller.controller_name != 'home' %>
+    <%= title 'Les news' %>
+  <% end %>
 
   <% @news.each do |news| %>
     <%= render 'news/one_news', {:news => news} %>

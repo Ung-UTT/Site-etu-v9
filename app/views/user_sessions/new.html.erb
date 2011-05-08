@@ -1,4 +1,4 @@
-<h2>Connexion</h2>
+<%= title 'Connexion' %>
 
 <%= form_for @user_session, :url => {:controller => 'user_sessions', :action => "create"} do |f| %>
   <%= f.error_messages %>

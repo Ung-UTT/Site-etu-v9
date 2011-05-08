@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def title(page_title, options={})
+    content_for(:title, page_title.to_s)
+    return content_tag(:h1, page_title, options)
+  end
+
+  def title_tag
+    content_tag(:title, content_for(:title).empty?  ? 'Site étu : Le nouveau Face-Twit-Goog-Micro-LinuxFr' : content_for(:title))
+  end
+
   def parent_select_options(name)
     return options_for_select(
       nested_set_options(name) {|i| "#{'..' * i.level} #{i.name}" }.unshift(["Pas de parent", nil])
