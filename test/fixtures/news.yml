@@ -19,3 +19,20 @@ lorem:
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: admin
+
+ipsum:
+  title: Lorem Ipsum
+  content: |
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Nullam ut purus tellus, ac hendrerit eros. Curabitur quis odio est,
+    nec tincidunt arcu. Aliquam dignissim, neque vel tempus aliquet,
+    magna dolor venenatis lacus, quis laoreet enim odio quis ante.
+    Duis a mauris metus. Maecenas mattis accumsan suscipit. Integer dui
+    ligula, facilisis in posuere dignissim, accumsan ac augue. Praesent
+    sed neque nulla, ut hendrerit magna. Duis interdum facilisis mi nec
+    tempus. Ut ut dignissim odio. Quisque lacinia, arcu vitae dapibus
+    eleifend, mi augue molestie ante, id faucibus orci risus non nulla.
+    Vestibulum laoreet interdum ornare. Cras condimentum fringilla
+    lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
+    vel augue sem, ac lobortis urna. Suspendisse potenti.
+  user: kevin

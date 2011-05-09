@@ -1,10 +1,14 @@
 <h3><%= link_to 'Commentaires', [commentable, Comment] %></h3>
 
 <ul class="comments">
-  <% comments.each do |comment| %>
+  <% if comments.empty? %>
+    Soyez le premier à commenter !
+  <% else %>
+    <% comments.each do |comment| %>
     <li>
       <%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %>
     </li>
+    <% end %>
   <% end %>
 </ul>
 

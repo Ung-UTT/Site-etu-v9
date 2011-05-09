@@ -1,5 +1,5 @@
 joke:
-  content: Est-ce qu'en Chine, plus il y a de fous, moins on riz ?
+  content: "Est-ce qu'en Chine, plus il y a de fous, moins on riz ?"
   user : admin
 
 macho:
@@ -7,5 +7,9 @@ macho:
   user : admin
 
 cumul:
-  content: Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?
-  user : admin
+  content: "Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?"
+  user : kevin
+
+pedobear:
+  content: "Deux prêtres sont sous la douche : « J'ai l'impression que t'as grossi de la bite ? » « NON ! Je rentre encore dans du 12 ans… »"
+  user : kevin

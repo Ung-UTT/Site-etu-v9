@@ -13,3 +13,17 @@ magic:
   price: 135
   location: Au RU
   user: admin
+
+pens:
+  title: Pleins de stylos que vous metterez au moins une vie à utiliser
+  content: |
+    Plusieurs milliers de stylos :
+      * 4 couleurs
+      * bleus, verts, rouges, noirs
+      * Stylos plumes
+      * Effaceurs
+      * Stabylos
+      * …
+  price: 999.99
+  location: Carrefour, Troyes
+  user: kevin

@@ -1,4 +1,4 @@
-<%= title 'UV : ' = @course.name %>
+<%= title 'UV : ' + @course.name %>
 
 <p>
   <b>Description :</b>
@@ -7,7 +7,12 @@
 
 <p>
   <b>Responsable de l'UV :</b>
-  <%= link_to_user @course.user %>
+  <%= link_to_user @course.owner %>
+</p>
+
+<p>
+  <b>Participants à l'UV :</b>
+  <%= link_to_users @course.users %>
 </p>
 
 <% if can? :update, @course %>

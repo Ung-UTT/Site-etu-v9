@@ -29,10 +29,13 @@ class AssociationsController < ApplicationController
   def join
     @association = Association.find(params[:id])
 
-    # TODO :
-    # @assication.users : Utilisateurs qui ont un Droit (membre, président, …) dans l'association
-    # Si est déjà dans l'asso : … "Vous êtes déjà membre"
-    # Sinon lui donner le droit "Membre" avec association_id = @association.id
+    if current_user.is_member_of? @association
+      redirect_to @association, :notice => 'Vous participez déjà à cette association'
+    else
+      current_user.roles << @association.member
+      current_user.save
+      redirect_to @association, :notice => 'Vous participez désormais à cette association'
+    end
   end
 
   # PUT /associations/1/disjoin
@@ -40,10 +43,10 @@ class AssociationsController < ApplicationController
   def disjoin
     @association = Association.find(params[:id])
 
-    # TODO :
-    # @assication.users : Utilisateurs qui ont un Droit (membre, président, …) dans l'association
-    # Si n'est pas dans l'asso : … "Vous ne faîtes pas parti de cette association"
-    # Sinon lui enlever le(s) droit(s) Role.where('user_id = current_user.id AND association_id = association.id').destroy
+    @association.users.delete(current_user)
+    @association.save
+
+    redirect_to @event, :notice => 'Vous ne participez plus à cette association'
   end
 
   # GET /associations/new

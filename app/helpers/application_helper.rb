@@ -35,4 +35,12 @@ module ApplicationHelper
   def link_to_user(user)
     return link_to user.login, user
   end
+
+  def link_to_users(users)
+    if users.empty?
+      return 'Aucun'
+    else
+      return users.each { |u| link_to_user u}.join ' '
+    end
+  end
 end

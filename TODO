@@ -23,22 +23,12 @@ Roles :
   += Permissions selon rôle
   += Pouvoir ajouter des membres aux rôles facilement
 
-Via dump à récupérer
-  UVs :
-    += members_id, schedules_id (has_and_belongs_to_many pour les deux !)
-
-  Planning
-    user_id, uvs_id
-
-  Schedule :
-    uv_id, location (B201, …), week (A or B), from, to
-
 Category :
   name (:polymorphic) (et :has_many) (pas facile !)
 
 /!\ Facile (mais long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
-  Jolis titres pour toute les pages
+  Plein de validations (presence, length, …)
   Des tests ! Beaucoup de tests !
 
 À préciser :
@@ -52,3 +42,17 @@ Category :
 * BuckUTT : Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
 * Forum : phpBB avec le plugin d'authentification qui va bien (?)
 * Recherche : Globale + Trombi
+* Qui a vu qui : (pour classement trombi) la première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
+                 Reste plus qu'à récupérer User.all.each … viewers.size … .sort
+                 Remise à 0 tout les ans (semestres ?)
+
+Via dump à récupérer
+  UVs :
+    += schedules_id (has_and_belongs_to_many)
+    += ajout d'utilisateur sur une UV par site étu ? (actuelement seulement par console)
+
+  Planning
+    user_id, uvs_id
+
+  Schedule :
+    uv_id, location (B201, …), week (A or B), from, to

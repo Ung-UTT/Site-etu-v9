@@ -3,7 +3,7 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string  :name
       t.text    :description
-      t.integer :user_id
+      t.integer :owner_id
 
       t.timestamps
     end

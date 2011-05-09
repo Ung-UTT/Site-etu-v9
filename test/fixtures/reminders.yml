@@ -1,5 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 buy:
   content: Aller faire les courses
   user: admin
@@ -7,3 +5,15 @@ buy:
 sell:
   content: Vendre les vieux portables
   user: admin
+
+idea:
+  content: Trouver une idée géniale
+  user: kevin
+
+phone:
+  content: Changer de téléphone pour un Nokia 3310 !
+  user: kevin
+
+app:
+  content: Faire une appli pour le site étu
+  user: kevin

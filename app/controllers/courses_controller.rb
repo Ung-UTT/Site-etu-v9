@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
   # POST /courses.xml
   def create
     @course = Course.new(params[:course])
-    @course.user = current_user
+    @course.owner = current_user
 
     respond_to do |format|
       if @course.save

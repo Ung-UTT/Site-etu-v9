@@ -7,7 +7,12 @@
 
 <p>
   <b>Président :</b>
-  <%= link_to @association.president.login, @association.president %>
+  <%= link_to_user @association.president %>
+</p>
+
+<p>
+  <b>Membres :</b>
+  <%= link_to_users @association.users %>
 </p>
 
 <% if @association.parent %>
@@ -15,6 +20,20 @@
   <b>Parent :</b>
   <%= link_to @association.parent.name, @association.parent %>
 </p>
+<% end %>
+
+<% if @association.users.include?(current_user) and can? :disjoin, Association %>
+  <%= form_tag(disjoin_association_path(@association), :method => 'PUT') do %>
+    <div class="actions">
+      <%= submit_tag 'Ne plus participer' %>
+    </div>
+  <% end %>
+<% elsif can? 'join'.to_sym, Association %>
+  <%= form_tag(join_association_path(@association), :method => 'PUT') do %>
+    <div class="actions">
+      <%= submit_tag 'Participer' %>
+    </div>
+  <% end %>
 <% end %>
 
 <% if can? :update, @association %>

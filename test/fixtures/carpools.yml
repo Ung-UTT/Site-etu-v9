@@ -13,3 +13,10 @@ USA:
   date: 2011-04-05 20:55:39
   is_driver: true
   user: admin
+
+Troyes:
+  content: Venez tous au cimetiére (animaux morts acceptés)
+  location: À côté du cimetiére de Troyes
+  date: 2011-03-05 20:55:39
+  is_driver: true
+  user: kevin

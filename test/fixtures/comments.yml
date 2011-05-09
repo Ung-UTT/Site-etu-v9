@@ -1,11 +1,9 @@
 joke:
   content: Moi avec Lynx le design est tout cassé !
   user: admin
-  commentable: omg
-  commentable_type: News
+  commentable: omg (News)
 
 lol:
   content: LOL !
   user: kevin
-  commentable: omg
-  commentable_type: News
+  commentable: omg (News)

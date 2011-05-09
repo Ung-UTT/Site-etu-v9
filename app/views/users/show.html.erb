@@ -12,7 +12,8 @@
 
 <!-- TODO : Infos du LDAP à ajouter -->
 
-<%= list_of 'UVs', @user.courses, :name %>
+<%= list_of 'Responsable des UVs', @user.created_courses, :name %>
+<%= list_of 'Inscrit aux UVs', @user.courses, :name %>
 <%= list_of 'Rôles', @user.roles, :name %>
 <%= list_of 'Association crées', @user.created_associations, :name %>
 <%= list_of 'Membre des associations', @user.associations, :name %>

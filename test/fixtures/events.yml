@@ -1,5 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 party:
   title: Hip Hip Hip
   content: Houra, venez vite au foyez !
@@ -13,3 +11,10 @@ urgent:
   organizer: admin
   location: Partout
   date: 2012-04-29 12:58:35
+
+surprise:
+  title: "*suprise*"
+  content: <insérez un clin d'œil ici ;)>
+  organizer: kevin
+  location: Salle asso
+  date: 2011-05-09 17:00:00

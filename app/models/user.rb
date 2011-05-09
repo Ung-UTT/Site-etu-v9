@@ -11,15 +11,35 @@ class User < ActiveRecord::Base
   has_many :news, :dependent => :destroy
 
   has_many :created_associations, :foreign_key => 'president_id', :class_name => 'Association', :dependent => :destroy
+  has_many :created_courses, :foreign_key => 'owner_id', :class_name => 'Course', :dependent => :destroy
   has_many :created_events, :foreign_key => 'organizer_id', :class_name => 'Event', :dependent => :destroy
+  has_and_belongs_to_many :courses
   has_and_belongs_to_many :events
   has_and_belongs_to_many :roles
 
-  # Enléve les participations aux événements et les rôles allouéss
+  # Enléve les participations aux UVs, aux événements, et les rôles alloués
+  before_destroy do self.course.delete_all end
   before_destroy do self.events.delete_all end
   before_destroy do self.roles.delete_all end
 
   def associations
-    roles.map { |r| r.association }.compact.map { |a| a.name }
+    return roles.map { |r| r.association }.compact
+  end
+
+  def is_member_of?(association)
+    return associations.include?(association)
+  end
+
+  def is?(name, association = nil)
+    role = Role.find_by_name(name)
+    res = roles.select do |r|
+      cond = (r === role)
+      if association != nil
+        cond = (cond and (r.association === association))
+        puts association.inspect
+      end
+      return cond
+    end
+    return !res.empty?
   end
 end

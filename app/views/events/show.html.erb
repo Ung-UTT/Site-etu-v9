@@ -22,9 +22,7 @@
 
 <p>
   <b>Participants :</b>
-  <% @event.users.each do |user| %>
-    <%= link_to_user user %>
-  <% end %>
+  <%= link_to_users @event.users %>
 </p>
 
 <% if @event.users.exists?(current_user) and can? :disjoin, Event %>

@@ -1,5 +1,5 @@
 superAdmin:
-  name: Super-Administrateur
+  name: SuperAdministrateur
 
 admin:
   name: Administrateur
@@ -10,3 +10,7 @@ moderator:
 collaborator:
   name: Collaborateur
   association: FritUTT
+
+treasurer:
+  name: Trésorier
+  association: LibrUTT

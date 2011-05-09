@@ -3,7 +3,7 @@ class CreateClassifieds < ActiveRecord::Migration
     create_table :classifieds do |t|
       t.string  :title
       t.text    :content
-      t.integer :price
+      t.decimal :price
       t.string  :location
       t.integer :user_id
 

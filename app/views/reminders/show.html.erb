@@ -2,7 +2,7 @@
 
 <p>
   <b>Appartient à :</b>
-  <%= @reminder.user.login %>
+  <%= link_to_user @reminder.user %>
 </p>
 
 <%= link_to 'Modifier ce truc à faire', edit_reminder_path(@reminder) %> |
