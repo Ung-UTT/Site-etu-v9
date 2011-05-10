@@ -20,8 +20,9 @@ Association :
   += logo
 
 Roles :
-  += Permissions selon rôle
-  += Pouvoir ajouter des membres aux rôles facilement
+  += Voir TODOs associés dans fichiers (modéle et controlleur)
+  += Ajouter rôle directement depuis page de l'Association
+  += Affiner (c'est sûr que là c'est affiné avec une tronconeuse) les permissions selon les rôles
 
 Category :
   name (:polymorphic) (et :has_many) (pas facile !)
