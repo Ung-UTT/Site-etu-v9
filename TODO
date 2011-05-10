@@ -32,7 +32,7 @@ Category :
   Plein de validations (presence, length, …)
   Des tests ! Beaucoup de tests !
   De superbes fixtures évoluées qui font comme si le site existe vraiment
-    Des seeds pour les trucs de bases : les rôles de base par exemple
+  (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
 
 À préciser :
 ============
@@ -64,9 +64,11 @@ Via dump à récupérer
 == Gems utiles ? ==
 
 === Sûr ! ===
+* Pagination : will_paginate (à faire même)
+* Recherche : thinking-sphinx (à faire aussi)
+
 * Gestion de projets : redmine !
 * Déploiement : capistrano
-* Pagination : will_paginate (à faire même)
 * Serveur : passenger ou thin
 
 === Peut-être… ===

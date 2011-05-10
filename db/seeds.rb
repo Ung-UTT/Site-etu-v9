@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
+role_superAdmin = Role.create(:name => 'SuperAdministrateur')
+role_admin = Role.create(:name => 'Administrateur')
+role_moderator = Role.create(:name => 'Modérateur')
+
+superAdmin = User.create(:login => 'superAdmin', :email => 'superAdmin@etu.utt.fr',
+                         :password => 'changez-moi', :password_confirmation => 'changez-moi')
+
+admin = User.create(:login => 'admin', :email => 'admin@etu.utt.fr',
+                    :password => 'changez-moi', :password_confirmation => 'changez-moi')
+
+moderator = User.create(:login => 'moderator', :email => 'moderator@etu.utt.fr',
+                        :password => 'changez-moi', :password_confirmation => 'changez-moi')
+
+superAdmin.roles << role_superAdmin
+superAdmin.save
+
+admin.roles << role_admin
+admin.save
+
+moderator.roles << role_moderator
+moderator.save

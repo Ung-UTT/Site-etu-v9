@@ -1,10 +1,10 @@
 buy:
   content: Aller faire les courses
-  user: admin
+  user: joe
 
 sell:
   content: Vendre les vieux portables
-  user: admin
+  user: joe
 
 idea:
   content: Trouver une idée géniale

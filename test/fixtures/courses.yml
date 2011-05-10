@@ -1,16 +1,24 @@
 MA01:
   name: MA01
   description: Premiers cours de Maths. Assertions, développement de Taylor, limites, ...
-  owner: admin
-  users: kevin, admin
+  owner: joe
+  users: kevin, joe
 
 LE00:
   name: LE00
   description: What's your name ? My name is Bond, James Bond.
   owner: kevin
-  users: admin
+  users: joe
 
 LE01:
   name: LE01
   description: As I said before, I never repeat myself.
   owner: kevin
+
+<% 1.upto(9) do |i| %>
+<%= "XX0#{i}" %>:
+  name: $LABEL
+  description: "<%= "C'est hyper chaud ! XX0#{i} (XX#{i+1}) est encore mieux)" %>"
+  owner: joe
+  users: kevin, joe
+<% end %>

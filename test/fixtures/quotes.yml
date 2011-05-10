@@ -1,10 +1,10 @@
 joke:
   content: "Est-ce qu'en Chine, plus il y a de fous, moins on riz ?"
-  user : admin
+  user : joe
 
 macho:
   content: "Quand une meuf dit : « Les hommes sont tous les mêmes », réponds lui: « Fallait pas tous les essayer ! »"
-  user : admin
+  user : joe
 
 cumul:
   content: "Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?"

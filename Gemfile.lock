@@ -127,6 +127,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    will_paginate (2.3.15)
     yahoo-weather (1.2.0)
       nokogiri (>= 1.4.1)
 
@@ -138,7 +139,8 @@ DEPENDENCIES
   awesome_nested_set!
   cancan
   omniauth
-  rails (= 3.0.3)
+  rails
   rails3-generators
   sqlite3-ruby
+  will_paginate
   yahoo-weather

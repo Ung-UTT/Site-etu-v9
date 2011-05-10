@@ -5,14 +5,14 @@ paris:
   location: Paris, 16ème
   date: 2011-05-05 22:55:39
   is_driver: false
-  user: admin
+  user: joe
 
 USA:
   content: Il y a de la place dans mon bateau ;)
   location: New York, USA
   date: 2011-04-05 20:55:39
   is_driver: true
-  user: admin
+  user: joe
 
 Troyes:
   content: Venez tous au cimetiére (animaux morts acceptés)
@@ -20,3 +20,12 @@ Troyes:
   date: 2011-03-05 20:55:39
   is_driver: true
   user: kevin
+
+<% 1.upto(5) do |i| %>
+<%= "paris#{i}" %>:
+  content: "<%= "#{i} places dans la voiture" %>"
+  location: "<%= "#{i} place de la statue minuscule, 10000 Troyes" %>"
+  date: <%= (20-i).weeks.ago.to_s(:db) %>
+  is_driver: <%= i%2 == 0 %>
+  user: kevin
+<% end %>

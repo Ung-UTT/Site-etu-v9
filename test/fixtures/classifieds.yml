@@ -5,14 +5,14 @@ bike:
   content: Rouge à pois vert
   price: 50
   location: 42, rue de la petite Auberge. 10000 Troyes.
-  user: admin
+  user: joe
 
 magic:
   title: Poudre magique
   content: Elle vous rendra "magique"
   price: 135
   location: Au RU
-  user: admin
+  user: joe
 
 pens:
   title: Pleins de stylos que vous metterez au moins une vie à utiliser
@@ -27,3 +27,12 @@ pens:
   price: 999.99
   location: Carrefour, Troyes
   user: kevin
+
+<% 1.upto(5) do |i| %>
+<%= "vis#{i}" %>:
+  title: "<%= "#{i*10} vis pour le prix de #{i}" %>"
+  title: "<%= "#{i*10} c'est beaucoup !" %>"
+  price: <%= i*i %>
+  location: "<%= "#{i} place de la statue géante, 10000 Troyes" %>"
+  user: kevin
+<% end %>

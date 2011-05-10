@@ -1,9 +1,20 @@
 joke:
   content: Moi avec Lynx le design est tout cassé !
-  user: admin
+  user: joe
   commentable: omg (News)
 
 lol:
   content: LOL !
   user: kevin
   commentable: omg (News)
+
+<% ['lorem', 'ipsum'].each do |label| %>
+<% 1.upto(5) do |i| %>
+<%= "#{label}_comment_#{i}" %>:
+  content: "<%= "Je plussois : +#{i} (le commentaire n°#{i+1}) va être nul :D)" %>"
+  user: kevin
+  commentable: <%= label %> (News)
+<% end %>
+<% end %>
+
+# TODO: Même chose pour plein de contenus

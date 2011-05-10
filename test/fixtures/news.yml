@@ -1,7 +1,7 @@
 omg:
   title: OMG ! Le site étu est trop beau !
   content: … et en plus il se lance des fleurs…
-  user: admin
+  user: joe
 
 lorem:
   title: Lorem Ipsum
@@ -18,7 +18,7 @@ lorem:
     Vestibulum laoreet interdum ornare. Cras condimentum fringilla
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
-  user: admin
+  user: joe
 
 ipsum:
   title: Lorem Ipsum
