@@ -31,14 +31,9 @@ class User < ActiveRecord::Base
   end
 
   def is?(name, association = nil)
-    role = Role.find_by_name(name)
-    res = roles.select do |r|
-      cond = (r === role)
-      if association != nil
-        cond = (cond and (r.association === association))
-        puts association.inspect
-      end
-      return cond
+    res = roles.select { |r| r.name == name }
+    if association
+      res = res & association.roles
     end
     return !res.empty?
   end

@@ -31,18 +31,10 @@
 </p>
 <% end %>
 
-<% if @association.users.include?(current_user) and can? :disjoin, Association %>
-  <%= form_tag(disjoin_association_path(@association), :method => 'PUT') do %>
-    <div class="actions">
-      <%= submit_tag 'Quitter cette association' %>
-    </div>
-  <% end %>
-<% elsif can? 'join'.to_sym, Association %>
-  <%= form_tag(join_association_path(@association), :method => 'PUT') do %>
-    <div class="actions">
-      <%= submit_tag 'Devenir membre' %>
-    </div>
-  <% end %>
+<% if @association.users.include?(current_user) %>
+  <p><%= link_to 'Quitter', disjoin_association_path(@association), :method => 'PUT' %></p>
+<% elsif can? :'join', Association %>
+  <p><%= link_to 'Rejoindre', join_association_path(@association), :method => 'PUT' %></p>
 <% end %>
 
 <% if can? :update, @association %>

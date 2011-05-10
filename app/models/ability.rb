@@ -24,15 +24,13 @@ class Ability
       # TODO ? : Rôles en anglais ?
       if user.is? 'Modérateur'
         can [:update, :destroy], [News, Quote, Event, Classified, Reminder, Comment, Association, Course]
-
-        if user.is? 'Administrateur'
-          can :manage, Role
-
-          if user.is? 'SuperAdministrateur'
-            can :manage, :all
-          end
-        end
       end
-    end
+      if user.is? 'Administrateur'
+        can :manage, Role
+      end
+      if user.is? 'SuperAdministrateur'
+          can :manage, :all
+      end
+      end
   end
 end

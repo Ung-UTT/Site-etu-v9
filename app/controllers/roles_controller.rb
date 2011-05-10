@@ -23,6 +23,22 @@ class RolesController < ApplicationController
     end
   end
 
+  def join
+    @role = Role.find(params[:id])
+    @user = User.find(params[:role][:users])
+    @role.users << @user
+
+    redirect_to @role, :notice => "Le rôle a été ajouté à #{@user.login}"
+  end
+
+  def disjoin
+    @role = Role.find(params[:id])
+    @user = User.find(params[:user_id])
+    @role.users.delete(@user)
+
+    redirect_to @role, :notice => "Le rôle a été enlevé à #{@user.login}"
+  end
+
   # GET /roles/new
   # GET /roles/new.xml
   def new

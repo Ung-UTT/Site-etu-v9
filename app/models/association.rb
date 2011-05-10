@@ -11,6 +11,10 @@ class Association < ActiveRecord::Base
     return Role.create(:name => 'Membre', :association => self)
   end
 
+  def delete_user(user)
+    roles.each { |r| r.users.delete(user) }
+  end
+
   def users
     roles.map { |r| r.users }.flatten.uniq
   end

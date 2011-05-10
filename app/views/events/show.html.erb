@@ -25,18 +25,10 @@
   <%= link_to_users @event.users %>
 </p>
 
-<% if @event.users.exists?(current_user) and can? :disjoin, Event %>
-  <%= form_tag(disjoin_event_path(@event), :method => 'PUT') do %>
-    <div class="actions">
-      <%= submit_tag 'Ne plus participer' %>
-    </div>
-  <% end %>
-<% elsif can? 'join'.to_sym, Event %>
-  <%= form_tag(join_event_path(@event), :method => 'PUT') do %>
-    <div class="actions">
-      <%= submit_tag 'Participer' %>
-    </div>
-  <% end %>
+<% if @events.users.include?(current_user) %>
+  <p><%= link_to 'Ne plus participer', disjoin_event_path(@event), :method => 'PUT' %></p>
+<% elsif can? :'join', Event %>
+  <p><%= link_to 'Participer', join_event_path(@event), :method => 'PUT' %></p>
 <% end %>
 
 <% if can? :update, @event %>

@@ -4,6 +4,8 @@ SiteEtu::Application.routes.draw do
   match 'events/:id/disjoin' => 'events#disjoin', :as => 'disjoin_event'
   match 'associations/:id/join' => 'associations#join', :as => 'join_association'
   match 'associations/:id/disjoin' => 'associations#disjoin', :as => 'disjoin_association'
+  match 'roles/:id/join' => 'roles#join', :as => 'join_role'
+  match 'roles/:id/disjoin/:user_id' => 'roles#disjoin', :as => 'disjoin_role'
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
   match '/auth/:provider/callback' => 'authorizations#create'

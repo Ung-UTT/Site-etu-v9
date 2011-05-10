@@ -9,8 +9,20 @@
 
 <p>
   <b>Utilisateurs ayant ce rôle :</b>
-  <%= link_to_users @role.users %>
+  <% @role.users.each do |user| %>
+    <%= link_to_user user %>
+    <% if can? :update, user %>
+      <%= link_to 'X', disjoin_role_path(@role, user), :confirm => 'Sûr ?', :method => :delete %>
+    <% end %>
+  <% end %>
 </p>
+
+<% if can? :update, @role %>
+  <%= form_for(@role, :url => join_role_path(@role)) do |f| %>
+    <%= f.select :users, User.all.map { |u| [u.login, u.id] }, {:prompt => 'Choisissez un utilisateur'} %>
+    <%= f.submit 'Ajouter' %>
+  <% end %>
+<% end %>
 
 <% if can? :update, @role %>
   <%= link_to 'Modifier', edit_role_path(@role) %> |

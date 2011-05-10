@@ -43,10 +43,12 @@ class AssociationsController < ApplicationController
   def disjoin
     @association = Association.find(params[:id])
 
-    @association.users.delete(current_user)
-    @association.save
-
-    redirect_to @event, :notice => 'Vous ne participez plus à cette association'
+    unless current_user.associations.include?(@association)
+      redirect_to @association, :notice => 'Vous participez déjà à cette assoication à cette association'
+    else
+      @association.delete_user(current_user)
+      redirect_to @association, :notice => 'Vous ne participez plus à cette association'
+    end
   end
 
   # GET /associations/new
