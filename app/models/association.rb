@@ -5,10 +5,12 @@ class Association < ActiveRecord::Base
 
   has_many :comments, :as => :commentable, :dependent => :destroy
 
+  def create_member
+    Role.create(:name => 'Membre', :association => self)
+  end
+
   def member
-    role_member = Role.where(:association_id => self.id, :name => 'Membre')
-    return role_member unless role_member.empty?
-    return Role.create(:name => 'Membre', :association => self)
+    return Role.where(:association_id => self.id, :name => 'Membre')
   end
 
   def delete_user(user)
@@ -16,6 +18,6 @@ class Association < ActiveRecord::Base
   end
 
   def users
-    roles.map { |r| r.users }.flatten.uniq
+    return roles.map { |r| r.users }.flatten.uniq
   end
 end

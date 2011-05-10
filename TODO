@@ -31,6 +31,8 @@ Category :
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
   Plein de validations (presence, length, …)
   Des tests ! Beaucoup de tests !
+  De superbes fixtures évoluées qui font comme si le site existe vraiment
+    Des seeds pour les trucs de bases : les rôles de base par exemple
 
 À préciser :
 ============
@@ -57,3 +59,43 @@ Via dump à récupérer
 
   Schedule :
     uv_id, location (B201, …), week (A or B), from, to
+
+
+== Gems utiles ? ==
+
+=== Sûr ! ===
+* Gestion de projets : redmine !
+* Déploiement : capistrano
+* Pagination : will_paginate (à faire même)
+* Serveur : passenger ou thin
+
+=== Peut-être… ===
+* Garder un historique de plein de trucs : vestal_versions
+* Calendrier : event_calendar
+* E-commerce (ZeShop, places aux événements, …) : active_merchant
+* Interface d'administration : rails_admin
+* Gestion des menus de navigation : simple-navigation
+* Statistiques : statistics
+* RSS : feedzirra
+* Emploi du temps : ice_cube ?
+* CRONs : whenever (Daymail ?)
+* Tests avec cucumber ou rspec
+* Wiki : gollum
+* GeoCoding : geokit-gem
+* Manipulation d'images : mini_magick
+* LDAP : authlogic_ldap
+
+* Réseau social pré-fait (ou presque) : http://www.ruby-toolbox.com/categories/social_networking.html
+
+* Tags : acts-as-taggable-on (recommended by Dorian)
+* Sous-domaines : subdomain-fu (journal.etu.utt.fr, bde.etu.utt.fr ?)
+* Capcha ? : http://www.ruby-toolbox.com/categories/rails_captcha.html
+* Commentaires avec des fils de discussions ? : acts_as_commentable_with_threading
+* Sécurité : loofah
+* Monitoring : god
+* Générateur de mini-sites : jekyll
+* Vues (plus simples pour les dévellopeurs mais pas pour les graphistes) : haml
+
+=== Pour le fun :) ===
+* Présentations faîtes depuis site étu : showoff
+* IRC Bot : autumn
