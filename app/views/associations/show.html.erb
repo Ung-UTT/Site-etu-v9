@@ -22,16 +22,25 @@
 </p>
 <% end %>
 
+<% if @association.children %>
+<p>
+  <b>Associations filles :</b>
+  <% @association.children do |asso| %>
+    <%= link_to asso.name, asso %>
+  <% end %>
+</p>
+<% end %>
+
 <% if @association.users.include?(current_user) and can? :disjoin, Association %>
   <%= form_tag(disjoin_association_path(@association), :method => 'PUT') do %>
     <div class="actions">
-      <%= submit_tag 'Ne plus participer' %>
+      <%= submit_tag 'Quitter cette association' %>
     </div>
   <% end %>
 <% elsif can? 'join'.to_sym, Association %>
   <%= form_tag(join_association_path(@association), :method => 'PUT') do %>
     <div class="actions">
-      <%= submit_tag 'Participer' %>
+      <%= submit_tag 'Devenir membre' %>
     </div>
   <% end %>
 <% end %>

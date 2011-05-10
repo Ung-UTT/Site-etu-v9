@@ -10,7 +10,10 @@ module ApplicationHelper
 
   def parent_select_options(name)
     return options_for_select(
-      nested_set_options(name) {|i| "#{'..' * i.level} #{i.name}" }.unshift(["Pas de parent", nil])
+      nested_set_options(name) do |i|
+        asso = i.parent ? "(#{i.parent.name})" : ''
+        "#{'..' * i.level} #{i.name} #{asso}"
+      end.unshift(["Pas de parent", nil])
     )
   end
 
@@ -40,7 +43,7 @@ module ApplicationHelper
     if users.empty?
       return 'Aucun'
     else
-      return users.each { |u| link_to_user u}.join ' '
+      return users.map { |u| link_to_user u}.join(' ').html_safe
     end
   end
 end
