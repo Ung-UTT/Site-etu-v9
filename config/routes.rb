@@ -15,5 +15,6 @@ SiteEtu::Application.routes.draw do
     resources :comments
   end
 
+  match '/:action' => 'home'
   root :to => 'home#index'
 end

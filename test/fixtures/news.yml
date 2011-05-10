@@ -36,3 +36,11 @@ ipsum:
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: kevin
+
+<% 1.upto(15) do |i| %>
+<%= "journal#{i}" %>:
+  title: "<%= "Journal n°#{i} : Il y a #{i**3} étudiants à l'UTT !" %>"
+  content: "<%= "L'UTT classée #{16 - i}éme école d'ingénieurs !" %>"
+  user: kevin
+  created_at: <%= (15-i).weeks.ago.to_s(:db) %>
+<% end %>

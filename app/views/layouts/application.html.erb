@@ -54,19 +54,16 @@
         <h2>Services</h2>
         <ul>
           <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
-          <li><%= link_to 'Journal', :root %></li>
+          <li><%= link_to 'Journal', 'journal' %></li>
         </ul>
       </nav>
 
       <nav>
         <h2>Assos &amp; Clubs</h2>
         <ul>
-          <li><%= link_to 'BDE', :root %></li>
-          <li><%= link_to 'Gala', :root %></li>
-          <li><%= link_to 'Inté', :root %></li>
-          <li><%= link_to 'UNG', :root %></li>
-          <li><%= link_to 'Robotik', :root %></li>
-          <li><%= link_to 'La roue verte', :root %></li>
+        <% @associations.each do |asso| %>
+          <li><%= link_to asso.name, asso %></li>
+        <% end %>
         </ul>
       </nav>
     </aside>
