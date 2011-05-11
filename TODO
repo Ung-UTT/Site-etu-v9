@@ -6,7 +6,8 @@ User :
 
 Daymail :
   /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
-  News du jour ?
+  News du jour ? ou Daymail séparé ?
+    News ayant une association associée (sachant que l'on ne peut associer une association que si l'on est son président)
 
 Files, Images :
   Deux classes polymorphiques utilisant Paperclip
@@ -20,7 +21,7 @@ Roles :
   += Affiner les permissions selon les rôles
 
 News :
-  += Validation des news par moderateurs
+  += Validation des news par modérateurs
 
 /!\ Facile (mais souvent long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
