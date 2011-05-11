@@ -19,34 +19,41 @@ Roles :
   += Ajouter un rôle directement depuis page de l'Association
   += Affiner les permissions selon les rôles
 
+News :
+  += Validation des news par moderateurs
+
 /!\ Facile (mais souvent long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
   Des tests ! Beaucoup de tests !
   De superbes fixtures évoluées qui font comme si le site existe vraiment
   (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
   Mettre des valeurs par défaut aux champs (via migrations directement)
+
+Plus dur:
   Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
   Utiliser les factory ! (les fixtures de base ne font pas appel aux callbacks des modéles)
   Agenda en page d'accueil (événements surtout)
   Ajouter les tags (acts_as_taggable_on)
+  "J'ai oublié mon mot de passe" : Par ent ? (ou regénérer mot de passe pour compte du site étu)
 
 À préciser :
 ============
 
-* "J'ai oublié mon mot de passe" : Par ent ? (ou regénérer mot de passe pour compte du site étu)
-* Éditeur WYSIWYG : lequel (TinyMCE, Markdown, BBCode, … ?) ?
+* Éditeur WYSIWYG : lequel (TinyMCE, Markdown, BBCode, … ?) ? (se baser sur un truc tout simple)
 * Mails : frame vers Roundcube ?
 * Préférences utilisateur (dont menu) : quoi ? les cases pour le Daymail, … ?
+    * Choix de mot-clefs pour citations (tooltype, sex, …)
 * Emploi du temps (+ cumul) (relations compliquées)
-* BuckUTT : Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
-* Forum : phpBB avec le plugin d'authentification qui va bien (?)
+* BuckUTT : Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?) (frame)
+* Forum : Shapardo (ou pas) avec le plugin d'authentification qui va bien (?)
 * Recherche : Globale + Trombi (dans home pour la recherche globale, et dans user pour le trombi)
-* Qui a vu qui : (pour classement trombi) la première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
+* Qui a vu qui : (pour classement trombi)
+                 la première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
                  Reste plus qu'à récupérer User.all.each … viewers.size … .sort
                  Remise à 0 tout les ans (semestres ?)
-* Annals (ou Ressources ? Avec Cours/Exercices/Annales/…) (title, content, uv_id, date, file)
-* Les participations à un événement et à un cours sont des rôles ?
+* Annals (ou Ressources ? Avec Cours/Exercices/Annales/…) (tendu niveau droits)
 * Plein d'héritage, … DRY (risque de compliquer le code)
+* Sondages
 
 Via dump à récupérer
   UVs :
@@ -66,8 +73,8 @@ Via dump à récupérer
 * Pagination : will_paginate (à faire même)
 * Recherche : thinking-sphinx (à faire aussi)
 
-* Gestion de projets : redmine !
-* Déploiement : capistrano
+* Gestion de projets : redmine (ou/et truc perso)
+* Déploiement : capistrano (git push)
 * Serveur : passenger ou thin
 
 === Peut-être… ===
