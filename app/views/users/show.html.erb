@@ -21,7 +21,7 @@
 <%= list_of 'Participe aux événements', @user.events, :title %>
 <%= list_of 'News', @user.news, :title %>
 <%= list_of 'Annonces', @user.classifieds, :title %>
-<%= list_of 'Covoiturage', @user.roles, :name %>
+<%= list_of 'Covoiturage', @user.carpools, :name %>
 <%= list_of 'Citations', @user.quotes, :content %>
 <%= list_of_comments 'Commentaires', @user.comments, :content %>
 

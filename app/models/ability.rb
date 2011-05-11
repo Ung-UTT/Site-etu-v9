@@ -23,6 +23,12 @@ class Ability
       can [:join, :disjoin], [Event, Association]
       can :destroy, [UserSession, Authorization]
       can :destroy, Comment, :user_id => user.id
+      can :destroy, Role do |role|
+        # TODO: on ne peut pas utiliser params['user_id'] donc comment
+        #       faire pour qu'un utilisateur puisse supprimer ses roles
+        #       associés (et pas le rôle en entier)
+        false
+      end
 
       # TODO ? : Rôles en anglais ?
       if user.is? 'Modérateur'

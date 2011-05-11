@@ -8,24 +8,16 @@ Daymail :
   /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
   News du jour ?
 
-Images, fichiers :
-  Images (Users, News, Event, Association, UV ?)
-  Annals
-  → Paperclip ! (:polymorphic : _id, _type)
-
-Annales
-  title, content, uv_id, date, file
+Files, Images :
+  Deux classes polymorphiques utilisant Paperclip
 
 Association :
   += logo
 
 Roles :
   += Voir TODOs associés dans fichiers (modéle et controlleur)
-  += Ajouter rôle directement depuis page de l'Association
-  += Affiner (c'est sûr que là c'est affiné avec une tronconeuse) les permissions selon les rôles
-
-Category :
-  name (:polymorphic) (et :has_many) (pas facile !)
+  += Ajouter un rôle directement depuis page de l'Association
+  += Affiner les permissions selon les rôles
 
 /!\ Facile (mais souvent long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
@@ -36,6 +28,7 @@ Category :
   Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
   Utiliser les factory ! (les fixtures de base ne font pas appel aux callbacks des modéles)
   Agenda en page d'accueil (événements surtout)
+  Ajouter les tags (acts_as_taggable_on)
 
 À préciser :
 ============
@@ -51,6 +44,9 @@ Category :
 * Qui a vu qui : (pour classement trombi) la première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
                  Reste plus qu'à récupérer User.all.each … viewers.size … .sort
                  Remise à 0 tout les ans (semestres ?)
+* Annals (ou Ressources ? Avec Cours/Exercices/Annales/…) (title, content, uv_id, date, file)
+* Les participations à un événement et à un cours sont des rôles ?
+* Plein d'héritage, … DRY (risque de compliquer le code)
 
 Via dump à récupérer
   UVs :
@@ -84,7 +80,7 @@ Via dump à récupérer
 * RSS : feedzirra
 * Emploi du temps : ice_cube ?
 * CRONs : whenever (Daymail ?)
-* Tests avec cucumber ou rspec
+* Tests avec cucumber ou rspec (et factories avec factory_girl)
 * Wiki : gollum
 * GeoCoding : geokit-gem
 * Manipulation d'images : mini_magick
