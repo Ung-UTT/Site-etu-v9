@@ -23,12 +23,21 @@ Roles :
 News :
   += Validation des news par modérateurs
 
+Event :
+  += Ajouter à mon agenda (iCal, Google Calendar, …)
+  += Inviter des gens
+  += a des photos associées (et des fichiers ?)
+  += Réverser place
+  += News (Daymail ?) associées
+  += QR Code (tout les pages)
+
 /!\ Facile (mais souvent long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
   Des tests ! Beaucoup de tests !
   De superbes fixtures évoluées qui font comme si le site existe vraiment
   (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
   Mettre des valeurs par défaut aux champs (via migrations directement)
+  API : Tout tester, ajouter formats, infos, …
 
 Plus dur:
   Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
@@ -55,6 +64,8 @@ Plus dur:
 * Annals (ou Ressources ? Avec Cours/Exercices/Annales/…) (tendu niveau droits)
 * Plein d'héritage, … DRY (risque de compliquer le code)
 * Sondages
+* Album Photo : Chaque utilisateur peut avoir des photos, chaque photo a des tags, ce qui permet de faire des albums par tags
+* Entity ? (Comment elle se connecte ? option "Parler au nom de l'asso : … …" ?) (Poste News, organise Événement)
 
 Via dump à récupérer
   UVs :
