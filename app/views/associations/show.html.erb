@@ -37,6 +37,13 @@
   <p><%= link_to 'Rejoindre', join_association_path(@association), :method => 'PUT' %></p>
 <% end %>
 
+<p>
+  <b>Rôle(s) dans cette association :</b>
+  <% @association.roles.each do |role| %>
+    <%= link_to role.name, role %>
+  <% end %>
+</p>
+
 <% if can? :update, @association %>
   <%= link_to 'Modifier', edit_association_path(@association) %> |
 <% end %>

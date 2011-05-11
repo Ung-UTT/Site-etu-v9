@@ -35,6 +35,7 @@ Category :
   (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
   Mettre des valeurs par défaut aux champs (via migrations directement)
   Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
+  Utiliser les factory ! (les fixtures de base ne font pas appel aux callbacks des modéles)
 
 À préciser :
 ============
@@ -46,7 +47,7 @@ Category :
 * Emploi du temps (+ cumul) (relations compliquées)
 * BuckUTT : Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?)
 * Forum : phpBB avec le plugin d'authentification qui va bien (?)
-* Recherche : Globale + Trombi
+* Recherche : Globale + Trombi (dans home pour la recherche globale, et dans user pour le trombi)
 * Qui a vu qui : (pour classement trombi) la première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
                  Reste plus qu'à récupérer User.all.each … viewers.size … .sort
                  Remise à 0 tout les ans (semestres ?)

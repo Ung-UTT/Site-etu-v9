@@ -3,7 +3,7 @@
 <ul>
 <% @roles.each do |role| %>
   <li>
-    <%= link_to role.name, role %></td>
+    <%= link_to role.name + (role.association ? " (#{role.association.name})" : ''), role %></td>
   </li>
 <% end %>
 </ul>

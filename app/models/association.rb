@@ -5,13 +5,15 @@ class Association < ActiveRecord::Base
   validates_associated :president
 
   acts_as_nested_set :dependent => :destroy
+
   belongs_to :president, :class_name => 'User'
   has_many :roles, :dependent => :destroy
-
   has_many :comments, :as => :commentable, :dependent => :destroy
 
+  after_create do create_member end
+
   def create_member
-    Role.create(:name => 'Membre', :association => self)
+    Role.create(:name => 'Membre', :association_id => self.id)
   end
 
   def member

@@ -5,3 +5,15 @@ collaborator:
 treasurer:
   name: Trésorier
   association: LibrUTT
+
+FritUTT_member:
+  name: Membre
+  association: FritUTT
+
+LibrUTT_member:
+  name: Membre
+  association: LibrUTT
+
+BDE_member:
+  name: Membre
+  association: BDE

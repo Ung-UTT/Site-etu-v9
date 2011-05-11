@@ -17,6 +17,9 @@ class Ability
       can [:update, :destroy], Course, :owner_id => user.id
       can [:update, :destroy], Event, :organizer_id => user.id
       can [:update, :destroy], User, :id => user.id
+      can [:update, :destroy], Role do |association|
+        association == nil ? association.president_id == user.id : false
+      end
       can [:join, :disjoin], [Event, Association]
       can :destroy, [UserSession, Authorization]
       can :destroy, Comment, :user_id => user.id

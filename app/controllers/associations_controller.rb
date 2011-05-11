@@ -72,7 +72,6 @@ class AssociationsController < ApplicationController
   def create
     @association = Association.new(params[:association])
     @association.president = current_user
-    @association.create_member
 
     respond_to do |format|
       if @association.save

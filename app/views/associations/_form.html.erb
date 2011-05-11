@@ -13,6 +13,12 @@
     <%= f.label :parent, 'Association parente' %><br />
     <%= f.select :parent_id, parent_select_options(Association) %>
   </div>
+  <% unless @association.new_record? %>
+  <div class="field">
+    <%= f.label :parent, 'Changer le président' %><br />
+    <%= f.select :president_id, User.all.map { |u| [u.login, u.id] } %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit 'Envoyer' %>
   </div>
