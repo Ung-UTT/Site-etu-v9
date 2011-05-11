@@ -35,6 +35,20 @@ module ApplicationHelper
     end
   end
 
+  def list_of_comments(descr, objects, attr)
+    if objects.empty?
+      return nil
+    else
+      res = '<strong>' + h(descr) + '</strong> :'
+      res += '<ul>'
+      objects.each do |object|
+          res += '<li>' + link_to(object.send(attr), [object.commentable, object]) + '</li>'
+      end
+      res += '</ul>'
+      return res.html_safe
+    end
+  end
+
   def link_to_user(user)
     return link_to user.login, user
   end

@@ -29,13 +29,13 @@ Category :
 
 /!\ Facile (mais souvent long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
-  Plein de validations (presence, length, …)
   Des tests ! Beaucoup de tests !
   De superbes fixtures évoluées qui font comme si le site existe vraiment
   (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
   Mettre des valeurs par défaut aux champs (via migrations directement)
   Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
   Utiliser les factory ! (les fixtures de base ne font pas appel aux callbacks des modéles)
+  Agenda en page d'accueil (événements surtout)
 
 À préciser :
 ============
