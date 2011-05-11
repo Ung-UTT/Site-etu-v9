@@ -1,4 +1,9 @@
 class Association < ActiveRecord::Base
+  validates_presence_of :name
+  validates_uniqueness_of :name
+  validates_format_of :name, :with => /[a-zA-Z1-9_\- ']+/
+  validates_associated :president
+
   acts_as_nested_set :dependent => :destroy
   belongs_to :president, :class_name => 'User'
   has_many :roles, :dependent => :destroy

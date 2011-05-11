@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
+  acts_as_authentic # Gére aussi les validations
 
   has_many :authorizations, :dependent => :destroy
   has_many :carpools, :dependent => :destroy

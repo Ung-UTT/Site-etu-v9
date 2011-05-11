@@ -1,4 +1,7 @@
 class Authorization < ActiveRecord::Base
+  validates_presence_of :provider, :uid
+  validates_associated :user
+
   belongs_to :user
 
   def self.find_from_hash(hash)
