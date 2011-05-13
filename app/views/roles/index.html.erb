@@ -3,6 +3,7 @@
 <ul>
 <% @roles.each do |role| %>
   <li>
+    <!-- TODO: Traduire nom du rôle affiché -->
     <%= link_to role.name + (role.association ? " (#{role.association.name})" : ''), role %></td>
   </li>
 <% end %>

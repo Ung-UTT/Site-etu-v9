@@ -8,4 +8,8 @@ class Role < ActiveRecord::Base
 
   # Enléve le rôle supprimé aux utilisateurs
   before_destroy do self.users.delete_all end
+
+  def symbol
+    return name.to_sym
+  end
 end

@@ -19,3 +19,12 @@ sudo gem update --system
 # Rails et les gems du site étu
 sudo gem install rails
 bundle install
+
+echo "Pour créer la base de donnée avec les bonnes tables toussa… :"
+echo "  rake db:migrate"
+echo
+echo "Pour générer plein de contenu (mais détruit tout ce qu'il y a dans la base) :"
+echo "  rake db:fixtures:load"
+echo
+echo "Pour ajouter les utilisateurs de base avec les bons rôles"
+echo "  rake db:seed"

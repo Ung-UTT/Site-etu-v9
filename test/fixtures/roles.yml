@@ -1,19 +1,19 @@
 collaborator:
-  name: Collaborateur
+  name: $LABEL
   association: FritUTT
 
 treasurer:
-  name: Trésorier
+  name: $LABEL
   association: LibrUTT
 
 FritUTT_member:
-  name: Membre
+  name: member
   association: FritUTT
 
 LibrUTT_member:
-  name: Membre
+  name: member
   association: LibrUTT
 
 BDE_member:
-  name: Membre
+  name: member
   association: BDE

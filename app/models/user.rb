@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def is?(name, association = nil)
-    res = roles.select { |r| r.name == name }
+    res = roles.select { |r| r.symbol == name }
     if association
       res = res & association.roles
     end
