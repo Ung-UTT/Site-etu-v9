@@ -1,28 +1,20 @@
-# Quelques paquets pratiques
-sudo apt-get update
-sudo apt-get install -y ssh ruby ruby1.8-dev ruby-pkg-tools rdoc ri irb sqlite3 libopenssl-ruby libsqlite3-ruby sqlitebrowser
-sudo apt-get install -y git-core wget
+ruby="ruby ruby1.8-dev ruby-pkg-tools rdoc ri irb libopenssl-ruby"
+sqlite3="sqlite3 libsqlite3-ruby libsqlite3-dev"
+rubygems="rubygems1.8"
+tools="ssh git wget"
+libs="libxslt-dev libxml2-dev"
+all="$ruby $sqlite3 $rubygems $tools $libs"
 
-# Rubygemss
-sudo apt-get install -y rubygems
+sudo apt-get -qq update
+sudo apt-get -qq install -y $all
 echo "export PATH=/var/lib/gems/1.8/bin:$PATH" >> ~/.bashrc
 
-cd ..
-rm -r rubygems-1.7.2
-
-sudo ln -s /usr/bin/gem1.8 /usr/bin/gem
-
-sudo gem update --system
-
-# Rails et les gems du site étu
+echo "Installation de rails (ça peut être un peu long)"
 sudo gem install rails
+
+# Installe les gems dont le site étu a besoin
 bundle install
 
-echo "Pour créer la base de donnée avec les bonnes tables toussa… :"
-echo "  rake db:migrate"
-echo
-echo "Pour générer plein de contenu (mais détruit tout ce qu'il y a dans la base) :"
-echo "  rake db:fixtures:load"
-echo
-echo "Pour ajouter les utilisateurs de base avec les bons rôles"
-echo "  rake db:seed"
+rake db:migrate
+
+cat README
