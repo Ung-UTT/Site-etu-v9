@@ -127,7 +127,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
-    will_paginate (2.3.15)
+    will_paginate (3.0.pre2)
     yahoo-weather (1.2.0)
       nokogiri (>= 1.4.1)
 
@@ -142,5 +142,5 @@ DEPENDENCIES
   rails
   rails3-generators
   sqlite3-ruby
-  will_paginate
+  will_paginate (~> 3.0.pre2)
   yahoo-weather

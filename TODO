@@ -43,7 +43,8 @@ Plus dur:
   Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
   Utiliser les factory ! (les fixtures de base ne font pas appel aux callbacks des modéles)
   Agenda en page d'accueil (événements surtout)
-  Ajouter les tags (acts_as_taggable_on)
+  Ajouter les Tags (acts_as_taggable_on)
+  Ajouter les Categories
   "J'ai oublié mon mot de passe" : Par ent ? (ou regénérer mot de passe pour compte du site étu)
 
 À préciser :

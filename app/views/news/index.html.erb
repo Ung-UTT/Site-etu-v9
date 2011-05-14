@@ -1,11 +1,15 @@
 <section id="news">
   <% if controller.controller_name != 'home' %>
     <%= title 'Les news' %>
+  <% else %>
+    <h1>Les news</h1>
   <% end %>
 
   <% @news.each do |news| %>
     <%= render 'news/one_news', {:news => news} %>
   <% end %>
+
+  <%= will_paginate @news %>
 
   <% if can? :create, News %>
     <%= link_to 'Ajouter une news', new_news_path %>
