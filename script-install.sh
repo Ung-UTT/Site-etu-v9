@@ -3,11 +3,9 @@ sudo apt-get update
 sudo apt-get install -y ssh ruby ruby1.8-dev ruby-pkg-tools rdoc ri irb sqlite3 libopenssl-ruby libsqlite3-ruby sqlitebrowser
 sudo apt-get install -y git-core wget
 
-# RubyGems
-wget http://production.cf.rubygems.org/rubygems/rubygems-1.7.2.tgz
-tar -xf rubygems-1.7.2.tgz
-cd rubygems-1.7.2
-sudo ruby setup.rb
+# Rubygemss
+sudo apt-get install -y rubygems
+echo "export PATH=/var/lib/gems/1.8/bin:$PATH" >> ~/.bashrc
 
 cd ..
 rm -r rubygems-1.7.2
