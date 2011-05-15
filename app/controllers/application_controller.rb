@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   check_authorization
 
-  before_filter :set_layout_vars
+  before_filter :set_layout_vars, :set_locale
   helper_method :current_user_session, :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+    def set_locale
+      # ?locale=… ou dans HTTP_ACCEPT_LANGUAGE ou :fr par défaut
+      I18n.locale = params[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    end
+
     def set_layout_vars
       @user_session = UserSession.new
       @random_quote = Quote.random || Quote.new

@@ -10,6 +10,6 @@ class HomeController < ApplicationController
 
   # TODO: Nom en anglais ?
   def journal
-    @news = News.paginate(:page => params[:page], :order => 'created_at DESC').select { |n| n.title.match('Journal') }
+    @news = News.all.select { |n| n.title.match('Journal') }.paginate(:page => params[:page], :order => 'created_at DESC')
   end
 end

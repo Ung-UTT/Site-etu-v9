@@ -48,7 +48,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
-        format.html { redirect_to(@classified, :notice => 'Classified was successfully created.') }
+        format.html { redirect_to(@classified, :notice => "L'annonce a été créée") }
         format.xml  { render :xml => @classified, :status => :created, :location => @classified }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.update_attributes(params[:classified])
-        format.html { redirect_to(@classified, :notice => 'Classified was successfully updated.') }
+        format.html { redirect_to(@classified, :notice => "L'annonce a été mise à jour") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

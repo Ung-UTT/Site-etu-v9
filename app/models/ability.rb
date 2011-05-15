@@ -27,19 +27,19 @@ class Ability
         # TODO: on ne peut pas utiliser params['user_id'] donc comment
         #       faire pour qu'un utilisateur puisse supprimer ses roles
         #       associés (et pas le rôle en entier)
+        #       (pas dans controlleur)
         false
       end
 
-      # TODO ? : Rôles en anglais ?
       if user.is? :moderator
         can [:update, :destroy], [News, Quote, Event, Classified, Reminder, Comment, Association, Course]
       end
       if user.is? :admin
         can :manage, Role
-      if user.is? :superAdmin
       end
+      if user.is? :superAdmin
           can :manage, :all
       end
-      end
+    end
   end
 end

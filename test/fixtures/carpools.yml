@@ -1,5 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 paris:
   content: Voiture de compétition !
   location: Paris, 16ème

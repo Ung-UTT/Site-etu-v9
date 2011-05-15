@@ -1,5 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 bike:
   title: Vélo presque neuf
   content: Rouge à pois vert

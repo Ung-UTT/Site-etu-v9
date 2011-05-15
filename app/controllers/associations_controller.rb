@@ -75,7 +75,7 @@ class AssociationsController < ApplicationController
 
     respond_to do |format|
       if @association.save
-        format.html { redirect_to(@association, :notice => 'Association was successfully created.') }
+        format.html { redirect_to(@association, :notice => "L'association a été créée") }
         format.xml  { render :xml => @association, :status => :created, :location => @association }
       else
         format.html { render :action => "new" }
@@ -91,7 +91,7 @@ class AssociationsController < ApplicationController
 
     respond_to do |format|
       if @association.update_attributes(params[:association])
-        format.html { redirect_to(@association, :notice => 'Association was successfully updated.') }
+        format.html { redirect_to(@association, :notice => "L'association a été mise à jour") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

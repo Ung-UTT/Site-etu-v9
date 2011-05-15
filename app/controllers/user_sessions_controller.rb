@@ -2,7 +2,7 @@ class UserSessionsController < ApplicationController
   load_and_authorize_resource
 
   def new
-    # @user_session is defined in application controller for all views
+    # @user_session est définit dans ApplicationController pour toutes les pages
   end
 
   def create

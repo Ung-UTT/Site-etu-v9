@@ -23,7 +23,7 @@ class AuthorizationsController < ApplicationController
   end
 
   def failure
-    flash[:notice] = "Mince, l'authentification a échouée"
+    flash[:notice] = "Mince, l'authentification a échoué"
     redirect_to :root
   end
 

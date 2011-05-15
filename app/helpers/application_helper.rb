@@ -21,28 +21,17 @@ module ApplicationHelper
     return [comment.commentable, comment]
   end
 
-  def list_of(descr, objects, attr)
+  def list_of(descr, objects, attr, comments=false)
     if objects.empty?
       return nil
     else
       res = '<strong>' + h(descr) + '</strong> :'
       res += '<ul>'
       objects.each do |object|
+        if comments
+          object = [object.commentable, object]
+        end
         res += '<li>' + link_to(object.send(attr), object) + '</li>'
-      end
-      res += '</ul>'
-      return res.html_safe
-    end
-  end
-
-  def list_of_comments(descr, objects, attr)
-    if objects.empty?
-      return nil
-    else
-      res = '<strong>' + h(descr) + '</strong> :'
-      res += '<ul>'
-      objects.each do |object|
-          res += '<li>' + link_to(object.send(attr), [object.commentable, object]) + '</li>'
       end
       res += '</ul>'
       return res.html_safe

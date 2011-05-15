@@ -1,11 +1,11 @@
 class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
-      t.string    :title
-      t.text      :content
-      t.integer   :organizer_id
-      t.string    :location
-      t.datetime  :date
+      t.string       :title
+      t.text         :content
+      t.references   :organizer
+      t.string       :location
+      t.datetime     :date
 
       t.timestamps
     end

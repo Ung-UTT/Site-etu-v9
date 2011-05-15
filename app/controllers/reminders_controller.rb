@@ -48,7 +48,7 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.save
-        format.html { redirect_to(reminders_url, :notice => 'Reminder was successfully created.') }
+        format.html { redirect_to(reminders_url, :notice => 'Le pense-bête a été créé') }
         format.xml  { render :xml => @reminder, :status => :created, :location => reminders_url }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.update_attributes(params[:reminder])
-        format.html { redirect_to(@reminder, :notice => 'Reminder was successfully updated.') }
+        format.html { redirect_to(@reminder, :notice => 'Le pense-bête a été mis à jour') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

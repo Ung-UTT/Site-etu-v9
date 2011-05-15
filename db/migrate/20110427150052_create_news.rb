@@ -1,9 +1,9 @@
 class CreateNews < ActiveRecord::Migration
   def self.up
     create_table :news do |t|
-      t.string  :title
-      t.text    :content
-      t.integer :user_id
+      t.string     :title
+      t.text       :content
+      t.references :user
 
       t.timestamps
     end

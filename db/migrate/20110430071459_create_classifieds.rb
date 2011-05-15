@@ -1,11 +1,11 @@
 class CreateClassifieds < ActiveRecord::Migration
   def self.up
     create_table :classifieds do |t|
-      t.string  :title
-      t.text    :content
-      t.decimal :price
-      t.string  :location
-      t.integer :user_id
+      t.string     :title
+      t.text       :content
+      t.decimal    :price
+      t.string     :location
+      t.references :user
 
       t.timestamps
     end
