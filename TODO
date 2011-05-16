@@ -16,7 +16,6 @@ Association :
   += logo
 
 Roles :
-  += Voir TODOs associés dans fichiers (modéle et controlleur)
   += Ajouter un rôle directement depuis page de l'Association
   += Affiner les permissions selon les rôles
 
@@ -29,7 +28,7 @@ Event :
   += a des photos associées (et des fichiers ?)
   += Réverser place
   += News (Daymail ?) associées
-  += QR Code (tout les pages)
+  += QR Code (toutes les pages)
 
 /!\ Facile (mais souvent long) ! /!\
   Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
