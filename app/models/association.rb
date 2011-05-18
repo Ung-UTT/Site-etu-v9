@@ -12,11 +12,11 @@ class Association < ActiveRecord::Base
   after_create do create_member end
 
   def create_member
-    Role.create(:name => 'member', :association_id => self.id)
+    roles << Role.create(:name => 'member')
   end
 
   def member
-    return Role.where(:name => 'member', :association_id => self.id)
+    return roles.select { |r| r.name == 'member' }
   end
 
   def delete_user(user)
