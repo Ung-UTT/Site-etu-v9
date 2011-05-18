@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110509173525) do
+ActiveRecord::Schema.define(:version => 20110518222225) do
 
   create_table "associations", :force => true do |t|
     t.string   "name"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(:version => 20110509173525) do
     t.datetime "updated_at"
   end
 
+  create_table "documents", :force => true do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -88,6 +97,17 @@ ActiveRecord::Schema.define(:version => 20110509173525) do
   create_table "events_users", :id => false, :force => true do |t|
     t.integer "event_id"
     t.integer "user_id"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "news", :force => true do |t|

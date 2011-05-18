@@ -44,7 +44,7 @@ Plus dur:
   Agenda en page d'accueil (événements surtout)
   Ajouter les Tags (acts_as_taggable_on)
   Ajouter les Categories
-  "J'ai oublié mon mot de passe" : Par ent ? (ou regénérer mot de passe pour compte du site étu)
+  « J'ai oublié mon mot de passe » : Par ent ? (ou regénérer mot de passe pour compte du site étu)
 
 À préciser :
 ============
@@ -82,7 +82,7 @@ Via dump à récupérer
 
 === Sûr ! ===
 * Pagination : will_paginate (à faire même)
-* Recherche : thinking-sphinx (à faire aussi)
+* Recherche : lucene (sphinx) http://stackoverflow.com/questions/4782865/integration-of-solr-lucene-search-with-a-rails-application-which-gems-hints
 
 * Gestion de projets : redmine (ou/et truc perso)
 * Déploiement : capistrano (git push)
