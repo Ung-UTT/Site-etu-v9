@@ -2,9 +2,6 @@ Pour créer la base de données avec les bonnes tables toussa… :
 (fait pour vous dans le script d'installation mais vous en aurez besoin)
   rake db:migrate
 
-Pour générer plein de contenu (mais détruit tout ce qu'il y a dans la base) :
-  rake db:fixtures:load
-
 Pour ajouter les utilisateurs de base avec les bons rôles :
   rake db:seed
 
@@ -13,5 +10,13 @@ Pour lancer le serveur :
 
 Pour lancer la console (permet de faire des tests rapides) :
   rails console
+
+/!\ Détruit toutes les données de la base ! /!\
+
+Pour générer plein de contenu :
+  rake db:fixtures:load
+
+Pour regénérer un environement de dévelopement fonctionnel :
+  rake dev:reset
 
 Lisez le fichier TODO pour voir ce qu'il y a à faire

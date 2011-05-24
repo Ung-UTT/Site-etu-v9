@@ -112,7 +112,6 @@ GEM
       activesupport (= 3.0.3)
       bundler (~> 1.0)
       railties (= 3.0.3)
-    rails3-generators (0.13.0)
     railties (3.0.3)
       actionpack (= 3.0.3)
       activesupport (= 3.0.3)
@@ -144,7 +143,6 @@ DEPENDENCIES
   omniauth
   paperclip
   rails
-  rails3-generators
   sqlite3-ruby
   will_paginate (~> 3.0.pre2)
   yahoo-weather
