@@ -45,6 +45,7 @@ Plus dur:
   Ajouter les Tags (acts_as_taggable_on)
   Ajouter les Categories
   « J'ai oublié mon mot de passe » : Par ent ? (ou regénérer mot de passe pour compte du site étu)
+  validates_uniqueness_of dans tables de jointures (events_users, roles_users, courses_users)
 
 À préciser :
 ============

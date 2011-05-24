@@ -1,6 +1,6 @@
 class Role < ActiveRecord::Base
   validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :scope => [:association_id]
   validates_format_of :name, :with => /[a-zA-Z1-9_\- ']+/
 
   belongs_to :association

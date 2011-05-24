@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20110518222225) do
   create_table "classifieds", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "price"
+    t.decimal  "price"
     t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -95,17 +95,8 @@ ActiveRecord::Schema.define(:version => 20110518222225) do
   end
 
   create_table "events_users", :id => false, :force => true do |t|
-    t.integer "event_id"
-    t.integer "user_id"
-  end
-
-  create_table "images", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
+    t.integer  "event_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -12,7 +12,7 @@ class Association < ActiveRecord::Base
   after_create do create_member end
 
   def create_member
-    roles << Role.create(:name => 'member')
+    Role.create(:name => 'member', :association_id => self.id)
   end
 
   def member

@@ -40,7 +40,7 @@
 <p>
   <b>Rôle(s) dans cette association :</b>
   <% @association.roles.each do |role| %>
-    <%= link_to role.name, role %>    
+    <%= link_to role.name, role %>
     <% if can? :update, role %>
       <%= form_for(role, :url => join_role_path(role)) do |f| %>
         <%= f.select :users, User.all.map { |u| [u.login, u.id] }, {:prompt => 'Choisissez un utilisateur'} %>
