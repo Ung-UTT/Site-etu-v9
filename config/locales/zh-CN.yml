@@ -1,8 +1,15 @@
-# Chinese (China) translations for Ruby on Rails
-# by tsechingho (http://github.com/tsechingho)
 
 zh-CN:
-  hello: "你好"
+  home:
+    index:
+      hello: "你好"
+    newspaper:
+      newspaper: "报纸"
+
+  # Chinese (China) translations for Ruby on Rails
+  # by tsechingho (http://github.com/tsechingho)
+
+  # TODO: Déplacer dans un fichier séparé
 
   date:
     formats:

@@ -8,8 +8,8 @@ class HomeController < ApplicationController
     end
   end
 
-  # TODO: Nom en anglais ?
-  def journal
+  def newspaper
+    # TODO: News associées à l'association N'UTT
     @news = News.all.select { |n| n.title.match('Journal') }.paginate(:page => params[:page], :order => 'created_at DESC')
   end
 end

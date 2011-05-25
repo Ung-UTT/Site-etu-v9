@@ -1,12 +1,19 @@
-# French translations for Ruby on Rails
-# by Christian Lescuyer (christian@flyingcoders.com)
-# contributors:
-#  - Sebastien Grosjean - ZenCocoon.com
-#  - Bruno Michel - http://github.com/nono
-#  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
-
 fr:
-  hello: "Salut"
+  home:
+    index:
+      hello: "Salut"
+    newspaper:
+      newspaper: "Journal"
+
+
+  # French translations for Ruby on Rails
+  # by Christian Lescuyer (christian@flyingcoders.com)
+  # contributors:
+  #  - Sebastien Grosjean - ZenCocoon.com
+  #  - Bruno Michel - http://github.com/nono
+  #  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
+
+  # TODO: Déplacer vers un fichier à part
 
   date:
     formats:
