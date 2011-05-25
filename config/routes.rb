@@ -6,12 +6,14 @@ SiteEtu::Application.routes.draw do
   match 'associations/:id/disjoin' => 'associations#disjoin', :as => 'disjoin_association'
   match 'roles/:id/join' => 'roles#join', :as => 'join_role'
   match 'roles/:id/disjoin/:user_id' => 'roles#disjoin', :as => 'disjoin_role'
+  match 'groups/:id/join/:user_id' => 'groups#join', :as => 'join_group'
+  match 'groups/:id/disjoin' => 'groups#disjoin', :as => 'disjoin_group'
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
   match '/auth/:provider/callback' => 'authorizations#create'
   match '/auth/failure' => 'authorizations#failure'
 
-  resources :authorizations, :users, :reminders, :roles
+  resources :authorizations, :users, :reminders, :roles, :groups
   resources :user_sessions, :only => :create
   resources :associations, :classifieds, :carpools, :courses, :events, :quotes, :news do
     resources :comments

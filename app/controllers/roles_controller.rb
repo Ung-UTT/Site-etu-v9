@@ -26,9 +26,13 @@ class RolesController < ApplicationController
   def join
     @role = Role.find(params[:id])
     @user = User.find(params[:role][:users])
-    @role.users << @user
 
-    redirect_to @role, :notice => "Le rôle a été ajouté à #{@user.login}"
+    if @role.users.include?(@user) 
+      redirect_to @role, :notice => "#{@user.login} a déjà ce rôle"
+    else
+      @role.users << @user
+      redirect_to @role, :notice => "Le rôle a été ajouté à #{@user.login}"
+    end
   end
 
   def disjoin

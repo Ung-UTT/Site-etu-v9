@@ -35,10 +35,10 @@ class Ability
         can [:update, :destroy], [News, Quote, Event, Classified, Reminder, Comment, Association, Course]
       end
       if user.is? :admin
-        can :manage, Role
+        can :manage, [Role, Group]
       end
       if user.is? :superAdmin
-          can :manage, :all
+        can :manage, :all
       end
     end
   end

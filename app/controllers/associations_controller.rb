@@ -25,7 +25,6 @@ class AssociationsController < ApplicationController
   end
 
   # PUT /associations/1/join
-  # PUT /associations/1/join.xml
   def join
     @association = Association.find(params[:id])
 
@@ -39,7 +38,6 @@ class AssociationsController < ApplicationController
   end
 
   # PUT /associations/1/disjoin
-  # PUT /associations/1/disjoin.xml
   def disjoin
     @association = Association.find(params[:id])
 

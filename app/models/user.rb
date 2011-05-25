@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :created_events, :foreign_key => 'organizer_id', :class_name => 'Event', :dependent => :destroy
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :events
+  has_and_belongs_to_many :groups
   has_and_belongs_to_many :roles
 
   # Enléve les participations aux UVs, aux événements, et les rôles alloués
