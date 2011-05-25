@@ -9,15 +9,13 @@ $('*').keyup(function(event) {
 
   if (event.keyCode == keys[progress]) {
     progress += 1;
-    console.log(progress);
     if (progress == keys.length) {
-      $('p, li, h1, h2, h3, header').click(function () {
+      $('a, p, li, h1, h2, h3, header').click(function () {
         $(this).fadeOut('slow');
+        return false;
       });
     }
   } else {
-    console.log('fail');
-    console.log(event.keyCode);
     progress = 0;
   }
 });

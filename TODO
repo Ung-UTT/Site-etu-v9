@@ -31,7 +31,6 @@ Event :
   += QR Code (toutes les pages)
 
 /!\ Facile (mais souvent long) ! /!\
-  Repasser en :fr (il faut faire les traduc' des erreurs et du datetime_select)
   Des tests ! Beaucoup de tests !
   De superbes fixtures évoluées qui font comme si le site existe vraiment
   (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
