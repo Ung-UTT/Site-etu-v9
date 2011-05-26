@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /groups
   # GET /groups.xml
   def index
@@ -24,13 +26,13 @@ class GroupsController < ApplicationController
   # PUT /groups/1/join/2082
   def join
     @group = Group.find(params[:id])
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:group][:users])
 
     if @group.users.include?(@user)
-      redirect_to @role, :notice => "#{@user.login} a déjà ce groupe"
+      redirect_to @group, :notice => "#{@user.login} a déjà ce groupe"
     else
       @group.users << @user
-      redirect_to @role, :notice => "Le groupe a été ajouté à #{@user.login}"
+      redirect_to @group, :notice => "Le groupe a été ajouté à #{@user.login}"
     end
   end
 
@@ -38,6 +40,7 @@ class GroupsController < ApplicationController
   def disjoin
     @group = Group.find(params[:id])
     @user = User.find(params[:user_id])
+    puts @user.inspect
     @group.users.delete(@user)
 
     redirect_to @group, :notice => "Le groupe a été enlevé à #{@user.login}"

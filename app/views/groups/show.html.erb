@@ -1,10 +1,18 @@
-<p id="notice"><%= notice %></p>
+<%= title 'Groupe : ' + @group.name %>
 
 <p>
-  <b>Name:</b>
-  <%= @group.name %>
+  <b>Utilisateurs :</b>
+  <% @group.users.each do |user| %>
+    <%= link_to_user user %>
+    <%= link_to 'X', disjoin_group_path(@group, user), :confirm => 'Sûr ?', :method => :delete %>
+  <% end %>
 </p>
 
+<%= form_for(@group, :url => join_group_path(@group)) do |f| %>
+  <%= f.select :users, User.all.map { |u| [u.login, u.id] }, {:prompt => 'Choisissez un utilisateur'} %>
+  <%= f.submit 'Ajouter' %>
+<% end %>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to 'Modifier', edit_group_path(@group) %> |
+<%= link_to 'Supprimer', @group, :confirm => 'Sûr ?', :method => :delete %> |
+<%= link_to 'Liste des groupes', groups_path %>

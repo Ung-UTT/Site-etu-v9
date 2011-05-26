@@ -1,23 +1,12 @@
-<h1>Listing groups</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<%= title 'Liste des groupes' %>
+<ul>
 <% @groups.each do |group| %>
-  <tr>
-    <td><%= group.name %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li>
+    <%= link_to group.name, group %>
+  </li>
 <% end %>
-</table>
+</ul>
 
 <br />
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to 'Ajouter un groupe', new_group_path %>

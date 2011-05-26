@@ -27,7 +27,7 @@ class RolesController < ApplicationController
     @role = Role.find(params[:id])
     @user = User.find(params[:role][:users])
 
-    if @role.users.include?(@user) 
+    if @role.users.include?(@user)
       redirect_to @role, :notice => "#{@user.login} a déjà ce rôle"
     else
       @role.users << @user
