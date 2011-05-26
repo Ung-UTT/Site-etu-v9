@@ -28,10 +28,11 @@ module ApplicationHelper
       res = '<strong>' + h(descr) + '</strong> :'
       res += '<ul>'
       objects.each do |object|
+        content = object.send(attr)
         if comments
           object = [object.commentable, object]
         end
-        res += '<li>' + link_to(object.send(attr), object) + '</li>'
+        res += '<li>' + link_to(content, object) + '</li>'
       end
       res += '</ul>'
       return res.html_safe

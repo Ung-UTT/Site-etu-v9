@@ -1,7 +1,5 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+p101:
+  name: Ceux qui ont cours en P101
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+dormir:
+  name: Rejoins ce groupe si toi aussi tu en as marre que le prof te reveille en amphi
