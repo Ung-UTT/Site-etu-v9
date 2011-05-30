@@ -19,12 +19,18 @@ echo "Sinon faîtes : git clone VOTRENOM@172.16.1.102/srv/git/etu/ror"
 echo
 read -p "Appuyez sur une touche pour continuer…"
 
-sudo apt-get -qq update
-sudo apt-get -qq install -y $all
-echo "export PATH=/var/lib/gems/1.8/bin:$PATH" >> ~/.bashrc
+sudo apt-get -q update
+sudo apt-get -q install -y $all
+echo
+echo
+echo "Ajoutez cette ligne à la fin de votre .bashrc (ou .zshrc)"
+echo "export PATH=/var/lib/gems/1.8/bin:\$PATH"
+echo
+echo "Puis rechargez le fichier \"source .bashrc\" (ou .zshrc)"
+read -p "Appuyez sur une touche pour continuer…"
 
 echo "Installation de rails (ça peut être un peu long)"
-sudo gem install rails
+sudo gem install rails --no-ri --no-rdoc
 
 # Installe les gems dont le site étu a besoin
 bundle install
