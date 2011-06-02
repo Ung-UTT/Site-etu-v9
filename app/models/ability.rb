@@ -11,13 +11,14 @@ class Ability
       can [:new, :create], UserSession
     else
       can :read, Reminder, :user_id => user.id
-      can :create, [News, Quote, Event, Classified, Reminder, Comment, Association, Course]
-      can [:update, :destroy], [News, Quote, Classified, Reminder, Carpool], :user_id => user.id
+      can :create, [Association, Classified, Comment, Course, Event, News, Quote, Reminder]
+      can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
       can [:update, :destroy], Association, :president_id => user.id
       can [:update, :destroy], Course, :owner_id => user.id
       can [:update, :destroy], Event, :organizer_id => user.id
       can [:update, :destroy], User, :id => user.id
-      can [:update, :destroy], Role do |association|
+      can [:create, :update, :destroy], Role do |association|
+        # Si le rôle est associé à une association alors seul le président peut créer, mettre à jour ou supprimer les rôles
         association == nil ? association.president_id == user.id : false
       end
       can [:join, :disjoin], [Event, Association]
@@ -32,7 +33,7 @@ class Ability
       end
 
       if user.is? :moderator
-        can [:update, :destroy], [News, Quote, Event, Classified, Reminder, Comment, Association, Course]
+        can [:update, :destroy], [Association, Classified, Comment, Course, Event, News, Quote, Reminder]
       end
       if user.is? :admin
         can :manage, [Role, Group]

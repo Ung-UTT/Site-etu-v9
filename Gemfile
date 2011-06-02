@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.0.0' # /!\ Provisoire à cause de problèmes de versions (dépendances croisées)
+gem 'rails', '3.0.7'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Authentification
