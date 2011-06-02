@@ -1,7 +1,10 @@
 class CreateGroups < ActiveRecord::Migration
   def self.up
     create_table :groups do |t|
-      t.string :name
+      t.string     :name
+      t.references :parent
+      t.integer    :lft
+      t.integer    :rgt
 
       t.timestamps
     end

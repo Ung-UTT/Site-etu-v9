@@ -3,6 +3,9 @@ class CreateRoles < ActiveRecord::Migration
     create_table :roles do |t|
       t.string     :name
       t.references :association
+      t.references :parent
+      t.integer    :lft
+      t.integer    :rgt
 
       t.timestamps
     end

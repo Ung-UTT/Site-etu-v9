@@ -6,5 +6,7 @@ class News < ActiveRecord::Base
   validates_associated :user
 
   belongs_to :user
+  belongs_to :event
+  has_many :documents, :as => :documentable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
 end

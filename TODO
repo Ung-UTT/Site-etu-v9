@@ -37,6 +37,8 @@ Event :
   Mettre des valeurs par défaut aux champs (via migrations directement)
   API : Tout tester, ajouter formats, infos, …
 
+  Remplacer les .all.each par des .find_each
+
 Plus dur:
   Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
   Utiliser les factory ! (les fixtures de base ne font pas appel aux callbacks des modéles)
