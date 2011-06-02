@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~> 3.0.0' # /!\ Provisoire à cause de problèmes de versions (dépendances croisées)
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Authentification
@@ -14,4 +14,4 @@ gem 'will_paginate', '~> 3.0.pre2'
 gem 'yahoo-weather'
 
 # TODO: Vérifier quand la version pour Rails 3 est dans les dépôts
-gem 'awesome_nested_set', :git => 'http://github.com/collectiveidea/awesome_nested_set.git'
+gem 'awesome_nested_set' # , :git => 'http://github.com/collectiveidea/awesome_nested_set.git'
