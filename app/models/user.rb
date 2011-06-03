@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  paginates_per 30
+
+  has_paper_trail
   acts_as_authentic # Gére aussi les validations
 
   has_many :authorizations, :dependent => :destroy

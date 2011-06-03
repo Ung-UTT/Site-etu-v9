@@ -1,6 +1,11 @@
 class Event < ActiveRecord::Base
+  paginates_per 20
+
   validates_presence_of :title
   validates_associated :organizer
+
+  has_paper_trail
+  acts_as_taggable
 
   belongs_to :organizer, :class_name => 'User'
   has_many :news, :dependent => :destroy

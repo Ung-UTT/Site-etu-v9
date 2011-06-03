@@ -2,6 +2,9 @@ class Course < ActiveRecord::Base
   validates_presence_of :name
   validates_associated :user
 
+  has_paper_trail
+  acts_as_taggable
+
   belongs_to :owner, :class_name => 'User'
   has_many :timesheets, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy

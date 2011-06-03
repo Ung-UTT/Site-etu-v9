@@ -3,7 +3,8 @@ class Comment < ActiveRecord::Base
   validates_associated :user
   validates_associated :commentable
 
-  belongs_to :commentable, :polymorphic => true
+  has_paper_trail
 
   belongs_to :user
+  belongs_to :commentable, :polymorphic => true
 end

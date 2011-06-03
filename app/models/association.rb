@@ -3,7 +3,9 @@ class Association < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_associated :president
 
+  has_paper_trail
   acts_as_nested_set :dependent => :destroy
+  acts_as_taggable
 
   belongs_to :president, :class_name => 'User'
   has_many :roles, :dependent => :destroy

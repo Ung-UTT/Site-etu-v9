@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   skip_authorization_check
 
   def index
-    @news = News.paginate :page => params[:page], :order => 'created_at DESC'
+    @news = News.page(params[:page])
     if connected?
       @weather = YahooWeather::Client.new.lookup_by_woeid(629484, 'c')
     end
@@ -10,6 +10,6 @@ class HomeController < ApplicationController
 
   def newspaper
     # TODO: News associées à l'association N'UTT
-    @news = News.all.select { |n| n.title.match('Journal') }.paginate(:page => params[:page], :order => 'created_at DESC')
+    @news = News.page(params[:page]).select { |n| n.title.match('Journal') }
   end
 end

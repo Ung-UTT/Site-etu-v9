@@ -3,6 +3,7 @@ class Role < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => [:association_id]
   validates_format_of :name, :with => /[a-zA-Z1-9_\- ']+/
 
+  has_paper_trail
   acts_as_nested_set :dependent => :destroy
 
   belongs_to :association

@@ -9,7 +9,7 @@
     <%= render 'news/one_news', {:news => news} %>
   <% end %>
 
-  <%= will_paginate @news %>
+  <%= paginate @news %>
 
   <% if can? :create, News %>
     <%= link_to 'Ajouter une news', new_news_path %>

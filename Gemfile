@@ -9,9 +9,11 @@ gem 'omniauth'  # CAS, Twitter, OpenID, Facebook
 gem 'cancan'    # Persmissions
 
 # Autres
-gem 'paperclip' # carrierwave à la place ?
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'paperclip'   # Gestion de fichier (ou carrierwave ?)
+gem 'kaminari'    # Pagination
 gem 'yahoo-weather'
+gem 'acts-as-taggable-on'
+gem 'paper_trail' # Historique
 
 # TODO: Vérifier quand la version pour Rails 3 est dans les dépôts
 gem 'awesome_nested_set' # , :git => 'http://github.com/collectiveidea/awesome_nested_set.git'

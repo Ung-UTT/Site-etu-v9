@@ -1,34 +1,61 @@
 À faire :
 =========
 
-User :
-  += infos via LDAP (avatar, UVs, …) (dump à faire)
+Ability
+  Affiner les permissions selon les rôles
 
-Daymail :
-  /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
-  News du jour ? ou Daymail séparé ?
-    News ayant une association associée (sachant que l'on ne peut associer une association que si l'on est son président)
-
-Files, Images :
-  Deux classes polymorphiques utilisant Paperclip
-
-Association :
+Association
   += logo
+  Ajouter un rôle directement depuis page de l'Association
 
-Roles :
-  += Ajouter un rôle directement depuis page de l'Association
-  += Affiner les permissions selon les rôles
+Authorization
 
-News :
-  += Validation des news par modérateurs
+Carpool
 
-Event :
+Category
+
+Classified
+
+Comment
+
+Course
+
+Document
+  Image < Document
+    Avec validation spéciale
+
+Event
   += Ajouter à mon agenda (iCal, Google Calendar, …)
   += Inviter des gens
   += a des photos associées (et des fichiers ?)
   += Réverser place
   += News (Daymail ?) associées
   += QR Code (toutes les pages)
+
+Group
+
+News
+  /daymail/send éxécuté par un bot qui a les droits, une fois par jour à 4h du mat'
+  Validation par modérateurs
+
+Preference
+
+Project
+
+Quote
+
+Reminder
+
+Role
+
+TimeSheet
+
+User
+  += infos via LDAP (avatar, UVs, …) (dump à faire)
+
+UserSession
+
+-------------------------
 
 /!\ Facile (mais souvent long) ! /!\
   Des tests ! Beaucoup de tests !
@@ -37,85 +64,57 @@ Event :
   Mettre des valeurs par défaut aux champs (via migrations directement)
   API : Tout tester, ajouter formats, infos, …
 
-  Remplacer les .all.each par des .find_each
-
-Plus dur:
-  Pouvoir se logger avec un compte déjà associé (par CAS par exemple, se reconnecter avec son compte)
+Plus dur :
   Utiliser les factory ! (les fixtures de base ne font pas appel aux callbacks des modéles)
   Agenda en page d'accueil (événements surtout)
-  Ajouter les Tags (acts_as_taggable_on)
-  Ajouter les Categories
   « J'ai oublié mon mot de passe » : Par ent ? (ou regénérer mot de passe pour compte du site étu)
-  validates_uniqueness_of dans tables de jointures (events_users, roles_users, courses_users)
+  Rails 3.1 (dès que disponible sur rubygems)
+
+Beaucoup plus dur :
+  Refactoriser code grâce à des modules, des controlleurs, des helpers, …
 
 À préciser :
 ============
 
-* Éditeur WYSIWYG : lequel (TinyMCE, Markdown, BBCode, … ?) ? (se baser sur un truc tout simple)
+* Éditeur WYSIWYG : Truc perso se basant sur un truc tout simple (le plus dur étant la gestion des documents)
 * Mails : frame vers Roundcube ?
 * Préférences utilisateur (dont menu) : quoi ? les cases pour le Daymail, … ?
-    * Choix de mot-clefs pour citations (tooltype, sex, …)
-* Emploi du temps (+ cumul) (relations compliquées)
+  * Choix de mot-clefs pour citations (tooltype, sex, …)
 * BuckUTT : Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?) (frame)
 * Forum : Shapardo (ou pas) avec le plugin d'authentification qui va bien (?)
-* Recherche : Globale + Trombi (dans home pour la recherche globale, et dans user pour le trombi)
+* Recherche : Globale + Trombi (dans home pour la recherche globale, et dans user pour le trombi) (like % % ?, ou gem ?)
 * Qui a vu qui : (pour classement trombi)
-                 la première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
-                 Reste plus qu'à récupérer User.all.each … viewers.size … .sort
-                 Remise à 0 tout les ans (semestres ?)
-* Annals (ou Ressources ? Avec Cours/Exercices/Annales/…) (tendu niveau droits)
-* Plein d'héritage, … DRY (risque de compliquer le code)
+    La première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
+    Reste plus qu'à récupérer User.find_each … viewers.size … .sort
+    Remise à 0 tout les semestres
+* Ressources (Avec Cours/Exercices/Annales/…) (tendu niveau droits d'auteur)
 * Sondages
 * Album Photo : Chaque utilisateur peut avoir des photos, chaque photo a des tags, ce qui permet de faire des albums par tags
-* Entity ? (Comment elle se connecte ? option "Parler au nom de l'asso : … …" ?) (Poste News, organise Événement)
-
-Via dump à récupérer
-  UVs :
-    += schedules_id (has_and_belongs_to_many)
-    += ajout d'utilisateur sur une UV par site étu ? (actuelement seulement par console)
-
-  Planning
-    user_id, uvs_id
-
-  Schedule :
-    uv_id, location (B201, …), week (A or B), from, to
 
 == Gems utiles ? ==
 
 === Sûr ! ===
-* Pagination : will_paginate (à faire même)
-* Recherche : lucene (sphinx) http://stackoverflow.com/questions/4782865/integration-of-solr-lucene-search-with-a-rails-application-which-gems-hints
-
-* Gestion de projets : redmine (ou/et truc perso)
-* Déploiement : capistrano (git push)
+* Gestion de projets : redmine (et/ou truc perso)
+* Déploiement : capistrano (git push ?)
 * Serveur : passenger ou thin
 
 === Peut-être… ===
-* Garder un historique de plein de trucs : vestal_versions
-* Calendrier : event_calendar
+* Calendrier : event_calendar (pour l'afficher)
 * E-commerce (ZeShop, places aux événements, …) : active_merchant
-* Interface d'administration : rails_admin
+* Interface d'administration : rails_admin (ou rails console :D)
 * Gestion des menus de navigation : simple-navigation
 * Statistiques : statistics
 * RSS : feedzirra
-* Emploi du temps : ice_cube ?
-* CRONs : whenever (Daymail ?)
 * Tests avec cucumber ou rspec (et factories avec factory_girl)
 * Wiki : gollum
-* GeoCoding : geokit-gem
 * Manipulation d'images : mini_magick
-* LDAP : authlogic_ldap
 
-* Réseau social pré-fait (ou presque) : http://www.ruby-toolbox.com/categories/social_networking.html
-
-* Tags : acts-as-taggable-on (recommended by Dorian)
 * Sous-domaines : subdomain-fu (journal.etu.utt.fr, bde.etu.utt.fr ?)
-* Capcha ? : http://www.ruby-toolbox.com/categories/rails_captcha.html
 * Commentaires avec des fils de discussions ? : acts_as_commentable_with_threading
 * Sécurité : loofah
 * Monitoring : god
 * Générateur de mini-sites : jekyll
-* Vues (plus simples pour les dévellopeurs mais pas pour les graphistes) : haml
+* Vues (plus simples pour les développeurs mais pas pour les graphistes) : haml (pareil pour css/scss et js/coffee)
 
 === Pour le fun :) ===
 * Présentations faîtes depuis site étu : showoff
