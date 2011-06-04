@@ -1,4 +1,3 @@
-require 'resolv-replace'
 require 'ping'
 
 class ApplicationController < ActionController::Base

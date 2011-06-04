@@ -24,12 +24,78 @@ class AssociationTest < ActiveSupport::TestCase
     assert asso.president == users(:kevin)
   end
 
-  test 'Doit supprimer tout les contenus associés' do
-
-  end
-
   test 'Doit enregistrer une association qui a le minimum de champs' do
     asso = Association.new(:name => 'King of UTT', :president => users(:kevin))
     assert asso.save
+  end
+  
+  test 'Historique doit fonctionner' do
+    asso = associations(:FritUTT)
+    id = asso.id
+    asso.name = "N'importe quoi"
+    asso.save
+    asso.name = 'Autre chose'
+    asso.save
+    
+    asso = asso.previous_version
+    asso.save
+    assert Association.find(id).name == "N'importe quoi", '-1'
+    asso.previous_version.save
+    assert Association.find(id).name == 'FritUTT', '-2'
+  end
+
+  test 'Doit pouvoir avoir des associations filles et parentes' do
+    fritutt = associations(:FritUTT)
+    librutt = associations(:LibrUTT)
+
+    assert librutt.parent == fritutt
+    assert fritutt.children.include?(librutt)
+  end
+  
+  test 'Doit pouvoir avoir des tags' do
+    asso = associations(:BDE)
+    asso.tag_list = 'Bureau, dès, Eh Léve !'
+    assert asso.save
+    assert asso.tags.map(&:name).include?('dès'), "Le tag n'est pas inclus"
+  end
+
+  test 'Peut avoir des rôles' do
+    asso = associations(:BDE)
+    singers = Role.create(:name => 'Chanteurs', :association => asso)
+    assert asso.roles.include?(singers)
+  end
+
+  test 'Peut avoir des commentaires' do
+    asso = associations(:BDE)
+    com = Comment.create(:content => 'Wech les mecs', :user => users(:joe), :commentable => asso)
+    assert asso.comments.include?(com)
+  end
+
+  test 'Peut avoir des documents' do
+    asso = associations(:BDE)
+    doc = Document.new
+    assert false, 'Comment faire ?'
+  end
+
+  test 'Peut avoir des événements associés' do
+    asso = associations(:BDE)
+    event = events(:party)
+
+    # Je crois que c'est à cause des created_at et updated_at dans la table de jointure
+    ActiveSupport::Deprecation.silence do
+      event.associations << asso
+      assert asso.events.include?(event)
+    end
+  end
+
+  test 'Pouvoir être membre' do
+    asso = associations(:BDE)
+    joe = users(:joe)
+    joe.roles << asso.member
+    assert asso.users.include?(joe)
+  end
+
+  test 'Doit supprimer tout les contenus associés' do
+    assert false, "Flemme :D"
   end
 end
