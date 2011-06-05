@@ -73,19 +73,18 @@ class AssociationTest < ActiveSupport::TestCase
 
   test 'Peut avoir des documents' do
     asso = associations(:BDE)
-    doc = Document.new
-    assert false, 'Comment faire ?'
+    doc = create_document_with_name('favicon.gif')
+    doc.documentable = asso
+    doc.save
+    assert asso.documents.include?(doc)
   end
 
   test 'Peut avoir des événements associés' do
     asso = associations(:BDE)
     event = events(:party)
 
-    # Je crois que c'est à cause des created_at et updated_at dans la table de jointure
-    ActiveSupport::Deprecation.silence do
-      event.associations << asso
-      assert asso.events.include?(event)
-    end
+    event.associations << asso
+    assert asso.events.include?(event)
   end
 
   test 'Pouvoir être membre' do
@@ -96,6 +95,21 @@ class AssociationTest < ActiveSupport::TestCase
   end
 
   test 'Doit supprimer tout les contenus associés' do
-    assert false, "Flemme :D"
+    asso = associations(:BDE)
+    asso.roles << Role.create(:name => 'gardiens')
+    asso.comments << Comment.create(:content => 'Hey', :user => users(:joe))
+    asso.documents << create_document_with_name('favicon.gif')
+    asso.events << Event.create(:title => 'Truc de fou', :organizer => users(:joe))
+
+    id = asso.id
+    asso.destroy
+
+    assert Role.find_by_association_id(id) == nil
+    com = Comment.find_by_commentable_id(id)
+    assert com.nil? ? true : com.select {|c| c.commentable_type == 'Association'}.empty?
+    doc = Document.find_by_documentable_id(id)
+    assert doc.nil? ? true : doc.select {|d| d.documentable_type == 'Association'}.empty?
+    events = Event.all.select {|e| !e.associations.empty?}
+    assert events.empty? ? true : events.select {|e| e.associations.map(&:id).include?(id) }.empty?
   end
 end

@@ -38,5 +38,8 @@ module SiteEtu
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    # Je crois que c'est à cause des created_at et updated_at dans la table de jointure
+    ActiveSupport::Deprecation.silenced = true
   end
 end

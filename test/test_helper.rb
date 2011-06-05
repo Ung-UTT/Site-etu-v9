@@ -10,4 +10,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def create_document_with_name(name)
+    doc = Document.new
+    doc.asset = File.open(Rails.root.join('test', 'images', name))
+    doc.save
+    return doc
+  end
 end
