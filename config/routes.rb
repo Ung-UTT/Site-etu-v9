@@ -15,7 +15,7 @@ SiteEtu::Application.routes.draw do
 
   resources :authorizations, :users, :reminders, :roles, :groups
   resources :user_sessions, :only => :create
-  resources :associations, :classifieds, :carpools, :courses, :events, :quotes, :news do
+  resources :annals, :associations, :classifieds, :carpools, :courses, :events, :quotes, :news do
     resources :comments
   end
 

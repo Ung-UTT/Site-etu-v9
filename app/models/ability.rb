@@ -11,7 +11,7 @@ class Ability
       can [:new, :create], UserSession
     else
       can :read, Reminder, :user_id => user.id
-      can :create, [Association, Classified, Comment, Course, Event, News, Quote, Reminder]
+      can :create, [Annal, Association, Classified, Comment, Course, Event, News, Quote, Reminder]
       can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
       can [:update, :destroy], Association, :president_id => user.id
       can [:update, :destroy], Course, :owner_id => user.id
@@ -33,7 +33,7 @@ class Ability
       end
 
       if user.is? :moderator
-        can [:update, :destroy], [Association, Classified, Comment, Course, Event, News, Quote, Reminder]
+        can [:update, :destroy], [Annal, Association, Classified, Comment, Course, Event, News, Quote, Reminder]
       end
       if user.is? :admin
         can :manage, [Role, Group]

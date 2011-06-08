@@ -1,0 +1,11 @@
+medianLE00:
+  name: "Médian : What's your name?"
+  description: Basic questions
+  course: LE00
+  date: 2011-02-08 15:00:00
+
+finalLE01:
+  name: "Final : Where is Brian?"
+  description: "And where is the Brian's sister?"
+  course: LE01
+  date: 2011-06-08 21:52:24

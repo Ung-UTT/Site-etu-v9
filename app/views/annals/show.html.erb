@@ -1,0 +1,19 @@
+<%= title 'Annale : ' + @annal.name %>
+
+<p>
+  <b>Description :</b>
+  <%= @annal.description %>
+</p>
+
+<p>
+  <b>Date :</b>
+  <%= @annal.date.strftime 'le %d %B %Y à %Hh%M' %>
+</p>
+
+<p>
+  <b>UV :</b>
+  <%= link_to @annal.course.name, @annal.course %>
+</p>
+
+<%= link_to 'Modifier', edit_annal_path(@annal) %> |
+<%= link_to 'Liste des annales', annals_path %>
