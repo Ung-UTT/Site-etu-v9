@@ -17,3 +17,5 @@
 
 <%= link_to 'Modifier', edit_annal_path(@annal) %> |
 <%= link_to 'Liste des annales', annals_path %>
+
+<%= render 'comments/list_and_add', {:commentable => @annal, :comments => @comments} %>

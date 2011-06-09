@@ -11,7 +11,7 @@ class AuthorizationsController < ApplicationController
       current_user.authorizations.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
     elsif @auth
       flash[:notice] = "Bienvenue à toi, de nouveau depuis #{omniauth['provider']}"
-      UserSession.create(@auth.user, true)      # On connecte l'utilisateur
+      UserSession.create(@auth.user, true)     # On connecte l'utilisateur
     else
       password = ActiveSupport::SecureRandom.hex(2) # Exemples : 0ecc 4691 f742 5c03 66c3
       @new_auth = Authorization.create_from_hash(omniauth, password, current_user)

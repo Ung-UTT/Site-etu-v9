@@ -16,6 +16,7 @@ class AnnalsController < ApplicationController
   # GET /annals/1.xml
   def show
     @annal = Annal.find(params[:id])
+    @comments = @annal.comments
 
     respond_to do |format|
       format.html # show.html.erb
