@@ -2,6 +2,11 @@
 
 <%= render 'one_quote', {:quote => @quote} %>
 
+<p>
+  <b>Tags :</b>
+  <%= link_to_tags @quote %>
+</p>
+
 <% if can? :update, @quote %>
   <%= link_to 'Modifier', edit_quote_path(@quote) %> |
 <% end %>

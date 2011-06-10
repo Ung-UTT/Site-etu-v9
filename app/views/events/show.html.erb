@@ -25,6 +25,11 @@
   <%= link_to_users @event.users %>
 </p>
 
+<p>
+  <b>Tags :</b>
+  <%= link_to_tags @event %>
+</p>
+
 <% if @event.users.include?(current_user) %>
   <p><%= link_to 'Ne plus participer', disjoin_event_path(@event), :method => 'PUT' %></p>
 <% elsif can? :'join', Event %>

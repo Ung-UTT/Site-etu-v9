@@ -15,6 +15,11 @@
   <%= @carpool.is_driver %>
 </p>
 
+<p>
+  <b>Tags :</b>
+  <%= link_to_tags @carpool %>
+</p>
+
 <% if can? :update, @carpool %>
   <%= link_to 'Modifier', edit_carpool_path(@carpool) %> |
 <% end %>

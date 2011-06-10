@@ -15,6 +15,11 @@
   <%= link_to_users @project.users %>
 </p>
 
+<p>
+  <b>Tags :</b>
+  <%= link_to_tags @project %>
+</p>
+
 <% if @project.users.include?(current_user) %>
   <p><%= link_to 'Quitter', disjoin_project_path(@project), :method => 'PUT' %></p>
 <% elsif can? :'join', Project %>

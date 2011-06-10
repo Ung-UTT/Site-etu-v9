@@ -10,6 +10,8 @@
         <dd><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%Hh' %></time></dd>
       <dt>Auteur</dt>
         <dd><%= link_to_user news.user %></dd>
+      <dt>Tags</dt>
+        <dd><%= link_to_tags @news %></dd>
       <dt>Commentaires</dt>
         <dd class="last"><%= news.comments.count %></dd>
     </dl>

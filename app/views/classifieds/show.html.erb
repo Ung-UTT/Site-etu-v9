@@ -20,6 +20,11 @@
   <%= link_to_user @classified.user %>
 </p>
 
+<p>
+  <b>Tags :</b>
+  <%= link_to_tags @classified %>
+</p>
+
 <% if can? :update, @classified %>
   <%= link_to 'Modifier', edit_classified_path(@classified) %> |
 <% end %>

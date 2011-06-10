@@ -4,6 +4,10 @@
   <b>Appartient à :</b>
   <%= link_to_user @reminder.user %>
 </p>
+<p>
+  <b>Tags :</b>
+  <%= link_to_tags @reminder %>
+</p>
 
 <%= link_to 'Modifier ce truc à faire', edit_reminder_path(@reminder) %> |
 <%= link_to 'Supprimer', @reminder, :confirm => 'Sûr ?', :method => :delete %> |

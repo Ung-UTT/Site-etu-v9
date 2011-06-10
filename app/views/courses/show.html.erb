@@ -15,6 +15,11 @@
   <%= link_to_users @course.users %>
 </p>
 
+<p>
+  <b>Tags :</b>
+  <%= link_to_tags @course %>
+</p>
+
 <% if can? :update, @course %>
   <%= link_to 'Modifier', edit_course_path(@course) %> |
 <% end %>
