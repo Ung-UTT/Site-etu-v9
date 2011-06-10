@@ -11,7 +11,7 @@ gem 'cancan'    # Persmissions
 # Autres
 gem 'paperclip'   # Gestion de fichier (ou carrierwave ?)
 gem 'kaminari'    # Pagination
-gem 'yahoo-weather'
+# gem 'yahoo-weather'
 gem 'acts-as-taggable-on'
 gem 'paper_trail' # Historique
 

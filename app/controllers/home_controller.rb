@@ -3,9 +3,9 @@ class HomeController < ApplicationController
 
   def index
     @news = News.page(params[:page])
-    if connected?
-      @weather = YahooWeather::Client.new.lookup_by_woeid(629484, 'c')
-    end
+    #if connected?
+    #  @weather = YahooWeather::Client.new.lookup_by_woeid(629484, 'c')
+    #end
   end
 
   def newspaper
