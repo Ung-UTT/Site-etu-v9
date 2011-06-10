@@ -5,7 +5,6 @@ Ability
   Affiner les permissions selon les rôles
 
 Annals
-  Ajouter la possibilité d'ajouter des documents (et le faire pour les autres modèles)
 
 Association
   += logo
@@ -30,7 +29,6 @@ Document
 Event
   += Ajouter à mon agenda (iCal, Google Calendar, …)
   += Inviter des gens
-  += a des photos associées (et des fichiers ?)
   += Réverser place
   += News (Daymail ?) associées
   += QR Code (toutes les pages)
@@ -78,11 +76,13 @@ Plus dur :
 Beaucoup plus dur :
   Refactoriser code grâce à des modules, des controlleurs, des helpers, …
 
+`git grep TODO` pour voir les petites modifications à faire
+
 À préciser :
 ============
 
 * Éditeur WYSIWYG : Truc perso se basant sur un truc tout simple (le plus dur étant la gestion des documents)
-* Mails : frame vers Roundcube ?
+* Mails : frame vers Roundcube ? Truc basé sur une gem Ruby ?
 * Préférences utilisateur (dont menu) : quoi ? les cases pour le Daymail, … ?
   * Choix de mot-clefs pour citations (tooltype, sex, …)
 * BuckUTT : Code BuckUTT → Voir solde, Recharger → (service de payement de la banque ?) (frame)
@@ -92,7 +92,7 @@ Beaucoup plus dur :
     La première fois qu'un utilisateur voir quelqu'un, un relation est crée (user_id, viewer_id)
     Reste plus qu'à récupérer User.find_each … viewers.size … .sort
     Remise à 0 tout les semestres
-* Ressources (Avec Cours/Exercices/Annales/…) (tendu niveau droits d'auteur)
+* Ressources (Avec Cours/Exercices/Annales/…) (tendu niveau droits d'auteur) (remplacer annales par ça, avec catégories)
 * Sondages
 * Album Photo : Chaque utilisateur peut avoir des photos, chaque photo a des tags, ce qui permet de faire des albums par tags
 
