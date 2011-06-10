@@ -1,0 +1,16 @@
+<%= title 'Projets' %>
+
+<ul>
+<% @projects.each do |project| %>
+  <li>
+    <strong><%= link_to project.name, project %></strong> :<br />
+    <%= project.description %>
+  </li>
+<% end %>
+</ul>
+
+<br />
+
+<% if can? :create, Project %>
+  <%= link_to 'Ajouter un projet', new_project_path %>
+<% end %>

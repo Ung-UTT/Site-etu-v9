@@ -1,0 +1,33 @@
+<%= title 'Projet : ' + @project.name %>
+
+<p>
+  <b>Description :</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Chef de projet :</b>
+  <%= link_to_user @project.owner %>
+</p>
+
+<p>
+  <b>Participants :</b>
+  <%= link_to_users @project.users %>
+</p>
+
+<% if @project.users.include?(current_user) %>
+  <p><%= link_to 'Quitter', disjoin_project_path(@project), :method => 'PUT' %></p>
+<% elsif can? :'join', Project %>
+  <p><%= link_to 'Rejoindre', join_project_path(@project), :method => 'PUT' %></p>
+<% end %>
+
+<% if can? :update, @project %>
+  <%= link_to 'Modifier', edit_project_path(@project) %> |
+<% end %>
+<% if can? :destroy, @project %>
+  <%= link_to 'Supprimer', @project, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
+<%= link_to 'Liste des projets', projects_path %>
+
+<%= render 'documents/list_and_add', {:documentable => @project, :documents => @documents} %>
+<%= render 'comments/list_and_add', {:commentable => @project, :comments => @comments} %>

@@ -43,7 +43,7 @@ class AssociationsController < ApplicationController
     @association = Association.find(params[:id])
 
     unless current_user.associations.include?(@association)
-      redirect_to @association, :notice => 'Vous participez déjà à cette assoication à cette association'
+      redirect_to @association, :notice => 'Vous participez déjà à cette association à cette association'
     else
       @association.delete_user(current_user)
       redirect_to @association, :notice => 'Vous ne participez plus à cette association'

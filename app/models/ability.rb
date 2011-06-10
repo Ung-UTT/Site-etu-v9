@@ -12,10 +12,11 @@ class Ability
     else
       can :read, Reminder, :user_id => user.id
       # TODO: Seul celui qui a créé le "documentable" peut y ajouter un document
-      can :create, [Annal, Association, Classified, Comment, Course, Document, Event, News, Quote, Reminder]
+      can :create, [Annal, Association, Classified, Comment, Course, Document, Event, News, Project, Quote, Reminder]
       can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
+      # TODO: Tout mettre à owner_id
       can [:update, :destroy], Association, :president_id => user.id
-      can [:update, :destroy], Course, :owner_id => user.id
+      can [:update, :destroy], [Course, Project], :owner_id => user.id
       can [:update, :destroy], Event, :organizer_id => user.id
       can [:update, :destroy], User, :id => user.id
       can [:create, :update, :destroy], Role do |association|

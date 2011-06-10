@@ -1,0 +1,11 @@
+changerLeMonde:
+  name: Changer le monde
+  description: Tout doit être fait pour changer le monde !
+  owner: joe
+  users: joe, kevin
+
+tourDuMonde:
+  name: Faire le tour du monde
+  description: (dans le bon sens !)
+  owner: joe
+  users: kevin

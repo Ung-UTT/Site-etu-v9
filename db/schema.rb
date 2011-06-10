@@ -157,9 +157,9 @@ ActiveRecord::Schema.define(:version => 20110608195223) do
   end
 
   create_table "projects", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

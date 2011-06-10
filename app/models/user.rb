@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :created_associations, :foreign_key => 'president_id', :class_name => 'Association', :dependent => :destroy
   has_many :created_courses, :foreign_key => 'owner_id', :class_name => 'Course', :dependent => :destroy
   has_many :created_events, :foreign_key => 'organizer_id', :class_name => 'Event', :dependent => :destroy
-  has_many :created_projects, :foreign_key => 'organizer_id', :class_name => 'Event', :dependent => :destroy
+  has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
   has_and_belongs_to_many :events, :uniq => true
   has_and_belongs_to_many :groups, :uniq => true
   has_and_belongs_to_many :projects, :uniq => true
