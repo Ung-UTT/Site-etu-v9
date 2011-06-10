@@ -17,6 +17,7 @@ class AssociationsController < ApplicationController
   def show
     @association = Association.find(params[:id])
     @comments = @association.comments
+    @documents = @association.documents
 
     respond_to do |format|
       format.html # show.html.erb

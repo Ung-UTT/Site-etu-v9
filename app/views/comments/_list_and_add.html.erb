@@ -13,8 +13,8 @@
 </ul>
 
 <% if can? :create, Comment %>
-  <%= form_for [commentable, Comment.new] do |form| %>
-      <%= form.text_area :content, :rows => 3 %>
-      <%= submit_tag "Ajouter un commenaire" %>
+  <%= form_for [commentable, Comment.new] do |f| %>
+      <%= f.text_area :content, :rows => 3 %>
+      <%= f.submit "Ajouter un commenaire" %>
   <% end %>
 <% end %>

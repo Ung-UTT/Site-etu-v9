@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @comments = @course.comments
+    @documents = @course.documents
 
     respond_to do |format|
       format.html # show.html.erb

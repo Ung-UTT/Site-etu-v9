@@ -1,0 +1,20 @@
+<h3><%= link_to 'Documents', [documentable, Document] %></h3>
+
+<ul class="documents">
+  <% if documents.empty? %>
+    Aucun document
+  <% else %>
+    <% documents.each do |document| %>
+    <li>
+      <%= render 'documents/one_document', {:documentable => documentable, :document => document} %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% if can? :create, Document %>
+  <%= form_for([documentable, Document.new], :html => {:multipart => true}) do |f| %>
+      <%= f.file_field :asset %>
+      <%= f.submit "Ajouter un document" %>
+  <% end %>
+<% end %>

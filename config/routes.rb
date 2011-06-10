@@ -13,10 +13,11 @@ SiteEtu::Application.routes.draw do
   match '/auth/:provider/callback' => 'authorizations#create'
   match '/auth/failure' => 'authorizations#failure'
 
-  resources :authorizations, :users, :reminders, :roles, :groups
+  resources :authorizations, :groups, :reminders, :roles, :users
   resources :user_sessions, :only => :create
   resources :annals, :associations, :classifieds, :carpools, :courses, :events, :quotes, :news do
     resources :comments
+    resources :documents
   end
 
   match '/:action' => 'home'

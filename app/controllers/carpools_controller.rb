@@ -17,6 +17,7 @@ class CarpoolsController < ApplicationController
   def show
     @carpool = Carpool.find(params[:id])
     @comments = @carpool.comments
+    @documents = @carpool.documents
 
     respond_to do |format|
       format.html # show.html.erb

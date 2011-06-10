@@ -1,0 +1,3 @@
+<%= title @documents.size.to_s + ' document(s)'%>
+
+<%= render 'list_and_add', {:documentable => @documentable, :documents => @documents} %>

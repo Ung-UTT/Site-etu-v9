@@ -58,4 +58,5 @@
 <% end %>
 <%= link_to 'Liste des associations', associations_path %>
 
+<%= render 'documents/list_and_add', {:documentable => @association, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @association, :comments => @comments} %>

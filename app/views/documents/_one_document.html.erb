@@ -1,0 +1,5 @@
+<%= link_to '#', [documentable, document] %>
+<%= link_to document.asset_file_name, document.asset.url %>
+<% if can? :destroy, document %>
+  <%= link_to 'X', [documentable, document], :confirm => 'Sûr ?', :method => :delete %>
+<% end %>

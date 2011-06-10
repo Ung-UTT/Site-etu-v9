@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   paginates_per 30
 
-  has_paper_trail
+  has_paper_trail # TODO: Seulement sur les changements importants (sinon trop de versions)
   acts_as_authentic # Gére aussi les validations
 
   has_many :authorizations, :dependent => :destroy

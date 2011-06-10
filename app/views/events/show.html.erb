@@ -39,4 +39,5 @@
 <% end %>
 <%= link_to 'Retourner à la liste des événements', events_path %>
 
+<%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>

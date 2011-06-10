@@ -23,4 +23,5 @@
 <% end %>
 <%= link_to 'Liste des covoiturages', carpools_path %>
 
+<%= render 'documents/list_and_add', {:documentable => @carpool, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @carpool, :comments => @comments} %>

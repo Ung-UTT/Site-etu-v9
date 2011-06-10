@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to root_url, :alert => "Vous n'avez pas le droit de faire ça"
   end
 
   private

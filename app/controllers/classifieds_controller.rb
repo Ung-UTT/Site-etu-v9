@@ -17,6 +17,7 @@ class ClassifiedsController < ApplicationController
   def show
     @classified = Classified.find(params[:id])
     @comments = @classified.comments
+    @documents = @classified.documents
 
     respond_to do |format|
       format.html # show.html.erb

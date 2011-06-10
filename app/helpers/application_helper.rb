@@ -50,4 +50,13 @@ module ApplicationHelper
       return users.map { |u| link_to_user u}.join(' ').html_safe
     end
   end
+
+  def link_to_tags(content)
+    if content.tags.empty?
+      return 'Aucun'
+    else
+      # TODO: Ajouter les liens vers les pages des tags
+      return content.tags.map(&:name).join(' ').html_safe
+    end
+  end
 end

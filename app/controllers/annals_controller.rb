@@ -17,6 +17,7 @@ class AnnalsController < ApplicationController
   def show
     @annal = Annal.find(params[:id])
     @comments = @annal.comments
+    @documents = @annal.documents
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +48,7 @@ class AnnalsController < ApplicationController
 
     respond_to do |format|
       if @annal.save
-        format.html { redirect_to(@annal, :notice => 'Annal was successfully created.') }
+        format.html { redirect_to(@annal, :notice => "L'annale a bien été crée") }
         format.xml  { render :xml => @annal, :status => :created, :location => @annal }
       else
         format.html { render :action => "new" }
@@ -63,7 +64,7 @@ class AnnalsController < ApplicationController
 
     respond_to do |format|
       if @annal.update_attributes(params[:annal])
-        format.html { redirect_to(@annal, :notice => 'Annal was successfully updated.') }
+        format.html { redirect_to(@annal, :notice => "L'annale a bien été mise à jour") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -28,4 +28,5 @@
 <% end %>
 <%= link_to 'Liste des annonces', classifieds_path %>
 
+<%= render 'documents/list_and_add', {:documentable => @classified, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @classified, :comments => @comments} %>

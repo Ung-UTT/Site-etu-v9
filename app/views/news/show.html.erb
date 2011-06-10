@@ -12,4 +12,5 @@
   <%= link_to 'Liste des news', news_index_path %>
 </section>
 
+<%= render 'documents/list_and_add', {:documentable => @news, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @news, :comments => @comments} %>

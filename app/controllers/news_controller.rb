@@ -17,6 +17,7 @@ class NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
     @comments = @news.comments
+    @documents = @news.documents
 
     respond_to do |format|
       format.html # show.html.erb

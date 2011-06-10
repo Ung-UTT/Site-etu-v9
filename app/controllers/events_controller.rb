@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @comments = @event.comments
+    @documents = @event.documents
 
     respond_to do |format|
       format.html # show.html.erb

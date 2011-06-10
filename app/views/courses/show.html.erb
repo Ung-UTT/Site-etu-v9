@@ -23,4 +23,5 @@
 <% end %>
 <%= link_to 'Liste des UVs', courses_path %>
 
+<%= render 'documents/list_and_add', {:documentable => @course, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @course, :comments => @comments} %>
