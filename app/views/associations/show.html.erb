@@ -36,6 +36,8 @@
   <%= link_to_tags @association %>
 </p>
 
+<%= list_of 'Événements', @association.events, :title %>
+
 <% if @association.users.include?(current_user) %>
   <p><%= link_to 'Quitter', disjoin_association_path(@association), :method => 'PUT' %></p>
 <% elsif can? :'join', Association %>

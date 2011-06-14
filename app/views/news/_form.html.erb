@@ -10,6 +10,10 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
+    <%= f.label :event_id, 'Événement associé ?' %><br />
+    <%= f.select :event_id, events_select(@news) %>
+  </div>
+  <div class="field">
     <%= f.label :tag_list, 'Tags' %><br />
     <%= f.text_field :tag_list %>
   </div>

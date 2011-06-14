@@ -20,6 +20,8 @@
   <%= link_to_tags @course %>
 </p>
 
+<%= list_of 'Annales', @course.annals, :name %>
+
 <% if can? :update, @course %>
   <%= link_to 'Modifier', edit_course_path(@course) %> |
 <% end %>

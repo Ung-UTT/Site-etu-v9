@@ -9,7 +9,6 @@ class News < ActiveRecord::Base
   has_paper_trail
   acts_as_taggable
 
-  belongs_to :category
   belongs_to :event
   belongs_to :user
   has_many :documents, :as => :documentable, :dependent => :destroy

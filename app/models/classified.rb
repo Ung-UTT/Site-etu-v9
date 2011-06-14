@@ -7,7 +7,6 @@ class Classified < ActiveRecord::Base
   has_paper_trail
   acts_as_taggable
 
-  belongs_to :category
   belongs_to :user
   has_many :documents, :as => :documentable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy

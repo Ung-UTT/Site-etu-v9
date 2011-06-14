@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110608195223) do
+ActiveRecord::Schema.define(:version => 20110608195923) do
 
   create_table "annals", :force => true do |t|
     t.string   "name"
@@ -57,15 +57,6 @@ ActiveRecord::Schema.define(:version => 20110608195223) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "classifieds", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -74,7 +65,6 @@ ActiveRecord::Schema.define(:version => 20110608195223) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -145,7 +135,6 @@ ActiveRecord::Schema.define(:version => 20110608195223) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
   end
 
   create_table "preferences", :force => true do |t|
@@ -217,6 +206,22 @@ ActiveRecord::Schema.define(:version => 20110608195223) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "timesheets", :force => true do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "classroom"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timesheets_users", :id => false, :force => true do |t|
+    t.integer  "timesheet_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

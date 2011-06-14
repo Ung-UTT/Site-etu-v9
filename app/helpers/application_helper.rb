@@ -9,17 +9,22 @@ module ApplicationHelper
   end
 
   def parent_select_options(name)
-    return options_for_select(
+    options_for_select(
       nested_set_options(name) do |i|
         asso = i.parent ? "(#{i.parent.name})" : ''
         "#{'..' * i.level} #{i.name} #{asso}"
-      end.unshift(["Pas de parent", nil])
+      end.unshift(['Pas de parent', nil])
     )
   end
 
   def associations_select(object)
     options_for_select(Association.all.collect { |a| [a.name, a.id] },
                        object.associations.collect { |a| a.id })
+  end
+
+  def events_select(object)
+    default = object.event ? object.event.id : nil
+    options_for_select(Event.all.collect { |a| [a.title, a.id] }.unshift(['Aucun', nil]), default)
   end
 
   def comment_path(comment)

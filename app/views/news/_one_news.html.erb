@@ -17,6 +17,12 @@
     </dl>
   </header>
   <%= news.content %>
+  <% if news.event %>
+  <h3>Événement associé :</h3>
+  <p>
+    <%= link_to news.event.title, news.event %>
+  </p>
+  <% end %>
 </article>
 
 <hr />

@@ -24,6 +24,12 @@
 <%= list_of 'Covoiturage', @user.carpools, :content %>
 <%= list_of 'Citations', @user.quotes, :content %>
 <%= list_of 'Commentaires', @user.comments, :content, true %>
+<%= list_of 'Projets créés', @user.created_projects, :name %>
+<%= list_of 'Participe aux projets', @user.projects, :name %>
+<%= list_of 'Groupes', @user.groups, :name %>
+<%=raw "<p>... Bientôt l'emploi du temps</p>"
+  # list_of 'Emploi du temps (horaires)', @user.timesheets, :range 
+%>
 
 <% if can? :update, @user %>
   <%= link_to 'Modifier', edit_user_path(@user) %> |

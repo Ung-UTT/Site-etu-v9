@@ -15,25 +15,29 @@ class User < ActiveRecord::Base
   has_many :created_associations, :foreign_key => 'president_id', :class_name => 'Association', :dependent => :destroy
   has_many :created_courses, :foreign_key => 'owner_id', :class_name => 'Course', :dependent => :destroy
   has_many :created_events, :foreign_key => 'organizer_id', :class_name => 'Event', :dependent => :destroy
-  has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
+  has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', :dependent => :destroy
   has_and_belongs_to_many :events, :uniq => true
   has_and_belongs_to_many :groups, :uniq => true
   has_and_belongs_to_many :projects, :uniq => true
   has_and_belongs_to_many :roles, :uniq => true
   has_and_belongs_to_many :timesheets, :uniq => true
 
-  # Enléve les participations aux UVs, aux événements, et les rôles alloués
+  # Enléve les participations
   before_destroy do self.events.delete_all end
   before_destroy do self.groups.delete_all end
   before_destroy do self.projects.delete_all end
   before_destroy do self.roles.delete_all end
 
   def associations
-    return roles.map { |r| r.association }.compact
+    roles.map(&:association).compact.uniq
+  end
+  
+  def courses
+    timesheets.map(&:course).uniq
   end
 
   def is_member_of?(association)
-    return associations.include?(association)
+    associations.include?(association)
   end
 
   def is?(name, association = nil)
@@ -41,6 +45,6 @@ class User < ActiveRecord::Base
     if association
       res = res & association.roles
     end
-    return !res.empty?
+    !res.empty?
   end
 end
