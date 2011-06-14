@@ -71,6 +71,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.organizer = current_user
+    @event.associations = Association.find(params[:associations])
 
     respond_to do |format|
       if @event.save
@@ -87,6 +88,7 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+    @event.associations = Association.find(params[:associations])
 
     respond_to do |format|
       if @event.update_attributes(params[:event])

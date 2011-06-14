@@ -26,6 +26,11 @@
 </p>
 
 <p>
+  <b>Associations organisatrices :</b>
+  <%= link_to_associations @event %>
+</p>
+
+<p>
   <b>Tags :</b>
   <%= link_to_tags @event %>
 </p>
@@ -37,12 +42,12 @@
 <% end %>
 
 <% if can? :update, @event %>
-  <%= link_to 'Modifier cet événement', edit_event_path(@event) %> |
+  <%= link_to 'Modifier', edit_event_path(@event) %> |
 <% end %>
 <% if can? :destroy, @event %>
   <%= link_to 'Supprimer', @event, :confirm => 'Sûr ?', :method => :delete %> |
 <% end %>
-<%= link_to 'Retourner à la liste des événements', events_path %>
+<%= link_to 'Liste des événements', events_path %>
 
 <%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>

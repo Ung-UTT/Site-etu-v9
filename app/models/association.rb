@@ -20,7 +20,7 @@ class Association < ActiveRecord::Base
   end
 
   def member
-    return roles.select { |r| r.name == 'member' }
+    roles.select { |r| r.name == 'member' }
   end
 
   def delete_user(user)
@@ -28,6 +28,6 @@ class Association < ActiveRecord::Base
   end
 
   def users
-    return roles.map { |r| r.users }.flatten.uniq
+    roles.map { |r| r.users }.flatten.uniq
   end
 end

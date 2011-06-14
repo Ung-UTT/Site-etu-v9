@@ -18,6 +18,11 @@
     <%= f.datetime_select :date %>
   </div>
   <div class="field">
+    <!-- TODO: Checkboxes à la place, parce que Ctrl + clics n'est pas très intuitif -->
+    <%= label_tag 'associations', 'Associations' %><br />
+    <%= select_tag 'associations', associations_select(@event), :multiple => true%>
+  </div>
+  <div class="field">
     <%= f.label :tag_list, 'Tags' %><br />
     <%= f.text_field :tag_list %>
   </div>

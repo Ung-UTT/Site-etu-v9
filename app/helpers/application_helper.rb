@@ -17,6 +17,11 @@ module ApplicationHelper
     )
   end
 
+  def associations_select(object)
+    options_for_select(Association.all.collect { |a| [a.name, a.id] },
+                       object.associations.collect { |a| a.id })
+  end
+
   def comment_path(comment)
     return [comment.commentable, comment]
   end
@@ -57,6 +62,14 @@ module ApplicationHelper
     else
       # TODO: Ajouter les liens vers les pages des tags
       return content.tags.map(&:name).join(' ').html_safe
+    end
+  end
+
+  def link_to_associations(object)
+    if object.associations.empty?
+      return 'Aucune'
+    else
+      return object.associations.map { |a| link_to a.name, a }.join(' ').html_safe
     end
   end
 end
