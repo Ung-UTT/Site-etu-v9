@@ -209,9 +209,9 @@ ActiveRecord::Schema.define(:version => 20110608195923) do
   end
 
   create_table "timesheets", :force => true do |t|
-    t.datetime "start"
-    t.datetime "end"
-    t.string   "classroom"
+    t.datetime "from"
+    t.datetime "to"
+    t.string   "room"
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"

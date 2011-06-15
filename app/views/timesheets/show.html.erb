@@ -1,0 +1,24 @@
+<%= title 'Horaire : ' + @timesheet.range %>
+
+<p>
+  <b>Salle :</b>
+  <%= @timesheet.room %>
+</p>
+
+<p>
+  <b>Course :</b>
+  <%= link_to @timesheet.course.name, @timesheet.course %>
+</p>
+
+<p>
+  <b>Participants :</b>
+  <%= link_to_users @timesheet.users %>
+</p>
+
+<% if can? :update, @timesheet %>
+  <%= link_to 'Modifier', edit_timesheet_path(@timesheet) %> |
+<% end %>
+<% if can? :destroy, @timesheet %>
+  <%= link_to 'Supprimer', @timesheet, :confirm => 'Sûr ?', :method => :delete %> |
+<% end %>
+<%= link_to 'Liste des événements', timesheets_path %>

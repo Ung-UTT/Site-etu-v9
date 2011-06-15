@@ -1,0 +1,28 @@
+<%= form_for(@timesheet) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :from, 'Début' %><br />
+    <%= f.datetime_select :from %>
+  </div>
+  <div class="field">
+    <%= f.label :to, 'Fin' %><br />
+    <%= f.datetime_select :to %>
+  </div>
+  <div class="field">
+    <%= f.label :room, 'Salle' %><br />
+    <%= f.text_field :room %>
+  </div>
+  <div class="field">
+    <%= f.label 'course_id', 'Cours associé' %><br />
+    <%= f.select 'course_id', course_select(@timesheet) %>
+  </div>
+  <div class="field">
+    <!-- TODO: Checkboxes à la place, parce que Ctrl + clics n'est pas très intuitif -->
+    <%= label_tag 'users', 'Ceux qui utilisent cet horaire' %><br />
+    <%= select_tag 'users', users_select(@timesheet), :multiple => true%>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Envoyer' %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+late:
+  from: Wed Jun 15 21:00:00 +0200 2011
+  to: Wed Jun 15 22:00:00 +0200 2011
+  room: N102
+  course: LE01
+  users: joe, kevin
+
+morning:
+  from: Wed Jun 15 08:00:00 +0200 2011
+  to: Wed Jun 15 06:00:00 +0200 2011
+  room: SCD
+  course: LE00
+  users: kevin

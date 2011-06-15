@@ -18,13 +18,21 @@ module ApplicationHelper
   end
 
   def associations_select(object)
-    options_for_select(Association.all.collect { |a| [a.name, a.id] },
-                       object.associations.collect { |a| a.id })
+    options_for_select(Association.all.map { |a| [a.name, a.id] }, object.associations.map(&:id))
   end
 
   def events_select(object)
     default = object.event ? object.event.id : nil
-    options_for_select(Event.all.collect { |a| [a.title, a.id] }.unshift(['Aucun', nil]), default)
+    options_for_select(Event.all.map { |a| [a.title, a.id] }.unshift(['Aucun', nil]), default)
+  end
+
+  def course_select(object)
+    default = object.course ? object.course.id : nil
+    options_for_select(Course.all.map { |a| [a.name, a.id] }.unshift(['Aucun', nil]), default)
+  end
+
+  def users_select(object)
+    options_for_select(User.all.map { |a| [a.login, a.id] }, object.users.map(&:id))
   end
 
   def comment_path(comment)

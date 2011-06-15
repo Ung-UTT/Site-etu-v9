@@ -1,0 +1,15 @@
+<%= title 'Les horaires' %>
+
+<ul>
+<% @timesheets.each do |timesheet| %>
+  <li>
+    <%= link_to timesheet.range, timesheet %> (<%= link_to timesheet.course.name, timesheet.course %>)
+  </li>
+<% end %>
+</ul>
+
+<br />
+
+<% if can? :create, Timesheet %>
+  <%= link_to 'Ajouter un horaire', new_timesheet_path %>
+<% end %>

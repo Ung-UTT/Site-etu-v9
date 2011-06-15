@@ -5,6 +5,6 @@ class Timesheet < ActiveRecord::Base
   has_and_belongs_to_many :users, :uniq => true
 
   def range
-    start.strftime('Le %A de %#Hh%M à ') + self.end.strftime('%#Hh%M')
+    from.strftime('Le %A de %#Hh%M à ') + to.strftime('%#Hh%M')
   end
 end
