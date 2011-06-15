@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th></th>
+    <% ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'].each do |day| %>
+      <th><%= day %></th>
+    <% end %>
+  </tr>
+  <% (7.hour..21.hour).step(30.minutes) do |h| %>
+  <tr>
+    <th><%= Time.at(h.to_i).strftime '%kh%M' %></th>
+    <% 6.times do |col| %>
+      <th><%= ActiveSupport::SecureRandom.hex(3) %></th>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
