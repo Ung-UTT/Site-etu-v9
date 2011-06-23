@@ -13,8 +13,9 @@ SiteEtu::Application.routes.draw do
   match 'groups/:id/disjoin/:user_id' => 'groups#disjoin', :as => 'disjoin_group'
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
-  match '/auth/:provider/callback' => 'authorizations#create'
-  match '/auth/failure' => 'authorizations#failure'
+  match 'auth/:provider' => 'authorizations#create', :as => 'auth'
+  match 'auth/:provider/callback' => 'authorizations#create'
+  match 'auth/failure' => 'authorizations#failure'
 
   resources :authorizations, :groups, :reminders, :roles, :timesheets, :users
   resources :user_sessions, :only => :create
