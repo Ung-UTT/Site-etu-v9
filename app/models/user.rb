@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   paginates_per 30
 
-  has_paper_trail # TODO: Seulement sur les changements importants (sinon trop de versions)
+  has_paper_trail :ignore => ['persistence_token', 'login_count', 'failed_login_count',
+                               'last_request_at', 'current_login_at', 'last_login_at',
+                               'current_login_ip', 'last_login_ip', 'updated_at']
   acts_as_authentic # Gére aussi les validations
 
   has_many :authorizations, :dependent => :destroy
