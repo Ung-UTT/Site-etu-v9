@@ -12,7 +12,7 @@
   <% end %>
 </ul>
 
-<% if can? :create, Document %>
+<% if can? :create, documentable.documents.new %>
   <%= form_for([documentable, Document.new], :html => {:multipart => true}) do |f| %>
       <%= f.file_field :asset %>
       <%= f.submit "Ajouter un document" %>

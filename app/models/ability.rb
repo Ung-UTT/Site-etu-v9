@@ -11,14 +11,23 @@ class Ability
       can [:new, :create], UserSession
     else
       can :read, Reminder, :user_id => user.id
+
       # TODO: Seul celui qui a créé le "documentable" peut y ajouter un document
       can :create, [Annal, Association, Classified, Comment, Course, Document, Event, News, Project, Quote, Reminder]
+      can :create, Document do |doc|
+        if doc.documentable.nil?
+          false
+        else
+          can? :create, documentable
+        end
+      end
+      # L'auteur peut mettre à jour et supprimer ses contenus
       can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
-      # TODO: Tout mettre à owner_id
       can [:update, :destroy], Association, :president_id => user.id
       can [:update, :destroy], [Course, Project], :owner_id => user.id
       can [:update, :destroy], Event, :organizer_id => user.id
       can [:update, :destroy], User, :id => user.id
+
       can [:create, :update, :destroy], Role do |association|
         # Si le rôle est associé à une association alors seul le président peut créer, mettre à jour ou supprimer les rôles
         association == nil ? association.president_id == user.id : false
@@ -28,7 +37,7 @@ class Ability
       can :destroy, Comment, :user_id => user.id
       can :destroy, Document do |doc|
         if doc.documentable.nil?
-          false
+          false # Seul les admins peuvent supprimer les documents associés à aucun contenu
         else
           can? :destroy, documentable
         end
@@ -42,7 +51,7 @@ class Ability
       end
 
       if user.is? :moderator
-        can [:update, :destroy], [Annal, Association, Classified, Comment, Course, Event, News, Quote, Reminder]
+        can [:update, :destroy], [Annal, Classified, Comment, Event, News, Quote]
       end
       if user.is? :admin
         can :manage, [Role, Group]
