@@ -1,5 +1,10 @@
 <%= title 'Utilisateurs' %>
 
+<%= form_tag(users_path, :method => 'get') do %>
+  <%= text_field_tag :q %>
+  <%= submit_tag 'Rechercher' %>
+<% end %>
+
 <ul>
 <% @users.each do |user| %>
   <li><%= link_to_user user %></li>

@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    if params[:q].nil?
+      @users = User.all
+    else
+      query = '%' + params[:q].split.join('%') + '%'
+      @users = User.where('login LIKE :query', {:query => query})
+    end
 
     respond_to do |format|
       format.html # index.html.erb
