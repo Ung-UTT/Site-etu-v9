@@ -1,5 +1,7 @@
 Objectifs : Contrôleurs/Vues pour l'emploi du temps (Course + Timesheet + User) et les préférences
 
+BUG : Paperclip a du mal avec le sous-dossier site-etu/
+
 À faire :
 =========
 
