@@ -28,7 +28,7 @@ null { /* Not a real tag, just to keep this snippet for later... */
 
 /* Let's go! */
 
-* {
+body, header, section, nav, article, h1, ul, dl, dd, dt {
   margin: 0;
   padding: 0;
   border: 0;
@@ -139,7 +139,6 @@ input[type="submit"] {
   font-weight: bold;
   padding: 4px;
   margin: 4px 0;
-  float: right;
 }
 
 input[type="submit"]:hover {
