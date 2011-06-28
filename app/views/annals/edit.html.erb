@@ -1,6 +1,6 @@
-<%= title "Modifier l'annale" %>
+<%= title t('annal.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Montrer', @annal %> |
-<%= link_to 'Liste des annales', annals_path %>
+<%= link_to t('annal.show'), @annal %> |
+<%= link_to t('annal.list') , annals_path %>

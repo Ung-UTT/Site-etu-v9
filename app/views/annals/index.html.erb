@@ -1,14 +1,14 @@
-<%= title 'Liste des annales' %>
+<%= title t('annal.list') %>
 
 <ul>
 <% @annals.each do |annal| %>
   <li>
     <%= link_to annal.name, annal %>
-    (Cours : <%= annal.course.name %>, date : <%= annal.date.strftime 'le %d %B à %Hh' %>)
+    (<%= t('annal.course') %> : <%= annal.course.name %>, <%= t('annal.date') %> : <%= l annal.date %>)
   </li>
 <% end %>
 </ul>
 
 <br />
 
-<%= link_to 'Ajouter des annales', new_annal_path %>
+<%= link_to t('annal.add'), new_annal_path %>

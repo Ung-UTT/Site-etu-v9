@@ -1,32 +1,32 @@
-<%= title 'Annale : ' + @annal.name %>
+<%= title t('annal.annal') + ' : ' + @annal.name %>
 
 <p>
-  <b>Description :</b>
+  <b><%= t 'annal.description' %> :</b>
   <%= @annal.description %>
 </p>
 
 <p>
-  <b>Date :</b>
-  <%= @annal.date.strftime 'le %d %B %Y à %Hh%M' %>
+  <b><%= t 'annal.date' %> :</b>
+  <%= l @annal.date %>
 </p>
 
 <p>
-  <b>UV :</b>
+  <b><%= t 'annal.course' %> :</b>
   <%= link_to @annal.course.name, @annal.course %>
 </p>
 
 <p>
-  <b>Tags :</b>
+  <b><%= t 'annal.tags' %> :</b>
   <%= link_to_tags @annal %>
 </p>
 
 <% if can? :update, @annal %>
-  <%= link_to 'Modifier', edit_annal_path(@annal) %> |
+  <%= link_to t('annal.edit'), edit_annal_path(@annal) %> |
 <% end %>
 <% if can? :destroy, @annal %>
-  <%= link_to 'Supprimer', @annal, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= link_to  t('annal.delete'), @annal, :confirm => 'Sûr ?', :method => :delete %> |
 <% end %>
-<%= link_to 'Liste des annales', annals_path %>
+<%= link_to t('annal.list'), annals_path %>
 
 <%= render 'documents/list_and_add', {:documentable => @annal, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @annal, :comments => @comments} %>

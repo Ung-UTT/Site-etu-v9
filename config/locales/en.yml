@@ -2,8 +2,64 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  ability:
+    denied: "You are not authorized to do this."
+
+  annal:
+    list: "List of annals"
+    course: "Course"
+    date: "Date"
+    add: "Add an annal"
+    annal: "Annal"
+    description: "Description"
+    course: "Course"
+    tags: "Tags"
+    edit: "Edit"
+    delete: "Delete"
+    show: "Show"
+    submit: "Submit"
+
+  association:
+
+  authorization:
+
+  carpool:
+
+  classified:
+
+  comment:
+
+  course:
+
+  document:
+
+  event:
+
+  group:
+
   home:
     index:
       hello: "Hello"
     newspaper:
       newspaper: "Newspaper"
+
+  news:
+
+  preference:
+
+  project:
+
+  quote:
+
+  reminder:
+
+  role:
+
+  tag:
+
+  timesheet:
+
+  user:
+
+  user_session:
+

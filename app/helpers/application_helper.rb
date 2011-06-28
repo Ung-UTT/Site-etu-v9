@@ -86,7 +86,7 @@ module ApplicationHelper
       return object.associations.map { |a| link_to a.name, a }.join(' ').html_safe
     end
   end
-  
+
   def find_polymorphicable
     params.each do |name, value|
       if name =~ /(.+)_id$/
