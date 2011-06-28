@@ -75,8 +75,7 @@ module ApplicationHelper
     if content.tags.empty?
       return 'Aucun'
     else
-      # TODO: Ajouter les liens vers les pages des tags
-      return content.tags.map(&:name).join(' ').html_safe
+      return content.tags.map{|t| link_to t.name, Tag.find(t.id) }.join(' ').html_safe
     end
   end
 

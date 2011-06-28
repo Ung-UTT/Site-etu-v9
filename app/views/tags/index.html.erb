@@ -1,0 +1,7 @@
+<%= title 'Les tags' %>
+
+<ul>
+<% @tags.each do |tag| %>
+  <li><%= link_to tag.name, tag %> (<%= tag.taggings.count %>)</li>
+<% end %>
+</ul>

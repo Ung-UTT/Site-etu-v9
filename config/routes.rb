@@ -16,6 +16,8 @@ SiteEtu::Application.routes.draw do
   match 'auth/:provider' => 'authorizations#create', :as => 'auth'
   match 'auth/:provider/callback' => 'authorizations#create'
   match 'auth/failure' => 'authorizations#failure'
+  
+  resources :tags, :only => [:index, :show]
 
   resources :authorizations, :groups, :reminders, :roles, :timesheets, :users
   resources :user_sessions, :only => :create
