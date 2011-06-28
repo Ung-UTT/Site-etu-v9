@@ -62,8 +62,8 @@ UserSession
 
 /!\ Facile (mais souvent long) ! /!\
   Des tests ! Beaucoup de tests !
-  De superbes fixtures évoluées qui font comme si le site existe vraiment
-  (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
+--> De superbes fixtures évoluées qui font comme si le site existe vraiment
+--> (+ commentaires, + utilisateurs, + participants (assos, événements, rôles), …)
   Mettre des valeurs par défaut aux champs (via migrations directement)
   API : Tout tester, ajouter formats, infos, …
 

@@ -16,5 +16,3 @@ lol:
   commentable: <%= label %> (News)
 <% end %>
 <% end %>
-
-# TODO: Même chose pour plein de contenus
