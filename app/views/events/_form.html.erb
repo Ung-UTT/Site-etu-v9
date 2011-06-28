@@ -18,9 +18,12 @@
     <%= f.datetime_select :date %>
   </div>
   <div class="field">
-    <!-- TODO: Checkboxes à la place, parce que Ctrl + clics n'est pas très intuitif -->
     <%= label_tag 'associations', 'Associations' %><br />
-    <%= select_tag 'associations', associations_select(@event), :multiple => true%>
+    <% Association.all.each do |asso| %>
+      <%= check_box_tag 'event[association_ids][]', asso.id, @event.associations.include?(asso) %>
+      <%= asso.name %>
+      <br />
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :tag_list, 'Tags' %><br />
