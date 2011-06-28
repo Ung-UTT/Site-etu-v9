@@ -1,8 +1,9 @@
 class DocumentsController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :find_documentable
+
   def index
-    @documentable = find_polymorphicable
     @documents = @documentable.documents
 
     respond_to do |format|
@@ -12,7 +13,6 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    @documentable = find_polymorphicable
     @document = @documentable.documents.find(params[:id])
 
     respond_to do |format|
@@ -22,7 +22,6 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @documentable = find_documentable
     @document = @documentable.documents.build(params[:document])
 
     if @document.save
@@ -32,9 +31,13 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    @documentable = find_documentable
     @document = @documentable.documents.find(params[:id])
     @document.destroy
     redirect_to @documentable
   end
+  
+  private
+    def find_documentable
+      @documentable = find_polymorphicable
+    end
 end

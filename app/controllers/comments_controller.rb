@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :find_documentable
+
   def index
-    @commentable = find_polymorphicable
     @comments = @commentable.comments
 
     respond_to do |format|
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @commentable = find_polymorphicable
     @comment = @commentable.comments.find(params[:id])
     
     respond_to do |format|
@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user unless @commentable.class == Course # Commentaires anonymes sur les UVs
 
@@ -33,9 +32,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @commentable = find_commentable
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy
     redirect_to @commentable
   end
+
+  private
+    def find_documentable
+      @commentable = find_polymorphicable
+    end
 end
