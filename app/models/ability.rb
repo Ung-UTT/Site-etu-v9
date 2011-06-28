@@ -12,13 +12,12 @@ class Ability
     else
       can :read, Reminder, :user_id => user.id
 
-      # TODO: Seul celui qui a créé le "documentable" peut y ajouter un document
       can :create, [Annal, Association, Classified, Comment, Course, Document, Event, News, Project, Quote, Reminder]
       can :create, Document do |doc|
         if doc.documentable.nil?
           false
         else
-          can? :create, doc.documentable
+          can? :update, doc.documentable
         end
       end
       # L'auteur peut mettre à jour et supprimer ses contenus
@@ -33,6 +32,8 @@ class Ability
         association == nil ? association.president_id == user.id : false
       end
       can [:join, :disjoin], [Event, Association]
+      can :disjoin, Role
+
       can :destroy, [UserSession, Authorization]
       can :destroy, Comment, :user_id => user.id
       can :destroy, Document do |doc|
@@ -41,13 +42,6 @@ class Ability
         else
           can? :destroy, doc.documentable
         end
-      end
-      can :destroy, Role do |role|
-        # TODO: on ne peut pas utiliser params['user_id'] donc comment
-        #       faire pour qu'un utilisateur puisse supprimer ses roles
-        #       associés (et pas le rôle en entier)
-        #       (pas dans controlleur)
-        false
       end
 
       if user.is? :moderator
