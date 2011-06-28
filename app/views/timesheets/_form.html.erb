@@ -18,9 +18,12 @@
     <%= f.select 'course_id', course_select(@timesheet) %>
   </div>
   <div class="field">
-    <!-- TODO: Checkboxes à la place, parce que Ctrl + clics n'est pas très intuitif -->
     <%= label_tag 'users', 'Ceux qui utilisent cet horaire' %><br />
-    <%= select_tag 'users', users_select(@timesheet), :multiple => true%>
+    <% User.all.each do |user| %>
+      <%= check_box_tag 'timesheet[user_ids][]', user.id, @timesheet.users.include?(user) %>
+      <%= user.login %>
+      <br />
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit 'Envoyer' %>
