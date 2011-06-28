@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
-  # TODO : Ajouter RSS pour suivre les commentaires
   # TODO : Ajouter XML/JSON pour API
   def index
     @commentable = find_commentable

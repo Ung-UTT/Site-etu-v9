@@ -15,5 +15,4 @@ gem 'kaminari'    # Pagination
 gem 'acts-as-taggable-on'
 gem 'paper_trail' # Historique
 
-# TODO: Vérifier quand la version pour Rails 3 est dans les dépôts
-gem 'awesome_nested_set' # , :git => 'http://github.com/collectiveidea/awesome_nested_set.git'
+gem 'awesome_nested_set'

@@ -1,6 +1,4 @@
-Objectifs : Contrôleurs/Vues pour l'emploi du temps (Course + Timesheet + User) et les préférences
-
-BUG : Paperclip a du mal avec le sous-dossier site-etu/
+Objectifs : Vues pour l'emploi du temps et les préférences
 
 À faire :
 =========
@@ -79,6 +77,9 @@ Plus dur :
 
 Beaucoup plus dur :
   Refactoriser code grâce à des modules, des controlleurs, des helpers, …
+
+Bugs :
+  Paperclip a du mal avec le sous-dossier site-etu/
 
 `git grep TODO` pour voir les petites modifications à faire
 
