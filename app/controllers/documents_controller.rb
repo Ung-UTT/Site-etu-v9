@@ -1,15 +1,24 @@
 class DocumentsController < ApplicationController
   load_and_authorize_resource
 
-  # TODO : Ajouter XML/JSON pour API
   def index
     @documentable = find_documentable
     @documents = @documentable.documents
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @documents }
+    end
   end
 
   def show
     @documentable = find_documentable
     @document = @documentable.documents.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @document }
+    end
   end
 
   def create

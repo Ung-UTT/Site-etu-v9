@@ -1,15 +1,24 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
-  # TODO : Ajouter XML/JSON pour API
   def index
     @commentable = find_commentable
     @comments = @commentable.comments
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @comments }
+    end
   end
 
   def show
     @commentable = find_commentable
     @comment = @commentable.comments.find(params[:id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @comment }
+    end
   end
 
   def create

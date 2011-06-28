@@ -18,7 +18,7 @@ class Ability
         if doc.documentable.nil?
           false
         else
-          can? :create, documentable
+          can? :create, doc.documentable
         end
       end
       # L'auteur peut mettre à jour et supprimer ses contenus
@@ -39,7 +39,7 @@ class Ability
         if doc.documentable.nil?
           false # Seul les admins peuvent supprimer les documents associés à aucun contenu
         else
-          can? :destroy, documentable
+          can? :destroy, doc.documentable
         end
       end
       can :destroy, Role do |role|
