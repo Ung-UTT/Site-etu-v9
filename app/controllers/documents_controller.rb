@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @documentable = find_documentable
+    @documentable = find_polymorphicable
     @documents = @documentable.documents
 
     respond_to do |format|
@@ -12,7 +12,7 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    @documentable = find_documentable
+    @documentable = find_polymorphicable
     @document = @documentable.documents.find(params[:id])
 
     respond_to do |format|
@@ -37,15 +37,4 @@ class DocumentsController < ApplicationController
     @document.destroy
     redirect_to @documentable
   end
-
-  private
-    # TODO: Helper pour find_commentable aussi
-    def find_documentable
-      params.each do |name, value|
-        if name =~ /(.+)_id$/
-          return $1.classify.constantize.find(value)
-        end
-      end
-      nil
-    end
 end

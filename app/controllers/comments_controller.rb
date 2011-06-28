@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @commentable = find_commentable
+    @commentable = find_polymorphicable
     @comments = @commentable.comments
 
     respond_to do |format|
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @commentable = find_commentable
+    @commentable = find_polymorphicable
     @comment = @commentable.comments.find(params[:id])
     
     respond_to do |format|
@@ -38,14 +38,4 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to @commentable
   end
-
-  private
-    def find_commentable
-      params.each do |name, value|
-        if name =~ /(.+)_id$/
-          return $1.classify.constantize.find(value)
-        end
-      end
-      nil
-    end
 end

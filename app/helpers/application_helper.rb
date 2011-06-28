@@ -1,3 +1,5 @@
+# TODO: Néttoyer, réorganiser, toussa…
+
 module ApplicationHelper
   def title(page_title, options={})
     content_for(:title, page_title.to_s)
@@ -84,5 +86,14 @@ module ApplicationHelper
     else
       return object.associations.map { |a| link_to a.name, a }.join(' ').html_safe
     end
+  end
+  
+  def find_polymorphicable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
   end
 end
