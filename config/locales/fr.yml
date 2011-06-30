@@ -127,6 +127,8 @@ fr:
       default: "%d %B %Y %H:%M:%S"
       short: "%d %b %H:%M"
       long: "%A %d %B %Y %H:%M"
+      day: "%A"
+      hour: "%Hh%M"
     am: 'am'
     pm: 'pm'
 

@@ -1,6 +1,8 @@
 # TODO: Néttoyer, réorganiser, toussa…
 
 module ApplicationHelper
+  # Title
+
   def title(page_title, options={})
     content_for(:title, page_title.to_s)
     return content_tag(:h1, page_title, options)
@@ -9,6 +11,8 @@ module ApplicationHelper
   def title_tag
     content_tag(:title, content_for(:title).empty?  ? 'Site étu : Le nouveau Face-Twit-Goog-Micro-LinuxFr' : content_for(:title))
   end
+
+  # Select options
 
   def parent_select_options(name)
     options_for_select(
@@ -37,6 +41,8 @@ module ApplicationHelper
     options_for_select(User.all.map { |a| [a.login, a.id] }, object.users.map(&:id))
   end
 
+  # Links to
+
   def comment_path(comment)
     return [comment.commentable, comment]
   end
@@ -45,7 +51,7 @@ module ApplicationHelper
     if objects.empty?
       return nil
     else
-      res = '<strong>' + h(descr) + '</strong> :'
+      res = descr.empty? ? '' : '<strong>' + h(descr) + '</strong> :'
       res += '<ul>'
       objects.each do |object|
         content = object.send(attr)
@@ -87,6 +93,8 @@ module ApplicationHelper
     end
   end
 
+  # Others
+
   def find_polymorphicable
     params.each do |name, value|
       if name =~ /(.+)_id$/
@@ -94,5 +102,15 @@ module ApplicationHelper
       end
     end
     nil
+  end
+
+  def each_day
+    (0..6.day).step(1.day) do |day|
+      yield (Time.at(day) + 4.day)
+    end
+  end
+
+  def courses_when(day, hour, timesheets)
+    timesheets.select {|t| t.during?(Time.at(day.to_i + hour.to_i)) }.map(&:course)
   end
 end

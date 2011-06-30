@@ -63,3 +63,8 @@ en:
 
   user_session:
 
+  time:
+    formats:
+      day: "%A"
+      hour: "%H:%M"
+

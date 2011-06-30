@@ -29,7 +29,7 @@
 <%= list_of 'Groupes', @user.groups, :name %>
 <%= list_of 'Emploi du temps (horaires)', @user.timesheets, :range %>
 
-<%= render 'timesheets/schedule' %>
+<%= render 'timesheets/schedule', :timesheets => @user.timesheets %>
 
 <% if can? :update, @user %>
   <%= link_to 'Modifier', edit_user_path(@user) %> |
