@@ -28,6 +28,7 @@ class NewsController < ApplicationController
 
   # GET /news/daymail
   def daymail
+    system '/var/lib/gems/1.8/bin/rake daymail &'
     flash[:notice] = "Daymail envoyé"
     redirect_to :root
   end
