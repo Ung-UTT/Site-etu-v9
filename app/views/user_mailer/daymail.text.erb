@@ -1,0 +1,15 @@
+<%= @user.login %>, le BDE te présente le Daymail du <%= @date %> !
+
+Sommaire :
+<% @news.each do |news| %>
+* <%= news.title %>
+<% end %>
+
+<% @news.each do |news| %>
+# <%= news.title %>
+<%= news.content %>
+
+
+<% end %>
+
+Distribué par l'UNG.

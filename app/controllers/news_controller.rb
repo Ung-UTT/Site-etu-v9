@@ -25,6 +25,11 @@ class NewsController < ApplicationController
     end
   end
 
+  # GET /news/daymail
+  def daymail
+    redirect_to news_root
+  end
+
   # GET /news/new
   # GET /news/new.xml
   def new
