@@ -39,8 +39,8 @@ class RolesController < ApplicationController
     @role = Role.find(params[:id])
 
     # Ne peut que supprimer sa partition aux rôles (sauf si il a du pouvoir ;)
-    if params[:user_id] != current_user.id and Ability.new(current_user).cannot? :destroy, @role
-      raise CanCan::AccessDenied
+    if params[:user_id] != current_user.id
+      authorize! :destroy, @role
     end
 
     @user = User.find(params[:user_id])

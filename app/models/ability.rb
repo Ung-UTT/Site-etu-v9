@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can [:read, :random], :all
+    can [:read, :random, :daymail], :all
     cannot :read, Reminder
     can [:create, :failure], Authorization
 

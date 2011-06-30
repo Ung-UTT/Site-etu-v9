@@ -20,7 +20,7 @@ SiteEtu::Application.routes.draw do
   match 'auth/:provider/callback' => 'authorizations#create'
   match 'auth/failure' => 'authorizations#failure'
 
-  match 'news/daymail'
+  match 'news/daymail' => 'News#daymail'
   
   resources :tags, :only => [:index, :show]
 
