@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @user.login %>, le BDE te présente le Daymail du <%= @date %> !</h1>
+    <p>Sommaire :</p>
+    <ul>
+      <% @news.each do |news| %>
+      <li><%= news.title %></li>
+      <% end %>
+    </ul>
+    <% @news.each do |news| %>
+    <h2><%= news.title %></h2>
+    <p><%= news.content %></p>
+    <% end %>
+    <p>Distribué par l'UNG</p>
+  </body>
+</html>

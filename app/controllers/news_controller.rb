@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
   load_and_authorize_resource
+  before_filter :verify_sender, :only => :daymail
 
   # GET /news
   # GET /news.xml
@@ -23,6 +24,12 @@ class NewsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @news }
     end
+  end
+
+  # GET /news/daymail
+  def daymail
+    flash[:notice] = "Daymail envoyé"
+    redirect_to :root
   end
 
   # GET /news/new
@@ -85,4 +92,11 @@ class NewsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+    def verify_sender
+      authenticate_or_request_with_http_basic('Alors comme ça du veux envoyer le Daymail ?') do |username, password|
+        username == 'daymailsender' and password == 'jesuisuncron'
+      end
+    end
 end

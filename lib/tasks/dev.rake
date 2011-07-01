@@ -8,9 +8,4 @@ namespace :dev do
     sh %{rake db:fixtures:load}
     sh %{rake db:seed}
   end
-
-  desc 'Liste de tout le fichiers éditables'
-  task :list do
-    sh %{find . -type f | egrep -v "(git|images|tmp|cache|plugins)"}
-  end
 end

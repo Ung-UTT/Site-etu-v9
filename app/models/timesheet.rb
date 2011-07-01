@@ -7,4 +7,8 @@ class Timesheet < ActiveRecord::Base
   def range
     from.strftime('Le %A de %#Hh%M à ') + to.strftime('%#Hh%M')
   end
+
+  def during?(time)
+    from < time and time < to
+  end
 end
