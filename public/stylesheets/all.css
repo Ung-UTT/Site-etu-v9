@@ -28,7 +28,7 @@ null { /* Not a real tag, just to keep this snippet for later... */
 
 /* Let's go! */
 
-body, header, section, nav, article, h1, ul, dl, dd, dt {
+body, header, section, nav, article, h1, ul, dl, dd, dt, #wrap {
   margin: 0;
   padding: 0;
   border: 0;
@@ -198,7 +198,7 @@ input[type="submit"]:focus {
 
 #news header {
   background: #e7e7e7;
-	padding: 10px;
+  padding: 10px;
   margin: 0 0 1em 0;
 }
 
@@ -211,7 +211,6 @@ input[type="submit"]:focus {
   position: relative;
   top: -1.4em;
   color: #fff;
-  background-color: #1E90FF;
   width: 2.5em;
   height: 2.8em;
   margin: 0 10px 0 0;
@@ -220,13 +219,22 @@ input[type="submit"]:focus {
   font-weight: bold;
   border-radius: 4px;
   border: 1px solid #4D4D4D;
+  background: #006083;
   background: -moz-linear-gradient(top, #0073A0, #00465F);
 }
 
 #news h1 {
-  color: #197798;
+  color: #999;
   font-size: large;
   padding: 0 0 0 50px;
+}
+
+#news h1 a {
+  color: #197798;
+}
+
+#news h1 a.moderate {
+  color: #f22;
 }
 
 #news dl {

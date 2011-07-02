@@ -5,7 +5,10 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.xml
   def index
-    @news = News.page(params[:page])
+    # Récupère toutes les news si on est modérateur ou seulement les news
+    # modérées sinon
+    @news = (can? :moderate, News) ? News.page(params[:page]) :
+      News.where(:is_moderated => true).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +20,9 @@ class NewsController < ApplicationController
   # GET /news/1.xml
   def show
     @news = News.find(params[:id])
+    # On vérifie qu'on est modérateur avant d'afficher une news non modérée
+    authorize! :moderate, @news unless @news.is_moderated
+
     @comments = @news.comments
     @documents = @news.documents
 
@@ -53,6 +59,8 @@ class NewsController < ApplicationController
   # POST /news.xml
   def create
     @news = News.new(params[:news])
+    # Seul un modérateur peut s'auto-modérer une nouvelle news
+    authorize! :moderate, @news if @news.is_moderated
     @news.user = current_user
 
     respond_to do |format|
@@ -70,6 +78,8 @@ class NewsController < ApplicationController
   # PUT /news/1.xml
   def update
     @news = News.find(params[:id])
+    # Seul un modérateur peut modifier le flag is_moderated
+    authorize! :moderate, @news if params[:news][:is_moderated] != @news.is_moderated
 
     respond_to do |format|
       if @news.update_attributes(params[:news])

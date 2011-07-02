@@ -45,7 +45,7 @@ class Ability
       end
 
       if user.is? :moderator
-        can [:update, :destroy], [Annal, Classified, Comment, Event, News, Quote]
+        can [:update, :destroy, :moderate], [Annal, Classified, Comment, Event, News, Quote]
       end
       if user.is? :admin
         can :manage, [Role, Group]

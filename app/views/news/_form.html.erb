@@ -17,6 +17,12 @@
     <%= f.label :tag_list, 'Tags' %><br />
     <%= f.text_field :tag_list %>
   </div>
+  <% if can? :moderate, News %>
+    <div class="field">
+      <%= f.label :is_moderated, 'Est modéré' %><br />
+      <%= f.check_box :is_moderated %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit 'Envoyer' %>
   </div>

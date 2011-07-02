@@ -2,6 +2,9 @@
   <header>
     <h1>
       <%= link_to news.title, news %>
+      <% unless news.is_moderated %>
+        | <%= link_to 'Modère moi !', edit_news_path(news), :class => 'moderate' %>
+      <% end %>
     </h1>
     <dl>
       <dt class="date">Date</dt>

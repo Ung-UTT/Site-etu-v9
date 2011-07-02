@@ -7,7 +7,7 @@
     <%= link_to 'Modifier', edit_news_path(@news) %> |
   <% end %>
   <% if can? :destroy, @news %>
-    <%= link_to 'Supprimer', @news, :confirm => 'Sûr ?', :method => :delete %> |
+    <%= link_to 'Supprimer', @news, :confirm => 'Êtes-vous sûr ?', :method => :delete %> |
   <% end %>
   <%= link_to 'Liste des news', news_index_path %>
 </section>

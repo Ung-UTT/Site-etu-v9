@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110608195923) do
+ActiveRecord::Schema.define(:version => 20110630213420) do
 
   create_table "annals", :force => true do |t|
     t.string   "name"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20110608195923) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_moderated"
   end
 
   create_table "preferences", :force => true do |t|

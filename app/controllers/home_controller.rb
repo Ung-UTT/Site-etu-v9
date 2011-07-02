@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   skip_authorization_check
 
   def index
-    @news = News.page(params[:page])
+    redirect_to :controller => :news
     #if connected?
     #  @weather = YahooWeather::Client.new.lookup_by_woeid(629484, 'c')
     #end
