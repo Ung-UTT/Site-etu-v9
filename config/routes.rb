@@ -21,7 +21,7 @@ SiteEtu::Application.routes.draw do
   match 'auth/failure' => 'authorizations#failure'
 
   match 'news/daymail' => 'News#daymail'
-  
+
   resources :tags, :only => [:index, :show]
 
   resources :authorizations, :groups, :reminders, :roles, :timesheets, :users

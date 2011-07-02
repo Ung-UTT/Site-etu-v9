@@ -35,7 +35,7 @@ class DocumentsController < ApplicationController
     @document.destroy
     redirect_to @documentable
   end
-  
+
   private
     def find_documentable
       @documentable = find_polymorphicable

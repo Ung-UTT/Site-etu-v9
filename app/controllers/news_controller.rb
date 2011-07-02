@@ -98,7 +98,7 @@ class NewsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   private
     def verify_sender
       authenticate_or_request_with_http_basic('Alors comme ca du veux envoyer le Daymail ?') do |username, password|

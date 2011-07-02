@@ -28,7 +28,7 @@ class AssociationTest < ActiveSupport::TestCase
     asso = Association.new(:name => 'King of UTT', :president => users(:kevin))
     assert asso.save
   end
-  
+
   test 'Historique doit fonctionner' do
     asso = associations(:FritUTT)
     id = asso.id
@@ -36,7 +36,7 @@ class AssociationTest < ActiveSupport::TestCase
     asso.save
     asso.name = 'Autre chose'
     asso.save
-    
+
     asso = asso.previous_version
     asso.save
     assert Association.find(id).name == "N'importe quoi", '-1'
@@ -51,7 +51,7 @@ class AssociationTest < ActiveSupport::TestCase
     assert librutt.parent == fritutt
     assert fritutt.children.include?(librutt)
   end
-  
+
   test 'Doit pouvoir avoir des tags' do
     asso = associations(:BDE)
     asso.tag_list = 'Bureau, dès, Eh Léve !'
