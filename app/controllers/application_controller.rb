@@ -1,5 +1,3 @@
-#require 'ping'
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
   check_authorization
@@ -33,7 +31,7 @@ class ApplicationController < ActionController::Base
       @current_user = current_user_session && current_user_session.user
     end
 
-    #def connected?
-    #  Ping.pingecho 'google.com', 1, 80
-    #end
+    def current_news
+      News.accessible_by(current_ability).page(params[:page])
+    end
 end

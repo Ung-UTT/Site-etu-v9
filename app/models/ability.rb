@@ -4,6 +4,8 @@ class Ability
   def initialize(user)
     can [:read, :random, :daymail], :all
     cannot :read, Reminder
+    cannot :read, News, :is_moderated => false
+
     can [:create, :failure], Authorization
 
     if !user
@@ -20,6 +22,7 @@ class Ability
           can? :update, doc.documentable
         end
       end
+
       # L'auteur peut mettre à jour et supprimer ses contenus
       can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
       can [:update, :destroy], Association, :president_id => user.id

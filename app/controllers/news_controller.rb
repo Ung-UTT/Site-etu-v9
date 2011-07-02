@@ -5,10 +5,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.xml
   def index
-    # Récupère toutes les news si on est modérateur ou seulement les news
-    # modérées sinon
-    @news = (can? :moderate, News) ? News.page(params[:page]) :
-      News.where(:is_moderated => true).page(params[:page])
+    @news = current_news
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,8 +17,6 @@ class NewsController < ApplicationController
   # GET /news/1.xml
   def show
     @news = News.find(params[:id])
-    # On vérifie qu'on est modérateur avant d'afficher une news non modérée
-    authorize! :moderate, @news unless @news.is_moderated
 
     @comments = @news.comments
     @documents = @news.documents
@@ -106,7 +101,7 @@ class NewsController < ApplicationController
   
   private
     def verify_sender
-      authenticate_or_request_with_http_basic('Alors comme ça du veux envoyer le Daymail ?') do |username, password|
+      authenticate_or_request_with_http_basic('Alors comme ca du veux envoyer le Daymail ?') do |username, password|
         username == 'daymailsender' and password == 'jesuisuncron'
       end
     end

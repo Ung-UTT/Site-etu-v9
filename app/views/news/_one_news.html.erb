@@ -2,7 +2,7 @@
   <header>
     <h1>
       <%= link_to news.title, news %>
-      <% unless news.is_moderated %>
+      <% if !news.is_moderated and can? :moderate, News %>
         | <%= link_to 'Modère moi !', edit_news_path(news), :class => 'moderate' %>
       <% end %>
     </h1>
@@ -19,7 +19,9 @@
         <dd class="last"><%= news.comments.count %></dd>
     </dl>
   </header>
+
   <%= news.content %>
+
   <% if news.event %>
   <h3>Événement associé :</h3>
   <p>
