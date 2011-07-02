@@ -107,15 +107,6 @@ module ApplicationHelper
 
   # Others
 
-  def find_polymorphicable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-    nil
-  end
-
   def courses_when(day, hour, timesheets)
     timesheets.select {|t| t.during?(day, hour)}.map(&:course)
   end

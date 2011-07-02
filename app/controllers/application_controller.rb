@@ -34,4 +34,13 @@ class ApplicationController < ActionController::Base
     def current_news
       News.accessible_by(current_ability).page(params[:page])
     end
+
+    def find_polymorphicable
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return $1.classify.constantize.find(value)
+        end
+      end
+      nil
+    end
 end
