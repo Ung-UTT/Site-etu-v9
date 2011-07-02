@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_paper_trail :ignore => ['persistence_token', 'login_count', 'failed_login_count',
                                'last_request_at', 'current_login_at', 'last_login_at',
                                'current_login_ip', 'last_login_ip', 'updated_at']
-  acts_as_authentic # Gére aussi les validations
+  acts_as_authentic # Gère aussi les validations
 
   has_many :authorizations, :dependent => :destroy
   has_many :carpools, :dependent => :destroy
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles, :uniq => true
   has_and_belongs_to_many :timesheets, :uniq => true
 
-  # Enléve les participations
+  # Enlève les participations
   before_destroy do self.events.delete_all end
   before_destroy do self.groups.delete_all end
   before_destroy do self.projects.delete_all end
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   def associations
     roles.map(&:association).compact.uniq
   end
-  
+
   def courses
     timesheets.map(&:course).uniq
   end

@@ -60,6 +60,11 @@ User
 
 UserSession
 
+
+CSS
+le trio Traduc, Fixtures, Tests
+le cumul d'emploi du temps
+
 -------------------------
 
 /!\ Facile (mais souvent long) ! /!\
@@ -82,6 +87,7 @@ Beaucoup plus dur :
 
 Bugs :
   Paperclip a du mal avec le sous-dossier site-etu/
+  Impossible de se logguer avec l'add-on Firefox IPFuck (mais c'est pareil sur LinuxFr ;))
   Authlogic a du mal avec l'authentification depuis peu
 
 `git grep TODO` pour voir les petites modifications à faire
