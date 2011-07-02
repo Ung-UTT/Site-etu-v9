@@ -1,14 +1,14 @@
 <table>
   <tr>
     <th></th>
-    <% each_day do |day| %>
-      <th><%= l day, :format => :day %></th>
+    <% (0..6).each do |day| %>
+      <th><%= day_names[day] %></th>
     <% end %>
   </tr>
   <% (7.hour..21.hour).step(30.minutes) do |hour| %>
   <tr>
     <th><%= l Time.at(hour.to_i), :format => :hour %></th>
-    <% each_day do |day| %>
+    <% (0..6).each do |day| %>
       <th>
         <% selected = courses_when(day, hour, timesheets) %>
         <% unless selected.empty? %>

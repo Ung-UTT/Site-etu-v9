@@ -1,8 +1,10 @@
 class CreateTimesheets < ActiveRecord::Migration
   def self.up
     create_table :timesheets do |t|
-      t.datetime   :from
-      t.datetime   :to
+      t.integer    :day
+      t.time       :from
+      t.time       :to
+      t.string     :week
       t.string     :room
       t.references :course
 

@@ -210,8 +210,10 @@ ActiveRecord::Schema.define(:version => 20110630213420) do
   end
 
   create_table "timesheets", :force => true do |t|
-    t.datetime "from"
-    t.datetime "to"
+    t.integer  "day"
+    t.time     "from"
+    t.time     "to"
+    t.string   "week"
     t.string   "room"
     t.integer  "course_id"
     t.datetime "created_at"
@@ -245,13 +247,6 @@ ActiveRecord::Schema.define(:version => 20110630213420) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
-
-  create_table "users_timesheets", :id => false, :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "timesheet_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false

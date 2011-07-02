@@ -2,12 +2,20 @@
   <%= f.error_messages %>
 
   <div class="field">
+    <%= f.label :day, 'Jour' %><br />
+    <%= f.select :day, day_select(@timesheet) %>
+  </div>
+  <div class="field">
     <%= f.label :from, 'Début' %><br />
-    <%= f.datetime_select :from %>
+    <%= f.time_select :from, {:minute_step => 5} %>
   </div>
   <div class="field">
     <%= f.label :to, 'Fin' %><br />
-    <%= f.datetime_select :to %>
+    <%= f.time_select :to, {:minute_step => 5} %>
+  </div>
+  <div class="field">
+    <%= f.label :week, 'Semaine' %><br />
+    <%= f.select :week, week_select(@timesheet) %>
   </div>
   <div class="field">
     <%= f.label :room, 'Salle' %><br />

@@ -1,6 +1,10 @@
 # TODO: Néttoyer, réorganiser, toussa…
 
 module ApplicationHelper
+  def day_names
+    I18n.t('date.day_names')
+  end
+
   # Title
 
   def title(page_title, options={})
@@ -39,6 +43,14 @@ module ApplicationHelper
 
   def users_select(object)
     options_for_select(User.all.map { |a| [a.login, a.id] }, object.users.map(&:id))
+  end
+
+  def week_select(object)
+    options_for_select([nil, 'A', 'B'], object.week)
+  end
+
+  def day_select(object)
+    options_for_select(day_names.map {|d| [d, day_names.index(d)]}, day_names[object.day])
   end
 
   # Links to
@@ -104,13 +116,7 @@ module ApplicationHelper
     nil
   end
 
-  def each_day
-    (0..6.day).step(1.day) do |day|
-      yield(Time.at(day) + 4.day)
-    end
-  end
-
   def courses_when(day, hour, timesheets)
-    timesheets.select {|t| t.during?(Time.at(day.to_i + hour.to_i)) }.map(&:course)
+    timesheets.select {|t| t.during?(day, hour)}.map(&:course)
   end
 end

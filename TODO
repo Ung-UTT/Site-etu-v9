@@ -52,8 +52,6 @@ Reminder
 Role
 
 TimeSheet
-  from_day, from_hour, to_day, to_hour : moche --> utiliser des entiers pour les
-  jours et des type Time pour les créneaux + ajouter un champ semaine (A/B)
 
 User
   += infos via LDAP (avatar, UVs, …) (dump à faire)
