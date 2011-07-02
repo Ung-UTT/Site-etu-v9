@@ -39,7 +39,7 @@ class RolesController < ApplicationController
     @role = Role.find(params[:id])
 
     # Ne peut que supprimer sa partition aux rôles (sauf si il a du pouvoir ;)
-    if params[:user_id] != current_user.id
+    if params[:user_id].to_i != current_user.id
       authorize! :destroy, @role
     end
 

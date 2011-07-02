@@ -106,7 +106,7 @@ module ApplicationHelper
 
   def each_day
     (0..6.day).step(1.day) do |day|
-      yield (Time.at(day) + 4.day)
+      yield(Time.at(day) + 4.day)
     end
   end
 

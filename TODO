@@ -82,6 +82,7 @@ Beaucoup plus dur :
 
 Bugs :
   Paperclip a du mal avec le sous-dossier site-etu/
+  Authlogic a du mal avec l'authentification depuis peu
 
 `git grep TODO` pour voir les petites modifications à faire
 
