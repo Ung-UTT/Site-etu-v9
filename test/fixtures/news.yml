@@ -19,6 +19,7 @@ lorem:
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: joe
+  is_moderated: true
 
 ipsum:
   title: Lorem Ipsum
@@ -36,6 +37,7 @@ ipsum:
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: kevin
+  is_moderated: true
 
 <% 1.upto(15) do |i| %>
 <%= "journal#{i}" %>:
