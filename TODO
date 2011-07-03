@@ -29,7 +29,7 @@ Document
 Event
   += Ajouter à mon agenda (iCal, Google Calendar, …)
   += Inviter des gens
-  += Réserver place
+  += Réverser place
   += News (Daymail ?) associées
   += QR Code (toutes les pages)
 
@@ -79,6 +79,7 @@ Bugs :
   Paperclip a du mal avec le sous-dossier site-etu/
   Impossible de se logguer avec l'add-on Firefox IPFuck (mais c'est pareil sur LinuxFr ;))
   Authlogic a du mal avec l'authentification depuis peu
+  Omniauth bug ou quoi ? (pas de CAS/Twitter/OpenID)
 
 `git grep TODO` pour voir les petites modifications à faire
 
