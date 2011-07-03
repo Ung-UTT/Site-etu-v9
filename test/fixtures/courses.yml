@@ -13,6 +13,19 @@ LE01:
   description: As I said before, I never repeat myself.
   owner: kevin
 
+LO12:
+  name: LO12
+  description: Beaucoup de théorie, pas très utile en pratique.
+
+LO14:
+  name: LO14
+  description: Moi, j'suis marseillais et j'aime bien faire du Bash hardcore (ou pas) !
+
+RE04:
+  name: RE04
+  description: Pour les nostalgiques de X25 et les technologies des années 50.
+  owner: kevin
+
 <% 1.upto(9) do |i| %>
 <%= "XX0#{i}" %>:
   name: $LABEL
