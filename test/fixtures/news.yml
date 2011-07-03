@@ -19,6 +19,7 @@ lorem:
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: joe
+  event: party
   is_moderated: true
 
 ipsum:
@@ -45,4 +46,8 @@ ipsum:
   content: "<%= "L'UTT classée #{16 - i}éme école d'ingénieurs !" %>"
   user: kevin
   created_at: <%= (15-i).weeks.ago.to_s(:db) %>
+<<<<<<< HEAD
+=======
+  event: urgent
+>>>>>>> 4b35ac8acfca2b2e85694698b74cfe6ef598e78c
 <% end %>
