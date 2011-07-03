@@ -1,6 +1,6 @@
 /**
  * Home page
- * 
+ *
  * A FAIRE :
  *  - finir le rendu pour coller au mieux à mockup.jpg
  *  - intégrer quelques blocs de CSS de la base CSS choisie (cf. wiki)
@@ -34,7 +34,7 @@ body, header, section, nav, article, h1, ul, dl, dd, dt, #wrap {
   border: 0;
   outline: 0;
 
-  /* fait en sorte que les padding et border ne change pas les dimensions d'un élément box 
+  /* fait en sorte que les padding et border ne change pas les dimensions d'un élément box
    * valeur par défaut : content-box */
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -156,6 +156,14 @@ input[type="submit"]:focus {
   padding: 0;
 }
 
+#content #alert {
+    margin-bottom: 1em;
+    padding: 1em 1em 1em 60px;
+    color: red;
+    border: 1px dotted red;
+    background: #ffe6e6 url('../images/denied.png') left center no-repeat;
+}
+
 #content section {
   background: #fff;
   border: 1px solid #999;
@@ -173,11 +181,6 @@ input[type="submit"]:focus {
   background-position: 15px 15px;
   min-height: 58px;
 }
-
-#content section.messagebox.info {color: blue; border-color: blue;background-image:url('../images/ext/one_bit/onebit_37.png');background-color:#e6e6ff}
-#content section.messagebox.success {color: green; border-color: green;background-image:url('../images/ext/one_bit/onebit_34.png');background-color:#e6ffe6}
-#content section.messagebox.error {color: red; border-color: red;background-image:url('../images/ext/one_bit/onebit_49.png');background-color:#ffe6e6}
-#content section.messagebox.notice {color: #f70; border-color: #f70;background-image:url('../images/ext/one_bit/onebit_47.png');background-color:#fff1e6}
 
 #content section > h1 {
   font-size: 1.4em;
@@ -259,7 +262,7 @@ input[type="submit"]:focus {
 }
 
 #news dd.last {
-  border-right: 0; 
+  border-right: 0;
 }
 
 #news dt:after {
@@ -275,7 +278,7 @@ input[type="submit"]:focus {
 }
 
 #sidebar {
-  width: 250px; 
+  width: 250px;
   float: right;
 }
 

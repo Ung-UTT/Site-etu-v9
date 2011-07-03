@@ -2,9 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can [:read, :random, :daymail], :all
-    cannot :read, Reminder
-    cannot :read, News, :is_moderated => false
+    # On bloque tout par défaut pour rien oublier
+    cannot :all, :all
+
+    # Puis on fait des trous dans le gruyère
+    can :read, [Classified, Association, Event]
+    can :read, News, :is_moderated => true
 
     can [:create, :failure], Authorization
 

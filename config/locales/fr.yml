@@ -1,6 +1,6 @@
 fr:
   ability:
-    denied: "You are not authorized to do this."
+    denied: "Tu ne peux pas accéder à cette page, désolé." # pnwd :P
 
   annal:
     list: "Liste des annales"
