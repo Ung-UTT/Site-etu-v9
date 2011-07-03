@@ -19,6 +19,7 @@ lorem:
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: joe
+  event: party
 
 ipsum:
   title: Lorem Ipsum
@@ -43,4 +44,5 @@ ipsum:
   content: "<%= "L'UTT classée #{16 - i}éme école d'ingénieurs !" %>"
   user: kevin
   created_at: <%= (15-i).weeks.ago.to_s(:db) %>
+  event: urgent
 <% end %>

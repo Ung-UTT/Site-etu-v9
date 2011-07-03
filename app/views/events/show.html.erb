@@ -30,8 +30,6 @@
   <%= link_to_associations @event %>
 </p>
 
-<%= list_of 'News', @event.news, :title %>
-
 <p>
   <b>Tags :</b>
   <%= link_to_tags @event %>
@@ -53,3 +51,9 @@
 
 <%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>
+
+<% if @event.news.empty? %>
+    Aucun daymail
+<% else %>
+    <%= render :template => 'news/index' %>
+<% end %>
