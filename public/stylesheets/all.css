@@ -156,12 +156,25 @@ input[type="submit"]:focus {
   padding: 0;
 }
 
-#content #alert {
+#content #alert, #content #notice {
     margin-bottom: 1em;
     padding: 1em 1em 1em 60px;
+    border-width: 1px;
+    border-style: dotted;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+#content #alert {
     color: red;
-    border: 1px dotted red;
-    background: #ffe6e6 url('../images/denied.png') left center no-repeat;
+    background-image: url('../images/icons/alert.png');
+    background-color: #ffe6e6;
+}
+
+#content #notice {
+    color: green;
+    background-image: url('../images/icons/notice.png');
+    background-color: #e6ffe6;
 }
 
 #content section {
