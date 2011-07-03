@@ -20,7 +20,6 @@ lorem:
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: joe
   event: party
-  is_moderated: true
 
 ipsum:
   title: Lorem Ipsum
@@ -47,8 +46,5 @@ ipsum:
   user: kevin
   is_moderated: true
   created_at: <%= (15-i).weeks.ago.to_s(:db) %>
-<<<<<<< HEAD
-=======
   event: urgent
->>>>>>> 4b35ac8acfca2b2e85694698b74cfe6ef598e78c
 <% end %>
