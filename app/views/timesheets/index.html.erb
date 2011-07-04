@@ -1,5 +1,10 @@
 <%= title 'Les horaires' %>
 
+<%= form_tag(timesheets_path, :method => :get) do %>
+  <%= select_tag :users, users_select, :multiple => true %>
+  <%= submit_tag 'Cumuler' %>
+<% end %>
+
 <ul>
 <% @timesheets.each do |timesheet| %>
   <li>
@@ -7,6 +12,8 @@
   </li>
 <% end %>
 </ul>
+
+<%= render 'timesheets/schedule', :timesheets => @timesheets %>
 
 <br />
 
