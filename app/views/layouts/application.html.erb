@@ -39,25 +39,25 @@
       <nav>
         <h2>Contenus</h2>
         <ul>
-          <li><%= show_link 'Annales', ActiveRecord::Base::Annal %></li>
-          <li><%= show_link 'Annonces', ActiveRecord::Base::Classified %></li>
-          <li><%= show_link 'Associations', ActiveRecord::Base::Association %></li>
-          <li><%= show_link 'Citations', ActiveRecord::Base::Quote %></li>
-          <li><%= show_link "Cumul d'emploi du temps", ActiveRecord::Base::Timesheet %></li>
-          <li><%= show_link 'Covoiturage', ActiveRecord::Base::Carpool %></li>
-          <li><%= show_link 'Événements', ActiveRecord::Base::Event %></li>
-          <li><%= show_link 'News', ActiveRecord::Base::News %></li>
-          <li><%= show_link 'Projets', ActiveRecord::Base::Project %></li>
-          <li><%= show_link 'Trombi', ActiveRecord::Base::User %></li>
-          <li><%= show_link 'UVs', ActiveRecord::Base::Course %></li>
+          <li><%= show_link 'Annales', Annal %></li>
+          <li><%= show_link 'Annonces', Classified %></li>
+          <li><%= show_link 'Associations', Association %></li>
+          <li><%= show_link 'Citations', Quote %></li>
+          <li><%= show_link "Cumul d'emploi du temps", Timesheet %></li>
+          <li><%= show_link 'Covoiturage', Carpool %></li>
+          <li><%= show_link 'Événements', Event %></li>
+          <li><%= show_link 'News', News %></li>
+          <li><%= show_link 'Projets', Project %></li>
+          <li><%= show_link 'Trombi', User %></li>
+          <li><%= show_link 'UVs', Course %></li>
         </ul>
       </nav>
     <% if can?(:manage, Role) or can?(:manage, Group) %>
       <nav>
         <h2>Administration</h2>
         <ul>
-          <li><%= show_link 'Groupes', ActiveRecord::Base::Group %></li>
-          <li><%= show_link 'Rôles', ActiveRecord::Base::Role %></li>
+          <li><%= show_link 'Groupes', Group %></li>
+          <li><%= show_link 'Rôles', Role %></li>
         </ul>
       </nav>
     <% end %>
