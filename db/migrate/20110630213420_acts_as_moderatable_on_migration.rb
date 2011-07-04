@@ -4,7 +4,7 @@ class ActsAsModeratableOnMigration < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :is_moderated
+    remove_column :news, :is_moderated
   end
 end
 

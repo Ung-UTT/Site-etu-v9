@@ -52,7 +52,7 @@
           <li><%= show_link 'UVs', ActiveRecord::Base::Course %></li>
         </ul>
       </nav>
-
+    <% if can?(:manage, Role) or can?(:manage, Group) %>
       <nav>
         <h2>Administration</h2>
         <ul>
@@ -60,6 +60,7 @@
           <li><%= show_link 'Rôles', ActiveRecord::Base::Role %></li>
         </ul>
       </nav>
+    <% end %>
 
       <nav>
         <h2>Services</h2>

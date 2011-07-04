@@ -10,11 +10,13 @@ class Ability
       can :create, User
       can :create, UserSession
     else
-      can :read, [Timesheet, User]
       can :read, Reminder, :user_id => user.id
 
       if user.is_student? or !user.roles.empty? # UTTiens ou anciens
-        can :create, :all
+        can [:read, :create], :all
+        cannot :read, Reminder
+        can :read, Reminder, :user_id => user.id
+
         cannot :create, [Role, Group, Document]
         can [:create, :destroy], Document do |doc|
           doc.documentable.nil? ? false : can?(:update, doc.documentable)

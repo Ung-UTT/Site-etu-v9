@@ -70,6 +70,7 @@ class AssociationsController < ApplicationController
   # POST /associations.xml
   def create
     @association = Association.new(params[:association])
+    params[:association][:image] = Image.new(:asset => params[:association][:image])
     @association.owner = current_user
 
     respond_to do |format|
@@ -87,6 +88,11 @@ class AssociationsController < ApplicationController
   # PUT /associations/1.xml
   def update
     @association = Association.find(params[:id])
+    if params[:association][:image].nil?
+      params[:association][:image] = @association.image 
+    else
+      params[:association][:image] = Image.new(:asset => params[:association][:image])
+    end
 
     respond_to do |format|
       if @association.update_attributes(params[:association])
@@ -110,4 +116,8 @@ class AssociationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+    def load_logo
+    end
 end

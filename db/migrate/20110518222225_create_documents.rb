@@ -6,6 +6,7 @@ class CreateDocuments < ActiveRecord::Migration
       t.integer    :asset_file_size
       t.datetime   :asset_updated_at
       t.references :documentable, :polymorphic => true
+      t.string     :type # Pour Document/Image
 
       t.timestamps
     end
