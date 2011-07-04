@@ -19,10 +19,10 @@
 
     <nav id="menubar">
       <%= link_to image_tag('icons/home.png') + ' Accueil', :root, :title => "Revenir à la page d'accueil." %>
-      <%= link_to image_tag("icons/users.png") + " Trombi", users_path, :title => "Viens chercher des infos sur les UTTiens" %>
+      <%= link_to image_tag("icons/users.png") + " Trombi", users_path, :title => "Viens chercher des infos sur les UTTiens" if @current_user %>
       <%= link_to image_tag("icons/news.png") + " Annonces", classifieds_path, :title => "Pour vendre ta tondeuse !" %>
-      <%= link_to image_tag("icons/buckutt.png") + " Buckutt", :root, :title => "Recharge ton compte pour payer au foyer." %>
-      <%= link_to image_tag("icons/emails.png") + " Mails", :root, :title => "Accède à tes emails depuis le site étu." %>
+      <%= link_to image_tag("icons/buckutt.png") + " Buckutt", :root, :title => "Recharge ton compte pour payer au foyer." if @current_user %>
+      <%= link_to image_tag("icons/emails.png") + " Mails", :root, :title => "Accède à tes emails depuis le site étu." if @current_user %>
     </nav>
   </header>
 
@@ -39,24 +39,24 @@
       <nav>
         <h2>Contenus</h2>
         <ul>
-          <li><%= link_to 'Annales', annals_path %></li>
-          <li><%= link_to 'Annonces', classifieds_path %></li>
-          <li><%= link_to 'Associations', associations_path %></li>
-          <li><%= link_to 'Citations', quotes_path %></li>
-          <li><%= link_to 'Covoiturage', carpools_path %></li>
-          <li><%= link_to 'Événements', events_path %></li>
-          <li><%= link_to 'News', :controller => :news %></li>
-          <li><%= link_to 'Projets', projects_path %></li>
-          <li><%= link_to 'Trombi', users_path %></li>
-          <li><%= link_to 'UVs', courses_path %></li>
+          <li><%= show_link 'Annales', ActiveRecord::Base::Annal %></li>
+          <li><%= show_link 'Annonces', ActiveRecord::Base::Classified %></li>
+          <li><%= show_link 'Associations', ActiveRecord::Base::Association %></li>
+          <li><%= show_link 'Citations', ActiveRecord::Base::Quote %></li>
+          <li><%= show_link 'Covoiturage', ActiveRecord::Base::Carpool %></li>
+          <li><%= show_link 'Événements', ActiveRecord::Base::Event %></li>
+          <li><%= show_link 'News', ActiveRecord::Base::News %></li>
+          <li><%= show_link 'Projets', ActiveRecord::Base::Project %></li>
+          <li><%= show_link 'Trombi', ActiveRecord::Base::User %></li>
+          <li><%= show_link 'UVs', ActiveRecord::Base::Course %></li>
         </ul>
       </nav>
 
       <nav>
         <h2>Administration</h2>
         <ul>
-          <li><%= link_to 'Groupes', groups_path %></li>
-          <li><%= link_to 'Rôles', roles_path %></li>
+          <li><%= show_link 'Groupes', ActiveRecord::Base::Group %></li>
+          <li><%= show_link 'Rôles', ActiveRecord::Base::Role %></li>
         </ul>
       </nav>
 

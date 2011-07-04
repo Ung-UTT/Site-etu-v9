@@ -11,6 +11,7 @@ class Ability
       can :create, User
       can [:new, :create], UserSession
     else
+      can :read, User
       can :read, Reminder, :user_id => user.id
 
       can :create, [Annal, Association, Classified, Comment, Course, Document, Event, News, Project, Quote, Reminder]

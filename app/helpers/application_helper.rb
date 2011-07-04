@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def title(page_title, options={})
     content_for(:title, page_title.to_s)
-    return content_tag(:h1, page_title, options)
+    content_tag(:h1, page_title, options)
   end
 
   def title_tag
@@ -75,6 +75,38 @@ module ApplicationHelper
       res += '</ul>'
       return res.html_safe
     end
+  end
+
+  # Je laisse ces tentatives foireuses car il ne doit pas manquer grand chose
+  # pour que ça fonctionne...
+  #def link_to(*args)
+  #  link = super *args;
+  #  logger.info args.last
+  #  return link if args.last.instance_of? String
+  #  #return link if can? :access, link
+  #  return link if can? :read, args.last
+  #  'nope'
+  #end
+
+  #def link_to(body, url, html_options = {})
+  #  logger.info url.class
+  #  return '???' if url.is_a? String
+  #  return super body, url if can? :read, url
+  #  return super body, url if url == :root
+  #  logger.info url.inspect
+  #  'nope'
+  #end
+
+  #def show_link(body, url)
+  #  logger.info url.inspect
+  #  c = ActionController::Routing::Routes.recognize_path(url)[:controller]
+  #  logger.info "lol" if can? :read, url
+  #  link_to(body, url) if can? :read, url
+  #end
+
+  def show_link(body, type)
+    url = '/' + type.to_s.pluralize.downcase
+    link_to body, url if can? :read, type
   end
 
   def link_to_user(user)
