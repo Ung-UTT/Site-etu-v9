@@ -4,7 +4,11 @@ class TimesheetsController < ApplicationController
   # GET /timesheets
   # GET /timesheets.xml
   def index
-    @timesheets = Timesheet.all
+    if params[:users].nil? or params[:users].empty?
+      @timesheets = Timesheet.all
+    else
+      @timesheets = User.find(params[:users]).map(&:timesheets).flatten.uniq
+    end
 
     respond_to do |format|
       format.html # index.html.erb

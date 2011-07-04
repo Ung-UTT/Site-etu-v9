@@ -41,8 +41,9 @@ module ApplicationHelper
     options_for_select(Course.all.map { |a| [a.name, a.id] }.unshift(['Aucun', nil]), default)
   end
 
-  def users_select(object)
-    options_for_select(User.all.map { |a| [a.login, a.id] }, object.users.map(&:id))
+  def users_select(object = nil)
+    default = object.nil? ? nil : object.users.map(&:id)
+    options_for_select(User.all.map { |a| [a.login, a.id] }, default)
   end
 
   def week_select(object)

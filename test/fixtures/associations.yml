@@ -1,7 +1,7 @@
 FritUTT:
   name: FritUTT
   description: Mangeur de frites ? Venez faire des frites-party avec nous :)
-  president: kevin
+  owner: kevin
   lft: 1
   rgt: 4
 
@@ -10,7 +10,7 @@ LibrUTT:
   description: |
     Oh mais que vois-je là ? Windows sur votre ordi, venez vite corriger
     cette erreur !
-  president: joe
+  owner: joe
   parent: FritUTT
   lft: 2
   rgt: 3
@@ -19,7 +19,7 @@ BDE:
   name: BDE
   description: |
     Le Bureau Des Étudiants (BDÉ), très important pour nous (donnez-nous de l'argent :D)
-  president: joe
+  owner: joe
   parent: FritUTT
   lft: 5
   rgt: 6

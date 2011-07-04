@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.order('date desc')
+    @events = Event.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -72,7 +72,7 @@ class EventsController < ApplicationController
   def create
     params[:event][:association_ids] ||= []
     @event = Event.new(params[:event])
-    @event.organizer = current_user
+    @event.owner = current_user
 
     respond_to do |format|
       if @event.save

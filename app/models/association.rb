@@ -1,13 +1,13 @@
 class Association < ActiveRecord::Base
-  validates_presence_of :name, :president
+  validates_presence_of :name, :owner
   validates_uniqueness_of :name
-  validates_associated :president
+  validates_associated :owner
 
   has_paper_trail
   acts_as_nested_set :dependent => :destroy
   acts_as_taggable
 
-  belongs_to :president, :class_name => 'User'
+  belongs_to :owner, :class_name => 'User'
   has_many :roles, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy

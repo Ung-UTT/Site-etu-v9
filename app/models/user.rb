@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   paginates_per 30
 
   has_paper_trail :ignore => ['persistence_token', 'login_count', 'failed_login_count',
-                               'last_request_at', 'current_login_at', 'last_login_at',
-                               'current_login_ip', 'last_login_ip', 'updated_at']
+                              'last_request_at', 'current_login_at', 'last_login_at',
+                              'current_login_ip', 'last_login_ip', 'updated_at']
   acts_as_authentic # Gère aussi les validations
 
   has_many :authorizations, :dependent => :destroy
@@ -14,9 +14,8 @@ class User < ActiveRecord::Base
   has_many :quotes, :dependent => :destroy
   has_many :reminders, :dependent => :destroy
 
-  has_many :created_associations, :foreign_key => 'president_id', :class_name => 'Association', :dependent => :destroy
-  has_many :created_courses, :foreign_key => 'owner_id', :class_name => 'Course', :dependent => :destroy
-  has_many :created_events, :foreign_key => 'organizer_id', :class_name => 'Event', :dependent => :destroy
+  has_many :created_associations, :foreign_key => 'owner_id', :class_name => 'Association', :dependent => :destroy
+  has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
   has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', :dependent => :destroy
   has_and_belongs_to_many :events, :uniq => true
   has_and_belongs_to_many :groups, :uniq => true
@@ -48,5 +47,9 @@ class User < ActiveRecord::Base
       res = res & association.roles
     end
     !res.empty?
+  end
+
+  def is_student?
+    true # TODO: !authorizations.select {|a| a.provider == 'CAS' }.empty? # Ou ancien… (versions…)
   end
 end

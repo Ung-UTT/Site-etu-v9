@@ -4,6 +4,11 @@ class AuthorizationsController < ApplicationController
   def create
     # On récupère les infos de l'authentification
     omniauth = request.env['rack.auth']
+
+    if (omniauth.nil? or omniauth.empty?)
+      return failure
+    end
+
     @auth = Authorization.find_from_hash(omniauth)
 
     if current_user
@@ -23,14 +28,12 @@ class AuthorizationsController < ApplicationController
   end
 
   def failure
-    flash[:notice] = "Mince, l'authentification a échoué"
-    redirect_to :root
+    redirect_to :root, :notice => "Mince, l'authentification a échoué"
   end
 
   def destroy
     @authorization = current_user.authorizations.find(params[:id])
-    flash[:notice] = "La connexion avec #{@authorization.provider} a été supprimée."
     @authorization.destroy
-    redirect_to :root
+    redirect_to :root, :notice => "La connexion avec #{@authorization.provider} a été supprimée."
   end
 end
