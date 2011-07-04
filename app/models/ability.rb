@@ -10,7 +10,7 @@ class Ability
       can :create, User
       can :create, UserSession
     else
-      can :read, User
+      can :read, [Timesheet, User]
       can :read, Reminder, :user_id => user.id
 
       if user.is_student? or !user.roles.empty? # UTTiens ou anciens
