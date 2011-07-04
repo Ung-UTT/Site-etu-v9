@@ -15,8 +15,8 @@
   </div>
   <% unless @association.new_record? %>
   <div class="field">
-    <%= f.label :president_id, 'Changer le président' %><br />
-    <%= f.select :president_id, User.all.map { |u| [u.login, u.id] } %>
+    <%= f.label :owner_id, 'Changer le président' %><br />
+    <%= f.select :owner_id, user_select(@association) %>
   </div>
   <% end %>
   <div class="field">

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20110630213420) do
   create_table "associations", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "president_id"
+    t.integer  "owner_id"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(:version => 20110630213420) do
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20110630213420) do
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "organizer_id"
+    t.integer  "owner_id"
     t.string   "location"
     t.datetime "date"
     t.datetime "created_at"

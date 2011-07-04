@@ -4,8 +4,6 @@ class News < ActiveRecord::Base
   validates_presence_of :title
   validates_associated :user
 
-  default_scope :order => 'created_at DESC'
-
   has_paper_trail
   acts_as_taggable
 

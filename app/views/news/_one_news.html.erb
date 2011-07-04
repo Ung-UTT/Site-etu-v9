@@ -8,7 +8,7 @@
     </h1>
     <dl>
       <dt class="date">Date</dt>
-        <dd class="date"><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%e %b' %></time></dd>
+        <dd class="date"><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%d %b' %></time></dd>
       <dt>Heure</dt>
         <dd><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%Hh' %></time></dd>
       <dt>Auteur</dt>

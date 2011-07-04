@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string       :title
       t.text         :content
-      t.references   :organizer
+      t.references   :owner
       t.string       :location
       t.datetime     :date
 

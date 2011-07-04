@@ -4,10 +4,12 @@ class Event < ActiveRecord::Base
   validates_presence_of :title
   validates_associated :organizer
 
+  default_scope :order => 'date DESC'
+
   has_paper_trail
   acts_as_taggable
 
-  belongs_to :organizer, :class_name => 'User'
+  belongs_to :owner, :class_name => 'User'
   has_many :news, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy

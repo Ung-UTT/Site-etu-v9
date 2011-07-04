@@ -4,7 +4,6 @@ class Course < ActiveRecord::Base
   has_paper_trail
   acts_as_taggable
 
-  belongs_to :owner, :class_name => 'User'
   has_many :annals, :dependent => :destroy
   has_many :timesheets, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
