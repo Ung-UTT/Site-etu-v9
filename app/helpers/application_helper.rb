@@ -78,8 +78,8 @@ module ApplicationHelper
     end
   end
 
-  def show_link(label, object)
-    link_to(label, object) if can? :read, object
+  def show_link(label, klass)
+    link_to(label, {:controller => klass.to_s.pluralize.downcase}) if can?(:read, klass)
   end
 
   def link_to_user(user)
