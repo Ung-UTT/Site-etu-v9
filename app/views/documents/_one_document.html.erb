@@ -3,3 +3,6 @@
 <% if can? :destroy, document %>
   <%= link_to 'X', [documentable, document], :confirm => 'Sûr ?', :method => :delete %>
 <% end %>
+<% if document.image? %>
+  <%= image_tag document.asset.url %>
+<% end %>
