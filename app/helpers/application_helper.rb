@@ -79,7 +79,7 @@ module ApplicationHelper
   end
 
   def show_link(label, object)
-    link_to(label, object) if can? :read, object
+    link_to(label, object) if can?(:read, object)
   end
 
   def link_to_user(user)

@@ -19,10 +19,10 @@
 
     <nav id="menubar">
       <%= link_to image_tag('icons/home.png') + ' Accueil', :root, :title => "Revenir à la page d'accueil." %>
-      <%= link_to image_tag("icons/users.png") + " Trombi", users_path, :title => "Viens chercher des infos sur les UTTiens" if @current_user %>
+      <%= link_to image_tag("icons/users.png") + " Trombi", users_path, :title => "Viens chercher des infos sur les UTTiens" if current_user %>
       <%= link_to image_tag("icons/news.png") + " Annonces", classifieds_path, :title => "Pour vendre ta tondeuse !" %>
-      <%= link_to image_tag("icons/buckutt.png") + " Buckutt", :root, :title => "Recharge ton compte pour payer au foyer." if @current_user %>
-      <%= link_to image_tag("icons/emails.png") + " Mails", :root, :title => "Accède à tes emails depuis le site étu." if @current_user %>
+      <%= link_to image_tag("icons/buckutt.png") + " Buckutt", :root, :title => "Recharge ton compte pour payer au foyer." if current_user %>
+      <%= link_to image_tag("icons/emails.png") + " Mails", :root, :title => "Accède à tes emails depuis le site étu." if current_user %>
     </nav>
   </header>
 
