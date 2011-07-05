@@ -1,6 +1,6 @@
 <%= title 'Association : ' + @association.name %>
 
-<%= image_tag @association.image.asset.url %>
+<%= image_tag @association.image.asset.url unless @association.image.nil? %>
 
 <p>
   <b>Description :</b>
@@ -58,6 +58,23 @@
     <% end %>
   <% end %>
 </p>
+
+<% if can? :upate, @association %>
+<p>
+  <b>Ajouter un rôle :</b>
+  <%= form_for(@association.roles.build) do |f| %>
+    <%= f.error_messages %>
+    <%= f.hidden_field :association_id %>
+    <div class="field">
+      <%= f.label :name, 'Nom' %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Envoyer' %>
+    </div>
+  <% end %>
+</p>
+<% end %>
 
 <% if can? :update, @association %>
   <%= link_to 'Modifier', edit_association_path(@association) %> |
