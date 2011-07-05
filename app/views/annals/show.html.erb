@@ -24,7 +24,7 @@
   <%= link_to t('annal.edit'), edit_annal_path(@annal) %> |
 <% end %>
 <% if can? :destroy, @annal %>
-  <%= link_to  t('annal.delete'), @annal, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to t('annal.delete'), @annal, :confirm => 'Sûr ?', :method => :delete %> |
 <% end %>
 <%= link_to t('annal.list'), annals_path %>
 

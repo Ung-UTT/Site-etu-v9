@@ -10,5 +10,5 @@
 </p>
 
 <%= link_to 'Modifier ce truc à faire', edit_reminder_path(@reminder) %> |
-<%= link_to 'Supprimer', @reminder, :confirm => 'Sûr ?', :method => :delete %> |
+<%= button_to 'Supprimer', @reminder, :confirm => 'Sûr ?', :method => :delete %> |
 <%= link_to 'Liste des trucs à faire', reminders_path %>

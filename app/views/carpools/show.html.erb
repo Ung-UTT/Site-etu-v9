@@ -24,7 +24,7 @@
   <%= link_to 'Modifier', edit_carpool_path(@carpool) %> |
 <% end %>
 <% if can? :destroy, @carpool %>
-  <%= link_to 'Supprimer', @carpool, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to 'Supprimer', @carpool, :confirm => 'Sûr ?', :method => :delete %> |
 <% end %>
 <%= link_to 'Liste des covoiturages', carpools_path %>
 

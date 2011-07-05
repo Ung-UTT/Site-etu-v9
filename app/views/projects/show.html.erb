@@ -30,7 +30,7 @@
   <%= link_to 'Modifier', edit_project_path(@project) %> |
 <% end %>
 <% if can? :destroy, @project %>
-  <%= link_to 'Supprimer', @project, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to 'Supprimer', @project, :confirm => 'Sûr ?', :method => :delete %> |
 <% end %>
 <%= link_to 'Liste des projets', projects_path %>
 

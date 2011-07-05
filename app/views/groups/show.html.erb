@@ -4,7 +4,7 @@
   <b>Utilisateurs :</b>
   <% @group.users.each do |user| %>
     <%= link_to_user user %>
-    <%= link_to 'X', disjoin_group_path(@group, user), :confirm => 'Sûr ?', :method => :delete %>
+    <%= button_to 'X', disjoin_group_path(@group, user), :confirm => 'Sûr ?', :method => :delete %>
   <% end %>
 </p>
 
@@ -14,5 +14,5 @@
 <% end %>
 
 <%= link_to 'Modifier', edit_group_path(@group) %> |
-<%= link_to 'Supprimer', @group, :confirm => 'Sûr ?', :method => :delete %> |
+<%= button_to 'Supprimer', @group, :confirm => 'Sûr ?', :method => :delete %> |
 <%= link_to 'Liste des groupes', groups_path %>

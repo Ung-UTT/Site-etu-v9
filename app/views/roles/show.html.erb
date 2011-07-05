@@ -13,7 +13,7 @@
   <% @role.users.each do |user| %>
     <%= link_to_user user %>
     <% if can? :update, user %>
-      <%= link_to 'X', disjoin_role_path(@role, user), :confirm => 'Sûr ?', :method => :delete %>
+      <%= button_to 'X', disjoin_role_path(@role, user), :confirm => 'Sûr ?', :method => :delete %>
     <% end %>
   <% end %>
 </p>
@@ -29,6 +29,6 @@
   <%= link_to 'Modifier', edit_role_path(@role) %> |
 <% end %>
 <% if can? :destroy, @role %>
-  <%= link_to 'Supprimer', @role, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to 'Supprimer', @role, :confirm => 'Sûr ?', :method => :delete %> |
 <% end %>
 <%= link_to 'Liste des rôles', roles_path %>

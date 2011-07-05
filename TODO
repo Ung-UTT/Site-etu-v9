@@ -21,9 +21,6 @@ User
   Infos via LDAP (avatar, UVs, …) (dump à faire)
   « J'ai oublié mon mot de passe » : Par ent ? (ou regénérer mot de passe pour compte du site étu)
 
-Helpers
-  link_to_delete : form au lieu de data-method
-
 ______________________________________________
 
 Objectifs
