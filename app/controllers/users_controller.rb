@@ -28,6 +28,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def password_reset
+    if params[:email]
+      user = User.find_by_email(params[:email])
+      if user.nil?
+        flash[:alert] = "Mauvaise adresse email"
+      else
+        UserMailer.password_reset(user)
+        flash[:notice] = "Mail envoyé, vous devez cliquer sur le lien dedans"
+      end
+    elsif params[:token]
+      user = User.find_by_perishable_token(params[:token])
+      if user.nil?
+        flash[:alert] = "Le jeton donné est expiré ou mauvais"
+      else
+        user.password = ActiveSupport::SecureRandom.hex(2) 
+        user.password_confirmation = user.password
+        user.save
+        redirect_to :root, :notice => "Votre nouveau mot de passe est : #{user.password}. Evitez de l'oublier ;)."
+      end
+    end
+  end
+
   # GET /users/new
   # GET /users/new.xml
   def new

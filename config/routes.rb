@@ -21,6 +21,7 @@ SiteEtu::Application.routes.draw do
   match 'auth/failure' => 'authorizations#failure'
 
   match 'news/daymail' => 'News#daymail'
+  match 'users/password_reset' => 'Users#password_reset', :as => 'password_reset'
 
   resources :tags, :only => [:index, :show]
 

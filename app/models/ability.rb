@@ -7,8 +7,8 @@ class Ability
     can [:create, :failure], Authorization
 
     if !user
-      can :create, User
-      can :create, UserSession
+      can :create, [User, UserSession]
+      can :password_reset, User
     else
       can :read, Reminder, :user_id => user.id
 

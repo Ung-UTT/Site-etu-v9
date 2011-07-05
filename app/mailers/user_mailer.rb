@@ -8,5 +8,11 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email,
          :subject => '[Daymail] ' + @date)
   end
+
+  def password_reset(user)
+    @user = user
+    mail(:to => user.email,
+         :subject => '[Site étu] Vous avez oublié votre mot de passe')
+  end
 end
 
