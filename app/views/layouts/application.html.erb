@@ -65,7 +65,14 @@
       <nav>
         <h2>Services</h2>
         <ul>
+          <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
           <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
+          <li><%= link_to 'Sports', 'http://www-suaps.utt.fr' %></li>
+          <li><%= link_to 'BDE', 'http://bde.utt.fr' %></li>
+          <li><%= link_to 'Gala', 'http://gala.utt.fr' %></li>
+          <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
+          <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
+          <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
           <li><%= link_to 'Journal', {:controller => 'home', :action => 'newspaper'} %></li>
         </ul>
       </nav>
@@ -104,6 +111,7 @@
       <li>Version 9.0.0-alpha</li>
       <li><%= link_to 'Signaler un bug', :root %></li>
       <li>UTT Net Group</li>
+      <li><%= link_to 'À propos', {:controller => 'home', :action => 'about'} %></li>
     </ul>
     <span onclick="this.innerHTML='&#9786;'; alert('Congratz! U found the secret l3v3l!')">&#9785;</span>
   </footer>

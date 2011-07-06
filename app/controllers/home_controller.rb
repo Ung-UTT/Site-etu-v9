@@ -9,4 +9,7 @@ class HomeController < ApplicationController
     # TODO: News associées à l'association N'UTT
     @news = current_news.select { |n| n.title.match('Journal') }
   end
+
+  def about
+  end
 end

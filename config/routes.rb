@@ -33,6 +33,9 @@ SiteEtu::Application.routes.draw do
     resources :documents
   end
 
-  match '/:action' => 'home'
+  redirect 'buckutt' => 'http://buckutt.etu.utt.fr'
+  redirect 'wiki' => 'http://wiki.etu.utt.fr'
+  redirect 'mails' => 'http://mails.etu.utt.fr'
+  match ':action' => 'home'
   root :to => 'home#index'
 end
