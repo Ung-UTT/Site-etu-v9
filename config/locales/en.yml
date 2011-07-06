@@ -5,63 +5,133 @@ en:
   ability:
     denied: "You are not authorized to do this."
 
-  annal:
-    list: "List of annals"
-    course: "Course"
-    date: "Date"
-    add: "Add an annal"
-    annal: "Annal"
-    description: "Description"
-    course: "Course"
-    tags: "Tags"
-    edit: "Edit"
+  common:
+    add: "Add"
+    confirm: "Sure?"
     delete: "Delete"
+    edit: "Edit"
+    list: "List"
     show: "Show"
     submit: "Submit"
 
-  association:
+  annal: "Annal"
+  association: "Association"
+  authorization: "Authorization"
+  calendar: "Calendar"
+  carpool: "Carpool"
+  classified: "Classfied"
+  comment: "Comment"
+  course: "Course"
+  document: "Document"
+  event: "Event"
+  group: "Group"
+  image: "Image"
+  news: "News"
+  preference: "Preference"
+  project: "Project"
+  quote: "Quote"
+  reminder: "Reminder"
+  role: "Role"
+  tag: "Tag"
+  tags: "Tags"
+  timesheet: "Timesheet"
+  user: "User"
+  user_session: "User's session"
 
-  authorization:
+  annals:
+    name: "Name"
+    date: "Date"
+    description: "Description"
+    course: "Associated course"
 
-  carpool:
+  associations:
+    name: "Name"
+    description: "Description"
+    owner: "President"
+    parent: "Parent"
+    children: "Children"
+    join: "Join"
+    disjoin: "Disjoin"
+    roles: "Association's roles"
+    events: "Association's events"
+    add_role: "Add a role"
 
-  classified:
+  carpools:
+    description: "Description"
+    location: "Location"
+    date: "Date"
+    is_driver: "Driver ?"
 
-  comment:
+  classifieds:
+    title: "Title"
+    description: "Description"
+    price: "Price"
+    location: "Location"
+    user: "Seller"
 
-  course:
+  comments:
+    content: "Content"
+    user: "Author"
 
-  document:
+  courses:
+    name: "Name"
+    description: "Description"
 
-  event:
+  documents:
 
-  group:
+  events:
+    name: "Name"
+    description: "Description"
+    location: "Location"
+    start_at: "Start at"
+    end_at: "End at"
 
-  home:
-    index:
-      hello: "Hello"
-    newspaper:
-      newspaper: "Newspaper"
+  groups:
+    name: "Name"
+    parent: "Parent"
 
-  news:
+  newss:
+    title: "Title"
+    content: "Content"
+    user: "Author"
+    event: "Associated event"
+    is_moderated: "Is moderated?"
 
-  preference:
+  preferences:
+    locale: "Locale"
+    quote_type: "Type of quotes"
 
-  project:
+  projects:
+    name: "Name"
+    description: "Description"
+    owner: "Leader"
 
-  quote:
+  quotes:
+    content: "Content"
 
-  reminder:
+  reminders:
+    content: "Content"
 
-  role:
+  roles:
+    name: "Name"
+    association: "Associated association"
+    parent: "Parent"
 
-  tag:
+  timesheets:
+    day: "Day"
+    from: "From"
+    to: "To"
+    week: "Week"
+    room: "Room"
+    course: "Course during the timesheet"
 
-  timesheet:
+  users:
+    login: "Login"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Password confirmation"
 
-  user:
-
-  user_session:
+  # ActiveRecord translations
 
   time:
     formats:

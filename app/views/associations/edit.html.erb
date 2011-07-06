@@ -1,6 +1,6 @@
-<%= title "Modifier l'association" %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @association %> |
-<%= link_to 'Liste des associations', associations_path %>
+<%= link_to t('common.show'), @association %> |
+<%= link_to t('common.list'), associations_path %>

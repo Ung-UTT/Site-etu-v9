@@ -1,14 +1,14 @@
-<%= title t('annal.list') %>
+<%= title(t('annal') + ' : ' + t('common.list')) %>
 
 <ul>
 <% @annals.each do |annal| %>
   <li>
     <%= link_to annal.name, annal %>
-    (<%= t('annal.course') %> : <%= annal.course.name %>, <%= t('annal.date') %> : <%= l annal.date %>)
+    (<%= t('annals.course') %> : <%= annal.course.name %>, <%= t('annals.date') %> : <%= l annal.date %>)
   </li>
 <% end %>
 </ul>
 
 <br />
 
-<%= link_to t('annal.add'), new_annal_path %>
+<%= link_to t('common.add'), new_annal_path %>
