@@ -1,4 +1,4 @@
-<%= title 'Événement : ' + @event.title %>
+<%= title 'Événement : ' + @event.name %>
 
 <p>
   <b>Description :</b>
@@ -16,8 +16,13 @@
 </p>
 
 <p>
-  <b>Date :</b>
-  <%= @event.date.strftime 'le %d %B %Y à %Hh%M' %>
+  <b>Du :</b>
+  <%= @event.start_at.strftime 'le %d %B %Y à %Hh%M' %>
+</p>
+
+<p>
+  <b>Au :</b>
+  <%= @event.end_at.strftime 'le %d %B %Y à %Hh%M' %>
 </p>
 
 <p>

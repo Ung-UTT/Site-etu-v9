@@ -97,11 +97,12 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
   end
 
   create_table "events", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.text     "content"
-    t.integer  "owner_id"
     t.string   "location"
-    t.datetime "date"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

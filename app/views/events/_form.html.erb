@@ -14,8 +14,13 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :date, 'Date' %><br />
-    <%= f.datetime_select :date %>
+    <%= f.label :start_at, 'Du' %><br />
+    <%= f.datetime_select :start_at %>
+  </div>
+  </div>
+  <div class="field">
+    <%= f.label :end_at, 'Au' %><br />
+    <%= f.datetime_select :end_at %>
   </div>
   <div class="field">
     <%= label_tag 'associations', 'Associations' %><br />

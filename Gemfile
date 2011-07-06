@@ -11,8 +11,8 @@ gem 'cancan'    # Persmissions
 # Autres
 gem 'paperclip'   # Gestion de fichier (ou carrierwave ?)
 gem 'kaminari'    # Pagination
-# gem 'yahoo-weather'
 gem 'acts-as-taggable-on'
 gem 'paper_trail' # Historique
 
 gem 'awesome_nested_set'
+gem 'event-calendar', :require => 'event_calendar'

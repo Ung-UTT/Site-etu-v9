@@ -1,11 +1,12 @@
 class Event < ActiveRecord::Base
   paginates_per 20
 
-  validates_presence_of :title
+  validates_presence_of :name
   validates_associated :organizer
 
-  default_scope :order => 'date DESC'
+  default_scope :order => 'start_at DESC'
 
+  has_event_calendar
   has_paper_trail
   acts_as_taggable
 

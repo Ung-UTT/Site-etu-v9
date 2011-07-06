@@ -40,6 +40,7 @@ GEM
     cancan (1.6.5)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    event-calendar (2.3.3)
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
@@ -146,6 +147,7 @@ DEPENDENCIES
   authlogic
   awesome_nested_set
   cancan
+  event-calendar
   kaminari
   omniauth
   paper_trail
