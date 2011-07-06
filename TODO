@@ -35,11 +35,14 @@ Objectifs
   Refactoriser
 
 Bugs :
-  Paperclip a du mal avec le sous-dossier site-etu/
-  show_link a du mal avec le sous-dossier site-etu/ (WTF ?)
-  Impossible de se logguer avec l'add-on Firefox IPFuck (mais c'est pareil sur LinuxFr ;))
-  Authlogic a du mal avec l'authentification depuis peu
-  Omniauth bug ou quoi ? (pas de CAS/Twitter/OpenID)
+  Paperclip et show_link ont du mal avec le sous-dossier site-etu/ (WTF ?)
+    liés à link_to, le bug vient sûrement de Passenger
+  Omniauth bugge ! (pas de CAS/Twitter/OpenID)
+    Ne fonctionne pas avec sa dernière version non plus
+    Le remplacer par quelque chose d'autre ? (seulement CAS)
+
+Bugs des autres :
+  IPFuck : il faut cocher "Synchronize IP together"
 
 Plus tard
   Rails 3.1 (dès que disponible sur rubygems)

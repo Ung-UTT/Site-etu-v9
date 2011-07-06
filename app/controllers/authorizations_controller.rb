@@ -5,7 +5,7 @@ class AuthorizationsController < ApplicationController
     # On récupère les infos de l'authentification
     omniauth = request.env['rack.auth']
 
-    if (omniauth.nil? or omniauth.empty?)
+    unless omniauth
       return failure
     end
 
@@ -28,7 +28,7 @@ class AuthorizationsController < ApplicationController
   end
 
   def failure
-    redirect_to :root, :notice => "Mince, l'authentification a échoué"
+    redirect_to :root, :alert => "Mince, l'authentification via #{params[:provider]} a échoué"
   end
 
   def destroy

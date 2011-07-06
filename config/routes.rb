@@ -1,4 +1,8 @@
 SiteEtu::Application.routes.draw do
+  match 'auth/:provider' => 'authorizations#create', :as => 'auth'
+  match 'auth/:provider/callback' => 'authorizations#create'
+  match 'auth/failure' => 'authorizations#failure'
+
   match 'quotes/random' => 'quotes#random'
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
@@ -16,10 +20,6 @@ SiteEtu::Application.routes.draw do
 
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
-
-  match 'auth/:provider' => 'authorizations#create', :as => 'auth'
-  match 'auth/:provider/callback' => 'authorizations#create'
-  match 'auth/failure' => 'authorizations#failure'
 
   match 'news/daymail' => 'News#daymail'
   match 'users/password_reset' => 'Users#password_reset', :as => 'password_reset'
