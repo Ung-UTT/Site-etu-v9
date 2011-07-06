@@ -5,13 +5,15 @@ module CalendarHelper
   
   # custom options for this calendar
   def event_calendar_opts
-    { 
-      :year => @year,
-      :month => @month,
-      :event_strips => @event_strips,
-      :month_name_text => I18n.localize(@shown_month, :format => "%B %Y"),
-      :previous_month_text => "<< " + month_link(@shown_month.prev_month),
-      :next_month_text => month_link(@shown_month.next_month) + " >>"    }
+    height = controller.controller_name == 'calendar' ? 500 : 100
+    {
+      :height => height,
+      :year => @ec_year,
+      :month => @ec_month,
+      :event_strips => @ec_event_strips,
+      :month_name_text => I18n.localize(@ec_shown_month, :format => "%B %Y"),
+      :previous_month_text => "<< " + month_link(@ec_shown_month.prev_month),
+      :next_month_text => month_link(@ec_shown_month.next_month) + " >>"    }
   end
 
   def event_calendar

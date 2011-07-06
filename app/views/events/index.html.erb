@@ -3,7 +3,7 @@
 <ul>
 <% @events.each do |event| %>
   <li>
-    <%= event.start_at.strftime 'le %d %B à %Hh' %> : <%= link_to event.title, event %>
+    <%= event.start_at.strftime 'le %d %B à %Hh' %> : <%= link_to event.name, event %>
   </li>
 <% end %>
 </ul>

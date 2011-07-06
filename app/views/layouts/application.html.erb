@@ -78,10 +78,12 @@
         <% end %>
         </ul>
       </nav>
-      
+
+    <% if (controller.controller_name != 'calendar') %>
       <nav>
         <%= render :template => 'calendar/index' %>
       </nav>
+    <% end %>
     </aside>
 
     <section id="content">

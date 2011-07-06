@@ -1,7 +1,6 @@
 SiteEtu::Application.routes.draw do
-  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-
   match 'quotes/random' => 'quotes#random'
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   # TODO: Réorganiser joliment les join/disjoin
   match 'events/:id/join' => 'events#join', :as => 'join_event'

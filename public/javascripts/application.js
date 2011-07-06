@@ -19,9 +19,3 @@ $('*').keyup(function(event) {
     progress = 0;
   }
 });
-
-$(function() {
-  MINI_GROUPCHATS = ["utt@muc.jappix.com"];
-  MINI_ANIMATE = true;
-  launchMini(false, true, "anonymous.jappix.com");
-});

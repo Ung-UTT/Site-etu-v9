@@ -1,3 +1,7 @@
-<h1>Calendrier</h1>
+<% if controller.controller_name == 'calendar' %>
+  <%= title 'Calendrier' %>
+<% else %>
+  <h2><%= link_to 'Calendrier', calendar_path %></h2>
+<% end %>
 
 <%=raw event_calendar %>

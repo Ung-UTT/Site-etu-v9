@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   paginates_per 20
 
   validates_presence_of :name
-  validates_associated :organizer
+  validates_associated :owner
 
   default_scope :order => 'start_at DESC'
 
