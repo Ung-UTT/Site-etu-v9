@@ -1,17 +1,17 @@
-<%= title 'Horaire : ' + @timesheet.range %>
+<%= title(t('timesheet') + ' : ' + @timesheet.range) %>
 
 <p>
-  <b>Salle :</b>
+  <b><%= t('timesheets.room') %></b>
   <%= @timesheet.room %>
 </p>
 
 <p>
-  <b>Course :</b>
+  <b><%= t('timesheets.course') %></b>
   <%= link_to @timesheet.course.name, @timesheet.course %>
 </p>
 
 <p>
-  <b>Participants :</b>
+  <b><%= t('timesheets.users') %></b>
   <%= link_to_users @timesheet.users %>
 </p>
 

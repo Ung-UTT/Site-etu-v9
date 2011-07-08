@@ -1,8 +1,8 @@
 <section id="news">
   <% if controller.controller_name == 'news' %>
-    <%= title 'Les news' %>
+    <%= title t('newss.list') %>
   <% else %>
-    <h1>Les news</h1>
+    <h1><%= t('newss.list') %></h1>
   <% end %>
 
   <% @news.each do |news| %>

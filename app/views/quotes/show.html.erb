@@ -1,9 +1,9 @@
-<% title 'Citation : ' + @quote.content %>
+<% title(t('quote') + ' : ' + @quote.content) %>
 
 <%= render 'one_quote', {:quote => @quote} %>
 
 <p>
-  <b>Tags :</b>
+  <b><%= t('tags') %></b>
   <%= link_to_tags @quote %>
 </p>
 

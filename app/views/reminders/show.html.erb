@@ -1,11 +1,11 @@
-<%= title 'À faire : ' + @reminder.content %>
+<%= title(t('reminder') + ' : ' + @reminder.content) %>
 
 <p>
-  <b>Appartient à :</b>
+  <b><%= t('reminders.user') %></b>
   <%= link_to_user @reminder.user %>
 </p>
 <p>
-  <b>Tags :</b>
+  <b><%= t('tags') %></b>
   <%= link_to_tags @reminder %>
 </p>
 

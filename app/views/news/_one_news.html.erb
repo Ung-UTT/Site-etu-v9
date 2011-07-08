@@ -3,19 +3,19 @@
     <h1>
       <%= link_to news.title, news %>
       <% if !news.is_moderated and can? :moderate, News %>
-        | <%= link_to 'Modère moi !', edit_news_path(news), :class => 'moderate' %>
+        | <%= link_to t('newss.moderate'), edit_news_path(news), :class => 'moderate' %>
       <% end %>
     </h1>
     <dl>
-      <dt class="date">Date</dt>
-        <dd class="date"><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%d %b' %></time></dd>
-      <dt>Heure</dt>
-        <dd><time datetime="<%= news.created_at.utc  %>"><%= news.created_at.strftime '%Hh' %></time></dd>
-      <dt>Auteur</dt>
+      <dt class="date"><%= t('newss.date') %></dt>
+        <dd class="date"><time datetime="<%= news.created_at.utc  %>"><%= l(news.created_at, :format => '%d %b') %></time></dd>
+      <dt><%= t('newss.hour') %></dt>
+        <dd><time datetime="<%= news.created_at.utc  %>"><%= l(news.created_at, :format => '%Hh') %></time></dd>
+      <dt><%= t('newss.user') %></dt>
         <dd><%= link_to_user news.user %></dd>
-      <dt>Tags</dt>
+      <dt><%= t('tags') %></dt>
         <dd><%= link_to_tags news %></dd>
-      <dt>Commentaires</dt>
+      <dt><%= t('newss.comments') %></dt>
         <dd class="last"><%= news.comments.count %></dd>
     </dl>
   </header>
@@ -23,7 +23,7 @@
   <%= news.content %>
 
   <% if news.event %>
-  <h3>Événement associé :</h3>
+  <h3><%= t('newss.event') %></h3>
   <p>
     <%= link_to news.event.name, news.event %>
   </p>

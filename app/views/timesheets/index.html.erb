@@ -1,8 +1,8 @@
-<%= title 'Les horaires' %>
+<%= title t('timesheets.list') %>
 
 <%= form_tag(timesheets_path, :method => :get) do %>
   <%= select_tag :users, users_select, :multiple => true %>
-  <%= submit_tag 'Cumuler' %>
+  <%= submit_tag t('timesheets.cumulate') %>
 <% end %>
 
 <ul>

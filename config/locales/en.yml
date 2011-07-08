@@ -153,6 +153,10 @@ en:
     user: "Author"
     event: "Associated event"
     is_moderated: "Is moderated?"
+    moderate: "Moderate me !"
+    date: "Date"
+    hour: "Hour"
+    comments: "Comments"
 
   preferences:
     list: "Your preferences"
@@ -164,20 +168,32 @@ en:
     name: "Name"
     description: "Description"
     owner: "Leader"
+    users: "Participants"
+    join: "Join"
+    disjoin: "Disjoin"
 
   quotes:
     list: "List of quotes"
     content: "Content"
+    by: "By"
 
   reminders:
     list: "List of reminders"
     content: "Content"
+    user: "User"
 
   roles:
     list: "List of roles"
     name: "Name"
     association: "Associated association"
     parent: "Parent"
+    users: "Users"
+    default:
+      superAdmin: "SuperAdministrator"
+      admin: "Administrator"
+      moderator: "Moderator"
+
+  tags_list: "List of tags"
 
   timesheets:
     list: "List of timesheets"
@@ -187,6 +203,8 @@ en:
     week: "Week"
     room: "Room"
     course: "Course during the timesheet"
+    cumulate: "Cumuler"
+    users: "Participants"
 
   users:
     list: "List of users"
@@ -194,6 +212,7 @@ en:
     email: "Email"
     password: "Password"
     password_confirmation: "Password confirmation"
+    password_reset: "Did you forget your password?"
 
   # ActiveRecord translations
 

@@ -1,15 +1,14 @@
-<!-- TODO: Traduire le nom du rôle affiché -->
-<%= title 'Rôle : ' + @role.name %>
+<%= title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, :default => @role.name)) %>
 
 <% if @role.association %>
 <p>
-  <b>Association associée :</b>
+  <b><%= t('roles.association') %></b>
   <%= link_to @role.association.name, @role.association %>
 </p>
 <% end %>
 
 <p>
-  <b>Utilisateurs ayant ce rôle :</b>
+  <b><%= t('roles.users') %></b>
   <% @role.users.each do |user| %>
     <%= link_to_user user %>
     <% if can? :update, user %>

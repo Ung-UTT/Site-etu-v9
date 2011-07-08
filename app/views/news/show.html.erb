@@ -1,4 +1,4 @@
-<% title 'News : ' + @news.title %>
+<% title(t('news') ' : ' + @news.title) %>
 
 <section id="news">
   <%= render 'one_news', {:news => @news} %>

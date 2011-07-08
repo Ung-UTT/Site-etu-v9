@@ -1,10 +1,10 @@
-<%= title 'Rôles' %>
+<%= title t('roles.list') %>
 
 <ul>
 <% @roles.each do |role| %>
   <li>
-    <!-- TODO: Traduire le nom du rôle affiché -->
-    <%= link_to role.name + (role.association ? " (#{role.association.name})" : ''), role %></td>
+    <%= link_to(t('roles.default.'+role.name, :default => role.name)
+        + (role.association ? " (#{role.association.name})" : ''), role) %>
   </li>
 <% end %>
 </ul>

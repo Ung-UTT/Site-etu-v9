@@ -2,31 +2,31 @@
   <%= f.error_messages %>
 
   <div class="field">
-    <%= f.label :day, 'Jour' %><br />
+    <%= f.label :day, t('timesheets.day') %><br />
     <%= f.select :day, day_select(@timesheet) %>
   </div>
   <div class="field">
-    <%= f.label :from, 'Début' %><br />
+    <%= f.label :from, t('timesheets.from') %><br />
     <%= f.time_select :from, {:minute_step => 5} %>
   </div>
   <div class="field">
-    <%= f.label :to, 'Fin' %><br />
+    <%= f.label :to, t('timesheets.to') %><br />
     <%= f.time_select :to, {:minute_step => 5} %>
   </div>
   <div class="field">
-    <%= f.label :week, 'Semaine' %><br />
+    <%= f.label :week, t('timesheets.week') %><br />
     <%= f.select :week, week_select(@timesheet) %>
   </div>
   <div class="field">
-    <%= f.label :room, 'Salle' %><br />
+    <%= f.label :room, t('timesheets.room') %><br />
     <%= f.text_field :room %>
   </div>
   <div class="field">
-    <%= f.label 'course_id', 'Cours associé' %><br />
+    <%= f.label 'course_id', t('timesheets.course') %><br />
     <%= f.select 'course_id', course_select(@timesheet) %>
   </div>
   <div class="field">
-    <%= label_tag 'users', 'Ceux qui utilisent cet horaire' %><br />
+    <%= label_tag 'users', t('timesheets.users') %><br />
     <% User.all.each do |user| %>
       <%= check_box_tag 'timesheet[user_ids][]', user.id, @timesheet.users.include?(user) %>
       <%= user.login %>
