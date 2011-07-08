@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
   end
 
   create_table "carpools", :force => true do |t|
-    t.text     "content"
+    t.text     "description"
     t.string   "location"
     t.datetime "date"
     t.boolean  "is_driver"

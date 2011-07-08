@@ -1,7 +1,7 @@
 class CreateCarpools < ActiveRecord::Migration
   def self.up
     create_table :carpools do |t|
-      t.text        :content
+      t.text        :description
       t.string      :location
       t.datetime    :date
       t.boolean     :is_driver

@@ -1,6 +1,6 @@
-<%= title 'Modifier ce covoiturage' %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Afficher', @carpool %> |
-<%= link_to 'Liste des covoiturages', carpools_path %>
+<%= link_to t('common.show'), @carpool %> |
+<%= link_to t('common.list'), carpools_path %>

@@ -1,4 +1,4 @@
-<%= title 'Covoiturage' %>
+<%= title t('carpools.list') %>
 
 <ul>
 <% @carpools.each do |carpool| %>
@@ -7,5 +7,5 @@
 </ul>
 
 <% if can? :create, Carpool %>
-  <%= link_to 'Ajouter', new_carpool_path %>
+  <%= link_to t('common.add'), new_carpool_path %>
 <% end %>

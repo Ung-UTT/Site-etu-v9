@@ -1,32 +1,32 @@
-<%= title 'Covoiturage : ' + @carpool.location %>
+<%= title(t('carpool') + ' : ' + @carpool.location) %>
 
 <p>
-  <b>Description :</b>
-  <%= @carpool.content %>
+  <b><%= t('carpools.description') %></b>
+  <%= @carpool.description %>
 </p>
 
 <p>
-  <b>Date :</b>
+  <b><%= t('carpools.date') %></b>
   <%= @carpool.date %>
 </p>
 
 <p>
-  <b>Conducteur ? </b>
+  <b><%= t('carpools.is_driver') %></b>
   <%= @carpool.is_driver %>
 </p>
 
 <p>
-  <b>Tags :</b>
+  <b><%= t('tags') %></b>
   <%= link_to_tags @carpool %>
 </p>
 
 <% if can? :update, @carpool %>
-  <%= link_to 'Modifier', edit_carpool_path(@carpool) %> |
+  <%= link_to t('common.edit'), edit_carpool_path(@carpool) %> |
 <% end %>
 <% if can? :destroy, @carpool %>
-  <%= button_to 'Supprimer', @carpool, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to t('common.delete'), @carpool, :confirm => t('common.sure'), :method => :delete %> |
 <% end %>
-<%= link_to 'Liste des covoiturages', carpools_path %>
+<%= link_to t('common.list'), carpools_path %>
 
 <%= render 'documents/list_and_add', {:documentable => @carpool, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @carpool, :comments => @comments} %>

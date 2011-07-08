@@ -39,12 +39,14 @@ en:
   user_session: "User's session"
 
   annals:
+    list: "List of annals"
     name: "Name"
     date: "Date"
     description: "Description"
     course: "Associated course"
 
   associations:
+    list: "List of associations"
     name: "Name"
     description: "Description"
     owner: "President"
@@ -57,12 +59,14 @@ en:
     add_role: "Add a role"
 
   carpools:
+    list: "List of carpools"
     description: "Description"
     location: "Location"
     date: "Date"
     is_driver: "Driver ?"
 
   classifieds:
+    list: "List of classifieds"
     title: "Title"
     description: "Description"
     price: "Price"
@@ -70,16 +74,19 @@ en:
     user: "Seller"
 
   comments:
+    list: "List of comments"
     content: "Content"
     user: "Author"
 
   courses:
+    list: "List of courses"
     name: "Name"
     description: "Description"
 
   documents:
 
   events:
+    list: "List of events"
     name: "Name"
     description: "Description"
     location: "Location"
@@ -87,10 +94,12 @@ en:
     end_at: "End at"
 
   groups:
+    list: "List of groups"
     name: "Name"
     parent: "Parent"
 
   newss:
+    list: "List of news"
     title: "Title"
     content: "Content"
     user: "Author"
@@ -98,26 +107,32 @@ en:
     is_moderated: "Is moderated?"
 
   preferences:
+    list: "Your preferences"
     locale: "Locale"
     quote_type: "Type of quotes"
 
   projects:
+    list: "List of projects"
     name: "Name"
     description: "Description"
     owner: "Leader"
 
   quotes:
+    list: "List of quotes"
     content: "Content"
 
   reminders:
+    list: "List of reminders"
     content: "Content"
 
   roles:
+    list: "List of roles"
     name: "Name"
     association: "Associated association"
     parent: "Parent"
 
   timesheets:
+    list: "List of timesheets"
     day: "Day"
     from: "From"
     to: "To"
@@ -126,6 +141,7 @@ en:
     course: "Course during the timesheet"
 
   users:
+    list: "List of users"
     login: "Login"
     email: "Email"
     password: "Password"

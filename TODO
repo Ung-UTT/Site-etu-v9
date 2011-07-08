@@ -12,10 +12,10 @@ Ability
   v9.1 : Ajouter la notion de profs
 
 Event
+  QR Code (toutes les pages)
   Ajouter à mon agenda (iCal, Google Calendar, …)
   Inviter des gens
   Réverser place
-  QR Code (toutes les pages)
 
 User
   Infos via LDAP (avatar, UVs, …) (dump à faire)
