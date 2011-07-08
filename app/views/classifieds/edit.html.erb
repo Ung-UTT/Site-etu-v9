@@ -1,6 +1,6 @@
-<%= title 'Modifier cette annonce' %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @classified %> |
-<%= link_to 'Liste des annonces', classifieds_path %>
+<%= link_to t('common.show'), @classified %> |
+<%= link_to t('common.list'), classifieds_path %>

@@ -1,4 +1,4 @@
-<%= title 'Les annonces' %>
+<%= title t('classifieds.list') %>
 
 <ul>
 <% @classifieds.each do |classified| %>
@@ -9,5 +9,5 @@
 <br />
 
 <% if can? :create, Classified %>
-  <%= link_to 'Ajouter une annonce', new_classified_path %>
+  <%= link_to t('common.add'), new_classified_path %>
 <% end %>

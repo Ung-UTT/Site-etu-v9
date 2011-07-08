@@ -1,20 +1,20 @@
 bike:
   title: Vélo presque neuf
-  content: Rouge à pois vert
+  description: Rouge à pois vert
   price: 50
   location: 42, rue de la petite Auberge. 10000 Troyes.
   user: joe
 
 magic:
   title: Poudre magique
-  content: Elle vous rendra "magique"
+  description: Elle vous rendra "magique"
   price: 135
   location: Au RU
   user: joe
 
 pens:
   title: Pleins de stylos que vous metterez au moins une vie à utiliser
-  content: |
+  description: |
     Plusieurs milliers de stylos :
       * 4 couleurs
       * bleus, verts, rouges, noirs

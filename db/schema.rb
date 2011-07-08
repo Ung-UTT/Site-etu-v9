@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
 
   create_table "classifieds", :force => true do |t|
     t.string   "title"
-    t.text     "content"
+    t.text     "description"
     t.decimal  "price"
     t.string   "location"
     t.integer  "user_id"
