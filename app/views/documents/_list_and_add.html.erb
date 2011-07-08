@@ -1,8 +1,8 @@
-<h3><%= link_to 'Documents', [documentable, Document] %></h3>
+<h3><%= link_to t('documents.list'), [documentable, Document] %></h3>
 
 <ul class="documents">
   <% if documents.empty? %>
-    Aucun document
+    <%= t('documents.count', :count => 0) %>
   <% else %>
     <% documents.each do |document| %>
     <li>
@@ -15,6 +15,6 @@
 <% if can? :create, documentable.documents.new %>
   <%= form_for([documentable, Document.new], :html => {:multipart => true}) do |f| %>
       <%= f.file_field :asset %>
-      <%= f.submit "Ajouter un document" %>
+      <%= f.submit t('common.add') %>
   <% end %>
 <% end %>

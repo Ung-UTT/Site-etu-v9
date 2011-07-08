@@ -21,7 +21,7 @@ en:
   carpool: "Carpool"
   classified: "Classfied"
   comment:
-    one: "one comment"
+    one: "One comment"
     other: "%{count} comments"
   course: "Course"
   document: "Document"
@@ -84,8 +84,14 @@ en:
     list: "List of courses"
     name: "Name"
     description: "Description"
+    users: "Student"
+    annals: "Annals of this course"
 
   documents:
+    list: "List of documents"
+    count:
+      one: "One document"
+      other: "%{count} documents"
 
   events:
     list: "List of events"

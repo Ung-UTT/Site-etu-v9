@@ -1,6 +1,6 @@
-<%= title 'Modifier le cours' %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @course %> |
-<%= link_to 'Liste des cours', courses_path %>
+<%= link_to t('common.show'), @course %> |
+<%= link_to t('common.list'), courses_path %>

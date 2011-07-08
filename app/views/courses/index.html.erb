@@ -1,4 +1,4 @@
-<%= title 'UVs' %>
+<%= title t('courses.list') %>
 
 <ul>
 <% @courses.each do |course| %>
@@ -11,5 +11,5 @@
 <br />
 
 <% if can? :create, Course %>
-  <%= link_to 'Ajouter un cours', new_course_path %>
+  <%= link_to t('common.add'), new_course_path %>
 <% end %>
