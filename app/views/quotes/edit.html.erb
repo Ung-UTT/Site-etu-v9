@@ -1,6 +1,6 @@
-<%= title 'Modifier la citation' %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @quote %> |
-<%= link_to 'Liste des citations', quotes_path %>
+<%= link_to t('common.show'), @quote %> |
+<%= link_to t('common.list'), quotes_path %>

@@ -1,6 +1,6 @@
-<%= title 'Modifier la news' %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @news %> |
-<%= link_to 'Liste des news', news_index_path %>
+<%= link_to t('common.show'), @news %> |
+<%= link_to t('common.list'), news_index_path %>

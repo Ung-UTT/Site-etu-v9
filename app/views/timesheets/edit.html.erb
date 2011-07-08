@@ -1,6 +1,6 @@
-<%= title "Modifier l'horaire" %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @timesheet %> |
-<%= link_to 'Liste des horaires', timesheets_path %>
+<%= link_to t('common.show'), @timesheet %> |
+<%= link_to t('common.list'), timesheets_path %>

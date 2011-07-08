@@ -115,6 +115,37 @@ en:
     parent: "Parent"
     users: "Users"
 
+  home:
+    newspaper: "Newspaper"
+
+  layout:
+    home: "Homepage"
+    home_title: "Come back to the home page"
+    users: "Face book"
+    users_title: "All you want to know about UTT's student"
+    classifieds: "Classifieds"
+    classifieds_title: "To sell your old books"
+    buckutt: "Buckutt"
+    buckutt_title: "To buy things in the Foyer"
+    mails: "Mails"
+    mails_title: "All your mails, with a great interface"
+    annals: "Annals"
+    associations: "Associations"
+    quotes: "Quotes"
+    timesheets: "Timesheets"
+    carpools: "Carpools"
+    events: "Events"
+    news: "News"
+    projects: "Projects"
+    course: "Courses"
+    groups: "Groups"
+    roles: "Roles"
+    content: "Content"
+    services: "Services"
+    associations_clubs: "Associations & clubs"
+    bug: "Report a bug"
+    about: "About"
+
   newss:
     list: "List of news"
     title: "Title"

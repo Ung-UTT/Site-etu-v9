@@ -4,12 +4,12 @@
   <%= render 'one_news', {:news => @news} %>
 
   <% if can? :update, @news %>
-    <%= link_to 'Modifier', edit_news_path(@news) %> |
+    <%= link_to t('common.edit'), edit_news_path(@news) %> |
   <% end %>
   <% if can? :destroy, @news %>
-    <%= button_to 'Supprimer', @news, :confirm => 'Êtes-vous sûr ?', :method => :delete %> |
+    <%= button_to t('common.delete'), @news, :confirm => t('common.confirm'), :method => :delete %> |
   <% end %>
-  <%= link_to 'Liste des news', news_index_path %>
+  <%= link_to t('common.list'), news_index_path %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @news, :documents => @documents} %>

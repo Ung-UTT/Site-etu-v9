@@ -33,9 +33,9 @@
 <% end %>
 
 <% if can? :update, @user %>
-  <%= link_to 'Modifier', edit_user_path(@user) %> |
+  <%= link_to t('common.edit'), edit_user_path(@user) %> |
 <% end %>
 <% if can? :destroy, @user %>
-  <%= button_to 'Supprimer', @user, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to t('common.delete'), @user, :confirm => t('common.delete'), :method => :delete %> |
 <% end %>
-<%= link_to 'Liste des profils', users_path %>
+<%= link_to t('common.list'), users_path %>

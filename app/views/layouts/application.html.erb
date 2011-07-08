@@ -18,11 +18,11 @@
     </div>
 
     <nav id="menubar">
-      <%= link_to image_tag('icons/home.png') + ' Accueil', :root, :title => "Revenir à la page d'accueil." %>
-      <%= link_to image_tag("icons/users.png") + " Trombi", users_path, :title => "Viens chercher des infos sur les UTTiens" if current_user %>
-      <%= link_to image_tag("icons/news.png") + " Annonces", classifieds_path, :title => "Pour vendre ta tondeuse !" %>
-      <%= link_to image_tag("icons/buckutt.png") + " Buckutt", :root, :title => "Recharge ton compte pour payer au foyer." if current_user %>
-      <%= link_to image_tag("icons/emails.png") + " Mails", :root, :title => "Accède à tes emails depuis le site étu." if current_user %>
+      <%= link_to image_tag('icons/home.png') + t('layout.home'), :root, :title => t('layout.home') %>
+      <%= link_to image_tag("icons/users.png") + t('layout.users'), users_path, :title => t('layout.users') if current_user %>
+      <%= link_to image_tag("icons/news.png") + t('layout.classifieds'), classifieds_path, :title => t('layout.classifieds') %>
+      <%= link_to image_tag("icons/buckutt.png") + t('layout.buckutt'), :root, :title => t('layout.buckutt') if current_user %>
+      <%= link_to image_tag("icons/emails.png") + t('layout.mails'), :root, :title => t('layout.mails') if current_user %>
     </nav>
   </header>
 
@@ -37,33 +37,33 @@
       </section>
 
       <nav>
-        <h2>Contenus</h2>
+        <h2><%= t('layout.content') %></h2>
         <ul>
-          <li><%= link_to_if_can 'Annales', Annal %></li>
-          <li><%= link_to_if_can 'Annonces', Classified %></li>
-          <li><%= link_to_if_can 'Associations', Association %></li>
-          <li><%= link_to_if_can 'Citations', Quote %></li>
-          <li><%= link_to_if_can "Cumul d'emploi du temps", Timesheet %></li>
-          <li><%= link_to_if_can 'Covoiturage', Carpool %></li>
-          <li><%= link_to_if_can 'Événements', Event %></li>
-          <li><%= link_to_if_can 'News', News %></li>
-          <li><%= link_to_if_can 'Projets', Project %></li>
-          <li><%= link_to_if_can 'Trombi', User %></li>
-          <li><%= link_to_if_can 'UVs', Course %></li>
+          <li><%= link_to_if_can t('layout.annals'), Annal %></li>
+          <li><%= link_to_if_can t('layout.classifieds'), Classified %></li>
+          <li><%= link_to_if_can t('layout.associations'), Association %></li>
+          <li><%= link_to_if_can t('layout.quotes'), Quote %></li>
+          <li><%= link_to_if_can t('layout.timesheets'), Timesheet %></li>
+          <li><%= link_to_if_can t('layout.carpools'), Carpool %></li>
+          <li><%= link_to_if_can t('layout.events'), Event %></li>
+          <li><%= link_to_if_can t('layout.news'), News %></li>
+          <li><%= link_to_if_can t('layout.projects'), Project %></li>
+          <li><%= link_to_if_can t('layout.users'), User %></li>
+          <li><%= link_to_if_can t('layout.course'), Course %></li>
         </ul>
       </nav>
     <% if can?(:manage, Role) or can?(:manage, Group) %>
       <nav>
         <h2>Administration</h2>
         <ul>
-          <li><%= link_to_if_can 'Groupes', Group %></li>
-          <li><%= link_to_if_can 'Rôles', Role %></li>
+          <li><%= link_to_if_can t('layout.groups'), Group %></li>
+          <li><%= link_to_if_can t('layout.roles'), Role %></li>
         </ul>
       </nav>
     <% end %>
 
       <nav>
-        <h2>Services</h2>
+        <h2><%= t('layout.services') %></h2>
         <ul>
           <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
           <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
@@ -73,12 +73,12 @@
           <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
           <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
           <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
-          <li><%= link_to 'Journal', {:controller => 'home', :action => 'newspaper'} %></li>
+          <li><%= link_to t('home.newspaper.newspaper'), {:controller => 'home', :action => 'newspaper'} %></li>
         </ul>
       </nav>
 
       <nav>
-        <h2>Assos &amp; Clubs</h2>
+        <h2><%= t('layout.associations_clubs') %></h2>
         <ul>
         <% @associations.each do |asso| %>
           <li><%= link_to asso.name, asso %></li>
@@ -109,9 +109,9 @@
   <footer>
     <ul>
       <li>Version 9.0.0-alpha</li>
-      <li><%= link_to 'Signaler un bug', :root %></li>
+      <li><%= link_to t('layout.bug'), :root %></li>
       <li>UTT Net Group</li>
-      <li><%= link_to 'À propos', {:controller => 'home', :action => 'about'} %></li>
+      <li><%= link_to t('layout.about'), {:controller => 'home', :action => 'about'} %></li>
     </ul>
     <span onclick="this.innerHTML='&#9786;'; alert('Congratz! U found the secret l3v3l!')">&#9785;</span>
   </footer>

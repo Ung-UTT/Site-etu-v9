@@ -1,0 +1,25 @@
+<section>
+  <h1>Hello</h1>
+  <article>
+    <figure>
+      <%= image_tag 'home/logo_ung.png', {:alt => 'UNG', :align => 'right'} %>
+    </figure>
+    <p>
+      UTT's student of not, you are welcome by the UNG.
+      This is THE UTT's students website !
+    </p>
+    <p>
+      Why are you here ? Maybe to find to esential informations about
+      the incredible life in the UTT (emails, Face book, timesheets,
+      agenda, clubs, associations, …). Or to share album's and discussions.
+      There is lot a here (to help YOU) : Classifieds, Carpools, Annals, …
+    </p>
+    <p>
+      See you soon, in Troyes, or anywhre else…<br />
+      Made by UTT Net Group<br />
+      <%= link_to "UTT's infromatic student association", :root %>
+    </p>
+  </article>
+</section>
+
+<%= render :template => 'news/index' %>

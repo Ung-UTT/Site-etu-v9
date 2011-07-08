@@ -1,6 +1,6 @@
-<%= title 'Modifier le truc à faire' %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Afficher', @reminder %> |
-<%= link_to 'Liste des trucs à faire', reminders_path %>
+<%= link_to t('common.show'), @reminder %> |
+<%= link_to t('common.list'), reminders_path %>

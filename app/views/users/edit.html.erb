@@ -1,6 +1,6 @@
-<%= title 'Modifier le profil' %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @user %> |
-<%= link_to 'Liste des profils', users_path %>
+<%= link_to t('common.show'), @user %> |
+<%= link_to t('common.list'), users_path %>

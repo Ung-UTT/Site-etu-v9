@@ -16,9 +16,9 @@
 </p>
 
 <% if can? :update, @timesheet %>
-  <%= link_to 'Modifier', edit_timesheet_path(@timesheet) %> |
+  <%= link_to t('common.edit'), edit_timesheet_path(@timesheet) %> |
 <% end %>
 <% if can? :destroy, @timesheet %>
-  <%= button_to 'Supprimer', @timesheet, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to t('common.delete'), @timesheet, :confirm => t('common.confirm'), :method => :delete %> |
 <% end %>
-<%= link_to 'Liste des événements', timesheets_path %>
+<%= link_to t('common.list'), timesheets_path %>
