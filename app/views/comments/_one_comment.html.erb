@@ -4,5 +4,5 @@
 <% end %>
 <%= comment.content %>
 <% if can? :destroy, comment %>
-  <%= button_to 'X', [commentable, comment], :confirm => 'Sûr ?', :method => :delete %>
+  <%= button_to 'X', [commentable, comment], :confirm => t('common.confirm'), :method => :delete %>
 <% end %>

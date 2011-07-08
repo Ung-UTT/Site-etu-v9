@@ -20,7 +20,9 @@ en:
   calendar: "Calendar"
   carpool: "Carpool"
   classified: "Classfied"
-  comment: "Comment"
+  comment:
+    one: "one comment"
+    other: "%{count} comments"
   course: "Course"
   document: "Document"
   event: "Event"

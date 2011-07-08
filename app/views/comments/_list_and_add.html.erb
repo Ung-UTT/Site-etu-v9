@@ -1,7 +1,7 @@
-<h3><%= link_to 'Commentaires', [commentable, Comment] %></h3>
+<h3><%= link_to t('comments.list'), [commentable, Comment] %></h3>
 
   <% if comments.empty? %>
-    <p>Aucun commentaires</p>
+    <p><%= t('comment', :count => 0) %></p>
   <% else %>
 <ul class="comments">
     <% comments.each do |comment| %>
@@ -15,6 +15,6 @@
 <% if can? :create, Comment %>
   <%= form_for [commentable, Comment.new] do |f| %>
       <%= f.text_area :content, :rows => 3 %>
-      <%= f.submit "Ajouter un commenaire" %>
+      <%= f.submit t('common.add') %>
   <% end %>
 <% end %>
