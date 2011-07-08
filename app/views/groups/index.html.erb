@@ -1,4 +1,4 @@
-<%= title 'Liste des groupes' %>
+<%= title t('groups.list') %>
 <ul>
 <% @groups.each do |group| %>
   <li>
@@ -9,4 +9,4 @@
 
 <br />
 
-<%= link_to 'Ajouter un groupe', new_group_path %>
+<%= link_to t('common.add'), new_group_path %>

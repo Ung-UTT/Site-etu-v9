@@ -2,10 +2,10 @@
   <%= f.error_messages %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, t('groups.name') %><br />
     <%= f.text_field :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('common.submit') %>
   </div>
 <% end %>

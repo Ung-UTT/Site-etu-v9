@@ -113,6 +113,7 @@ en:
     list: "List of groups"
     name: "Name"
     parent: "Parent"
+    users: "Users"
 
   newss:
     list: "List of news"
