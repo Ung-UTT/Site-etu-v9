@@ -1,7 +1,7 @@
 class Classified < ActiveRecord::Base
   paginates_per 50
 
-  validates_presence_of :title, :content
+  validates_presence_of :title, :description
   validates_associated :user
 
   has_paper_trail

@@ -1,64 +1,65 @@
-<%= title 'Événement : ' + @event.name %>
+<%= title(t('event') + ' : ' + @event.name) %>
 
 <p>
-  <b>Description :</b>
-  <%= @event.content %>
+  <b><%= t('events.description') %></b>
+  <%= @event.description %>
 </p>
 
 <p>
-  <b>Responsable de l'organisation :</b>
+  <b><%= t('events.owner') %></b>
   <%= link_to_user @event.owner %>
 </p>
 
 <p>
-  <b>Lieu :</b>
+  <b><%= t('events.location') %></b>
   <%= @event.location %>
 </p>
 
 <p>
-  <b>Du :</b>
-  <%= @event.start_at.strftime 'le %d %B %Y à %Hh%M' %>
+  <b><%= t('events.start_at') %></b>
+  <%= l(@event.start_at, :format => :short) %>
 </p>
 
 <p>
-  <b>Au :</b>
-  <%= @event.end_at.strftime 'le %d %B %Y à %Hh%M' %>
+  <b><%= t('events.end_at') %></b>
+  <%= l(@event.end_at, :format => :short) %>
 </p>
 
 <p>
-  <b>Participants :</b>
+  <b><%= t('events.users') %></b>
   <%= link_to_users @event.users %>
 </p>
 
 <p>
-  <b>Associations organisatrices :</b>
+  <b><%= t('events.associations') %></b>
   <%= link_to_associations @event %>
 </p>
 
 <p>
-  <b>Tags :</b>
+  <b><%= t('tags') %></b>
   <%= link_to_tags @event %>
 </p>
 
 <% if @event.users.include?(current_user) %>
-  <p><%= link_to 'Ne plus participer', disjoin_event_path(@event), :method => 'PUT' %></p>
+  <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => 'PUT' %></p>
 <% elsif can? :'join', Event %>
-  <p><%= link_to 'Participer', join_event_path(@event), :method => 'PUT' %></p>
+  <p><%= link_to t('events.join'), join_event_path(@event), :method => 'PUT' %></p>
 <% end %>
 
 <% if can? :update, @event %>
-  <%= link_to 'Modifier', edit_event_path(@event) %> |
+  <%= link_to t('common.edit'), edit_event_path(@event) %> |
 <% end %>
 <% if can? :destroy, @event %>
-  <%= button_to 'Supprimer', @event, :confirm => 'Sûr ?', :method => :delete %> |
+  <%= button_to t('common.delete'), @event, :confirm => t('common.confirm'), :method => :delete %> |
 <% end %>
-<%= link_to 'Liste des événements', events_path %>
+<%= link_to t('common.list'), events_path %>
 
 <%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>
 
 <% if @event.news.empty? %>
-    Aucun daymail
+    <%= t('events.daymail', :count => 0) %>
 <% else %>
+    <h3><%= t('events.daymail', :count => @event.news.size) %></h3>
     <%= render :template => 'news/index' %>
 <% end %>

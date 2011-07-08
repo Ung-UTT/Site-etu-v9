@@ -1,6 +1,6 @@
-<%= title "Modifier l'événement" %>
+<%= title t('common.edit') %>
 
 <%= render 'form' %>
 
-<%= link_to 'Voir', @event %> |
-<%= link_to 'Liste des événements', events_path %>
+<%= link_to t('common.show'), @event %> |
+<%= link_to t('common.list'), events_path %>

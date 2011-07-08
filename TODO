@@ -26,13 +26,13 @@ Objectifs
   Traductions
   Validations
     Valeurs par défaut
-  API
   Tests
     Fixtures
     Unitaires
     Fonctionnels
     Intégration
-  Refactoriser
+  API
+  Refactoriser (helpers entre autres)
 
 Bugs :
   Paperclip et show_link ont du mal avec le sous-dossier site-etu/ (WTF ?)

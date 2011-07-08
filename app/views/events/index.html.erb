@@ -1,9 +1,9 @@
-<%= title 'Les événements' %>
+<%= title t('events.list') %>
 
 <ul>
 <% @events.each do |event| %>
   <li>
-    <%= event.start_at.strftime 'le %d %B à %Hh' %> : <%= link_to event.name, event %>
+    <%= l(event.start_at, :format => :short) %> : <%= link_to event.name, event %>
   </li>
 <% end %>
 </ul>
@@ -11,5 +11,5 @@
 <br />
 
 <% if can? :create, Event %>
-  <%= link_to 'Ajouter un événement', new_event_path %>
+  <%= link_to t('common.add'), new_event_path %>
 <% end %>

@@ -1,6 +1,6 @@
 party:
   name: Hip Hip Hip
-  content: Houra, venez vite au foyez !
+  description: Houra, venez vite au foyez !
   owner: joe
   location: Foyer
   start_at: 2011-04-29 12:00:00
@@ -9,7 +9,7 @@ party:
 
 urgent:
   name: Fuyez ! Vite ! (plus vite !)
-  content: C'est bientôt 2012 !
+  description: C'est bientôt 2012 !
   owner: joe
   location: Partout
   start_at: 2012-06-29 16:00:00
@@ -17,7 +17,7 @@ urgent:
 
 surprise:
   name: "*surprise*"
-  content: <insérez un clin d'œil ici ;)>
+  description: <insérez un clin d'œil ici ;)>
   owner: kevin
   location: Salle asso
   start_at: 2011-05-09 17:00:00
