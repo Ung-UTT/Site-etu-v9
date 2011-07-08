@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => I18n.t('ability.denied')
+    redirect_to root_url, :alert => I18n.t('c.application.denied')
   end
 
   private

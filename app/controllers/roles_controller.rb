@@ -28,10 +28,10 @@ class RolesController < ApplicationController
     @user = User.find(params[:role][:users])
 
     if @role.users.include?(@user)
-      redirect_to @role, :notice => "#{@user.login} a déjà ce rôle"
+      redirect_to @role, :notice => t('c.roles.already_join')
     else
       @role.users << @user
-      redirect_to @role, :notice => "Le rôle a été ajouté à #{@user.login}"
+      redirect_to @role, :notice => t('c.roles.join')
     end
   end
 
@@ -46,7 +46,7 @@ class RolesController < ApplicationController
     @user = User.find(params[:user_id])
     @role.users.delete(@user)
 
-    redirect_to @role, :notice => "Le rôle a été enlevé à #{@user.login}"
+    redirect_to @role, :notice => t('c.roles.disjoin')
   end
 
   # GET /roles/new
@@ -72,7 +72,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to(@role, :notice => 'Le rôle a été crée') }
+        format.html { redirect_to(@role, :notice => t('c.roles.create')) }
         format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
         format.html { render :action => "new" }
@@ -88,7 +88,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        format.html { redirect_to(@role, :notice => 'Le rôle a été mis à jour') }
+        format.html { redirect_to(@role, :notice => t('c.roles.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

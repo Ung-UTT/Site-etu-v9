@@ -30,11 +30,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.users.include?(current_user)
-      redirect_to @project, :notice => 'Vous participez déjà à ce projet'
+      redirect_to @project, :notice => t('c.projects.already_join')
     else
       @project.users << current_user
       @project.save
-      redirect_to @project, :notice => 'Vous participez désormais à ce projet'
+      redirect_to @project, :notice => t('c.projects.join')
     end
   end
 
@@ -43,10 +43,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     unless current_user.projects.include?(@project)
-      redirect_to @project, :notice => 'Vous participez déjà à cet projet'
+      redirect_to @project, :notice => t('c.projects.already_disjoin')
     else
       @project.users.delete(current_user)
-      redirect_to @project, :notice => 'Vous ne participez plus à ce projet'
+      redirect_to @project, :notice => t('c.projects.disjoin')
     end
   end
 
@@ -74,7 +74,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to(@project, :notice => 'Le projet a été créé') }
+        format.html { redirect_to(@project, :notice => t('c.projects.create')) }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
@@ -90,7 +90,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(@project, :notice => 'Le projet a été mis à jour') }
+        format.html { redirect_to(@project, :notice => t('c.projects.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -30,7 +30,7 @@ class NewsController < ApplicationController
   # GET /news/daymail
   def daymail
     system '/var/lib/gems/1.8/bin/rake daymail &'
-    flash[:notice] = "Daymail envoyé"
+    flash[:notice] = t('c.news.daymail')
     redirect_to :root
   end
 
@@ -60,7 +60,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       if @news.save
-        format.html { redirect_to(@news, :notice => "La news a été créée") }
+        format.html { redirect_to(@news, :notice => t('c.news.create')) }
         format.xml  { render :xml => @news, :status => :created, :location => @news }
       else
         format.html { render :action => "new" }
@@ -78,7 +78,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       if @news.update_attributes(params[:news])
-        format.html { redirect_to(@news, :notice => 'La news a été mise à jour') }
+        format.html { redirect_to(@news, :notice => t('c.news.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -101,7 +101,7 @@ class NewsController < ApplicationController
 
   private
     def verify_sender
-      authenticate_or_request_with_http_basic('Alors comme ca du veux envoyer le Daymail ?') do |username, password|
+      authenticate_or_request_with_http_basic('Alors comme ca tu veux envoyer le Daymail ?') do |username, password|
         username == 'daymailsender' and password == 'jesuisuncron'
       end
     end

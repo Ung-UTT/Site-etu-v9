@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
-  before_filter :find_documentable
+  before_filter :find_commentable
 
   def index
     @comments = @commentable.comments
@@ -23,10 +23,10 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.build(params[:comment])
-    @comment.user = current_user unless @commentable.class == Course # Commentaires anonymes sur les UVs
-
+    # Commentaires anonymes sur les UVs
+    @comment.user = current_user unless @commentable.class == Course
     if @comment.save
-      flash[:notice] = 'Commentaire ajouté'
+      flash[:notice] = t('c.comments.create')
     end
     redirect_to @commentable
   end
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
   end
 
   private
-    def find_documentable
+    def find_commentable
       @commentable = find_polymorphicable
     end
 end

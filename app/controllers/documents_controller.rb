@@ -25,7 +25,7 @@ class DocumentsController < ApplicationController
     @document = @documentable.documents.build(params[:document])
 
     if @document.save
-      flash[:notice] = 'Document ajouté'
+      flash[:notice] = t('c.documents.create')
     end
     redirect_to @documentable
   end

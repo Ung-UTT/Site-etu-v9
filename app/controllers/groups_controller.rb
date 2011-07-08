@@ -29,10 +29,10 @@ class GroupsController < ApplicationController
     @user = User.find(params[:group][:users])
 
     if @group.users.include?(@user)
-      redirect_to @group, :notice => "#{@user.login} a déjà ce groupe"
+      redirect_to @group, :notice => t('c.groups.already_join')
     else
       @group.users << @user
-      redirect_to @group, :notice => "Le groupe a été ajouté à #{@user.login}"
+      redirect_to @group, :notice => t('c.groups.join')
     end
   end
 
@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
     puts @user.inspect
     @group.users.delete(@user)
 
-    redirect_to @group, :notice => "Le groupe a été enlevé à #{@user.login}"
+    redirect_to @group, :notice => t('c.groups.disjoin')
   end
 
   # GET /groups/new
@@ -69,7 +69,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to(@group, :notice => 'Groupe créé.') }
+        format.html { redirect_to(@group, :notice => t('c.groups.create')) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }
@@ -85,7 +85,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to(@group, :notice => 'Groupe mis à jour.') }
+        format.html { redirect_to(@group, :notice => t('c.groups.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

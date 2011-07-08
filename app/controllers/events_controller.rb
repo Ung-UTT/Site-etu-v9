@@ -32,11 +32,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.users.exists?(current_user)
-      redirect_to @event, :notice => 'Vous participez déjà à cet événement'
+      redirect_to @event, :notice => t('c.events.already_join')
     else
       @event.users << current_user
       @event.save
-      redirect_to @event, :notice => 'Vous participez désormais à cet événement'
+      redirect_to @event, :notice => t('c.events.join')
     end
   end
 
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
     @event.users.delete(current_user)
     @event.save
 
-    redirect_to @event, :notice => 'Vous ne participez plus à cet événement'
+    redirect_to @event, :notice => t('c.events.disjoin')
   end
 
   # GET /events/new
@@ -76,7 +76,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, :notice => "L'événement a été créé") }
+        format.html { redirect_to(@event, :notice => t('c.events.create')) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
@@ -93,7 +93,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to(@event, :notice => "L'événement a été mis à jour") }
+        format.html { redirect_to(@event, :notice => t('c.events.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

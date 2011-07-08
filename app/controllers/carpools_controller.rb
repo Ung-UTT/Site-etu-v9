@@ -49,7 +49,7 @@ class CarpoolsController < ApplicationController
 
     respond_to do |format|
       if @carpool.save
-        format.html { redirect_to(@carpool, :notice => 'Le covoiturage a été ajouté') }
+        format.html { redirect_to(@carpool, :notice => t('c.carpool.create')) }
         format.xml  { render :xml => @carpool, :status => :created, :location => @carpool }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class CarpoolsController < ApplicationController
 
     respond_to do |format|
       if @carpool.update_attributes(params[:carpool])
-        format.html { redirect_to(@carpool, :notice => 'Le covoiturage a été mis à jour') }
+        format.html { redirect_to(@carpool, :notice => t('c.carpool.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
