@@ -1,11 +1,11 @@
-<%= title 'Utilisateurs' %>
+<%= title t('users.list') %>
 
 <%= form_tag(users_path, :method => :get) do %>
   <%= text_field_tag :q %>
-  <%= submit_tag 'Rechercher' %>
+  <%= submit_tag t('common.search') %>
 <% end %>
 
-<p><%= @users.count %> utilisateurs</p>
+<p><%= t('users.count', :count => @users.count) %></p>
 
 <ul>
 <% @users.each do |user| %>
@@ -17,6 +17,6 @@
 
 <% if can? :create, User %>
   <%= link_to t('common.add'), new_user_path %>
-  ou se connecter via un service :
+  <%= t('authorization.connect') %>
   <%= render 'connect' %>
 <% end %>

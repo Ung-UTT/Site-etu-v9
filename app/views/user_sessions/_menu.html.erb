@@ -1,5 +1,5 @@
 <h2><%= link_to current_user.login, current_user %></h2>
 <p>
-  <%= link_to 'Trucs à faire', reminders_path %><br />
-  <%= link_to 'Se déconnecter', :logout %>
+  <%= link_to t('reminders.list'), reminders_path %><br />
+  <%= link_to t('user_sessions.logout'), :logout %>
 </p>

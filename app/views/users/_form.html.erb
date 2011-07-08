@@ -2,19 +2,19 @@
   <%= f.error_messages %>
 
   <div class="field">
-    <%= f.label :login, 'Identifiant' %><br />
+    <%= f.label :login, t('users.login') %><br />
     <%= f.text_field :login %>
   </div>
   <div class="field">
-    <%= f.label :email, 'Email' %><br />
+    <%= f.label :email, t('users.email') %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password, 'Mot de passe' %><br />
+    <%= f.label :password, t('users.password') %><br />
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation, 'Confirmer le mot de passe' %><br />
+    <%= f.label :password_confirmation, t('users.password_confirmation') %><br />
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
@@ -23,10 +23,10 @@
 <% end %>
 
 <% if @authorizations && !@authorizations.empty? %>
-  Vous pouvez utiliser :
+  <%= t('authorizations') %>
   <% for authorization in @authorizations %>
-    <%= button_to "Enlever #{authorization.provider}", authorization, :method => 'delete' %>
+    <%= button_to "#{t('common.delete')} #{authorization.provider}", authorization, :method => 'delete' %>
   <% end %>
 <% end %>
-Ajouter un service :
+<%= t('authorization.add') %>
 <%= render 'connect' %>

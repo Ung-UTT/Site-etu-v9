@@ -13,6 +13,7 @@ en:
     list: "List"
     show: "Show"
     submit: "Submit"
+    search: "Search"
 
   annal: "Annal"
   association: "Association"
@@ -213,6 +214,22 @@ en:
     password: "Password"
     password_confirmation: "Password confirmation"
     password_reset: "Did you forget your password?"
+    add: "Create your account"
+    count:
+      one: "One user"
+      other: "%{count} users"
+    associations: "President of associations"
+    events: "Creator of events"
+    projects: "Leader of projects"
+
+  user_sessions:
+    login: "Alternative connection"
+    login: "Logout"
+
+  authorizations: "Services"
+  authorization:
+    add: "Add a service"
+    connect: "Or connect via a service"
 
   # ActiveRecord translations
 

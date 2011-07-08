@@ -1,32 +1,30 @@
-<%= title 'Utilisateur : ' + @user.login %>
+<%= title(t('user') + ' : ' + @user.login) %>
 
 <p>
-  <strong>Email :</strong>
+  <b><%= t('users.email') %></b>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>ID :</strong>
+  <b>ID :</b>
   <%= @user.id %>
 </p>
 
-<!-- TODO : Infos du LDAP à ajouter -->
-
-<%= list_of 'UVs', @user.courses, :name %>
-<%= list_of 'Rôles', @user.roles, :name %>
-<%= list_of 'Association crées', @user.created_associations, :name %>
-<%= list_of 'Membre des associations', @user.associations, :name %>
-<%= list_of 'Événements créés', @user.created_events, :title %>
-<%= list_of 'Participe aux événements', @user.events, :title %>
-<%= list_of 'News', @user.news, :title %>
-<%= list_of 'Annonces', @user.classifieds, :title %>
-<%= list_of 'Covoiturage', @user.carpools, :content %>
-<%= list_of 'Citations', @user.quotes, :content %>
-<%= list_of 'Commentaires', @user.comments, :content, true %>
-<%= list_of 'Projets créés', @user.created_projects, :name %>
-<%= list_of 'Participe aux projets', @user.projects, :name %>
-<%= list_of 'Groupes', @user.groups, :name %>
-<%= list_of 'Emploi du temps (horaires)', @user.timesheets, :range %>
+<%= list_of t('courses.list'), @user.courses, :name %>
+<%= list_of t('roles.list'), @user.roles, :name %>
+<%= list_of t('users.associations'), @user.created_associations, :name %>
+<%= list_of t('associations.list'), @user.associations, :name %>
+<%= list_of t('users.events'), @user.created_events, :title %>
+<%= list_of t('events.list'), @user.events, :title %>
+<%= list_of t('newss.list'), @user.news, :title %>
+<%= list_of t('classifieds.list'), @user.classifieds, :title %>
+<%= list_of t('carpools.list'), @user.carpools, :content %>
+<%= list_of t('quotes.list'), @user.quotes, :content %>
+<%= list_of t('comments.list'), @user.comments, :content, true %>
+<%= list_of t('users.projects'), @user.created_projects, :name %>
+<%= list_of t('projects.list'), @user.projects, :name %>
+<%= list_of t('groups.list'), @user.groups, :name %>
+<%= list_of t('timesheets.list'), @user.timesheets, :range %>
 
 <% unless @user.timesheets.empty? %>
   <%= render 'timesheets/schedule', :timesheets => @user.timesheets %>

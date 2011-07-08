@@ -1,5 +1,5 @@
 <h2><strong><%= link_to 'CAS', auth_path('cas') %></strong></h2>
 <p>
-  Vous pouvez <%= link_to 'vous connectez autrement', login_path %>
-  sinon <%= link_to 'créez un compte', new_user_path %>.
+  <%= link_to t('user_sessions.login'), login_path %><br />
+  <%= link_to t('users.add'), new_user_path %>.
 </p>
