@@ -2,103 +2,103 @@ en:
   # Controllers
   c:
     annals:
-      create: "Annal succesfully created"
-      update: "Annal succesfully updated"
+      create: "Annal successfully created."
+      update: "Annal successfully updated."
 
     application:
       denied: "You are not authorized to do this."
 
     associations:
-      create: "Association succesfully created"
-      update: "Association succesfully updated"
-      already_join: "You already joined this assocation"
-      join: "You are in this association"
-      already_disjoin: "You already disjoined from this association"
-      disjoin: "You aren't in this association"
+      create: "Association successfully created"
+      update: "Association successfully updated"
+      already_join: "You already joined this association."
+      join: "You've just join this association."
+      already_disjoin: "You already left this association."
+      disjoin: "You aren't in this association anymore."
 
     authorizations:
-      new: "Now you have an account via %{provider} with this password: %{password}"
-      add: "New service added: %{provider}"
-      welcome: "Welcome back via %{provider}"
-      error: "Error when trying to connect via %{provider}"
-      delete: "Connection to %{provider} deleted"
+      new: "You now have an account via %{provider} with password %{password}"
+      add: "New service added: %{provider}."
+      welcome: "Welcome back via %{provider}."
+      error: "An error occurred when tried to connect via %{provider}."
+      delete: "Connection to %{provider} deleted."
 
     carpools:
-      create: "Carpool succesfully created"
-      update: "Carpool succesfully updated"
+      create: "Carpool successfully created."
+      update: "Carpool successfully updated."
 
     classifieds:
-      create: "Classified succesfully created"
-      update: "Classified succesfully updated"
+      create: "Classified successfully created."
+      update: "Classified successfully updated."
 
     comments:
-      create: "Comment succesfully created"
+      create: "Comment successfully created."
 
     courses:
-      create: "Course succesfully created"
-      update: "Course succesfully updated"
+      create: "Course successfully created."
+      update: "Course successfully updated."
 
     documents:
-      create: "Document succesfully created"
+      create: "Document successfully created."
 
     events:
-      create: "Event succesfully created"
-      update: "Event succesfully updated"
-      already_join: "You already joined this event"
-      join: "You are in this event"
-      already_disjoin: "You already disjoined fom this event"
-      disjoin: "You aren't in this event"
+      create: "Event successfully created."
+      update: "Event successfully updated."
+      already_join: "You already joined this event."
+      join: "You are in this event."
+      already_disjoin: "You already left this event."
+      disjoin: "You aren't in this event anymore."
 
     groups:
-      create: "Group succesfully created"
-      update: "Group succesfully updated"
-      join: "You are in this group"
-      already_disjoin: "You already disjoined from this group"
-      disjoin: "You aren't in this group"
+      create: "Group successfully created."
+      update: "Group successfully updated."
+      join: "You are in this group."
+      already_disjoin: "You already left this group."
+      disjoin: "You aren't in this group anymore."
 
     news:
-      daymail: "Daymail sent"
-      create: "News succesfully created"
-      update: "News succesfully updated"
+      daymail: "Daymail've just been sent."
+      create: "News successfully created."
+      update: "News successfully updated."
 
     projects:
-      create: "Project succesfully created"
-      update: "Project succesfully updated"
-      already_join: "You already joined this project"
-      join: "You are in this project"
-      already_disjoin: "You already disjoined from this project"
-      disjoin: "You aren't in this project"
+      create: "Project successfully created."
+      update: "Project successfully updated."
+      already_join: "You already joined this project."
+      join: "You are in this project."
+      already_disjoin: "You already disjoined from this project."
+      disjoin: "You aren't in this project anymore."
 
     quotes:
-      create: "Quote succesfully created"
-      update: "Quote succesfully updated"
+      create: "Quote successfully created."
+      update: "Quote successfully updated."
 
     reminders:
-      create: "Reminder succesfully created"
-      update: "Reminder succesfully updated"
+      create: "Reminder successfully created."
+      update: "Reminder successfully updated."
 
     roles:
-      create: "Role succesfully created"
-      update: "Role succesfully updated"
-      join: "User has this role now"
-      already_disjoin: "User hasn't this role"
-      disjoin: "User hasn't this role anymore"
+      create: "Role successfully created."
+      update: "Role successfully updated."
+      join: "User now has this role."
+      already_disjoin: "User hasn't this role."
+      disjoin: "User hasn't this role anymore."
 
     timesheets:
-      create: "Timesheet succesfully created"
-      update: "Timesheet succesfully updated"
+      create: "Timesheet successfully created"
+      update: "Timesheet successfully updated"
 
     users:
-      create: "User succesfully created"
-      update: "User succesfully updated"
-      bad_email: "Bad email"
-      email_sent: "Email sent, click on the link in the email"
+      create: "User successfully created"
+      update: "User successfully updated"
+      bad_email: "Invalid email address."
+      email_sent: "The confirmation link has been sent on your email address. Check your inbox."
       bad_token: "Bad or expired token"
-      new_password: "Your new password is %{password}, don't forget it again ;)"
+      new_password: "Your new password is %{password}, don't forget it again ;)."
 
     user_sessions:
-      create: "Succesfully logged in"
-      destroy: "Succesfully logged out"
+      create: "Successfully logged in"
+      destroy: "Successfully logged out"
 
   # Views
 
