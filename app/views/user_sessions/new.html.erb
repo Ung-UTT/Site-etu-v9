@@ -1,6 +1,6 @@
 <%= title t('user_sessions.login') %>
 
-<%= form_for(@user_session, :url => create_user_sessions_url) do |f| %>
+<%= form_for(@user_session) do |f| %>
   <%= f.error_messages %>
   <div>
     <%= f.text_field :login, {:placeholder => t('users.login'), :autofocus => 'true', :required => 'required'} %>

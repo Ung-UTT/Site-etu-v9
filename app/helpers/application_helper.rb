@@ -33,7 +33,7 @@ module ApplicationHelper
 
   def events_select(object)
     default = object.event ? object.event.id : nil
-    options_for_select(Event.all.map { |a| [a.title, a.id] }.unshift(['Aucun', nil]), default)
+    options_for_select(Event.all.map { |a| [a.name, a.id] }.unshift(['Aucun', nil]), default)
   end
 
   def course_select(object)

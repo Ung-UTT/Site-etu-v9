@@ -38,7 +38,7 @@ class Ability
         can :destroy, [Authorization, Comment], :user_id => user.id
 
         if user.is? :moderator
-          can :manage, [Association, Annal, Classified, Comment, Event, News, Quote]
+          can :manage, [Association, Annal, Carpool, Classified, Comment, Event, News, Quote]
         end
         if user.is? :admin
           can :manage, [Role, Group]

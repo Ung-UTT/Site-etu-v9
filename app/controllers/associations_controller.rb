@@ -30,11 +30,11 @@ class AssociationsController < ApplicationController
     @association = Association.find(params[:id])
 
     if current_user.is_member_of? @association
-      redirect_to @association, :notice => t('c.assocations.already_join')
+      redirect_to @association, :notice => t('c.associations.already_join')
     else
       current_user.roles << @association.member
       current_user.save
-      redirect_to @association, :notice => t('c.assocations.join')
+      redirect_to @association, :notice => t('c.associations.join')
     end
   end
 
@@ -43,10 +43,10 @@ class AssociationsController < ApplicationController
     @association = Association.find(params[:id])
 
     unless current_user.associations.include?(@association)
-      redirect_to @association, :notice => t('c.assocations.already_disjoin')
+      redirect_to @association, :notice => t('c.associations.already_disjoin')
     else
       @association.delete_user(current_user)
-      redirect_to @association, :notice => t('c.assocations.disjoin')
+      redirect_to @association, :notice => t('c.associations.disjoin')
     end
   end
 
@@ -75,7 +75,7 @@ class AssociationsController < ApplicationController
 
     respond_to do |format|
       if @association.save
-        format.html { redirect_to(@association, :notice => t('c.assocations.create')) }
+        format.html { redirect_to(@association, :notice => t('c.associations.create')) }
         format.xml  { render :xml => @association, :status => :created, :location => @association }
       else
         format.html { render :action => "new" }
@@ -96,7 +96,7 @@ class AssociationsController < ApplicationController
 
     respond_to do |format|
       if @association.update_attributes(params[:association])
-        format.html { redirect_to(@association, :notice => t('c.assocations.update')) }
+        format.html { redirect_to(@association, :notice => t('c.associations.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

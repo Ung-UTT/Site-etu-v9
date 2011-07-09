@@ -32,20 +32,20 @@ class UsersController < ApplicationController
     if params[:email]
       user = User.find_by_email(params[:email])
       if user.nil?
-        flash[:alert] = "Mauvaise adresse email"
+        flash[:alert] = t('c.users.bad_email')
       else
         UserMailer.password_reset(user)
-        flash[:notice] = "Mail envoyé, vous devez cliquer sur le lien dedans"
+        flash[:notice] = t('c.users.email_sent')
       end
     elsif params[:token]
       user = User.find_by_perishable_token(params[:token])
       if user.nil?
-        flash[:alert] = "Le jeton donné est expiré ou mauvais"
+        flash[:alert] =  t('c.users.bad_token')
       else
         user.password = ActiveSupport::SecureRandom.hex(2) 
         user.password_confirmation = user.password
         user.save
-        redirect_to :root, :notice => "Votre nouveau mot de passe est : #{user.password}. Evitez de l'oublier ;)."
+        redirect_to :root, :notice => t('c.users.new_password', :password => user.password)
       end
     end
   end

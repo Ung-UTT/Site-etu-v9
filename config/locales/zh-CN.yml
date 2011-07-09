@@ -1,64 +1,334 @@
 zh-CN:
-  ability:
-    denied: "You are not authorized to do this."
+  # Controllers
+  c:
+    annals:
+      create: "Annal succesfully created"
+      update: "Annal succesfully updated"
 
-  annal:
-    list: "List of annals"
-    course: "Course"
-    date: "Date"
-    add: "Add an annal"
-    annal: "Annal"
-    description: "Description"
-    course: "Course"
-    tags: "Tags"
-    edit: "Edit"
+    application:
+      denied: "You are not authorized to do this."
+
+    associations:
+      create: "Association succesfully created"
+      update: "Association succesfully updated"
+      already_join: "You was in this assocation"
+      join: "You are in this association"
+      already_disjoin: "You wasn't in this association"
+      disjoin: "You aren't in this association"
+
+    authorizations:
+      new: "Now you have a account via %{provider} with this password : %{password}"
+      add: "New service added : %{provider}"
+      welcome: "Welcome back via %{provider}"
+      error: "Error when trying to connect via %{provider}"
+      delete: "Connection to %{provider} deleted"
+
+    carpools:
+      create: "Carpool succesfully created"
+      update: "Carpool succesfully updated"
+
+    classifieds:
+      create: "Classified succesfully created"
+      update: "Classified succesfully updated"
+
+    comments:
+      create: "Comment succesfully created"
+
+    courses:
+      create: "Course succesfully created"
+      update: "Course succesfully updated"
+
+    documents:
+      create: "Document succesfully created"
+
+    events:
+      create: "Event succesfully created"
+      update: "Event succesfully updated"
+      already_join: "You was in this event"
+      join: "You are in this event"
+      already_disjoin: "You wasn't in this event"
+      disjoin: "You aren't in this event"
+
+    groups:
+      create: "Group succesfully created"
+      update: "Group succesfully updated"
+      join: "You are in this group"
+      already_disjoin: "You wasn't in this group"
+      disjoin: "You aren't in this group"
+
+    news:
+      daymail: "Daymail sent"
+      create: "News succesfully created"
+      update: "News succesfully updated"
+
+    projects:
+      create: "Project succesfully created"
+      update: "Project succesfully updated"
+      already_join: "You was in this project"
+      join: "You are in this project"
+      already_disjoin: "You wasn't in this project"
+      disjoin: "You aren't in this project"
+
+    quotes:
+      create: "Quote succesfully created"
+      update: "Quote succesfully updated"
+
+    reminders:
+      create: "Reminder succesfully created"
+      update: "Reminder succesfully updated"
+
+    roles:
+      create: "Role succesfully created"
+      update: "Role succesfully updated"
+      join: "User is in this role"
+      already_disjoin: "User wasn't in this role"
+      disjoin: "User aren't in this role"
+
+    timesheets:
+      create: "Timesheet succesfully created"
+      update: "Timesheet succesfully updated"
+
+    users:
+      create: "User succesfully created"
+      update: "User succesfully updated"
+      bad_email: "Bad email"
+      email_sent: "Email sent, click on the link in the mail"
+      bad_token: "Bad or expired token"
+      new_password: "Your new password is %{password}, don't forget it again ;)"
+
+    user_sessions:
+      create: "Succesfully logged in"
+      destroy: "Succesfully logged out"
+
+  # Views
+
+  common:
+    add: "Add"
+    confirm: "Sure?"
     delete: "Delete"
+    edit: "Edit"
+    list: "List"
     show: "Show"
     submit: "Submit"
+    search: "Search"
 
-  association:
-
-  authorization:
-
-  carpool:
-
-  classified:
-
+  annal: "Annal"
+  association: "Association"
+  authorization: "Authorization"
+  calendar: "Calendar"
+  carpool: "Carpool"
+  classified: "Classfied"
   comment:
+    one: "One comment"
+    other: "%{count} comments"
+  course: "Course"
+  document: "Document"
+  event: "Event"
+  group: "Group"
+  image: "Image"
+  news: "News"
+  preference: "Preference"
+  project: "Project"
+  quote: "Quote"
+  reminder: "Reminder"
+  role: "Role"
+  tag: "Tag"
+  tags: "Tags"
+  timesheet: "Timesheet"
+  user: "User"
+  user_session: "User's session"
 
-  course:
+  annals:
+    list: "List of annals"
+    name: "Name"
+    date: "Date"
+    description: "Description"
+    course: "Associated course"
 
-  document:
+  associations:
+    list: "List of associations"
+    name: "Name"
+    description: "Description"
+    owner: "President"
+    parent: "Parent"
+    children: "Children"
+    join: "Join"
+    disjoin: "Disjoin"
+    roles: "Association's roles"
+    events: "Association's events"
+    add_role: "Add a role"
 
-  event:
+  carpools:
+    list: "List of carpools"
+    description: "Description"
+    location: "Location"
+    date: "Date"
+    is_driver: "Driver ?"
 
-  group:
+  classifieds:
+    list: "List of classifieds"
+    title: "Title"
+    description: "Description"
+    price: "Price"
+    location: "Location"
+    user: "Seller"
+
+  comments:
+    list: "List of comments"
+    content: "Content"
+    user: "Author"
+
+  courses:
+    list: "List of courses"
+    name: "Name"
+    description: "Description"
+    users: "Student"
+    annals: "Annals of this course"
+
+  documents:
+    list: "List of documents"
+    count:
+      one: "One document"
+      other: "%{count} documents"
+
+  events:
+    list: "List of events"
+    name: "Name"
+    description: "Description"
+    location: "Location"
+    start_at: "Start at"
+    end_at: "End at"
+    owner: "Created by"
+    users: "Participants"
+    associations: "Orginazed by"
+    join: "Join"
+    disjoin: "Disjoin"
+    daymail:
+      one: "One daymail"
+      other: "%{count} daymails"
+
+  groups:
+    list: "List of groups"
+    name: "Name"
+    parent: "Parent"
+    users: "Users"
 
   home:
-    index:
-      hello: "你好"
-    newspaper:
-      newspaper: "报纸"
+    newspaper: "Newspaper"
 
-  news:
+  layout:
+    home: "Homepage"
+    home_title: "Come back to the home page"
+    users: "Face book"
+    users_title: "All you want to know about UTT's student"
+    classifieds: "Classifieds"
+    classifieds_title: "To sell your old books"
+    buckutt: "Buckutt"
+    buckutt_title: "To buy things in the Foyer"
+    mails: "Mails"
+    mails_title: "All your mails, with a great interface"
+    annals: "Annals"
+    associations: "Associations"
+    quotes: "Quotes"
+    timesheets: "Timesheets"
+    carpools: "Carpools"
+    events: "Events"
+    news: "News"
+    projects: "Projects"
+    course: "Courses"
+    groups: "Groups"
+    roles: "Roles"
+    content: "Content"
+    services: "Services"
+    associations_clubs: "Associations & clubs"
+    bug: "Report a bug"
+    about: "About"
 
-  preference:
+  newss:
+    list: "List of news"
+    title: "Title"
+    content: "Content"
+    user: "Author"
+    event: "Associated event"
+    is_moderated: "Is moderated?"
+    moderate: "Moderate me !"
+    date: "Date"
+    hour: "Hour"
+    comments: "Comments"
 
-  project:
+  preferences:
+    list: "Your preferences"
+    locale: "Locale"
+    quote_type: "Type of quotes"
 
-  quote:
+  projects:
+    list: "List of projects"
+    name: "Name"
+    description: "Description"
+    owner: "Leader"
+    users: "Participants"
+    join: "Join"
+    disjoin: "Disjoin"
 
-  reminder:
+  quotes:
+    list: "List of quotes"
+    content: "Content"
+    by: "By"
 
-  role:
+  reminders:
+    list: "List of reminders"
+    content: "Content"
+    user: "User"
 
-  tag:
+  roles:
+    list: "List of roles"
+    name: "Name"
+    association: "Associated association"
+    parent: "Parent"
+    users: "Users"
+    default:
+      superAdmin: "SuperAdministrator"
+      admin: "Administrator"
+      moderator: "Moderator"
 
-  timesheet:
+  tags_list: "List of tags"
 
-  user:
+  timesheets:
+    list: "List of timesheets"
+    day: "Day"
+    from: "From"
+    to: "To"
+    week: "Week"
+    room: "Room"
+    course: "Course during the timesheet"
+    cumulate: "Cumuler"
+    users: "Participants"
 
-  user_session:
+  users:
+    list: "List of users"
+    login: "Login"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    password_reset: "Did you forget your password?"
+    add: "Create your account"
+    count:
+      one: "One user"
+      other: "%{count} users"
+    associations: "President of associations"
+    events: "Creator of events"
+    projects: "Leader of projects"
+
+  user_sessions:
+    login: "Alternative connection"
+    logout: "Logout"
+
+  authorizations: "Services"
+  authorization:
+    add: "Add a service"
+    connect: "Or connect via a service"
+
+  # ActiveRecord translations
 
 # Chinese (China) translations for Ruby on Rails
 # by tsechingho (http://github.com/tsechingho)
