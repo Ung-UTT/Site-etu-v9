@@ -2,115 +2,121 @@ fr:
   # Controllers
   c:
     annals:
-      create: "Annal succesfully created"
-      update: "Annal succesfully updated"
+      create: "Annal successfully created."
+      update: "Annal successfully updated."
 
     application:
-      denied: "You are not authorized to do this."
+      denied: "Vous n'avez pas le droit d'effectuer cette action."
 
     associations:
-      create: "Association succesfully created"
-      update: "Association succesfully updated"
-      already_join: "You already joined this assocation"
-      join: "You are in this association"
-      already_disjoin: "You already disjoined from this association"
-      disjoin: "You aren't in this association"
+      create: "L'association a bien été créée."
+      update: "Les informations concernant l'association ont bien été mise à jour."
+      already_join: "Vous êtes déjà dans cette association."
+      join: "Vous êtes maintenant membre de l'association."
+      already_disjoin: "Vous n'êtes pas dans cette association."
+      disjoin: "Vous venez de quitter cette association."
 
+    # I ain't understanding any shit.
+    # What the fuck is this ?
     authorizations:
-      new: "Now you have an account via %{provider} with this password: %{password}"
-      add: "New service added: %{provider}"
-      welcome: "Welcome back via %{provider}"
-      error: "Error when trying to connect via %{provider}"
-      delete: "Connection to %{provider} deleted"
+      new: "You now have an account via %{provider} with password %{password}"
+      add: "New service added: %{provider}."
+      welcome: "Welcome back via %{provider}."
+      error: "An error occurred when tried to connect via %{provider}."
+      delete: "Connection to %{provider} deleted."
 
+    # Same here
     carpools:
-      create: "Carpool succesfully created"
-      update: "Carpool succesfully updated"
+      create: "Carpool successfully created."
+      update: "Carpool successfully updated."
 
     classifieds:
-      create: "Classified succesfully created"
-      update: "Classified succesfully updated"
+      create: "Votre annonce a bien été ajoutée."
+      update: "Votre annonce a bien été modifiée."
 
     comments:
-      create: "Comment succesfully created"
+      create: "Votre commentaire a bien été ajouté."
 
     courses:
-      create: "Course succesfully created"
-      update: "Course succesfully updated"
+      create: "L'UV a bien été ajoutée."
+      update: "L'UV a bien été modifiée."
 
     documents:
-      create: "Document succesfully created"
+      create: "Le document a bien été ajouté."
 
     events:
-      create: "Event succesfully created"
-      update: "Event succesfully updated"
-      already_join: "You already joined this event"
-      join: "You are in this event"
-      already_disjoin: "You already disjoined fom this event"
-      disjoin: "You aren't in this event"
+      create: "L'évènement a bien été ajouté."
+      update: "L'évènement a bien été modifié."
+      already_join: "Vous participez déjà à cet évènement."
+      join: "Vous participez maintenant à cet évènement."
+      already_disjoin: "Vous ne participez pas à cet évènement."
+      disjoin: "Vous ne participez plus à cet évènement."
 
     groups:
-      create: "Group succesfully created"
-      update: "Group succesfully updated"
-      join: "You are in this group"
-      already_disjoin: "You already disjoined from this group"
-      disjoin: "You aren't in this group"
+      create: "Ce groupe a bien été créé."
+      update: "Les informations concernant ce groupe ont bien été mises à jour."
+      join: "Vous êtes maintenant membre de ce groupe."
+      already_disjoin: "Vous n'êtes pas membre de ce groupe."
+      disjoin: "Vous venez de quitter ce groupe."
 
     news:
-      daymail: "Daymail sent"
-      create: "News succesfully created"
-      update: "News succesfully updated"
+      daymail: "Le daymail vient d'être envoyé."
+      create: "La news a bien été créée."
+      update: "La news a bien été modifiée."
 
     projects:
-      create: "Project succesfully created"
-      update: "Project succesfully updated"
-      already_join: "You already joined this project"
-      join: "You are in this project"
-      already_disjoin: "You already disjoined from this project"
-      disjoin: "You aren't in this project"
+      create: "Le projet a bien été créé."
+      update: "Le projet a bien été modifié."
+      already_join: "Vous participez déjà à ce projet."
+      join: "Vous participez maintenant à ce projet."
+      already_disjoin: "Vous ne participez pas à ce projet."
+      disjoin: "Vous ne participez maintenant plus à ce projet."
 
     quotes:
-      create: "Quote succesfully created"
-      update: "Quote succesfully updated"
+      create: "La citation a bien été ajoutée."
+      update: "La citation a bien été modifiée."
 
+    # ????
     reminders:
-      create: "Reminder succesfully created"
-      update: "Reminder succesfully updated"
+      create: "Reminder successfully created."
+      update: "Reminder successfully updated."
 
     roles:
-      create: "Role succesfully created"
-      update: "Role succesfully updated"
-      join: "User has this role now"
-      already_disjoin: "User hasn't this role"
-      disjoin: "User hasn't this role anymore"
+      create: "Role successfully created."
+      update: "Role successfully updated."
+      join: "User now has this role."
+      already_disjoin: "User hasn't this role."
+      disjoin: "User hasn't this role anymore."
 
+    # What's this timeshit ?
+    # isn' it timetable ?
     timesheets:
-      create: "Timesheet succesfully created"
-      update: "Timesheet succesfully updated"
+      create: "Timesheet successfully created"
+      update: "Timesheet successfully updated"
 
     users:
-      create: "User succesfully created"
-      update: "User succesfully updated"
-      bad_email: "Bad email"
-      email_sent: "Email sent, click on the link in the email"
+      create: "User successfully created"
+      update: "User successfully updated"
+      bad_email: "Invalid email address."
+      email_sent: "The confirmation link has been sent on your email address. Check your inbox."
       bad_token: "Bad or expired token"
-      new_password: "Your new password is %{password}, don't forget it again ;)"
+      new_password: "Your new password is %{password}, don't forget it again ;)."
 
     user_sessions:
-      create: "Succesfully logged in"
-      destroy: "Succesfully logged out"
+      create: "Vous êtes maintenant connecté."
+      destroy: "Vous êtes maintenant déconnecté."
 
   # Views
 
   common:
-    add: "Add"
-    confirm: "Sure?"
-    delete: "Delete"
-    edit: "Edit"
-    list: "List"
-    show: "Show"
-    submit: "Submit"
-    search: "Search"
+    add: "Ajouter"
+    confirm: "Êtes vous sûr ?"
+    delete: "Supprimer"
+    edit: "Modifier"
+    list: "Lister"
+    show: "Afficher"
+    submit: "Envoyer"
+    search: "Rechercher"
 
   annal: "Annal"
   association: "Association"
@@ -119,12 +125,12 @@ fr:
   carpool: "Carpool"
   classified: "Classified Ads"
   comment:
-    one: "One comment"
-    other: "%{count} comments"
-  course: "Course"
+    one: "Un commentaire"
+    other: "%{count} commentaires"
+  course: "UV"
   document: "Document"
-  event: "Event"
-  group: "Group"
+  event: "Évènement"
+  group: "Groupe"
   image: "Image"
   news: "News"
   preference: "Preference"
@@ -136,7 +142,7 @@ fr:
   tags: "Tags"
   timesheet: "Timesheet"
   user: "User"
-  user_session: "User's session"
+  user_session: "Connexion"
 
   annals:
     list: "List of annals"
@@ -166,12 +172,12 @@ fr:
     is_driver: "Driver?"
 
   classifieds:
-    list: "List of classifieds"
-    title: "Title"
+    list: "Petites annonces"
+    title: "Titre"
     description: "Description"
-    price: "Price"
+    price: "Prix"
     location: "Location"
-    user: "Seller"
+    user: "Vendeur"
 
   comments:
     list: "List of comments"
@@ -217,9 +223,9 @@ fr:
     newspaper: "Newspaper"
 
   layout:
-    home: "Homepage"
-    home_title: "Come back to the home page"
-    users: "Users directory" # gniark gniark :P
+    home: "Accueil"
+    home_title: "Revenir à la page d'accueil"
+    users: "Trombinoscope" # gniark gniark :P
     users_title: "All you want to know about UTT's student"
     classifieds: "Classifieds Ads"
     classifieds_title: "To sell your old books"
@@ -240,9 +246,9 @@ fr:
     roles: "Roles"
     content: "Content"
     services: "Services"
-    associations_clubs: "Associations & clubs"
+    associations_clubs: "Associations et clubs"
     bug: "Report a bug"
-    about: "About"
+    about: "À propos"
 
   newss:
     list: "List of news"
@@ -330,226 +336,8 @@ fr:
 
   # ActiveRecord translations
 
-# French translations for Ruby on Rails
-# by Christian Lescuyer (christian@flyingcoders.com)
-# contributors:
-# - Sebastien Grosjean - ZenCocoon.com
-# - Bruno Michel - http://github.com/nono
-# - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
-
-  date:
-    formats:
-      default: "%d/%m/%Y"
-      short: "%e %b"
-      long: "%e %B %Y"
-    day_names:
-      - dimanche
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
-    abbr_day_names:
-      - dim
-      - lun
-      - mar
-      - mer
-      - jeu
-      - ven
-      - sam
-    month_names:
-      - ~
-      - janvier
-      - février
-      - mars
-      - avril
-      - mai
-      - juin
-      - juillet
-      - août
-      - septembre
-      - octobre
-      - novembre
-      - décembre
-    abbr_month_names:
-      - ~
-      - jan.
-      - fév.
-      - mar.
-      - avr.
-      - mai
-      - juin
-      - juil.
-      - août
-      - sept.
-      - oct.
-      - nov.
-      - déc.
-    order:
-      - :day
-      - :month
-      - :year
-
   time:
     formats:
-      default: "%d %B %Y %H:%M:%S"
-      short: "%d %b %H:%M"
-      long: "%A %d %B %Y %H:%M"
       day: "%A"
-      hour: "%Hh%M"
-    am: 'am'
-    pm: 'pm'
+      hour: "%H:%M"
 
-  datetime:
-    distance_in_words:
-      half_a_minute: "une demi-minute"
-      less_than_x_seconds:
-        zero: "moins d'une seconde"
-        one: "moins d'une seconde"
-        other: "moins de %{count} secondes"
-      x_seconds:
-        one: "1 seconde"
-        other: "%{count} secondes"
-      less_than_x_minutes:
-        zero: "moins d'une minute"
-        one: "moins d'une minute"
-        other: "moins de %{count} minutes"
-      x_minutes:
-        one: "1 minute"
-        other: "%{count} minutes"
-      about_x_hours:
-        one: "environ une heure"
-        other: "environ %{count} heures"
-      x_days:
-        one: "1 jour"
-        other: "%{count} jours"
-      about_x_months:
-        one: "environ un mois"
-        other: "environ %{count} mois"
-      x_months:
-        one: "1 mois"
-        other: "%{count} mois"
-      about_x_years:
-        one: "environ un an"
-        other: "environ %{count} ans"
-      over_x_years:
-        one: "plus d'un an"
-        other: "plus de %{count} ans"
-      almost_x_years:
-        one: "presqu'un an"
-        other: "presque %{count} ans"
-    prompts:
-      year: "Année"
-      month: "Mois"
-      day: "Jour"
-      hour: "Heure"
-      minute: "Minute"
-      second: "Seconde"
-
-  number:
-    format:
-      separator: ","
-      delimiter: " "
-      precision: 3
-      significant: false
-      strip_insignificant_zeros: false
-    currency:
-      format:
-        format: "%n %u"
-        unit: "€"
-        separator: ","
-        delimiter: " "
-        precision: 2
-        significant: false
-        strip_insignificant_zeros: false
-    percentage:
-      format:
-        delimiter: ""
-    precision:
-      format:
-        delimiter: ""
-    human:
-      format:
-        delimiter: ""
-        precision: 2
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one: "octet"
-            other: "octets"
-          kb: "ko"
-          mb: "Mo"
-          gb: "Go"
-          tb: "To"
-      decimal_units:
-        format: "%n %u"
-        units:
-          unit: ""
-          thousand: "millier"
-          million: "million"
-          billion: "milliard"
-          trillion: "billion"
-          quadrillion: "million de milliards"
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " et "
-      last_word_connector: " et "
-    select:
-      prompt: "Veuillez sélectionner"
-
-  helpers:
-    select:
-      prompt: "Veuillez sélectionner"
-    submit:
-      create: "Créer un %{model}"
-      update: "Modifier ce %{model}"
-      submit: "Enregistrer ce %{model}"
-
-  attributes:
-    created_at: "Créé le"
-    updated_at: "Modifié le"
-
-  errors:
-    format: "Le %{attribute} %{message}"
-    messages: &errors_messages
-      inclusion: "n'est pas inclus(e) dans la liste"
-      exclusion: "n'est pas disponible"
-      invalid: "n'est pas valide"
-      confirmation: "ne concorde pas avec la confirmation"
-      accepted: "doit être accepté(e)"
-      empty: "doit être rempli(e)"
-      blank: "doit être rempli(e)"
-      too_long: "est trop long (pas plus de %{count} caractères)"
-      too_short: "est trop court (au moins %{count} caractères)"
-      wrong_length: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
-      not_a_number: "n'est pas un nombre"
-      not_an_integer: "doit être un nombre entier"
-      greater_than: "doit être supérieur à %{count}"
-      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
-      equal_to: "doit être égal à %{count}"
-      less_than: "doit être inférieur à %{count}"
-      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
-      odd: "doit être impair"
-      even: "doit être pair"
-    template: &errors_template
-      header:
-        one: "Impossible d'enregistrer ce %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce %{model} : %{count} erreurs"
-      body: "Veuillez vérifier les champs suivants : "
-
-  activerecord:
-    errors:
-      messages:
-        taken: "n'est pas disponible"
-        record_invalid: "La validation a échoué : %{errors}"
-        <<: *errors_messages
-      template:
-        <<: *errors_template
-      full_messages:
-        format: "%{attribute} %{message}"
