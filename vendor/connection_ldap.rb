@@ -34,7 +34,7 @@ def ldap_routine
     # Voir si on fait des ou pour des groupes ou quoi…
 =begin
     ########################################################################
-    # ETAPE 2 - Réplicaiton des information du LDAP UTT sur celui du site étu
+    # ETAPE 2 - Réplication des informations du LDAP UTT sur celui du site étu
     ########################################################################
     utt_names = []
     ung_names = []
