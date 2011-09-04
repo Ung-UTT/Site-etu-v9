@@ -34,7 +34,7 @@ class Ability
         can [:update, :destroy], User, :id => user.id
 
         can :destroy, UserSession
-        can :destroy, [Authorization, Comment], :user_id => user.id
+        can :destroy, Comment, :user_id => user.id
 
         if user.is? :moderator
           can :manage, [Association, Annal, Carpool, Classified, Comment, Event, News, Quote]
