@@ -5,11 +5,11 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Authentification
 gem 'authlogic' # Nom, mot de passe, …
-gem 'rubycas-client'
+gem 'rubycas-client-rails' # CAS
 gem 'cancan'    # Persmissions
 
 # Autres
-gem 'paperclip'   # Gestion de fichier (ou carrierwave ?)
+gem 'paperclip'   # Gestion de fichier
 gem 'kaminari'    # Pagination
 gem 'acts-as-taggable-on'
 gem 'paper_trail' # Historique

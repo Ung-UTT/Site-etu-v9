@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :password_salt,       :null => false
       t.string    :persistence_token,   :null => false
       t.string    :perishable_token,    :null => false
+      t.boolean   :cas,                 :defaut => false
 
       # Gérés par Authlogic
       t.integer   :login_count,         :null => false, :default => 0

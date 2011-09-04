@@ -1,5 +1,8 @@
-<h2><strong><%= link_to 'CAS', 'chemin_vers_le_cas_a_faire' %></strong></h2>
+<h2><strong><%= link_to 'CAS', cas_new_path %></strong></h2>
 <p>
   <%= link_to t('user_sessions.login'), login_path %><br />
   <%= link_to t('users.add'), new_user_path %>.
+</p>
+<p>
+  <%= session[:cas_user] %>
 </p>

@@ -6,6 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+require 'casclient'
+require 'casclient/frameworks/rails/filter'
+
 module SiteEtu
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -42,6 +45,7 @@ module SiteEtu
     # Je crois que c'est à cause des created_at et updated_at dans la table de jointure
     ActiveSupport::Deprecation.silenced = true
     
-    config.action_mailer.default_url_options = { :host => "etu.utt.fr" }
+    config.action_mailer.default_url_options = { :host => 'etu.utt.fr' }
+    config.rubycas.cas_base_url = 'https://cas.utt.fr/cas'
   end
 end

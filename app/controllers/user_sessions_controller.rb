@@ -18,6 +18,7 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = t('c.user_sessions.destroy')
-    redirect_to :root
+    session[:cas_user] = nil
+    redirect_to :back
   end
 end
