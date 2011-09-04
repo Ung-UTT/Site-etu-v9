@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
                               'current_login_ip', 'last_login_ip', 'updated_at']
   acts_as_authentic # Gère aussi les validations
 
-  has_many :authorizations, :dependent => :destroy
   has_many :carpools, :dependent => :destroy
   has_many :classifieds, :dependent => :destroy
   has_many :comments, :dependent => :destroy
@@ -50,6 +49,6 @@ class User < ActiveRecord::Base
   end
 
   def is_student?
-    true # TODO: !authorizations.select {|a| a.provider == 'CAS' }.empty? # Ou ancien… (versions…)
+    true # Si connexion avec CAS # Ou ancien… (versions…)
   end
 end

@@ -17,6 +17,5 @@
 
 <% if can? :create, User %>
   <%= link_to t('common.add'), new_user_path %>
-  <%= t('authorization.connect') %>
-  <%= render 'connect' %>
+  <%= link_to t('users.password_reset'), password_reset_path %>
 <% end %>

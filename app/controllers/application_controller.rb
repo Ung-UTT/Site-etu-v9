@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  check_authorization
 
   before_filter :set_layout_vars, :set_locale
   helper_method :current_user_session, :current_user

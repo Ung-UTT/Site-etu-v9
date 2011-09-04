@@ -5,7 +5,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Authentification
 gem 'authlogic' # Nom, mot de passe, …
-gem 'omniauth'  # CAS, Twitter, OpenID, Facebook
+gem 'rubycas-client'
 gem 'cancan'    # Persmissions
 
 # Autres

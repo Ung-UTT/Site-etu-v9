@@ -16,16 +16,6 @@ fr:
       already_disjoin: "Vous n'êtes pas dans cette association."
       disjoin: "Vous venez de quitter cette association."
 
-    # I ain't understanding any shit.
-    # What the fuck is this ?
-    authorizations:
-      new: "You now have an account via %{provider} with password %{password}"
-      add: "New service added: %{provider}."
-      welcome: "Welcome back via %{provider}."
-      error: "An error occurred when tried to connect via %{provider}."
-      delete: "Connection to %{provider} deleted."
-
-    # Same here
     carpools:
       create: "Carpool successfully created."
       update: "Carpool successfully updated."
@@ -76,7 +66,6 @@ fr:
       create: "La citation a bien été ajoutée."
       update: "La citation a bien été modifiée."
 
-    # ????
     reminders:
       create: "Reminder successfully created."
       update: "Reminder successfully updated."
@@ -88,8 +77,6 @@ fr:
       already_disjoin: "User hasn't this role."
       disjoin: "User hasn't this role anymore."
 
-    # What's this timeshit ?
-    # isn' it timetable ?
     timesheets:
       create: "Timesheet successfully created"
       update: "Timesheet successfully updated"

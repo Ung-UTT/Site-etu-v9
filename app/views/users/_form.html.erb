@@ -22,11 +22,4 @@
   </div>
 <% end %>
 
-<% if @authorizations && !@authorizations.empty? %>
-  <%= t('authorizations') %>
-  <% for authorization in @authorizations %>
-    <%= button_to "#{t('common.delete')} #{authorization.provider}", authorization, :method => 'delete' %>
-  <% end %>
-<% end %>
-<%= t('authorization.add') %>
-<%= render 'connect' %>
+<%= link_to t('users.password_reset'), password_reset_path %>

@@ -40,14 +40,6 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
     t.datetime "updated_at"
   end
 
-  create_table "authorizations", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "carpools", :force => true do |t|
     t.text     "description"
     t.string   "location"

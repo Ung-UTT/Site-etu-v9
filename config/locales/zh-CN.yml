@@ -16,13 +16,6 @@ zh-CN:
       already_disjoin: "You already disjoined from this association"
       disjoin: "You aren't in this association"
 
-    authorizations:
-      new: "Now you have an account via %{provider} with this password: %{password}"
-      add: "New service added: %{provider}"
-      welcome: "Welcome back via %{provider}"
-      error: "Error when trying to connect via %{provider}"
-      delete: "Connection to %{provider} deleted"
-
     carpools:
       create: "Carpool succesfully created"
       update: "Carpool succesfully updated"
@@ -114,7 +107,6 @@ zh-CN:
 
   annal: "Annal"
   association: "Association"
-  authorization: "Authorization"
   calendar: "Calendar"
   carpool: "Carpool"
   classified: "Classified Ads"
@@ -322,11 +314,6 @@ zh-CN:
   user_sessions:
     login: "Alternative connection"
     logout: "Logout"
-
-  authorizations: "Services"
-  authorization:
-    add: "Add a service"
-    connect: "Or connect via a service"
 
   # ActiveRecord translations
 

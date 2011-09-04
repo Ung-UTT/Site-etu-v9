@@ -1,8 +1,4 @@
 SiteEtu::Application.routes.draw do
-  match 'auth/:provider' => 'authorizations#create', :as => 'auth'
-  match 'auth/:provider/callback' => 'authorizations#create'
-  match 'auth/failure' => 'authorizations#failure'
-
   match 'quotes/random' => 'quotes#random'
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 

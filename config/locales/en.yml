@@ -16,13 +16,6 @@ en:
       already_disjoin: "You already left this association."
       disjoin: "You aren't in this association anymore."
 
-    authorizations:
-      new: "You now have an account via %{provider} with password %{password}"
-      add: "New service added: %{provider}."
-      welcome: "Welcome back via %{provider}."
-      error: "An error occurred when tried to connect via %{provider}."
-      delete: "Connection to %{provider} deleted."
-
     carpools:
       create: "Carpool successfully created."
       update: "Carpool successfully updated."
@@ -114,7 +107,6 @@ en:
 
   annal: "Annal"
   association: "Association"
-  authorization: "Authorization"
   calendar: "Calendar"
   carpool: "Carpool"
   classified: "Classified Ads"
@@ -322,11 +314,6 @@ en:
   user_sessions:
     login: "Alternative connection"
     logout: "Logout"
-
-  authorizations: "Services"
-  authorization:
-    add: "Add a service"
-    connect: "Or connect via a service"
 
   # ActiveRecord translations
 

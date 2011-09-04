@@ -4,7 +4,6 @@ class Ability
   def initialize(user)
     can :read, [Classified, Association, Event]
     can :read, News, :is_moderated => true
-    can [:create, :failure], Authorization
 
     if !user
       can :create, [User, UserSession]

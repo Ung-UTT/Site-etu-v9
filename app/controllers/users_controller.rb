@@ -64,7 +64,6 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @authorizations = @user.authorizations
   end
 
   # POST /users
