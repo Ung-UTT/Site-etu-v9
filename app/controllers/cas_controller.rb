@@ -1,5 +1,5 @@
 class CasController < ApplicationController
-  #load_and_authorize_resource
+  skip_authorization_check
   before_filter RubyCAS::Filter, :only => :new
 
   # Essayer de créer une connexion au CAS
