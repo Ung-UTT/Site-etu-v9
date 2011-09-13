@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="utf-8" />
@@ -7,108 +8,134 @@
   <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
 
   <%= stylesheet_link_tag :all, 'event_calendar' %>
+  <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+
   <%= csrf_meta_tag %>
 </head>
+
 <body>
-  <header>
-    <section id="quote"><%= @random_quote.content %></section>
+  <section id="wrap_all">
+    <section id="wrap_content">
+      <blockquote id="top_quote">
+        <%= image_tag "style/quotation_left.gif" %>
+        <em><%= @random_quote.content %></em>
+        <%= image_tag "style/quotation_right.gif" %>
+      </blockquote>
 
-    <div id="banner">
-      <%= image_tag 'style/banner.jpg' %>
-    </div>
+      <figure role="banner" id="banner">
+        <%= image_tag 'style/banner.jpg' %>
+      </figure>
 
-    <nav id="menubar">
-      <%= link_to image_tag('icons/home.png') + t('layout.home'), :root, :title => t('layout.home') %>
-      <%= link_to image_tag("icons/users.png") + t('layout.users'), users_path, :title => t('layout.users') if current_user %>
-      <%= link_to image_tag("icons/news.png") + t('layout.classifieds'), classifieds_path, :title => t('layout.classifieds') %>
-      <%= link_to image_tag("icons/buckutt.png") + t('layout.buckutt'), :root, :title => t('layout.buckutt') if current_user %>
-      <%= link_to image_tag("icons/emails.png") + t('layout.mails'), :root, :title => t('layout.mails') if current_user %>
-    </nav>
-  </header>
+      <nav role="navigation" id="menu_top">
+        <ul>
+          <li><%= link_to image_tag('icons/house.png') + t('layout.home'), :root, :title => t('layout.home') %></li>
+          <li><%= link_to image_tag('icons/face.png') + t('layout.users'), users_path, :title => t('layout.users') if current_user %></li>
+          <li><%= link_to image_tag('icons/annonces.png') + t('layout.classifieds'), classifieds_path, :title => t('layout.classifieds') %></li>
+          <li><%= link_to image_tag('icons/buckutt.png') + t('layout.buckutt'), :root, :title => t('layout.buckutt') if current_user %></li>
+          <li><%= link_to image_tag('icons/mail.png') + t('layout.mails'), :root, :title => t('layout.mails') if current_user %></li>
+        </ul>
+      </nav>
 
-  <div id="wrap">
-    <aside id="sidebar">
-      <section id="login_box">
-        <% if current_user %>
-          <%= render :partial => 'user_sessions/menu' %>
-        <% else %>
-          <%= render :partial => 'user_sessions/login' %>
+      <section id="wrap_contents">
+        <% unless notice.nil? %>
+        <div id="notice"><%= notice %></div>
         <% end %>
+
+        <% unless alert.nil? %>
+        <div id="alert"><%= alert %></div>
+        <% end %>
+
+        <%= yield %>
       </section>
 
-      <nav>
-        <h2><%= t('layout.content') %></h2>
-        <ul>
-          <li><%= link_to_if_can t('layout.annals'), Annal %></li>
-          <li><%= link_to_if_can t('layout.classifieds'), Classified %></li>
-          <li><%= link_to_if_can t('layout.associations'), Association %></li>
-          <li><%= link_to_if_can t('layout.quotes'), Quote %></li>
-          <li><%= link_to_if_can t('layout.timesheets'), Timesheet %></li>
-          <li><%= link_to_if_can t('layout.carpools'), Carpool %></li>
-          <li><%= link_to_if_can t('layout.events'), Event %></li>
-          <li><%= link_to_if_can t('layout.news'), News %></li>
-          <li><%= link_to_if_can t('layout.projects'), Project %></li>
-          <li><%= link_to_if_can t('layout.users'), User %></li>
-          <li><%= link_to_if_can t('layout.course'), Course %></li>
-        </ul>
-      </nav>
-    <% if can?(:manage, Role) or can?(:manage, Group) %>
-      <nav>
-        <h2>Administration</h2>
-        <ul>
-          <li><%= link_to_if_can t('layout.groups'), Group %></li>
-          <li><%= link_to_if_can t('layout.roles'), Role %></li>
-        </ul>
-      </nav>
-    <% end %>
+      <nav id="menu_right">
+        <section role="secondary" class="box">
+          <div class="top_box"></div>
+          <section class="box_content">
+            <% if current_user %>
+              <%= render :partial => 'user_sessions/menu' %>
+            <% else %>
+              <%= render :partial => 'user_sessions/login' %>
+            <% end %>
+          </section>
+        </section>
 
-      <nav>
-        <h2><%= t('layout.services') %></h2>
-        <ul>
-          <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
-          <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
-          <li><%= link_to 'Sports', 'http://www-suaps.utt.fr' %></li>
-          <li><%= link_to 'BDE', 'http://bde.utt.fr' %></li>
-          <li><%= link_to 'Gala', 'http://gala.utt.fr' %></li>
-          <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
-          <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
-          <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
-          <li><%= link_to t('home.newspaper.newspaper'), {:controller => 'home', :action => 'newspaper'} %></li>
-        </ul>
-      </nav>
+        <section role="secondary" class="box">
+          <div class="top_box"></div>
+          <section class="box_content">
+            <h2><%= t('layout.content') %></h2>
+            <ul>
+              <li><%= link_to_if_can t('layout.annals'), Annal %></li>
+              <li><%= link_to_if_can t('layout.classifieds'), Classified %></li>
+              <li><%= link_to_if_can t('layout.associations'), Association %></li>
+              <li><%= link_to_if_can t('layout.quotes'), Quote %></li>
+              <li><%= link_to_if_can t('layout.timesheets'), Timesheet %></li>
+              <li><%= link_to_if_can t('layout.carpools'), Carpool %></li>
+              <li><%= link_to_if_can t('layout.events'), Event %></li>
+              <li><%= link_to_if_can t('layout.news'), News %></li>
+              <li><%= link_to_if_can t('layout.projects'), Project %></li>
+              <li><%= link_to_if_can t('layout.users'), User %></li>
+              <li><%= link_to_if_can t('layout.course'), Course %></li>
+            </ul>
+          </section>
+        </section>
 
-      <nav>
-        <h2><%= t('layout.associations_clubs') %></h2>
-        <ul>
-        <% @associations.each do |asso| %>
-          <li><%= link_to asso.name, asso %></li>
-        <% end %>
-        </ul>
-      </nav>
-
-    <% if (controller.controller_name != 'calendar') %>
-      <nav>
-        <%= render :template => 'calendar/index' %>
-      </nav>
-    <% end %>
-    </aside>
-
-    <section id="content">
-      <% unless notice.nil? %>
-      <div id="notice"><%= notice %></div>
+      <% if can?(:manage, Role) or can?(:manage, Group) %>
+        <section role="secondary" class="box">
+          <div class="top_box"></div>
+          <section class="box_content">
+            <h2>Administration</h2>
+            <ul>
+              <li><%= link_to_if_can t('layout.groups'), Group %></li>
+              <li><%= link_to_if_can t('layout.roles'), Role %></li>
+            </ul>
+          </section>
+        </section>
       <% end %>
 
-      <% unless alert.nil? %>
-      <div id="alert"><%= alert %></div>
+        <section role="secondary" class="box">
+          <div class="top_box"></div>
+          <section class="box_content">
+            <h2><%= t('layout.services') %></h2>
+            <ul>
+              <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
+              <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
+              <li><%= link_to 'Sports', 'http://www-suaps.utt.fr' %></li>
+              <li><%= link_to 'BDE', 'http://bde.utt.fr' %></li>
+              <li><%= link_to 'Gala', 'http://gala.utt.fr' %></li>
+              <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
+              <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
+              <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
+              <li><%= link_to t('home.newspaper.newspaper'), {:controller => 'home', :action => 'newspaper'} %></li>
+            </ul>
+          </section>
+        </section>
+
+        <section role="secondary" class="box">
+          <div class="top_box"></div>
+          <section class="box_content">
+            <h2><%= t('layout.associations_clubs') %></h2>
+            <ul>
+            <% @associations.each do |asso| %>
+              <li><%= link_to asso.name, asso %></li>
+            <% end %>
+            </ul>
+          </section>
+        </section>
+
+      <% if (controller.controller_name != 'calendar') %>
+        <section role="secondary" class="box">
+          <div class="top_box"></div>
+          <section class="box_content">
+            <%= render :template => 'calendar/index' %>
+          </section>
+        </section>
       <% end %>
+      </nav>
 
-      <%= yield %>
-    </section>
-  </div>
-
-  <footer>
+  <footer id="bottom">
     <ul>
-      <li>Version 9.0.0-alpha</li>
+      <li>Version 9</li>
       <li><%= link_to t('layout.bug'), :root %></li>
       <li>UTT Net Group</li>
       <li><%= link_to t('layout.about'), {:controller => 'home', :action => 'about'} %></li>

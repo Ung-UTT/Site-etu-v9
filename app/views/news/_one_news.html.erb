@@ -1,27 +1,23 @@
-<article class="news">
-  <header>
-    <h1>
+<article role="primary" class="news">
+  <header class="news_banner">
+    <strong class="date"><%=raw l(news.created_at, :format => '%d <br /> %b') %></strong>
+    <h2>
       <%= link_to news.title, news %>
       <% if !news.is_moderated and can? :moderate, News %>
-        | <%= link_to t('newss.moderate'), edit_news_path(news), :class => 'moderate' %>
+        | <%= link_to t('newss.moderate'), edit_news_path(news) %>
       <% end %>
-    </h1>
-    <dl>
-      <dt class="date"><%= t('newss.date') %></dt>
-        <dd class="date"><time datetime="<%= news.created_at.utc  %>"><%= l(news.created_at, :format => '%d %b') %></time></dd>
-      <dt><%= t('newss.hour') %></dt>
-        <dd><time datetime="<%= news.created_at.utc  %>"><%= l(news.created_at, :format => '%Hh') %></time></dd>
-      <dt><%= t('newss.user') %></dt>
-        <dd><%= link_to_user news.user %></dd>
-      <dt><%= t('tags') %></dt>
-        <dd><%= link_to_tags news %></dd>
-      <dt><%= t('newss.comments') %></dt>
-        <dd class="last"><%= news.comments.count %></dd>
-    </dl>
+    </h2>
+    <em>
+      <strong><%= t('newss.hour') %> :</strong> <%= l(news.created_at, :format => '%Hh') %> |
+      <strong><%= t('newss.user') %> :</strong> <%= link_to_user news.user %> |
+      <strong><%= t('tags') %> :</strong> <%= link_to_tags news %> |
+      <strong><%= t('newss.comments') %> :</strong> <%= news.comments.count %>
+    </em>
   </header>
 
-  <%= news.content %>
-
+  <p>
+    <%= news.content %>
+  </p>
   <% if news.event %>
   <h3><%= t('newss.event') %></h3>
   <p>

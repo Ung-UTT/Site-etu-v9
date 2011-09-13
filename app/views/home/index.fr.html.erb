@@ -1,10 +1,8 @@
-<section>
-  <h1><%= t '.hello' %></h1>
-  <article>
-    <figure>
-      <%= image_tag 'home/logo_ung.png', {:alt => 'UNG', :align => 'right'} %>
-    </figure>
+<section class="content">
+  <h1>Bienvenue</h1>
+  <article role="primary" class="content_box">
     <p>
+      <%= image_tag 'home/logo_ung.png', :class => 'left' %>
       UTTien (ancien, actuel ou futur), ou curieux… l'UNG te souhaite la
       bienvenue sur LE site des étudiants de l'Université de technologie de
       Troyes…
@@ -24,3 +22,4 @@
 </section>
 
 <%= render :template => 'news/index' %>
+

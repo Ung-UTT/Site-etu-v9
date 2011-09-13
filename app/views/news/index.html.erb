@@ -1,14 +1,15 @@
-<section id="news">
+<section class="content">
   <% if controller.controller_name == 'news' %>
     <%= title t('newss.list') %>
   <% else %>
     <h1><%= t('newss.list') %></h1>
   <% end %>
 
-  <% @news.each do |news| %>
-    <%= render 'news/one_news', {:news => news} %>
-  <% end %>
-
+  <section class="content_box">
+    <% @news.each do |news| %>
+      <%= render 'news/one_news', {:news => news} %>
+    <% end %>
+  </section>
   <%= paginate @news %>
 
   <% if can? :create, News %>
