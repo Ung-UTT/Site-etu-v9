@@ -20,3 +20,8 @@ Pour regénérer un environement de dévelopement fonctionnel :
   rake dev:reset
 
 Lisez le fichier TODO pour voir ce qu'il y a à faire
+
+
+Tout les fichiers de ce projet sont sous licence APLGv3.
+Voir le fichier LICENSE ou <http://www.gnu.org/licenses/agpl.html>.
+
