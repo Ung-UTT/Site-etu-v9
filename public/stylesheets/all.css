@@ -287,6 +287,9 @@ clear: both;
   width: 223px; /* 263 - 20 - 20*/
 }
 
+#menu_right a {
+  color: #00739D;
+}
 
 /* Bas */
 
