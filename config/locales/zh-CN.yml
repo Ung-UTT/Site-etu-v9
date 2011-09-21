@@ -1,97 +1,99 @@
+# TODO: Traduire en chinois
+
 zh-CN:
   # Controllers
   c:
     annals:
-      create: "Annal succesfully created"
-      update: "Annal succesfully updated"
+      create: "Annal successfully created."
+      update: "Annal successfully updated."
 
     application:
       denied: "You are not authorized to do this."
 
     associations:
-      create: "Association succesfully created"
-      update: "Association succesfully updated"
-      already_join: "You already joined this assocation"
-      join: "You are in this association"
-      already_disjoin: "You already disjoined from this association"
-      disjoin: "You aren't in this association"
+      create: "Association successfully created"
+      update: "Association successfully updated"
+      already_join: "You already joined this association."
+      join: "You've just join this association."
+      already_disjoin: "You already left this association."
+      disjoin: "You aren't in this association anymore."
 
     carpools:
-      create: "Carpool succesfully created"
-      update: "Carpool succesfully updated"
+      create: "Carpool successfully created."
+      update: "Carpool successfully updated."
 
     classifieds:
-      create: "Classified succesfully created"
-      update: "Classified succesfully updated"
+      create: "Classified successfully created."
+      update: "Classified successfully updated."
 
     comments:
-      create: "Comment succesfully created"
+      create: "Comment successfully created."
 
     courses:
-      create: "Course succesfully created"
-      update: "Course succesfully updated"
+      create: "Course successfully created."
+      update: "Course successfully updated."
 
     documents:
-      create: "Document succesfully created"
+      create: "Document successfully created."
 
     events:
-      create: "Event succesfully created"
-      update: "Event succesfully updated"
-      already_join: "You already joined this event"
-      join: "You are in this event"
-      already_disjoin: "You already disjoined fom this event"
-      disjoin: "You aren't in this event"
+      create: "Event successfully created."
+      update: "Event successfully updated."
+      already_join: "You already joined this event."
+      join: "You are in this event."
+      already_disjoin: "You already left this event."
+      disjoin: "You aren't in this event anymore."
 
     groups:
-      create: "Group succesfully created"
-      update: "Group succesfully updated"
-      join: "You are in this group"
-      already_disjoin: "You already disjoined from this group"
-      disjoin: "You aren't in this group"
+      create: "Group successfully created."
+      update: "Group successfully updated."
+      join: "You are in this group."
+      already_disjoin: "You already left this group."
+      disjoin: "You aren't in this group anymore."
 
     news:
-      daymail: "Daymail sent"
-      create: "News succesfully created"
-      update: "News succesfully updated"
+      daymail: "Daymail've just been sent."
+      create: "News successfully created."
+      update: "News successfully updated."
 
     projects:
-      create: "Project succesfully created"
-      update: "Project succesfully updated"
-      already_join: "You already joined this project"
-      join: "You are in this project"
-      already_disjoin: "You already disjoined from this project"
-      disjoin: "You aren't in this project"
+      create: "Project successfully created."
+      update: "Project successfully updated."
+      already_join: "You already joined this project."
+      join: "You are in this project."
+      already_disjoin: "You already disjoined from this project."
+      disjoin: "You aren't in this project anymore."
 
     quotes:
-      create: "Quote succesfully created"
-      update: "Quote succesfully updated"
+      create: "Quote successfully created."
+      update: "Quote successfully updated."
 
     reminders:
-      create: "Reminder succesfully created"
-      update: "Reminder succesfully updated"
+      create: "Reminder successfully created."
+      update: "Reminder successfully updated."
 
     roles:
-      create: "Role succesfully created"
-      update: "Role succesfully updated"
-      join: "User has this role now"
-      already_disjoin: "User hasn't this role"
-      disjoin: "User hasn't this role anymore"
+      create: "Role successfully created."
+      update: "Role successfully updated."
+      join: "User now has this role."
+      already_disjoin: "User hasn't this role."
+      disjoin: "User hasn't this role anymore."
 
     timesheets:
-      create: "Timesheet succesfully created"
-      update: "Timesheet succesfully updated"
+      create: "Timesheet successfully created"
+      update: "Timesheet successfully updated"
 
     users:
-      create: "User succesfully created"
-      update: "User succesfully updated"
-      bad_email: "Bad email"
-      email_sent: "Email sent, click on the link in the email"
+      create: "User successfully created"
+      update: "User successfully updated"
+      bad_email: "Invalid email address."
+      email_sent: "The confirmation link has been sent on your email address. Check your inbox."
       bad_token: "Bad or expired token"
-      new_password: "Your new password is %{password}, don't forget it again ;)"
+      new_password: "Your new password is %{password}, don't forget it again ;)."
 
     user_sessions:
-      create: "Succesfully logged in"
-      destroy: "Succesfully logged out"
+      create: "Successfully logged in"
+      destroy: "Successfully logged out"
 
   # Views
 
@@ -315,255 +317,10 @@ zh-CN:
     login: "Alternative connection"
     logout: "Logout"
 
-  # ActiveRecord translations
-
-# Chinese (China) translations for Ruby on Rails
-# by tsechingho (http://github.com/tsechingho)
-
-  date:
-    formats:
-      default: "%Y-%m-%d"
-      short: "%b%d日"
-      long: "%Y年%b%d日"
-    day_names:
-      - 星期日
-      - 星期一
-      - 星期二
-      - 星期三
-      - 星期四
-      - 星期五
-      - 星期六
-    abbr_day_names:
-      - 日
-      - 一
-      - 二
-      - 三
-      - 四
-      - 五
-      - 六
-    month_names:
-      - ~
-      - 一月
-      - 二月
-      - 三月
-      - 四月
-      - 五月
-      - 六月
-      - 七月
-      - 八月
-      - 九月
-      - 十月
-      - 十一月
-      - 十二月
-    abbr_month_names:
-      - ~
-      - 1月
-      - 2月
-      - 3月
-      - 4月
-      - 5月
-      - 6月
-      - 7月
-      - 8月
-      - 9月
-      - 10月
-      - 11月
-      - 12月
-    order:
-      - :year
-      - :month
-      - :day
+  # ActiveRecord
 
   time:
     formats:
-      default: "%Y年%b%d日 %A %H:%M:%S %Z"
-      short: "%b%d日 %H:%M"
-      long: "%Y年%b%d日 %H:%M"
-    am: "上午"
-    pm: "下午"
-
-  datetime:
-    distance_in_words:
-      half_a_minute: "半分钟"
-      less_than_x_seconds:
-        one: "不到一秒"
-        other: "不到 %{count} 秒"
-      x_seconds:
-        one: "一秒"
-        other: "%{count} 秒"
-      less_than_x_minutes:
-        one: "不到一分钟"
-        other: "不到 %{count} 分钟"
-      x_minutes:
-        one: "一分钟"
-        other: "%{count} 分钟"
-      about_x_hours:
-        one: "大约一小时"
-        other: "大约 %{count} 小时"
-      x_days:
-        one: "一天"
-        other: "%{count} 天"
-      about_x_months:
-        one: "大约一个月"
-        other: "大约 %{count} 个月"
-      x_months:
-        one: "一个月"
-        other: "%{count} 个月"
-      about_x_years:
-        one: "大约一年"
-        other: "大约 %{count} 年"
-      over_x_years:
-        one: "一年多"
-        other: "%{count} 年多"
-      almost_x_years:
-        one:   "接近一年"
-        other: "接近 %{count} 年"
-    prompts:
-      year:   "年"
-      month:  "月"
-      day:    "日"
-      hour:   "时"
-      minute: "分"
-      second: "秒"
-
-  number:
-    format:
-      separator: "."
-      delimiter: ","
-      precision: 3
-      significant: false
-      strip_insignificant_zeros: false
-    currency:
-      format:
-        format: "%u %n"
-        unit: "CN¥"
-        separator: "."
-        delimiter: ","
-        precision: 2
-        significant: false
-        strip_insignificant_zeros: false
-    percentage:
-      format:
-        delimiter: ""
-    precision:
-      format:
-        delimiter: ""
-    human:
-      format:
-        delimiter: ""
-        precision: 1
-        significant: false
-        strip_insignificant_zeros: false
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one: "Byte"
-            other: "Bytes"
-          kb: "KB"
-          mb: "MB"
-          gb: "GB"
-          tb: "TB"
-      decimal_units:
-        format: "%n %u"
-        units:
-          # 10^-21 zepto, 10^-24 yocto
-          atto: "渺"  # 10^-18
-          femto: "飞" # 10^-15 毫微微
-          pico: "漠"  # 10^-12 微微
-          nano: "奈"  # 10^-9 毫微
-          micro: "微" # 10^-6
-          mili: "毫"  # 10^-3 milli
-          centi: "厘" # 10^-2
-          deci: "分"  # 10^-1
-          unit: ""
-          ten:
-            one: "十"
-            other: "十"  # 10^1
-          hundred: "百"  # 10^2
-          thousand: "千" # 10^3 kilo
-          million: "百万" # 10^6 mega
-          billion: "十亿" # 10^9 giga
-          trillion: "兆" # 10^12 tera
-          quadrillion: "千兆" # 10^15 peta
-          # 10^18 exa, 10^21 zetta, 10^24 yotta
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " 和 "
-      last_word_connector: ", 和 "
-    select:
-      prompt: "请选择"
-
-  activerecord:
-    errors:
-      template: # ~ 2.3.5 backward compatible
-        header:
-          one: "有 1 个错误发生导致「%{model}」无法被保存。"
-          other: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
-        body: "如下字段出现错误："
-      full_messages:
-        format: "%{attribute} %{message}"
-      messages:
-        inclusion: "不包含于列表中"
-        exclusion: "是保留关键字"
-        invalid: "是无效的"
-        confirmation: "与确认值不匹配"
-        accepted: "必须是可被接受的"
-        empty: "不能留空"
-        blank: "不能为空字符"
-        too_long: "过长（最长为 %{count} 个字符）"
-        too_short: "过短（最短为 %{count} 个字符）"
-        wrong_length: "长度非法（必须为 %{count} 个字符）"
-        not_a_number: "不是数字"
-        not_an_integer: "必须是整数"
-        greater_than: "必须大于 %{count}"
-        greater_than_or_equal_to: "必须大于或等于 %{count}"
-        equal_to: "必须等于 %{count}"
-        less_than: "必须小于 %{count}"
-        less_than_or_equal_to: "必须小于或等于 %{count}"
-        odd: "必须为单数"
-        even: "必须为双数"
-        taken: "已经被使用"
-        record_invalid: "校验失败: %{errors}"
-
-  activemodel:
-    errors:
-      template:
-        header:
-          one: "有 1 个错误发生导致「%{model}」无法被保存。"
-          other: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
-        body: "如下字段出现错误："
-
-  errors:
-    format: "%{attribute} %{message}"
-    messages:
-      inclusion: "不包含于列表中"
-      exclusion: "是保留关键字"
-      invalid: "是无效的"
-      confirmation: "与确认值不匹配"
-      accepted: "必须是可被接受的"
-      empty: "不能留空"
-      blank: "不能为空字符"
-      too_long: "过长（最长为 %{count} 个字符）"
-      too_short: "过短（最短为 %{count} 个字符）"
-      wrong_length: "长度非法（必须为 %{count} 个字符）"
-      not_a_number: "不是数字"
-      not_an_integer: "必须是整数"
-      greater_than: "必须大于 %{count}"
-      greater_than_or_equal_to: "必须大于或等于 %{count}"
-      equal_to: "必须等于 %{count}"
-      less_than: "必须小于 %{count}"
-      less_than_or_equal_to: "必须小于或等于 %{count}"
-      odd: "必须为单数"
-      even: "必须为双数"
-
-  helpers:
-    select:
-      prompt: "请选择"
-    submit:
-      create: "新增%{model}"
-      update: "更新%{model}"
-      submit: "储存%{model}"
+      day: "%A"
+      hour: "%H:%M"
 

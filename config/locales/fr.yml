@@ -2,8 +2,8 @@ fr:
   # Controllers
   c:
     annals:
-      create: "Annal successfully created."
-      update: "Annal successfully updated."
+      create: "L'annale a bien été créée."
+      update: "L'annale a bien été mise à jour."
 
     application:
       denied: "Vous n'avez pas le droit d'effectuer cette action."
@@ -67,27 +67,27 @@ fr:
       update: "La citation a bien été modifiée."
 
     reminders:
-      create: "Reminder successfully created."
-      update: "Reminder successfully updated."
+      create: "Le pense-bête a bien été créé."
+      update: "Le pense-bête a bien été mis à jour."
 
     roles:
-      create: "Role successfully created."
-      update: "Role successfully updated."
-      join: "User now has this role."
-      already_disjoin: "User hasn't this role."
-      disjoin: "User hasn't this role anymore."
+      create: "Le rôle a bien été créé."
+      update: "Le rôle a bien été mis à jour."
+      join: "L'utilisateur a maintenant ce rôle."
+      already_disjoin: "L'utilisateur n'avait pas ce rôle."
+      disjoin: "L'utilisateur n'a plus ce rôle."
 
     timesheets:
-      create: "Timesheet successfully created"
-      update: "Timesheet successfully updated"
+      create: "L'Horaire a bien été crée."
+      update: "L'Horaire a bien été mise à jour."
 
     users:
-      create: "User successfully created"
-      update: "User successfully updated"
-      bad_email: "Invalid email address."
-      email_sent: "The confirmation link has been sent on your email address. Check your inbox."
-      bad_token: "Bad or expired token"
-      new_password: "Your new password is %{password}, don't forget it again ;)."
+      create: "L'utilisateur a bien été créé."
+      update: "L'utilisateur a bien été mise à jour."
+      bad_email: "Mauvaise adresse mail."
+      email_sent: "Le lien de confirmation vous a été envoyé, vérifiez votre boîte de reception."
+      bad_token: "Votre token est mauvais ou a expiré."
+      new_password: "Votre nouveau mot de passe est %{password}, ne l'oubliez plus ;)."
 
     user_sessions:
       create: "Vous êtes maintenant connecté."
@@ -105,12 +105,11 @@ fr:
     submit: "Envoyer"
     search: "Rechercher"
 
-  annal: "Annal"
+  annal: "Annale"
   association: "Association"
-  authorization: "Authorization"
-  calendar: "Calendar"
-  carpool: "Carpool"
-  classified: "Classified Ads"
+  calendar: "Calendrier"
+  carpool: "Covoiturage"
+  classified: "Petite annonce"
   comment:
     one: "Un commentaire"
     other: "%{count} commentaires"
@@ -120,43 +119,43 @@ fr:
   group: "Groupe"
   image: "Image"
   news: "News"
-  preference: "Preference"
-  project: "Project"
-  quote: "Quote"
-  reminder: "Reminder"
+  preference: "Préférence"
+  project: "Projet"
+  quote: "Citation"
+  reminder: "Pense-bête"
   role: "Role"
   tag: "Tag"
   tags: "Tags"
-  timesheet: "Timesheet"
-  user: "User"
+  timesheet: "Horaire"
+  user: "Utilisateur"
   user_session: "Connexion"
 
   annals:
-    list: "List of annals"
-    name: "Name"
+    list: "Liste des annales"
+    name: "Nom"
     date: "Date"
     description: "Description"
-    course: "Associated course"
+    course: "UV associée"
 
   associations:
-    list: "List of associations"
-    name: "Name"
+    list: "Liste des associations et clubs"
+    name: "Nom"
     description: "Description"
-    owner: "President"
-    parent: "Parent"
-    children: "Children"
-    join: "Join"
-    disjoin: "Disjoin"
-    roles: "Association's roles"
-    events: "Association's events"
-    add_role: "Add a role"
+    owner: "Président"
+    parent: "Association parente"
+    children: "Clubs fils"
+    join: "Joindre"
+    disjoin: "Quitter"
+    roles: "Rôles de l'association"
+    events: "Évènements de l'association"
+    add_role: "Ajouter un rôle"
 
   carpools:
-    list: "List of carpools"
+    list: "Liste des covoturages"
     description: "Description"
-    location: "Location"
+    location: "Lieu"
     date: "Date"
-    is_driver: "Driver?"
+    is_driver: "Conducteur ?"
 
   classifieds:
     list: "Petites annonces"
@@ -167,44 +166,44 @@ fr:
     user: "Vendeur"
 
   comments:
-    list: "List of comments"
-    content: "Content"
-    user: "Author"
+    list: "Liste des commentaires"
+    content: "Cotenu"
+    user: "Auteur"
 
   courses:
-    list: "List of courses"
-    name: "Name"
+    list: "Listes des UVs"
+    name: "Nom"
     description: "Description"
-    users: "Student"
-    annals: "Annals of this course"
+    users: "Étudiants"
+    annals: "Annales de cette UV"
 
   documents:
-    list: "List of documents"
+    list: "Liste des documents"
     count:
-      one: "One document"
+      one: "Un document"
       other: "%{count} documents"
 
   events:
-    list: "List of events"
-    name: "Name"
+    list: "Liste des évènements"
+    name: "Nom"
     description: "Description"
-    location: "Location"
-    start_at: "Start at"
-    end_at: "End at"
-    owner: "Created by"
+    location: "Lieu"
+    start_at: "Commence le"
+    end_at: "Fini le"
+    owner: "Créé par"
     users: "Participants"
-    associations: "Orginazed by"
-    join: "Join"
-    disjoin: "Disjoin"
+    associations: "Organisé par"
+    join: "Participer"
+    disjoin: "Ne plus participer"
     daymail:
-      one: "One daymail"
+      one: "Un daymail"
       other: "%{count} daymails"
 
   groups:
-    list: "List of groups"
-    name: "Name"
+    list: "Liste des groupes"
+    name: "Nom"
     parent: "Parent"
-    users: "Users"
+    users: "Utilisateurs"
 
   home:
     newspaper: "Newspaper"
@@ -212,337 +211,113 @@ fr:
   layout:
     home: "Accueil"
     home_title: "Revenir à la page d'accueil"
-    users: "Trombinoscope" # gniark gniark :P
-    users_title: "All you want to know about UTT's student"
-    classifieds: "Classifieds Ads"
-    classifieds_title: "To sell your old books"
+    users: "Trombinoscope"
+    users_title: "Tout ce que vous voulez savoir à propos des UTTiens"
+    classifieds: "Petites annonces"
+    classifieds_title: "Pour vendre vos anciens livres, vos vélos, ..."
     buckutt: "Buckutt"
-    buckutt_title: "To buy things in the society lounge"
+    buckutt_title: "Pour recharger votre carte BuckUTT"
     mails: "Mails"
-    mails_title: "All your emails, with a great interface"
-    annals: "Annals"
+    mails_title: "Vos mails avec une superbe interface"
+    annals: "Annales"
     associations: "Associations"
-    quotes: "Quotes"
-    timesheets: "Timesheets"
-    carpools: "Carpools"
-    events: "Events"
+    quotes: "Citations"
+    timesheets: "Horaires"
+    carpools: "Covoiturage"
+    events: "Évènements"
     news: "News"
-    projects: "Projects"
-    course: "Courses"
-    groups: "Groups"
-    roles: "Roles"
-    content: "Content"
+    projects: "Projets"
+    course: "UVs"
+    groups: "Groupes"
+    roles: "Rôles"
+    content: "Contenus"
     services: "Services"
     associations_clubs: "Associations et clubs"
-    bug: "Report a bug"
+    bug: "Reporter un bug"
     about: "À propos"
 
   newss:
-    list: "List of news"
-    title: "Title"
-    content: "Content"
-    user: "Author"
-    event: "Associated event"
-    is_moderated: "Is moderated?"
-    moderate: "Moderate me !"
+    list: "Liste des news"
+    title: "Titre"
+    content: "Contenu"
+    user: "Auteur"
+    event: "Évènements associés"
+    is_moderated: "Modérée ?"
+    moderate: "Modére-moi !"
     date: "Date"
-    hour: "Hour"
-    comments: "Comments"
+    hour: "Heure"
+    comments: "Commentaires"
 
   preferences:
-    list: "Your preferences"
-    locale: "Locale"
-    quote_type: "Type of quotes"
+    list: "Vos préférences"
+    locale: "Langue"
+    quote_type: "Type de citations"
 
   projects:
-    list: "List of projects"
-    name: "Name"
+    list: "Liste des projets"
+    name: "Nom"
     description: "Description"
-    owner: "Leader"
+    owner: "Chef de projet"
     users: "Participants"
-    join: "Join"
-    disjoin: "Disjoin"
+    join: "Joindre"
+    disjoin: "Quitter"
 
   quotes:
-    list: "List of quotes"
-    content: "Content"
-    by: "By"
+    list: "Liste des citations"
+    content: "Contenu"
+    by: "de"
 
   reminders:
-    list: "List of reminders"
-    content: "Content"
-    user: "User"
+    list: "Liste des pense-bêtes"
+    content: "Contenu"
+    user: "Utilisateur"
 
   roles:
-    list: "List of roles"
-    name: "Name"
-    association: "Associated association"
+    list: "Liste des rôles"
+    name: "Nom"
+    association: "Association associée"
     parent: "Parent"
-    users: "Users"
+    users: "Utilisateurs"
     default:
-      superAdmin: "SuperAdministrator"
-      admin: "Administrator"
-      moderator: "Moderator"
+      superAdmin: "SuperAdministrateur"
+      admin: "Administrateur"
+      moderator: "Moderateur"
 
-  tags_list: "List of tags"
+  tags_list: "Liste des tags"
 
   timesheets:
-    list: "List of timesheets"
-    day: "Day"
-    from: "From"
-    to: "To"
-    week: "Week"
-    room: "Room"
-    course: "Course during the timesheet"
-    cumulate: "Combine"
+    list: "Liste des horaires"
+    day: "Jour"
+    from: "Depuis"
+    to: "jusqu'à"
+    week: "Semaine"
+    room: "Salle"
+    course: "UV durant cet horaire"
+    cumulate: "Cumuler"
     users: "Participants"
 
   users:
-    list: "List of users"
-    login: "Login"
+    list: "Liste des utilisateurs"
+    login: "Pseudo"
     email: "Email"
-    password: "Password"
-    password_confirmation: "Password confirmation"
-    password_reset: "Did you forget your password?"
-    add: "Create your account"
+    password: "Mot de passe"
+    password_confirmation: "Confirmation du mot de passe"
+    password_reset: "Vous avez oublié votre mot de passe ?"
+    add: "Créé un compte"
     count:
-      one: "One user"
-      other: "%{count} users"
-    associations: "President of associations"
-    events: "Creator of events"
-    projects: "Leader of projects"
+      one: "Un utilisateur"
+      other: "%{count} utilisateurs"
+    associations: "President des assocations"
+    events: "Créateur des évènements"
+    projects: "Chef de projets des projets"
 
   user_sessions:
-    login: "Alternative connection"
-    logout: "Logout"
+    login: "Se connecter autrement"
+    logout: "Se déconnecter"
 
-  authorizations: "Services"
-  authorization:
-    add: "Add a service"
-    connect: "Or connect via a service"
-
-  # ActiveRecord translations
-
-# French translations for Ruby on Rails
-# by Christian Lescuyer (christian@flyingcoders.com)
-# contributors:
-# - Sebastien Grosjean - ZenCocoon.com
-# - Bruno Michel - http://github.com/nono
-# - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
-
-  date:
-    formats:
-      default: "%d/%m/%Y"
-      short: "%e %b"
-      long: "%e %B %Y"
-    day_names:
-      - dimanche
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
-    abbr_day_names:
-      - dim
-      - lun
-      - mar
-      - mer
-      - jeu
-      - ven
-      - sam
-    month_names:
-      - ~
-      - janvier
-      - février
-      - mars
-      - avril
-      - mai
-      - juin
-      - juillet
-      - août
-      - septembre
-      - octobre
-      - novembre
-      - décembre
-    abbr_month_names:
-      - ~
-      - jan.
-      - fév.
-      - mar.
-      - avr.
-      - mai
-      - juin
-      - juil.
-      - août
-      - sept.
-      - oct.
-      - nov.
-      - déc.
-    order:
-      - :day
-      - :month
-      - :year
+  # ActiveRecord
 
   time:
     formats:
-      default: "%d %B %Y %H:%M:%S"
-      short: "%d %b %H:%M"
-      long: "%A %d %B %Y %H:%M"
       day: "%A"
-      hour: "%Hh%M"
-    am: 'am'
-    pm: 'pm'
-
-  datetime:
-    distance_in_words:
-      half_a_minute: "une demi-minute"
-      less_than_x_seconds:
-        zero: "moins d'une seconde"
-        one: "moins d'une seconde"
-        other: "moins de %{count} secondes"
-      x_seconds:
-        one: "1 seconde"
-        other: "%{count} secondes"
-      less_than_x_minutes:
-        zero: "moins d'une minute"
-        one: "moins d'une minute"
-        other: "moins de %{count} minutes"
-      x_minutes:
-        one: "1 minute"
-        other: "%{count} minutes"
-      about_x_hours:
-        one: "environ une heure"
-        other: "environ %{count} heures"
-      x_days:
-        one: "1 jour"
-        other: "%{count} jours"
-      about_x_months:
-        one: "environ un mois"
-        other: "environ %{count} mois"
-      x_months:
-        one: "1 mois"
-        other: "%{count} mois"
-      about_x_years:
-        one: "environ un an"
-        other: "environ %{count} ans"
-      over_x_years:
-        one: "plus d'un an"
-        other: "plus de %{count} ans"
-      almost_x_years:
-        one: "presqu'un an"
-        other: "presque %{count} ans"
-    prompts:
-      year: "Année"
-      month: "Mois"
-      day: "Jour"
-      hour: "Heure"
-      minute: "Minute"
-      second: "Seconde"
-
-  number:
-    format:
-      separator: ","
-      delimiter: " "
-      precision: 3
-      significant: false
-      strip_insignificant_zeros: false
-    currency:
-      format:
-        format: "%n %u"
-        unit: "€"
-        separator: ","
-        delimiter: " "
-        precision: 2
-        significant: false
-        strip_insignificant_zeros: false
-    percentage:
-      format:
-        delimiter: ""
-    precision:
-      format:
-        delimiter: ""
-    human:
-      format:
-        delimiter: ""
-        precision: 2
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one: "octet"
-            other: "octets"
-          kb: "ko"
-          mb: "Mo"
-          gb: "Go"
-          tb: "To"
-      decimal_units:
-        format: "%n %u"
-        units:
-          unit: ""
-          thousand: "millier"
-          million: "million"
-          billion: "milliard"
-          trillion: "billion"
-          quadrillion: "million de milliards"
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " et "
-      last_word_connector: " et "
-    select:
-      prompt: "Veuillez sélectionner"
-
-  helpers:
-    select:
-      prompt: "Veuillez sélectionner"
-    submit:
-      create: "Créer un %{model}"
-      update: "Modifier ce %{model}"
-      submit: "Enregistrer ce %{model}"
-
-  attributes:
-    created_at: "Créé le"
-    updated_at: "Modifié le"
-
-  errors:
-    format: "Le %{attribute} %{message}"
-    messages: &errors_messages
-      inclusion: "n'est pas inclus(e) dans la liste"
-      exclusion: "n'est pas disponible"
-      invalid: "n'est pas valide"
-      confirmation: "ne concorde pas avec la confirmation"
-      accepted: "doit être accepté(e)"
-      empty: "doit être rempli(e)"
-      blank: "doit être rempli(e)"
-      too_long: "est trop long (pas plus de %{count} caractères)"
-      too_short: "est trop court (au moins %{count} caractères)"
-      wrong_length: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
-      not_a_number: "n'est pas un nombre"
-      not_an_integer: "doit être un nombre entier"
-      greater_than: "doit être supérieur à %{count}"
-      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
-      equal_to: "doit être égal à %{count}"
-      less_than: "doit être inférieur à %{count}"
-      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
-      odd: "doit être impair"
-      even: "doit être pair"
-    template: &errors_template
-      header:
-        one: "Impossible d'enregistrer ce %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce %{model} : %{count} erreurs"
-      body: "Veuillez vérifier les champs suivants : "
-
-  activerecord:
-    errors:
-      messages:
-        taken: "n'est pas disponible"
-        record_invalid: "La validation a échoué : %{errors}"
-        <<: *errors_messages
-      template:
-        <<: *errors_template
-      full_messages:
-        format: "%{attribute} %{message}"
+      hour: "%H:%M"
