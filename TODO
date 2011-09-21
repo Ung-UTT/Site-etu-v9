@@ -1,10 +1,8 @@
 
   | Pour la production, il manque :
   | * Le design
-  | * Le CAS
   | * Le trombi (LDAP)
   | * Le site au moins en français
-  | 
   -----------------------------------
 
 Priorité absolue : Le design !
@@ -44,10 +42,7 @@ Objectifs
 
 Bugs :
   Paperclip et show_link ont du mal avec le sous-dossier site-etu/ (WTF ?)
-    liés à link_to, le bug vient sûrement de Passenger
-  Omniauth bugge ! (pas de CAS/Twitter/OpenID)
-    Ne fonctionne pas avec sa dernière version non plus
-    Le remplacer par quelque chose d'autre ? (seulement CAS)
+    liés à link_to, le bug vient sûrement de Passenger (et surtout du mode production)
 
 Bugs des autres :
   IPFuck : il faut cocher "Synchronize IP together"
