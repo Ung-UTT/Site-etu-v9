@@ -10,7 +10,6 @@ admin = User.create(:login => 'admin', :email => 'admin@etu.utt.fr',
 
 moderator = User.create(:login => 'moderator', :email => 'moderator@etu.utt.fr',
                         :password => 'changez-moi', :password_confirmation => 'changez-moi')
-
 superAdmin.roles << role_superAdmin
 superAdmin.save
 
