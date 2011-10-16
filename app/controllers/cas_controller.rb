@@ -18,7 +18,7 @@ class CasController < ApplicationController
 
       else
         password = password = ActiveSupport::SecureRandom.hex(2) # Exemples : 0ecc 4691 f742 5c03 66c3
-        @user = User.create(:login => session[:cas_user], :password => password, 
+        @user = User.create(:login => session[:cas_user], :password => password,
                             :password_confirmation => password, :cas => true,
                             :email => session[:cas_user] + '@utt.fr')
         UserSession.create(@user, true)
@@ -26,7 +26,7 @@ class CasController < ApplicationController
       end
     end
   end
-  
+
   private
     def add_cas(user)
       unless user.cas

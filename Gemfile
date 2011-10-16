@@ -4,9 +4,8 @@ gem 'rails', '3.1.1'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Authentification
-gem 'authlogic' # Nom, mot de passe, …
 gem 'rubycas-client-rails' # CAS
-gem 'cancan'    # Persmissions
+gem 'cancan'    # Permissions
 
 # Autres
 gem 'paperclip'   # Gestion de fichier

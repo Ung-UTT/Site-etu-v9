@@ -2,7 +2,7 @@ require 'rubygems'
 require 'net/ldap'
 
 # Accès au ldap du cri periodiquement afin de mettre à jour le ldap site étu
-# ATTENTION : Assurez vous de bien comprendre TOUT ce que fait le script avant de le modifier. 
+# ATTENTION : Assurez vous de bien comprendre TOUT ce que fait le script avant de le modifier.
 # Avant de changer quoi que ce soit ici, assurez vous de :
 # * avoir bien compris le fonctionnement du protocole LDAP
 # * avoir analysé la structure des schémas du LDAP de l'UTT et de celui de l'UNG
@@ -20,8 +20,8 @@ def ldap_routine
     ########################################################################
     # creation du nœud racine si besoin
     root_attr = {
-        :o => "UTT", 
-        :dc => "UTT", 
+        :o => "UTT",
+        :dc => "UTT",
         :objectclass => ["top", "dcObject", "organization"]
     }
     ldap_create_node(ldap_ung, "dc=utt,dc=fr", root_attr)
@@ -30,7 +30,7 @@ def ldap_routine
         :ou => "people",
         :objectclass => ["top", "organizationalUnit"]
     }
-    ldap_create_node(ldap_ung, "ou=people,dc=utt,dc=fr", people_attr) 
+    ldap_create_node(ldap_ung, "ou=people,dc=utt,dc=fr", people_attr)
     # Voir si on fait des ou pour des groupes ou quoi…
 =begin
     ########################################################################
@@ -77,7 +77,7 @@ def ldap_create_node(ldap, dn, attributes)
     if node != false
        puts 'the "' + dn + '" exists'
     else
-       puts '"' + dn + '" does not exist, creating…' 
+       puts '"' + dn + '" does not exist, creating…'
        ldap.add(:dn => dn, :attributes => attributes)
     end
 end
@@ -91,7 +91,6 @@ end
 def ldap_add_entities(ldif_dump)
 
 end
-
 
 # recherche des étudiants
 def ldap_search
@@ -119,6 +118,6 @@ def ldap_search
 =end
     # all = ldap.search(:base => 'ou=people,dc=utt,dc=fr')
     # all.each {|entry| puts entry.inspect}
-end 
+end
 
 ldap_routine

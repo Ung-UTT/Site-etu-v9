@@ -11,8 +11,5 @@
   email: <%= u.email %>
   crypted_password: <%= u.crypted_password %>
   password_salt: <%= u.password_salt %>
-  persistence_token: <%= u.persistence_token %>
-  perishable_token: <%= u.perishable_token %>
-
 <% u.destroy %>
 <% end %>

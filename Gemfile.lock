@@ -32,9 +32,6 @@ GEM
     acts-as-taggable-on (2.1.1)
       rails
     arel (2.2.1)
-    authlogic (3.0.3)
-      activerecord (>= 3.0.7)
-      activerecord (>= 3.0.7)
     awesome_nested_set (2.0.2)
       activerecord (>= 3.0.0)
     builder (3.0.0)
@@ -112,7 +109,6 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  authlogic
   awesome_nested_set
   cancan
   event-calendar

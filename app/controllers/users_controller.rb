@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       if user.nil?
         flash[:alert] =  t('c.users.bad_token')
       else
-        user.password = ActiveSupport::SecureRandom.hex(2) 
+        user.password = ActiveSupport::SecureRandom.hex(2)
         user.password_confirmation = user.password
         user.save
         redirect_to :root, :notice => t('c.users.new_password', :password => user.password)

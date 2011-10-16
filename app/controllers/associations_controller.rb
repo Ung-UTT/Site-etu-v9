@@ -89,7 +89,7 @@ class AssociationsController < ApplicationController
   def update
     @association = Association.find(params[:id])
     if params[:association][:image].nil?
-      params[:association][:image] = @association.image 
+      params[:association][:image] = @association.image
     else
       params[:association][:image] = Image.new(:asset => params[:association][:image])
     end
@@ -116,7 +116,7 @@ class AssociationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   private
     def load_logo
     end
