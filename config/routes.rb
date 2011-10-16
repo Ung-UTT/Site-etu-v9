@@ -1,9 +1,9 @@
 SiteEtu::Application.routes.draw do
   match 'quotes/random' => 'quotes#random'
-  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match 'calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   # CAS
-  match '/cas/new' => 'cas#new', :as => 'cas_new'
+  match 'cas/new' => 'cas#new', :as => 'cas_new'
 
   # TODO: Réorganiser joliment les join/disjoin
   match 'events/:id/join' => 'events#join', :as => 'join_event'
@@ -32,9 +32,6 @@ SiteEtu::Application.routes.draw do
     resources :documents
   end
 
-  redirect 'buckutt' => 'http://buckutt.etu.utt.fr'
-  redirect 'wiki' => 'http://wiki.etu.utt.fr'
-  redirect 'mails' => 'http://mails.etu.utt.fr'
-  match ':action' => 'home'
+  match 'about' => 'home#about'
   root :to => 'home#index'
 end

@@ -3,9 +3,10 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string  :login
       t.string  :email
+      t.boolean :cas
       t.string  :crypted_password
       t.string  :password_salt
-      t.boolean :cas
+      # t.string  :perishable_token # ??? TODO: À compléter pour "mot de passe oublié"
 
       t.timestamps
     end

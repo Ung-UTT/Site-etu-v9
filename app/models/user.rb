@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
   paginates_per 30
 
-  has_paper_trail :ignore => ['persistence_token', 'login_count', 'failed_login_count',
-                              'last_request_at', 'current_login_at', 'last_login_at',
-                              'current_login_ip', 'last_login_ip', 'updated_at']
+  has_paper_trail
   acts_as_authentic # Gère aussi les validations
 
   has_many :carpools, :dependent => :destroy
@@ -49,6 +47,6 @@ class User < ActiveRecord::Base
   end
 
   def is_student?
-    true # Si connexion avec CAS # Ou ancien… (versions…)
+    cas
   end
 end
