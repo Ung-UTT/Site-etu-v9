@@ -4,6 +4,9 @@ class Ability
   def initialize(user)
     can :read, [Classified, Association, Event]
     can :read, News, :is_moderated => true
+    can :read, [Document, Comment] do |obj|
+      obj.documentable.nil? ? false : can?(:read, obj.documentable)
+    end
 
     if !user
       can :create, User
