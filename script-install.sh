@@ -35,6 +35,6 @@ sudo gem install rails --no-ri --no-rdoc
 # Installe les gems dont le site étu a besoin
 bundle install
 
-rake db:migrate
+rake db:create db:migrate db:fixtures:load db:seed
 
 cat README

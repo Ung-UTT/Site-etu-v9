@@ -13,7 +13,7 @@ class CasController < ApplicationController
 
       elsif @user = User.find_by_login(session[:cas_user])
         add_cas(@user)
-        UserSession.create(@user, true)
+        session[:user_id] = @user.id
         redirect_to :root, :notice => "#{session[:cas_user]}, te revoilà !"
 
       else
@@ -21,7 +21,7 @@ class CasController < ApplicationController
         @user = User.create(:login => session[:cas_user], :password => password,
                             :password_confirmation => password, :cas => true,
                             :email => session[:cas_user] + '@utt.fr')
-        UserSession.create(@user, true)
+        session[:user_id] = @user.id
         redirect_to :root, :notice => "#{session[:cas_user]}, ton compte a été créé, ton mot de passe est : " + password + " !"
       end
     end
