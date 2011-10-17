@@ -73,7 +73,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => t('c.users.create')) }
+        session[:user_id] = @user.id
+        format.html { redirect_to(:root, :notice => t('c.users.create')) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
