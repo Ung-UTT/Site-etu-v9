@@ -17,11 +17,6 @@ class ApplicationController < ActionController::Base
     def set_layout_vars
       @random_quote = Quote.random || Quote.new
       @associations = Association.all
-
-      @ec_month = (params[:month] || (Time.zone || Time).now.month).to_i
-      @ec_year = (params[:year] || (Time.zone || Time).now.year).to_i
-      @ec_shown_month = Date.civil(@ec_year, @ec_month)
-      @ec_event_strips = Event.event_strips_for_month(@ec_shown_month)
     end
 
     def current_user
