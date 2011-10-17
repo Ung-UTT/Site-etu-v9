@@ -1,24 +1,24 @@
 class UserSessionsController < ApplicationController
-  load_and_authorize_resource
+  skip_authorization_check
 
   def new
-    # @user_session est définit dans ApplicationController pour toutes les pages
   end
 
   def create
-    @user_session = UserSession.new(params[:user_session])
-    if @user_session.save
+    user = User.authenficate(params[:login], params[:password])
+    if user
+      session[:user_id] = user.id
       flash[:notice] = t('c.user_sessions.create')
       redirect_to :root
     else
+      flash[:notice] = t('c.user_sessions.failed')
       render :action => :new
     end
   end
 
   def destroy
-    current_user_session.destroy
-    flash[:notice] = t('c.user_sessions.destroy')
+    session[:user_id] = nil
     session[:cas_user] = nil
-    redirect_to :back
+    redirect_to :back, :notice => t('c.user_sessions.destroy')
   end
 end

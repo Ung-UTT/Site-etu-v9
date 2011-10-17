@@ -6,7 +6,7 @@ class Ability
     can :read, News, :is_moderated => true
 
     if !user
-      can :create, [User, UserSession]
+      can :create, User
       can :password_reset, User
     else
       can :read, Reminder, :user_id => user.id
@@ -33,7 +33,6 @@ class Ability
         can [:update, :destroy], [Association, Project, Event], :owner_id => user.id
         can [:update, :destroy], User, :id => user.id
 
-        can :destroy, UserSession
         can :destroy, Comment, :user_id => user.id
 
         if user.is? :moderator

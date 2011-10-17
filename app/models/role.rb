@@ -3,7 +3,7 @@ class Role < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => [:association_id]
   validates_format_of :name, :with => /[a-zA-Z1-9_\- ']+/
 
-  has_paper_trail
+  # has_paper_trail # TODO: Trouver pourquoi ça ne fonctionne pas
   acts_as_nested_set :dependent => :destroy
 
   belongs_to :association
@@ -15,4 +15,12 @@ class Role < ActiveRecord::Base
   def symbol
     return name.to_sym
   end
+
+  # TODO: Enlever ce workaround
+  protected
+    def set_default_left_and_right
+      Role.unscoped do
+        super
+      end
+    end
 end

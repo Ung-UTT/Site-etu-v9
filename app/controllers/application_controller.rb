@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
     end
 
     def set_layout_vars
-      @user_session = UserSession.new
       @random_quote = Quote.random || Quote.new
       @associations = Association.all
 
@@ -25,14 +24,8 @@ class ApplicationController < ActionController::Base
       @ec_event_strips = Event.event_strips_for_month(@ec_shown_month)
     end
 
-    def current_user_session
-      return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
-    end
-
     def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = current_user_session && current_user_session.user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
     def current_news

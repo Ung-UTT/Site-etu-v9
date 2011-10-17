@@ -12,7 +12,6 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     add_index :users, ['login'], :name => 'index_users_on_login', :unique => true
-    add_index :users, ['email'], :name => 'index_users_on_email', :unique => true
   end
 
   def self.down

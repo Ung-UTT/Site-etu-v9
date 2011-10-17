@@ -1,8 +1,18 @@
 class User < ActiveRecord::Base
+  attr_accessible :login, :email, :password, :password_confirmation
+
+  attr_accessor :password
+  before_save :encrypt_password
+
+  validates_confirmation_of :password
+  validates_uniqueness_of :login
+  validates_presence_of :login
+  validates_presence_of :password, :on => :create
+  validates_presence_of :email
+
   paginates_per 30
 
   has_paper_trail
-  acts_as_authentic # Gère aussi les validations
 
   has_many :carpools, :dependent => :destroy
   has_many :classifieds, :dependent => :destroy
@@ -25,6 +35,27 @@ class User < ActiveRecord::Base
   before_destroy do self.groups.delete_all end
   before_destroy do self.projects.delete_all end
   before_destroy do self.roles.delete_all end
+
+  def self.authenticate(email, password)
+    user = find_by_email(email)
+    if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      nil
+    end
+  end
+
+  def self.simple_create(login, password)
+    User.create(:login => login, :email => "#{login}@yopmail.com",
+                :password => password, :password_reset => :password)
+  end
+
+  def encrypt_password
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.crypted_password = BCrypt::Engine.hash_secret(password, password_salt)
+    end
+  end
 
   def associations
     roles.map(&:association).compact.uniq

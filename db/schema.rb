@@ -222,27 +222,16 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                             :null => false
-    t.string   "email",                             :null => false
-    t.string   "crypted_password",                  :null => false
-    t.string   "password_salt",                     :null => false
-    t.string   "persistence_token",                 :null => false
-    t.string   "perishable_token",                  :null => false
+    t.string   "login"
+    t.string   "email"
     t.boolean  "cas"
-    t.integer  "login_count",        :default => 0, :null => false
-    t.integer  "failed_login_count", :default => 0, :null => false
-    t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
+    t.string   "crypted_password"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
-  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false

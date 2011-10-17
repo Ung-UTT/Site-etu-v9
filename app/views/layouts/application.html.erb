@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
 
   <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
-  <%= stylesheet_link_tag :all, 'event_calendar' %>
+  <%= stylesheet_link_tag :all %>
 
   <%= csrf_meta_tag %>
 </head>
@@ -123,16 +123,6 @@
           </section>
         </section>
 
-      <% if (controller.controller_name != 'calendar') %>
-        <section role="secondary" class="box">
-          <div class="top_box"></div>
-          <section class="box_content">
-            <%= render :template => 'calendar/index' %>
-          </section>
-        </section>
-      <% end %>
-      </nav>
-
   <footer id="bottom">
     <ul>
       <li>Version 9</li>
@@ -143,6 +133,6 @@
     <span onclick="this.innerHTML='&#9786;'; alert('Congratz! U found the secret l3v3l!')">&#9785;</span>
   </footer>
 
-  <%= javascript_include_tag :defaults, 'event_calendar' %>
+  <%= javascript_include_tag :defaults %>
 </body>
 </html>

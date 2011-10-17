@@ -1,19 +1,18 @@
 <%= title t('user_sessions.login') %>
 
-<%= form_for(@user_session) do |f| %>
-  <%= f.error_messages %>
+<%= form_for user_sessions_path do %>
   <div>
-    <%= f.text_field :login, {:placeholder => t('users.login'), :autofocus => 'true', :required => 'required'} %>
+    <%= text_field_tag :login, {:placeholder => t('users.login'), :autofocus => 'true', :required => 'required'} %>
   </div>
   <div>
-    <%= f.password_field :password, {:placeholder => t('users.password'), :required => 'required'} %>
+    <%= password_field_tag :password, {:placeholder => t('users.password'), :required => 'required'} %>
   </div>
   <div>
-    <%= f.check_box :remember_me %>
-    <%= f.label :remember_me, t('users.remember_me') %>
+    <%= check_box_tag :remember_me %>
+    <%= label_tag :remember_me, t('users.remember_me') %>
   </div>
   <div>
-    <%= f.submit t('common.submit') %>
+    <%= submit_tag t('common.submit') %>
   </div>
 <% end %>
 

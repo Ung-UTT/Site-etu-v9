@@ -1,7 +1,0 @@
-<% if controller.controller_name == 'calendar' %>
-  <%= title t('calendar') %>
-<% else %>
-  <h2><%= link_to t('calendar'), calendar_path %></h2>
-<% end %>
-
-<%=raw event_calendar %>

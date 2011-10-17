@@ -6,7 +6,6 @@ class Event < ActiveRecord::Base
 
   default_scope :order => 'start_at DESC'
 
-  has_event_calendar
   has_paper_trail
   acts_as_taggable
 

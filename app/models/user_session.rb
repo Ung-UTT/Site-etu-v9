@@ -1,3 +1,2 @@
 class UserSession
-
 end

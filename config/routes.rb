@@ -1,6 +1,5 @@
 SiteEtu::Application.routes.draw do
   match 'quotes/random' => 'quotes#random'
-  match 'calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   # CAS
   match 'cas/new' => 'cas#new', :as => 'cas_new'
