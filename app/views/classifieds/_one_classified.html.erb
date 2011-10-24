@@ -1,28 +1,28 @@
 <article role="primary" class="classified">
- 	<p>
-	  <b><%= t('classifieds.description') %></b>
-	  <%= @classified.description %>
-	</p>
+   <p>
+    <b><%= t('classifieds.description') %></b>
+    <%= @classified.description %>
+  </p>
 
-	<p>
-	  <b><%= t('classifieds.price') %></b>
-	  <%= @classified.price %>€
-	</p>
+  <p>
+    <b><%= t('classifieds.price') %></b>
+    <%= @classified.price %>€
+  </p>
 
-	<p>
-	  <b><%= t('classifieds.location') %></b>
-	  <%= @classified.location %>
-	</p>
+  <p>
+    <b><%= t('classifieds.location') %></b>
+    <%= @classified.location %>
+  </p>
 
-	<p>
-	  <b><%= t('classifieds.user') %></b>
-	  <%= link_to_user @classified.user %>
-	</p>
+  <p>
+    <b><%= t('classifieds.user') %></b>
+    <%= link_to_user @classified.user %>
+  </p>
 
-	<p>
-	  <b><%= t('tags') %></b>
-	  <%= link_to_tags @classified %>
-	</p>
+  <p>
+    <b><%= t('tags') %></b>
+    <%= link_to_tags @classified %>
+  </p>
 </article>
 
 <hr />

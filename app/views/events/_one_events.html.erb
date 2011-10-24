@@ -1,11 +1,11 @@
 <article role="primary" class="events">
   <header class="news_banner">
-	 <strong class="date"><%=raw l(@event.start_at, :format => '%d <br /> %b') %></strong>
-	 <strong><%= event.name %></strong>
-	<em>  
-			<%= l(@event.start_at, :format => "%H:%M") %> - <%= l(@event.end_at, :format => "%H:%M") %> |
+   <strong class="date"><%=raw l(@event.start_at, :format => '%d <br /> %b') %></strong>
+   <strong><%= event.name %></strong>
+  <em>
+      <%= l(@event.start_at, :format => "%H:%M") %> - <%= l(@event.end_at, :format => "%H:%M") %> |
       <strong><%= t('events.users') %> :</strong> <%= link_to_users @event.users %> |
-      <strong><%= t('tags') %> :</strong> <%= link_to_tags @event %> 
+      <strong><%= t('tags') %> :</strong> <%= link_to_tags @event %>
   </em>
   </header>
 <p>

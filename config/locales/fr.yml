@@ -302,7 +302,7 @@ fr:
     password: "Mot de passe"
     password_confirmation: "Confirmation du mot de passe"
     password_reset: "Vous avez oublié votre mot de passe ?"
-    add: "Créé un compte"
+    add: "Créer un compte"
     count:
       one: "Un utilisateur"
       other: "%{count} utilisateurs"

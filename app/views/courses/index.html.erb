@@ -1,16 +1,16 @@
 <section class="content">
   <%= title t('courses.list') %>
 
-	<section class="content_box">
-		<% @courses.each do |course| %>
-		  <li>
-		    <%= link_to course.name, course %></td>
-		  </li>
-		<% end %>
-	  </section>
+  <section class="content_box">
+    <% @courses.each do |course| %>
+      <li>
+        <%= link_to course.name, course %></td>
+      </li>
+    <% end %>
+    </section>
 
-		<% if can? :create, Course %>
-		  <%= link_to t('common.add'), new_course_path %>
-		<% end %>
-		
+    <% if can? :create, Course %>
+      <%= link_to t('common.add'), new_course_path %>
+    <% end %>
+
 </section>

@@ -1,16 +1,16 @@
 <section class="content">
-	<%= title(t('course') + ' : ' + @course.name) %>
+  <%= title(t('course') + ' : ' + @course.name) %>
 
   <section class="content_box">
     <%= render 'one_courses', {:courses => @courses} %>
-	
-		<% if can? :update, @course %>
-		  <%= link_to t('common.edit'), edit_course_path(@course) %> |
-		<% end %>
-		<% if can? :destroy, @course %>
-		  <%= button_to t('common.delete'), @course, :confirm => t('common.confirm'), :method => :delete %> |
-		<% end %>
-		<%= link_to t('common.list'), courses_path %>
+
+    <% if can? :update, @course %>
+      <%= link_to t('common.edit'), edit_course_path(@course) %> |
+    <% end %>
+    <% if can? :destroy, @course %>
+      <%= button_to t('common.delete'), @course, :confirm => t('common.confirm'), :method => :delete %> |
+    <% end %>
+    <%= link_to t('common.list'), courses_path %>
   </section>
 </section>
 

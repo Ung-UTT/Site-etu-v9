@@ -1,15 +1,15 @@
 <section class="content">
-	<%= title(t('classified') + ' : ' + @classified.title) %>
+  <%= title(t('classified') + ' : ' + @classified.title) %>
   <section class="content_box">
     <%= render 'one_classified', {:classifieds => @classifieds} %>
 
-	<% if can? :update, @classified %>
-	  <%= link_to t('common.edit'), edit_classified_path(@classified) %> |
-	<% end %>
-	<% if can? :destroy, @classified %>
-	  <%= button_to t('common.delete'), @classified, :confirm => t('common.confirm'), :method => :delete %> |
-	<% end %>
-	<%= link_to t('common.list'), classifieds_path %>
+  <% if can? :update, @classified %>
+    <%= link_to t('common.edit'), edit_classified_path(@classified) %> |
+  <% end %>
+  <% if can? :destroy, @classified %>
+    <%= button_to t('common.delete'), @classified, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), classifieds_path %>
   </section>
 </section>
 

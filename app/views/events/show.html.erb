@@ -5,19 +5,18 @@
     <%= render 'one_events', {:event => @event} %>
 
     <% if @event.users.include?(current_user) %>
-	  <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => 'PUT' %></p>
-	<% elsif can? :'join', Event %>
-	  <p><%= link_to t('events.join'), join_event_path(@event), :method => 'PUT' %></p>
-	<% end %>
+    <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => 'PUT' %></p>
+  <% elsif can? :'join', Event %>
+    <p><%= link_to t('events.join'), join_event_path(@event), :method => 'PUT' %></p>
+  <% end %>
 
-	<% if can? :update, @event %>
-	  <%= link_to t('common.edit'), edit_event_path(@event) %> |
-	<% end %>
-	<% if can? :destroy, @event %>
-	  <%= button_to t('common.delete'), @event, :confirm => t('common.confirm'), :method => :delete %> |
-	<% end %>
-	<%= link_to t('common.list'), events_path %>
-
+  <% if can? :update, @event %>
+    <%= link_to t('common.edit'), edit_event_path(@event) %> |
+  <% end %>
+  <% if can? :destroy, @event %>
+    <%= button_to t('common.delete'), @event, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), events_path %>
 
   </section>
 </section>

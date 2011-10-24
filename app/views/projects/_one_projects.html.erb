@@ -1,29 +1,29 @@
 <article role="primary" class="annals">
-	<p>
-	  <b><%= t('projects.description') %></b>
-	  <%= @project.description %>
-	</p>
+  <p>
+    <b><%= t('projects.description') %></b>
+    <%= @project.description %>
+  </p>
 
-	<p>
-	  <b><%= t('projects.owner') %></b>
-	  <%= link_to_user @project.owner %>
-	</p>
+  <p>
+    <b><%= t('projects.owner') %></b>
+    <%= link_to_user @project.owner %>
+  </p>
 
-	<p>
-	  <b><%= t('projects.users') %></b>
-	  <%= link_to_users @project.users %>
-	</p>
+  <p>
+    <b><%= t('projects.users') %></b>
+    <%= link_to_users @project.users %>
+  </p>
 
-	<p>
-	  <b><%= t('tags') %></b>
-	  <%= link_to_tags @project %>
-	</p>
+  <p>
+    <b><%= t('tags') %></b>
+    <%= link_to_tags @project %>
+  </p>
 
-	<% if @project.users.include?(current_user) %>
-	  <p><%= link_to t('projects.disjoin'), disjoin_project_path(@project), :method => 'PUT' %></p>
-	<% elsif can? :'join', Project %>
-	  <p><%= link_to t('projects.join'), join_project_path(@project), :method => 'PUT' %></p>
-	<% end %>
-	
+  <% if @project.users.include?(current_user) %>
+    <p><%= link_to t('projects.disjoin'), disjoin_project_path(@project), :method => 'PUT' %></p>
+  <% elsif can? :'join', Project %>
+    <p><%= link_to t('projects.join'), join_project_path(@project), :method => 'PUT' %></p>
+  <% end %>
+
 </article>
 <hr />

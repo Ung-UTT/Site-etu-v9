@@ -1,14 +1,14 @@
 <section class="content">
   <%= title t('classifieds.list') %>
-	
+
   <section class="content_box">
     <% @classifieds.each do |classified| %>
-	<li><%= link_to classified.title, classified %> (<%= classified.price %>€)</li>
-	<% end %>
+  <li><%= link_to classified.title, classified %> (<%= classified.price %>€)</li>
+  <% end %>
   </section>
-	<%= paginate @classifieds %>
+  <%= paginate @classifieds %>
 
-	<% if can? :create, Classified %>
-  	<%= link_to t('common.add'), new_classified_path %>
-	<% end %>
+  <% if can? :create, Classified %>
+    <%= link_to t('common.add'), new_classified_path %>
+  <% end %>
 </section>

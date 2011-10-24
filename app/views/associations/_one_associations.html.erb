@@ -1,78 +1,78 @@
 <article role="primary" class="associations">
-	<p>
-	  <b><%= t('associations.description') %></b>
-	  <%= @association.description %>
-	</p>
+  <p>
+    <b><%= t('associations.description') %></b>
+    <%= @association.description %>
+  </p>
 
-	<p>
-	  <b><%= t('associations.owner') %></b>
-	  <%= link_to_user @association.owner %>
-	</p>
+  <p>
+    <b><%= t('associations.owner') %></b>
+    <%= link_to_user @association.owner %>
+  </p>
 
-	<p>
-	  <b><%= t('associations.users') %></b>
-	  <%= link_to_user @association.users %>
-	</p>
+  <p>
+    <b><%= t('associations.users') %></b>
+    <%= link_to_user @association.users %>
+  </p>
 
-	<% if @association.parent %>
-	<p>
-	  <b><%= t('associations.parent') %></b>
-	  <%= link_to @association.parent.name, @association.parent %>
-	</p>
-	<% end %>
+  <% if @association.parent %>
+  <p>
+    <b><%= t('associations.parent') %></b>
+    <%= link_to @association.parent.name, @association.parent %>
+  </p>
+  <% end %>
 
-	<% if !@association.children.empty? %>
-	<p>
-	  <b><%= t('associations.children') %></b>
-	  <% @association.children do |asso| %>
-	    <%= link_to asso.name, asso %>
-	  <% end %>
-	</p>
-	<% end %>
+  <% if !@association.children.empty? %>
+  <p>
+    <b><%= t('associations.children') %></b>
+    <% @association.children do |asso| %>
+      <%= link_to asso.name, asso %>
+    <% end %>
+  </p>
+  <% end %>
 
-	<p>
-	  <b><%= t('tags') %></b>
-	  <%= link_to_tags @association %>
-	</p>
+  <p>
+    <b><%= t('tags') %></b>
+    <%= link_to_tags @association %>
+  </p>
 
-	<%= list_of t('associations.events'), @association.events, :name %>
+  <%= list_of t('associations.events'), @association.events, :name %>
 
-	<% if @association.users.include?(current_user) %>
-	  <p><%= link_to t('associations.disjoin'), disjoin_association_path(@association), :method => 'PUT' %></p>
-	<% elsif can? :'join', Association %>
-	  <p><%= link_to t('associations.join'), join_association_path(@association), :method => 'PUT' %></p>
-	<% end %>
+  <% if @association.users.include?(current_user) %>
+    <p><%= link_to t('associations.disjoin'), disjoin_association_path(@association), :method => 'PUT' %></p>
+  <% elsif can? :'join', Association %>
+    <p><%= link_to t('associations.join'), join_association_path(@association), :method => 'PUT' %></p>
+  <% end %>
 
-	<p>
-	  <b><%= t('associations.roles') %></b>
-	  <% @association.roles.each do |role| %>
-	    <%= link_to role.name, role %>
-	    <% if can? :update, role %>
-	      <%= form_for(role, :url => join_role_path(role)) do |f| %>
-	        <%= f.error_messages %>
-	        <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
-	        <%= f.submit t('common.add') %>
-	      <% end %>
-	    <% end %>
-	  <% end %>
-	</p>
-	
-	<% if can? :upate, @association %>
-	<p>
-	  <b><%= t('associations.add_role') %></b>
-	  <%= form_for(@association.roles.build) do |f| %>
-	    <%= f.error_messages %>
-	    <%= f.hidden_field :association_id %>
-	    <div class="field">
-	      <%= f.label :name, t('roles.name') %><br />
-	      <%= f.text_field :name %>
-	    </div>
-	    <div class="actions">
-	      <%= f.submit t('common.submit') %>
-	    </div>
-	  <% end %>
-	</p>
-	<% end %>
+  <p>
+    <b><%= t('associations.roles') %></b>
+    <% @association.roles.each do |role| %>
+      <%= link_to role.name, role %>
+      <% if can? :update, role %>
+        <%= form_for(role, :url => join_role_path(role)) do |f| %>
+          <%= f.error_messages %>
+          <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
+          <%= f.submit t('common.add') %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </p>
+
+  <% if can? :upate, @association %>
+  <p>
+    <b><%= t('associations.add_role') %></b>
+    <%= form_for(@association.roles.build) do |f| %>
+      <%= f.error_messages %>
+      <%= f.hidden_field :association_id %>
+      <div class="field">
+        <%= f.label :name, t('roles.name') %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="actions">
+        <%= f.submit t('common.submit') %>
+      </div>
+    <% end %>
+  </p>
+  <% end %>
 
 </article>
 <hr />

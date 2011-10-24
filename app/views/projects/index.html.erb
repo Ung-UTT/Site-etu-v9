@@ -5,17 +5,17 @@
     <h1><%= t('projects.list') %></h1>
   <% end %>
 
-	<section class="content_box">
-	  <% @projects.each do |project| %>
-		  <li>
-		    <strong><%= link_to project.name, project %></strong> :<br />
-		    <%= project.description %>
-		  </li>
-		<% end %>
-	  </section>
+  <section class="content_box">
+    <% @projects.each do |project| %>
+      <li>
+        <strong><%= link_to project.name, project %></strong> :<br />
+        <%= project.description %>
+      </li>
+    <% end %>
+    </section>
 
-		<% if can? :create, Project %>
-		  <%= link_to t('common.add'), new_project_path %>
-		<% end %>
+    <% if can? :create, Project %>
+      <%= link_to t('common.add'), new_project_path %>
+    <% end %>
 </section>
 
