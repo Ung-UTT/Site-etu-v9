@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    user = User.authenficate(params[:login], params[:password])
+    user = User.authenticate(params[:login], params[:password])
     if user
       session[:user_id] = user.id
       flash[:notice] = t('c.user_sessions.create')

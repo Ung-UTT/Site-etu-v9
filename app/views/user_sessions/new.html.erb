@@ -1,6 +1,6 @@
 <%= title t('user_sessions.login') %>
 
-<%= form_for user_sessions_path do %>
+<%= form_tag(:controller => 'user_sessions', :action => 'create') do %>
   <div>
     <%= t('users.login') %> :
     <%= text_field_tag :login %>

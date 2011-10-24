@@ -36,8 +36,8 @@ class User < ActiveRecord::Base
   before_destroy do self.projects.delete_all end
   before_destroy do self.roles.delete_all end
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
+  def self.authenticate(login, password)
+    user = find_by_login(login)
     if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else
