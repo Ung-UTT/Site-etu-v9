@@ -11,6 +11,17 @@
     <% end %>
   <% end %>
 </ul>
+<% if documents.empty? %>
+<p><%= t('documents.count', :count => 0) %></p>
+<% else %>
+<ul class="documents">
+  <% documents.each do |document| %>
+  <li>
+    <%= render 'documents/one_document', {:documentable => documentable, :document => document} %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
 
 <% if can? :create, documentable.documents.new %>
   <%= form_for([documentable, Document.new], :html => {:multipart => true}) do |f| %>
