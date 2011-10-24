@@ -34,16 +34,20 @@ class UsersController < ApplicationController
       if user.nil?
         flash[:alert] = t('c.users.bad_email')
       else
+        user.perishable_token = BCrypt::Engine.generate_salt
+        user.perishable_token_date = Time.now + 1.week
         UserMailer.password_reset(user)
         flash[:notice] = t('c.users.email_sent')
       end
     elsif params[:token]
       user = User.find_by_perishable_token(params[:token])
-      if user.nil?
+      if user.nil? and user.perishable_token_date > Time.now
         flash[:alert] =  t('c.users.bad_token')
       else
         user.password = ActiveSupport::SecureRandom.hex(2)
         user.password_confirmation = user.password
+        user.perishable_token = nil
+        user.perishable_token_date = nil
         user.save
         redirect_to :root, :notice => t('c.users.new_password', :password => user.password)
       end

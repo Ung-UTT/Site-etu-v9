@@ -1,12 +1,13 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string  :login
-      t.string  :email
-      t.boolean :cas
-      t.string  :crypted_password
-      t.string  :password_salt
-      # t.string  :perishable_token # ??? TODO: À compléter pour "mot de passe oublié" # à faire dans une nouvelle migration
+      t.string    :login
+      t.string    :email
+      t.boolean   :cas
+      t.string    :crypted_password
+      t.string    :password_salt
+      t.string    :perishable_token
+      t.datetime  :perishable_token_date
 
       t.timestamps
     end
