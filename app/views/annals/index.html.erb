@@ -1,14 +1,15 @@
-<%= title(t('annals.list')) %>
+<section class="content">
+  <%= title(t('annals.list')) %>
 
-<ul>
-<% @annals.each do |annal| %>
-  <li>
-    <%= link_to annal.name, annal %>
-    (<%= t('annals.course') %> : <%= annal.course.name %>, <%= t('annals.date') %> : <%= l annal.date %>)
-  </li>
-<% end %>
-</ul>
+	<section class="content_box">
+	    <% @annals.each do |annal| %>
+		<li>  <%= link_to annal.name, annal %>
+			(<%= t('annals.course') %> : <%= annal.course.name %>, <%= t('annals.date') %> : <%= l annal.date %>)</li>
+		<% end %>
+	  </section>
 
-<br />
+		<% if can? :create, Annal %>
+	  	<%= link_to t('common.add'), new_annal_path %>
+		<% end %>
+</section>
 
-<%= link_to t('common.add'), new_annal_path %>

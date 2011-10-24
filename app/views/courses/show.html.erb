@@ -1,29 +1,18 @@
-<%= title(t('course') + ' : ' + @course.name) %>
+<section class="content">
+	<%= title(t('course') + ' : ' + @course.name) %>
 
-<p>
-  <b><%= t('courses.description') %></b>
-  <%= @course.description %>
-</p>
-
-<p>
-  <b><%= t('courses.users') %></b>
-  <%= link_to_users @course.users %>
-</p>
-
-<p>
-  <b><%= t('tags') %></b>
-  <%= link_to_tags @course %>
-</p>
-
-<%= list_of t('courses.annals'), @course.annals, :name %>
-
-<% if can? :update, @course %>
-  <%= link_to t('common.edit'), edit_course_path(@course) %> |
-<% end %>
-<% if can? :destroy, @course %>
-  <%= button_to t('common.delete'), @course, :confirm => t('common.confirm'), :method => :delete %> |
-<% end %>
-<%= link_to t('common.list'), courses_path %>
+  <section class="content_box">
+    <%= render 'one_courses', {:courses => @courses} %>
+	
+		<% if can? :update, @course %>
+		  <%= link_to t('common.edit'), edit_course_path(@course) %> |
+		<% end %>
+		<% if can? :destroy, @course %>
+		  <%= button_to t('common.delete'), @course, :confirm => t('common.confirm'), :method => :delete %> |
+		<% end %>
+		<%= link_to t('common.list'), courses_path %>
+  </section>
+</section>
 
 <%= render 'documents/list_and_add', {:documentable => @course, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @course, :comments => @comments} %>

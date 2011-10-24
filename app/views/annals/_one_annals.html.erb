@@ -1,0 +1,19 @@
+<article role="primary" class="annals">
+	<p>
+	  <b><%= t('annals.description') %> :</b>
+	  <%= @annal.description %>
+	</p>
+	<p>
+  	<b><%= t('annals.date') %> :</b>
+  	<%= l @annal.date %>
+	</p>
+	<p>
+  	<b><%= t('annals.course') %> :</b>
+  	<%= link_to @annal.course.name, @annal.course %>
+	</p>
+	<p>
+  	<b><%= t('annals.tags') %> :</b>
+  	<%= link_to_tags @annal %>
+	</p>
+</article>
+<hr />

@@ -1,32 +1,18 @@
-<%= title(t('annal') + ' : ' + @annal.name) %>
+<section class="content">
+	<%= title(t('annal') + ' : ' + @annal.name) %>
 
-<p>
-  <b><%= t('annals.description') %> :</b>
-  <%= @annal.description %>
-</p>
-
-<p>
-  <b><%= t('annals.date') %> :</b>
-  <%= l @annal.date %>
-</p>
-
-<p>
-  <b><%= t('annals.course') %> :</b>
-  <%= link_to @annal.course.name, @annal.course %>
-</p>
-
-<p>
-  <b><%= t('annals.tags') %> :</b>
-  <%= link_to_tags @annal %>
-</p>
-
-<% if can? :update, @annal %>
-  <%= link_to t('common.edit'), edit_annal_path(@annal) %> |
-<% end %>
-<% if can? :destroy, @annal %>
-  <%= button_to t('common.delete'), @annal, :confirm => t('common.confirm'), :method => :delete %> |
-<% end %>
-<%= link_to t('common.list'), annals_path %>
+  <section class="content_box">
+    <%= render 'one_annals', {:annals => @annals} %>
+	
+	<% if can? :update, @annal %>
+		 <%= link_to t('common.edit'), edit_annal_path(@annal) %> |
+	<% end %>
+	<% if can? :destroy, @annal %>
+		 <%= button_to t('common.delete'), @annal, :confirm => t('common.confirm'), :method => :delete %> |
+	<% end %>
+	<%= link_to t('common.list'), annals_path %>
+  </section>
+</section>
 
 <%= render 'documents/list_and_add', {:documentable => @annal, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @annal, :comments => @comments} %>

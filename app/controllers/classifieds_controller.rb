@@ -4,7 +4,7 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.xml
   def index
-    @classifieds = Classified.order('created_at desc')
+    @classifieds = Classified.order('created_at desc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
