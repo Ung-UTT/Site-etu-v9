@@ -2,10 +2,12 @@
 
 <%= form_for user_sessions_path do %>
   <div>
-    <%= text_field_tag :login, {:placeholder => t('users.login'), :autofocus => 'true', :required => 'required'} %>
+    <%= t('users.login') %> :
+    <%= text_field_tag :login %>
   </div>
   <div>
-    <%= password_field_tag :password, {:placeholder => t('users.password'), :required => 'required'} %>
+    <%= t('users.password') %> :
+    <%= password_field_tag :password %>
   </div>
   <div>
     <%= check_box_tag :remember_me %>
