@@ -70,7 +70,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-    params[:event][:association_ids] ||= []
+    params[:event][:asso_ids] ||= []
     @event = Event.new(params[:event])
     @event.owner = current_user
 
@@ -88,7 +88,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
-    params[:event][:association_ids] ||= []
+    params[:event][:asso_ids] ||= []
     @event = Event.find(params[:id])
 
     respond_to do |format|

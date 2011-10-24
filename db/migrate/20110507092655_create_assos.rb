@@ -1,6 +1,6 @@
-class CreateAssociations < ActiveRecord::Migration
+class CreateAssos < ActiveRecord::Migration
   def self.up
-    create_table :associations do |t|
+    create_table :assos do |t|
       t.string     :name
       t.text       :description
       t.references :owner
@@ -13,6 +13,6 @@ class CreateAssociations < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :associations
+    drop_table :assos
   end
 end

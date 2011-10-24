@@ -1,0 +1,21 @@
+<section class="content">
+  <%= title(t('asso') + ' : ' + @asso.name) %>
+  <%= image_tag @asso.image.asset.url unless @asso.image.nil? %>
+
+  <section class="content_box">
+    <%= render 'one_asso', {:asso => @asso} %>
+
+    <% if can? :update, @asso %>
+      <%= link_to t('common.edit'), edit_asso_path(@asso) %> |
+    <% end %>
+    <% if can? :destroy, @asso %>
+      <%= button_to t('common.delete'), @asso, :confirm => t('common.confirm'), :method => :delete %> |
+    <% end %>
+    <%= link_to t('common.list'), asso_path %>
+
+  </section>
+</section>
+
+<%= render 'documents/list_and_add', {:documentable => @asso, :documents => @documents} %>
+<%= render 'comments/list_and_add', {:commentable => @asso, :comments => @comments} %>
+

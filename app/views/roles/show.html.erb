@@ -1,9 +1,9 @@
 <%= title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, :default => @role.name)) %>
 
-<% if @role.association %>
+<% if @role.asso %>
 <p>
-  <b><%= t('roles.association') %></b>
-  <%= link_to @role.association.name, @role.association %>
+  <b><%= t('roles.asso') %></b>
+  <%= link_to @role.asso.name, @role.asso %>
 </p>
 <% end %>
 

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :quotes, :dependent => :destroy
   has_many :reminders, :dependent => :destroy
 
-  has_many :created_associations, :foreign_key => 'owner_id', :class_name => 'Association', :dependent => :destroy
+  has_many :created_assos, :foreign_key => 'owner_id', :class_name => 'Asso', :dependent => :destroy
   has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
   has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', :dependent => :destroy
   has_and_belongs_to_many :events, :uniq => true
@@ -57,22 +57,22 @@ class User < ActiveRecord::Base
     end
   end
 
-  def associations
-    roles.map(&:association).compact.uniq
+  def assos
+    roles.map(&:asso).compact.uniq
   end
 
   def courses
     timesheets.map(&:course).uniq
   end
 
-  def is_member_of?(association)
-    associations.include?(association)
+  def is_member_of?(asso)
+    assos.include?(asso)
   end
 
-  def is?(name, association = nil)
+  def is?(name, asso = nil)
     res = roles.select { |r| r.symbol == name }
-    if association
-      res = res & association.roles
+    if asso
+      res = res & asso.roles
     end
     !res.empty?
   end

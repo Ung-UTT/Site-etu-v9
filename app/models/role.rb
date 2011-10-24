@@ -1,12 +1,12 @@
 class Role < ActiveRecord::Base
   validates_presence_of :name
-  validates_uniqueness_of :name, :scope => [:association_id]
+  validates_uniqueness_of :name, :scope => [:asso_id]
   validates_format_of :name, :with => /[a-zA-Z1-9_\- ']+/
 
   # has_paper_trail # TODO: Trouver pourquoi ça ne fonctionne pas
   acts_as_nested_set :dependent => :destroy
 
-  belongs_to :association
+  belongs_to :asso
   has_and_belongs_to_many :users, :uniq => true
 
   # Enlève le rôle supprimé aux utilisateurs

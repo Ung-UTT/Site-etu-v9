@@ -67,7 +67,7 @@
             <ul>
               <li><%= link_to_if_can t('layout.annals'), Annal %></li>
               <li><%= link_to_if_can t('layout.classifieds'), Classified %></li>
-              <li><%= link_to_if_can t('layout.associations'), Association %></li>
+              <li><%= link_to_if_can t('layout.assos'), Asso %></li>
               <li><%= link_to_if_can t('layout.quotes'), Quote %></li>
               <li><%= link_to_if_can t('layout.timesheets'), Timesheet %></li>
               <li><%= link_to_if_can t('layout.carpools'), Carpool %></li>
@@ -114,9 +114,9 @@
         <section role="secondary" class="box">
           <div class="top_box"></div>
           <section class="box_content">
-            <h2><%= t('layout.associations_clubs') %></h2>
+            <h2><%= t('layout.assos_clubs') %></h2>
             <ul>
-            <% @associations.each do |asso| %>
+            <% @assos.each do |asso| %>
               <li><%= link_to asso.name, asso %></li>
             <% end %>
             </ul>

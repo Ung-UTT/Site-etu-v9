@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
     def set_layout_vars
       @random_quote = Quote.random || Quote.new
-      @associations = Association.all
+      @assos = Asso.all
     end
 
     def current_user

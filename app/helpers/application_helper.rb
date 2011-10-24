@@ -27,8 +27,8 @@ module ApplicationHelper
     )
   end
 
-  def associations_select(object)
-    options_for_select(Association.all.map { |a| [a.name, a.id] }, object.associations.map(&:id))
+  def assos_select(object)
+    options_for_select(Asso.all.map { |a| [a.name, a.id] }, object.assos.map(&:id))
   end
 
   def events_select(object)
@@ -102,11 +102,11 @@ module ApplicationHelper
     end
   end
 
-  def link_to_associations(object)
-    if object.associations.empty?
+  def link_to_assos(object)
+    if object.assos.empty?
       return 'Aucune'
     else
-      return object.associations.map { |a| link_to a.name, a }.join(' ').html_safe
+      return object.assos.map { |a| link_to a.name, a }.join(' ').html_safe
     end
   end
 

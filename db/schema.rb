@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
     t.datetime "updated_at"
   end
 
-  create_table "associations", :force => true do |t|
+  create_table "assos", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "owner_id"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
     t.integer  "image_id"
   end
 
-  create_table "associations_events", :id => false, :force => true do |t|
-    t.integer  "association_id"
+  create_table "assos_events", :id => false, :force => true do |t|
+    t.integer  "asso_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.integer  "association_id"
+    t.integer  "asso_id"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"

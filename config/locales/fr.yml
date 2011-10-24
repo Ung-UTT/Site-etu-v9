@@ -8,13 +8,13 @@ fr:
     application:
       denied: "Vous n'avez pas le droit d'effectuer cette action."
 
-    associations:
-      create: "L'association a bien été créée."
-      update: "Les informations concernant l'association ont bien été mise à jour."
-      already_join: "Vous êtes déjà dans cette association."
-      join: "Vous êtes maintenant membre de l'association."
-      already_disjoin: "Vous n'êtes pas dans cette association."
-      disjoin: "Vous venez de quitter cette association."
+    assos:
+      create: "L'asso a bien été créée."
+      update: "Les informations concernant l'asso ont bien été mise à jour."
+      already_join: "Vous êtes déjà dans cette asso."
+      join: "Vous êtes maintenant membre de l'asso."
+      already_disjoin: "Vous n'êtes pas dans cette asso."
+      disjoin: "Vous venez de quitter cette asso."
 
     carpools:
       create: "Carpool successfully created."
@@ -106,7 +106,7 @@ fr:
     search: "Rechercher"
 
   annal: "Annale"
-  association: "Association"
+  asso: "Asso"
   carpool: "Covoiturage"
   classified: "Petite annonce"
   comment:
@@ -136,17 +136,17 @@ fr:
     description: "Description"
     course: "UV associée"
 
-  associations:
-    list: "Liste des associations et clubs"
+  assos:
+    list: "Liste des asso et clubs"
     name: "Nom"
     description: "Description"
     owner: "Président"
-    parent: "Association parente"
+    parent: "Asso parente"
     children: "Clubs fils"
     join: "Joindre"
     disjoin: "Quitter"
-    roles: "Rôles de l'association"
-    events: "Évènements de l'association"
+    roles: "Rôles de l'asso"
+    events: "Évènements de l'asso"
     add_role: "Ajouter un rôle"
 
   carpools:
@@ -191,7 +191,7 @@ fr:
     end_at: "Fini le"
     owner: "Créé par"
     users: "Participants"
-    associations: "Organisé par"
+    assos: "Organisé par"
     join: "Participer"
     disjoin: "Ne plus participer"
     daymail:
@@ -219,7 +219,7 @@ fr:
     mails: "Mails"
     mails_title: "Vos mails avec une superbe interface"
     annals: "Annales"
-    associations: "Associations"
+    assos: "Assos"
     quotes: "Citations"
     timesheets: "Horaires"
     carpools: "Covoiturage"
@@ -231,7 +231,7 @@ fr:
     roles: "Rôles"
     content: "Contenus"
     services: "Services"
-    associations_clubs: "Associations et clubs"
+    assos_clubs: "Assos et clubs"
     bug: "Reporter un bug"
     about: "À propos"
 
@@ -274,7 +274,7 @@ fr:
   roles:
     list: "Liste des rôles"
     name: "Nom"
-    association: "Association associée"
+    asso: "Asso associée"
     parent: "Parent"
     users: "Utilisateurs"
     default:
@@ -306,7 +306,7 @@ fr:
     count:
       one: "Un utilisateur"
       other: "%{count} utilisateurs"
-    associations: "President des assocations"
+    assos: "President des assocations"
     events: "Créateur des évènements"
     projects: "Chef de projets des projets"
 

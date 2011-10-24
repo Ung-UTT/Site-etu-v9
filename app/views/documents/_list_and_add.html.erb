@@ -1,16 +1,5 @@
 <h3><%= link_to t('documents.list'), [documentable, Document] %></h3>
 
-<ul class="documents">
-  <% if documents.empty? %>
-    <%= t('documents.count', :count => 0) %>
-  <% else %>
-    <% documents.each do |document| %>
-    <li>
-      <%= render 'documents/one_document', {:documentable => documentable, :document => document} %>
-    </li>
-    <% end %>
-  <% end %>
-</ul>
 <% if documents.empty? %>
 <p><%= t('documents.count', :count => 0) %></p>
 <% else %>

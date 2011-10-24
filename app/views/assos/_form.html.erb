@@ -1,0 +1,33 @@
+<%= form_for(@asso, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :name, t('asso.name') %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :image, t('asso.image') %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :description, t('asso.description') %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :parent_id, t('asso.parent') %><br />
+    <%= f.select :parent_id, parent_select_options(Asso) %>
+  </div>
+  <% unless @asso.new_record? %>
+  <div class="field">
+    <%= f.label :owner_id, t('asso.owner') %><br />
+    <%= f.select :owner_id, users_select(@asso) %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :tag_list, t('tags') %><br />
+    <%= f.text_field :tag_list %>
+  </div>
+  <div class="actions">
+    <%= f.submit t('common.submit') %>
+  </div>
+<% end %>

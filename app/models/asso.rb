@@ -1,4 +1,4 @@
-class Association < ActiveRecord::Base
+class Asso < ActiveRecord::Base
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
   validates_associated :owner
@@ -17,7 +17,7 @@ class Association < ActiveRecord::Base
   after_create do create_member end
 
   def create_member
-    Role.create(:name => 'member', :association_id => self.id)
+    Role.create(:name => 'member', :asso_id => self.id)
   end
 
   def member

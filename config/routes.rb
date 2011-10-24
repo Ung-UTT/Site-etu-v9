@@ -7,8 +7,8 @@ SiteEtu::Application.routes.draw do
   # TODO: Réorganiser joliment les join/disjoin
   match 'events/:id/join' => 'events#join', :as => 'join_event'
   match 'events/:id/disjoin' => 'events#disjoin', :as => 'disjoin_event'
-  match 'associations/:id/join' => 'associations#join', :as => 'join_association'
-  match 'associations/:id/disjoin' => 'associations#disjoin', :as => 'disjoin_association'
+  match 'assos/:id/join' => 'assos#join', :as => 'join_asso'
+  match 'assos/:id/disjoin' => 'assos#disjoin', :as => 'disjoin_asso'
   match 'projects/:id/join' => 'projects#join', :as => 'join_project'
   match 'projects/:id/disjoin' => 'projects#disjoin', :as => 'disjoin_project'
   match 'roles/:id/join' => 'roles#join', :as => 'join_role'
@@ -26,7 +26,7 @@ SiteEtu::Application.routes.draw do
 
   resources :authorizations, :groups, :reminders, :roles, :timesheets, :users
   resources :user_sessions, :only => :create
-  resources :annals, :associations, :classifieds, :carpools, :courses, :events, :projects, :quotes, :news do
+  resources :annals, :assos, :classifieds, :carpools, :courses, :events, :projects, :quotes, :news do
     resources :comments
     resources :documents
   end

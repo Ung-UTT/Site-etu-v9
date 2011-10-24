@@ -10,7 +10,7 @@ zh-CN:
     application:
       denied: "您没有权限执行此操作"
 
-    associations:
+    assos:
       create: "社团创建成功"
       update: "社团信息更新成功"
       already_join: "您已经加入了该社团"
@@ -108,7 +108,7 @@ zh-CN:
     search: "搜索"
 
   annal: "历届考题"
-  association: "社团"
+  asso: "社团"
   carpool: "拼车"
   classified: "跳蚤市场"
   comment:
@@ -138,7 +138,7 @@ zh-CN:
     description: "说明"
     course: "课程"
 
-  associations:
+  assos:
     list: "社团列表"
     name: "名称"
     description: "说明"
@@ -193,7 +193,7 @@ zh-CN:
     end_at: "结束于"
     owner: "创建人"
     users: "参与者"
-    associations: "组织者"
+    assos: "组织者"
     join: "参加"
     disjoin: "退出"
     daymail:
@@ -221,7 +221,7 @@ zh-CN:
     mails: "邮件"
     mails_title: "邮件"
     annals: "历届考题"
-    associations: "社团"
+    assos: "社团"
     quotes: "语录"
     timesheets: "时刻表"
     carpools: "拼车"
@@ -233,7 +233,7 @@ zh-CN:
     roles: "角色"
     content: "内容"
     services: "服务"
-    associations_clubs: "社团"
+    assos_clubs: "社团"
     bug: "报告错误"
     about: "关于"
 
@@ -276,7 +276,7 @@ zh-CN:
   roles:
     list: "角色列表"
     name: "名称"
-    association: "相关社团"
+    asso: "相关社团"
     parent: "Parent"
     users: "用户"
     default:
@@ -308,7 +308,7 @@ zh-CN:
     count:
       one: "1位用户"
       other: "%{count}位用户"
-    associations: "社团主席"
+    assos: "社团主席"
     events: "活动创建人"
     projects: "课题负责人"
 

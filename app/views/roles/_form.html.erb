@@ -6,8 +6,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :association_id, t('roles.association') %><br />
-    <%= f.select :association_id, parent_select_options(Association) %>
+    <%= f.label :asso_id, t('roles.asso') %><br />
+    <%= f.select :asso_id, parent_select_options(Asso) %>
   </div>
   <div class="actions">
     <%= f.submit t('common.submit') %>

@@ -8,13 +8,13 @@ en:
     application:
       denied: "You are not authorized to do this."
 
-    associations:
-      create: "Association successfully created"
-      update: "Association successfully updated"
-      already_join: "You already joined this association."
-      join: "You've just join this association."
-      already_disjoin: "You already left this association."
-      disjoin: "You aren't in this association anymore."
+    assos:
+      create: "Asso successfully created"
+      update: "Asso successfully updated"
+      already_join: "You already joined this asso."
+      join: "You've just join this asso."
+      already_disjoin: "You already left this asso."
+      disjoin: "You aren't in this asso anymore."
 
     carpools:
       create: "Carpool successfully created."
@@ -106,7 +106,7 @@ en:
     search: "Search"
 
   annal: "Annal"
-  association: "Association"
+  asso: "Asso"
   carpool: "Carpool"
   classified: "Classified Ads"
   comment:
@@ -136,8 +136,8 @@ en:
     description: "Description"
     course: "Associated course"
 
-  associations:
-    list: "List of associations"
+  assos:
+    list: "List of asso"
     name: "Name"
     description: "Description"
     owner: "President"
@@ -145,8 +145,8 @@ en:
     children: "Children"
     join: "Join"
     disjoin: "Disjoin"
-    roles: "Association's roles"
-    events: "Association's events"
+    roles: "Asso's roles"
+    events: "Asso's events"
     add_role: "Add a role"
 
   carpools:
@@ -191,7 +191,7 @@ en:
     end_at: "End at"
     owner: "Created by"
     users: "Participants"
-    associations: "Orginazed by"
+    assos: "Orginazed by"
     join: "Join"
     disjoin: "Disjoin"
     daymail:
@@ -219,7 +219,7 @@ en:
     mails: "Mails"
     mails_title: "All your emails, with a great interface"
     annals: "Annals"
-    associations: "Associations"
+    assos: "Assos"
     quotes: "Quotes"
     timesheets: "Timesheets"
     carpools: "Carpools"
@@ -231,7 +231,7 @@ en:
     roles: "Roles"
     content: "Content"
     services: "Services"
-    associations_clubs: "Associations & clubs"
+    assos_clubs: "Assos & clubs"
     bug: "Report a bug"
     about: "About"
 
@@ -274,7 +274,7 @@ en:
   roles:
     list: "List of roles"
     name: "Name"
-    association: "Associated association"
+    asso: "Associated asso"
     parent: "Parent"
     users: "Users"
     default:
@@ -306,7 +306,7 @@ en:
     count:
       one: "One user"
       other: "%{count} users"
-    associations: "President of associations"
+    assos: "President of asso"
     events: "Creator of events"
     projects: "Leader of projects"
 

@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, [Classified, Association, Event]
+    can :read, [Classified, Asso, Event]
     can :read, News, :is_moderated => true
     can :read, [Document, Comment] do |obj|
       obj.documentable.nil? ? false : can?(:read, obj.documentable)
@@ -24,22 +24,22 @@ class Ability
           doc.documentable.nil? ? false : can?(:update, doc.documentable)
         end
 
-        can [:create, :update, :destroy], Role do |association|
-          association == nil ? association.owner_id == user.id : false
+        can [:create, :update, :destroy], Role do |asso|
+          asso == nil ? asso.owner_id == user.id : false
         end
 
-        can [:join, :disjoin], [Event, Association]
+        can [:join, :disjoin], [Event, Asso]
         can :disjoin, Role # cf dans le controlleur : ce doit être son rôle
 
         # L'auteur peut mettre à jour et supprimer ses contenus
         can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
-        can [:update, :destroy], [Association, Project, Event], :owner_id => user.id
+        can [:update, :destroy], [Asso, Project, Event], :owner_id => user.id
         can [:update, :destroy], User, :id => user.id
 
         can :destroy, Comment, :user_id => user.id
 
         if user.is? :moderator
-          can :manage, [Association, Annal, Carpool, Classified, Comment, Event, News, Quote]
+          can :manage, [Asso, Annal, Carpool, Classified, Comment, Event, News, Quote]
         end
         if user.is? :admin
           can :manage, [Role, Group]

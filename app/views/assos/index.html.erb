@@ -1,0 +1,17 @@
+<section class="content">
+  <%= title(t('assos.list')) %>
+
+  <section class="content_box">
+    <% @assos.each do |asso| %>
+      <li>
+        <strong><%= link_to asso.name, asso %></strong> :<br />
+        <%= asso.description %>
+      </li>
+    <% end %>
+    </section>
+
+    <% if can? :create, Asso %>
+      <%= link_to t('common.add'), new_asso_path %>
+    <% end %>
+</section>
+

@@ -1,29 +1,29 @@
 collaborator:
   name: $LABEL
-  association: FritUTT
+  asso: FritUTT
   lft: 1
   rgt: 4
 
 treasurer:
   name: $LABEL
-  association: LibrUTT
+  asso: LibrUTT
   lft: 5
   rgt: 6
 
 FritUTT_member:
   name: member
-  association: FritUTT
+  asso: FritUTT
   lft: 2
   rgt: 3
 
 LibrUTT_member:
   name: member
-  association: LibrUTT
+  asso: LibrUTT
   lft: 7
   rgt: 8
 
 BDE_member:
   name: member
-  association: BDE
+  asso: BDE
   lft: 9
   rgt: 10

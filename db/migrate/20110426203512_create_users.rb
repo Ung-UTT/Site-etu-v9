@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :cas
       t.string  :crypted_password
       t.string  :password_salt
-      # t.string  :perishable_token # ??? TODO: À compléter pour "mot de passe oublié"
+      # t.string  :perishable_token # ??? TODO: À compléter pour "mot de passe oublié" # à faire dans une nouvelle migration
 
       t.timestamps
     end
