@@ -19,9 +19,8 @@
     <%= news.content %>
   </p>
   <% if news.event %>
-  <h3><%= t('newss.event') %></h3>
   <p>
-    <%= link_to news.event.name, news.event %>
+    <strong><%= t('newss.event') %></strong> : <%= link_to news.event.name, news.event %>
   </p>
   <% end %>
 </article>
