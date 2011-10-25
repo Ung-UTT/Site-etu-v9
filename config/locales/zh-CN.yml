@@ -94,6 +94,7 @@ zh-CN:
     user_sessions:
       create: "登录成功"
       destroy: "您已退出"
+      failed: "Connection failed"
 
   # Views
 
