@@ -131,14 +131,14 @@ fr:
   user_session: "Connexion"
 
   annals:
-    list: "Liste des annales"
+    list: "Annales"
     name: "Nom"
     date: "Date"
     description: "Description"
     course: "UV associée"
 
   assos:
-    list: "Liste des asso et clubs"
+    list: "Assos et clubs"
     name: "Nom"
     description: "Description"
     owner: "Président"
@@ -151,7 +151,7 @@ fr:
     add_role: "Ajouter un rôle"
 
   carpools:
-    list: "Liste des covoturages"
+    list: "Covoiturages"
     description: "Description"
     location: "Lieu"
     date: "Date"
@@ -184,7 +184,7 @@ fr:
       other: "%{count} documents"
 
   events:
-    list: "Liste des évènements"
+    list: "Évènements"
     name: "Nom"
     description: "Description"
     location: "Lieu"
@@ -200,7 +200,7 @@ fr:
       other: "%{count} daymails"
 
   groups:
-    list: "Liste des groupes"
+    list: "Groupes"
     name: "Nom"
     parent: "Parent"
     users: "Utilisateurs"
@@ -237,7 +237,7 @@ fr:
     about: "À propos"
 
   newss:
-    list: "Liste des news"
+    list: "News"
     title: "Titre"
     content: "Contenu"
     user: "Auteur"
@@ -263,17 +263,17 @@ fr:
     disjoin: "Quitter"
 
   quotes:
-    list: "Liste des citations"
+    list: "Citations"
     content: "Contenu"
     by: "de"
 
   reminders:
-    list: "Liste des pense-bêtes"
+    list: "Pense-bêtes"
     content: "Contenu"
     user: "Utilisateur"
 
   roles:
-    list: "Liste des rôles"
+    list: "Rôles"
     name: "Nom"
     asso: "Asso associée"
     parent: "Parent"
@@ -297,7 +297,7 @@ fr:
     users: "Participants"
 
   users:
-    list: "Liste des utilisateurs"
+    list: "Utilisateurs"
     login: "Pseudo"
     email: "Email"
     password: "Mot de passe"
