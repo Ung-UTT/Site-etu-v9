@@ -301,12 +301,18 @@ clear: both;
 #menu_right .box_content {
   margin: 0px;
   padding: 0px 20px 10px 20px;
-  background: url('../images/style/menu_bottom_right.jpg') no-repeat bottom left; /*Mettre un jpg à la place du png, sinon le fond dépasse sur la droite*/
+  background: url('../images/style/menu_bottom_right.jpg') no-repeat bottom left; /* Mettre un jpg à la place du png, sinon le fond dépasse sur la droite*/
   width: 223px; /* 263 - 20 - 20*/
 }
 
 #menu_right a {
   color: #00739D;
+}
+
+#menu_right ul {
+  list-style: none;
+  padding: 0;
+  padding-left: 10px;
 }
 
 /* Bas */
