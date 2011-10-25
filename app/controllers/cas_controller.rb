@@ -29,7 +29,7 @@ class CasController < ApplicationController
 
   private
     def add_cas(user)
-      unless user.cas
+      unless user.cas == true
         user.cas = true
         user.save
       end

@@ -85,6 +85,6 @@ class User < ActiveRecord::Base
   end
 
   def is_student?
-    cas
+    !cas.nil? && cas == true
   end
 end
