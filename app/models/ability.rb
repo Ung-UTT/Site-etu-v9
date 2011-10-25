@@ -5,7 +5,7 @@ class Ability
     can :read, [Classified, Asso, Event]
     can :read, News, :is_moderated => true
     can :read, [Document, Comment] do |obj|
-      obj.documentable.nil? ? false : can?(:read, obj.documentable)
+      !obj.documentable.nil? and can?(:read, obj.documentable)
     end
 
     if !user
@@ -16,21 +16,23 @@ class Ability
       can :read, User, :id => user.id
 
       if user.is_student? or !user.roles.empty? # UTTiens ou anciens
-        can [:read, :create], :all
-        cannot :read, Reminder
+        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, News, Quote]
         can :read, Reminder, :user_id => user.id
 
-        cannot :create, [Role, Group, Document]
         can [:create, :destroy], Document do |doc|
-          doc.documentable.nil? ? false : can?(:update, doc.documentable)
+          !doc.documentable.nil? and can?(:update, doc.documentable)
         end
 
         can [:create, :update, :destroy], Role do |asso|
-          asso == nil ? asso.owner_id == user.id : false
+          asso.nil? and asso.owner_id == user.id
         end
 
         can [:join, :disjoin], [Event, Asso]
         can :disjoin, Role # cf dans le controlleur : ce doit être son rôle
+
+        # On ne garde pas l'identité de celui qui met l'annale en ligne,
+        # donc elles appartiennent à tout le monde
+        can :update, Annal
 
         # L'auteur peut mettre à jour et supprimer ses contenus
         can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
