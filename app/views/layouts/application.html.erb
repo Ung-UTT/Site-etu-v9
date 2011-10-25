@@ -29,10 +29,10 @@
       <nav role="navigation" id="menu_top">
         <ul>
           <li><%= link_to image_tag('icons/house.png') + t('layout.home'), :root, :title => t('layout.home') %></li>
-          <li><%= link_to image_tag('icons/face.png') + t('layout.users'), users_path, :title => t('layout.users') if current_user %></li>
+          <li><%= link_to image_tag('icons/face.png') + t('layout.users'), users_path, :title => t('layout.users') if can? :read, :user %></li>
           <li><%= link_to image_tag('icons/annonces.png') + t('layout.classifieds'), classifieds_path, :title => t('layout.classifieds') %></li>
-          <li><%= link_to image_tag('icons/buckutt.png') + t('layout.buckutt'), :root, :title => t('layout.buckutt') if current_user %></li>
-          <li><%= link_to image_tag('icons/mail.png') + t('layout.mails'), :root, :title => t('layout.mails') if current_user %></li>
+          <li><%= link_to image_tag('icons/buckutt.png') + t('layout.buckutt'), :root, :title => t('layout.buckutt') if current_user.is_student? %></li>
+          <li><%= link_to image_tag('icons/mail.png') + t('layout.mails'), :root, :title => t('layout.mails') if current_user.is_student? %></li>
         </ul>
       </nav>
 
