@@ -126,6 +126,21 @@ body {
   border-radius: 5px;
 }
 
+#wrap_contents form.button_to, #wrap_contents form.button_to div, #wrap_contents form.button_to input {
+  display: inline;
+}
+
+#wrap_contents form.button_to input[type=submit] {
+  background: none;
+  border: 0;
+  font-size: 1em;
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+  padding: 0;
+  margin: 0;
+}
+
 .content_box {
   background-color: white;
   border: 1px solid #dbdbdb;
