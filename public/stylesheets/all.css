@@ -108,6 +108,24 @@ body {
   padding-bottom: 20px;
 }
 
+#wrap_contents .top-notice {
+  display: inline;
+  color: green;
+  border: green 1px solid;
+  background: #A0D5AC;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#wrap_contents .top-alert {
+  display: inline;
+  color: red;
+  border: red 1px solid;
+  background: #FFA09B;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .content_box {
   background-color: white;
   border: 1px solid #dbdbdb;

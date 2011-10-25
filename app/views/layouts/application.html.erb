@@ -38,11 +38,11 @@
 
       <section id="wrap_contents">
         <% unless notice.nil? %>
-        <div id="notice"><%= notice %></div>
+        <div class="top-notice"><%= notice %></div>
         <% end %>
 
         <% unless alert.nil? %>
-        <div id="alert"><%= alert %></div>
+        <div class="top-alert"><%= alert %></div>
         <% end %>
 
         <%= yield %>
