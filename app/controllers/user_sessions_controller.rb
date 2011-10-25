@@ -15,7 +15,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = t('c.user_sessions.create')
       redirect_to :root
     else
-      flash[:notice] = t('c.user_sessions.failed')
+      flash[:alert] = t('c.user_sessions.failed')
       render :action => :new
     end
   end

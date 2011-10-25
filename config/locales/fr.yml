@@ -312,8 +312,9 @@ fr:
     projects: "Chef de projets des projets"
 
   user_sessions:
-    login: "Se connecter autrement"
+    login: "Connexion alternative"
     logout: "Se déconnecter"
+    cas: "Connexion"
 
   # ActiveRecord translations
 

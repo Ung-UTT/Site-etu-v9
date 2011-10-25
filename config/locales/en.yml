@@ -313,7 +313,7 @@ en:
   user_sessions:
     login: "Alternative connection"
     logout: "Logout"
-    failed: "Connection failed"
+    cas: "Connect"
 
   # ActiveRecord
 

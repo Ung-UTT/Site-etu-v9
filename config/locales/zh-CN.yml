@@ -316,6 +316,7 @@ zh-CN:
   user_sessions:
     login: "其他方式登陆"
     logout: "退出"
+    cas: "Connect"
 
   # ActiveRecord translations
 
