@@ -7,7 +7,11 @@ class UserSessionsController < ApplicationController
   def create
     user = User.authenticate(params[:login], params[:password])
     if user
-      session[:user_id] = user.id
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = user.auth_token
+      else
+        cookies[:auth_token] = user.auth_token
+      end
       flash[:notice] = t('c.user_sessions.create')
       redirect_to :root
     else
@@ -17,7 +21,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies.delete(:auth_token)
     session[:cas_user] = nil
     redirect_to :back, :notice => t('c.user_sessions.destroy')
   end

@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
     t.string   "password_salt"
     t.string   "perishable_token"
     t.datetime "perishable_token_date"
+    t.string   "auth_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

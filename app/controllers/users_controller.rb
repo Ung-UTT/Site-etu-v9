@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       if user.nil?
         flash[:alert] = t('c.users.bad_email')
       else
-        user.perishable_token = BCrypt::Engine.generate_salt
+        user.perishable_token = SecureRandom.hex
         user.perishable_token_date = Time.now + 1.week
         UserMailer.password_reset(user)
         flash[:notice] = t('c.users.email_sent')
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        session[:user_id] = @user.id
+        cookies[:auth_token] = user.auth_token
         format.html { redirect_to(:root, :notice => t('c.users.create')) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else

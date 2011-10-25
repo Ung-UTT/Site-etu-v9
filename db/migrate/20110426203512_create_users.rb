@@ -6,8 +6,9 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean   :cas
       t.string    :crypted_password
       t.string    :password_salt
-      t.string    :perishable_token
-      t.datetime  :perishable_token_date
+      t.string    :perishable_token # Pour "mot de passe oublié"
+      t.datetime  :perishable_token_date #    //
+      t.string    :auth_token # Pour "Se souvenir de moi"
 
       t.timestamps
     end

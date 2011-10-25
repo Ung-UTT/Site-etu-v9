@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :password, :password_confirmation
 
   attr_accessor :password
+  before_create :generate_token
   before_save :encrypt_password
 
   validates_confirmation_of :password
@@ -55,6 +56,12 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.crypted_password = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def generate_token
+    begin
+      self.auth_token = SecureRandom.hex
+    end while User.exists?(:auth_token => self.auth_token)
   end
 
   def assos
