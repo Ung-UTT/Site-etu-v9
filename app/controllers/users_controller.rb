@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        cookies[:auth_token] = user.auth_token
+        cookies[:auth_token] = @user.auth_token
         format.html { redirect_to(:root, :notice => t('c.users.create')) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
