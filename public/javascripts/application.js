@@ -3,7 +3,7 @@ var progress = 0;
 
 $('*').keyup(function(event) {
   if (event.keyCode == 27) {
-    $('body').html('<div>Blue Screen Of Death</div>').css('background-color', 'blue');
+    $('body').html('<div>Blue Screen Of Death</div>').css({'background-color': 'blue', 'background-image': 'url()'}).remove;
     $('div').css({'font-size': '8em', 'text-weight': 'bolder', 'text-align': 'center', 'margin-top': '150px'});
   }
 
