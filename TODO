@@ -1,7 +1,6 @@
   | Pour la production, il manque :
   | * Le design
   | * Le trombi (LDAP)
-  | * Le site au moins en français
   -----------------------------------
 
 Priorité absolue : Le design !
@@ -24,11 +23,9 @@ Event
 
 User
   Infos via LDAP (avatar, UVs, …) (dump à faire)
-
 ______________________________________________
 
 Objectifs
-  Traductions
   Validations
     Valeurs par défaut
   Tests
@@ -39,19 +36,9 @@ Objectifs
   API
   Refactoriser (helpers entre autres)
 
-Bugs :
-  Paperclip et show_link ont du mal avec le sous-dossier site-etu/ (WTF ?)
-    liés à link_to, le bug vient sûrement de Passenger (et surtout du mode production)
-
-Bugs des autres :
-  IPFuck : il faut cocher "Synchronize IP together"
-
-Plus tard
-  Rails 3.1 (dès que disponible sur rubygems)
-    haml
-    cofeescript
-    images/
-    jQuery
+Avancées de version :
+  Rails 3.1
+    assets
     migrations : up/down => change
     -= multipart
   Ruby 1.9
@@ -64,7 +51,7 @@ Utilisations des gems :
 
 * Intégration avec Redmine
 * Déploiement : capistrano
-* E-commerce (ZeShop, places aux événements, …) : active_merchant
+* E-commerce (ZeShop, places aux événements, …) : active_merchant (? problèmes légaux)
 * RSS : feedzirra (News crées par flux RSS ? Et/ou à part ?)
 * Tests avec cucumber ou rspec (et factories avec factory_girl)
 * Générateur de mini-sites : jekyll (Pour les CVs/… des gens)
@@ -81,7 +68,7 @@ Mails
 
 Préférences utilisateur
   Quoi ? les cases pour le Daymail, … ?
-  Choix de mot-clefs pour citations (tooltype, sex, …)
+  Choix de mot-clefs pour citations (tooltype, …)
 
 BuckUTT
   Code BuckUTT → Voir solde
@@ -106,5 +93,5 @@ Album Photo
   Chaque utilisateur peut avoir des photos
   Chaque photo a des tags, ce qui permet de faire des albums par tags
 
-Sous-domaines
-  Ferme de Wordpress ?
+Sites de assos
+  Ferme de Wordpress (avec plugin CAS)
