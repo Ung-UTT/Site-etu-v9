@@ -9,7 +9,7 @@ class CasController < ApplicationController
     else
       if current_user
         add_cas(current_user)
-        redirect_to :root, :notice => "#{session[:cas_user]}, ton compte CAS a été ajouté !"
+        redirect_to :root, :notice => "#{session[:cas_user]}, ton compte UTT a été ajouté !"
 
       elsif @user = User.find_by_login(session[:cas_user])
         add_cas(@user)
@@ -22,7 +22,7 @@ class CasController < ApplicationController
                             :password_confirmation => password, :cas => true,
                             :email => session[:cas_user] + '@utt.fr')
         cookies[:auth_token] = @user.auth_token
-        redirect_to :root, :notice => "#{session[:cas_user]}, ton compte a été créé, ton mot de passe est : " + password + " !"
+        redirect_to :root, :notice => "#{session[:cas_user]}, te voilà connecté avec ton compte UTT."
       end
     end
   end
