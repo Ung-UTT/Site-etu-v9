@@ -83,7 +83,11 @@ module ApplicationHelper
   end
 
   def link_to_user(user)
-    return link_to user.login, user
+    if can? :read, user
+      link_to user.login, user
+    else
+      user.login
+    end
   end
 
   def link_to_users(users)
