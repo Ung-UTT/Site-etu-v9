@@ -12,7 +12,7 @@ class Ability
       can :create, User
       can :password_reset, User
     else
-      can :read, Reminder, :user_id => user.id
+      can :manage, Reminder, :user_id => user.id
       can :read, User, :id => user.id
 
       if user.is_student? or !user.roles.empty? # UTTiens ou anciens
