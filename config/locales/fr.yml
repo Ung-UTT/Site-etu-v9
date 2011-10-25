@@ -166,7 +166,7 @@ fr:
     user: "Vendeur"
 
   comments:
-    list: "Liste des commentaires"
+    list: "Commentaires"
     content: "Cotenu"
     user: "Auteur"
 
@@ -178,7 +178,7 @@ fr:
     annals: "Annales de cette UV"
 
   documents:
-    list: "Liste des documents"
+    list: "Documents"
     count:
       one: "Un document"
       other: "%{count} documents"
