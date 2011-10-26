@@ -322,6 +322,7 @@ clear: both;
 
 #menu_right a {
   color: #00739D;
+  text-decoration: none;
 }
 
 #menu_right ul {
