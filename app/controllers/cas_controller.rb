@@ -17,7 +17,7 @@ class CasController < ApplicationController
         redirect_to :root, :notice => "#{session[:cas_user]}, te revoilà !"
 
       else
-        password = password = ActiveSupport::SecureRandom.hex(2) # Exemples : 0ecc 4691 f742 5c03 66c3
+        password = ActiveSupport::SecureRandom.base64 # Génére un mot de passe que personne ne connaîtra
         @user = User.create(:login => session[:cas_user], :password => password,
                             :password_confirmation => password, :cas => true,
                             :email => session[:cas_user] + '@utt.fr')
