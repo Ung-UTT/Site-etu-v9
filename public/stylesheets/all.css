@@ -353,6 +353,11 @@ clear: both;
   list-style-type: none;
 }
 
+#bottom a {
+	text-decoration: none;
+	color: #00739D;
+}
+
 /* Vignette latérale */
 
 #comments_link {
