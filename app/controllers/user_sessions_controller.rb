@@ -23,6 +23,6 @@ class UserSessionsController < ApplicationController
   def destroy
     cookies.delete(:auth_token)
     session[:cas_user] = nil
-    redirect_to :back, :notice => t('c.user_sessions.destroy')
+    redirect_to :root, :notice => t('c.user_sessions.destroy')
   end
 end
