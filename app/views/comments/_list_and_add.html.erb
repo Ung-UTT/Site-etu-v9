@@ -13,7 +13,7 @@
 
   <% if can? :create, Comment %>
     <%= form_for [commentable, Comment.new] do |f| %>
-        <%= f.text_area :content, :rows => 3 %>
+        <%= f.text_area :content, :rows => 2 %>
         <%= f.submit t('common.add') %>
     <% end %>
   <% end %>

@@ -15,7 +15,9 @@
   <% end %>
 
   <% if can? :create, documentable.documents.new %>
-    <%= form_for([documentable, Document.new]) do |f| %>
+    <%= form_for [documentable, documentable.documents.new] do |f| %>
+      <%= f.hidden_field :documentable_id %>
+      <%= f.hidden_field :documentable_type %>
       <%= f.file_field :asset %>
       <%= f.submit t('common.add') %>
     <% end %>
