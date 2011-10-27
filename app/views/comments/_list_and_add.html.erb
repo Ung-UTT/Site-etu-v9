@@ -1,9 +1,7 @@
 <% unless comments.empty? and cannot? :create, Comment %>
   <h3><%= link_to t('comments.list'), [commentable, Comment] %></h3>
 
-  <% if comments.empty? %>
-  <p><%= t('comment', :count => 0) %></p>
-  <% else %>
+  <% unless comments.empty? %>
   <ul class="comments">
     <% comments.each do |comment| %>
     <li>
