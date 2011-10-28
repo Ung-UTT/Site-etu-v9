@@ -23,7 +23,7 @@
   </div>
   <div class="field">
     <%= label_tag 'assos', t('events.assos') %><br />
-    <% Association.all.each do |asso| %>
+    <% Asso.all.each do |asso| %>
       <%= check_box_tag 'event[asso_ids][]', asso.id, @event.assos.include?(asso) %>
       <%= asso.name %>
       <br />
