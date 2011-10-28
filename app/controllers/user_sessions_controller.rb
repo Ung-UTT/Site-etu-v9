@@ -21,8 +21,14 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
+    cas = current_user.cas
     cookies.delete(:auth_token)
     session[:cas_user] = nil
-    redirect_to :root, :notice => t('c.user_sessions.destroy')
+    flash[:notice] = t('c.user_sessions.destroy')
+    if cas
+      redirect_to Rails.application.config.rubycas.cas_base_url + '/logout?service=' + CGI::escape(root_path(:only_path => false))
+    else
+      redirect_to :root
+    end
   end
 end
