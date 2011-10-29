@@ -3,7 +3,9 @@
 <section class="content">
   <section class="content_box">
     <%= render 'one_events', {:event => @event} %>
-
+		<div id="QRcode">
+			<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= request.url%>&choe=UTF-8">
+		</div>
     <% if @event.users.include?(current_user) %>
     <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => 'PUT' %></p>
   <% elsif can? :'join', Event %>
@@ -20,13 +22,3 @@
 
   </section>
 </section>
-
-<%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
-<%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>
-
-<% if @event.news.empty? %>
-    <%= t('events.daymail', :count => 0) %>
-<% else %>
-    <h3><%= t('events.daymail', :count => @event.news.size) %></h3>
-    <%= render :template => 'news/index' %>
-<% end %>

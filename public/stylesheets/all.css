@@ -204,6 +204,11 @@ body {
   margin-bottom: 20px;
 }
 
+.content b {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .content a {
   color: #00739d;
 }
@@ -244,6 +249,7 @@ clear: both;
 .news_banner em strong {
   color: #6c6c6c;
   padding-top: 0px;
+	font-size: 14px;
 }
 
 .news_banner .date {
@@ -258,12 +264,13 @@ clear: both;
 }
 
 .news_banner em {
+  font-size: 14px;
   background-color: #dedede;
   color: #9c9c9c;
   display: block;
   margin: 0;
   margin-left: 60px;
-  margin-top: 3px;
+  margin-top: 10px;
   padding: 0;
   padding-left: 5px;
   width: 570px;
@@ -315,6 +322,10 @@ clear: both;
   padding: 0px 20px 10px 20px;
   background: url('../images/style/menu_bottom_right.jpg') no-repeat bottom left; /* Mettre un jpg à la place du png, sinon le fond dépasse sur la droite*/
   width: 223px; /* 263 - 20 - 20*/
+}
+
+#menu_right .box_content h2{
+  font-size:18px;
 }
 
 #menu_right a {
@@ -473,4 +484,11 @@ clear: both;
  	-moz-border-radius: 10px !important; /* Firefox */
   	-webkit-border-radius: 10px !important; /* Safari and Chrome */
 }
+
+/* QR code*/
+#QRcode{
+	float:right;
+	margin-top:-180px;
+}
+
 
