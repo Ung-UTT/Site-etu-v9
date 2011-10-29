@@ -1,12 +1,14 @@
-<section class="content">
-	<%= title t('common.edit') %>
-	<section class="content_box">
-		<div id="reminder">
-			<%= render 'form' %>
-		</div>
-		<%= button_to t('common.delete'), @reminder, :confirm => t('common.confirm'), :method => :delete %> |
-		<%= link_to t('common.list'), reminders_path %>
-	</section>
-</section>
+<%= title(t('reminder') + ' : ' + @reminder.content) %>
 
+<p>
+  <b><%= t('reminders.user') %></b>
+  <%= link_to_user @reminder.user %>
+</p>
+<p>
+  <b><%= t('tags') %></b>
+  <%= link_to_tags @reminder %>
+</p>
 
+<%= link_to t('common.edit'), edit_reminder_path(@reminder) %> |
+<%= button_to t('common.delete'), @reminder, :confirm => t('common.confirm'), :method => :delete %> |
+<%= link_to t('common.list'), reminders_path %>

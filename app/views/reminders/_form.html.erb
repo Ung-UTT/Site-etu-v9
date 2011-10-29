@@ -2,7 +2,12 @@
   <%= f.error_messages %>
 
   <div class="field">
-    <%= f.text_area :content %>
+    <%= f.label :content, t('reminders.content') %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_list, t('tags') %><br />
+    <%= f.text_field :tag_list %>
   </div>
   <div class="actions">
     <%= f.submit t('common.submit') %>

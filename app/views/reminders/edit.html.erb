@@ -1,11 +1,6 @@
-<section class="content">
-	<%= title t('common.edit') %>
-	<section class="content_box">
-		<div id="reminder">
-			<%= render 'form' %>
-		</div>
-	</section>
-</section>
+<%= title t('common.edit') %>
+
+<%= render 'form' %>
 
 <%= link_to t('common.show'), @reminder %> |
 <%= link_to t('common.list'), reminders_path %>
