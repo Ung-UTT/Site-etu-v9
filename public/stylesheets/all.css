@@ -1,7 +1,8 @@
 /* Global */
 
 * {
-  font-family: Arial, arial, "sans-serif";
+  font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+  font-size:16px;
 }
 
 /* Wrappers */
@@ -37,7 +38,6 @@ body {
 #top_quote {
   background-image: url('../images/style/quote_top.jpg');
   color: #565656;
-  font-family: Arial, arial, "sans-serif";
   font-size: 1.0em;
   height: 30px;
   margin: 0;
@@ -82,8 +82,6 @@ body {
 }
 #menu_top a {
   color: #565656;
-  font-family: Arial, arial, "sans-serif";
-  font-size: 1.2em;
   text-decoration: none;
 }
 
@@ -165,8 +163,7 @@ body {
   height: 30px;
   width: 627px;
   color: white;
-  font-family: Arial, arial, "sans-serif";
-  font-size: 1.4em;
+  font-size: 18px;
   font-weight: normal;
   margin-top: 0;
   margin-bottom: 0;
@@ -399,3 +396,81 @@ clear: both;
   top: 310px;
   right: 2px;
 }
+
+/* bloc pense-betes*/
+#reminder{
+	background: url('../images/style/reminder_background.jpg') no-repeat;
+	height: 450px;
+}
+
+#reminder .field #reminder_content{
+	background:transparent;
+	border:transparent;
+	margin-left: 90px;
+	margin-top: 60px;
+	height: 240px;
+	width: 250px;
+	resize:none;	
+}
+
+/* form */
+#wrap_contents form{
+	margin-left:10px;
+}
+
+.field label {
+	float:left;
+	width:100px;
+	text-align:right;
+	margin-right:10px;
+	margin-top:10px;		
+	line-height:20px;
+	line-height:150%;
+	font-weight:bold;
+	font-size:14px;
+	display:block;
+}
+
+.field input {
+	width:250px;
+	border:1px solid #444;
+	background-color:#fff;
+	padding:5px;	
+	color:#000;
+	font-size: 12px;
+	margin: -20px 0 20px 0;
+
+}
+.field textarea{
+	width:250px;
+	height:150px;
+	border:1px solid #444;
+	background-color:#fff;
+	padding:5px;	
+	color:#000;
+	font-size:12px;
+	margin: -10px 0 20px 0;
+	resize:none;
+}
+.field input:focus,
+.field textarea:focus {
+	background-color:#E6E6E6; 
+	border:1px solid #0B0B61;
+}
+
+.actions input{
+	margin-left:190px;
+	background:url('../images/style/fond_bouton.png');
+	background-color:transparent;
+	color:#fff;
+	font-size:11pt;
+	width:80px;
+	height:23px;
+	display:block;
+    text-align:center;
+	cursor: pointer;
+	border:none !important;
+ 	-moz-border-radius: 10px !important; /* Firefox */
+  	-webkit-border-radius: 10px !important; /* Safari and Chrome */
+}
+
