@@ -1,7 +1,4 @@
-<% doc = documentable.documents.new %>
-<% unless documents.empty? and cannot?(:create, doc) %>
-  <% documents.delete(doc) %>
-
+<% unless documents.empty? and cannot_create_doc?(documents) %>
   <h3><%= link_to t('documents.list'), [documentable, Document] %></h3>
 
   <% unless documents.empty? %>
@@ -14,7 +11,7 @@
   </ul>
   <% end %>
 
-  <% if can? :create, documentable.documents.new %>
+  <% if can?(:create, documents.new) %>
     <%= form_for [documentable, documentable.documents.new] do |f| %>
       <%= f.hidden_field :documentable_id %>
       <%= f.hidden_field :documentable_type %>

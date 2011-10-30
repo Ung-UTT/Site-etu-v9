@@ -1,4 +1,4 @@
-<% unless comments.empty? and cannot? :create, Comment %>
+<% unless comments.empty? and cannot?(:create, Comment) %>
   <h3><%= link_to t('comments.list'), [commentable, Comment] %></h3>
 
   <% unless comments.empty? %>
