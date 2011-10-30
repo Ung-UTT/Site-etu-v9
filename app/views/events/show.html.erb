@@ -22,3 +22,13 @@
 
   </section>
 </section>
+
+<%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
+<%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>
+
+<% if @event.news.empty? %>
+    <%= t('events.daymail', :count => 0) %>
+<% else %>
+    <h3><%= t('events.daymail', :count => @event.news.size) %></h3>
+    <%= render :template => 'news/index' %>
+<% end %>
