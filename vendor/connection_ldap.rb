@@ -1,7 +1,8 @@
 # encoding: UTF-8 leave this magic comment for rake
-# TODO - command line output on what has been done
+# TODO - command line output of what has been done
 # TODO - handle command params for a verbose output
 # TODO - handle errors 
+# TODO - auto-remove stale .ldif files (older than 10 days)
 require 'rubygems'
 require 'net/ldap'
 require 'date'
@@ -63,8 +64,8 @@ def ldap_routine
   puts "-> Liste des etudiants presents dans le ldap UNG etablie"
 
   puts "-> Generation des fichiers ldif..."
-  # On crée les fichiers .ldif qui seront utilisés pour mettre à jour le LDAP
-  ldif_new_users = File.open(::LDIF_FILE, 'w') # pour garder trace des créations
+  # On crée le fichier .ldif qui sera utilisé pour mettre à jour le LDAP
+  ldif_new_users = File.open(::LDIF_FILE, 'w')
   # On boucle sur toutes les personnes du ldap de l'UTT pour faire les mises à jour nécessaires
   ldap_utt.search(:base => 'ou=people,dc=utt,dc=fr', :attributes => ::ATTRIBUTES) do |person|
     if ung_names.include?(person['uid'])
@@ -118,18 +119,15 @@ end
 
 # Fait passer un étudiant qui n'est plus dans le LDAP du cri en ancien étudiant
 def ldap_set_alumni(student_dn)
-
+  # TODO
 end
 
 # Ajoute une nouvelle personne dans l'annuaire site étu
 def ldap_add_entities(ldif_dump, ldap)
   puts "Ajout des entrées:"
   # on crée un nouveau fichier en filtrant les objectclasses pour garder que ceux qu'on veut
-  # people = []
-#  people << File.foreach(ldif_dump) {|line| Net::LDAP::Dataset.read_ldif(line)}
   f= File.open(ldif_dump, "r")
   people = Net::LDAP::Dataset.read_ldif(f)
-  # puts people.inspect
 
   people.each do |entry| 
     ldap.add(:dn => entry[0], :attributes => entry[1]) 
