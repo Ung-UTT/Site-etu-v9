@@ -16,9 +16,11 @@ class Ability
       can :read, User, :id => user.id
 
       if user.is_student? or !user.roles.empty? # UTTiens ou anciens
-        can :read, User
-        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, News, Quote, Tag]
+        can :read, [User, Album]
+        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Quote, Tag]
         can :read, Reminder, :user_id => user.id
+        can :create, News
+        can :read, News, :is_moderated => true
 
         can [:create, :destroy], Document do |doc|
           !doc.documentable.nil? and can?(:update, doc.documentable)

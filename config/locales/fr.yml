@@ -106,6 +106,7 @@ fr:
     submit: "Envoyer"
     search: "Rechercher"
 
+  album: "Album"
   annal: "Annale"
   asso: "Asso"
   carpool: "Covoiturage"
@@ -129,6 +130,9 @@ fr:
   timesheet: "Horaire"
   user: "Utilisateur"
   user_session: "Connexion"
+
+  albums:
+    list: "Albums"
 
   annals:
     list: "Annales"
@@ -215,6 +219,8 @@ fr:
     users_title: "Tout ce que vous voulez savoir à propos des UTTiens"
     classifieds: "Petites annonces"
     classifieds_title: "Pour vendre vos anciens livres, vos vélos, ..."
+    albums: "Albums"
+    albums_title: "Toutes les photos des évènements"
     buckutt: "Buckutt"
     buckutt_title: "Pour recharger votre carte BuckUTT"
     mails: "Mails"

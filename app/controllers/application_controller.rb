@@ -24,10 +24,6 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
     end
 
-    def current_news
-      News.accessible_by(current_ability).page(params[:page])
-    end
-
     def find_polymorphicable
       params.each do |name, value|
         if name =~ /(.+)_id$/

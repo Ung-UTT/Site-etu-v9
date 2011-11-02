@@ -1,0 +1,17 @@
+<section class="content">
+  <%= title(t('album') + ' : ' + @album[:event].name) %>
+
+  <section class="content_box">
+    <p>
+      <%= link_to @album[:event].name, @album[:event] %><br />
+      <%= @album[:event].description %>
+    </p>
+
+    <% @album[:images].each do |image| %>
+      <%= image_tag image.asset.url %>
+    <% end %>
+
+    <%= link_to t('common.list'), albums_path %>
+  </section>
+</section>
+

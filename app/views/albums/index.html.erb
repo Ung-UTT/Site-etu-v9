@@ -1,0 +1,16 @@
+<section class="content">
+  <%= title(t('albums.list')) %>
+
+  <section class="content_box">
+  <% @albums.each do |album| %>
+    <li>
+      <%= link_to album[:event].name, albums_show_path(album[:event]) %>
+    </li>
+  <% end %>
+  </section>
+
+  <% if can? :create, Annal %>
+    <%= link_to t('common.add'), new_annal_path %>
+  <% end %>
+</section>
+

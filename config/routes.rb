@@ -16,6 +16,9 @@ SiteEtu::Application.routes.draw do
   match 'groups/:id/join' => 'groups#join', :as => 'join_group'
   match 'groups/:id/disjoin/:user_id' => 'groups#disjoin', :as => 'disjoin_group'
 
+  match 'albums' => 'albums#index', :as => 'albums'
+  match 'albums/:id' => 'albums#show', :as => 'albums_show'
+
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
 

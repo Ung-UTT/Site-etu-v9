@@ -108,6 +108,7 @@ zh-CN:
     submit: "发送"
     search: "搜索"
 
+  album: "Album"
   annal: "历届考题"
   asso: "社团"
   carpool: "拼车"
@@ -131,6 +132,9 @@ zh-CN:
   timesheet: "时刻表"
   user: "用户"
   user_session: "登陆"
+
+  albums:
+    list: "Liste of albums"
 
   annals:
     list: "历届考题列表"
@@ -217,6 +221,8 @@ zh-CN:
     users_title: "你想知道的关于UTT学生的一切信息"
     classifieds: "跳蚤市场"
     classifieds_title: "卖旧书,自行车,..."
+    albums: "Albums"
+    albums_title: "All photos of each event"
     buckutt: "Buckutt充值"
     buckutt_title: "Buckutt充值"
     mails: "邮件"

@@ -105,6 +105,7 @@ en:
     submit: "Submit"
     search: "Search"
 
+  album: "Album"
   annal: "Annal"
   asso: "Asso"
   carpool: "Carpool"
@@ -128,6 +129,9 @@ en:
   timesheet: "Timesheet"
   user: "User"
   user_session: "User's session"
+
+  albums:
+    list: "Liste of albums"
 
   annals:
     list: "List of annals"
@@ -214,6 +218,8 @@ en:
     users_title: "All you want to know about UTT's student"
     classifieds: "Classifieds Ads"
     classifieds_title: "To sell your old books"
+    albums: "Albums"
+    albums_title: "All photos of each event"
     buckutt: "Buckutt"
     buckutt_title: "To buy things in the society lounge"
     mails: "Mails"
