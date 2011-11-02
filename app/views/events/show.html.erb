@@ -2,7 +2,60 @@
 
 <section class="content">
   <section class="content_box">
-    <%= render 'one_events', {:event => @event} %>
+    <article role="primary" class="events">
+      <header class="news_banner">
+       <strong class="date"><%=raw l(@event.start_at, :format => '%d <br /> %b') %></strong>
+       <strong><%= @event.name %></strong>
+      <em>
+          <%= l(@event.start_at, :format => "%H:%M") %> - <%= l(@event.end_at, :format => "%H:%M") %> |
+          <strong><%= t('events.users') %> :</strong> <%= link_to_users @event.users %> |
+          <strong><%= t('tags') %> :</strong> <%= link_to_tags @event %>
+      </em>
+      </header>
+
+      <p>
+        <b><%= t('events.description') %></b>
+        <%= @event.description %>
+      </p>
+
+      <p>
+        <b><%= t('events.owner') %></b>
+        <%= link_to_user @event.owner %>
+      </p>
+
+      <p>
+        <b><%= t('events.location') %></b>
+        <%= @event.location %>
+      </p>
+
+      <p>
+        <b><%= t('events.start_at') %></b>
+        <%= l(event.start_at, :format => :short) %>
+      </p>
+
+      <p>
+        <b><%= t('events.end_at') %></b>
+        <%= l(event.end_at, :format => :short) %>
+      </p>
+
+      <p>
+        <b><%= t('events.users') %></b>
+        <%= link_to_users @event.users %>
+      </p>
+
+      <p>
+        <b><%= t('events.assos') %></b>
+        <%= link_to_assos @event %>
+      </p>
+
+      <p>
+        <b><%= t('tags') %></b>
+        <%= link_to_tags @event %>
+      </p>
+    </article>
+
+    <hr />
+
     <div id="QRcode">
       <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= CGI::escape(request.url) %>&choe=UTF-8">
     </div>

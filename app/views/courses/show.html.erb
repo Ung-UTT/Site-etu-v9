@@ -2,7 +2,25 @@
   <%= title(t('course') + ' : ' + @course.name) %>
 
   <section class="content_box">
-    <%= render 'one_courses', {:courses => @courses} %>
+    <article role="primary" class="courses">
+      <p>
+        <b><%= t('courses.description') %></b>
+        <%= @course.description %>
+      </p>
+
+      <p>
+        <b><%= t('courses.users') %></b>
+        <%= link_to_users @course.users %>
+      </p>
+
+      <p>
+        <b><%= t('tags') %></b>
+        <%= link_to_tags @course %>
+      </p>
+
+      <%= list_of t('courses.annals'), @course.annals, :name %>
+    </article>
+    <hr />
 
     <% if can? :update, @course %>
       <%= link_to t('common.edit'), edit_course_path(@course) %> |
