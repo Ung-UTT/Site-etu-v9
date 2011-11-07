@@ -1,12 +1,17 @@
-<%= title t('groups.list') %>
-<ul>
-<% @groups.each do |group| %>
-  <li>
-    <%= link_to group.name, group %>
-  </li>
-<% end %>
-</ul>
+<section class="content">
+  <%= title t('groups.list') %>
 
-<br />
+  <section class="content_box">
+    <ul>
+		<% @groups.each do |group| %>
+		  <li>
+		    <%= link_to group.name, group %>
+		  </li>
+		<% end %>
+		</ul>
+  </section>
 
-<%= link_to t('common.add'), new_group_path %>
+  <% if can? :create, Group %>
+    <%= link_to t('common.add'), new_group_path %>
+  <% end %>
+</section>

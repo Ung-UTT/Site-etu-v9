@@ -1,15 +1,13 @@
-<%= title t('quotes.list') %>
+<section class="content">
+  <%= title t('quotes.list') %>
 
-<ul>
-<% @quotes.each do |quote| %>
-  <li>
-    <%= render 'one_quote', {:quote => quote} %>
-  </li>
-<% end %>
-</ul>
+  <section class="content_box">
+		<% @quotes.each do |quote| %>
+		    <%= render 'one_quote', {:quote => quote} %>
+		<% end %>
+  </section>
 
-<br />
-
-<% if can? :create, Quote %>
-  <%= link_to t('common.add'), new_quote_path %>
-<% end %>
+  <% if can? :create, Quote %>
+	  <%= link_to t('common.add'), new_quote_path %>
+	<% end %>
+</section>

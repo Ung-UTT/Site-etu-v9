@@ -1,6 +1,6 @@
 <p>
-  <blockquote>
-    <%= link_to quote.content, quote %>
-  </blockquote>
-  <%= t('quote.by') %> <%= link_to_user quote.user  %>
+  <%= image_tag "style/quotation_left.gif" %>
+  <em><%= link_to quote.content, quote %></em>
+  <%= image_tag "style/quotation_right.gif" %>
+  <%= t('quotes.by') %> <%= link_to_user quote.user  %>
 </p>

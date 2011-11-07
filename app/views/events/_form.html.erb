@@ -22,7 +22,7 @@
     <%= f.datetime_select :end_at %>
   </div>
   <div class="field">
-    <%= label_tag 'assos', t('events.assos') %><br />
+    <%= label_tag 'assos', t('events.assos') %><br /><br/>
     <% Asso.all.each do |asso| %>
       <%= check_box_tag 'event[asso_ids][]', asso.id, @event.assos.include?(asso) %>
       <%= asso.name %>
