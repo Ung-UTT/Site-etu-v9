@@ -1,4 +1,6 @@
 SiteEtu::Application.routes.draw do
+  resources :pools
+
   match 'quotes/random' => 'quotes#random'
 
   # CAS
