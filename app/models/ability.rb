@@ -22,10 +22,6 @@ class Ability
         can :create, News
         can :read, News, :is_moderated => true
 
-        can [:create, :destroy], Document do |doc|
-          !doc.documentable.nil? and can?(:update, doc.documentable)
-        end
-
         can [:create, :update, :destroy], Role do |asso|
           asso.nil? and asso.owner_id == user.id
         end
@@ -41,6 +37,12 @@ class Ability
         can [:update, :destroy], [Carpool, Classified, News, Pool, Quote, Reminder], :user_id => user.id
         can [:update, :destroy], [Asso, Project, Event], :owner_id => user.id
         can [:update, :destroy], User, :id => user.id
+        can [:create, :destroy], Question do |question|
+          !question.pool.nil? and can?(:update, question.pool)
+        end
+        can [:create, :destroy], Document do |doc|
+          !doc.documentable.nil? and can?(:update, doc.documentable)
+        end
 
         can :destroy, Comment, :user_id => user.id
       end # / student?

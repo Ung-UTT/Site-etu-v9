@@ -12,6 +12,24 @@
         <b><%= t('pools.user') %></b>
         <%= link_to_user @pool.user %>
       </p>
+
+      <ul>
+      <% @pool.questions.each do |question| %>
+        <li>
+          <%= question.content %>
+          <% if can? :update, @pool %>
+            <%= button_to 'X', question, :confirm => t('common.confirm'), :method => :delete %>
+          <% end %>
+        </li>
+      <% end %>
+      <% if can? :update, @pool %>
+        <%= form_for(@pool.questions.new) do |f| %>
+          <%= f.hidden_field :pool_id %>
+          <%= f.text_field :content %>
+          <%= f.submit t('common.add') %>
+        <% end %>
+      <% end %>
+      </ul>
     </article>
     <hr />
 
