@@ -1,6 +1,9 @@
-<h1>Editing pool</h1>
+<section class="content">
+  <%= title t('common.edit') %>
+  <section class="content_box">
+    <%= render 'form' %>
+  </section>
+</section>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @pool %> |
-<%= link_to 'Back', pools_path %>
+<%= link_to t('common.show'), @pool %>
+<%= link_to t('common.list'), pools_path %>

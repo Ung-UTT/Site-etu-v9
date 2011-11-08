@@ -1,20 +1,26 @@
-<p id="notice"><%= notice %></p>
+<section class="content">
+  <%= title(t('pool') + ' : ' + @pool.name) %>
 
-<p>
-  <b>Name:</b>
-  <%= @pool.name %>
-</p>
+  <section class="content_box">
+    <article role="primary" class="pools">
+      <p>
+        <b><%= t('pools.description') %></b>
+        <%= @pool.description %>
+      </p>
 
-<p>
-  <b>Description:</b>
-  <%= @pool.description %>
-</p>
+      <p>
+        <b><%= t('pools.user') %></b>
+        <%= link_to_user @pool.user %>
+      </p>
+    </article>
+    <hr />
 
-<p>
-  <b>User:</b>
-  <%= @pool.user %>
-</p>
-
-
-<%= link_to 'Edit', edit_pool_path(@pool) %> |
-<%= link_to 'Back', pools_path %>
+    <% if can? :update, @pool %>
+      <%= link_to t('common.edit'), edit_pool_path(@pool) %> |
+    <% end %>
+    <% if can? :destroy, @pool %>
+      <%= button_to t('common.delete'), @pool, :confirm => t('common.confirm'), :method => :delete %> |
+    <% end %>
+    <%= link_to t('common.list'), pools_path %>
+  </section>
+</section>

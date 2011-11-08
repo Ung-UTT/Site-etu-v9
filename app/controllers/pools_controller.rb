@@ -43,6 +43,7 @@ class PoolsController < ApplicationController
   # POST /pools.json
   def create
     @pool = Pool.new(params[:pool])
+    @pool.user = current_user
 
     respond_to do |format|
       if @pool.save
