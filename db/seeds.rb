@@ -1,13 +1,8 @@
-role_superAdmin = Role.create(:name => 'superAdmin')
 role_admin = Role.create(:name => 'admin')
 role_moderator = Role.create(:name => 'moderator')
 
-superAdmin = User.simple_create('superAdmin', 'changez-moi')
 admin = User.simple_create('admin', 'changez-moi')
 moderator = User.simple_create('moderator', 'changez-moi')
-
-superAdmin.roles << role_superAdmin
-superAdmin.save
 
 admin.roles << role_admin
 admin.save

@@ -49,10 +49,6 @@ class Ability
         can :manage, [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Question, Quote, Tag]
       end
       if user.is? :admin
-        can :manage, [Role, Group]
-      end
-      # TODO: supprimer le rôle superAdmin
-      if user.is? :superAdmin
         can :manage, :all
       end
     end # / user?
