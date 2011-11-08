@@ -15,9 +15,9 @@ class Ability
       can :manage, Reminder, :user_id => user.id
       can :read, User, :id => user.id
 
-      if user.is_student? or !user.roles.empty? # UTTiens ou anciens
-        can :read, [User, Album, Course]
-        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Quote, Tag]
+      if user.is_student? # UTTiens ou anciens
+        can :read, [Album, Course, Pool, Question, User]
+        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Quote, Tag, Vote]
         can :read, Reminder, :user_id => user.id
         can :create, News
         can :read, News, :is_moderated => true
@@ -43,17 +43,18 @@ class Ability
         can [:update, :destroy], User, :id => user.id
 
         can :destroy, Comment, :user_id => user.id
-
-        if user.is? :moderator
-          can :manage, [Asso, Annal, Carpool, Classified, Comment, Event, News, Quote]
-        end
-        if user.is? :admin
-          can :manage, [Role, Group]
-        end
-        if user.is? :superAdmin
-          can :manage, :all
-        end
       end # / student?
+
+      if user.is? :moderator
+        can :manage, [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Question, Quote, Tag]
+      end
+      if user.is? :admin
+        can :manage, [Role, Group]
+      end
+      # TODO: supprimer le rôle superAdmin
+      if user.is? :superAdmin
+        can :manage, :all
+      end
     end # / user?
   end
 end

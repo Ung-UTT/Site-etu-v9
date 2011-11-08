@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704165350) do
+ActiveRecord::Schema.define(:version => 20111107232254) do
 
   create_table "annals", :force => true do |t|
     t.string   "name"
@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
     t.boolean  "is_moderated"
   end
 
+  create_table "pools", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "preferences", :force => true do |t|
     t.string   "locale"
     t.string   "quote_type"
@@ -151,6 +159,13 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
   create_table "projects_users", :id => false, :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.string   "content"
+    t.integer  "pool_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -246,5 +261,12 @@ ActiveRecord::Schema.define(:version => 20110704165350) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  create_table "votes", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

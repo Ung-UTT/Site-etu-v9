@@ -1,6 +1,4 @@
 SiteEtu::Application.routes.draw do
-  resources :pools
-
   match 'quotes/random' => 'quotes#random'
 
   # CAS
@@ -29,7 +27,7 @@ SiteEtu::Application.routes.draw do
 
   resources :tags, :only => [:index, :show]
 
-  resources :authorizations, :groups, :reminders, :roles, :timesheets, :users
+  resources :authorizations, :groups, :pools, :reminders, :roles, :timesheets, :users
   resources :user_sessions, :only => :create
   resources :annals, :assos, :classifieds, :carpools, :courses, :events, :projects, :quotes, :news do
     resources :comments

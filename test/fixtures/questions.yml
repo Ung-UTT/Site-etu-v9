@@ -1,9 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+raclette_oui:
+  content: Oui
+  pool: raclette
 
-one:
-  content: MyString
-  pool: 
+raclette_non:
+  content: Non
+  pool: raclette
 
-two:
-  content: MyString
-  pool: 
+raclette_peut_etre:
+  content: "Peut-être"
+  pool: raclette
+
+chevre_oui:
+  content: Oui
+  pool: chevre

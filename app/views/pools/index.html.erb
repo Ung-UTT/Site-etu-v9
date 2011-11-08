@@ -1,27 +1,13 @@
-<h1>Listing pools</h1>
+<section class="content">
+  <%= title t('pools.list') %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <section class="content_box">
+    <% @pools.each do |pool| %>
+  <li><%= link_to pool.name, pool %> (<%= pool.votes.size %> votes)</li>
+  <% end %>
+  </section>
 
-<% @pools.each do |pool| %>
-  <tr>
-    <td><%= pool.name %></td>
-    <td><%= pool.description %></td>
-    <td><%= pool.user %></td>
-    <td><%= link_to 'Show', pool %></td>
-    <td><%= link_to 'Edit', edit_pool_path(pool) %></td>
-    <td><%= link_to 'Destroy', pool, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Pool', new_pool_path %>
+  <% if can? :create, Pool %>
+    <%= link_to t('common.add'), new_pool_path %>
+  <% end %>
+</section>

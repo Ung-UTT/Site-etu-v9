@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :login, :email, :password, :password_confirmation
+  attr_accessible :login, :email, :password, :password_confirmation, :cas
 
   attr_accessor :password
   before_create :generate_token
@@ -19,8 +19,10 @@ class User < ActiveRecord::Base
   has_many :classifieds, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :news, :dependent => :destroy
+  has_many :pools, :dependent => :destroy
   has_many :quotes, :dependent => :destroy
   has_many :reminders, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
 
   has_many :created_assos, :foreign_key => 'owner_id', :class_name => 'Asso', :dependent => :destroy
   has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy

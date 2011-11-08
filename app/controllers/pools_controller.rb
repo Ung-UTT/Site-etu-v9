@@ -1,4 +1,6 @@
 class PoolsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /pools
   # GET /pools.json
   def index

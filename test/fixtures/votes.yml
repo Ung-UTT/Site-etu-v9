@@ -1,9 +1,16 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+kevin_r_oui:
+  question: raclette_oui
+  user: kevin
 
-one:
-  question: 
-  user: 
+kevin_c_oui:
+  question: chevre_oui
+  user: kevin
 
-two:
-  question: 
-  user: 
+joe_r_oui:
+  question: raclette_oui
+  user: joe
+
+joe_c_oui:
+  question: chevre_oui
+  user: joe
+
