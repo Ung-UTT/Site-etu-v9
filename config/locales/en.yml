@@ -54,6 +54,10 @@ en:
       create: "News successfully created."
       update: "News successfully updated."
 
+    pools:
+      create: "Pool successfully created."
+      update: "Pool successfully updated."
+
     projects:
       create: "Project successfully created."
       update: "Project successfully updated."
@@ -119,6 +123,7 @@ en:
   group: "Group"
   image: "Image"
   news: "News"
+  pool: "Pool"
   preference: "Preference"
   project: "Project"
   quote: "Quote"
@@ -231,6 +236,7 @@ en:
     carpools: "Carpools"
     events: "Events"
     news: "News"
+    pools: "Pools"
     projects: "Projects"
     course: "Courses"
     groups: "Groups"
@@ -252,6 +258,12 @@ en:
     date: "Date"
     hour: "Hour"
     comments: "Comments"
+
+  pools:
+    list: "List of pools"
+    name: "Name"
+    description: "Description"
+    user: "Author"
 
   preferences:
     list: "Your preferences"
@@ -320,6 +332,11 @@ en:
     login: "Alternative connection"
     logout: "Logout"
     cas: "Connect"
+
+  votes:
+    count:
+      one: "One vote"
+      other: "%{count} votes"
 
   # ActiveRecord
 

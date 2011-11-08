@@ -47,7 +47,7 @@ class PoolsController < ApplicationController
 
     respond_to do |format|
       if @pool.save
-        format.html { redirect_to @pool, :notice => 'Pool was successfully created.' }
+        format.html { redirect_to @pool, :notice => t('c.pools.create') }
         format.json { render :json => @pool, :status => :created, :location => @pool }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class PoolsController < ApplicationController
 
     respond_to do |format|
       if @pool.update_attributes(params[:pool])
-        format.html { redirect_to @pool, :notice => 'Pool was successfully updated.' }
+        format.html { redirect_to @pool, :notice => t('c.pools.update') }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

@@ -54,6 +54,10 @@ fr:
       create: "La news a bien été créée."
       update: "La news a bien été modifiée."
 
+    pools:
+      create: "Le sondage a bien été créé."
+      update: "Le sondage a bien été modifié."
+
     projects:
       create: "Le projet a bien été créé."
       update: "Le projet a bien été modifié."
@@ -120,6 +124,7 @@ fr:
   group: "Groupe"
   image: "Image"
   news: "News"
+  pool: "Sondage"
   preference: "Préférence"
   project: "Projet"
   quote: "Citation"
@@ -232,6 +237,7 @@ fr:
     carpools: "Covoiturage"
     events: "Évènements"
     news: "News"
+    pools: "Sondages"
     projects: "Projets"
     course: "UVs"
     groups: "Groupes"
@@ -253,6 +259,12 @@ fr:
     date: "Date"
     hour: "Heure"
     comments: "Commentaires"
+
+  pools:
+    list: "Sondages"
+    name: "Nom"
+    description: "Description"
+    user: "Auteur"
 
   preferences:
     list: "Vos préférences"
@@ -321,6 +333,11 @@ fr:
     login: "Connexion alternative"
     logout: "Se déconnecter"
     cas: "Connexion"
+
+  votes:
+    count:
+      one: "Un vote"
+      other: "%{count} votes"
 
   # ActiveRecord translations
 

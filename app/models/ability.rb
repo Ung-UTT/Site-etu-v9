@@ -16,8 +16,8 @@ class Ability
       can :read, User, :id => user.id
 
       if user.is_student? # UTTiens ou anciens
-        can :read, [Album, Course, Pool, Question, User]
-        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Quote, Tag, Vote]
+        can :read, [Album, Course, Question, User]
+        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Quote, Tag, Vote]
         can :read, Reminder, :user_id => user.id
         can :create, News
         can :read, News, :is_moderated => true
@@ -38,7 +38,7 @@ class Ability
         can :update, Annal
 
         # L'auteur peut mettre à jour et supprimer ses contenus
-        can [:update, :destroy], [Carpool, Classified, News, Quote, Reminder], :user_id => user.id
+        can [:update, :destroy], [Carpool, Classified, News, Pool, Quote, Reminder], :user_id => user.id
         can [:update, :destroy], [Asso, Project, Event], :owner_id => user.id
         can [:update, :destroy], User, :id => user.id
 

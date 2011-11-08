@@ -3,7 +3,7 @@
 
   <section class="content_box">
     <% @pools.each do |pool| %>
-  <li><%= link_to pool.name, pool %> (<%= pool.votes.size %> votes)</li>
+  <li><%= link_to pool.name, pool %> (<%= t('votes.count', :count => pool.votes.size) %>)</li>
   <% end %>
   </section>
 

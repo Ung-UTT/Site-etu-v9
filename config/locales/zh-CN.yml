@@ -56,6 +56,10 @@ zh-CN:
       create: "新闻创建成功"
       update: "新闻更新成功"
 
+    pools:
+      create: "Pool 创建成功"
+      update: "Pool 更新成功"
+
     projects:
       create: "课题创建成功"
       update: "课题修改成功"
@@ -122,6 +126,7 @@ zh-CN:
   group: "团体"
   image: "图片"
   news: "新闻"
+  pool: "Pool"
   preference: "设置"
   project: "课题"
   quote: "语录"
@@ -234,6 +239,7 @@ zh-CN:
     carpools: "拼车"
     events: "活动"
     news: "新闻"
+    pools: "Pools"
     projects: "课题"
     course: "课程"
     groups: "团队"
@@ -255,6 +261,12 @@ zh-CN:
     date: "日期"
     hour: "时间"
     comments: "评论"
+
+  pools:
+    list: "List of pools"
+    name: "Name"
+    description: "Description"
+    user: "Author"
 
   preferences:
     list: "设置"
@@ -323,6 +335,11 @@ zh-CN:
     login: "其他方式登陆"
     logout: "退出"
     cas: "Connect"
+
+  votes:
+    count:
+      one: "One vote"
+      other: "%{count} votes"
 
   # ActiveRecord translations
 
