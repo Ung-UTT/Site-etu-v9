@@ -1,14 +1,14 @@
 <section class="content">
-	<%= title t('reminders.list') %>
-	<section class="content_box">
-		<ul>
-			<% @reminders.each do |reminder| %>
-  		<li><%= link_to reminder.content, reminder %></li>
-			<% end %>
-		</ul>
-		<br/>
-		<div id="reminder">
-			<%= render 'form' %>
-		</div>
-	</section>
+  <%= title t('reminders.list') %>
+  <section class="content_box">
+    <ul>
+      <% @reminders.each do |reminder| %>
+      <li><%= link_to reminder.content, reminder %></li>
+      <% end %>
+    </ul>
+    <br/>
+    <div id="reminder">
+      <%= render 'form' %>
+    </div>
+  </section>
 </section>

@@ -2,14 +2,14 @@
   <%= title t('users.list') %>
 
   <section class="content_box">
-		<%= form_tag(users_path, :method => :get) do %>
-		  <%= text_field_tag :q %>
-		  <%= submit_tag t('common.search') %>
-		<% end %>
+    <%= form_tag(users_path, :method => :get) do %>
+      <%= text_field_tag :q %>
+      <%= submit_tag t('common.search') %>
+    <% end %>
     <p><%= t('users.count', :count => @users.count) %></p>
 
-		<% @users.each do |user| %>
-		  <%= link_to_user user %> <br/>
-		<% end %>
+    <% @users.each do |user| %>
+      <%= link_to_user user %> <br/>
+    <% end %>
 
 </section>

@@ -2,12 +2,12 @@
   <%= title t('quotes.list') %>
 
   <section class="content_box">
-		<% @quotes.each do |quote| %>
-		    <%= render 'one_quote', {:quote => quote} %>
-		<% end %>
+    <% @quotes.each do |quote| %>
+        <%= render 'one_quote', {:quote => quote} %>
+    <% end %>
   </section>
 
   <% if can? :create, Quote %>
-	  <%= link_to t('common.add'), new_quote_path %>
-	<% end %>
+    <%= link_to t('common.add'), new_quote_path %>
+  <% end %>
 </section>
