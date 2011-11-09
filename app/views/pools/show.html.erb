@@ -19,9 +19,6 @@
             <li>
               <%= '*' if @vote.question == question %>
               <%= question.content %> (<%= question.votes.size %>)
-              <% if can? :update, @pool %>
-                <%= button_to 'X', question, :confirm => t('common.confirm'), :method => :delete %>
-              <% end %>
             </li>
           <% end %>
         </ul>
@@ -33,9 +30,6 @@
               <li>
                 <%= f.radio_button :question_id, question.id %>
                 <%= f.label :"question_id_#{question.id}", question.content %>
-                <% if can? :update, @pool %>
-                  <%= button_to 'X', question, :confirm => t('common.confirm'), :method => :delete %>
-                <% end %>
               </li>
             <% end %>
           </ul>
@@ -44,6 +38,12 @@
       <% end %>
 
       <% if can? :update, @pool %>
+        <ul>
+          <% @pool.questions.each do |q| %>
+            <li><%= q.content %> <%= button_to 'X', q, :confirm => t('common.confirm'), :method => :delete %></li>
+          <% end %>
+        </ul>
+
         <%= form_for(@pool.questions.new) do |f| %>
           <%= f.hidden_field :pool_id %>
           <%= f.text_field :content %>

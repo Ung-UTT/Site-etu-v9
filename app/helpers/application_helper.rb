@@ -54,7 +54,6 @@ module ApplicationHelper
     options_for_select(day_names.map {|d| [d, day_names.index(d)]}, day_names[object.day])
   end
 
-
   # Links to
 
   def comment_path(comment)
