@@ -66,6 +66,9 @@ fr:
       already_disjoin: "Vous ne participez pas à ce projet."
       disjoin: "Vous ne participez maintenant plus à ce projet."
 
+    questions:
+      create: "La question a bien été ajoutée."
+
     quotes:
       create: "La citation a bien été ajoutée."
       update: "La citation a bien été modifiée."
@@ -97,6 +100,9 @@ fr:
       create: "Vous êtes maintenant connecté."
       destroy: "Vous êtes maintenant déconnecté."
       failed: "La connexion a échoué"
+
+    votes:
+      create: "Votre vote a bien été comptabilisé."
 
   # Views
 
@@ -338,6 +344,7 @@ fr:
     count:
       one: "Un vote"
       other: "%{count} votes"
+    delete: "Supprimer votre vote"
 
   # ActiveRecord translations
 

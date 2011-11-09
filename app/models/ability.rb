@@ -34,7 +34,7 @@ class Ability
         can :update, Annal
 
         # L'auteur peut mettre à jour et supprimer ses contenus
-        can [:update, :destroy], [Carpool, Classified, News, Pool, Quote, Reminder], :user_id => user.id
+        can [:update, :destroy], [Carpool, Classified, News, Pool, Quote, Reminder, Vote], :user_id => user.id
         can [:update, :destroy], [Asso, Project, Event], :owner_id => user.id
         can [:update, :destroy], User, :id => user.id
         can [:create, :destroy], Question do |question|

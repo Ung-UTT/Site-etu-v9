@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def title_tag
-    content_tag(:title, content_for(:title).empty?  ? 'Site étu : Le nouveau Face-Twit-Goog-Micro-LinuxFr' : content_for(:title))
+    content_tag(:title, content_for(:title).empty?  ? 'Site étu : Le nouveau Face-Twit-Goog-Micro-Apple-LinuxFr' : content_for(:title))
   end
 
   # Select options
@@ -53,6 +53,7 @@ module ApplicationHelper
   def day_select(object)
     options_for_select(day_names.map {|d| [d, day_names.index(d)]}, day_names[object.day])
   end
+
 
   # Links to
 

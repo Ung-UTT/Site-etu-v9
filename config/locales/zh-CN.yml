@@ -68,6 +68,9 @@ zh-CN:
       already_disjoin: "您未加入此课题"
       disjoin: "您退出此课题"
 
+    questions:
+      create: "Question successfully created."
+
     quotes:
       create: "语录创建成功"
       update: "语录更新成功"
@@ -99,6 +102,9 @@ zh-CN:
       create: "登录成功"
       destroy: "您已退出"
       failed: "Connection failed"
+
+    votes:
+      create: "Question successfully created."
 
   # Views
 
@@ -340,6 +346,7 @@ zh-CN:
     count:
       one: "One vote"
       other: "%{count} votes"
+    delete: "Delete vote"
 
   # ActiveRecord translations
 

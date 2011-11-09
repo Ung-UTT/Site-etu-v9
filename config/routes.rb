@@ -27,7 +27,7 @@ SiteEtu::Application.routes.draw do
 
   resources :tags, :only => [:index, :show]
 
-  resources :authorizations, :groups, :pools, :questions, :reminders, :roles, :timesheets, :users
+  resources :authorizations, :groups, :pools, :questions, :reminders, :roles, :timesheets, :users, :votes
   resources :user_sessions, :only => :create
   resources :annals, :assos, :classifieds, :carpools, :courses, :events, :projects, :quotes, :news do
     resources :comments

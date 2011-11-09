@@ -66,6 +66,9 @@ en:
       already_disjoin: "You already disjoined from this project."
       disjoin: "You aren't in this project anymore."
 
+    questions:
+      create: "Question successfully created."
+
     quotes:
       create: "Quote successfully created."
       update: "Quote successfully updated."
@@ -96,6 +99,9 @@ en:
     user_sessions:
       create: "Successfully logged in"
       destroy: "Successfully logged out"
+
+    votes:
+      create: "Vote successfully created."
 
   # Views
 
@@ -337,6 +343,7 @@ en:
     count:
       one: "One vote"
       other: "%{count} votes"
+    delete: "Delete vote"
 
   # ActiveRecord
 

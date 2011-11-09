@@ -16,6 +16,7 @@ class PoolsController < ApplicationController
   # GET /pools/1.json
   def show
     @pool = Pool.find(params[:id])
+    @vote = @pool.voted_by?(current_user) ? @pool.vote_of(current_user) : nil
 
     respond_to do |format|
       format.html # show.html.erb

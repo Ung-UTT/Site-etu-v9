@@ -13,15 +13,36 @@
         <%= link_to_user @pool.user %>
       </p>
 
-      <ul>
-      <% @pool.questions.each do |question| %>
-        <li>
-          <%= question.content %>
-          <% if can? :update, @pool %>
-            <%= button_to 'X', question, :confirm => t('common.confirm'), :method => :delete %>
+      <% if @vote %>
+        <ul>
+          <% @pool.questions.each do |question| %>
+            <li>
+              <%= '*' if @vote.question == question %>
+              <%= question.content %> (<%= question.votes.size %>)
+              <% if can? :update, @pool %>
+                <%= button_to 'X', question, :confirm => t('common.confirm'), :method => :delete %>
+              <% end %>
+            </li>
           <% end %>
-        </li>
+        </ul>
+        <%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %>
+      <% else %>
+        <%= form_for Vote.new do |f| %>
+          <ul>
+            <% @pool.questions.each do |question| %>
+              <li>
+                <%= f.radio_button :question_id, question.id %>
+                <%= f.label :"question_id_#{question.id}", question.content %>
+                <% if can? :update, @pool %>
+                  <%= button_to 'X', question, :confirm => t('common.confirm'), :method => :delete %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <%= f.submit t('common.submit') %>
+        <% end %>
       <% end %>
+
       <% if can? :update, @pool %>
         <%= form_for(@pool.questions.new) do |f| %>
           <%= f.hidden_field :pool_id %>
@@ -29,7 +50,6 @@
           <%= f.submit t('common.add') %>
         <% end %>
       <% end %>
-      </ul>
     </article>
     <hr />
 
