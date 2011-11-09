@@ -1,5 +1,3 @@
-# TODO: Néttoyer, réorganiser, toussa…
-
 module ApplicationHelper
   def day_names
     I18n.t('date.day_names')
@@ -122,5 +120,9 @@ module ApplicationHelper
 
   def courses_when(day, hour, timesheets)
     timesheets.select {|t| t.during?(day, hour)}.map(&:course)
+  end
+
+  def button_to_delete(label, link)
+    button_to label, link, :confirm => t('common.confirm'), :method => :delete
   end
 end

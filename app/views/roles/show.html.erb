@@ -9,12 +9,16 @@
 
 <p>
   <b><%= t('roles.users') %></b>
+  <ul>
   <% @role.users.each do |user| %>
-    <%= link_to_user user %>
-    <% if can? :update, user %>
-      <%= button_to 'X', disjoin_role_path(@role, user), :confirm => t('common.confirm'), :method => :delete %>
-    <% end %>
+    <li>
+      <%= link_to_user user %>
+      <% if can? :update, user %>
+        <%= button_to 'X', disjoin_role_path(@role, user), :confirm => t('common.confirm'), :method => :delete %>
+      <% end %>
+    </li>
   <% end %>
+  </ul>
 </p>
 
 <% if can? :update, @role %>
@@ -28,6 +32,6 @@
   <%= link_to t('common.edit'), edit_role_path(@role) %> |
 <% end %>
 <% if can? :destroy, @role %>
-  <%= button_to t('common.delete'), @role, :confirm => t('common.confirm'), :method => :delete %> |
+  <%= button_to_delete t('common.delete'), @role %> |
 <% end %>
 <%= link_to t('common.list'), roles_path %>

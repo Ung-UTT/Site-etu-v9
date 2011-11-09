@@ -3,8 +3,10 @@
 <ul>
 <% @roles.each do |role| %>
   <li>
-    <%= link_to(t('roles.default.'+role.name, :default => role.name)
-        + (role.asso ? " (#{role.asso.name})" : ''), role) %>
+    <%= link_to role do %>
+      <%= t('roles.default.'+role.name, :default => role.name) %>
+      <%= (role.asso ? " (#{role.asso.name})" : '') %>
+    <% end %>
   </li>
 <% end %>
 </ul>

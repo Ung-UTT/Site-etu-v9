@@ -1,4 +1,4 @@
-# TODO : Parce que sinon c'est trop le bordel, mais là c'est moche, faut utiliser les factories
+# TODO : Utiliser factory_girl
 
 <% users = ['joe', 'kevin', 'foo', 'bar'] %>
 <% pass = {:password => 'changez-moi', :password_confirmation => 'changez-moi'} %>

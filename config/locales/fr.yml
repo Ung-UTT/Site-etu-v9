@@ -259,7 +259,7 @@ fr:
     title: "Titre"
     content: "Contenu"
     user: "Auteur"
-    event: "Évènements associés"
+    event: "Évènement associé"
     is_moderated: "Modérée ?"
     moderate: "Modére-moi !"
     date: "Date"
