@@ -1,7 +1,20 @@
+namespace :generate do
+  desc 'Generates a Session Secret Token'
+  task :secret_token do
+
+  path = File.join(Rails.root, 'config', 'initializers', 'secret_token.rb')
+  secret = SecureRandom.hex(40)
+  File.open(path, 'w') do |f|
+    f.write <<"EOF"
 # Be sure to restart your server when you modify this file.
 
 # Your secret key for verifying the integrity of signed cookies.
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-SiteEtu::Application.config.secret_token = '2619a75160149fec05d97a64f9c10eeea829d8b4bbddbcac3cf6b5568eebc81b730c19938faaee0c0c82511ca8fa5753296af49c5707ff34339ca7ad655afb93'
+Rails.application.config.secret_token = '#{secret}'
+EOF
+
+    end
+  end
+end

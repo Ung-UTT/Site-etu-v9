@@ -6,6 +6,13 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  # Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # If you want your assets lazily compiled in production, use this line
+  Bundler.require(:default, :assets, Rails.env)
+end
+
 require 'casclient'
 require 'casclient/frameworks/rails/filter'
 
@@ -30,6 +37,8 @@ module SiteEtu
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    # Change this to expire all assets
+    config.assets.version = "1.0"
 
     config.action_mailer.default_url_options = { :host => 'etu.utt.fr' }
     config.rubycas.cas_base_url = 'https://cas.utt.fr/cas'
