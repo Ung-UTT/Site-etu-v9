@@ -1,5 +1,5 @@
 class CreateClassifieds < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :classifieds do |t|
       t.string     :title
       t.text       :description

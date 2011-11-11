@@ -1,5 +1,5 @@
 class ActsAsModeratableOnMigration < ActiveRecord::Migration
-  def self.change
+  def change
     add_column :news, :is_moderated, :boolean
   end
 end

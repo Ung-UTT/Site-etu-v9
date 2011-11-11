@@ -1,5 +1,5 @@
 class ActsAsTaggableOnMigration < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :tags do |t|
       t.string :name
     end

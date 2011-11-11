@@ -1,5 +1,5 @@
 class CreateProjectsUsers < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :projects_users, :id => false do |t|
       t.references :project
       t.references :user

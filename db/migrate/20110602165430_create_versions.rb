@@ -1,5 +1,5 @@
 class CreateVersions < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :versions do |t|
       t.string   :item_type, :null => false
       t.integer  :item_id,   :null => false

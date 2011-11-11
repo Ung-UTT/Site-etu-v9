@@ -1,5 +1,5 @@
 class CreateQuotes < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :quotes do |t|
       t.string     :content
       t.references :user

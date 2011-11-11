@@ -1,5 +1,5 @@
 class CreateProjects < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :projects do |t|
       t.string     :name
       t.text       :description

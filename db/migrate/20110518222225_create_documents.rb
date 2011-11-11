@@ -1,5 +1,5 @@
 class CreateDocuments < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :documents do |t|
       t.string     :asset_file_name
       t.string     :asset_content_type

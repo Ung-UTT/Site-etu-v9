@@ -1,5 +1,5 @@
 class CreateAssos < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :assos do |t|
       t.string     :name
       t.text       :description

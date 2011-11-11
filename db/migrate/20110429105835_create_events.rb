@@ -1,5 +1,5 @@
 class CreateEvents < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :events do |t|
       t.string       :name
       t.text         :description

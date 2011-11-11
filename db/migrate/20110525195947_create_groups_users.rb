@@ -1,5 +1,5 @@
 class CreateGroupsUsers < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :groups_users, :id => false do |t|
       t.references :group
       t.references :user

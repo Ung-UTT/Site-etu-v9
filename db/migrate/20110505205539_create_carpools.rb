@@ -1,5 +1,5 @@
 class CreateCarpools < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :carpools do |t|
       t.text        :description
       t.string      :location

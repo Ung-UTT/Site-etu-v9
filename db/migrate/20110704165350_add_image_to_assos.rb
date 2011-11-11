@@ -1,5 +1,5 @@
 class AddImageToAssos < ActiveRecord::Migration
-  def self.change
+  def change
     change_table :assos do |t|
       t.references :image
     end

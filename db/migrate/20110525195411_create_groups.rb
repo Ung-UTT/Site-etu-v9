@@ -1,5 +1,5 @@
 class CreateGroups < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :groups do |t|
       t.string     :name
       t.references :parent

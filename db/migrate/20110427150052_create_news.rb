@@ -1,5 +1,5 @@
 class CreateNews < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :news do |t|
       t.string     :title
       t.text       :content

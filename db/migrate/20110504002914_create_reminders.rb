@@ -1,5 +1,5 @@
 class CreateReminders < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :reminders do |t|
       t.string     :content
       t.references :user

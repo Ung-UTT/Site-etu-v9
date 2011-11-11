@@ -1,5 +1,5 @@
 class CreateTimesheets < ActiveRecord::Migration
-  def self.change
+  def change
     create_table :timesheets do |t|
       t.integer    :day
       t.time       :from
