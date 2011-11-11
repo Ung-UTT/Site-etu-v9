@@ -1,5 +1,5 @@
 class CreateCarpools < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :carpools do |t|
       t.text        :description
       t.string      :location
@@ -9,9 +9,5 @@ class CreateCarpools < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :carpools
   end
 end

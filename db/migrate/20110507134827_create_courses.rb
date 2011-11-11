@@ -1,14 +1,10 @@
 class CreateCourses < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :courses do |t|
       t.string     :name
       t.text       :description
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :courses
   end
 end

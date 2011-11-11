@@ -1,5 +1,5 @@
 class CreateGroups < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :groups do |t|
       t.string     :name
       t.references :parent
@@ -8,9 +8,5 @@ class CreateGroups < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :groups
   end
 end

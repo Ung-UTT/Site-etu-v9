@@ -1,5 +1,5 @@
 class CreateRoles < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :roles do |t|
       t.string     :name
       t.references :asso
@@ -9,9 +9,5 @@ class CreateRoles < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :roles
   end
 end

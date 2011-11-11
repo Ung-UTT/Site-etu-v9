@@ -1,5 +1,5 @@
 class CreatePreferences < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :preferences do |t|
       t.string     :locale
       t.string     :quote_type # none, quotes, tooltips
@@ -7,9 +7,5 @@ class CreatePreferences < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :preferences
   end
 end

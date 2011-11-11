@@ -1,5 +1,5 @@
 class CreateTimesheets < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :timesheets do |t|
       t.integer    :day
       t.time       :from
@@ -10,9 +10,5 @@ class CreateTimesheets < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :timesheets
   end
 end

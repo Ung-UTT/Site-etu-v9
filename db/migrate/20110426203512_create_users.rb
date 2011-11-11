@@ -1,5 +1,5 @@
 class CreateUsers < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :users do |t|
       t.string    :login
       t.string    :email
@@ -14,9 +14,5 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     add_index :users, ['login'], :name => 'index_users_on_login', :unique => true
-  end
-
-  def self.down
-    drop_table :users
   end
 end

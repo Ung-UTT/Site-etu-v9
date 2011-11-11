@@ -1,5 +1,5 @@
 class CreateAnnals < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :annals do |t|
       t.string     :name
       t.text       :description
@@ -8,9 +8,5 @@ class CreateAnnals < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :annals
   end
 end

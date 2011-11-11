@@ -1,10 +1,6 @@
 class ActsAsModeratableOnMigration < ActiveRecord::Migration
-  def self.up
+  def self.change
     add_column :news, :is_moderated, :boolean
-  end
-
-  def self.down
-    remove_column :news, :is_moderated
   end
 end
 

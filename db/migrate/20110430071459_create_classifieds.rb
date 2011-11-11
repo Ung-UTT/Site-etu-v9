@@ -1,5 +1,5 @@
 class CreateClassifieds < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :classifieds do |t|
       t.string     :title
       t.text       :description
@@ -9,9 +9,5 @@ class CreateClassifieds < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :classifieds
   end
 end

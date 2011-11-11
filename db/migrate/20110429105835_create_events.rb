@@ -1,5 +1,5 @@
 class CreateEvents < ActiveRecord::Migration
-  def self.up
+  def self.change
     create_table :events do |t|
       t.string       :name
       t.text         :description
@@ -10,9 +10,5 @@ class CreateEvents < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :events
   end
 end
