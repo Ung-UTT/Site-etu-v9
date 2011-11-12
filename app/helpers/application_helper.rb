@@ -117,4 +117,8 @@ module ApplicationHelper
   def button_to_delete(label, link)
     button_to label, link, :confirm => t('common.confirm'), :method => :delete
   end
+
+  def md(text)
+    text.nil? ? nil : RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe
+  end
 end

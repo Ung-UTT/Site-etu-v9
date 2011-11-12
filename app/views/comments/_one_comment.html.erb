@@ -2,7 +2,7 @@
 <% if comment.user %>
   <%= link_to_user comment.user %> :
 <% end %>
-<%= comment.content %>
+<%=md comment.content %>
 <% if can? :destroy, comment %>
   <%= button_to 'X', [commentable, comment], :confirm => t('common.confirm'), :method => :delete %>
 <% end %>

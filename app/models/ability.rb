@@ -17,7 +17,7 @@ class Ability
 
       if user.is_student? # UTTiens ou anciens
         can :read, [Album, Course, Question, User]
-        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Quote, Tag, Vote]
+        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Quote, Vote]
         can :read, Reminder, :user_id => user.id
         can :create, News
         can :read, News, :is_moderated => true
@@ -48,7 +48,7 @@ class Ability
       end # / student?
 
       if user.is? :moderator
-        can :manage, [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Question, Quote, Tag]
+        can :manage, [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Question, Quote]
       end
       if user.is? :admin
         can :manage, :all

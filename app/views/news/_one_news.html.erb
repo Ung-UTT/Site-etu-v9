@@ -14,9 +14,8 @@
     </em>
   </header>
 
-  <p>
-    <%= news.content %>
-  </p>
+  <%=md news.content %>
+
   <% if news.event %>
   <p>
     <strong><%= t('newss.event') %></strong> : <%= link_to news.event.name, news.event %>
