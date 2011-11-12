@@ -5,7 +5,6 @@ class News < ActiveRecord::Base
   validates_associated :user
 
   has_paper_trail
-  acts_as_taggable
 
   belongs_to :event
   belongs_to :user

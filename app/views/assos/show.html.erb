@@ -35,11 +35,6 @@
       </p>
       <% end %>
 
-      <p>
-        <b><%= t('tags') %></b>
-        <%= link_to_tags @asso %>
-      </p>
-
       <%= list_of t('asso.events'), @asso.events, :name %>
 
       <% if @asso.users.include?(current_user) %>

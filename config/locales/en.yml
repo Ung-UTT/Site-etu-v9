@@ -135,8 +135,6 @@ en:
   quote: "Quote"
   reminder: "Reminder"
   role: "Role"
-  tag: "Tag"
-  tags: "Tags"
   timesheet: "Timesheet"
   user: "User"
   user_session: "User's session"
@@ -305,8 +303,6 @@ en:
       superAdmin: "SuperAdministrator"
       admin: "Administrator"
       moderator: "Moderator"
-
-  tags_list: "List of tags"
 
   timesheets:
     list: "List of timesheets"

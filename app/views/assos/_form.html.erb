@@ -23,10 +23,6 @@
     <%= f.select :owner_id, users_select(@asso) %>
   </div>
   <% end %>
-  <div class="field">
-    <%= f.label :tag_list, t('tags') %><br />
-    <%= f.text_field :tag_list %>
-  </div>
   <div class="actions">
     <%= f.submit t('common.submit') %>
   </div>

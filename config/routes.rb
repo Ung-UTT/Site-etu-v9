@@ -26,7 +26,7 @@ SiteEtu::Application.routes.draw do
 
   # Ressources
   resources :albums, :authorizations, :groups, :pools, :questions, :reminders,
-            :roles, :tags, :timesheets, :users, :user_sessions, :votes
+            :roles, :timesheets, :users, :user_sessions, :votes
   resources :annals, :assos, :classifieds, :carpools, :courses, :events, :projects, :quotes, :news do
     resources :comments
     resources :documents

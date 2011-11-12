@@ -5,7 +5,6 @@ class Reminder < ActiveRecord::Base
   validates_associated :user
 
   has_paper_trail
-  acts_as_taggable
 
   belongs_to :user
 end

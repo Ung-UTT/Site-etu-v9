@@ -100,14 +100,6 @@ module ApplicationHelper
     end
   end
 
-  def link_to_tags(content)
-    if content.tags.empty?
-      return 'Aucun'
-    else
-      return content.tags.map{|t| link_to t.name, Tag.find(t.id) }.join(' ').html_safe
-    end
-  end
-
   def link_to_assos(object)
     if object.assos.empty?
       return 'Aucune'

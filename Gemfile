@@ -12,7 +12,6 @@ gem 'rubycas-client-rails' # CAS
 gem 'cancan'      # Permissions
 gem 'paperclip'   # Gestion de fichier
 gem 'kaminari'    # Pagination
-gem 'acts-as-taggable-on'
 gem 'paper_trail' # Historique
 
 gem 'awesome_nested_set' # "Arbres" (Associations, Groupes, ...)

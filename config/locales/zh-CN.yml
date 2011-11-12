@@ -136,8 +136,6 @@ zh-CN:
   quote: "语录"
   reminder: "记事贴"
   role: "角色"
-  tag: "标签"
-  tags: "标签"
   timesheet: "时刻表"
   user: "用户"
   user_session: "登陆"
@@ -306,8 +304,6 @@ zh-CN:
       superAdmin: "超级管理员"
       admin: "管理员"
       moderator: "版主"
-
-  tags_list: "标签列表"
 
   timesheets:
     list: "时刻表列表"

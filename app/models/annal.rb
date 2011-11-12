@@ -5,7 +5,6 @@ class Annal < ActiveRecord::Base
   validates_associated :documents
 
   has_paper_trail
-  acts_as_taggable
 
   belongs_to :course
   has_many :comments, :as => :commentable, :dependent => :destroy

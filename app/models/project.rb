@@ -2,7 +2,6 @@ class Project < ActiveRecord::Base
   paginates_per 20
 
   has_paper_trail
-  acts_as_taggable
 
   belongs_to :owner, :class_name => 'User'
   has_many :comments, :as => :commentable, :dependent => :destroy

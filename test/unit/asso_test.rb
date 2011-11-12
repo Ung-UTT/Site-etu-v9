@@ -52,13 +52,6 @@ class AssoTest < ActiveSupport::TestCase
     assert fritutt.children.include?(librutt)
   end
 
-  test 'Doit pouvoir avoir des tags' do
-    asso = asso(:BDE)
-    asso.tag_list = 'Bureau, dès, Eh Léve !'
-    assert asso.save
-    assert asso.tags.map(&:name).include?('dès'), "Le tag n'est pas inclus"
-  end
-
   test 'Peut avoir des rôles' do
     asso = asso(:BDE)
     singers = Role.create(:name => 'Chanteurs', :asso => asso)

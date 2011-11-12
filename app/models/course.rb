@@ -2,7 +2,6 @@ class Course < ActiveRecord::Base
   validates_presence_of :name
 
   has_paper_trail
-  acts_as_taggable
 
   has_many :annals, :dependent => :destroy
   has_many :timesheets, :dependent => :destroy

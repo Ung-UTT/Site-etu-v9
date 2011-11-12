@@ -136,8 +136,6 @@ fr:
   quote: "Citation"
   reminder: "Pense-bête"
   role: "Role"
-  tag: "Tag"
-  tags: "Tags"
   timesheet: "Horaire"
   user: "Utilisateur"
   user_session: "Connexion"
@@ -306,8 +304,6 @@ fr:
       superAdmin: "SuperAdministrateur"
       admin: "Administrateur"
       moderator: "Moderateur"
-
-  tags_list: "Liste des tags"
 
   timesheets:
     list: "Liste des horaires"

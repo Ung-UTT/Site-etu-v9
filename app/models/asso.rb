@@ -5,7 +5,6 @@ class Asso < ActiveRecord::Base
 
   has_paper_trail
   acts_as_nested_set :dependent => :destroy
-  acts_as_taggable
 
   belongs_to :image
   belongs_to :owner, :class_name => 'User'

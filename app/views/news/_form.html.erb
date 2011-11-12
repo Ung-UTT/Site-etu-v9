@@ -13,11 +13,6 @@
     <%= f.label :event_id, t('newss.event') %><br />
     <%= f.select :event_id, events_select(@news) %>
   </div>
-  <br />
-  <div class="field">
-    <%= f.label :tag_list, t('tags') %><br />
-    <%= f.text_field :tag_list %>
-  </div>
   <% if can? :moderate, News %>
     <div class="field">
       <%= f.label :is_moderated, t('newss.is_moderated') %><br />

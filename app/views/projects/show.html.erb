@@ -18,11 +18,6 @@
         <%= link_to_users @project.users %>
       </p>
 
-      <p>
-        <b><%= t('tags') %></b>
-        <%= link_to_tags @project %>
-      </p>
-
       <% if @project.users.include?(current_user) %>
         <p><%= link_to t('projects.disjoin'), disjoin_project_path(@project), :method => 'PUT' %></p>
       <% elsif can? :'join', Project %>

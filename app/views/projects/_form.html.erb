@@ -15,10 +15,6 @@
     <%= f.select :owner_id, User.all.map { |u| [u.login, u.id] } %>
   </div>
   <% end %>
-  <div class="field">
-    <%= f.label :tag_list, t('tags') %><br />
-    <%= f.text_field :tag_list %>
-  </div>
   <div class="actions">
     <%= f.submit t('common.submit') %>
   </div>

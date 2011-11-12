@@ -1,9 +1,0 @@
-<%= title 'Tag : ' + @tag.name %>
-
-<ul>
-  <% @tag.taggings.each do |object| %>
-    <li><%= link_to object.taggable.class.to_s, object.taggable %></li>
-  <% end %>
-</ul>
-
-<%= link_to t('common.list'), tags_path %>

@@ -13,11 +13,6 @@
         <%= link_to_users @course.users %>
       </p>
 
-      <p>
-        <b><%= t('tags') %></b>
-        <%= link_to_tags @course %>
-      </p>
-
       <%= list_of t('courses.annals'), @course.annals, :name %>
     </article>
     <hr />

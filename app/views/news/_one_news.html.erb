@@ -10,7 +10,6 @@
     <em>
       <strong><%= t('newss.hour') %> :</strong> <%= l(news.created_at, :format => '%Hh') %> |
       <strong><%= t('newss.user') %> :</strong> <%= link_to_user news.user %> |
-      <strong><%= t('tags') %> :</strong> <%= link_to_tags news %> |
       <strong><%= t('newss.comments') %> :</strong> <%= news.comments.count %>
     </em>
   </header>

@@ -7,7 +7,6 @@ class Event < ActiveRecord::Base
   default_scope :order => 'start_at DESC'
 
   has_paper_trail
-  acts_as_taggable
 
   belongs_to :owner, :class_name => 'User'
   has_many :news, :dependent => :destroy
