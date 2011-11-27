@@ -5,3 +5,4 @@ tmp/**/*
 public/system/**/*
 config/initializers/secret_token.rb
 Session.vim
+.rvmrc
