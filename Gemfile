@@ -1,7 +1,11 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3'
+
+# Gems desormais obligatoires
+gem 'uglifier'     # Compression assets
+gem 'therubyracer' # Interpretation JS
 
 # Chiffrement des mot de passe
 gem 'bcrypt-ruby', :require => 'bcrypt'
@@ -14,5 +18,9 @@ gem 'paperclip'   # Gestion de fichier
 gem 'kaminari'    # Pagination
 gem 'paper_trail' # Historique
 gem 'rdiscount'   # Parsage (Markdown)
-
 gem 'awesome_nested_set' # "Arbres" (Associations, Groupes, ...)
+
+group :test do
+  gem 'rspec-rails'         # Classes des tests
+  gem 'shoulda-matchers'    # Fonctions des tests
+end
