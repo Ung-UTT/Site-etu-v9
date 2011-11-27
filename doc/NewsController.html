@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: NewsController
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (N)</a> &raquo; 
+    
+    
+    <span class="title">NewsController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: NewsController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">NewsController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/news_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>POST /news
+POST /news.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#daymail-instance_method" title="#daymail (instance method)">- (Object) <strong>daymail</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /news/daymail.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy-instance_method" title="#destroy (instance method)">- (Object) <strong>destroy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>DELETE /news/1
+DELETE /news/1.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit-instance_method" title="#edit (instance method)">- (Object) <strong>edit</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /news/1/edit.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">- (Object) <strong>index</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /news
+GET /news.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /news/new
+GET /news/new.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show-instance_method" title="#show (instance method)">- (Object) <strong>show</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /news/1
+GET /news/1.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>PUT /news/1
+PUT /news/1.xml.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    POST /news
+POST /news.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 55</span>
+
+<span class='def def kw'>def</span> <span class='create identifier id'>create</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:news</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='comment val'># Seul un modérateur peut s'auto-modérer une nouvelle news</span>
+  <span class='authorize! fid id'>authorize!</span> <span class='symbol val'>:moderate</span><span class='comma token'>,</span> <span class='@news ivar id'>@news</span> <span class='if if_mod kw'>if</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='is_moderated identifier id'>is_moderated</span>
+  <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='current_user identifier id'>current_user</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='@news ivar id'>@news</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.news.create'</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@news ivar id'>@news</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:created</span><span class='comma token'>,</span> <span class='symbol val'>:location</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@news ivar id'>@news</span> <span class='rbrace token'>}</span>
+    <span class='else else kw'>else</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;new&quot;</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="daymail-instance_method">
+  
+    - (<tt>Object</tt>) <strong>daymail</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /news/daymail
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='daymail identifier id'>daymail</span>
+  <span class='system identifier id'>system</span> <span class='string val'>'/var/lib/gems/1.8/bin/rake daymail &amp;'</span>
+  <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:notice</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.news.daymail'</span><span class='rparen token'>)</span>
+  <span class='redirect_to identifier id'>redirect_to</span> <span class='symbol val'>:root</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="destroy-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destroy</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    DELETE /news/1
+DELETE /news/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 92</span>
+
+<span class='def def kw'>def</span> <span class='destroy identifier id'>destroy</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='destroy identifier id'>destroy</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='news_index_url identifier id'>news_index_url</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='head identifier id'>head</span> <span class='symbol val'>:ok</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="edit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>edit</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /news/1/edit
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 49</span>
+
+<span class='def def kw'>def</span> <span class='edit identifier id'>edit</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="index-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /news
+GET /news.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='index identifier id'>index</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='page identifier id'>page</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:page</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># index.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@news ivar id'>@news</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /news/new
+GET /news/new.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 39</span>
+
+<span class='def def kw'>def</span> <span class='new identifier id'>new</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># new.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@news ivar id'>@news</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="show-instance_method">
+  
+    - (<tt>Object</tt>) <strong>show</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /news/1
+GET /news/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 18</span>
+
+<span class='def def kw'>def</span> <span class='show identifier id'>show</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='@comments ivar id'>@comments</span> <span class='assign token'>=</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='comments identifier id'>comments</span>
+  <span class='@documents ivar id'>@documents</span> <span class='assign token'>=</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='documents identifier id'>documents</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># show.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@news ivar id'>@news</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    PUT /news/1
+PUT /news/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/news_controller.rb', line 74</span>
+
+<span class='def def kw'>def</span> <span class='update identifier id'>update</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='comment val'># Seul un modérateur peut modifier le flag is_moderated</span>
+  <span class='authorize! fid id'>authorize!</span> <span class='symbol val'>:moderate</span><span class='comma token'>,</span> <span class='@news ivar id'>@news</span> <span class='if if_mod kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:news</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:is_moderated</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='is_moderated identifier id'>is_moderated</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='update_attributes identifier id'>update_attributes</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:news</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='@news ivar id'>@news</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.news.update'</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='head identifier id'>head</span> <span class='symbol val'>:ok</span> <span class='rbrace token'>}</span>
+    <span class='else else kw'>else</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;edit&quot;</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@news ivar id'>@news</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Nov 18 02:10:35 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

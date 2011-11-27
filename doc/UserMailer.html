@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: UserMailer
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo; 
+    
+    
+    <span class="title">UserMailer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: UserMailer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActionMailer::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionMailer::Base</li>
+          
+            <li class="next">UserMailer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/mailers/user_mailer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#daymail-instance_method" title="#daymail (instance method)">- (Object) <strong>daymail</strong>(user) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#password_reset-instance_method" title="#password_reset (instance method)">- (Object) <strong>password_reset</strong>(user) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="daymail-instance_method">
+  
+    - (<tt>Object</tt>) <strong>daymail</strong>(user) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6
+7
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 4</span>
+
+<span class='def def kw'>def</span> <span class='daymail identifier id'>daymail</span><span class='lparen token'>(</span><span class='user identifier id'>user</span><span class='rparen token'>)</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='user identifier id'>user</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='News constant id'>News</span><span class='dot token'>.</span><span class='where identifier id'>where</span><span class='lparen token'>(</span><span class='string val'>'created_at &gt; ?'</span><span class='comma token'>,</span> <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span> <span class='minus op'>-</span> <span class='float val'>1</span><span class='dot token'>.</span><span class='day identifier id'>day</span><span class='rparen token'>)</span>
+  <span class='@date ivar id'>@date</span> <span class='assign token'>=</span> <span class='I18n constant id'>I18n</span><span class='dot token'>.</span><span class='l identifier id'>l</span><span class='lparen token'>(</span><span class='Date constant id'>Date</span><span class='dot token'>.</span><span class='today identifier id'>today</span><span class='comma token'>,</span> <span class='symbol val'>:format</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:long</span><span class='rparen token'>)</span>
+  <span class='mail identifier id'>mail</span><span class='lparen token'>(</span><span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='email identifier id'>email</span><span class='comma token'>,</span>
+       <span class='symbol val'>:subject</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'[Daymail] '</span> <span class='plus op'>+</span> <span class='@date ivar id'>@date</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="password_reset-instance_method">
+  
+    - (<tt>Object</tt>) <strong>password_reset</strong>(user) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 12</span>
+
+<span class='def def kw'>def</span> <span class='password_reset identifier id'>password_reset</span><span class='lparen token'>(</span><span class='user identifier id'>user</span><span class='rparen token'>)</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='user identifier id'>user</span>
+  <span class='mail identifier id'>mail</span><span class='lparen token'>(</span><span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='email identifier id'>email</span><span class='comma token'>,</span>
+       <span class='symbol val'>:subject</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'[Site étu] Vous avez oublié votre mot de passe'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Nov 18 02:10:38 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

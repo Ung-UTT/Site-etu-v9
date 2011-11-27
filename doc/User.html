@@ -1,0 +1,769 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: User
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo; 
+    
+    
+    <span class="title">User</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: User
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">User</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/user.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#password-instance_method" title="#password (instance method)">- (Object) <strong>password</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Returns the value of attribute password.</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#authenticate-class_method" title="authenticate (class method)">+ (Object) <strong>authenticate</strong>(login, password) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#simple_create-class_method" title="simple_create (class method)">+ (Object) <strong>simple_create</strong>(login, password) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#assos-instance_method" title="#assos (instance method)">- (Object) <strong>assos</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#courses-instance_method" title="#courses (instance method)">- (Object) <strong>courses</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encrypt_password-instance_method" title="#encrypt_password (instance method)">- (Object) <strong>encrypt_password</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate_token-instance_method" title="#generate_token (instance method)">- (Object) <strong>generate_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#is%3F-instance_method" title="#is? (instance method)">- (Boolean) <strong>is?</strong>(name, asso = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#is_member_of%3F-instance_method" title="#is_member_of? (instance method)">- (Boolean) <strong>is_member_of?</strong>(asso) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#is_student%3F-instance_method" title="#is_student? (instance method)">- (Boolean) <strong>is_student?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="password=-instance_method"></span>
+      <span id="password-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="password-instance_method">
+  
+    - (<tt>Object</tt>) <strong>password</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    Returns the value of attribute password
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 4</span>
+
+<span class='def def kw'>def</span> <span class='password identifier id'>password</span>
+  <span class='@password ivar id'>@password</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="authenticate-class_method">
+  
+    + (<tt>Object</tt>) <strong>authenticate</strong>(login, password) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 42</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='authenticate identifier id'>authenticate</span><span class='lparen token'>(</span><span class='login identifier id'>login</span><span class='comma token'>,</span> <span class='password identifier id'>password</span><span class='rparen token'>)</span>
+  <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='find_by_login identifier id'>find_by_login</span><span class='lparen token'>(</span><span class='login identifier id'>login</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='user identifier id'>user</span> <span class='andop op'>&amp;&amp;</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='crypted_password identifier id'>crypted_password</span> <span class='eq op'>==</span> <span class='BCrypt constant id'>BCrypt</span><span class='colon2 op'>::</span><span class='Engine constant id'>Engine</span><span class='dot token'>.</span><span class='hash_secret identifier id'>hash_secret</span><span class='lparen token'>(</span><span class='password identifier id'>password</span><span class='comma token'>,</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='password_salt identifier id'>password_salt</span><span class='rparen token'>)</span>
+    <span class='user identifier id'>user</span>
+  <span class='else else kw'>else</span>
+    <span class='nil nil kw'>nil</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="simple_create-class_method">
+  
+    + (<tt>Object</tt>) <strong>simple_create</strong>(login, password) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 51</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='simple_create identifier id'>simple_create</span><span class='lparen token'>(</span><span class='login identifier id'>login</span><span class='comma token'>,</span> <span class='password identifier id'>password</span><span class='rparen token'>)</span>
+  <span class='User constant id'>User</span><span class='dot token'>.</span><span class='create identifier id'>create</span><span class='lparen token'>(</span><span class='symbol val'>:login</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='login identifier id'>login</span><span class='comma token'>,</span> <span class='symbol val'>:email</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='dstring node'>&quot;#{login}@yopmail.com&quot;</span><span class='comma token'>,</span>
+              <span class='symbol val'>:password</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='password identifier id'>password</span><span class='comma token'>,</span> <span class='symbol val'>:password_reset</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:password</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="assos-instance_method">
+  
+    - (<tt>Object</tt>) <strong>assos</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 69</span>
+
+<span class='def def kw'>def</span> <span class='assos identifier id'>assos</span>
+  <span class='roles identifier id'>roles</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='symbol val'>:asso</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='compact identifier id'>compact</span><span class='dot token'>.</span><span class='uniq identifier id'>uniq</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="courses-instance_method">
+  
+    - (<tt>Object</tt>) <strong>courses</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 73</span>
+
+<span class='def def kw'>def</span> <span class='courses identifier id'>courses</span>
+  <span class='timesheets identifier id'>timesheets</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='symbol val'>:course</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='uniq identifier id'>uniq</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encrypt_password-instance_method">
+  
+    - (<tt>Object</tt>) <strong>encrypt_password</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 56</span>
+
+<span class='def def kw'>def</span> <span class='encrypt_password identifier id'>encrypt_password</span>
+  <span class='if if kw'>if</span> <span class='password identifier id'>password</span><span class='dot token'>.</span><span class='present? fid id'>present?</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='password_salt identifier id'>password_salt</span> <span class='assign token'>=</span> <span class='BCrypt constant id'>BCrypt</span><span class='colon2 op'>::</span><span class='Engine constant id'>Engine</span><span class='dot token'>.</span><span class='generate_salt identifier id'>generate_salt</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='crypted_password identifier id'>crypted_password</span> <span class='assign token'>=</span> <span class='BCrypt constant id'>BCrypt</span><span class='colon2 op'>::</span><span class='Engine constant id'>Engine</span><span class='dot token'>.</span><span class='hash_secret identifier id'>hash_secret</span><span class='lparen token'>(</span><span class='password identifier id'>password</span><span class='comma token'>,</span> <span class='password_salt identifier id'>password_salt</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="generate_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>generate_token</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 63</span>
+
+<span class='def def kw'>def</span> <span class='generate_token identifier id'>generate_token</span>
+  <span class='begin begin kw'>begin</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='auth_token identifier id'>auth_token</span> <span class='assign token'>=</span> <span class='SecureRandom constant id'>SecureRandom</span><span class='dot token'>.</span><span class='hex identifier id'>hex</span>
+  <span class='end end kw'>end</span> <span class='while while_mod kw'>while</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='symbol val'>:auth_token</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='auth_token identifier id'>auth_token</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="is?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>is?</strong>(name, asso = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 81</span>
+
+<span class='def def kw'>def</span> <span class='is? fid id'>is?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='asso identifier id'>asso</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='res identifier id'>res</span> <span class='assign token'>=</span> <span class='roles identifier id'>roles</span><span class='dot token'>.</span><span class='select identifier id'>select</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span> <span class='r identifier id'>r</span><span class='dot token'>.</span><span class='symbol identifier id'>symbol</span> <span class='eq op'>==</span> <span class='name identifier id'>name</span> <span class='rbrace token'>}</span>
+  <span class='if if kw'>if</span> <span class='asso identifier id'>asso</span>
+    <span class='res identifier id'>res</span> <span class='assign token'>=</span> <span class='res identifier id'>res</span> <span class='bitand op'>&amp;</span> <span class='asso identifier id'>asso</span><span class='dot token'>.</span><span class='roles identifier id'>roles</span>
+  <span class='end end kw'>end</span>
+  <span class='notop op'>!</span><span class='res identifier id'>res</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="is_member_of?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>is_member_of?</strong>(asso) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 77</span>
+
+<span class='def def kw'>def</span> <span class='is_member_of? fid id'>is_member_of?</span><span class='lparen token'>(</span><span class='asso identifier id'>asso</span><span class='rparen token'>)</span>
+  <span class='assos identifier id'>assos</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='asso identifier id'>asso</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="is_student?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>is_student?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 89</span>
+
+<span class='def def kw'>def</span> <span class='is_student? fid id'>is_student?</span>
+  <span class='notop op'>!</span><span class='cas identifier id'>cas</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='andop op'>&amp;&amp;</span> <span class='cas identifier id'>cas</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Nov 18 02:10:33 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

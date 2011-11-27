@@ -1,0 +1,760 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: UsersController
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo; 
+    
+    
+    <span class="title">UsersController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: UsersController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">UsersController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/users_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>POST /users
+POST /users.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy-instance_method" title="#destroy (instance method)">- (Object) <strong>destroy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>DELETE /users/1
+DELETE /users/1.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit-instance_method" title="#edit (instance method)">- (Object) <strong>edit</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /users/1/edit.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">- (Object) <strong>index</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /users
+GET /users.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /users/new
+GET /users/new.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#password_reset-instance_method" title="#password_reset (instance method)">- (Object) <strong>password_reset</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show-instance_method" title="#show (instance method)">- (Object) <strong>show</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /users/1
+GET /users/1.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>PUT /users/1
+PUT /users/1.xml.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    POST /users
+POST /users.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 75</span>
+
+<span class='def def kw'>def</span> <span class='create identifier id'>create</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:user</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='@user ivar id'>@user</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+      <span class='cookies identifier id'>cookies</span><span class='lbrack token'>[</span><span class='symbol val'>:auth_token</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='@user ivar id'>@user</span><span class='dot token'>.</span><span class='auth_token identifier id'>auth_token</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='symbol val'>:root</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.users.create'</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@user ivar id'>@user</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:created</span><span class='comma token'>,</span> <span class='symbol val'>:location</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@user ivar id'>@user</span> <span class='rbrace token'>}</span>
+    <span class='else else kw'>else</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;new&quot;</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@user ivar id'>@user</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="destroy-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destroy</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    DELETE /users/1
+DELETE /users/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 108</span>
+
+<span class='def def kw'>def</span> <span class='destroy identifier id'>destroy</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='@user ivar id'>@user</span><span class='dot token'>.</span><span class='destroy identifier id'>destroy</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='users_url identifier id'>users_url</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='head identifier id'>head</span> <span class='symbol val'>:ok</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="edit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>edit</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /users/1/edit
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 69</span>
+
+<span class='def def kw'>def</span> <span class='edit identifier id'>edit</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="index-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /users
+GET /users.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 6</span>
+
+<span class='def def kw'>def</span> <span class='index identifier id'>index</span>
+  <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:q</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='@users ivar id'>@users</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='all identifier id'>all</span>
+  <span class='else else kw'>else</span>
+    <span class='query identifier id'>query</span> <span class='assign token'>=</span> <span class='string val'>'%'</span> <span class='plus op'>+</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:q</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'%'</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>'%'</span>
+    <span class='@users ivar id'>@users</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='where identifier id'>where</span><span class='lparen token'>(</span><span class='string val'>'login LIKE :query'</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:query</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='query identifier id'>query</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># index.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@users ivar id'>@users</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /users/new
+GET /users/new.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61
+62
+63
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 59</span>
+
+<span class='def def kw'>def</span> <span class='new identifier id'>new</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># new.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@user ivar id'>@user</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="password_reset-instance_method">
+  
+    - (<tt>Object</tt>) <strong>password_reset</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='password_reset identifier id'>password_reset</span>
+  <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:email</span><span class='rbrack token'>]</span>
+    <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find_by_email identifier id'>find_by_email</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:email</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+    <span class='if if kw'>if</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+      <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:alert</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.users.bad_email'</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='perishable_token identifier id'>perishable_token</span> <span class='assign token'>=</span> <span class='SecureRandom constant id'>SecureRandom</span><span class='dot token'>.</span><span class='hex identifier id'>hex</span>
+      <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='perishable_token_date identifier id'>perishable_token_date</span> <span class='assign token'>=</span> <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span> <span class='plus op'>+</span> <span class='float val'>1</span><span class='dot token'>.</span><span class='week identifier id'>week</span>
+      <span class='UserMailer constant id'>UserMailer</span><span class='dot token'>.</span><span class='password_reset identifier id'>password_reset</span><span class='lparen token'>(</span><span class='user identifier id'>user</span><span class='rparen token'>)</span>
+      <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:notice</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.users.email_sent'</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:token</span><span class='rbrack token'>]</span>
+    <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find_by_perishable_token identifier id'>find_by_perishable_token</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:token</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+    <span class='if if kw'>if</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='and and kw'>and</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='perishable_token_date identifier id'>perishable_token_date</span> <span class='gt op'>&gt;</span> <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span>
+      <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:alert</span><span class='rbrack token'>]</span> <span class='assign token'>=</span>  <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.users.bad_token'</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='password identifier id'>password</span> <span class='assign token'>=</span> <span class='ActiveSupport constant id'>ActiveSupport</span><span class='colon2 op'>::</span><span class='SecureRandom constant id'>SecureRandom</span><span class='dot token'>.</span><span class='hex identifier id'>hex</span><span class='lparen token'>(</span><span class='integer val'>2</span><span class='rparen token'>)</span>
+      <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='password_confirmation identifier id'>password_confirmation</span> <span class='assign token'>=</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='password identifier id'>password</span>
+      <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='perishable_token identifier id'>perishable_token</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+      <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='perishable_token_date identifier id'>perishable_token_date</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+      <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+      <span class='redirect_to identifier id'>redirect_to</span> <span class='symbol val'>:root</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.users.new_password'</span><span class='comma token'>,</span> <span class='symbol val'>:password</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='password identifier id'>password</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="show-instance_method">
+  
+    - (<tt>Object</tt>) <strong>show</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /users/1
+GET /users/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='show identifier id'>show</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># show.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@user ivar id'>@user</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    PUT /users/1
+PUT /users/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 92</span>
+
+<span class='def def kw'>def</span> <span class='update identifier id'>update</span>
+  <span class='@user ivar id'>@user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='@user ivar id'>@user</span><span class='dot token'>.</span><span class='update_attributes identifier id'>update_attributes</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:user</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='@user ivar id'>@user</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.users.update'</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='head identifier id'>head</span> <span class='symbol val'>:ok</span> <span class='rbrace token'>}</span>
+    <span class='else else kw'>else</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;edit&quot;</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@user ivar id'>@user</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Nov 18 02:10:34 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

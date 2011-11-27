@@ -1,0 +1,814 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: EventsController
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (E)</a> &raquo; 
+    
+    
+    <span class="title">EventsController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: EventsController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">EventsController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/events_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>POST /events
+POST /events.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy-instance_method" title="#destroy (instance method)">- (Object) <strong>destroy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>DELETE /events/1
+DELETE /events/1.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#disjoin-instance_method" title="#disjoin (instance method)">- (Object) <strong>disjoin</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>PUT /events/1/disjoin
+PUT /events/1/disjoin.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit-instance_method" title="#edit (instance method)">- (Object) <strong>edit</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /events/1/edit.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">- (Object) <strong>index</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /events
+GET /events.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#join-instance_method" title="#join (instance method)">- (Object) <strong>join</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>PUT /events/1/join
+PUT /events/1/join.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /events/new
+GET /events/new.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show-instance_method" title="#show (instance method)">- (Object) <strong>show</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>GET /events/1
+GET /events/1.xml.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>PUT /events/1
+PUT /events/1.xml.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    POST /events
+POST /events.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 72</span>
+
+<span class='def def kw'>def</span> <span class='create identifier id'>create</span>
+  <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:event</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:asso_ids</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:event</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='owner identifier id'>owner</span> <span class='assign token'>=</span> <span class='current_user identifier id'>current_user</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='@event ivar id'>@event</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.events.create'</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@event ivar id'>@event</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:created</span><span class='comma token'>,</span> <span class='symbol val'>:location</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@event ivar id'>@event</span> <span class='rbrace token'>}</span>
+    <span class='else else kw'>else</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;new&quot;</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="destroy-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destroy</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    DELETE /events/1
+DELETE /events/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 107</span>
+
+<span class='def def kw'>def</span> <span class='destroy identifier id'>destroy</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='destroy identifier id'>destroy</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='events_url identifier id'>events_url</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='head identifier id'>head</span> <span class='symbol val'>:ok</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="disjoin-instance_method">
+  
+    - (<tt>Object</tt>) <strong>disjoin</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    PUT /events/1/disjoin
+PUT /events/1/disjoin.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 45</span>
+
+<span class='def def kw'>def</span> <span class='disjoin identifier id'>disjoin</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='users identifier id'>users</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='current_user identifier id'>current_user</span><span class='rparen token'>)</span>
+  <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+
+  <span class='redirect_to identifier id'>redirect_to</span> <span class='@event ivar id'>@event</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.events.disjoin'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="edit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>edit</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /events/1/edit
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 66</span>
+
+<span class='def def kw'>def</span> <span class='edit identifier id'>edit</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="index-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /events
+GET /events.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8
+9
+10
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 6</span>
+
+<span class='def def kw'>def</span> <span class='index identifier id'>index</span>
+  <span class='@events ivar id'>@events</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='page identifier id'>page</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:page</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># index.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@events ivar id'>@events</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="join-instance_method">
+  
+    - (<tt>Object</tt>) <strong>join</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    PUT /events/1/join
+PUT /events/1/join.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='join identifier id'>join</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='if if kw'>if</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='users identifier id'>users</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='current_user identifier id'>current_user</span><span class='rparen token'>)</span>
+    <span class='redirect_to identifier id'>redirect_to</span> <span class='@event ivar id'>@event</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.events.already_join'</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='users identifier id'>users</span> <span class='lshft op'>&lt;&lt;</span> <span class='current_user identifier id'>current_user</span>
+    <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+    <span class='redirect_to identifier id'>redirect_to</span> <span class='@event ivar id'>@event</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.events.join'</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /events/new
+GET /events/new.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 56</span>
+
+<span class='def def kw'>def</span> <span class='new identifier id'>new</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># new.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@event ivar id'>@event</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="show-instance_method">
+  
+    - (<tt>Object</tt>) <strong>show</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    GET /events/1
+GET /events/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 17</span>
+
+<span class='def def kw'>def</span> <span class='show identifier id'>show</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='@comments ivar id'>@comments</span> <span class='assign token'>=</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='comments identifier id'>comments</span>
+  <span class='@documents ivar id'>@documents</span> <span class='assign token'>=</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='documents identifier id'>documents</span>
+  <span class='@news ivar id'>@news</span> <span class='assign token'>=</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='news identifier id'>news</span><span class='dot token'>.</span><span class='page identifier id'>page</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:page</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='comment val'># show.html.erb</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@event ivar id'>@event</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    PUT /events/1
+PUT /events/1.xml
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/events_controller.rb', line 90</span>
+
+<span class='def def kw'>def</span> <span class='update identifier id'>update</span>
+  <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:event</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:asso_ids</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='@event ivar id'>@event</span> <span class='assign token'>=</span> <span class='Event constant id'>Event</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='update_attributes identifier id'>update_attributes</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:event</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span><span class='lparen token'>(</span><span class='@event ivar id'>@event</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.events.update'</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='head identifier id'>head</span> <span class='symbol val'>:ok</span> <span class='rbrace token'>}</span>
+    <span class='else else kw'>else</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;edit&quot;</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:xml</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@event ivar id'>@event</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Nov 18 02:10:37 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
