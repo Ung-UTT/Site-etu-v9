@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AssosController < ApplicationController
   load_and_authorize_resource
 

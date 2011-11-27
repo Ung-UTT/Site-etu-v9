@@ -1,3 +1,4 @@
+# encoding: utf-8
 class NewsController < ApplicationController
   load_and_authorize_resource
   before_filter :verify_sender, :only => :daymail
