@@ -4,7 +4,10 @@ class CreateAssos < ActiveRecord::Migration
       t.string     :name
       t.text       :description
       t.references :owner
+      t.references :image
       t.references :parent
+
+      # Générés
       t.integer    :lft
       t.integer    :rgt
 

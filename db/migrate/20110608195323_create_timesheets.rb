@@ -1,11 +1,11 @@
 class CreateTimesheets < ActiveRecord::Migration
   def change
     create_table :timesheets do |t|
-      t.integer    :day
-      t.time       :from
-      t.time       :to
-      t.string     :week
-      t.string     :room
+      t.integer    :day # 0-6 (Lundi-Dimanche)
+      t.time       :from # Time.now, 08:00:00, ...
+      t.time       :to # Pareil
+      t.string     :week # rien, A ou B
+      t.string     :room # A201, B205, ...
       t.references :course
 
       t.timestamps

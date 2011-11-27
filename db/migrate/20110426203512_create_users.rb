@@ -4,6 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :login
       t.string    :email
       t.boolean   :cas
+
+      # Générés
       t.string    :crypted_password
       t.string    :password_salt
       t.string    :perishable_token # Pour "mot de passe oublié"

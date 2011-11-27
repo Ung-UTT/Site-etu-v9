@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.string   "name"
     t.text     "description"
     t.integer  "owner_id"
+    t.integer  "image_id"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "image_id"
   end
 
   create_table "assos_events", :id => false, :force => true do |t|
@@ -127,9 +127,9 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "event_id"
+    t.boolean  "is_moderated"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_moderated"
   end
 
   create_table "pools", :force => true do |t|
