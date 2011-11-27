@@ -1,4 +1,4 @@
-# encoding: UTF-8 leave this magic comment for rake
+# encoding: UTF-8
 # TODO - command line output of what has been done
 # TODO - handle command params for a verbose output
 # TODO - handle errors 
