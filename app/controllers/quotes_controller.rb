@@ -1,3 +1,4 @@
+# encoding: utf-8
 class QuotesController < ApplicationController
   load_and_authorize_resource
 

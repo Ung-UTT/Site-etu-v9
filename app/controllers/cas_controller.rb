@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CasController < ApplicationController
   skip_authorization_check
   before_filter RubyCAS::Filter, :only => :new

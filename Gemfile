@@ -19,6 +19,7 @@ gem 'kaminari'    # Pagination
 gem 'paper_trail' # Historique
 gem 'rdiscount'   # Parsage (Markdown)
 gem 'awesome_nested_set' # "Arbres" (Associations, Groupes, ...)
+gem 'net-ldap'    # Manipulation d'annuaires LDAP
 
 group :test do
   gem 'rspec-rails'         # Classes des tests
