@@ -91,4 +91,12 @@ class User < ActiveRecord::Base
   def is_student?
     !cas.nil? && cas == true
   end
+
+  def ldap_attributes
+    ldap_attributes_for_username(login)
+  end
+
+  def ldap_attribute(attr)
+    ldap_attribute_for_username(login, attr)
+  end
 end
