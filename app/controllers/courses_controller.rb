@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CoursesController < ApplicationController
   load_and_authorize_resource
 

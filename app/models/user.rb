@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include EtuLdap
   attr_accessible :login, :email, :password, :password_confirmation, :cas
 
   attr_accessor :password
@@ -23,10 +24,11 @@ class User < ActiveRecord::Base
   has_many :quotes, :dependent => :destroy
   has_many :reminders, :dependent => :destroy
   has_many :votes, :dependent => :destroy
-
   has_many :created_assos, :foreign_key => 'owner_id', :class_name => 'Asso', :dependent => :destroy
   has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
   has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', :dependent => :destroy
+
+  # FIXME Deprecated: replace all has_and_belongs_to_many by "has_many, :through => ..."
   has_and_belongs_to_many :events, :uniq => true
   has_and_belongs_to_many :groups, :uniq => true
   has_and_belongs_to_many :projects, :uniq => true
@@ -88,5 +90,13 @@ class User < ActiveRecord::Base
 
   def is_student?
     !cas.nil? && cas == true
+  end
+
+  def ldap_attributes
+    ldap_attributes_for_username(login)
+  end
+
+  def ldap_attribute(attr)
+    ldap_attribute_for_username(login, attr)
   end
 end

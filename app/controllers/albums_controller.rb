@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AlbumsController < ApplicationController
   skip_authorization_check
 

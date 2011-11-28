@@ -52,6 +52,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.3)
+    net-ldap (0.2.2)
     paper_trail (2.5.0)
       rails (~> 3)
     paperclip (2.4.5)
@@ -132,6 +133,7 @@ DEPENDENCIES
   bcrypt-ruby
   cancan
   kaminari
+  net-ldap
   paper_trail
   paperclip
   rails (= 3.1.1)

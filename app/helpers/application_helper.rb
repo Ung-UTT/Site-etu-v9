@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module ApplicationHelper
   def day_names
     I18n.t('date.day_names')
