@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.5.0)
     actionmailer (3.1.1)
       actionpack (= 3.1.1)
       mail (~> 2.3.0)
@@ -30,6 +31,8 @@ GEM
     activesupport (3.1.1)
       multi_json (~> 1.0)
     arel (2.2.1)
+    autotest-rails (4.1.1)
+      ZenTest (= 4.5)
     awesome_nested_set (2.0.2)
       activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
@@ -129,6 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest-rails
   awesome_nested_set
   bcrypt-ruby
   cancan

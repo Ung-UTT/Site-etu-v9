@@ -22,6 +22,7 @@ gem 'awesome_nested_set' # "Arbres" (Associations, Groupes, ...)
 gem 'net-ldap'    # Manipulation d'annuaires LDAP
 
 group :test do
-  gem 'rspec-rails'         # Classes des tests
-  gem 'shoulda-matchers'    # Fonctions des tests
+  gem 'rspec-rails'      # Classes des tests
+  gem 'shoulda-matchers' # Fonctions des tests
+  gem 'autotest-rails'   # Lancer automatiquement les tests
 end
