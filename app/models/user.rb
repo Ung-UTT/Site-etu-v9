@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password
   before_create :generate_token
+  after_create :create_preferences
   before_save :encrypt_password
 
   validates_confirmation_of :password
@@ -15,6 +16,8 @@ class User < ActiveRecord::Base
   paginates_per 30
 
   has_paper_trail
+
+  has_one :preference, :dependent => :destroy
 
   has_many :carpools, :dependent => :destroy
   has_many :classifieds, :dependent => :destroy
@@ -66,6 +69,10 @@ class User < ActiveRecord::Base
     begin
       self.auth_token = SecureRandom.hex
     end while User.exists?(:auth_token => self.auth_token)
+  end
+
+  def create_preferences
+    Preference.create(:user => self, :locale => I18n.default_locale.to_s, :quote_type => 'all')
   end
 
   def assos

@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -12,8 +13,21 @@ class ApplicationController < ActionController::Base
 
   private
     def set_locale
-      # ?locale=… ou dans HTTP_ACCEPT_LANGUAGE ou :fr par défaut
-      I18n.locale = params[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+      if params[:locale]
+        cookies[:locale] = params[:locale]
+      end
+
+      if current_user
+        current_user.preference.locale = params[:locale]
+        current_user.preference.save if current_user.preference.changed?
+      end
+
+      if current_user and current_user.preference.locale
+        I18n.locale = current_user.preference.locale
+      else
+        # Cookie ou dans HTTP_ACCEPT_LANGUAGE ou :fr par défaut
+        I18n.locale = cookies[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+      end
     end
 
     def set_layout_vars
