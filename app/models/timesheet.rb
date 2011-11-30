@@ -2,7 +2,9 @@ class Timesheet < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :course
-  has_and_belongs_to_many :users, :uniq => true
+
+  has_many :timesheets_user, :dependent => :destroy
+  has_many :users, :through => :timesheets_user, :uniq => true
 
   def t_day
     I18n.t('date.day_names')[day]

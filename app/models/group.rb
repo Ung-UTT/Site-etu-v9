@@ -4,5 +4,6 @@ class Group < ActiveRecord::Base
   has_paper_trail
   acts_as_nested_set :dependent => :destroy
 
-  has_and_belongs_to_many :users, :uniq => true
+  has_many :groups_user, :dependent => :destroy
+  has_many :users, :through => :groups_user, :uniq => true
 end

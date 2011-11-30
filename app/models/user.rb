@@ -31,18 +31,20 @@ class User < ActiveRecord::Base
   has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
   has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', :dependent => :destroy
 
-  # FIXME Deprecated: replace all has_and_belongs_to_many by "has_many, :through => ..."
-  has_and_belongs_to_many :events, :uniq => true
-  has_and_belongs_to_many :groups, :uniq => true
-  has_and_belongs_to_many :projects, :uniq => true
-  has_and_belongs_to_many :roles, :uniq => true
-  has_and_belongs_to_many :timesheets, :uniq => true
+  has_many :events_user, :dependent => :destroy
+  has_many :events, :through => :events_user, :uniq => true
 
-  # Enlève les participations
-  before_destroy do self.events.delete_all end
-  before_destroy do self.groups.delete_all end
-  before_destroy do self.projects.delete_all end
-  before_destroy do self.roles.delete_all end
+  has_many :groups_user, :dependent => :destroy
+  has_many :groups, :through => :groups_user, :uniq => true
+
+  has_many :projects_user, :dependent => :destroy
+  has_many :projects, :through => :projects_user, :uniq => true
+
+  has_many :roles_user, :dependent => :destroy
+  has_many :roles, :through => :roles_user, :uniq => true
+
+  has_many :timesheets_user, :dependent => :destroy
+  has_many :timesheets, :through => :timesheets_user, :uniq => true
 
   def self.authenticate(login, password)
     user = find_by_login(login)

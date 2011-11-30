@@ -7,7 +7,9 @@ class Role < ActiveRecord::Base
   acts_as_nested_set :dependent => :destroy
 
   belongs_to :asso
-  has_and_belongs_to_many :users, :uniq => true
+
+  has_many :roles_user, :dependent => :destroy
+  has_many :users, :through => :roles_user, :uniq => true
 
   # Enlève le rôle supprimé aux utilisateurs
   before_destroy do self.users.delete_all end

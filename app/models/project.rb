@@ -6,5 +6,7 @@ class Project < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User'
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
-  has_and_belongs_to_many :users, :uniq => true
+
+  has_many :roles_user, :dependent => :destroy
+  has_many :roles, :through => :roles_user, :uniq => true
 end

@@ -12,8 +12,12 @@ class Event < ActiveRecord::Base
   has_many :news, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_and_belongs_to_many :users, :uniq => true
-  has_and_belongs_to_many :assos, :uniq => true
+
+  has_many :events_user, :dependent => :destroy
+  has_many :users, :through => :events_user, :uniq => true
+
+  has_many :assos_event, :dependent => :destroy
+  has_many :assos, :through => :assos_event, :uniq => true
 
   # Enlève les participations des utilisateurs à l'événement supprimé
   before_destroy do self.users.delete_all end
