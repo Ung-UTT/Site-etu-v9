@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
   after_create :create_preferences
   before_save :encrypt_password
 
-  validates_confirmation_of :password
+  validates :login, :presence => true, :uniqueness => true
   validates_uniqueness_of :login
-  validates_presence_of :login
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
+  validates_confirmation_of :password
+  validates :email, :presence => true, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
 
   paginates_per 30
 
