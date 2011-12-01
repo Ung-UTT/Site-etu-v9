@@ -4,7 +4,7 @@
 <% pass = {:password => 'changez-moi', :password_confirmation => 'changez-moi'} %>
 
 <% users.each do |user| %>
-<% u = User.create({:login => user, :email => user+'@yopmail.com'}.merge(pass)) %>
+<% u = User.create({:login => user, :email => user+'@example.org'}.merge(pass)) %>
 
 <%= u.login %>:
   login: <%= u.login %>
@@ -13,6 +13,6 @@
   password_salt: <%= u.password_salt %>
   perishable_token: nil
   perishable_token_date: nil
-  auth_token: nil
+  auth_token: <%= u.auth_token %>
 <% u.destroy %>
 <% end %>

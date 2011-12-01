@@ -5,9 +5,7 @@ describe User do
 
   describe 'Validations' do
     it 'should accept a correct user' do
-      u = User.simple_create('login', 'password')
-      u.save.should be_true
-
+      User.simple_create('login', 'password').save.should be_true
       users(:kevin).save.should be_true
     end
 
@@ -23,8 +21,7 @@ describe User do
     it 'should reject incorrect confirmation password' do
       hash = basic_hash_user
       hash[:password_confirmation] = 'bad password'
-      u = User.new(hash)
-      u.save.should be_false
+      User.new(hash).save.should be_false
     end
   end
 
@@ -48,6 +45,40 @@ describe User do
     it { should have_many(:projects).through(:projects_user) }
     it { should have_many(:roles).through(:roles_user) }
     it { should have_many(:timesheets).through(:timesheets_user) }
+  end
+
+  describe 'Methods' do
+    before(:all) do
+      @foo = User.simple_create('foobar', 'password')
+    end
+
+    it 'should authentificate a correct user' do
+      User.authenticate('foobar', 'not password').should == nil
+      User.authenticate('foobar', 'password').should == @foo
+    end
+
+    it 'should have token and preference' do
+      @foo.auth_token.should_not be_nil
+      @foo.preference.should_not be_nil
+    end
+
+    it 'should have many assos and courses' do
+      @foo.assos.should == []
+      @foo.courses.should == []
+    end
+
+    # TODO: Ajouter des roles et des assos pour vraiment tester
+    it 'should correctly respond for abilities' do
+      @foo.is_member_of?(:fake_asso).should be_false
+      @foo.is?(:fake_role).should be_false
+
+      @foo.is_student?.should be_false
+      @foo.cas = true
+      @foo.save
+      @foo.is_student?.should be_true
+    end
+
+    # TODO: Tester ldap_attribute(s) si un serveur LDAP est présent
   end
 
   def basic_hash_user

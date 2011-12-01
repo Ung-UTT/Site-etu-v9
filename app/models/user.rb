@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def self.simple_create(login, password)
-    User.create(:login => login, :email => "#{login}@yopmail.com",
+    User.create(:login => login, :email => "#{login}@example.org",
                 :password => password, :password_reset => :password)
   end
 
