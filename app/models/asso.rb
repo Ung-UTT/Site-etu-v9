@@ -1,13 +1,13 @@
 class Asso < ActiveRecord::Base
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
-  validates_associated :owner
 
   has_paper_trail
   acts_as_nested_set :dependent => :destroy
 
   belongs_to :image
   belongs_to :owner, :class_name => 'User'
+
   has_many :roles, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
