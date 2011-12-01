@@ -2,7 +2,6 @@ class Annal < ActiveRecord::Base
   paginates_per 50
 
   validates_presence_of :name
-  validates_associated :documents
 
   has_paper_trail
 

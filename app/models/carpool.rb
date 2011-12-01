@@ -1,6 +1,5 @@
 class Carpool < ActiveRecord::Base
   validates_presence_of :description
-  validates_associated :user
 
   has_paper_trail
 

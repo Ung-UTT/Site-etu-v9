@@ -22,7 +22,7 @@ class Asso < ActiveRecord::Base
   end
 
   def member
-    roles.select { |r| r.name == 'member' }
+    roles.select { |r| r.name == 'member' }.first
   end
 
   def delete_user(user)

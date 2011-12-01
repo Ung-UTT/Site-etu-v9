@@ -4,7 +4,6 @@ describe Album do
   before(:all) do
     @e1 = Event.create(:name => 'Event 1')
     @e2 = Event.create(:name => 'Event 2')
-    puts __FILE__
     @image = Document.create(:documentable => @e1, :asset => File.new(Rails.root + 'spec/assets/image.png'))
   end
 
