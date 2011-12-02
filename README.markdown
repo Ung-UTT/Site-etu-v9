@@ -24,7 +24,8 @@ Pour lancer la console (permet de faire des tests rapides) : `rails console`
 
 Pour générer plein de contenu : `rake db:fixtures:load`
 
-Pour regénérer un environement de dévelopement fonctionnel : `rake dev:reset`
+Pour regénérer un environement fonctionnel : `rake dev:reset` (crée des
+base de données pour les environements production, development et test)
 
 ### Tester
 

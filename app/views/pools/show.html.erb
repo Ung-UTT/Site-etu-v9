@@ -15,21 +15,21 @@
 
       <% if @vote %>
         <ul>
-          <% @pool.questions.each do |question| %>
+          <% @pool.answers.each do |answer| %>
             <li>
-              <%= '*' if @vote.question == question %>
-              <%= question.content %> (<%= question.votes.size %>)
+              <%= '*' if @vote.answer == answer %>
+              <%= answer.content %> (<%= answer.votes.size %>)
             </li>
           <% end %>
         </ul>
         <%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %>
-      <% else %>
+      <% elsif (@pool.answers.size > 0) %>
         <%= form_for Vote.new do |f| %>
           <ul>
-            <% @pool.questions.each do |question| %>
+            <% @pool.answers.each do |answer| %>
               <li>
-                <%= f.radio_button :question_id, question.id %>
-                <%= f.label :"question_id_#{question.id}", question.content %>
+                <%= f.radio_button :answer_id, answer.id %>
+                <%= f.label :"answer_id_#{answer.id}", answer.content %>
               </li>
             <% end %>
           </ul>
@@ -39,12 +39,12 @@
 
       <% if can? :update, @pool %>
         <ul>
-          <% @pool.questions.each do |q| %>
+          <% @pool.answers.each do |q| %>
             <li><%= q.content %> <%= button_to 'X', q, :confirm => t('common.confirm'), :method => :delete %></li>
           <% end %>
         </ul>
 
-        <%= form_for(@pool.questions.new) do |f| %>
+        <%= form_for(@pool.answers.new) do |f| %>
           <%= f.hidden_field :pool_id %>
           <%= f.text_field :content %>
           <%= f.submit t('common.add') %>
