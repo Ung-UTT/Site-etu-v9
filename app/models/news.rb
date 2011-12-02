@@ -2,7 +2,6 @@ class News < ActiveRecord::Base
   paginates_per 5
 
   validates_presence_of :title
-  validates_associated :user
 
   has_paper_trail
 

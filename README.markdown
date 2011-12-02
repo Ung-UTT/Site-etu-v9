@@ -26,6 +26,13 @@ Pour générer plein de contenu : `rake db:fixtures:load`
 
 Pour regénérer un environement de dévelopement fonctionnel : `rake dev:reset`
 
+### Tester
+
+Avant d'envoyer votre contribution sur GitHub, assurez-vous que tout les tests passent avec : `rspec`
+
+Ou si vous écrivez des tests, utilisez `bundle exec autotest` pour les faire passer au fur et
+à mesure que vous les écrivez.
+
 ## Licence
 
 Tout les fichiers de ce projet sont sous licence APLGv3.

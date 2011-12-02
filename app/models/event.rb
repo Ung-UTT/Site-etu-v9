@@ -2,13 +2,12 @@ class Event < ActiveRecord::Base
   paginates_per 20
 
   validates_presence_of :name
-  validates_associated :owner
 
   default_scope :order => 'start_at DESC'
-
   has_paper_trail
 
   belongs_to :owner, :class_name => 'User'
+
   has_many :news, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy

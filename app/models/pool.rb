@@ -1,12 +1,9 @@
 class Pool < ActiveRecord::Base
   validates_presence_of :name
 
-  has_many :questions
   belongs_to :user
-
-  def votes
-    self.questions.map(&:votes).flatten.compact
-  end
+  has_many :questions
+  has_many :votes, :through => :questions, :uniq => true
 
   def voted_by?(user)
     votes.map(&:user_id).include?(user.id)
