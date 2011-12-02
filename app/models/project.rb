@@ -1,6 +1,9 @@
 class Project < ActiveRecord::Base
   paginates_per 20
 
+  validates_presence_of :name, :owner
+  validates_uniqueness_of :name
+
   has_paper_trail
 
   belongs_to :owner, :class_name => 'User'

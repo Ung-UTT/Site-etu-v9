@@ -18,7 +18,7 @@ class Role < ActiveRecord::Base
     return name.to_sym
   end
 
-  # TODO: Enlever ce workaround
+  # FIXME: Enlever ce workaround
   protected
     def set_default_left_and_right
       Role.unscoped do

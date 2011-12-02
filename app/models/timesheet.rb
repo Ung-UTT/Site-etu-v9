@@ -1,4 +1,6 @@
 class Timesheet < ActiveRecord::Base
+  validates_presence_of :day, :from, :to, :course
+
   has_paper_trail
 
   belongs_to :course
@@ -23,6 +25,6 @@ class Timesheet < ActiveRecord::Base
   end
 
   def during?(daytime, time)
-    day == daytime and from < time and time < to
+    day == daytime and from <= time and time <= to
   end
 end
