@@ -66,8 +66,8 @@ zh-CN:
       already_disjoin: "您未加入此课题"
       disjoin: "您退出此课题"
 
-    questions:
-      create: "Question successfully created."
+    answers:
+      create: "Answer successfully created."
 
     quotes:
       create: "语录创建成功"
@@ -102,7 +102,7 @@ zh-CN:
       failed: "Connection failed"
 
     votes:
-      create: "Question successfully created."
+      create: "Answer successfully created."
 
   # Views
 

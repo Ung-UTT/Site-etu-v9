@@ -1,6 +1,6 @@
-class CreateQuestions < ActiveRecord::Migration
+class CreateAnswers < ActiveRecord::Migration
   def change
-    create_table :questions do |t|
+    create_table :answers do |t|
       t.string     :content
       t.references :pool
 

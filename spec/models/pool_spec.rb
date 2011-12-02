@@ -10,15 +10,15 @@ describe Pool do
   describe 'Associations' do
     it { should belong_to(:user) }
 
-    it { should have_many(:questions) }
+    it { should have_many(:answers) }
     it { should have_many(:votes) }
   end
 
   describe 'Methods' do
     it 'should know if user has already votes' do
-      p = Pool.create(:name => 'Pool question?')
-      p.questions << Question.create(:content => 'Answer')
-      Vote.create(:question => p.questions.first, :user => users(:kevin))
+      p = Pool.create(:name => 'Pool answer?')
+      p.answers << Answer.create(:content => 'Answer')
+      Vote.create(:answer => p.answers.first, :user => users(:kevin))
       p.voted_by?(users(:kevin)).should be_true
       p.voted_by?(users(:joe)).should be_false
     end

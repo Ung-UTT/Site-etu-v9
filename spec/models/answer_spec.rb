@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Question do
+describe Answer do
   fixtures :users
 
   describe 'Validations' do
@@ -16,12 +16,12 @@ describe Question do
 
   describe 'Methods' do
     #FIXME: Ça devrait bien fonctionner
-    it 'should know if a user has already vote a question' do
+    it 'should know if a user has already vote a answer' do
       p = Pool.create(:name => 'Pool')
-      q = Question.create(:pool => p, :content => 'Question')
-      #q.voted_by?(users(:kevin)).should be_false
-      #q.votes << Vote.create(:user => users(:kevin))
-      #q.voted_by?(users(:kevin)).should be_true
+      a = Answer.create(:pool => p, :content => 'Answer')
+      #a.voted_by?(users(:kevin)).should be_false
+      #a.votes << Vote.create(:user => users(:kevin))
+      #a.voted_by?(users(:kevin)).should be_true
     end
   end
 end

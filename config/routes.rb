@@ -25,7 +25,7 @@ SiteEtu::Application.routes.draw do
   match 'groups/:id/disjoin/:user_id' => 'groups#disjoin', :as => 'disjoin_group'
 
   # Ressources
-  resources :albums, :authorizations, :groups, :pools, :questions, :reminders,
+  resources :albums, :answers, :authorizations, :groups, :pools, :reminders,
             :roles, :timesheets, :users, :user_sessions, :votes
   resources :annals, :assos, :classifieds, :carpools, :courses, :events, :projects, :quotes, :news do
     resources :comments

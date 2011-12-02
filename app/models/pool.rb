@@ -2,8 +2,8 @@ class Pool < ActiveRecord::Base
   validates_presence_of :name
 
   belongs_to :user
-  has_many :questions
-  has_many :votes, :through => :questions, :uniq => true
+  has_many :answers
+  has_many :votes, :through => :answers, :uniq => true
 
   def voted_by?(user)
     votes.map(&:user_id).include?(user.id)

@@ -1,16 +1,16 @@
 kevin_r_oui:
-  question: raclette_oui
+  answer: raclette_oui
   user: kevin
 
 kevin_c_oui:
-  question: chevre_oui
+  answer: chevre_oui
   user: kevin
 
 joe_r_oui:
-  question: raclette_oui
+  answer: raclette_oui
   user: joe
 
 joe_c_oui:
-  question: chevre_oui
+  answer: chevre_oui
   user: joe
 

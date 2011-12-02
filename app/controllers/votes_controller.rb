@@ -10,8 +10,8 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote.question.pool, :notice => t('c.votes.create') }
-        format.json { render :json => @vote, :status => :created, :location => @vote.question.pool }
+        format.html { redirect_to @vote.answer.pool, :notice => t('c.votes.create') }
+        format.json { render :json => @vote, :status => :created, :location => @vote.answer.pool }
       else
         format.html { render :action => "new" }
         format.json { render :json => @vote.errors, :status => :unprocessable_entity }
@@ -26,7 +26,7 @@ class VotesController < ApplicationController
     @vote.destroy
 
     respond_to do |format|
-      format.html { redirect_to @vote.question.pool }
+      format.html { redirect_to @vote.answer.pool }
       format.json { head :ok }
     end
   end

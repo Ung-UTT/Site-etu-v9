@@ -66,8 +66,8 @@ fr:
       already_disjoin: "Vous ne participez pas à ce projet."
       disjoin: "Vous ne participez maintenant plus à ce projet."
 
-    questions:
-      create: "La question a bien été ajoutée."
+    answers:
+      create: "La réponse a bien été ajoutée."
 
     quotes:
       create: "La citation a bien été ajoutée."

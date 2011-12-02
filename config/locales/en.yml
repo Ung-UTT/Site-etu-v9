@@ -66,8 +66,8 @@ en:
       already_disjoin: "You already disjoined from this project."
       disjoin: "You aren't in this project anymore."
 
-    questions:
-      create: "Question successfully created."
+    answers:
+      create: "Answer successfully created."
 
     quotes:
       create: "Quote successfully created."

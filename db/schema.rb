@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at"
   end
 
+  create_table "answers", :force => true do |t|
+    t.string   "content"
+    t.integer  "pool_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "assos", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -163,13 +170,6 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at"
   end
 
-  create_table "questions", :force => true do |t|
-    t.string   "content"
-    t.integer  "pool_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "quotes", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -246,7 +246,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "votes", :force => true do |t|
-    t.integer  "question_id"
+    t.integer  "answer_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

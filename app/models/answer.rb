@@ -1,4 +1,4 @@
-class Question < ActiveRecord::Base
+class Answer < ActiveRecord::Base
   validates_presence_of :content, :pool
 
   has_paper_trail
