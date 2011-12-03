@@ -55,8 +55,8 @@ zh-CN:
       update: "新闻更新成功"
 
     pools:
-      create: "Pool 创建成功"
-      update: "Pool 更新成功"
+      create: "调查问卷创建成功"
+      update: "调查问卷更新成功"
 
     projects:
       create: "课题创建成功"
@@ -67,7 +67,7 @@ zh-CN:
       disjoin: "您退出此课题"
 
     answers:
-      create: "Answer successfully created."
+      create: "答案创建成功"
 
     quotes:
       create: "语录创建成功"
@@ -99,10 +99,11 @@ zh-CN:
     user_sessions:
       create: "登录成功"
       destroy: "您已退出"
-      failed: "Connection failed"
+      failed: "登录失败"
+      cas: "登录"
 
     votes:
-      create: "Answer successfully created."
+      create: "投票成功"
 
   # Views
 
@@ -116,7 +117,7 @@ zh-CN:
     submit: "发送"
     search: "搜索"
 
-  album: "Album"
+  album: "相册"
   annal: "历届考题"
   asso: "社团"
   carpool: "拼车"
@@ -130,7 +131,7 @@ zh-CN:
   group: "团体"
   image: "图片"
   news: "新闻"
-  pool: "Pool"
+  pool: "问卷调查"
   preference: "设置"
   project: "课题"
   quote: "语录"
@@ -141,17 +142,17 @@ zh-CN:
   user_session: "登陆"
 
   albums:
-    list: "Liste of albums"
+    list: "相册"
 
   annals:
-    list: "历届考题列表"
+    list: "历届考题"
     name: "名称"
     date: "日期"
     description: "说明"
     course: "课程"
 
   assos:
-    list: "社团列表"
+    list: "社团"
     name: "名称"
     description: "说明"
     owner: "主席"
@@ -164,7 +165,7 @@ zh-CN:
     add_role: "添加角色"
 
   carpools:
-    list: "拼车信息列表"
+    list: "拼车信息"
     description: "说明"
     location: "地点"
     date: "日期"
@@ -179,25 +180,25 @@ zh-CN:
     user: "卖家"
 
   comments:
-    list: "评论列表"
+    list: "评论"
     content: "内容"
     user: "评论人"
 
   courses:
-    list: "课题列表"
+    list: "课题"
     name: "名称"
     description: "说明"
     users: "学生"
     annals: "课题历届考题"
 
   documents:
-    list: "文档列表"
+    list: "文档"
     count:
       one: "1个文档"
       other: "%{count}文档"
 
   events:
-    list: "活动列表"
+    list: "活动"
     name: "名称"
     description: "说明"
     location: "地点"
@@ -213,7 +214,7 @@ zh-CN:
       other: "%{count}封每日新闻邮件"
 
   groups:
-    list: "团队列表"
+    list: "团队"
     name: "名称"
     parent: "上级"
     users: "用户"
@@ -228,8 +229,8 @@ zh-CN:
     users_title: "你想知道的关于UTT学生的一切信息"
     classifieds: "跳蚤市场"
     classifieds_title: "卖旧书,自行车,..."
-    albums: "Albums"
-    albums_title: "All photos of each event"
+    albums: "相册"
+    albums_title: "所有照片"
     buckutt: "Buckutt充值"
     buckutt_title: "Buckutt充值"
     mails: "邮件"
@@ -241,7 +242,7 @@ zh-CN:
     carpools: "拼车"
     events: "活动"
     news: "新闻"
-    pools: "Pools"
+    pools: "问卷调查"
     projects: "课题"
     course: "课程"
     groups: "团队"
@@ -253,22 +254,22 @@ zh-CN:
     about: "关于"
 
   newss:
-    list: "新闻列表"
+    list: "新闻"
     title: "标题"
     content: "内容"
     user: "作者"
     event: "相关活动"
-    is_moderated: "Modérée ? 限制"
-    moderate: "Modére-moi !"
+    is_moderated: "限制"
+    moderate: "限制"
     date: "日期"
     hour: "时间"
     comments: "评论"
 
   pools:
-    list: "List of pools"
-    name: "Name"
-    description: "Description"
-    user: "Author"
+    list: "问卷调查"
+    name: "标题"
+    description: "说明"
+    user: "创建人"
 
   preferences:
     list: "设置"
@@ -276,7 +277,7 @@ zh-CN:
     quote_type: "语录类型"
 
   projects:
-    list: "课题列表"
+    list: "课题"
     name: "名称"
     description: "说明"
     owner: "课题负责人"
@@ -285,17 +286,17 @@ zh-CN:
     disjoin: "退出"
 
   quotes:
-    list: "语录列表"
+    list: "语录"
     content: "内容"
     by: "来自"
 
   reminders:
-    list: "记事贴列表"
+    list: "记事贴"
     content: "内容"
     user: "用户"
 
   roles:
-    list: "角色列表"
+    list: "角色"
     name: "名称"
     asso: "相关社团"
     parent: "Parent"
@@ -306,7 +307,7 @@ zh-CN:
       moderator: "版主"
 
   timesheets:
-    list: "时刻表列表"
+    list: "时间表"
     day: "天"
     from: "从"
     to: "到"
@@ -317,7 +318,7 @@ zh-CN:
     users: "用户"
 
   users:
-    list: "用户列表"
+    list: "用户"
     login: "用户名"
     email: "邮箱"
     password: "密码"
@@ -332,15 +333,15 @@ zh-CN:
     projects: "课题负责人"
 
   user_sessions:
-    login: "其他方式登陆"
+    login: "其他方式登录"
     logout: "退出"
-    cas: "Connect"
+    cas: "登录"
 
   votes:
     count:
-      one: "One vote"
-      other: "%{count} votes"
-    delete: "Delete vote"
+      one: "1 投票"
+      other: "%{count} 投票"
+    delete: "删除投票"
 
   # ActiveRecord translations
 
