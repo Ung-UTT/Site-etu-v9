@@ -204,6 +204,10 @@ body {
   margin-bottom: 20px;
 }
 
+.content p a{
+  font-size: 0.95em;
+}
+
 .content b {
   font-size: 14px;
   font-weight: bold;
@@ -250,7 +254,11 @@ clear: both;
 .news_banner em strong {
   color: #6c6c6c;
   padding-top: 0px;
-	font-size: 14px;
+  font-size: 12px;
+}
+
+.news_banner a {
+  font-size: 14px;
 }
 
 .news_banner .date {
@@ -265,7 +273,7 @@ clear: both;
 }
 
 .news_banner em {
-  font-size: 14px;
+  font-size: 12px;
   background-color: #dedede;
   color: #9c9c9c;
   display: block;

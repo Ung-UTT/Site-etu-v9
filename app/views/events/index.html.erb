@@ -6,6 +6,9 @@
   <header class="news_banner">
      <strong class="date"><%=raw l(event.start_at, :format => '%d <br /> %b') %></strong>
      <strong><%= link_to event.name, event %></strong>
+    <em>
+        <%= l(event.start_at, :format => "%H:%M") %> - <%= l(event.end_at, :format => "%H:%M") %> |
+        <strong><%= t('events.assos') %> :</strong> <%= link_to_assos event %> | <strong><%= t('events.location') %> :</strong> <%= event.location %>
     </em>
     </header>
     <% end %>
