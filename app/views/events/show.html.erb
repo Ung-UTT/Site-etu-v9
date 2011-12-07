@@ -54,17 +54,17 @@
       <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= CGI::escape(request.url) %>&choe=UTF-8">
     </div>
 
-	<p>
-		<%= link_to (image_tag("others/google_agenda.png")+" Ajouter à Google Agenda"), "https://www.google.com/calendar/b/0/render?action=TEMPLATE&text=#{CGI::escape(@event.name)}&location=#{CGI::escape(@event.location)}&dates=#{l(@event.start_at-2.hour, :format => "%Y%m%dT%H%M%SZ")}/#{l(@event.end_at-2.hour, :format => "%Y%m%dT%H%M%SZ")}&details=#{CGI::escape(@event.description)}&pli=1&sf=true&output=xml" %>
-		<%= link_to (image_tag("others/mailto.png")+" inviter des gens"), "mailto:?Subject=[Evènement UTT] #{@event.name}&body=%0A%0A#{@event.description}%0A%0APlus d'infos: #{CGI::escape(request.url)}",:style => "margin-left:20px" %>
-	</p>	
-		
+  <p>
+    <%= link_to (image_tag("others/google_agenda.png")+" Ajouter à Google Agenda"), "https://www.google.com/calendar/b/0/render?action=TEMPLATE&text=#{CGI::escape(@event.name)}&location=#{CGI::escape(@event.location)}&dates=#{l(@event.start_at-2.hour, :format => "%Y%m%dT%H%M%SZ")}/#{l(@event.end_at-2.hour, :format => "%Y%m%dT%H%M%SZ")}&details=#{CGI::escape(@event.description)}&pli=1&sf=true&output=xml" %>
+    <%= link_to (image_tag("others/mailto.png")+" inviter des gens"), "mailto:?Subject=[Evènement UTT] #{@event.name}&body=%0A%0A#{@event.description}%0A%0APlus d'infos: #{CGI::escape(request.url)}",:style => "margin-left:20px" %>
+  </p>
+
     <% if @event.users.include?(current_user) %>
     <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => 'PUT' %></p>
   <% elsif can? :'join', Event %>
     <p><%= link_to t('events.join'), join_event_path(@event), :method => 'PUT' %></p>
   <% end %>
-	<p>
+  <p>
   <% if can? :update, @event %>
     <%= link_to t('common.edit'), edit_event_path(@event) %> |
   <% end %>
@@ -72,7 +72,7 @@
     <%= button_to t('common.delete'), @event, :confirm => t('common.confirm'), :method => :delete %> |
   <% end %>
   <%= link_to t('common.list'), events_path %>
-	</p>
+  </p>
   </section>
 
   <%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>

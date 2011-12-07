@@ -35,11 +35,11 @@
           <li><%= link_to image_tag('icons/buckutt.png') + t('layout.buckutt'), :root, :title => t('layout.buckutt') if current_user %></li>
           <li><%= link_to image_tag('icons/mail.png') + t('layout.mails'), :root, :title => t('layout.mails') if current_user %></li>
         </ul>
-		<div style="float:right;margin-right:10px;">
-			<%= link_to (image_tag ('icons/french.png')),"?locale=fr" %>
-			<%= link_to (image_tag ('icons/english.png')),"?locale=en" %>
-			<%= link_to (image_tag ('icons/chinese.png')),"?locale=zh-CN" %>
-		</div>
+    <div style="float:right;margin-right:10px;">
+      <%= link_to (image_tag ('icons/french.png')),"?locale=fr" %>
+      <%= link_to (image_tag ('icons/english.png')),"?locale=en" %>
+      <%= link_to (image_tag ('icons/chinese.png')),"?locale=zh-CN" %>
+    </div>
       </nav>
 
       <section id="wrap_contents">

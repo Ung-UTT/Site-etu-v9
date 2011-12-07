@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: QuestionsController
+  Class: AnswersController
 
     &mdash; Documentation by YARD 0.7.3
 
@@ -32,9 +32,9 @@
     <div id="header">
       <div id="menu">
 
-    <a href="_index.html">Index (Q)</a> &raquo;
+    <a href="_index.html">Index (A)</a> &raquo;
 
-    <span class="title">QuestionsController</span>
+    <span class="title">AnswersController</span>
 
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
@@ -53,7 +53,7 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><h1>Class: QuestionsController
+    <div id="content"><h1>Class: AnswersController
 
 </h1>
 
@@ -70,7 +70,7 @@
 
             <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
 
-            <li class="next">QuestionsController</li>
+            <li class="next">AnswersController</li>
 
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -78,7 +78,7 @@
       </dd>
 
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/controllers/questions_controller.rb</dd>
+    <dd class="r2 last">app/controllers/answers_controller.rb</dd>
 
 </dl>
 <div class="clear"></div>
@@ -97,8 +97,8 @@
 
   </span>
 
-    <span class="summary_desc"><div class='inline'>POST /questions
-POST /questions.json.</div></span>
+    <span class="summary_desc"><div class='inline'>POST /answers
+POST /answers.json.</div></span>
 
 </li>
 
@@ -109,8 +109,8 @@ POST /questions.json.</div></span>
 
   </span>
 
-    <span class="summary_desc"><div class='inline'>DELETE /questions/1
-DELETE /questions/1.json.</div></span>
+    <span class="summary_desc"><div class='inline'>DELETE /answers/1
+DELETE /answers/1.json.</div></span>
 
 </li>
 
@@ -126,8 +126,8 @@ DELETE /questions/1.json.</div></span>
 
 </p><div class="docstring">
   <div class="discussion">
-    POST /questions
-POST /questions.json
+    POST /answers
+POST /answers.json
 
   </div>
 </div>
@@ -138,7 +138,6 @@ POST /questions.json
     <td>
       <pre class="lines">
 
-6
 7
 8
 9
@@ -150,21 +149,22 @@ POST /questions.json
 15
 16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/questions_controller.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/answers_controller.rb', line 7</span>
 
 <span class='def def kw'>def</span> <span class='create identifier id'>create</span>
-  <span class='@question ivar id'>@question</span> <span class='assign token'>=</span> <span class='Question constant id'>Question</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:question</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='@answer ivar id'>@answer</span> <span class='assign token'>=</span> <span class='Answer constant id'>Answer</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:answer</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
 
   <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
-    <span class='if if kw'>if</span> <span class='@question ivar id'>@question</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
-      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span> <span class='@question ivar id'>@question</span><span class='dot token'>.</span><span class='pool identifier id'>pool</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.questions.create'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='json identifier id'>json</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:json</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@question ivar id'>@question</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:created</span><span class='comma token'>,</span> <span class='symbol val'>:location</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@question ivar id'>@question</span><span class='dot token'>.</span><span class='pool identifier id'>pool</span> <span class='rbrace token'>}</span>
+    <span class='if if kw'>if</span> <span class='@answer ivar id'>@answer</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span> <span class='@answer ivar id'>@answer</span><span class='dot token'>.</span><span class='pool identifier id'>pool</span><span class='comma token'>,</span> <span class='symbol val'>:notice</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='t identifier id'>t</span><span class='lparen token'>(</span><span class='string val'>'c.answers.create'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='json identifier id'>json</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:json</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@answer ivar id'>@answer</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:created</span><span class='comma token'>,</span> <span class='symbol val'>:location</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@answer ivar id'>@answer</span><span class='dot token'>.</span><span class='pool identifier id'>pool</span> <span class='rbrace token'>}</span>
     <span class='else else kw'>else</span>
       <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;new&quot;</span> <span class='rbrace token'>}</span>
-      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='json identifier id'>json</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:json</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@question ivar id'>@question</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
+      <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='json identifier id'>json</span> <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:json</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='@answer ivar id'>@answer</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:unprocessable_entity</span> <span class='rbrace token'>}</span>
     <span class='end end kw'>end</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
@@ -181,8 +181,8 @@ POST /questions.json
 
 </p><div class="docstring">
   <div class="discussion">
-    DELETE /questions/1
-DELETE /questions/1.json
+    DELETE /answers/1
+DELETE /answers/1.json
 
   </div>
 </div>
@@ -193,7 +193,6 @@ DELETE /questions/1.json
     <td>
       <pre class="lines">
 
-22
 23
 24
 25
@@ -201,17 +200,18 @@ DELETE /questions/1.json
 27
 28
 29
-30</pre>
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/questions_controller.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/answers_controller.rb', line 23</span>
 
 <span class='def def kw'>def</span> <span class='destroy identifier id'>destroy</span>
-  <span class='@question ivar id'>@question</span> <span class='assign token'>=</span> <span class='Question constant id'>Question</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-  <span class='@question ivar id'>@question</span><span class='dot token'>.</span><span class='destroy identifier id'>destroy</span>
+  <span class='@answer ivar id'>@answer</span> <span class='assign token'>=</span> <span class='Answer constant id'>Answer</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='@answer ivar id'>@answer</span><span class='dot token'>.</span><span class='destroy identifier id'>destroy</span>
 
   <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
-    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span> <span class='@question ivar id'>@question</span><span class='dot token'>.</span><span class='pool identifier id'>pool</span> <span class='rbrace token'>}</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='redirect_to identifier id'>redirect_to</span> <span class='@answer ivar id'>@answer</span><span class='dot token'>.</span><span class='pool identifier id'>pool</span> <span class='rbrace token'>}</span>
     <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='json identifier id'>json</span> <span class='lbrace token'>{</span> <span class='head identifier id'>head</span> <span class='symbol val'>:ok</span> <span class='rbrace token'>}</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
@@ -226,7 +226,7 @@ DELETE /questions/1.json
 </div>
 
     <div id="footer">
-  Generated on Fri Nov 18 02:10:38 2011 by
+  Generated on Wed Dec  7 02:09:04 2011 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.8.7).
 </div>

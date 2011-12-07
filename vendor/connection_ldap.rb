@@ -1,14 +1,14 @@
 # encoding: UTF-8
 # TODO - command line output of what has been done
 # TODO - handle command params for a verbose output
-# TODO - handle errors 
+# TODO - handle errors
 # TODO - auto-remove stale .ldif files (older than 10 days)
 require 'rubygems'
 require 'net/ldap'
 require 'date'
 
 # Accès au ldap du cri periodiquement afin de mettre à jour le ldap site étu
-# ATTENTION : 
+# ATTENTION :
 # Avant de changer quoi que ce soit ici, assurez vous de :
 # * avoir bien compris le fonctionnement du protocole LDAP
 # * avoir analysé la structure des schémas du LDAP de l'UTT et de celui de l'UNG
@@ -23,7 +23,6 @@ REQUIRED_OBJECT_CLASSES = %w[inetOrgPerson supannPerson eduPerson UTT top alias 
 # Nom du fichier ldif généré pour l'ajout des nouveaux membres
 LDIF_FILE = "#{Date.today}-people-new.ldif"
 
-
 def ldap_routine
   # Connection aux deux annuaires LDAP
   # TODO/FIXME virer les port et hosts foireux utilisés pour tester le script depuis l'ext
@@ -37,8 +36,8 @@ def ldap_routine
   ########################################################################
   # creation du nœud racine si besoin
   root_attr = {
-    :o => "UTT", 
-    :dc => "UTT", 
+    :o => "UTT",
+    :dc => "UTT",
     :objectclass => ["top", "dcObject", "organization"]
   }
   ldap_create_node(ldap_ung, "dc=utt,dc=fr", root_attr)
@@ -48,7 +47,7 @@ def ldap_routine
     :ou => "people",
     :objectclass => ["top", "organizationalUnit"]
   }
-  ldap_create_node(ldap_ung, "ou=people,dc=utt,dc=fr", people_attr) 
+  ldap_create_node(ldap_ung, "ou=people,dc=utt,dc=fr", people_attr)
   # TODO Voir si on fait des ou pour des groupes ou quoi…
 
   ########################################################################
@@ -79,7 +78,7 @@ def ldap_routine
     STDOUT.flush
   end
   ldif_new_users.close
-  
+
   # On vire les object class en trop qu'il y a dans le fichier généré
   remove_unused_oc(::LDIF_FILE)
 
@@ -96,7 +95,7 @@ def ldap_update_attributes(updated_entries, obsolete_ldap)
   # Si la personne est dans le LDAP de l'UNG, on vérifie que toutes ses informations sont à jour
   # Pour tous les attrs qui sont dans les deux annuaire, vérifier valeur sinon maj valeur
   updated_entries.each do |person|
-    person.attribute_names.each do |att| 
+    person.attribute_names.each do |att|
       unless %w[dn objectclass].include? att.to_s.downcase
         obsolete_ldap.replace_attribute(person.dn, att, person.send(att))
         puts "Mise à jour de  #{person.dn} pour l'attribut #{att}: #{obsolete_ldap.get_operation_result.code} - #{obsolete_ldap.get_operation_result.message}"
@@ -112,7 +111,7 @@ def ldap_create_node(ldap, dn, attributes)
   if node != false
     puts 'the "' + dn + '" dn exists'
   else
-    puts '"' + dn + '" does not exist, creating...' 
+    puts '"' + dn + '" does not exist, creating...'
     ldap.add(:dn => dn, :attributes => attributes)
   end
 end
@@ -129,8 +128,8 @@ def ldap_add_entities(ldif_dump, ldap)
   f= File.open(ldif_dump, "r")
   people = Net::LDAP::Dataset.read_ldif(f)
 
-  people.each do |entry| 
-    ldap.add(:dn => entry[0], :attributes => entry[1]) 
+  people.each do |entry|
+    ldap.add(:dn => entry[0], :attributes => entry[1])
     puts "Ajout de  #{entry[0]}: #{ldap.get_operation_result.code} - #{ldap.get_operation_result.message}"
   end
 end
@@ -141,7 +140,7 @@ def remove_unused_oc(file)
   File.rename(file, fbk)
   File.open(file, "w") do |out|
     # on crée un nouveau fichier en filtrant les objectclasses pour garder que ceux qu'on veut
-    File.foreach(fbk) do |line| 
+    File.foreach(fbk) do |line|
       out.puts line if (!line.downcase.include?("objectclass") || ::REQUIRED_OBJECT_CLASSES.any? {|oc| line.downcase.include?(oc.downcase)}) #désolé :P
     end
   end
