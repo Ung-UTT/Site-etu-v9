@@ -1,3 +1,4 @@
+# Un album est un événement contenant des photos
 class Album
   def self.all
     Event.all.map { |e| event_to_album(e) }.compact

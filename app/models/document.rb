@@ -6,6 +6,7 @@ class Document < ActiveRecord::Base
 
   belongs_to :documentable, :polymorphic => true
 
+  # Est-ce une image ?
   def image?
     !(asset_file_name =~ /\.(png|jpg|jpeg|gif)$/).nil?
   end

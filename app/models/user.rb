@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   has_many :timesheets_user, :dependent => :destroy
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
+  # Retourne l'utilisateur si le couple login/password est bon
   def self.authenticate(login, password)
     user = find_by_login(login)
     if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
@@ -55,11 +56,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Créer un utilisateur rapidement
   def self.simple_create(login, password)
     User.create(:login => login, :email => "#{login}@example.org",
                 :password => password, :password_reset => :password)
   end
 
+  # Ne stocke pas le mot de passe en clair
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
@@ -67,28 +70,34 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Génére le token de sécurité qui est propre à un utilisateur
   def generate_token
     begin
       self.auth_token = SecureRandom.hex
     end while User.exists?(:auth_token => self.auth_token)
   end
 
+  # Préférences par défaut d'un utilisateur
   def create_preferences
     Preference.create(:user => self, :locale => I18n.default_locale.to_s, :quote_type => 'all')
   end
 
+  # Associations = associations dans lesquelles l'utilisateur a un rôle
   def assos
     roles.map(&:asso).compact.uniq
   end
 
+  # Cours = cours dans lesquels l'utilisateur participe à une horaire
   def courses
     timesheets.map(&:course).uniq
   end
 
+  # Est-ce qu'il est membre d'une association
   def is_member_of?(asso)
     assos.include?(asso)
   end
 
+  # Est-ce qu'il a le rôle "name" (éventuelement dans le cadre d'une association)
   def is?(name, asso = nil)
     res = roles.select { |r| r.symbol == name }
     if asso
@@ -97,14 +106,17 @@ class User < ActiveRecord::Base
     !res.empty?
   end
 
+  # Est-ce un étudiant ?
   def is_student?
     !cas.nil? && cas == true
   end
 
+  # Attributs LDAP de cet utilisateur
   def ldap_attributes
     ldap_attributes_for_username(login)
   end
 
+  # Attribut LDAP particulier
   def ldap_attribute(attr)
     ldap_attribute_for_username(login, attr)
   end

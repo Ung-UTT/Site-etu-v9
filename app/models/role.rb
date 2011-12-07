@@ -14,8 +14,9 @@ class Role < ActiveRecord::Base
   # Enlève le rôle supprimé aux utilisateurs
   before_destroy do self.users.delete_all end
 
+  # Transforme en symbol : "moderator" -> :moderator
   def symbol
-    return name.to_sym
+    name.to_sym
   end
 
   # FIXME: Enlever ce workaround

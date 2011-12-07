@@ -21,14 +21,17 @@ class Asso < ActiveRecord::Base
     Role.create(:name => 'member', :asso_id => self.id)
   end
 
+  # Rôle membre spécifique à cette association (chaque association a un rôle membre)
   def member
     roles.select { |r| r.name == 'member' }.first
   end
 
+  # Enlever un utilisateur d'une association
   def delete_user(user)
     roles.each { |r| r.users.delete(user) }
   end
 
+  # Liste des membres de l'associations (ceux qui y ont un rôle)
   def users
     roles.map { |r| r.users }.flatten.uniq
   end

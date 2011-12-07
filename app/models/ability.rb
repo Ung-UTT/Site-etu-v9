@@ -1,17 +1,22 @@
+# Classe qui gére les droits
 class Ability
   include CanCan::Ability
 
+  # Prend en paramètre l'utilisateur actuel (donc rien si c'est juste un visiteur anonyme)
   def initialize(user)
+    # Les règles se lisent assez facilement, pour la première :
+    # Tout le monde peut lire les petites annonces, les associations, et les événements, ... etc
     can :read, [Classified, Asso, Event]
     can :read, News, :is_moderated => true
     can :read, [Document, Comment] do |obj|
       !obj.documentable.nil? and can?(:read, obj.documentable)
     end
 
+    # Si c'est un visiteur anonyme
     if !user
       can :create, User
       can :password_reset, User
-    else
+    else # C'est un utilisateur connecté
       can :manage, Reminder, :user_id => user.id
       can :read, User, :id => user.id
 
