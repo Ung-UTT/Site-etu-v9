@@ -54,9 +54,9 @@ en:
       create: "News successfully created."
       update: "News successfully updated."
 
-    pools:
-      create: "Pool successfully created."
-      update: "Pool successfully updated."
+    polls:
+      create: "Poll successfully created."
+      update: "Poll successfully updated."
 
     projects:
       create: "Project successfully created."
@@ -129,7 +129,7 @@ en:
   group: "Group"
   image: "Image"
   news: "News"
-  pool: "Pool"
+  poll: "Poll"
   preference: "Preference"
   project: "Project"
   quote: "Quote"
@@ -240,7 +240,7 @@ en:
     carpools: "Carpools"
     events: "Events"
     news: "News"
-    pools: "Pools"
+    polls: "Polls"
     projects: "Projects"
     course: "Courses"
     groups: "Groups"
@@ -263,8 +263,8 @@ en:
     hour: "Hour"
     comments: "Comments"
 
-  pools:
-    list: "List of pools"
+  polls:
+    list: "List of polls"
     name: "Name"
     description: "Description"
     user: "Author"

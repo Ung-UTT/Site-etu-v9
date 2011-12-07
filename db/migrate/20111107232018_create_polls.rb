@@ -1,6 +1,6 @@
-class CreatePools < ActiveRecord::Migration
+class CreatePolls < ActiveRecord::Migration
   def change
-    create_table :pools do |t|
+    create_table :polls do |t|
       t.string     :name
       t.text       :description
       t.references :user

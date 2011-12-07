@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :classifieds, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :news, :dependent => :destroy
-  has_many :pools, :dependent => :destroy
+  has_many :polls, :dependent => :destroy
   has_many :quotes, :dependent => :destroy
   has_many :reminders, :dependent => :destroy
   has_many :votes, :dependent => :destroy

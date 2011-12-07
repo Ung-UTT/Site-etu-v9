@@ -22,7 +22,7 @@ class Ability
 
       if user.is_student? # UTTiens ou anciens
         can :read, [Album, Answer, Course, User]
-        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Pool, Quote, Vote]
+        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Poll, Quote, Vote]
         can :read, Reminder, :user_id => user.id
         can :create, News
         can :read, News, :is_moderated => true
@@ -39,11 +39,11 @@ class Ability
         can :update, Annal
 
         # L'auteur peut mettre à jour et supprimer ses contenus
-        can [:update, :destroy], [Carpool, Classified, News, Pool, Quote, Reminder, Vote], :user_id => user.id
+        can [:update, :destroy], [Carpool, Classified, News, Poll, Quote, Reminder, Vote], :user_id => user.id
         can [:update, :destroy], [Asso, Project, Event], :owner_id => user.id
         can [:update, :destroy], User, :id => user.id
         can [:create, :destroy], Answer do |answer|
-          !answer.pool.nil? and can?(:update, answer.pool)
+          !answer.poll.nil? and can?(:update, answer.poll)
         end
         can [:create, :destroy], Document do |doc|
           !doc.documentable.nil? and can?(:update, doc.documentable)
@@ -53,7 +53,7 @@ class Ability
       end # / student?
 
       if user.is? :moderator
-        can :manage, [Asso, Answer, Annal, Carpool, Classified, Comment, Event, Pool, Quote]
+        can :manage, [Asso, Answer, Annal, Carpool, Classified, Comment, Event, Poll, Quote]
       end
       if user.is? :admin
         can :manage, :all

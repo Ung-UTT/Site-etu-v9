@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Pool do
-  fixtures :pools, :users
+describe Poll do
+  fixtures :polls, :users
 
   describe 'Validations' do
     it { should validate_presence_of(:name) }
@@ -16,7 +16,7 @@ describe Pool do
 
   describe 'Methods' do
     it 'should know if user has already votes' do
-      p = Pool.create(:name => 'Pool answer?')
+      p = Poll.create(:name => 'Poll answer?')
       p.answers << Answer.create(:content => 'Answer')
       Vote.create(:answer => p.answers.first, :user => users(:kevin))
       p.voted_by?(users(:kevin)).should be_true

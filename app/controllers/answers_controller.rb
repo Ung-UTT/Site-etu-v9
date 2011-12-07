@@ -9,8 +9,8 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer.pool, :notice => t('c.answers.create') }
-        format.json { render :json => @answer, :status => :created, :location => @answer.pool }
+        format.html { redirect_to @answer.poll, :notice => t('c.answers.create') }
+        format.json { render :json => @answer, :status => :created, :location => @answer.poll }
       else
         format.html { render :action => "new" }
         format.json { render :json => @answer.errors, :status => :unprocessable_entity }
@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
     @answer.destroy
 
     respond_to do |format|
-      format.html { redirect_to @answer.pool }
+      format.html { redirect_to @answer.poll }
       format.json { head :ok }
     end
   end

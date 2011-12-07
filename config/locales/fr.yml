@@ -54,7 +54,7 @@ fr:
       create: "La news a bien été créée."
       update: "La news a bien été modifiée."
 
-    pools:
+    polls:
       create: "Le sondage a bien été créé."
       update: "Le sondage a bien été modifié."
 
@@ -130,7 +130,7 @@ fr:
   group: "Groupe"
   image: "Image"
   news: "News"
-  pool: "Sondage"
+  poll: "Sondage"
   preference: "Préférence"
   project: "Projet"
   quote: "Citation"
@@ -241,7 +241,7 @@ fr:
     carpools: "Covoiturage"
     events: "Évènements"
     news: "News"
-    pools: "Sondages"
+    polls: "Sondages"
     projects: "Projets"
     course: "UVs"
     groups: "Groupes"
@@ -264,7 +264,7 @@ fr:
     hour: "Heure"
     comments: "Commentaires"
 
-  pools:
+  polls:
     list: "Sondages"
     name: "Nom"
     description: "Description"

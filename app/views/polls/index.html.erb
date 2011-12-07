@@ -1,0 +1,13 @@
+<section class="content">
+  <%= title t('polls.list') %>
+
+  <section class="content_box">
+    <% @polls.each do |poll| %>
+  <li><%= link_to poll.name, poll %> (<%= t('votes.count', :count => poll.votes.size) %>)</li>
+  <% end %>
+  </section>
+
+  <% if can? :create, Poll %>
+    <%= link_to t('common.add'), new_poll_path %>
+  <% end %>
+</section>

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
 
   create_table "answers", :force => true do |t|
     t.string   "content"
-    t.integer  "pool_id"
+    t.integer  "poll_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at"
   end
 
-  create_table "pools", :force => true do |t|
+  create_table "polls", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "user_id"

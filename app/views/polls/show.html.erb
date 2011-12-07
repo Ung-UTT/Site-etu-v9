@@ -1,21 +1,21 @@
 <section class="content">
-  <%= title(t('pool') + ' : ' + @pool.name) %>
+  <%= title(t('poll') + ' : ' + @poll.name) %>
 
   <section class="content_box">
-    <article role="primary" class="pools">
+    <article role="primary" class="polls">
       <p>
-        <b><%= t('pools.description') %></b>
-        <%=md @pool.description %>
+        <b><%= t('polls.description') %></b>
+        <%=md @poll.description %>
       </p>
 
       <p>
-        <b><%= t('pools.user') %></b>
-        <%= link_to_user @pool.user %>
+        <b><%= t('polls.user') %></b>
+        <%= link_to_user @poll.user %>
       </p>
 
       <% if @vote %>
         <ul>
-          <% @pool.answers.each do |answer| %>
+          <% @poll.answers.each do |answer| %>
             <li>
               <%= '*' if @vote.answer == answer %>
               <%= answer.content %> (<%= answer.votes.size %>)
@@ -23,10 +23,10 @@
           <% end %>
         </ul>
         <%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %>
-      <% elsif (@pool.answers.size > 0) %>
+      <% elsif (@poll.answers.size > 0) %>
         <%= form_for Vote.new do |f| %>
           <ul>
-            <% @pool.answers.each do |answer| %>
+            <% @poll.answers.each do |answer| %>
               <li>
                 <%= f.radio_button :answer_id, answer.id %>
                 <%= f.label :"answer_id_#{answer.id}", answer.content %>
@@ -37,15 +37,15 @@
         <% end %>
       <% end %>
 
-      <% if can? :update, @pool %>
+      <% if can? :update, @poll %>
         <ul>
-          <% @pool.answers.each do |q| %>
+          <% @poll.answers.each do |q| %>
             <li><%= q.content %> <%= button_to 'X', q, :confirm => t('common.confirm'), :method => :delete %></li>
           <% end %>
         </ul>
 
-        <%= form_for(@pool.answers.new) do |f| %>
-          <%= f.hidden_field :pool_id %>
+        <%= form_for(@poll.answers.new) do |f| %>
+          <%= f.hidden_field :poll_id %>
           <%= f.text_field :content %>
           <%= f.submit t('common.add') %>
         <% end %>
@@ -53,12 +53,12 @@
     </article>
     <hr />
 
-    <% if can? :update, @pool %>
-      <%= link_to t('common.edit'), edit_pool_path(@pool) %> |
+    <% if can? :update, @poll %>
+      <%= link_to t('common.edit'), edit_poll_path(@poll) %> |
     <% end %>
-    <% if can? :destroy, @pool %>
-      <%= button_to t('common.delete'), @pool, :confirm => t('common.confirm'), :method => :delete %> |
+    <% if can? :destroy, @poll %>
+      <%= button_to t('common.delete'), @poll, :confirm => t('common.confirm'), :method => :delete %> |
     <% end %>
-    <%= link_to t('common.list'), pools_path %>
+    <%= link_to t('common.list'), polls_path %>
   </section>
 </section>

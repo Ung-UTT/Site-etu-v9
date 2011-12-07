@@ -1,15 +1,15 @@
 raclette_oui:
   content: Oui
-  pool: raclette
+  poll: raclette
 
 raclette_non:
   content: Non
-  pool: raclette
+  poll: raclette
 
 raclette_peut_etre:
   content: "Peut-être"
-  pool: raclette
+  poll: raclette
 
 chevre_oui:
   content: Oui
-  pool: chevre
+  poll: chevre

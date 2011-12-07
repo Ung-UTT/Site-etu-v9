@@ -26,7 +26,7 @@
 <%= list_of t('users.projects'), @user.created_projects, :name %>
 <%= list_of t('projects.list'), @user.projects, :name %>
 <%= list_of t('groups.list'), @user.groups, :name %>
-<%= list_of t('pools.list'), @user.pools, :name %>
+<%= list_of t('polls.list'), @user.polls, :name %>
 <%= list_of t('timesheets.list'), @user.timesheets, :range %>
 
 <% unless @user.timesheets.empty? %>

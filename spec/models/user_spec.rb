@@ -32,7 +32,7 @@ describe User do
     it { should have_many(:classifieds) }
     it { should have_many(:comments) }
     it { should have_many(:news) }
-    it { should have_many(:pools) }
+    it { should have_many(:polls) }
     it { should have_many(:quotes) }
     it { should have_many(:reminders) }
     it { should have_many(:votes) }

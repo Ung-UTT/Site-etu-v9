@@ -1,12 +1,12 @@
-<%= form_for(@pool) do |f| %>
+<%= form_for(@poll) do |f| %>
   <%= f.error_messages %>
 
   <div class="field">
-    <%= f.label :name, t('pools.name') %><br />
+    <%= f.label :name, t('polls.name') %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description, t('pools.description') %><br />
+    <%= f.label :description, t('polls.description') %><br />
     <%= f.text_area :description %>
   </div>
   <div class="actions">

@@ -54,7 +54,7 @@ zh-CN:
       create: "新闻创建成功"
       update: "新闻更新成功"
 
-    pools:
+    polls:
       create: "调查问卷创建成功"
       update: "调查问卷更新成功"
 
@@ -131,7 +131,7 @@ zh-CN:
   group: "团体"
   image: "图片"
   news: "新闻"
-  pool: "问卷调查"
+  poll: "问卷调查"
   preference: "设置"
   project: "课题"
   quote: "语录"
@@ -242,7 +242,7 @@ zh-CN:
     carpools: "拼车"
     events: "活动"
     news: "新闻"
-    pools: "问卷调查"
+    polls: "问卷调查"
     projects: "课题"
     course: "课程"
     groups: "团队"
@@ -265,7 +265,7 @@ zh-CN:
     hour: "时间"
     comments: "评论"
 
-  pools:
+  polls:
     list: "问卷调查"
     name: "标题"
     description: "说明"
