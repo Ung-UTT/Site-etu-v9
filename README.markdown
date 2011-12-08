@@ -12,6 +12,12 @@ Si vous voulez corriger un bug, [vous pouvez](https://github.com/Ung-UTT/Site-et
 
 ### Mais voici quelques commandes :
 
+#### Avant de commencer :
+
+Tout le projet utilise des tabulations à 2 espaces, donc veuillez bien à configurer votre éditeur de texte.
+
+Veuillez aussi respecter les conventions [expliquées ici](http://itsignals.cascadia.com.au/?p=7).
+
 #### Pour Rails :
 
 Pour créer la base de données avec les bonnes tables toussa… : `rake db:migrate`
