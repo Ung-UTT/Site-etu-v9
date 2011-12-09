@@ -40,7 +40,7 @@ module SiteEtu
     config.action_mailer.default_url_options = { :host => 'etu.utt.fr' }
     config.rubycas.cas_base_url = 'https://cas.utt.fr/cas'
 
-    config.autoload_paths += Rails.root.join('lib')
-    config.autoload_paths += Dir["#{Rails.root}/lib/**/"]
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
