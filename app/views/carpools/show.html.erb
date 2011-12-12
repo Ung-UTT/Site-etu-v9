@@ -1,5 +1,6 @@
+<section class="content">
 <%= title(t('carpool') + ' : ' + @carpool.location) %>
-
+<section class="content_box">
 <p>
   <b><%= t('carpools.description') %></b>
   <%=md @carpool.description %>
@@ -7,7 +8,7 @@
 
 <p>
   <b><%= t('carpools.date') %></b>
-  <%= @carpool.date %>
+  <%= l(@carpool.date, :format => :long) %>
 </p>
 
 <p>
@@ -22,6 +23,7 @@
   <%= button_to t('common.delete'), @carpool, :confirm => t('common.confirm'), :method => :delete %> |
 <% end %>
 <%= link_to t('common.list'), carpools_path %>
-
+</section>
+</section>
 <%= render 'documents/list_and_add', {:documentable => @carpool, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @carpool, :comments => @comments} %>
