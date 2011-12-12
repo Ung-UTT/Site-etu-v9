@@ -1,3 +1,6 @@
-<% title(t('comments.list') + ' : ' + @comment.content) %>
-
-<%= render 'one_comment', {:commentable => @commentable, :comment => @comment} %>
+<section class="content">
+	<%= title( t('comment',:count=>1) + ' : ' + @comment.content) %>
+	<section class="content_box">
+		<%= render 'one_comment', {:commentable => @commentable, :comment => @comment} %>
+	</section>
+</section>

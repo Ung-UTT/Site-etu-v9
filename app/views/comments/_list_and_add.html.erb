@@ -1,20 +1,22 @@
-<% unless comments.empty? and cannot?(:create, Comment) %>
-  <h3><%= link_to t('comments.list'), [commentable, Comment] %></h3>
-
+<section class="content">
+	<% unless comments.empty? and cannot?(:create, Comment) %>
+	<%= title t('comments.list', :count => @comments.size) %>
+	<section class="content_box">
   <% unless comments.empty? %>
   <ul class="comments">
     <% comments.each do |comment| %>
-    <li>
-      <%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %>
-    </li>
+      <%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %><br>
     <% end %>
   </ul>
   <% end %>
-
   <% if can? :create, Comment %>
     <%= form_for [commentable, Comment.new] do |f| %>
-        <%= f.text_area :content, :rows => 2 %>
-        <%= f.submit t('common.add') %>
+        <%= f.text_area :content, :rows => 3 %>
+		<div class="actions">
+		<%= f.submit t('common.add') %>
+		</div>
     <% end %>
   <% end %>
-<% end %>
+	<% end %>
+	</section>
+</section>

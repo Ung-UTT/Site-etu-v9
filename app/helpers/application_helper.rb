@@ -118,6 +118,14 @@ module ApplicationHelper
   def button_to_delete(label, link)
     button_to label, link, :confirm => t('common.confirm'), :method => :delete
   end
+  
+  def delete_button(content, object)
+    form_for(object, :method => :delete) do |f|
+      f.error_messages
+
+      button_tag content, :confirm => t('common.confirm')
+    end
+  end
 
   def md(text)
     text.nil? ? nil : RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe

@@ -138,6 +138,22 @@ body {
   padding: 0;
   margin: 0;
 }
+#wrap_contents form.new_comment textarea{
+	width: 615px;
+}
+
+#wrap_contents form.new_comment .actions input{
+	margin-left: 250px;
+}
+
+#wrap_contents form.edit_comment{
+	display: inline;
+}
+
+#wrap_contents form.edit_comment button{
+	background-color:white;
+	border:white;
+}
 
 .content_box {
   background-color: white;
@@ -497,11 +513,11 @@ clear: both;
 	width:80px;
 	height:23px;
 	display:block;
-    text-align:center;
+  text-align:center;
 	cursor: pointer;
 	border:none !important;
  	-moz-border-radius: 10px !important; /* Firefox */
-  	-webkit-border-radius: 10px !important; /* Safari and Chrome */
+  -webkit-border-radius: 10px !important; /* Safari and Chrome */
 }
 
 /* QR code*/

@@ -2,7 +2,7 @@
 <% if comment.user %>
   <%= link_to_user comment.user %> :
 <% end %>
-<%=md comment.content %>
+<%= comment.content %>
 <% if can? :destroy, comment %>
-  <%= button_to 'X', [commentable, comment], :confirm => t('common.confirm'), :method => :delete %>
+  <%= delete_button image_tag("others/delete.png"), [commentable, comment] %>
 <% end %>
