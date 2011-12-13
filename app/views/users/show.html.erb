@@ -12,6 +12,16 @@
   <%= @user.id %>
 </p>
 
+<p>
+  <b>Quote type :</b>
+  <%= @user.preference.quote_type %>
+</p>
+
+<p>
+  <b>Locale :</b>
+  <%= @user.preference.locale %>
+</p>
+
 <%= list_of t('courses.list'), @user.courses, :name %>
 <%= list_of t('roles.list'), @user.roles, :name %>
 <%= list_of t('users.assos'), @user.created_assos, :name %>

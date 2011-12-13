@@ -31,6 +31,8 @@ class Ability
           asso.nil? and asso.owner_id == user.id
         end
 
+        can [:read, :update], Preference, :user_id => user.id
+
         can [:join, :disjoin], [Event, Asso]
         can :disjoin, Role # cf dans le controlleur : ce doit être son rôle
 

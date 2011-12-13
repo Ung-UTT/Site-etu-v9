@@ -321,7 +321,7 @@ fr:
     login: "Pseudo"
     email: "Email"
     password: "Mot de passe"
-    password_confirmation: "Confirmation du mot de passe"
+    password_confirmation: "Confirmation"
     password_reset: "Vous avez oublié votre mot de passe ?"
     add: "Créer un compte"
     count:

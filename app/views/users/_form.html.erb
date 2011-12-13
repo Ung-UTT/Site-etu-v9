@@ -17,6 +17,21 @@
     <%= f.label :password_confirmation, t('users.password_confirmation') %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+
+  <% if !@user.new_record? %>
+    <%= f.fields_for :preference do |f_pref| %>
+      <div class="field">
+        <%= f_pref.label :quote_type %>
+        <%= f_pref.text_field :quote_type %>
+      </div>
+
+      <div class="field">
+        <%= f_pref.label :locale %>
+        <%= f_pref.text_field :locale %>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit t('common.submit') %>
   </div>

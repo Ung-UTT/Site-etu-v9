@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include EtuLdap
-  attr_accessible :login, :email, :password, :password_confirmation, :cas
+  attr_accessible :login, :email, :password, :password_confirmation, :cas, :preference_attributes
 
   attr_accessor :password
   before_create :generate_token
@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_paper_trail
 
   has_one :preference, :dependent => :destroy
+  accepts_nested_attributes_for :preference, :allow_destroy => true
 
   has_many :carpools, :dependent => :destroy
   has_many :classifieds, :dependent => :destroy
