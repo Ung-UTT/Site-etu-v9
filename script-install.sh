@@ -9,6 +9,7 @@ all="$ruby $sqlite3 $rubygems $tools $libs"
 
 echo -n "Ce script est fait pour Ubuntu, si vous êtes sur une autre "
 echo "distribution, regardez le code source et modifiez-le."
+echo "Ne fonctionne pas sous Fedora."
 echo
 echo "Les paquets qui vont être installés sont : "
 echo $all
