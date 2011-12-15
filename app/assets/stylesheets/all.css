@@ -364,6 +364,10 @@ clear: both;
   padding-left: 10px;
 }
 
+#menu_right a.connect {
+  color: #1A1A75;
+}
+
 /* Bas */
 
 #bottom {
