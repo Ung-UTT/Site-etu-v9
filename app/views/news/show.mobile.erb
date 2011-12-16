@@ -1,0 +1,10 @@
+<section>
+		<% title(@news.title) %>
+		<h1 class="news"><%= @news.title %></h1>
+
+		<div class="content"><%=md @news.content %></div>
+		<p class="link"><%= link_to 'Retour à la liste des news', news_index_path %></p>
+
+<%= render 'documents/list_and_add', {:documentable => @news, :documents => @documents} %>
+<%= render 'comments/list_and_add', {:commentable => @news, :comments => @comments} %>
+</section>

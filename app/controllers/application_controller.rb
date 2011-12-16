@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_layout_vars, :set_locale
+  before_filter :set_layout_vars, :set_locale, :set_mobile_format
   helper_method :current_user_session, :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -33,6 +33,20 @@ class ApplicationController < ActionController::Base
     def set_layout_vars
       @random_quote = Quote.random || Quote.new
       @assos = Asso.all
+    end
+
+    def set_mobile_format
+      if params[:classic]
+        if params[:classic] == 'false'
+          cookies[:force_classic] = 'false'
+        else
+          cookies[:force_classic] = 'true'
+        end
+      end
+
+      if (detect_mobile? and cookies[:force_classic] != 'true') or cookies[:force_classic] == 'false'
+        request.format = :mobile
+      end
     end
 
     def current_user

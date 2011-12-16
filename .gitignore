@@ -2,8 +2,8 @@
 db/*.sqlite3*
 log/*.log
 tmp/**/*
-public/system/**/*
-public/assets/**/*
+public/system/*
+public/assets/*
 config/initializers/secret_token.rb
 Session.vim
 .rvmrc

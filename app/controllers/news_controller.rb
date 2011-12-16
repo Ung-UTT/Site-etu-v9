@@ -6,7 +6,11 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.xml
   def index
-    @news = News.where(:is_moderated => true).page(params[:page])
+    if request.format == :mobile
+      @news = News.page(params[:page]).per(15)
+    else 
+      @news = News.page(params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb

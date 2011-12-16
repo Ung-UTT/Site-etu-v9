@@ -1,15 +1,15 @@
 raclette_oui:
   content: Oui
-  poll: raclette
+  poll_id: raclette
 
 raclette_non:
   content: Non
-  poll: raclette
+  poll_id: raclette
 
 raclette_peut_etre:
   content: "Peut-être"
-  poll: raclette
+  poll_id: raclette
 
 chevre_oui:
   content: Oui
-  poll: chevre
+  poll_id: chevre

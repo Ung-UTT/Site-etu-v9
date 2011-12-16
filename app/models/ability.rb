@@ -22,7 +22,7 @@ class Ability
 
       if user.is_student? # UTTiens ou anciens
         can :read, [Album, Answer, Course, User]
-        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Poll, Quote, Vote]
+        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
         can :read, Reminder, :user_id => user.id
         can :create, News
         can :read, News, :is_moderated => true

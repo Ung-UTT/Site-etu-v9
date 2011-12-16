@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN"
+  "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd">
+<html>
+<head>
+  <title>SiteEtuMobile</title>
+  <meta charset="utf-8" />
+  <%= stylesheet_link_tag "mobile" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+  <header>
+    <div>
+      <%= link_to root_url do %>
+        <%= image_tag('mobile/banner.jpg') %>
+      <% end %>
+    </div>
+  </header>
+
+  <%= yield %>
+
+  <footer>
+    UTT Net Group ||
+    <a class="classique" href="?classic=true">Version Classique</a>
+  </footer>
+</body>
+</html>
