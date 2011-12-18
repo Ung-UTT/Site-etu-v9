@@ -19,16 +19,19 @@ lorem:
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
   user: joe
+  is_moderated: true
   event: party
 
 ipsum:
   title: Lorem Ipsum
   content: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Lorem ipsum dolor sit amet, [consectetur](http://perdu.com) adipiscing elit.
     Nullam ut purus tellus, ac hendrerit eros. Curabitur quis odio est,
-    nec tincidunt arcu. Aliquam dignissim, neque vel tempus aliquet,
+    nec tincidunt arcu. **Aliquam dignissim**, neque vel tempus aliquet,
     magna dolor venenatis lacus, quis laoreet enim odio quis ante.
-    Duis a mauris metus. Maecenas mattis accumsan suscipit. Integer dui
+    Duis a mauris metus. Maecenas mattis accumsan suscipit.
+    ![Image](/assets/home/logo_ung.png)
+    Integer dui
     ligula, facilisis in posuere dignissim, accumsan ac augue. Praesent
     sed neque nulla, ut hendrerit magna. Duis interdum facilisis mi nec
     tempus. Ut ut dignissim odio. Quisque lacinia, arcu vitae dapibus
@@ -36,6 +39,7 @@ ipsum:
     Vestibulum laoreet interdum ornare. Cras condimentum fringilla
     lectus,id feugiat dolor interdum eu. Fusce ut lectus ipsum. Maecenas
     vel augue sem, ac lobortis urna. Suspendisse potenti.
+    ![Chat](http://i.imgur.com/H8gmQ.gif)
   user: kevin
   is_moderated: true
 
