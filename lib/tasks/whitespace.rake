@@ -1,22 +1,26 @@
 namespace :whitespace do
   desc 'Removes trailing whitespace'
+
   task :cleanup do
-    sh %{find -type f -not \
-         \\( -path './.git/*' -or -path './app/assets/*' -or -path './test/images/*' -or -name '*.sqlite3' \\) \
-         -exec sed -i 's/[ \t]*$//' \{\} \\; -exec echo -n . \\;}
+    sh %{for f in `find . | grep -v '/doc/' | egrep '(.rb|.erb|.html|.yml|.css|.js|.rake)$'`;
+      do sed -i 's/[ \t]*$//' $f; echo -n .;
+    done}
   end
+
   desc 'Converts hard-tabs into two-space soft-tabs'
   task :retab do
-    sh %{find -type f -not \
-         \\( -path './.git/*' -or -path './app/assets/*' -or -path './test/images/*' -or -name '*.sqlite3' \\) \
-         -exec sed -i 's/\t/  /g' \{\} \\; -exec echo -n . \\;}
+    sh %{for f in `find . | grep -v '/doc/' | egrep '(.rb|.erb|.html|.yml|.css|.js|.rake)$'`;
+      do sed -i 's/\t/  /g' $f; echo -n .;
+    done}
   end
+
   desc 'Remove consecutive blank lines'
   task :scrub_gratuitous_newlines do
-    sh %{find -type f -not \
-         \\( -path './.git/*' -or -path './app/assets/*' -or -path './test/images/*' -or -name '*.sqlite3' \\) \
-         -exec sed -i '/./,/^$/!d' \{\} \\; -exec echo -n . \\;}
+    sh %{for f in `find . | grep -v '/doc/' | egrep '(.rb|.erb|.html|.yml|.css|.js|.rake)$'`;
+      do sed -i '/./,/^$/!d' $f; echo -n .;
+    done}
   end
+
   desc 'Execute all tasks'
   task :all do
     Rake::Task['whitespace:cleanup'].execute
