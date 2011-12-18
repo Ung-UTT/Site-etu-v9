@@ -13,7 +13,7 @@ module ActionView
       if details[:formats].include?(:mobile) # Si le format est [:mobile]
         unfrozen_details[:formats] = unfrozen_details[:formats].push(:html) # On ajout :html comme format possible
       end
- 
+
       query = build_query(path, unfrozen_details) # Et on utilise la copie de details
       templates = []
       sanitizer = Hash.new { |h,k| h[k] = Dir["#{File.dirname(k)}/*"] }
@@ -27,7 +27,7 @@ module ActionView
         templates << Template.new(contents, File.expand_path(p), handler,
           :virtual_path => path.virtual, :format => format, :updated_at => mtime(p))
       end
-      
+
       # Si ya 2 templates, ya le :mobile et le :html
       if templates.size > 1
         templates = templates.select{|t| t.identifier =~ /mobile/} # Si le template mobile existe, enlever les autres

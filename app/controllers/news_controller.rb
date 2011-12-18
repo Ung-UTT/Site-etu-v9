@@ -8,7 +8,7 @@ class NewsController < ApplicationController
   def index
     if request.format == :mobile
       @news = News.page(params[:page]).per(15)
-    else 
+    else
       @news = News.page(params[:page])
     end
 

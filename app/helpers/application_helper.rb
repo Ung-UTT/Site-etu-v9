@@ -118,7 +118,7 @@ module ApplicationHelper
   def button_to_delete(label, link)
     button_to label, link, :confirm => t('common.confirm'), :method => :delete
   end
-  
+
   def delete_button(content, object)
     form_for(object, :method => :delete) do |f|
       f.error_messages

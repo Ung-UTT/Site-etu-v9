@@ -1,7 +1,7 @@
 <section class="content">
-	<% unless comments.empty? and cannot?(:create, Comment) %>
-	<%= title t('comments.list', :count => @comments.size) %>
-	<section class="content_box">
+  <% unless comments.empty? and cannot?(:create, Comment) %>
+  <%= title t('comments.list', :count => @comments.size) %>
+  <section class="content_box">
   <% unless comments.empty? %>
   <ul class="comments">
     <% comments.each do |comment| %>
@@ -12,11 +12,11 @@
   <% if can? :create, Comment %>
     <%= form_for [commentable, Comment.new] do |f| %>
         <%= f.text_area :content, :rows => 3 %>
-		<div class="actions">
-		<%= f.submit t('common.add') %>
-		</div>
+    <div class="actions">
+    <%= f.submit t('common.add') %>
+    </div>
     <% end %>
   <% end %>
-	<% end %>
-	</section>
+  <% end %>
+  </section>
 </section>

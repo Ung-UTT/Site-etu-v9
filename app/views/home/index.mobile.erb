@@ -9,7 +9,7 @@
           <% if can?(:read, User) %>
               <li class="partie"><%= link_to current_user.login, current_user%></li>
           <% end %>
-	  <% if can?(:read, Reminder) %>
+    <% if can?(:read, Reminder) %>
               <li class="partie"><%= link_to t('reminders.list'), reminders_path%></li>
           <% end %>
           <% if can?(:read, News) %>
@@ -22,7 +22,7 @@
                 <li class="partie"><%= link_to t('layout.annals'), annals_path%></li>
           <% end %>
           <% if can?(:read, Classified) %>
-		<li class="partie"><%=link_to t('layout.classifieds'), classifieds_path%></li>
+    <li class="partie"><%=link_to t('layout.classifieds'), classifieds_path%></li>
           <% end %>
           <% if can?(:read, Asso) %>
                 <li class="partie"><%= link_to t('layout.assos'), assos_path%></li>
@@ -30,16 +30,16 @@
           <% if can?(:read, Event) %>
                 <li class="partie"><%= link_to t('layout.events'), events_path%></li>
           <% end %>
-	  <% if can?(:read, Carpool) %>
+    <% if can?(:read, Carpool) %>
               <li class="partie"><%= link_to t('layout.carpools'), carpools_path%></li>
           <% end %>
-	  <% if can?(:read, Project) %>
+    <% if can?(:read, Project) %>
               <li class="partie"><%= link_to t('layout.projects'), projects_path%></li>
           <% end %>
           <% if can?(:read, User) %>
                 <li class="partie"><%= link_to t('layout.users'), users_path%></li>
           <% end %>
-	  <% if can?(:read, Course) %>
+    <% if can?(:read, Course) %>
               <li class="partie"><%= link_to t('layout.course'), courses_path%></li>
           <% end %>
           <% if can?(:read, Poll) %>
