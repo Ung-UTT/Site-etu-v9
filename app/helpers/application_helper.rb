@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def title_tag
-    content_tag(:title, content_for(:title).empty?  ? 'Site étu : Le nouveau Face-Twit-Goog-Micro-Apple-LinuxFr' : content_for(:title))
+    content_tag(:title, content_for(:title).empty?  ? "Site étudiant de l'UTT" : content_for(:title))
   end
 
   # Select options

@@ -5,6 +5,10 @@
     <%= f.label :content, t('quotes.content') %><br />
     <%= f.text_field :content %>
   </div>
+  <div class="field">
+    <%= f.label :tag, 'Type' %><br />
+    <%= f.select :tag, Quote::TYPES %>
+  </div>
   <div class="actions">
     <%= f.submit t('common.submit') %>
   </div>

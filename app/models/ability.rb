@@ -21,7 +21,7 @@ class Ability
       can :password_reset, User
     else # C'est un utilisateur connecté
       can :manage, Reminder, :user_id => user.id
-      can :read, User, :id => user.id
+      can :manage, User, :id => user.id
 
       if user.is_student? # UTTiens ou anciens
         can :read, [Album, Answer, Course, User]

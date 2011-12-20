@@ -8,6 +8,9 @@
         <%= image_tag "style/quotation_right.gif" %>
         <%= t('quotes.by') %> <%= link_to_user @quote.user  %>
       </p>
+      <p>
+        <b>Type</b> : <%= @quote.tag %>
+      </p>
     </article>
   <hr />
   <% if can? :update, @quote %>

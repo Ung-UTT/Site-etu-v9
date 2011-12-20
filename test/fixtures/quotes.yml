@@ -1,15 +1,19 @@
 joke:
   content: "Est-ce qu'en Chine, plus il y a de fous, moins on riz ?"
   user : joe
+  tag: "jokes"
 
 cumul:
   content: "Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?"
   user : kevin
+  tag: "tooltips"
 
 shadok:
   content: "Plus on rate, plus on a chances de réussir"
   user: joe
+  tag: "quotes"
 
 einstein:
   content: "« Only two things are infinite, the universe and human stupidity, and I'm not sure about the former. » ‑ Albert Einstein"
   user: joe
+  tag: "quotes"

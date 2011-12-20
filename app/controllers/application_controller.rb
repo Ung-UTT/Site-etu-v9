@@ -31,7 +31,10 @@ class ApplicationController < ActionController::Base
     end
 
     def set_layout_vars
-      @random_quote = Quote.random || Quote.new
+      if current_user
+        @random_quote = Quote.where(:tag => current_user.preference.quote_type).random
+      end
+      @random_quote ||= Quote.random || Quote.new
       @assos = Asso.all
     end
 
