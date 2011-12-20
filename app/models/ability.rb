@@ -8,8 +8,11 @@ class Ability
     # Tout le monde peut lire les petites annonces, les associations, et les événements, ... etc
     can :read, [Classified, Asso, Event]
     can :read, News, :is_moderated => true
-    can :read, [Document, Comment] do |obj|
+    can :read, Document do |obj|
       !obj.documentable.nil? and can?(:read, obj.documentable)
+    end
+    can :read, Comment do |obj|
+      !obj.commentable.nil? and can?(:read, obj.commentable)
     end
 
     # Si c'est un visiteur anonyme

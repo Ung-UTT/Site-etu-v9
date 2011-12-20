@@ -1,4 +1,5 @@
-# encoding: UTF-8 leave this magic comment for rake
+# encoding: UTF-8
+
 namespace :dev do
   desc 'Supprime les bases de données et refais les migrations, les fixtures et les seed'
   task :reset do

@@ -1,6 +1,5 @@
 namespace :whitespace do
   desc 'Removes trailing whitespace'
-
   task :cleanup do
     sh %{for f in `find . | grep -v '/doc/' | egrep '(.rb|.erb|.html|.yml|.css|.js|.rake)$'`;
       do sed -i 's/[ \t]*$//' $f; echo -n .;
