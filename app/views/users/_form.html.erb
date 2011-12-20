@@ -21,13 +21,13 @@
   <% if !@user.new_record? %>
     <%= f.fields_for :preference do |f_pref| %>
       <div class="field">
-        <%= f_pref.label :quote_type %>
-        <%= f_pref.text_field :quote_type %>
+        <%= f_pref.label :quote_type %><br />
+          <%= f_pref.select :quote_type, Preference::QUOTES_TYPES %>
       </div>
 
       <div class="field">
-        <%= f_pref.label :locale %>
-        <%= f_pref.text_field :locale %>
+        <%= f_pref.label :locale %><br />
+        <%= f_pref.select :locale, I18n.available_locales.map(&:to_s) %>
       </div>
     <% end %>
   <% end %>

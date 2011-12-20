@@ -15,11 +15,11 @@ class ApplicationController < ActionController::Base
     def set_locale
       if params[:locale]
         cookies[:locale] = params[:locale]
-      end
 
-      if current_user
-        current_user.preference.locale = params[:locale]
-        current_user.preference.save if current_user.preference.changed?
+        if current_user
+          current_user.preference.locale = params[:locale]
+          current_user.preference.save if current_user.preference.changed?
+        end
       end
 
       if current_user and current_user.preference.locale

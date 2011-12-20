@@ -1,4 +1,4 @@
-<h2><%= link_to current_user.login, current_user %></h2>
+<h2><%= link_to current_user.login, current_user, :class => 'connect' %></h2>
 <p>
   <%= link_to t('reminders.list'), reminders_path %><br />
   <%= link_to t('user_sessions.logout'), :logout %>
