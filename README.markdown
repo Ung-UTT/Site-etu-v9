@@ -35,6 +35,7 @@ Installez les paquets suivants (peut changer suivant votre distribution, ici Ubu
 
 Ajoutez `export PATH=/var/lib/gems/1.8/bin:\$PATH` à la fin de votre ~/.bashrc
 puis relancez votre console.  
+Mettez à jour rubygems : `sudo REALLY_GEM_UPDATE_SYSTEM=1 gem update --system` (la version d'Ubuntu est vieille).  
 Puis installez Rails via Rubygems : `sudo gem install rails` (un peu long)
 
 Vous allez mettre le code source du site étu sur votre ordi : `git clone https://VOTRE-PSEUDO-GITHUB@github.com/Ung-UTT/Site-etu-v9.git`
@@ -44,7 +45,7 @@ Maintenant placez-vous dans le dossier du site étu (`cd Site-Etu-v9`) et faîte
 `rake db:create db:migrate db:fixtures:load db:seed` (Pour créer la base de données
 et la remplir de pleins de données fausses, puis de données essentielles)  
 Voilà, lancez `rails server` et vous devriez voir apparaître le magnifique site
-étu sur [localhost:8000](http://localhost:8000). Bravo !
+étu sur [localhost:3000](http://localhost:3000). Bravo !
 
 #### Pour Rails :
 
