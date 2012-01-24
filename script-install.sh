@@ -16,7 +16,7 @@ echo $all
 echo "Et les gems : rails et celles listées dans le Gemfile"
 echo
 echo "Normalement vous devez avoir une copie du code source du site étu"
-echo "Sinon faîtes : git clone VOTRENOM@172.16.1.102/srv/git/etu/ror"
+echo "Sinon faîtes : git clone https://VOTRE-PSEUDO-GITHUB@github.com/Ung-UTT/Site-etu-v9.git"
 echo
 read -p "Appuyez sur une touche pour continuer…"
 
