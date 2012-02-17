@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.2.0'
 gem 'sqlite3'
 
 # Gems desormais obligatoires
 gem 'uglifier'     # Compression assets
 gem 'therubyracer' # Interpretation JS
+gem 'dynamic_form' # Rend les formulaires plus lisibles
 
 # Chiffrement des mot de passe
 gem 'bcrypt-ruby', :require => 'bcrypt'
