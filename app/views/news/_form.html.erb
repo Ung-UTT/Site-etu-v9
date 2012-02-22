@@ -1,25 +1,29 @@
 <%= form_for(@news) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :title, t('newss.title') %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content, t('newss.content') %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :event_id, t('newss.event') %><br />
-    <%= f.select :event_id, events_select(@news) %>
-  </div>
-  <% if can? :moderate, News %>
-    <div class="field">
-      <%= f.label :is_moderated, t('newss.is_moderated') %><br />
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :title, t('newss.title') %>
+      <%= f.text_field :title %>
+    </li>
+    <li class="field">
+      <%= f.label :content, t('newss.content') %>
+      <%= f.text_area :content %>
+    </li>
+    <li class="field">
+      <%= f.label :event_id, t('newss.event') %>
+      <%= f.select :event_id, events_select(@news) %>
+    </li>
+
+    <% if can? :moderate, News %>
+    <li class="field">
+      <%= f.label :is_moderated, t('newss.is_moderated') %>
       <%= f.check_box :is_moderated %>
-    </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+    </li>
+    <% end %>
+
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

@@ -1,26 +1,30 @@
 <% unless comments.empty? and cannot?(:create, Comment) %>
-  <section class="content">
-    <% if params[:controller] == 'comments' %>
-      <%= title t('comments.list', :count => @comments.size) %>
-    <% else %>
-      <h1><%= t('comments.list', :count => @comments.size) %></h1>
+<section class="content">
+  <% if params[:controller] == 'comments' %>
+    <%= title t('comments.list') %>
+  <% else %>
+    <h1><%= link_to t('comments.list'), [commentable, Comment] %></h1>
+  <% end %>
+
+  <ul class="comments">
+    <% comments.each do |comment| %>
+      <li><%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %></li>
     <% end %>
-    <section class="content_box">
-      <% unless comments.empty? %>
-      <ul class="comments">
-        <% comments.each do |comment| %>
-          <%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %><br>
-        <% end %>
-      </ul>
+
+    <% if can? :create, Comment %>
+    <li>
+      <%= form_for [commentable, Comment.new] do |f| %>
+        <ul class="fields">
+          <li class="field">
+            <%= f.text_area :content %>
+          </li>
+          <li class="actions">
+            <%= f.submit t('common.add') %>
+          </li>
+        </ul>
       <% end %>
-      <% if can? :create, Comment %>
-        <%= form_for [commentable, Comment.new] do |f| %>
-          <%= f.text_area :content, :rows => 3 %>
-        <div class="actions">
-        <%= f.submit t('common.add') %>
-        </div>
-        <% end %>
-      <% end %>
-    </section> <!-- /.content_box -->
-  </section> <!-- /.content -->
+    </li>
+    <% end %>
+  </ul>
+</section>
 <% end %>

@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module ApplicationHelper
   def day_names
     I18n.t('date.day_names')
@@ -112,7 +113,7 @@ module ApplicationHelper
   end
 
   def delete_button(content, object)
-    form_for(object, :method => :delete) do |f|
+    form_for(object, :method => :delete, :html => {:class => 'button_to'}) do |f|
       f.error_messages
 
       button_tag content, :confirm => t('common.confirm')

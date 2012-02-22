@@ -1,6 +1,10 @@
-<%= title t('common.edit') %>
+<section class="content">
+  <%= title t('common.edit') %>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to t('common.show'), @classified %> |
-<%= link_to t('common.list'), classifieds_path %>
+  <ul class="actions">
+    <li><%= link_to t('common.show'), @classified %></li>
+    <li><%= link_to t('common.list'), classifieds_path %></li>
+  </ul>
+</section>

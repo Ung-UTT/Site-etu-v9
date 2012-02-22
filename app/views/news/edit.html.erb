@@ -1,6 +1,10 @@
-<%= title t('common.edit') %>
+<section class="cotent">
+  <%= title t('common.edit') %>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to t('common.show'), @news %> |
-<%= link_to t('common.list'), news_index_path %>
+  <ul class="actions">
+    <li><%= link_to t('common.show'), @news %></li>
+    <li><%= link_to t('common.list'), news_index_path %></li>
+  </ul>
+</section>

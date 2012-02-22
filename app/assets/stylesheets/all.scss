@@ -3,7 +3,6 @@
 @import "reset.css";
 
 /* Constantes */
-
 $base: #297E9D; /* Bleu clair de base */
 $fond: #EEEEEE; /* Gris clair du fond */
 $sidebar: 290px; /* largeur du menu à droite */
@@ -35,12 +34,14 @@ body {
   width: 970px;
   margin: auto;
   box-shadow: 0 0 30px 10px #ccc;
+  background-color: $fond;
 }
 
 #quote {
   padding: 10px;
   text-align: center;
-  color: grey;
+  color: $fond - #555;
+  background: white;
   font-style: italic;
 
   &:before { content: "« "; }
@@ -55,6 +56,7 @@ body {
 
   a {
     color: #404040; /* gris foncé */
+    padding: 0 5px;
 
     &:hover {
       text-decoration: underline;
@@ -78,7 +80,6 @@ body {
 
   li {
     display: inline;
-    margin-left: 5px;
   }
 }
 
@@ -144,15 +145,34 @@ body {
   padding-top: 1px;
   padding-right: $sidebar;
   padding-bottom: 0;
-  background: $fond;
-  border: 1px $fond solid;
+
+  .notice, .alert {
+    padding: 10px;
+    margin: 10px 10px 5px 10px;
+    background-color: grey;
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+  }
+
+  .notice {
+    background-color: #47D15F;
+    color: #003F0B;
+    border-color: #003F0B;
+  }
+
+  .alert {
+    background-color: #FF9086;
+    color: #BB1000;
+    border-color: #BB1000;
+  }
 
   .content {
     color: #555;
     clear: left;
     background: white;
     margin: 10px;
-    margin-bottom: 0;
+    padding-bottom: 5px;
     border-radius: 5px;
 
     a {
@@ -168,6 +188,10 @@ body {
       color: white;
       background-color: $base - #333;
       @include linear-gradient-top($base, $base - #333);
+
+      a {
+        color: white;
+      }
     }
 
     p {
@@ -175,7 +199,7 @@ body {
       line-height: 120%;
     }
 
-    .blocks, .pagination, p, img, table, audio, video {
+    .blocks, .pagination, p, ul, ol, img, form, table, audio, video {
       margin: 8px;
     }
 
@@ -213,6 +237,7 @@ body {
 
         .details {
           padding: 3px;
+          margin: 0;
           margin-left: 65px;
           font-style: italic;
           color: #666;
@@ -234,6 +259,46 @@ body {
       text-align: center;
       padding: 5px;
     }
+
+    ul {
+      margin-left: 20px;
+
+      li {
+        list-style-type: circle;
+        margin-left: 10px;
+        padding: 2px;
+      }
+    }
+  }
+}
+
+/* Formulaires */
+
+#contents .content form {
+  .fields {
+    .field, .actions {
+      list-style: none;
+      clear: left;
+      padding-bottom: 10px;
+
+      label {
+        float: left;
+        width: 100px;
+        text-align: right;
+        padding: 5px;
+        padding-right: 10px;
+        font-weight: bold;
+      }
+
+      textarea {
+        width: 320px;
+        height: 100px;
+      }
+    }
+
+    .actions {
+      margin-left: 125px;
+    }
   }
 }
 
@@ -247,142 +312,64 @@ body {
   .right {
     float: right;
   }
+
+  strong {
+    font-weight: bold;
+  }
+
+  /* Liens en bas de chaque page (liste, modifier, supprimer, afficher, ...) */
+
+  form.button_to, form.button_to div, ul.actions li {
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.actions {
+    margin-left: 10px;
+
+    li {
+      padding: 3px;
+      list-style-type: none;
+
+      input {
+        background: none;
+        border: none;
+        font-size: 1em;
+        @extend .basic-link;
+      }
+    }
+  }
+
+  /* Commentaires */
+
+  ul.comments, ul.documents {
+    margin-left: 0;
+
+    li {
+      list-style-type: none;
+
+      button, .button_to {
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: none;
+
+        img {
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      textarea#comment_content {
+        height: 50px;
+      }
+
+      img {
+        max-width: 100px;
+        max-height: 100px;
+        vertical-align: middle;
+      }
+    }
+  }
 }
-
-
-/* Vignette latérale */
-
-#comments_link {
-  display: block;
-  width: 35px;
-  height: 102px;
-  background: url('../assets/style/comments_icon.gif') no-repeat;
-  position: fixed;
-  top: 100px;
-  right: 0px;
-  -moz-box-shadow: 0px 0px 2px #A2A2A2;
-  -webkit-box-shadow: 0px 0px 10px #081D25;
-  box-shadow: 0px px 2px #003042;
-}
-
-#comments_link:hover {
-  width: 38px;
-  height: 102px;
-  background: url('../assets/style/comments_icon2.gif') no-repeat;
-  -moz-box-shadow: 0px 0px 4px #C3C3C3;
-  -webkit-box-shadow: 0px 0px 10px #081D25;
-  box-shadow: 0px px 5px #003042;
-}
-
-#blog_link {
-  position: fixed;
-  top: 230px;
-  right: 2px;
-}
-
-#email_link {
-  position: fixed;
-  top: 270px;
-  right: 2px;
-}
-
-#face_link {
-  position: fixed;
-  top: 310px;
-  right: 2px;
-}
-
-/* bloc pense-betes*/
-#reminder{
-  background: url('../assets/style/reminder_background.jpg') no-repeat;
-  height: 450px;
-}
-
-#reminder .field #reminder_content{
-  background:transparent;
-  border:transparent;
-  margin-left: 90px;
-  margin-top: 60px;
-  height: 240px;
-  width: 250px;
-  resize:none;
-}
-
-/* form */
-#wrap_contents form{
-  margin-left:10px;
-}
-
-.field label {
-  float:left;
-  width:100px;
-  text-align:right;
-  margin-right:10px;
-  margin-top:15px;
-  line-height:20px;
-  line-height:150%;
-  font-weight:bold;
-  font-size:14px;
-  display:block;
-}
-
-.field input {
-  width:250px;
-  border:1px solid #444;
-  background-color:#fff;
-  padding:5px;
-  color:#000;
-  font-size: 12px;
-  margin: -20px 0 20px 0;
-
-}
-.field #event_asso_ids_ {
-  width:20px;
-  border:1px solid #444;
-  background-color:#fff;
-  padding:5px;
-  color:#000;
-  font-size: 12px;
-  margin: -20px 0 20px 110px;
-}
-
-.field textarea{
-  width:250px;
-  height:150px;
-  border:1px solid #444;
-  background-color:#fff;
-  padding:5px;
-  color:#000;
-  font-size:12px;
-  margin: 0 0 20px 0;
-  resize:none;
-}
-
-.field input:focus,
-.field textarea:focus {
-  background-color:#E6E6E6;
-  border:1px solid #0B0B61;
-}
-
-.actions input {
-  margin-left:190px;
-  background:url('../assets/style/fond_bouton.png');
-  background-color:transparent;
-  color:#fff;
-  font-size:11pt;
-  width:80px;
-  height:23px;
-  display:block;
-  text-align:center;
-  cursor: pointer;
-  border:none !important;
-   -moz-border-radius: 10px !important; /* Firefox */
-  -webkit-border-radius: 10px !important; /* Safari and Chrome */
-}
-
-/* QR code*/
-#QRcode {
-  float:right;
-  margin-top:-180px;
-}
-

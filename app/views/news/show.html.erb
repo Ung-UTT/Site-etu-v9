@@ -3,15 +3,16 @@
 
   <%= render 'one_news', {:news => @news} %>
 
-  <% if can? :update, @news %>
-    <%= link_to t('common.edit'), edit_news_path(@news) %> |
-  <% end %>
-  <% if can? :destroy, @news %>
-    <%= button_to t('common.delete'), @news, :confirm => t('common.confirm'), :method => :delete %> |
-  <% end %>
-  <%= link_to t('common.list'), news_index_path %>
+  <ul class="actions">
+    <% if can? :update, @news %>
+    <li><%= link_to t('common.edit'), edit_news_path(@news) %></li>
+    <% end %>
+    <% if can? :destroy, @news %>
+    <li><%= button_to t('common.delete'), @news, :confirm => t('common.confirm'), :method => :delete %></li>
+    <% end %>
+    <li><%= link_to t('common.list'), news_index_path %></li>
+  </ul>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @news, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @news, :comments => @comments} %>
-

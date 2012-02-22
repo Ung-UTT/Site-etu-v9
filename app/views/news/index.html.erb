@@ -14,6 +14,6 @@
   <%= paginate @news %>
 
   <% if can? :create, News %>
-    <%= link_to t('common.add'), new_news_path %>
+    <ul class="actions"><li><%= link_to t('common.add'), new_news_path %></li></ul>
   <% end %>
 </section>

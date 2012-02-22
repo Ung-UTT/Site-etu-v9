@@ -175,7 +175,7 @@ fr:
     title: "Titre"
     description: "Description"
     price: "Prix"
-    location: "Location"
+    location: "Lieu"
     user: "Vendeur"
 
   comments:
@@ -192,9 +192,6 @@ fr:
 
   documents:
     list: "Documents"
-    count:
-      one: "Un document"
-      other: "%{count} documents"
 
   events:
     list: "Évènements"

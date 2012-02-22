@@ -1,22 +1,23 @@
 <% unless documents.empty? and cannot_create_doc?(documents) %>
-  <h3><%= link_to t('documents.list'), [documentable, Document] %></h3>
+<section class="content">
+  <% if params[:controller] == 'documents' %>
+    <%= title t('documents.list') %>
+  <% else %>
+    <h1><%= link_to t('documents.list'), [documentable, Document] %></h1>
+  <% end %>
 
-  <% unless documents.empty? %>
   <ul class="documents">
     <% documents.each do |document| %>
-    <li>
-      <%= render 'documents/one_document', {:documentable => documentable, :document => document} %>
-    </li>
+    <li><%= render 'documents/one_document', {:documentable => documentable, :document => document} %></li>
+    <% end %>
+    <% if can?(:create, documents.new) %>
+      <%= form_for [documentable, documentable.documents.new] do |f| %>
+        <%= f.hidden_field :documentable_id %>
+        <%= f.hidden_field :documentable_type %>
+        <%= f.file_field :asset %>
+        <%= f.submit t('common.add') %>
+      <% end %>
     <% end %>
   </ul>
-  <% end %>
-
-  <% if can?(:create, documents.new) %>
-    <%= form_for [documentable, documentable.documents.new] do |f| %>
-      <%= f.hidden_field :documentable_id %>
-      <%= f.hidden_field :documentable_type %>
-      <%= f.file_field :asset %>
-      <%= f.submit t('common.add') %>
-    <% end %>
-  <% end %>
+</section>
 <% end %>

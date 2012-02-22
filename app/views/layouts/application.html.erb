@@ -124,11 +124,11 @@
 
   <section id="contents">
     <% unless notice.nil? %>
-    <div class="notice"><%= notice %></div>
+    <p class="notice"><%= notice %></p>
     <% end %>
 
     <% unless alert.nil? %>
-    <div class="alert"><%= alert %></div>
+    <p class="alert"><%= alert %></p>
     <% end %>
 
     <%= yield %>

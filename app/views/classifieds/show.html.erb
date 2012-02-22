@@ -1,37 +1,33 @@
 <section class="content">
   <%= title(t('classified') + ' : ' + @classified.title) %>
-  <section class="content_box">
-    <article role="primary" class="classified">
-       <p>
-        <b><%= t('classifieds.description') %></b>
-        <%=md @classified.description %>
-      </p>
 
-      <p>
-        <b><%= t('classifieds.price') %></b>
-        <%= @classified.price %>€
-      </p>
+  <%=md @classified.description %>
 
-      <p>
-        <b><%= t('classifieds.location') %></b>
-        <%= @classified.location %>
-      </p>
+  <p>
+    <strong><%= t('classifieds.price') %></strong> :
+    <%= @classified.price %>€
+  </p>
 
-      <p>
-        <b><%= t('classifieds.user') %></b>
-        <%= link_to_user @classified.user %>
-      </p>
-    </article>
-    <hr />
+  <p>
+    <strong><%= t('classifieds.location') %></strong> :
+    <%= @classified.location %>
+  </p>
 
+  <p>
+    <strong><%= t('classifieds.user') %></strong> :
+    <%= link_to_user @classified.user %>
+  </p>
+
+  <ul class="actions">
     <% if can? :update, @classified %>
-      <%= link_to t('common.edit'), edit_classified_path(@classified) %> |
+    <li><%= link_to t('common.edit'), edit_classified_path(@classified) %></li>
     <% end %>
     <% if can? :destroy, @classified %>
-      <%= button_to t('common.delete'), @classified, :confirm => t('common.confirm'), :method => :delete %> |
+    <li><%= button_to t('common.delete'), @classified, :confirm => t('common.confirm'), :method => :delete %></li>
     <% end %>
-    <%= link_to t('common.list'), classifieds_path %>
-  </section>
+
+    <li><%= link_to t('common.list'), classifieds_path %></li>
+  </ul>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @classified, :documents => @documents} %>

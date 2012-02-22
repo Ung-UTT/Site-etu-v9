@@ -1,23 +1,25 @@
 <%= form_for(@classified) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :title, t('classifieds.title') %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description, t('classifieds.description') %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :price, t('classifieds.price') %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :location, t('classifieds.location') %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :title, t('classifieds.title') %>
+      <%= f.text_field :title %>
+    </li>
+    <li class="field">
+      <%= f.label :description, t('classifieds.description') %>
+      <%= f.text_area :description %>
+    </li>
+    <li class="field">
+      <%= f.label :price, t('classifieds.price') %>
+      <%= f.text_field :price %>
+    </li>
+    <li class="field">
+      <%= f.label :location, t('classifieds.location') %>
+      <%= f.text_field :location %>
+    </li>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>
