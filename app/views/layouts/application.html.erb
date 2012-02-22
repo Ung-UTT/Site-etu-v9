@@ -7,142 +7,138 @@
 
   <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
 
-  <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag :reset, :all %>
 
   <%= csrf_meta_tag %>
 </head>
 
 <body>
-  <section id="wrap_all">
-    <section id="wrap_content">
-      <blockquote id="top_quote">
-        <%= image_tag "style/quotation_left.gif" %>
-        <em><%= @random_quote.content %></em>
-        <%= image_tag "style/quotation_right.gif" %>
-      </blockquote>
+  <blockquote id="quote"><%= @random_quote.content %></blockquote>
 
-      <figure role="banner" id="banner">
-        <%= image_tag 'style/banner.jpg' %>
-      </figure>
+  <%= link_to :root do %>
+    <%= image_tag 'style/banner.jpg' %>
+  <% end %>
 
-      <nav role="navigation" id="menu_top">
-        <ul>
-          <li><%= link_to image_tag('icons/house.png') + t('layout.home'), :root, :title => t('layout.home') %></li>
-          <li><%= link_to image_tag('icons/face.png') + t('layout.users'), User, :title => t('layout.users') if current_user %></li>
-          <li><%= link_to image_tag('icons/albums.png') + t('layout.albums'), albums_path, :title => t('layout.albums') if current_user %></li>
-          <li><%= link_to image_tag('icons/annonces.png') + t('layout.classifieds'), Classified, :title => t('layout.classifieds') %></li>
-          <li><%= link_to image_tag('icons/buckutt.png') + t('layout.buckutt'), :root, :title => t('layout.buckutt') if current_user %></li>
-          <li><%= link_to image_tag('icons/mail.png') + t('layout.mails'), :root, :title => t('layout.mails') if current_user %></li>
-        </ul>
-    <div style="float:right;margin-right:10px;">
-      <%= link_to (image_tag ('icons/french.png')),"?locale=fr" %>
-      <%= link_to (image_tag ('icons/english.png')),"?locale=en" %>
-      <%= link_to (image_tag ('icons/chinese.png')),"?locale=zh-CN" %>
-    </div>
-      </nav>
+  <ul id="topbar">
+    <li id="language-selector">
+      <%= link_to image_tag('icons/french.png'),"?locale=fr" %>
+      <%= link_to image_tag('icons/english.png'),"?locale=en" %>
+      <%= link_to image_tag('icons/chinese.png'),"?locale=zh-CN" %>
+    </li>
+    <li>
+      <%= link_to :root, :title => t('layout.home') do
+        image_tag('icons/home.png') + t('layout.home')
+      end %>
+    </li>
+    <li>
+      <%= link_to User, :title => t('layout.users') do
+        image_tag('icons/users.png') + t('layout.users')
+      end %>
+    </li>
+    <li>
+      <%= link_to albums_path, :title => t('layout.albums') do
+        image_tag('icons/albums.png') + t('layout.albums')
+      end %>
+    </li>
+    <li>
+      <%= link_to classifieds_path, :title => t('layout.classifieds') do
+        image_tag('icons/classifieds.png') + t('layout.classifieds')
+      end %>
+    </li>
+    <li>
+      <%= link_to :root, :title => t('layout.buckutt') do
+        image_tag('icons/buckutt.png') + t('layout.buckutt')
+      end %>
+    </li>
+    <li>
+      <%= link_to :root, :title => t('layout.mails') do
+        image_tag('icons/mails.png') + t('layout.mails')
+      end %>
+    </li>
+  </ul>
 
-      <section id="wrap_contents">
-        <% unless notice.nil? %>
-        <div class="top-notice"><%= notice %></div>
-        <% end %>
-
-        <% unless alert.nil? %>
-        <div class="top-alert"><%= alert %></div>
-        <% end %>
-
-        <%= yield %>
-      </section>
-
-      <nav id="menu_right">
-        <section role="secondary" class="box">
-          <div class="top_box"></div>
-          <section class="box_content">
-            <% if current_user %>
-              <%= render :partial => 'user_sessions/menu' %>
-            <% else %>
-              <%= render :partial => 'user_sessions/login' %>
-            <% end %>
-          </section>
-        </section>
-
-        <section role="secondary" class="box">
-          <div class="top_box"></div>
-          <section class="box_content">
-            <h2><%= t('layout.content') %></h2>
-            <ul>
-              <li><%= link_to_if_can t('layout.albums'), Album %></li>
-              <li><%= link_to_if_can t('layout.annals'), Annal %></li>
-              <li><%= link_to_if_can t('layout.classifieds'), Classified %></li>
-              <li><%= link_to_if_can t('layout.assos'), Asso %></li>
-              <li><%= link_to_if_can t('layout.quotes'), Quote %></li>
-              <li><%= link_to_if_can t('layout.timesheets'), Timesheet %></li>
-              <li><%= link_to_if_can t('layout.carpools'), Carpool %></li>
-              <li><%= link_to_if_can t('layout.events'), Event %></li>
-              <li><%= link_to_if_can t('layout.news'), News %></li>
-              <li><%= link_to_if_can t('layout.projects'), Project %></li>
-              <li><%= link_to_if_can t('layout.users'), User %></li>
-              <li><%= link_to_if_can t('layout.course'), Course %></li>
-              <li><%= link_to_if_can t('layout.polls'), Poll %></li>
-            </ul>
-          </section>
-        </section>
-
-      <% if can?(:manage, Role) or can?(:manage, Group) %>
-        <section role="secondary" class="box">
-          <div class="top_box"></div>
-          <section class="box_content">
-            <h2>Administration</h2>
-            <ul>
-              <li><%= link_to_if_can t('layout.groups'), Group %></li>
-              <li><%= link_to_if_can t('layout.roles'), Role %></li>
-            </ul>
-          </section>
-        </section>
+  <ul id="sidebar">
+    <li class="box">
+      <% if current_user %>
+        <%= render :partial => 'user_sessions/menu' %>
+      <% else %>
+        <%= render :partial => 'user_sessions/login' %>
       <% end %>
+    </li>
 
-        <section role="secondary" class="box">
-          <div class="top_box"></div>
-          <section class="box_content">
-            <h2><%= t('layout.services') %></h2>
-            <ul>
-              <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
-              <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
-              <li><%= link_to 'Sports', 'http://www-suaps.utt.fr' %></li>
-              <li><%= link_to 'BDE', 'http://bde.utt.fr' %></li>
-              <li><%= link_to 'Gala', 'http://gala.utt.fr' %></li>
-              <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
-              <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
-              <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
-              <li><%= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique' %></li>
-              <li><%= link_to "N'UTT", 'http://etu.utt.fr/journal' %></li>
-            </ul>
-          </section>
-        </section>
+    <li class="box">
+      <h2><%= t('layout.content') %></h2>
+      <ul>
+        <li><%= link_to t('layout.users'), users_path %></li>
+        <li><%= link_to t('layout.albums'), albums_path %></li>
+        <li><%= link_to t('layout.annals'), annals_path %></li>
+        <li><%= link_to t('layout.classifieds'), classifieds_path %></li>
+        <li><%= link_to t('layout.assos'), assos_path %></li>
+        <li><%= link_to t('layout.carpools'), carpools_path %></li>
+        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
+        <li><%= link_to t('layout.events'), events_path %></li>
+        <li><%= link_to t('layout.news'), {:controller => 'news'} %></li>
+        <li><%= link_to t('layout.polls'), polls_path %></li>
+        <li><%= link_to t('layout.course'), courses_path %></li>
+        <li><%= link_to t('layout.projects'), projects_path %></li>
+        <li><%= link_to t('layout.quotes'), quotes_path %></li>
+      </ul>
+    </li>
 
-        <section role="secondary" class="box">
-          <div class="top_box"></div>
-          <section class="box_content">
-            <h2><%= t('layout.assos_clubs') %></h2>
-            <ul>
-            <% @assos.each do |asso| %>
-              <li><%= link_to asso.name, asso %></li>
-            <% end %>
-            </ul>
-          </section>
-        </section>
-      </nav>
+    <% if can?(:manage, Role) or can?(:manage, Group) %>
+    <li class="box">
+      <h2>Administration</h2>
+      <ul>
+        <li><%= link_to t('layout.groups'), groups_path %></li>
+        <li><%= link_to t('layout.roles'), roles_path %></li>
+      </ul>
+    </li>
+    <% end %>
 
-  <footer id="bottom">
-    <ul>
-      <li>Version 9</li>
-      <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues' %></li>
-      <li>UTT Net Group</li>
-      <li><%= link_to t('layout.about'), {:controller => 'home', :action => 'about'} %></li>
-      <li><a href="?classic=false">Version Mobile</a></li>
-    </ul>
-    <span onclick="this.innerHTML='&#9786;'; alert('Congratz! U found the secret l3v3l!')">&#9785;</span>
-  </footer>
+
+    <li class="box">
+      <h2><%= t('layout.services') %></h2>
+      <ul>
+        <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
+        <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
+        <li><%= link_to 'Sports', 'http://www-suaps.utt.fr' %></li>
+        <li><%= link_to 'BDE', 'http://bde.utt.fr' %></li>
+        <li><%= link_to 'Gala', 'http://gala.utt.fr' %></li>
+        <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
+        <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
+        <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
+        <li><%= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique' %></li>
+        <li><%= link_to "N'UTT", 'http://etu.utt.fr/journal' %></li>
+      </ul>
+    </li>
+
+    <li class="box">
+      <h2><%= t('layout.assos_clubs') %></h2>
+      <ul>
+      <% @assos.each do |asso| %>
+        <li><%= link_to asso.name, asso %></li>
+      <% end %>
+      </ul>
+    </li>
+  </ul>
+
+  <section id="contents">
+    <% unless notice.nil? %>
+    <div class="notice"><%= notice %></div>
+    <% end %>
+
+    <% unless alert.nil? %>
+    <div class="alert"><%= alert %></div>
+    <% end %>
+
+    <%= yield %>
+  </section>
+
+  <ul id="footer">
+    <li><a href="?classic=false">Version Mobile</a></li>
+    <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
+    <li><%= link_to t('layout.about'), 'home#about' %></li>
+  </ul>
 
   <%= javascript_include_tag :application %>
 </body>

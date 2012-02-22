@@ -1,17 +1,15 @@
-<% title(t('news') + ' : ' + @news.title) %>
-
 <section class="content">
-  <section class="content_box">
-    <%= render 'one_news', {:news => @news} %>
+  <% title(t('news') + ' : ' + @news.title) %>
 
-    <% if can? :update, @news %>
-      <%= link_to t('common.edit'), edit_news_path(@news) %> |
-    <% end %>
-    <% if can? :destroy, @news %>
-      <%= button_to t('common.delete'), @news, :confirm => t('common.confirm'), :method => :delete %> |
-    <% end %>
-    <%= link_to t('common.list'), news_index_path %>
-  </section>
+  <%= render 'one_news', {:news => @news} %>
+
+  <% if can? :update, @news %>
+    <%= link_to t('common.edit'), edit_news_path(@news) %> |
+  <% end %>
+  <% if can? :destroy, @news %>
+    <%= button_to t('common.delete'), @news, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), news_index_path %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @news, :documents => @documents} %>

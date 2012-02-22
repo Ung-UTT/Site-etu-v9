@@ -5,11 +5,12 @@
     <h1><%= t('newss.list') %></h1>
   <% end %>
 
-  <section class="content_box">
+  <section class="blocks">
     <% @news.each do |news| %>
       <%= render 'news/one_news', {:news => news} %>
     <% end %>
   </section>
+
   <%= paginate @news %>
 
   <% if can? :create, News %>

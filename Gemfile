@@ -6,6 +6,7 @@ gem 'sqlite3'
 # Gems desormais obligatoires
 gem 'uglifier'     # Compression assets
 gem 'therubyracer' # Interpretation JS
+gem 'sass'         # CSS simplifié
 gem 'dynamic_form' # Rend les formulaires plus lisibles
 
 # Chiffrement des mot de passe

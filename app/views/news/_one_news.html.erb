@@ -1,17 +1,17 @@
-<article role="primary" class="news">
-  <header class="news_banner">
-    <strong class="date"><%=raw l(news.created_at, :format => '%d <br /> %b') %></strong>
+<section class="block">
+  <header>
+    <section class="date"><%=raw l(news.created_at, :format => '%d <br /> %b') %></section>
     <h2>
       <%= link_to news.title, news %>
       <% if !news.is_moderated and can? :moderate, News %>
         | <%= link_to t('newss.moderate'), edit_news_path(news) %>
       <% end %>
     </h2>
-    <em>
-      <strong><%= t('newss.hour') %> :</strong> <%= l(news.created_at, :format => '%Hh') %> |
-      <strong><%= t('newss.user') %> :</strong> <%= link_to_user news.user %> |
-      <strong><%= t('newss.comments') %> :</strong> <%= news.comments.count %>
-    </em>
+    <ul class="details">
+      <li><strong><%= t('newss.hour') %> :</strong> <%= l(news.created_at, :format => '%Hh') %></li>
+      <li><strong><%= t('newss.user') %> :</strong> <%= link_to_user news.user %></li>
+      <li><strong><%= t('newss.comments') %> :</strong> <%= news.comments.count %></li>
+    </ul>
   </header>
 
   <%=md news.content %>
@@ -20,7 +20,5 @@
   <p>
     <strong><%= t('newss.event') %></strong> : <%= link_to news.event.name, news.event %>
   </p>
-  <% end %>
-</article>
-
-<hr />
+</section>
+<% end %>

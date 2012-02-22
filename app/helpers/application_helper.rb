@@ -77,14 +77,6 @@ module ApplicationHelper
     end
   end
 
-  def link_to_if_can(label, object)
-    if can?(:read, object)
-      link_to label, :controller => object.to_s.downcase.pluralize
-    else
-      nil
-    end
-  end
-
   def link_to_user(user)
     if can? :read, user
       link_to user.login, user
