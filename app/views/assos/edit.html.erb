@@ -1,8 +1,1 @@
-<section class="content">
-  <%= title t('common.edit') %>
-
-  <%= render 'form' %>
-
-  <%= link_to t('common.show'), @asso %> |
-  <%= link_to t('common.list'), asso_path %>
-</section>
+<%= render 'layouts/edit', {:ressource => @asso, :ressources => asso_path} %>

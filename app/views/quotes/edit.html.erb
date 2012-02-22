@@ -1,6 +1,1 @@
-<%= title t('common.edit') %>
-
-<%= render 'form' %>
-
-<%= link_to t('common.show'), @quote %> |
-<%= link_to t('common.list'), quotes_path %>
+<%= render 'layouts/edit', {:ressource => @quote, :ressources => quote_path} %>

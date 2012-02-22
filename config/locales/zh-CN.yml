@@ -193,9 +193,6 @@ zh-CN:
 
   documents:
     list: "文档"
-    count:
-      one: "1个文档"
-      other: "%{count}文档"
 
   events:
     list: "活动"

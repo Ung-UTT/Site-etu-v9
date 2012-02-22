@@ -1,8 +1,1 @@
-<section class="content">
-  <%= title t('common.add') %>
-  <section class="content_box">
-    <%= render 'form' %>
-  </section>
-</section>
-
-<%= link_to t('common.list'), projects_path %>
+<%= render 'layouts/new', {:ressources => projects_path} %>

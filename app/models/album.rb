@@ -1,20 +1,15 @@
-# Un album est un événement contenant des photos
+# Un album est un événement contenant des images
 class Album
   def self.all
-    Event.all.map { |e| event_to_album(e) }.compact
+    Event.all.select {|event| !event.images.empty?}
   end
 
   def self.find(id)
-    e = Event.find(id)
-    event_to_album(e)
-  end
-
-  def self.event_to_album(event)
-    images = event.documents.select(&:image?)
-    if images.empty?
+    event = Event.find(id)
+    if event.images.empty?
       nil
     else
-      {:event => event, :images => event.documents.select(&:image?)}
+      event
     end
   end
 end

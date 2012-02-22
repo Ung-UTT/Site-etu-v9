@@ -1,11 +1,1 @@
-<section class="content">
-  <%= title t('common.edit') %>
-  <section class="content_box">
-    <div id="reminder">
-      <%= render 'form' %>
-    </div>
-  </section>
-</section>
-
-<%= link_to t('common.show'), @reminder %> |
-<%= link_to t('common.list'), reminders_path %>
+<%= render 'layouts/edit', {:ressource => @reminder, :ressources => reminders_path} %>

@@ -1,12 +1,16 @@
 <section class="content">
   <%= title(t('albums.list')) %>
 
-  <section class="content_box">
+  <% if @albums.empty? %>
+    <p><%= t('albums.none') %></p>
+  <% else %>
+  <ul>
   <% @albums.each do |album| %>
     <li>
-      <%= link_to album[:event].name, albums_show_path(album[:event]) %>
+      <%= link_to album.name, {:controller => 'albums', :action => 'show', :id => album.id} %>
     </li>
   <% end %>
-  </section>
+  </ul>
+  <% end %>
 </section>
 

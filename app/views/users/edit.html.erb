@@ -1,6 +1,1 @@
-<%= title t('common.edit') %>
-
-<%= render 'form' %>
-
-<%= link_to t('common.show'), @user %> |
-<%= link_to t('common.list'), users_path %>
+<%= render 'layouts/edit', {:ressource => @user, :ressources => users_path} %>

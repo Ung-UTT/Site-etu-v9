@@ -1,6 +1,1 @@
-<%= title t('common.edit') %>
-
-<%= render 'form' %>
-
-<%= link_to t('common.show'), @timesheet %> |
-<%= link_to t('common.list'), timesheets_path %>
+<%= render 'layouts/edit', {:ressource => @timesheet, :ressources => timesheets_path} %>

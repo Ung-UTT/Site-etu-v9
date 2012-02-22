@@ -20,4 +20,8 @@ class Event < ActiveRecord::Base
 
   # Enlève les participations des utilisateurs à l'événement supprimé
   before_destroy do self.users.delete_all end
+
+  def images
+    documents.select(&:image?)
+  end
 end

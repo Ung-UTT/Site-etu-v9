@@ -1,6 +1,1 @@
-<%= title t('common.edit') %>
-
-<%= render 'form' %>
-
-<%= link_to t('common.show'), @event %> |
-<%= link_to t('common.list'), events_path %>
+<%= render 'layouts/edit', {:ressource => @event, :ressources => events_path} %>

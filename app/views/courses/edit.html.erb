@@ -1,6 +1,1 @@
-<%= title t('common.edit') %>
-
-<%= render 'form' %>
-
-<%= link_to t('common.show'), @course %> |
-<%= link_to t('common.list'), courses_path %>
+<%= render 'layouts/edit', {:ressource => @course, :ressources => courses_path} %>

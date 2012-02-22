@@ -142,6 +142,7 @@ fr:
 
   albums:
     list: "Albums"
+    none: "Aucun album"
 
   annals:
     list: "Annales"

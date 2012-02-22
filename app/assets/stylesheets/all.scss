@@ -211,6 +211,7 @@ body {
       header {
         background: $fond;
         padding: 5px;
+        border-radius: 5px;
 
         .date {
           float: left;
@@ -242,6 +243,7 @@ body {
           font-style: italic;
           color: #666;
           background: $fond - #111;
+          border-radius: 5px;
 
           li {
             display: inline;
@@ -268,6 +270,11 @@ body {
         margin-left: 10px;
         padding: 2px;
       }
+    }
+
+    img {
+      max-width: 920px - $sidebar;
+      max-height: 500px;
     }
   }
 }
@@ -311,6 +318,18 @@ body {
 
   .right {
     float: right;
+  }
+
+  .gallery {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
   }
 
   strong {

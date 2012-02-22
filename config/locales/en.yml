@@ -141,6 +141,7 @@ en:
 
   albums:
     list: "Liste of albums"
+    none: "No albums"
 
   annals:
     list: "List of annals"
@@ -191,9 +192,6 @@ en:
 
   documents:
     list: "List of documents"
-    count:
-      one: "One document"
-      other: "%{count} documents"
 
   events:
     list: "List of events"

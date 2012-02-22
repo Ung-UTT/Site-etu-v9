@@ -25,8 +25,11 @@ class ApplicationController < ActionController::Base
       if current_user and current_user.preference.locale
         I18n.locale = current_user.preference.locale
       else
+        http_accept_language = request.env['HTTP_ACCEPT_LANGUAGE']
+        http_accept_language ||= '' # Quand HTTP_ACCEPT_LANGUAGE n'est pas défini (console, ...)
+
         # Cookie ou dans HTTP_ACCEPT_LANGUAGE ou :fr par défaut
-        I18n.locale = cookies[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+        I18n.locale = cookies[:locale] || http_accept_language.scan(/^[a-z]{2}/).first
       end
     end
 

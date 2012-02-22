@@ -1,8 +1,1 @@
-<section class="content">
-  <%= title t('common.edit') %>
-
-  <%= render 'form' %>
-
-  <%= link_to t('common.show'), @annal %> |
-  <%= link_to t('common.list') , annals_path %>
-</section>
+<%= render 'layouts/edit', {:ressource => @annal, :ressources => annals_path} %>
