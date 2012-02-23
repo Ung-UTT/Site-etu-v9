@@ -1,14 +1,13 @@
 <section class="content">
-<%= title t('carpools.list') %>
-  <section class="content_box">
-    <ul>
-    <% @carpools.each do |carpool| %>
-      <li><%= link_to carpool.location, carpool %></li>
-      <% end %>
-    </ul>
-    <hr>
-    <% if can? :create, Carpool %>
-      <%= link_to t('common.add'), new_carpool_path %>
-    <% end %>
-  </section>
+  <%= title t('carpools.list') %>
+
+  <ul>
+  <% @carpools.each do |carpool| %>
+    <li><%= link_to carpool.location, carpool %></li>
+  <% end %>
+  </ul>
+
+  <% if can? :create, Carpool %>
+    <ul class="actions"><li><%= link_to t('common.add'), new_carpool_path %></li></ul>
+  <% end %>
 </section>

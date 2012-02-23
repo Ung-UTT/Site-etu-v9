@@ -1,35 +1,36 @@
 <%= form_for(@event) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :name, t('events.name') %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description, t('events.description') %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location, t('events.location') %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :start_at, t('events.start_at') %><br />
-    <%= f.datetime_select :start_at %>
-  </div>
-  <div class="field">
-    <%= f.label :end_at, t('events.end_at') %><br />
-    <%= f.datetime_select :end_at %>
-  </div>
-  <div class="field">
-    <%= label_tag 'assos', t('events.assos') %><br /><br/>
-    <% Asso.all.each do |asso| %>
-      <%= check_box_tag 'event[asso_ids][]', asso.id, @event.assos.include?(asso) %>
-      <%= asso.name %>
-      <br />
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :name, t('events.name') %>
+      <%= f.text_field :name %>
+    </li>
+    <li class="field">
+      <%= f.label :description, t('events.description') %>
+      <%= f.text_area :description %>
+    </li>
+    <li class="field">
+      <%= f.label :location, t('events.location') %>
+      <%= f.text_field :location %>
+    </li>
+    <li class="field">
+      <%= f.label :start_at, t('events.start_at') %>
+      <%= f.datetime_select :start_at %>
+    </li>
+    <li class="field">
+      <%= f.label :end_at, t('events.end_at') %>
+      <%= f.datetime_select :end_at %>
+    </li>
+    <li class="field">
+      <%= label_tag 'assos', t('events.assos') %>
+      <% Asso.all.each do |asso| %>
+        <%= check_box_tag 'event[asso_ids][]', asso.id, @event.assos.include?(asso) %>
+        <%= asso.name %>
+      <% end %>
+    </li>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

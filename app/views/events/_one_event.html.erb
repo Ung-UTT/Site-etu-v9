@@ -1,0 +1,14 @@
+<section class="block">
+  <header>
+    <strong class="date"><%=raw l(event.created_at, :format => '%d <br /> %b') %></strong>
+    <h2><%= link_to event.name, event %></h2>
+    <ul class="details">
+      <li><%= l(event.start_at, :format => "%H:%M") %> - <%= l(event.end_at, :format => "%H:%M") %></li>
+      <li><strong><%= t('events.assos') %></strong> : <%= link_to_assos event %></li>
+      <li><strong><%= t('events.location') %></strong> : <%= event.location %></li>
+    </ul>
+  </header>
+
+  <%=md event.description %>
+</section>
+

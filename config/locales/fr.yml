@@ -115,6 +115,7 @@ fr:
     show: "Afficher"
     submit: "Envoyer"
     search: "Rechercher"
+    none: "Aucun"
 
   album: "Album"
   annal: "Annale"
@@ -142,7 +143,6 @@ fr:
 
   albums:
     list: "Albums"
-    none: "Aucun album"
 
   annals:
     list: "Annales"
@@ -185,7 +185,7 @@ fr:
     user: "Auteur"
 
   courses:
-    list: "Listes des UVs"
+    list: "UVs"
     name: "Nom"
     description: "Description"
     users: "Étudiants"
@@ -274,7 +274,7 @@ fr:
     quote_type: "Type de citations"
 
   projects:
-    list: "Liste des projets"
+    list: "Projets"
     name: "Nom"
     description: "Description"
     owner: "Chef de projet"

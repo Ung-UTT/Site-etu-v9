@@ -1,21 +1,17 @@
 <section class="content">
-  <% if controller.controller_name == 'projects' %>
-    <%= title t('projects.list')%>
-  <% else %>
-    <h1><%= t('projects.list') %></h1>
-  <% end %>
+  <%= title t('projects.list')%>
 
-  <section class="content_box">
+  <ul>
     <% @projects.each do |project| %>
-      <li>
-        <strong><%= link_to project.name, project %></strong> :<br />
-        <%= project.description %>
-      </li>
+    <li>
+      <strong><%= link_to project.name, project %></strong> :
+      <%= project.description %>
+    </li>
     <% end %>
-    </section>
+  </ul>
 
-    <% if can? :create, Project %>
-      <%= link_to t('common.add'), new_project_path %>
-    <% end %>
+  <% if can? :create, Project %>
+    <ul class="actions"><li><%= link_to t('common.add'), new_project_path %></li></ul>
+  <% end %>
 </section>
 

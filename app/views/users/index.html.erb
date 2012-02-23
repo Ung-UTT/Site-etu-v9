@@ -1,14 +1,18 @@
 <section class="content">
   <%= title t('users.list') %>
 
-  <section class="content_box">
-    <%= form_tag(users_path, :method => :get) do %>
-      <%= text_field_tag :q %>
-      <%= submit_tag t('common.search') %>
-    <% end %>
-    <p><%= t('users.count', :count => @users.count) %></p>
+  <%= form_tag(users_path, :method => :get) do %>
+    <%= text_field_tag :q %>
+    <%= submit_tag t('common.search') %>
+  <% end %>
 
+  <% if @users.empty? %>
+    <p><%= t('common.none') %></p>
+  <% else %>
+  <ul>
     <% @users.each do |user| %>
-      <%= link_to_user user %> <br/>
+    <li><%= link_to_user user %></li>
     <% end %>
+  </ul>
+  <% end %>
 </section>

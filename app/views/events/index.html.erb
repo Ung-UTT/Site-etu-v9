@@ -1,22 +1,16 @@
 <section class="content">
   <%= title t('events.list') %>
 
-  <section class="content_box">
+  <section class="blocks">
     <% @events.each do |event| %>
-  <header class="news_banner">
-     <strong class="date"><%=raw l(event.start_at, :format => '%d <br /> %b') %></strong>
-     <strong><%= link_to event.name, event %></strong>
-    <em>
-        <%= l(event.start_at, :format => "%H:%M") %> - <%= l(event.end_at, :format => "%H:%M") %> |
-        <strong><%= t('events.assos') %> :</strong> <%= link_to_assos event %> | <strong><%= t('events.location') %> :</strong> <%= event.location %>
-    </em>
-    </header>
+      <%= render 'events/one_event', {:event => event} %>
     <% end %>
   </section>
+
   <%= paginate @events %>
 
   <% if can? :create, Event %>
-    <%= link_to t('common.add'), new_event_path %>
+    <ul class="actions"><li><%= link_to t('common.add'), new_event_path %></li></ul>
   <% end %>
 </section>
 

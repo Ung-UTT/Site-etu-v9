@@ -114,6 +114,7 @@ en:
     show: "Show"
     submit: "Submit"
     search: "Search"
+    none: "None"
 
   album: "Album"
   annal: "Annal"
@@ -140,8 +141,7 @@ en:
   user_session: "User's session"
 
   albums:
-    list: "Liste of albums"
-    none: "No albums"
+    list: "List of albums"
 
   annals:
     list: "List of annals"
@@ -151,7 +151,7 @@ en:
     course: "Associated course"
 
   assos:
-    list: "List of asso"
+    list: "List of assos"
     name: "Name"
     description: "Description"
     owner: "President"

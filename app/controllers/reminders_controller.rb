@@ -39,6 +39,7 @@ class RemindersController < ApplicationController
   # GET /reminders/1/edit
   def edit
     @reminder = Reminder.find(params[:id])
+    render 'show'
   end
 
   # POST /reminders

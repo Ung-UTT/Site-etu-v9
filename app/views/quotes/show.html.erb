@@ -1,18 +1,14 @@
 <section class="content">
   <%= title t('quotes.list') %>
-  <section class="content_box">
-    <article role="primary" class="quote">
-      <p>
-        <%= image_tag "style/quotation_left.gif" %>
-        <em><%= @quote.content %></em>
-        <%= image_tag "style/quotation_right.gif" %>
-        <%= t('quotes.by') %> <%= link_to_user @quote.user  %>
-      </p>
-      <p>
-        <b>Type</b> : <%= @quote.tag %>
-      </p>
-    </article>
-  <hr />
+
+  <blockquote><%= link_to @quote.content, @quote %></blockquote>
+  <p>
+    <%= t('quotes.by') %> <%= link_to_user @quote.user  %>
+  </p>
+  <p>
+    <b>Type</b> : <%= @quote.tag %>
+  </p>
+
   <% if can? :update, @quote %>
     <%= link_to t('common.edit'), edit_quote_path(@quote) %> |
   <% end %>
@@ -20,6 +16,6 @@
     <%= button_to t('common.delete'), @quote, :confirm => t('common.confirm'), :method => :delete %> |
   <% end %>
   <%= link_to t('common.list'), quotes_path %>
-  </section>
 </section>
+
 <%= render 'comments/list_and_add', {:commentable => @quote, :comments => @comments} %>

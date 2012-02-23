@@ -1,17 +1,17 @@
 <section class="content">
-  <%= title(t('assos.list')) %>
+  <%= title t('assos.list') %>
 
-  <section class="content_box">
+  <ul>
     <% @assos.each do |asso| %>
-      <li>
-        <strong><%= link_to asso.name, asso %></strong> :<br />
-        <%= asso.description %>
-      </li>
+    <li>
+      <strong><%= link_to asso.name, asso %></strong> :
+      <%= asso.description %>
+    </li>
     <% end %>
-    </section>
+  </ul>
 
-    <% if can? :create, Asso %>
-      <%= link_to t('common.add'), new_asso_path %>
-    <% end %>
+  <% if can? :create, Asso %>
+    <ul class="actions"><li><%= link_to t('common.add'), new_asso_path %></li></ul>
+  <% end %>
 </section>
 

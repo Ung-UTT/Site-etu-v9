@@ -1,15 +1,17 @@
 <%= form_for(@quote) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :content, t('quotes.content') %><br />
-    <%= f.text_field :content %>
-  </div>
-  <div class="field">
-    <%= f.label :tag, 'Type' %><br />
-    <%= f.select :tag, Quote::TYPES %>
-  </div>
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :content, t('quotes.content') %>
+      <%= f.text_field :content %>
+    </li>
+    <li class="field">
+      <%= f.label :tag, 'Type' %>
+      <%= f.select :tag, Quote::TYPES %>
+    </li>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

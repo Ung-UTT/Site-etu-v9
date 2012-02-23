@@ -1,15 +1,15 @@
 <section class="content">
-  <%= title(t('albums.list')) %>
+  <%= title t('albums.list') %>
 
   <% if @albums.empty? %>
-    <p><%= t('albums.none') %></p>
+    <p><%= t('common.none') %></p>
   <% else %>
   <ul>
-  <% @albums.each do |album| %>
+    <% @albums.each do |album| %>
     <li>
       <%= link_to album.name, {:controller => 'albums', :action => 'show', :id => album.id} %>
     </li>
-  <% end %>
+    <% end %>
   </ul>
   <% end %>
 </section>

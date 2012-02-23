@@ -2,13 +2,13 @@
 
 @import "reset.css";
 
-/* Constantes */
-$base: #297E9D; /* Bleu clair de base */
-$fond: #EEEEEE; /* Gris clair du fond */
-$sidebar: 290px; /* largeur du menu à droite */
+// Constantes
+$base: #297E9D; // Bleu clair de base
+$fond: #EEEEEE; // Gris clair du fond
+$sidebar: 290px; // largeur du menu à droite
 
-/* Fonctions pour éviter les répétitions de code
- * et les pavés de codes (-moz-, -o-, ...), ... */
+// Fonctions pour éviter les répétitions de code
+// et les pavés de codes (-moz-, -o-, ...), ...
 
 @mixin linear-gradient-top($start, $end) {
   background-image: linear-gradient(top, $start 0%, $end 100%);
@@ -37,7 +37,7 @@ body {
   background-color: $fond;
 }
 
-#quote {
+#quote, #contents .content blockquote {
   padding: 10px;
   text-align: center;
   color: $fond - #555;
@@ -153,6 +153,7 @@ body {
     color: black;
     border: 1px solid black;
     border-radius: 8px;
+    word-wrap: break-word;
   }
 
   .notice {
@@ -174,6 +175,8 @@ body {
     margin: 10px;
     padding-bottom: 5px;
     border-radius: 5px;
+    word-wrap: break-word;
+    overflow: hidden;
 
     a {
       @extend .basic-link;
@@ -276,6 +279,18 @@ body {
       max-width: 920px - $sidebar;
       max-height: 500px;
     }
+
+    strong {
+      font-weight: bold;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
   }
 }
 
@@ -309,17 +324,10 @@ body {
   }
 }
 
-/* Classes pratiques pour le contenu */
+/* CSS spécifique à certains controlleurs */
 
 #contents .content {
-  .left {
-    float: left;
-  }
-
-  .right {
-    float: right;
-  }
-
+  /* Albums photos */
   .gallery {
     margin: 0;
     padding: 0;
@@ -332,10 +340,6 @@ body {
     }
   }
 
-  strong {
-    font-weight: bold;
-  }
-
   /* Liens en bas de chaque page (liste, modifier, supprimer, afficher, ...) */
 
   form.button_to, form.button_to div, ul.actions li {
@@ -343,6 +347,8 @@ body {
     padding: 0;
     margin: 0;
   }
+
+  /* Liens en bas de chaque page */
 
   ul.actions {
     margin-left: 10px;
@@ -360,25 +366,26 @@ body {
     }
   }
 
-  /* Commentaires */
+  ul.comments, ul.documents, ul.reminders {
+    button, .button_to {
+      padding: 0;
+      margin: 0;
+      background: none;
+      border: none;
+
+      img {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+      }
+    }
+  }
 
   ul.comments, ul.documents {
     margin-left: 0;
 
     li {
       list-style-type: none;
-
-      button, .button_to {
-        padding: 0;
-        margin: 0;
-        background: none;
-        border: none;
-
-        img {
-          margin: 0;
-          padding: 0;
-        }
-      }
 
       textarea#comment_content {
         height: 50px;
@@ -389,6 +396,33 @@ body {
         max-height: 100px;
         vertical-align: middle;
       }
+    }
+  }
+
+  form#new_reminder, form.edit_reminder {
+    width: 210px;
+    height: 210px;
+    background: url('style/reminder_background.jpg') no-repeat;
+
+    textarea#reminder_content {
+      padding: 0;
+      margin: 0;
+      position: relative;
+      left: 15px;
+      top: 20px;
+      width: 150px;
+      height: 150px;
+      line-height: 1em;
+      background: none;
+      border: none;
+      resize: none;
+    }
+
+    .actions {
+      padding: 0;
+      margin: 0;
+      margin-top: 20px;
+      text-align: center;
     }
   }
 }

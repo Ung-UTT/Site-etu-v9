@@ -1,22 +1,23 @@
-<%= title t('timesheets.list') %>
+<section class="content">
+  <%= title t('timesheets.list') %>
 
-<%= form_tag(timesheets_path, :method => :get) do %>
-  <%= select_tag :users, users_select, :multiple => true %>
-  <%= submit_tag t('timesheets.cumulate') %>
-<% end %>
+  <%= form_tag(timesheets_path, :method => :get) do %>
+    <%= select_tag :users, users_select, :multiple => true %><br />
+    <%= submit_tag t('timesheets.cumulate') %>
+  <% end %>
 
-<ul>
-<% @timesheets.each do |timesheet| %>
-  <li>
-    <%= link_to timesheet.range, timesheet %> (<%= link_to timesheet.course.name, timesheet.course %>)
-  </li>
-<% end %>
-</ul>
+  <ul>
+  <% @timesheets.each do |timesheet| %>
+    <li>
+      <%= link_to timesheet.range, timesheet %>
+      (<%= link_to timesheet.course.name, timesheet.course %>)
+    </li>
+  <% end %>
+  </ul>
 
-<%= render 'timesheets/schedule', :timesheets => @timesheets %>
+  <%= render 'timesheets/schedule', :timesheets => @timesheets %>
 
-<br />
-
-<% if can? :create, Timesheet %>
-  <%= link_to t('common.add'), new_timesheet_path %>
-<% end %>
+  <% if can? :create, Timesheet %>
+    <ul class="actions"><li><%= link_to t('common.add'), new_timesheet_path %></li></ul>
+  <% end %>
+</section>

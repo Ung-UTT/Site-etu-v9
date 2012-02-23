@@ -1,23 +1,25 @@
 <%= form_for(@carpool) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :description, t('carpools.description') %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location, t('carpools.location') %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :date, t('carpools.date') %><br />
-    <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :is_driver, t('carpools.is_driver') %><br />
-    <%= f.check_box :is_driver %>
-  </div>
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :description, t('carpools.description') %>
+      <%= f.text_area :description %>
+    </li>
+    <li class="field">
+      <%= f.label :location, t('carpools.location') %>
+      <%= f.text_field :location %>
+    </li>
+    <li class="field">
+      <%= f.label :date, t('carpools.date') %>
+      <%= f.datetime_select :date %>
+    </li>
+    <li class="field">
+      <%= f.label :is_driver, t('carpools.is_driver') %>
+      <%= f.check_box :is_driver %>
+    </li>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

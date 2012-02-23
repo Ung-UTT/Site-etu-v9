@@ -1,24 +1,25 @@
 <%= form_for(@annal) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :name, t('annals.name') %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description, t('annals.description') %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :course_id, t('annals.course') %><br />
-    <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] } %>
-  </div>
-  <div class="field">
-    <%= f.label :date, t('annals.date') %><br />
-    <%= f.datetime_select :date %>
-  </div>
-  <br />
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :name, t('annals.name') %>
+      <%= f.text_field :name %>
+    </li>
+    <li class="field">
+      <%= f.label :description, t('annals.description') %>
+      <%= f.text_area :description %>
+    </li>
+    <li class="field">
+      <%= f.label :course_id, t('annals.course') %>
+      <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] } %>
+    </li>
+    <li class="field">
+      <%= f.label :date, t('annals.date') %>
+      <%= f.datetime_select :date %>
+    </li>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

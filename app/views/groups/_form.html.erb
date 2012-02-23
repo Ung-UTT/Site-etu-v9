@@ -1,11 +1,13 @@
 <%= form_for(@group) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :name, t('groups.name') %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :name, t('groups.name') %>
+      <%= f.text_field :name %>
+    </li>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

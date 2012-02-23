@@ -1,15 +1,17 @@
 <%= form_for(@role) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :name, t('roles.name') %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :asso_id, t('roles.asso') %><br />
-    <%= f.select :asso_id, parent_select_options(Asso) %>
-  </div>
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :name, t('roles.name') %>
+      <%= f.text_field :name %>
+    </li>
+    <li class="field">
+      <%= f.label :asso_id, t('roles.asso') %>
+      <%= f.select :asso_id, parent_select_options(Asso) %>
+    </li>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

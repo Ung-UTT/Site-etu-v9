@@ -1,30 +1,31 @@
 <%= form_for(@asso) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :name, t('assos.name') %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :image, t('assos.image') %><br />
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :description, t('assos.description') %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :parent_id, t('assos.parent') %><br />
-    <%= f.select :parent_id, parent_select_options(Asso) %>
-  </div>
-  <% unless @asso.new_record? %>
-  <div class="field">
-    <%= f.label :owner_id, t('assos.owner') %><br />
-    <%= f.select :owner_id, users_select(@asso) %>
-  </div>
-  <% end %>
-  <br />
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :name, t('assos.name') %>
+      <%= f.text_field :name %>
+    </li>
+    <li class="field">
+      <%= f.label :image, t('assos.image') %>
+      <%= f.file_field :image %>
+    </li>
+    <li class="field">
+      <%= f.label :description, t('assos.description') %>
+      <%= f.text_area :description %>
+    </li>
+    <li class="field">
+      <%= f.label :parent_id, t('assos.parent') %>
+      <%= f.select :parent_id, parent_select_options(Asso) %>
+    </li>
+    <% unless @asso.new_record? %>
+    <li class="field">
+      <%= f.label :owner_id, t('assos.owner') %>
+      <%= f.select :owner_id, users_select(@asso) %>
+    </li>
+    <% end %>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>

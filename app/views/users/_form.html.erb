@@ -1,40 +1,42 @@
 <%= form_for(@user) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :login, t('users.login') %><br />
-    <%= f.text_field :login %>
-  </div>
-  <div class="field">
-    <%= f.label :email, t('users.email') %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password, t('users.password') %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, t('users.password_confirmation') %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
+  <ul class="fields">
+    <li class="field">
+      <%= f.label :login, t('users.login') %>
+      <%= f.text_field :login %>
+    </li>
+    <li class="field">
+      <%= f.label :email, t('users.email') %>
+      <%= f.text_field :email %>
+    </li>
+    <li class="field">
+      <%= f.label :password, t('users.password') %>
+      <%= f.password_field :password %>
+    </li>
+    <li class="field">
+      <%= f.label :password_confirmation, t('users.password_confirmation') %>
+      <%= f.password_field :password_confirmation %>
+    </li>
 
-  <% if !@user.new_record? %>
-    <%= f.fields_for :preference do |f_pref| %>
-      <div class="field">
-        <%= f_pref.label :quote_type %><br />
+    <% if !@user.new_record? %>
+      <%= f.fields_for :preference do |f_pref| %>
+        <li class="field">
+          <%= f_pref.label :quote_type %>
           <%= f_pref.select :quote_type, Preference::QUOTES_TYPES %>
-      </div>
+        </li>
 
-      <div class="field">
-        <%= f_pref.label :locale %><br />
-        <%= f_pref.select :locale, I18n.available_locales.map(&:to_s) %>
-      </div>
+        <li class="field">
+          <%= f_pref.label :locale %>
+          <%= f_pref.select :locale, I18n.available_locales.map(&:to_s) %>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit t('common.submit') %>
-  </div>
+    <li class="actions">
+      <%= f.submit t('common.submit') %>
+    </li>
+  </ul>
 <% end %>
 
-<%= link_to t('users.password_reset'), password_reset_path %>
+<p><%= link_to t('users.password_reset'), password_reset_path %></p>

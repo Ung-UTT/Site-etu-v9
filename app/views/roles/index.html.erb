@@ -1,18 +1,18 @@
-<%= title t('roles.list') %>
+<section class="content">
+  <%= title t('roles.list') %>
 
-<ul>
-<% @roles.each do |role| %>
-  <li>
-    <%= link_to role do %>
-      <%= t('roles.default.'+role.name, :default => role.name) %>
-      <%= (role.asso ? " (#{role.asso.name})" : '') %>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+  <ul>
+  <% @roles.each do |role| %>
+    <li>
+      <%= link_to role do %>
+        <%= t('roles.default.'+role.name, :default => role.name) %>
+        <%= (role.asso ? " (#{role.asso.name})" : '') %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
 
-<br />
-
-<% if can? :create, Role %>
-  <%= link_to t('common.add'), new_role_path %>
-<% end %>
+  <% if can? :create, Role %>
+    <ul class="actions"><li><%= link_to t('common.add'), new_role_path %></li></ul>
+  <% end %>
+</section>
