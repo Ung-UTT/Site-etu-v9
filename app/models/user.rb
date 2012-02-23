@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   # Créer un utilisateur rapidement
   def self.simple_create(login, password)
     User.create(:login => login, :email => "#{login}@example.org",
-                :password => password, :password_reset => :password)
+                :password => password, :password_confirmation => password)
   end
 
   # Ne stocke pas le mot de passe en clair

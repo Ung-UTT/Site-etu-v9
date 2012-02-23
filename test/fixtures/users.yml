@@ -1,10 +1,5 @@
-# TODO : Utiliser factory_girl
-
-<% users = ['joe', 'kevin', 'foo', 'bar'] %>
-<% pass = {:password => 'changez-moi', :password_confirmation => 'changez-moi'} %>
-
-<% users.each do |user| %>
-<% u = User.create({:login => user, :email => user+'@example.org'}.merge(pass)) %>
+<% ['joe', 'kevin', 'foo', 'bar'].each do |user| %>
+<% u = User.simple_create(user, 'changez-moi') %>
 
 <%= u.login %>:
   login: <%= u.login %>
