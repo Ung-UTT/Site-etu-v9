@@ -1,21 +1,21 @@
 <section class="content">
   <%= title(t('annal') + ' : ' + @annal.name) %>
 
-  <section class="content_box">
-    <article role="primary" class="annals">
+
+    annals">
       <p>
-        <b><%= t('annals.description') %> :</b>
+        <strong><%= t('annals.description') %> :</strong>
         <%=md @annal.description %>
       </p>
       <p>
-        <b><%= t('annals.date') %> :</b>
+        <strong><%= t('annals.date') %> :</strong>
         <%= l @annal.date %>
       </p>
       <p>
-        <b><%= t('annals.course') %> :</b>
+        <strong><%= t('annals.course') %> :</strong>
         <%= link_to @annal.course.name, @annal.course %>
       </p>
-    </article>
+
     <hr />
 
     <% if can? :update, @annal %>

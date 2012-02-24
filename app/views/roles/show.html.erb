@@ -2,13 +2,13 @@
 
 <% if @role.asso %>
 <p>
-  <b><%= t('roles.asso') %></b>
+  <strong><%= t('roles.asso') %></strong>
   <%= link_to @role.asso.name, @role.asso %>
 </p>
 <% end %>
 
 <p>
-  <b><%= t('roles.users') %></b>
+  <strong><%= t('roles.users') %></strong>
   <ul>
   <% @role.users.each do |user| %>
     <li>

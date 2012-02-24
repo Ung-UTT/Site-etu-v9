@@ -1,24 +1,24 @@
 <%= title(t('user') + ' : ' + @user.login) %>
 
 <p>
-  <b><%= t('users.email') %></b>
+  <strong><%= t('users.email') %></strong>
   <%= @user.email %>
 </p>
 <p>
-  <b>CAS ? </b><%= @user.cas %>
+  <strong>CAS ? </strong><%= @user.cas %>
 </p>
 <p>
-  <b>ID :</b>
+  <strong>ID :</strong>
   <%= @user.id %>
 </p>
 
 <p>
-  <b>Quote type :</b>
+  <strong>Quote type :</strong>
   <%= @user.preference.quote_type %>
 </p>
 
 <p>
-  <b>Locale :</b>
+  <strong>Locale :</strong>
   <%= @user.preference.locale %>
 </p>
 

@@ -6,7 +6,7 @@
     <%= t('quotes.by') %> <%= link_to_user @quote.user  %>
   </p>
   <p>
-    <b>Type</b> : <%= @quote.tag %>
+    <strong>Type</strong> : <%= @quote.tag %>
   </p>
 
   <% if can? :update, @quote %>

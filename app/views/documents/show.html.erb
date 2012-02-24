@@ -1,5 +1,7 @@
 <section class="content">
   <%= title(t('document') + ' : ' + @document.asset_file_name) %>
 
-  <ul class="documents"><li><%= render 'one_document', {:documentable => @documentable, :document => @document} %></li></ul>
+  <ul class="documents"><li>
+      <%= render 'one_document', {:documentable => @documentable, :document => @document} %>
+  </li></ul>
 </section>

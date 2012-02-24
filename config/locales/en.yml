@@ -162,6 +162,7 @@ en:
     roles: "Asso's roles"
     events: "Asso's events"
     add_role: "Add a role"
+    users: "Members"
 
   carpools:
     list: "List of carpools"

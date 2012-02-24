@@ -197,11 +197,6 @@ body {
       }
     }
 
-    p {
-      padding: 8px;
-      line-height: 120%;
-    }
-
     .blocks, .pagination, p, ul, ol, img, form, table, audio, video {
       margin: 8px;
     }
@@ -275,6 +270,11 @@ body {
       }
     }
 
+    p {
+      padding: 8px;
+      line-height: 120%;
+    }
+
     img {
       max-width: 920px - $sidebar;
       max-height: 500px;
@@ -321,6 +321,10 @@ body {
     .actions {
       margin-left: 125px;
     }
+  }
+
+  input {
+    max-width: 150px;
   }
 }
 

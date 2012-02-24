@@ -1,17 +1,17 @@
 <%= title(t('timesheet') + ' : ' + @timesheet.range) %>
 
 <p>
-  <b><%= t('timesheets.room') %></b>
+  <strong><%= t('timesheets.room') %></strong>
   <%= @timesheet.room %>
 </p>
 
 <p>
-  <b><%= t('timesheets.course') %></b>
+  <strong><%= t('timesheets.course') %></strong>
   <%= link_to @timesheet.course.name, @timesheet.course %>
 </p>
 
 <p>
-  <b><%= t('timesheets.users') %></b>
+  <strong><%= t('timesheets.users') %></strong>
   <%= link_to_users @timesheet.users %>
 </p>
 

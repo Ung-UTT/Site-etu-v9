@@ -2,90 +2,84 @@
   <%= title(t('asso') + ' : ' + @asso.name) %>
   <%= image_tag @asso.image.asset.url unless @asso.image.nil? %>
 
-  <section class="content_box">
-    <article role="primary" class="asso">
-      <p>
-        <b><%= t('asso.description') %></b>
-        <%=md @asso.description %>
-      </p>
+  <%=md @asso.description %>
 
-      <p>
-        <b><%= t('asso.owner') %></b>
-        <%= link_to_user @asso.owner %>
-      </p>
+  <p>
+    <strong><%= t('assos.users') %></strong> :
+    <%= link_to_users @asso.users %>
+  </p>
+  <% if @asso.users.include?(current_user) %>
+    <p><%= link_to t('assos.disjoin'), disjoin_asso_path(@asso), :method => 'PUT' %></p>
+  <% elsif can? :'join', Asso %>
+    <p><%= link_to t('assos.join'), join_asso_path(@asso), :method => 'PUT' %></p>
+  <% end %>
 
-      <p>
-        <b><%= t('asso.users') %></b>
-        <%= link_to_users @asso.users %>
-      </p>
+  <p>
+    <strong><%= t('assos.owner') %></strong> :
+    <%= link_to_user @asso.owner %>
+  </p>
 
-      <% if @asso.parent %>
-      <p>
-        <b><%= t('asso.parent') %></b>
-        <%= link_to @asso.parent.name, @asso.parent %>
-      </p>
+  <% if @asso.parent %>
+  <p>
+    <strong><%= t('assos.parent') %></strong> :
+    <%= link_to @asso.parent.name, @asso.parent %>
+  </p>
+  <% end %>
+
+  <% if !@asso.children.empty? %>
+  <p>
+    <strong><%= t('assos.children') %></strong> :
+    <% @asso.children.each do |asso| %>
+      <%= link_to asso.name, asso %>
+    <% end %>
+  </p>
+  <% end %>
+
+  <%= list_of t('assos.events'), @asso.events, :name %>
+
+  <p>
+    <strong><%= t('assos.roles') %></strong> :
+  </p>
+  <ul>
+  <% @asso.roles.each do |role| %>
+    <li>
+      <strong><%= link_to role.name, role %></strong> :
+      <% role.users.each do |user| %>
+        <%= link_to_user user %>
       <% end %>
-
-      <% if !@asso.children.empty? %>
-      <p>
-        <b><%= t('asso.children') %></b>
-        <% @asso.children do |asso| %>
-          <%= link_to asso.name, asso %>
-        <% end %>
-      </p>
-      <% end %>
-
-      <%= list_of t('asso.events'), @asso.events, :name %>
-
-      <% if @asso.users.include?(current_user) %>
-        <p><%= link_to t('asso.disjoin'), disjoin_asso_path(@asso), :method => 'PUT' %></p>
-      <% elsif can? :'join', Asso %>
-        <p><%= link_to t('asso.join'), join_asso_path(@asso), :method => 'PUT' %></p>
-      <% end %>
-
-      <p>
-        <b><%= t('asso.roles') %></b>
-        <% @asso.roles.each do |role| %>
-          <%= link_to role.name, role %>
-          <% if can? :update, role %>
-            <%= form_for(role, :url => join_role_path(role)) do |f| %>
-              <%= f.error_messages %>
-              <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
-              <%= f.submit t('common.add') %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </p>
-
-      <% if can? :upate, @asso %>
-      <p>
-        <b><%= t('asso.add_role') %></b>
-        <%= form_for(@asso.roles.build) do |f| %>
+      <% if can? :update, role %>
+        <%= form_for(role, :url => join_role_path(role)) do |f| %>
           <%= f.error_messages %>
-          <%= f.hidden_field :asso_id %>
-          <div class="field">
-            <%= f.label :name, t('roles.name') %><br />
-            <%= f.text_field :name %>
-          </div>
-          <div class="actions">
-            <%= f.submit t('common.submit') %>
-          </div>
+          <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
+          <%= f.submit t('common.add') %>
         <% end %>
-      </p>
       <% end %>
-    </article>
-    <hr />
+    </li>
+  <% end %>
+  <% if can? :upate, @asso %>
+    <li>
+      <strong><%= t('assos.add_role') %></strong> :
+      <%= form_for(@asso.roles.build) do |f| %>
+        <%= f.error_messages %>
+        <%= f.hidden_field :asso_id %>
 
+        <%= f.text_field :name %>
+        <%= f.submit t('common.submit') %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+
+  <ul class="actions">
     <% if can? :update, @asso %>
-      <%= link_to t('common.edit'), edit_asso_path(@asso) %> |
+      <li><%= link_to t('common.edit'), edit_asso_path(@asso) %></li>
     <% end %>
     <% if can? :destroy, @asso %>
-      <%= button_to t('common.delete'), @asso, :confirm => t('common.confirm'), :method => :delete %> |
+      <li><%= button_to t('common.delete'), @asso, :confirm => t('common.confirm'), :method => :delete %></li>
     <% end %>
-    <%= link_to t('common.list'), asso_path %>
-  </section>
+    <li><%= link_to t('common.list'), asso_path %></li>
+  </ul>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @asso, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @asso, :comments => @comments} %>
-

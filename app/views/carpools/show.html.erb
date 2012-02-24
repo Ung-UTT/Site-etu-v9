@@ -1,29 +1,28 @@
 <section class="content">
-<%= title(t('carpool') + ' : ' + @carpool.location) %>
-<section class="content_box">
-<p>
-  <b><%= t('carpools.description') %></b>
-  <%=md @carpool.description %>
-</p>
+  <%= title(t('carpool') + ' : ' + @carpool.location) %>
 
-<p>
-  <b><%= t('carpools.date') %></b>
-  <%= l(@carpool.date, :format => :long) %>
-</p>
+  <p>
+    <strong><%= t('carpools.description') %></strong>
+    <%=md @carpool.description %>
+  </p>
 
-<p>
-  <b><%= t('carpools.is_driver') %></b>
-  <%= @carpool.is_driver %>
-</p>
+  <p>
+    <strong><%= t('carpools.date') %></strong>
+    <%= l(@carpool.date, :format => :long) %>
+  </p>
 
-<% if can? :update, @carpool %>
-  <%= link_to t('common.edit'), edit_carpool_path(@carpool) %> |
-<% end %>
-<% if can? :destroy, @carpool %>
-  <%= button_to t('common.delete'), @carpool, :confirm => t('common.confirm'), :method => :delete %> |
-<% end %>
-<%= link_to t('common.list'), carpools_path %>
-</section>
+  <p>
+    <strong><%= t('carpools.is_driver') %></strong>
+    <%= @carpool.is_driver %>
+  </p>
+
+  <% if can? :update, @carpool %>
+    <%= link_to t('common.edit'), edit_carpool_path(@carpool) %> |
+  <% end %>
+  <% if can? :destroy, @carpool %>
+    <%= button_to t('common.delete'), @carpool, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), carpools_path %>
 </section>
 <%= render 'documents/list_and_add', {:documentable => @carpool, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @carpool, :comments => @comments} %>

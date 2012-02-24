@@ -1,10 +1,9 @@
 <% title(t('event') + ' : ' + @event.name) %>
 
 <section class="content">
-  <section class="content_box">
-    <article role="primary" class="events">
+
       <header class="news_banner">
-       <strong class="date"><%=raw l(@event.start_at, :format => '%d <br /> %b') %></strong>
+       <strong class="date"><%=raw l(@event.start_at, :format => '%d <strongr /> %b') %></strong>
        <strong><%= @event.name %></strong>
       <em>
           <%= l(@event.start_at, :format => "%H:%M") %> - <%= l(@event.end_at, :format => "%H:%M") %> |
@@ -13,40 +12,40 @@
       </header>
 
       <p>
-        <b><%= t('events.description') %></b>
+        <strong><%= t('events.description') %></strong>
         <%=md @event.description %>
       </p>
 
       <p>
-        <b><%= t('events.owner') %></b>
+        <strong><%= t('events.owner') %></strong>
         <%= link_to_user @event.owner %>
       </p>
 
       <p>
-        <b><%= t('events.location') %></b>
+        <strong><%= t('events.location') %></strong>
         <%= @event.location %>
       </p>
 
       <p>
-        <b><%= t('events.start_at') %></b>
+        <strong><%= t('events.start_at') %></strong>
         <%= l(@event.start_at, :format => :long) %>
       </p>
 
       <p>
-        <b><%= t('events.end_at') %></b>
+        <strong><%= t('events.end_at') %></strong>
         <%= l(@event.end_at, :format => :long) %>
       </p>
 
       <p>
-        <b><%= t('events.users') %></b>
+        <strong><%= t('events.users') %></strong>
         <%= link_to_users @event.users %>
       </p>
 
       <p>
-        <b><%= t('events.assos') %></b>
+        <strong><%= t('events.assos') %></strong>
         <%= link_to_assos @event %>
       </p>
-    </article>
+
 
     <hr />
 

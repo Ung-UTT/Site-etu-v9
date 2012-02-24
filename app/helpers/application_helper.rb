@@ -64,14 +64,15 @@ module ApplicationHelper
     if objects.empty?
       return nil
     else
-      res = descr.empty? ? '' : '<strong>' + h(descr) + '</strong> :'
-      res += '<ul>'
+      res = '<p>'
+      res += descr.empty? ? '' : '<strong>' + h(descr) + '</strong> :'
+      res += '</p><ul>'
       objects.each do |object|
         content = object.send(attr)
         if comments
           object = [object.commentable, object]
         end
-        res += '<li>' + link_to(content, object) + '</li>'
+        res += '<li>' + link_to(h(content), object) + '</li>'
       end
       res += '</ul>'
       return res.html_safe

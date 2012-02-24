@@ -1,15 +1,15 @@
 <section class="content">
   <%= title(t('poll') + ' : ' + @poll.name) %>
 
-  <section class="content_box">
-    <article role="primary" class="polls">
+
+    polls">
       <p>
-        <b><%= t('polls.description') %></b>
+        <strong><%= t('polls.description') %></strong>
         <%=md @poll.description %>
       </p>
 
       <p>
-        <b><%= t('polls.user') %></b>
+        <strong><%= t('polls.user') %></strong>
         <%= link_to_user @poll.user %>
       </p>
 
@@ -50,7 +50,7 @@
           <%= f.submit t('common.add') %>
         <% end %>
       <% end %>
-    </article>
+
     <hr />
 
     <% if can? :update, @poll %>

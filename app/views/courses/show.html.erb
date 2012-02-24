@@ -1,20 +1,19 @@
 <section class="content">
   <%= title(t('course') + ' : ' + @course.name) %>
 
-  <section class="content_box">
-    <article role="primary" class="courses">
+
       <p>
-        <b><%= t('courses.description') %></b>
+        <strong><%= t('courses.description') %></strong>
         <%=md @course.description %>
       </p>
 
       <p>
-        <b><%= t('courses.users') %></b>
+        <strong><%= t('courses.users') %></strong>
         <%= link_to_users @course.users %>
       </p>
 
       <%= list_of t('courses.annals'), @course.annals, :name %>
-    </article>
+
     <hr />
 
     <% if can? :update, @course %>
@@ -24,7 +23,6 @@
       <%= button_to t('common.delete'), @course, :confirm => t('common.confirm'), :method => :delete %> |
     <% end %>
     <%= link_to t('common.list'), courses_path %>
-  </section>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @course, :documents => @documents} %>

@@ -163,6 +163,7 @@ fr:
     roles: "Rôles de l'asso"
     events: "Évènements de l'asso"
     add_role: "Ajouter un rôle"
+    users: "Membres"
 
   carpools:
     list: "Covoiturages"
