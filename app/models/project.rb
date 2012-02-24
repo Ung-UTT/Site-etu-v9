@@ -10,6 +10,6 @@ class Project < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
 
-  has_many :roles_user, :dependent => :destroy
-  has_many :roles, :through => :roles_user, :uniq => true
+  has_many :projects_user, :dependent => :destroy
+  has_many :users, :through => :projects_user, :uniq => true
 end

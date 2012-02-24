@@ -1,19 +1,16 @@
 <section class="content">
   <%= title(t('carpool') + ' : ' + @carpool.location) %>
 
-  <p>
-    <strong><%= t('carpools.description') %></strong>
-    <%=md @carpool.description %>
-  </p>
+  <%=md @carpool.description %>
 
   <p>
-    <strong><%= t('carpools.date') %></strong>
+    <strong><%= t('carpools.date') %></strong> :
     <%= l(@carpool.date, :format => :long) %>
   </p>
 
   <p>
     <strong><%= t('carpools.is_driver') %></strong>
-    <%= @carpool.is_driver %>
+    <%= @carpool.is_driver ? 'Oui' : 'Non' %>
   </p>
 
   <%= render 'layouts/show_actions', {:ressource => @carpool} %>

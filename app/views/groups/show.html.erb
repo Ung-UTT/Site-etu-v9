@@ -2,16 +2,25 @@
   <%= title(t('group') + ' : ' + @group.name) %>
 
   <p>
-    <strong><%= t('groups.users') %></strong>
+    <strong><%= t('groups.users') %></strong> :
+  </p>
+  <ul>
+    <% if @group.users.empty? %>
+    <li><%= t('common.none') %></li>
+    <% end %>
     <% @group.users.each do |user| %>
+    <li>
       <%= link_to_user user %>
       <%= button_to 'X', disjoin_group_path(@group, user), :confirm => t('common.confirm'), :method => :delete %>
+    </li>
     <% end %>
-  </p>
+  </ul>
 
-  <%= form_for(@group, :url => join_group_path(@group)) do |f| %>
-    <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
-    <%= f.submit t('common.add') %>
+  <% if can? :update, @group %>
+    <%= form_for(@group, :url => join_group_path(@group)) do |f| %>
+      <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
+      <%= f.submit t('common.add') %>
+    <% end %>
   <% end %>
 
   <%= render 'layouts/show_actions', {:ressource => @group} %>

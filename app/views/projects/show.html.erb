@@ -1,18 +1,15 @@
 <section class="content">
   <%= title(t('project') + ' : ' + @project.name) %>
 
-  <p>
-    <strong><%= t('projects.description') %></strong>
-    <%=md @project.description %>
-  </p>
+  <%=md @project.description %>
 
   <p>
-    <strong><%= t('projects.owner') %></strong>
+    <strong><%= t('projects.owner') %></strong> :
     <%= link_to_user @project.owner %>
   </p>
 
   <p>
-    <strong><%= t('projects.users') %></strong>
+    <strong><%= t('projects.users') %></strong> :
     <%= link_to_users @project.users %>
   </p>
 

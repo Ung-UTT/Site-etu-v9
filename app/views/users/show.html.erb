@@ -35,8 +35,8 @@
     <strong>Locale</strong> :
     <%= @user.preference.locale %>,
     <% end %>
-    <strong>Uttien ?</strong> :
-    <%= @user.cas.inspect %>,
+    <strong>Uttien ?</strong>
+    <%= @user.cas ? 'Oui' : 'Non' %>,
     <strong>ID</strong> :
     <%= @user.id %>
   </p>
