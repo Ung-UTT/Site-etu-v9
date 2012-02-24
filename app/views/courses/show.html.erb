@@ -1,28 +1,25 @@
 <section class="content">
   <%= title(t('course') + ' : ' + @course.name) %>
 
+  <p>
+    <strong><%= t('courses.description') %></strong>
+    <%=md @course.description %>
+  </p>
 
-      <p>
-        <strong><%= t('courses.description') %></strong>
-        <%=md @course.description %>
-      </p>
+  <p>
+    <strong><%= t('courses.users') %></strong>
+    <%= link_to_users @course.users %>
+  </p>
 
-      <p>
-        <strong><%= t('courses.users') %></strong>
-        <%= link_to_users @course.users %>
-      </p>
+  <%= list_of t('courses.annals'), @course.annals, :name %>
 
-      <%= list_of t('courses.annals'), @course.annals, :name %>
-
-    <hr />
-
-    <% if can? :update, @course %>
-      <%= link_to t('common.edit'), edit_course_path(@course) %> |
-    <% end %>
-    <% if can? :destroy, @course %>
-      <%= button_to t('common.delete'), @course, :confirm => t('common.confirm'), :method => :delete %> |
-    <% end %>
-    <%= link_to t('common.list'), courses_path %>
+  <% if can? :update, @course %>
+    <%= link_to t('common.edit'), edit_course_path(@course) %> |
+  <% end %>
+  <% if can? :destroy, @course %>
+    <%= button_to t('common.delete'), @course, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), courses_path %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @course, :documents => @documents} %>

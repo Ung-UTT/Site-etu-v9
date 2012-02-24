@@ -1,37 +1,39 @@
-<%= title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, :default => @role.name)) %>
+<section class="content">
+  <%= title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, :default => @role.name)) %>
 
-<% if @role.asso %>
-<p>
-  <strong><%= t('roles.asso') %></strong>
-  <%= link_to @role.asso.name, @role.asso %>
-</p>
-<% end %>
-
-<p>
-  <strong><%= t('roles.users') %></strong>
-  <ul>
-  <% @role.users.each do |user| %>
-    <li>
-      <%= link_to_user user %>
-      <% if can? :update, user %>
-        <%= button_to 'X', disjoin_role_path(@role, user), :confirm => t('common.confirm'), :method => :delete %>
-      <% end %>
-    </li>
+  <% if @role.asso %>
+  <p>
+    <strong><%= t('roles.asso') %></strong>
+    <%= link_to @role.asso.name, @role.asso %>
+  </p>
   <% end %>
-  </ul>
-</p>
 
-<% if can? :update, @role %>
-  <%= form_for(@role, :url => join_role_path(@role)) do |f| %>
-    <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
-    <%= f.submit t('common.add') %>
+  <p>
+    <strong><%= t('roles.users') %></strong>
+    <ul>
+    <% @role.users.each do |user| %>
+      <li>
+        <%= link_to_user user %>
+        <% if can? :update, user %>
+          <%= button_to 'X', disjoin_role_path(@role, user), :confirm => t('common.confirm'), :method => :delete %>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </p>
+
+  <% if can? :update, @role %>
+    <%= form_for(@role, :url => join_role_path(@role)) do |f| %>
+      <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
+      <%= f.submit t('common.add') %>
+    <% end %>
   <% end %>
-<% end %>
 
-<% if can? :update, @role %>
-  <%= link_to t('common.edit'), edit_role_path(@role) %> |
-<% end %>
-<% if can? :destroy, @role %>
-  <%= button_to_delete t('common.delete'), @role %> |
-<% end %>
-<%= link_to t('common.list'), roles_path %>
+  <% if can? :update, @role %>
+    <%= link_to t('common.edit'), edit_role_path(@role) %> |
+  <% end %>
+  <% if can? :destroy, @role %>
+    <%= button_to_delete t('common.delete'), @role %> |
+  <% end %>
+  <%= link_to t('common.list'), roles_path %>
+</section>

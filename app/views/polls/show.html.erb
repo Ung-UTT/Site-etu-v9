@@ -1,64 +1,59 @@
 <section class="content">
   <%= title(t('poll') + ' : ' + @poll.name) %>
 
+  <p>
+    <strong><%= t('polls.description') %></strong>
+    <%=md @poll.description %>
+  </p>
 
-    polls">
-      <p>
-        <strong><%= t('polls.description') %></strong>
-        <%=md @poll.description %>
-      </p>
+  <p>
+    <strong><%= t('polls.user') %></strong>
+    <%= link_to_user @poll.user %>
+  </p>
 
-      <p>
-        <strong><%= t('polls.user') %></strong>
-        <%= link_to_user @poll.user %>
-      </p>
-
-      <% if @vote %>
-        <ul>
-          <% @poll.answers.each do |answer| %>
-            <li>
-              <%= '*' if @vote.answer == answer %>
-              <%= answer.content %> (<%= answer.votes.size %>)
-            </li>
-          <% end %>
-        </ul>
-        <%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %>
-      <% elsif (@poll.answers.size > 0) %>
-        <%= form_for Vote.new do |f| %>
-          <ul>
-            <% @poll.answers.each do |answer| %>
-              <li>
-                <%= f.radio_button :answer_id, answer.id %>
-                <%= f.label :"answer_id_#{answer.id}", answer.content %>
-              </li>
-            <% end %>
-          </ul>
-          <%= f.submit t('common.submit') %>
-        <% end %>
+  <% if @vote %>
+    <ul>
+      <% @poll.answers.each do |answer| %>
+        <li>
+          <%= '*' if @vote.answer == answer %>
+          <%= answer.content %> (<%= answer.votes.size %>)
+        </li>
       <% end %>
-
-      <% if can? :update, @poll %>
-        <ul>
-          <% @poll.answers.each do |q| %>
-            <li><%= q.content %> <%= button_to 'X', q, :confirm => t('common.confirm'), :method => :delete %></li>
-          <% end %>
-        </ul>
-
-        <%= form_for(@poll.answers.new) do |f| %>
-          <%= f.hidden_field :poll_id %>
-          <%= f.text_field :content %>
-          <%= f.submit t('common.add') %>
+    </ul>
+    <%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %>
+  <% elsif (@poll.answers.size > 0) %>
+    <%= form_for Vote.new do |f| %>
+      <ul>
+        <% @poll.answers.each do |answer| %>
+          <li>
+            <%= f.radio_button :answer_id, answer.id %>
+            <%= f.label :"answer_id_#{answer.id}", answer.content %>
+          </li>
         <% end %>
+      </ul>
+      <%= f.submit t('common.submit') %>
+    <% end %>
+  <% end %>
+
+  <% if can? :update, @poll %>
+    <ul>
+      <% @poll.answers.each do |q| %>
+        <li><%= q.content %> <%= button_to 'X', q, :confirm => t('common.confirm'), :method => :delete %></li>
       <% end %>
+    </ul>
 
-    <hr />
+    <%= form_for(@poll.answers.new) do |f| %>
+      <%= f.hidden_field :poll_id %>
+      <%= f.text_field :content %>
+      <%= f.submit t('common.add') %>
+    <% end %>
+  <% end %>
 
-    <% if can? :update, @poll %>
-      <%= link_to t('common.edit'), edit_poll_path(@poll) %> |
-    <% end %>
-    <% if can? :destroy, @poll %>
-      <%= button_to t('common.delete'), @poll, :confirm => t('common.confirm'), :method => :delete %> |
-    <% end %>
-    <%= link_to t('common.list'), polls_path %>
-  </section>
+  <% if can? :update, @poll %>
+    <%= link_to t('common.edit'), edit_poll_path(@poll) %> |
+  <% end %>
+  <% if can? :destroy, @poll %>
+    <%= button_to t('common.delete'), @poll, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), polls_path %>
 </section>

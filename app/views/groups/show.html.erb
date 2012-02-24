@@ -1,18 +1,20 @@
-<%= title(t('group') + ' : ' + @group.name) %>
+<section class="content">
+  <%= title(t('group') + ' : ' + @group.name) %>
 
-<p>
-  <strong><%= t('groups.users') %></strong>
-  <% @group.users.each do |user| %>
-    <%= link_to_user user %>
-    <%= button_to 'X', disjoin_group_path(@group, user), :confirm => t('common.confirm'), :method => :delete %>
+  <p>
+    <strong><%= t('groups.users') %></strong>
+    <% @group.users.each do |user| %>
+      <%= link_to_user user %>
+      <%= button_to 'X', disjoin_group_path(@group, user), :confirm => t('common.confirm'), :method => :delete %>
+    <% end %>
+  </p>
+
+  <%= form_for(@group, :url => join_group_path(@group)) do |f| %>
+    <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
+    <%= f.submit t('common.add') %>
   <% end %>
-</p>
 
-<%= form_for(@group, :url => join_group_path(@group)) do |f| %>
-  <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
-  <%= f.submit t('common.add') %>
-<% end %>
-
-<%= link_to t('common.edit'), edit_group_path(@group) %> |
-<%= button_to t('common.delete'), @group, :confirm => t('common.add'), :method => :delete %> |
-<%= link_to t('common.list'), groups_path %>
+  <%= link_to t('common.edit'), edit_group_path(@group) %> |
+  <%= button_to t('common.delete'), @group, :confirm => t('common.add'), :method => :delete %> |
+  <%= link_to t('common.list'), groups_path %>
+</section>

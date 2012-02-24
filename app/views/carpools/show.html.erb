@@ -24,5 +24,6 @@
   <% end %>
   <%= link_to t('common.list'), carpools_path %>
 </section>
+
 <%= render 'documents/list_and_add', {:documentable => @carpool, :documents => @documents} %>
 <%= render 'comments/list_and_add', {:commentable => @carpool, :comments => @comments} %>

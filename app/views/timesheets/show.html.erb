@@ -1,24 +1,26 @@
-<%= title(t('timesheet') + ' : ' + @timesheet.range) %>
+<section class="content">
+  <%= title(t('timesheet') + ' : ' + @timesheet.range) %>
 
-<p>
-  <strong><%= t('timesheets.room') %></strong>
-  <%= @timesheet.room %>
-</p>
+  <p>
+    <strong><%= t('timesheets.room') %></strong>
+    <%= @timesheet.room %>
+  </p>
 
-<p>
-  <strong><%= t('timesheets.course') %></strong>
-  <%= link_to @timesheet.course.name, @timesheet.course %>
-</p>
+  <p>
+    <strong><%= t('timesheets.course') %></strong>
+    <%= link_to @timesheet.course.name, @timesheet.course %>
+  </p>
 
-<p>
-  <strong><%= t('timesheets.users') %></strong>
-  <%= link_to_users @timesheet.users %>
-</p>
+  <p>
+    <strong><%= t('timesheets.users') %></strong>
+    <%= link_to_users @timesheet.users %>
+  </p>
 
-<% if can? :update, @timesheet %>
-  <%= link_to t('common.edit'), edit_timesheet_path(@timesheet) %> |
-<% end %>
-<% if can? :destroy, @timesheet %>
-  <%= button_to t('common.delete'), @timesheet, :confirm => t('common.confirm'), :method => :delete %> |
-<% end %>
-<%= link_to t('common.list'), timesheets_path %>
+  <% if can? :update, @timesheet %>
+    <%= link_to t('common.edit'), edit_timesheet_path(@timesheet) %> |
+  <% end %>
+  <% if can? :destroy, @timesheet %>
+    <%= button_to t('common.delete'), @timesheet, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), timesheets_path %>
+</section>

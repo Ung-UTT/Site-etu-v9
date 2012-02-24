@@ -1,68 +1,53 @@
 <% title(t('event') + ' : ' + @event.name) %>
 
 <section class="content">
+  <%= render 'one_event', {:event => @event} %>
 
-      <header class="news_banner">
-       <strong class="date"><%=raw l(@event.start_at, :format => '%d <strongr /> %b') %></strong>
-       <strong><%= @event.name %></strong>
-      <em>
-          <%= l(@event.start_at, :format => "%H:%M") %> - <%= l(@event.end_at, :format => "%H:%M") %> |
-        <strong><%= t('events.assos') %> :</strong> <%= link_to_assos @event %> | <strong><%= t('events.location') %> :</strong> <%= @event.location %>
-      </em>
-      </header>
+  <p>
+    <strong><%= t('events.owner') %></strong>
+    <%= link_to_user @event.owner %>
+  </p>
 
-      <p>
-        <strong><%= t('events.description') %></strong>
-        <%=md @event.description %>
-      </p>
+  <p>
+    <strong><%= t('events.location') %></strong>
+    <%= @event.location %>
+  </p>
 
-      <p>
-        <strong><%= t('events.owner') %></strong>
-        <%= link_to_user @event.owner %>
-      </p>
+  <p>
+    <strong><%= t('events.start_at') %></strong>
+    <%= l(@event.start_at, :format => :long) %>
+  </p>
 
-      <p>
-        <strong><%= t('events.location') %></strong>
-        <%= @event.location %>
-      </p>
+  <p>
+    <strong><%= t('events.end_at') %></strong>
+    <%= l(@event.end_at, :format => :long) %>
+  </p>
 
-      <p>
-        <strong><%= t('events.start_at') %></strong>
-        <%= l(@event.start_at, :format => :long) %>
-      </p>
+  <p>
+    <strong><%= t('events.users') %></strong>
+    <%= link_to_users @event.users %>
+  </p>
 
-      <p>
-        <strong><%= t('events.end_at') %></strong>
-        <%= l(@event.end_at, :format => :long) %>
-      </p>
+  <p>
+    <strong><%= t('events.assos') %></strong>
+    <%= link_to_assos @event %>
+  </p>
 
-      <p>
-        <strong><%= t('events.users') %></strong>
-        <%= link_to_users @event.users %>
-      </p>
-
-      <p>
-        <strong><%= t('events.assos') %></strong>
-        <%= link_to_assos @event %>
-      </p>
-
-
-    <hr />
-
-    <div id="QRcode">
-      <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= CGI::escape(request.url) %>&choe=UTF-8">
-    </div>
+  <div class="qr-code">
+    <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&choe=UTF-8&chl=<%= CGI::escape(request.url) %>" />
+  </div>
 
   <p>
     <%= link_to (image_tag("others/google_agenda.png")+" Ajouter à Google Agenda"), "https://www.google.com/calendar/b/0/render?action=TEMPLATE&text=#{CGI::escape(@event.name)}&location=#{CGI::escape(@event.location)}&dates=#{l(@event.start_at-2.hour, :format => "%Y%m%dT%H%M%SZ")}/#{l(@event.end_at-2.hour, :format => "%Y%m%dT%H%M%SZ")}&details=#{CGI::escape(@event.description)}&pli=1&sf=true&output=xml" %>
     <%= link_to (image_tag("others/mailto.png")+" inviter des gens"), "mailto:?Subject=[Evènement UTT] #{@event.name}&body=%0A%0A#{@event.description}%0A%0APlus d'infos: #{CGI::escape(request.url)}",:style => "margin-left:20px" %>
   </p>
 
-    <% if @event.users.include?(current_user) %>
+   <% if @event.users.include?(current_user) %>
     <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => 'PUT' %></p>
   <% elsif can? :'join', Event %>
     <p><%= link_to t('events.join'), join_event_path(@event), :method => 'PUT' %></p>
   <% end %>
+
   <p>
   <% if can? :update, @event %>
     <%= link_to t('common.edit'), edit_event_path(@event) %> |
@@ -72,15 +57,11 @@
   <% end %>
   <%= link_to t('common.list'), events_path %>
   </p>
-  </section>
-
-  <%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
-  <%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>
-
-  <% if @event.news.empty? %>
-      <%= t('events.daymail', :count => 0) %>
-  <% else %>
-      <h3><%= t('events.daymail', :count => @event.news.size) %></h3>
-      <%= render :template => 'news/index' %>
-  <% end %>
 </section>
+
+<% unless @event.news.empty? %>
+  <%= render :template => 'news/index' %>
+<% end %>
+
+<%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
+<%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>

@@ -1,31 +1,26 @@
 <section class="content">
   <%= title(t('annal') + ' : ' + @annal.name) %>
 
+  <p>
+    <strong><%= t('annals.description') %> :</strong>
+    <%=md @annal.description %>
+  </p>
+  <p>
+    <strong><%= t('annals.date') %> :</strong>
+    <%= l @annal.date %>
+  </p>
+  <p>
+    <strong><%= t('annals.course') %> :</strong>
+    <%= link_to @annal.course.name, @annal.course %>
+  </p>
 
-    annals">
-      <p>
-        <strong><%= t('annals.description') %> :</strong>
-        <%=md @annal.description %>
-      </p>
-      <p>
-        <strong><%= t('annals.date') %> :</strong>
-        <%= l @annal.date %>
-      </p>
-      <p>
-        <strong><%= t('annals.course') %> :</strong>
-        <%= link_to @annal.course.name, @annal.course %>
-      </p>
-
-    <hr />
-
-    <% if can? :update, @annal %>
-       <%= link_to t('common.edit'), edit_annal_path(@annal) %> |
-    <% end %>
-    <% if can? :destroy, @annal %>
-       <%= button_to t('common.delete'), @annal, :confirm => t('common.confirm'), :method => :delete %> |
-    <% end %>
-    <%= link_to t('common.list'), annals_path %>
-  </section>
+  <% if can? :update, @annal %>
+     <%= link_to t('common.edit'), edit_annal_path(@annal) %> |
+  <% end %>
+  <% if can? :destroy, @annal %>
+     <%= button_to t('common.delete'), @annal, :confirm => t('common.confirm'), :method => :delete %> |
+  <% end %>
+  <%= link_to t('common.list'), annals_path %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @annal, :documents => @documents} %>
