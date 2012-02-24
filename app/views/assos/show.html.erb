@@ -70,15 +70,7 @@
   <% end %>
   </ul>
 
-  <ul class="actions">
-    <% if can? :update, @asso %>
-      <li><%= link_to t('common.edit'), edit_asso_path(@asso) %></li>
-    <% end %>
-    <% if can? :destroy, @asso %>
-      <li><%= button_to t('common.delete'), @asso, :confirm => t('common.confirm'), :method => :delete %></li>
-    <% end %>
-    <li><%= link_to t('common.list'), asso_path %></li>
-  </ul>
+  <%= render 'layouts/show_actions', {:ressource => @asso} %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @asso, :documents => @documents} %>

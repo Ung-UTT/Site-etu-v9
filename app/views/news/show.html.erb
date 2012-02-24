@@ -3,15 +3,8 @@
 
   <%= render 'one_news', {:news => @news} %>
 
-  <ul class="actions">
-    <% if can? :update, @news %>
-    <li><%= link_to t('common.edit'), edit_news_path(@news) %></li>
-    <% end %>
-    <% if can? :destroy, @news %>
-    <li><%= button_to t('common.delete'), @news, :confirm => t('common.confirm'), :method => :delete %></li>
-    <% end %>
-    <li><%= link_to t('common.list'), news_index_path %></li>
-  </ul>
+
+  <%= render 'layouts/show_actions', {:ressource => @news} %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @news, :documents => @documents} %>

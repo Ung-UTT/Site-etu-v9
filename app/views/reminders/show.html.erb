@@ -3,8 +3,5 @@
 
   <%= render 'form' %>
 
-  <ul class="actions">
-    <li><%= button_to t('common.delete'), @reminder, :confirm => t('common.confirm'), :method => :delete %></li>
-    <li><%= link_to t('common.list'), reminders_path %></li>
-  </ul>
+  <%= render 'layouts/show_actions', {:ressource => @reminders} %>
 </section>

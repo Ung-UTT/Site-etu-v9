@@ -14,13 +14,7 @@
     <%= link_to @annal.course.name, @annal.course %>
   </p>
 
-  <% if can? :update, @annal %>
-     <%= link_to t('common.edit'), edit_annal_path(@annal) %> |
-  <% end %>
-  <% if can? :destroy, @annal %>
-     <%= button_to t('common.delete'), @annal, :confirm => t('common.confirm'), :method => :delete %> |
-  <% end %>
-  <%= link_to t('common.list'), annals_path %>
+  <%= render 'layouts/show_actions', {:ressource => @annal} %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @annal, :documents => @documents} %>

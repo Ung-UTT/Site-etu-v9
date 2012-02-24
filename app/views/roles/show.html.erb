@@ -29,11 +29,5 @@
     <% end %>
   <% end %>
 
-  <% if can? :update, @role %>
-    <%= link_to t('common.edit'), edit_role_path(@role) %> |
-  <% end %>
-  <% if can? :destroy, @role %>
-    <%= button_to_delete t('common.delete'), @role %> |
-  <% end %>
-  <%= link_to t('common.list'), roles_path %>
+  <%= render 'layouts/show_actions', {:ressource => @roles} %>
 </section>

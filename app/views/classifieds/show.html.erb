@@ -18,16 +18,7 @@
     <%= link_to_user @classified.user %>
   </p>
 
-  <ul class="actions">
-    <% if can? :update, @classified %>
-    <li><%= link_to t('common.edit'), edit_classified_path(@classified) %></li>
-    <% end %>
-    <% if can? :destroy, @classified %>
-    <li><%= button_to t('common.delete'), @classified, :confirm => t('common.confirm'), :method => :delete %></li>
-    <% end %>
-
-    <li><%= link_to t('common.list'), classifieds_path %></li>
-  </ul>
+  <%= render 'layouts/show_actions', {:ressource => @classified} %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @classified, :documents => @documents} %>

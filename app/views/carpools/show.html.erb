@@ -16,13 +16,7 @@
     <%= @carpool.is_driver %>
   </p>
 
-  <% if can? :update, @carpool %>
-    <%= link_to t('common.edit'), edit_carpool_path(@carpool) %> |
-  <% end %>
-  <% if can? :destroy, @carpool %>
-    <%= button_to t('common.delete'), @carpool, :confirm => t('common.confirm'), :method => :delete %> |
-  <% end %>
-  <%= link_to t('common.list'), carpools_path %>
+  <%= render 'layouts/show_actions', {:ressource => @carpool} %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @carpool, :documents => @documents} %>

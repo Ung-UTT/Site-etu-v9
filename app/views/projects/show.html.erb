@@ -22,13 +22,7 @@
     <p><%= link_to t('projects.join'), join_project_path(@project), :method => 'PUT' %></p>
   <% end %>
 
-  <% if can? :update, @project %>
-    <%= link_to t('common.edit'), edit_project_path(@project) %> |
-  <% end %>
-  <% if can? :destroy, @project %>
-    <%= button_to t('common.delete'), @project, :confirm => t('common.confirm'), :method => :delete %> |
-  <% end %>
-  <%= link_to t('common.list'), projects_path %>
+  <%= render 'layouts/show_actions', {:ressource => @project} %>
 </section>
 
 <%= render 'documents/list_and_add', {:documentable => @project, :documents => @documents} %>

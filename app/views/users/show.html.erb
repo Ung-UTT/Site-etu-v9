@@ -44,11 +44,6 @@
     <%= render 'timesheets/schedule', :timesheets => @user.timesheets %>
   <% end %>
 
-  <% if can? :update, @user %>
-    <%= link_to t('common.edit'), edit_user_path(@user) %> |
-  <% end %>
-  <% if can? :destroy, @user %>
-    <%= button_to t('common.delete'), @user, :confirm => t('common.delete'), :method => :delete %> |
-  <% end %>
-  <%= link_to t('common.list'), users_path %>
+
+  <%= render 'layouts/show_actions', {:ressource => @user} %>
 </section>

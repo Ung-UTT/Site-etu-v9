@@ -49,11 +49,6 @@
     <% end %>
   <% end %>
 
-  <% if can? :update, @poll %>
-    <%= link_to t('common.edit'), edit_poll_path(@poll) %> |
-  <% end %>
-  <% if can? :destroy, @poll %>
-    <%= button_to t('common.delete'), @poll, :confirm => t('common.confirm'), :method => :delete %> |
-  <% end %>
-  <%= link_to t('common.list'), polls_path %>
+
+  <%= render 'layouts/show_actions', {:ressource => @pool} %>
 </section>

@@ -48,15 +48,8 @@
     <p><%= link_to t('events.join'), join_event_path(@event), :method => 'PUT' %></p>
   <% end %>
 
-  <p>
-  <% if can? :update, @event %>
-    <%= link_to t('common.edit'), edit_event_path(@event) %> |
-  <% end %>
-  <% if can? :destroy, @event %>
-    <%= button_to t('common.delete'), @event, :confirm => t('common.confirm'), :method => :delete %> |
-  <% end %>
-  <%= link_to t('common.list'), events_path %>
-  </p>
+
+  <%= render 'layouts/show_actions', {:ressource => @event} %>
 </section>
 
 <% unless @event.news.empty? %>
