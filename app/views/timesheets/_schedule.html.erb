@@ -5,7 +5,7 @@
       <th><%= day_names[day] %></th>
     <% end %>
   </tr>
-  <% (7.hour..21.hour).step(30.minutes) do |hour| %>
+  <% (7.hours..21.hours).step(30.minutes) do |hour| %>
   <tr>
     <th><%= l Time.at(hour.to_i), :format => :hour %></th>
     <% (0..6).each do |day| %>

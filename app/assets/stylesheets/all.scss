@@ -22,9 +22,7 @@ $sidebar: 290px; // largeur du menu à droite
   color: $base - #333;
   text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
-  }
+  &:hover { text-decoration: underline; }
 }
 
 /* Layout sans la partie contenu */
@@ -58,9 +56,7 @@ body {
     color: #404040; /* gris foncé */
     padding: 0 5px;
 
-    &:hover {
-      text-decoration: underline;
-    }
+    &:hover { text-decoration: underline; }
   }
 
   img {
@@ -73,14 +69,10 @@ body {
     margin: 0;
     margin-right: 5px;
 
-    img {
-      padding: 0;
-    }
+    img { padding: 0; }
   }
 
-  li {
-    display: inline;
-  }
+  li { display: inline; }
 }
 
 #sidebar {
@@ -95,9 +87,7 @@ body {
     border-radius: 5px;
     @include linear-gradient-top(white, $fond);
 
-    a {
-      @extend .basic-link;
-    }
+    a { @extend .basic-link; }
 
     h2 {
       font-size: 1.3em;
@@ -112,9 +102,7 @@ body {
     ul {
       padding-left: 20px;
 
-      li {
-        padding: 2px;
-      }
+      li { padding: 2px; }
     }
   }
 }
@@ -178,9 +166,7 @@ body {
     word-wrap: break-word;
     overflow: hidden;
 
-    a {
-      @extend .basic-link;
-    }
+    a { @extend .basic-link; }
 
     h1 {
       border-top-left-radius: 5px;
@@ -192,14 +178,19 @@ body {
       background-color: $base - #333;
       @include linear-gradient-top($base, $base - #333);
 
-      a {
-        color: white;
-      }
+      a { color: white; }
     }
 
-    .blocks, .pagination, p, ul, ol, img, form, table, audio, video {
+    .blocks, .pagination, p, ul, ol, img, form, table, audio, video,
+    h2, h3, h4, h5, h6 {
       margin: 8px;
     }
+
+    h2 { font-size: 1.4em; font-style: italic; }
+    h3 { font-size: 1.35em; font-weight: bold; }
+    h4 { font-size: 1.3em; font-style: italic; }
+    h5 { font-size: 1.25em; font-weight: bold; }
+    h6 { font-size: 1.2em; font-style: italic; }
 
     .block {
       border-bottom: 1px dashed $fond - #444;
@@ -232,6 +223,8 @@ body {
           padding-left: 65px;
           font-weight: bold;
           font-size: 1.2em;
+          font-style: normal;
+          margin: 0;
         }
 
         .details {
@@ -280,17 +273,13 @@ body {
       max-height: 500px;
     }
 
-    strong {
-      font-weight: bold;
-    }
+    strong { font-weight: bold; }
 
-    .left {
-      float: left;
-    }
+    .left { float: left; }
 
-    .right {
-      float: right;
-    }
+    .right { float: right; }
+
+    .list-no-style li { list-style-type: none; }
   }
 }
 
@@ -318,17 +307,13 @@ body {
       }
     }
 
-    .actions {
-      margin-left: 125px;
-    }
+    .actions { margin-left: 125px; }
   }
 
-  input {
-    max-width: 150px;
-  }
+  input { max-width: 150px; }
 }
 
-/* CSS spécifique à certains controlleurs */
+/* CSS spécifilist-style-type: none;que à certains controlleurs */
 
 #contents .content {
   /* Albums photos */
@@ -391,9 +376,7 @@ body {
     li {
       list-style-type: none;
 
-      textarea#comment_content {
-        height: 50px;
-      }
+      textarea#comment_content { height: 50px; }
 
       img {
         max-width: 100px;

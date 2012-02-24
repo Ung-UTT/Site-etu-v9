@@ -10,6 +10,21 @@
       <%= f.label :description, t('polls.description') %>
       <%= f.text_area :description %>
     </li>
+
+<!-- TODO: Modifier les réponses depuis ce formulaire ! -->
+    <ul>
+      <% @poll.answers.each do |q| %>
+        <li><%= q.content %> <%= button_to 'X', q, :confirm => t('common.confirm'), :method => :delete %></li>
+      <% end %>
+    </ul>
+
+    <%= form_for(@poll.answers.new) do |f| %>
+      <%= f.hidden_field :poll_id %>
+      <%= f.text_field :content %>
+      <%= f.submit t('common.add') %>
+    <% end %>
+
+
     <li class="actions">
       <%= f.submit t('common.submit') %>
     </li>

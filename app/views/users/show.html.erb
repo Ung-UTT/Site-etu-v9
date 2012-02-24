@@ -2,25 +2,8 @@
   <%= title(t('user') + ' : ' + @user.login) %>
 
   <p>
-    <strong><%= t('users.email') %></strong>
+    <strong><%= t('users.email') %></strong> :
     <%= @user.email %>
-  </p>
-  <p>
-    <strong>CAS ? </strong><%= @user.cas %>
-  </p>
-  <p>
-    <strong>ID :</strong>
-    <%= @user.id %>
-  </p>
-
-  <p>
-    <strong>Quote type :</strong>
-    <%= @user.preference.quote_type %>
-  </p>
-
-  <p>
-    <strong>Locale :</strong>
-    <%= @user.preference.locale %>
   </p>
 
   <%= list_of t('courses.list'), @user.courses, :name %>
@@ -44,6 +27,19 @@
     <%= render 'timesheets/schedule', :timesheets => @user.timesheets %>
   <% end %>
 
+  <h2>Infos de débug :</h2>
+  <p>
+    <% unless @user.preference.nil? %>
+    <strong>Quote type</strong> :
+    <%= @user.preference.quote_type %>,
+    <strong>Locale</strong> :
+    <%= @user.preference.locale %>,
+    <% end %>
+    <strong>Uttien ?</strong> :
+    <%= @user.cas.inspect %>,
+    <strong>ID</strong> :
+    <%= @user.id %>
+  </p>
 
   <%= render 'layouts/show_actions', {:ressource => @user} %>
 </section>

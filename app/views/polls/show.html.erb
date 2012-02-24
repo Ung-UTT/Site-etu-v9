@@ -1,54 +1,36 @@
 <section class="content">
   <%= title(t('poll') + ' : ' + @poll.name) %>
 
-  <p>
-    <strong><%= t('polls.description') %></strong>
-    <%=md @poll.description %>
-  </p>
+  <%=md @poll.description %>
 
   <p>
-    <strong><%= t('polls.user') %></strong>
+    <strong><%= t('polls.user') %></strong> :
     <%= link_to_user @poll.user %>
   </p>
 
   <% if @vote %>
-    <ul>
-      <% @poll.answers.each do |answer| %>
-        <li>
-          <%= '*' if @vote.answer == answer %>
-          <%= answer.content %> (<%= answer.votes.size %>)
-        </li>
-      <% end %>
-    </ul>
-    <%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %>
-  <% elsif (@poll.answers.size > 0) %>
+  <ul>
+    <% @poll.answers.each do |answer| %>
+    <li>
+      <%= '*' if @vote.answer == answer %>
+      <%= answer.content %> (<%= answer.votes.size %>)
+    </li>
+    <% end %>
+    <li><%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %></li>
+  </ul>
+  <% elsif !@poll.answers.empty? %>
     <%= form_for Vote.new do |f| %>
-      <ul>
-        <% @poll.answers.each do |answer| %>
-          <li>
-            <%= f.radio_button :answer_id, answer.id %>
-            <%= f.label :"answer_id_#{answer.id}", answer.content %>
-          </li>
-        <% end %>
-      </ul>
-      <%= f.submit t('common.submit') %>
-    <% end %>
-  <% end %>
-
-  <% if can? :update, @poll %>
-    <ul>
-      <% @poll.answers.each do |q| %>
-        <li><%= q.content %> <%= button_to 'X', q, :confirm => t('common.confirm'), :method => :delete %></li>
+    <ul class="list-no-style">
+      <% @poll.answers.each do |answer| %>
+      <li>
+        <%= f.radio_button :answer_id, answer.id %>
+        <%= f.label :"answer_id_#{answer.id}", answer.content %>
+      </li>
       <% end %>
+      <li><%= f.submit t('common.submit') %></li>
     </ul>
-
-    <%= form_for(@poll.answers.new) do |f| %>
-      <%= f.hidden_field :poll_id %>
-      <%= f.text_field :content %>
-      <%= f.submit t('common.add') %>
     <% end %>
   <% end %>
 
-
-  <%= render 'layouts/show_actions', {:ressource => @pool} %>
+  <%= render 'layouts/show_actions', {:ressource => @poll} %>
 </section>

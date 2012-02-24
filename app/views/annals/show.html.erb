@@ -1,16 +1,14 @@
 <section class="content">
   <%= title(t('annal') + ' : ' + @annal.name) %>
 
+  <%=md @annal.description %>
+
   <p>
-    <strong><%= t('annals.description') %> :</strong>
-    <%=md @annal.description %>
-  </p>
-  <p>
-    <strong><%= t('annals.date') %> :</strong>
+    <strong><%= t('annals.date') %></strong> :
     <%= l @annal.date %>
   </p>
   <p>
-    <strong><%= t('annals.course') %> :</strong>
+    <strong><%= t('annals.course') %></strong> :
     <%= link_to @annal.course.name, @annal.course %>
   </p>
 
