@@ -6,7 +6,7 @@
     <h1><%= link_to t('comments.list'), [commentable, Comment] %></h1>
   <% end %>
 
-  <ul class="comments">
+  <ul class="comments list-with-delete">
     <% comments.each do |comment| %>
       <li><%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %></li>
     <% end %>

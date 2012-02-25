@@ -1,7 +1,7 @@
 <section class="content">
   <%= title t('reminders.list') %>
 
-  <ul class="reminders">
+  <ul class="list-with-delete">
   <% @reminders.each do |reminder| %>
     <li>
       <%= link_to reminder.content, reminder %>

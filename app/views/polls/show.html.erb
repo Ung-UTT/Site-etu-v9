@@ -9,14 +9,13 @@
   </p>
 
   <% if @vote %>
-  <ul>
+  <ul class="list-with-delete">
     <% @poll.answers.each do |answer| %>
     <li>
-      <%= '*' if @vote.answer == answer %>
       <%= answer.content %> (<%= answer.votes.size %>)
+      <%= delete_button(image_tag("icons/delete.png"), @vote.answer) if @vote.answer == answer %>
     </li>
     <% end %>
-    <li><%= button_to t('votes.delete'), @vote, :confirm => t('common.confirm'), :method => :delete %></li>
   </ul>
   <% elsif !@poll.answers.empty? %>
     <%= form_for Vote.new do |f| %>
@@ -30,6 +29,25 @@
       <li><%= f.submit t('common.submit') %></li>
     </ul>
     <% end %>
+  <% end %>
+
+  <% if can? :update, @poll %>
+  <p><strong>Ajouter/Supprimer des réponses</strong> :</p>
+  <ul class="list-with-delete">
+    <% @poll.answers.each do |q| %>
+    <li>
+      <%= q.content %>
+      <%= delete_button image_tag("icons/delete.png"), q %>
+    </li>
+    <% end %>
+    <li>
+      <%= form_for(@poll.answers.new) do |f| %>
+        <%= f.hidden_field :poll_id %>
+        <%= f.text_field :content %>
+        <%= f.submit t('common.add') %>
+      <% end %>
+    </li>
+  </ul>
   <% end %>
 
   <%= render 'layouts/show_actions', {:ressource => @poll} %>

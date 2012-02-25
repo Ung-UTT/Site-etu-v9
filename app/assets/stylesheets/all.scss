@@ -355,7 +355,7 @@ body {
     }
   }
 
-  ul.comments, ul.documents, ul.reminders {
+  ul.list-with-delete {
     button, .button_to {
       padding: 0;
       margin: 0;
@@ -368,11 +368,14 @@ body {
         vertical-align: middle;
       }
     }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   ul.comments, ul.documents {
-    margin-left: 0;
-
     li {
       list-style-type: none;
 

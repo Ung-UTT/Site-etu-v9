@@ -6,7 +6,7 @@
     <h1><%= link_to t('documents.list'), [documentable, Document] %></h1>
   <% end %>
 
-  <ul class="documents">
+  <ul class="documents list-with-delete">
     <% documents.each do |document| %>
     <li><%= render 'documents/one_document', {:documentable => documentable, :document => document} %></li>
     <% end %>
