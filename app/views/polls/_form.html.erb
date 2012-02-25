@@ -11,7 +11,16 @@
       <%= f.text_area :description %>
     </li>
 
-<!-- TODO: Modifier les réponses depuis ce formulaire ! -->
+    <%= f.fields_for :answers do |nested_f| %>
+    <li class="field">
+      <%= nested_f.label :content, t('answer') %>
+      <%= nested_f.text_field :content %>
+      <% unless nested_f.object.new_record? %>
+        <%= t('common.delete') %>
+        <%= nested_f.check_box :_destroy %>
+      <% end %>
+    </li>
+    <% end %>
 
     <li class="actions">
       <%= f.submit t('common.submit') %>

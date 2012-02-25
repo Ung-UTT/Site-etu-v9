@@ -5,7 +5,8 @@ class Poll < ActiveRecord::Base
   has_many :answers
   has_many :votes, :through => :answers, :uniq => true
 
-  # accepts_nested_attributes_for :answers, :allow_destroy => true #TODO
+  accepts_nested_attributes_for :answers, :allow_destroy => true,
+    :reject_if => lambda { |d| d[:content].blank? }
 
   def voted_by?(user)
     votes.map(&:user_id).include?(user.id)
