@@ -3,7 +3,7 @@
   <% if params[:controller] == 'documents' %>
     <%= title t('documents.list') %>
   <% else %>
-    <h1><%= link_to t('documents.list'), [documentable, Document] %></h1>
+    <h1 class="title"><%= link_to t('documents.list'), [documentable, Document] %></h1>
   <% end %>
 
   <ul class="documents list-with-delete">
