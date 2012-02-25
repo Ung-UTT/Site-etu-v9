@@ -20,6 +20,18 @@
     </li>
 
 <!-- TODO: Ajouter des documents (annales) directement ici -->
+    <%= f.fields_for :documents do |nested_f| %>
+      <li class="field">
+      <% if nested_f.object.new_record? %>
+        <%= nested_f.label :asset, t('document') %>
+        <%= nested_f.file_field :asset %>
+      <% else %>
+        <%= nested_f.label :_destroy, t('common.delete') %>
+        <%= nested_f.object.asset_file_name unless nested_f.object.new_record? %>
+        <%= nested_f.check_box :_destroy %>
+      <% end %>
+      </li>
+    <% end %>
 
     <li class="actions">
       <%= f.submit t('common.submit') %>

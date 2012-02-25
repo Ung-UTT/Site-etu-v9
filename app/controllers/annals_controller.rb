@@ -30,6 +30,7 @@ class AnnalsController < ApplicationController
   # GET /annals/new.xml
   def new
     @annal = Annal.new
+    5.times { @annal.documents.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +41,12 @@ class AnnalsController < ApplicationController
   # GET /annals/1/edit
   def edit
     @annal = Annal.find(params[:id])
+
+    @annal.documents.build
+
+    if @annal.documents.size < 5
+      (5 - @annal.documents.size).times { @annal.documents.build }
+    end
   end
 
   # POST /annals
