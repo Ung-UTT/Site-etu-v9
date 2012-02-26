@@ -5,8 +5,37 @@ $sidebar: 0px; // largeur du menu à droite
 
 @import "reset", "layout", "content";
 
+body {
+  max-width: 400px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  img, #quote {
+    display: none;
+  }
+
+  .content {
+    margin: 0;
+    padding: 0;
+
+    img {
+      display: inline;
+    }
+  }
+}
+
 * {
   max-width: 100%;
+}
+
+#topbar {
+  font-size: 1.2em;
+
+  a {
+    padding: 0;
+    padding-right: 3px;
+  }
 }
 
 #sidebar {
@@ -17,5 +46,11 @@ $sidebar: 0px; // largeur du menu à droite
     h2, ul, ul li {
       display: inline;
     }
+  }
+}
+
+.content {
+  textarea, input {
+    max-width: 150px;
   }
 }
