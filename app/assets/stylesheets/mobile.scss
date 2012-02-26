@@ -10,32 +10,6 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-
-  img, #quote {
-    display: none;
-  }
-
-  .content {
-    margin: 0;
-    padding: 0;
-
-    img {
-      display: inline;
-    }
-  }
-}
-
-* {
-  max-width: 100%;
-}
-
-#topbar {
-  font-size: 1.2em;
-
-  a {
-    padding: 0;
-    padding-right: 3px;
-  }
 }
 
 #sidebar {
@@ -49,7 +23,10 @@ body {
   }
 }
 
-.content {
+#contents .content {
+  margin: 0;
+  padding: 0;
+
   textarea, input {
     max-width: 150px;
   }

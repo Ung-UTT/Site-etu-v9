@@ -6,11 +6,7 @@
 
   <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
 
-  <% if mobile? %>
-    <%= stylesheet_link_tag :mobile %>
-  <% else %>
-    <%= stylesheet_link_tag :all %>
-  <% end %>
+  <%= stylesheet_link_tag :all %>
 
   <%= csrf_meta_tag %>
 </head>
@@ -61,7 +57,7 @@
   </ul>
 
   <ul id="sidebar">
-    <li class="box">
+    <li class="box login">
       <% if current_user %>
         <%= render :partial => 'user_sessions/menu' %>
       <% else %>
@@ -69,7 +65,7 @@
       <% end %>
     </li>
 
-    <li class="box">
+    <li class="box contents">
       <h2><%= t('layout.content') %></h2>
       <ul>
         <li><%= link_to t('layout.users'), users_path %></li>
@@ -89,7 +85,7 @@
     </li>
 
     <% if can?(:manage, Role) or can?(:manage, Group) %>
-    <li class="box">
+    <li class="box contents">
       <h2>Administration</h2>
       <ul>
         <li><%= link_to t('layout.groups'), groups_path %></li>
@@ -97,7 +93,6 @@
       </ul>
     </li>
     <% end %>
-
 
     <li class="box">
       <h2><%= t('layout.services') %></h2>
@@ -138,13 +133,9 @@
   </section>
 
   <ul id="footer">
-    <% if mobile? %>
-      <li><a href="?mobile=false">Version Classique</a></li>
-    <% else %>
-      <li><a href="?mobile=true">Version Mobile</a></li>
-    <% end %>
+    <li><a href="?mobile=false">Version Classique</a></li>
     <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
-    <li><%= link_to t('layout.about'), 'home#about' %></li>
+    <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
   </ul>
 
   <%= javascript_include_tag :application %>

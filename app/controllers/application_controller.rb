@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_layout_vars, :set_locale
   helper_method :'mobile?', :current_user_session, :current_user
+  layout :which_layout # Chosit le layout normal ou mobile
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => I18n.t('c.application.denied') +
@@ -65,6 +66,10 @@ class ApplicationController < ActionController::Base
       end
 
       return @is_mobile
+    end
+
+    def which_layout
+      mobile? ? 'mobile' : 'application'
     end
 
     def current_user

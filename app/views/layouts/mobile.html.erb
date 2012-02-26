@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <%= title_tag %>
+
+  <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
+
+  <%= stylesheet_link_tag :mobile %>
+
+  <%= csrf_meta_tag %>
+</head>
+
+<body>
+  <h1>It works !</h1>
+
+  <%= link_to :root do %>
+    <%= image_tag 'style/banner.jpg' %>
+  <% end %>
+
+  <ul id="sidebar">
+    <% if current_page?(root_url) %>
+    <li class="box login">
+      <% if current_user %>
+        <%= render :partial => 'user_sessions/menu' %>
+      <% else %>
+        <%= render :partial => 'user_sessions/login' %>
+      <% end %>
+    </li>
+
+    <li class="box contents">
+      <h2><%= t('layout.content') %></h2>
+      <ul>
+        <li><%= link_to t('layout.users'), users_path %></li>
+        <li><%= link_to t('layout.albums'), albums_path %></li>
+        <li><%= link_to t('layout.annals'), annals_path %></li>
+        <li><%= link_to t('layout.classifieds'), classifieds_path %></li>
+        <li><%= link_to t('layout.assos'), assos_path %></li>
+        <li><%= link_to t('layout.carpools'), carpools_path %></li>
+        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
+        <li><%= link_to t('layout.events'), events_path %></li>
+        <li><%= link_to t('layout.news'), {:controller => 'news'} %></li>
+        <li><%= link_to t('layout.polls'), polls_path %></li>
+        <li><%= link_to t('layout.course'), courses_path %></li>
+        <li><%= link_to t('layout.projects'), projects_path %></li>
+        <li><%= link_to t('layout.quotes'), quotes_path %></li>
+        <% if can?(:manage, Role) or can?(:manage, Group) %>
+          <li><%= link_to t('layout.groups'), groups_path %></li>
+          <li><%= link_to t('layout.roles'), roles_path %></li>
+        <% end %>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
+
+  <section id="contents">
+    <% unless notice.nil? %>
+    <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% unless alert.nil? %>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <% unless current_page(root_url) %>
+    <%= yield %>
+    <% end %>
+  </section>
+
+  <ul id="footer">
+    <li><a href="?mobile=false">Version Classique</a></li>
+    <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
+    <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
+  </ul>
+
+  <%= javascript_include_tag :application %>
+</body>
+</html>
