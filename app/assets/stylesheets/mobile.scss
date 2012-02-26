@@ -15,10 +15,17 @@ body {
 #sidebar {
   float: none;
   width: 100%;
+  font-size: 1.2em;
 
-  li.box {
-    h2, ul, ul li {
-      display: inline;
+  .box {
+    li {
+      line-height: 1.3em;
+    }
+  }
+
+  .login {
+    h2 a {
+      font-size: 1.5em;
     }
   }
 }

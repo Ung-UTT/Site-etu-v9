@@ -12,10 +12,8 @@
 </head>
 
 <body>
-  <h1>It works !</h1>
-
   <%= link_to :root do %>
-    <%= image_tag 'style/banner.jpg' %>
+    <%= image_tag 'style/banner-mini.jpg' %>
   <% end %>
 
   <ul id="sidebar">
@@ -62,7 +60,7 @@
     <p class="alert"><%= alert %></p>
     <% end %>
 
-    <% unless current_page(root_url) %>
+    <% unless current_page?(root_url) %>
     <%= yield %>
     <% end %>
   </section>
