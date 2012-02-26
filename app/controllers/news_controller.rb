@@ -6,7 +6,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.xml
   def index
-    if request.format == :mobile
+    if mobile?
       @news = News.page(params[:page]).per(15)
     else
       @news = News.page(params[:page])

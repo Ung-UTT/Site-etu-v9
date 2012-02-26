@@ -1,0 +1,119 @@
+/* Layout */
+
+// Fonctions pour éviter les répétitions de code
+// et les pavés de codes (-moz-, -o-, ...), ...
+
+@mixin linear-gradient-top($start, $end) {
+  background-image: linear-gradient(top, $start 0%, $end 100%);
+  background-image: -moz-linear-gradient(top, $start 0%, $end 100%);
+  background-image: -webkit-linear-gradient(top, $start 0%, $end 100%);
+  background-image: -o-linear-gradient(top, $start 0%, $end 100%);
+  background-image: -ms-linear-gradient(top, $start 0%, $end 100%);
+}
+
+.basic-link {
+  color: $base - #333;
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+/* Layout sans la partie contenu */
+
+body {
+  font-family: Arial, Serif;
+  width: 970px;
+  margin: auto;
+  box-shadow: 0 0 30px 10px #ccc;
+  background-color: $fond;
+}
+
+#quote, #contents .content blockquote {
+  padding: 10px;
+  text-align: center;
+  color: $fond - #555;
+  background: white;
+  font-style: italic;
+
+  &:before { content: "« "; }
+  &:after { content : " »"; }
+}
+
+#topbar {
+  padding: 5px 5px;
+  text-align: center;
+  border-bottom: 1px solid ($fond - #222);
+  @include linear-gradient-top(white, $fond);
+
+  a {
+    color: #404040; /* gris foncé */
+    padding: 0 5px;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  img {
+    vertical-align: middle;
+    padding: 0 5px;
+  }
+
+  #language-selector {
+    float: right;
+    margin: 0;
+    margin-right: 5px;
+
+    img { padding: 0; }
+  }
+
+  li { display: inline; }
+}
+
+#sidebar {
+  float: right;
+  width: $sidebar;
+  padding-top: 5px;
+
+  .box {
+    margin: 5px 10px;
+    padding: 10px;
+    border: 3px double ($fond - #222);
+    border-radius: 5px;
+    @include linear-gradient-top(white, $fond);
+
+    a { @extend .basic-link; }
+
+    h2 {
+      font-size: 1.3em;
+      padding: 5px;
+
+      .connect {
+        color: $base - #555;
+        font-weight: bold;
+      }
+    }
+
+    ul {
+      padding-left: 20px;
+
+      li { padding: 2px; }
+    }
+  }
+}
+
+#footer {
+  clear: both;
+  background-color: $base - #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+
+  li {
+    display: inline;
+    padding: 5px;
+
+    a {
+      @extend .basic-link;
+      color: white;
+    }
+  }
+}

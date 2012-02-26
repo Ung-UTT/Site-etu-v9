@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta charset="utf-8" />
@@ -7,13 +6,17 @@
 
   <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
 
-  <%= stylesheet_link_tag :reset, :all %>
+  <% if mobile? %>
+    <%= stylesheet_link_tag :mobile %>
+  <% else %>
+    <%= stylesheet_link_tag :all %>
+  <% end %>
 
   <%= csrf_meta_tag %>
 </head>
 
 <body>
-  <blockquote id="quote"><%= @random_quote.content %></blockquote>
+  <blockquote id="quote"><%= mobile?.to_s + @random_quote.content %></blockquote>
 
   <%= link_to :root do %>
     <%= image_tag 'style/banner.jpg' %>
@@ -135,7 +138,11 @@
   </section>
 
   <ul id="footer">
-    <li><a href="?classic=false">Version Mobile</a></li>
+    <% if mobile? %>
+      <li><a href="?mobile=false">Version Classique</a></li>
+    <% else %>
+      <li><a href="?mobile=true">Version Mobile</a></li>
+    <% end %>
     <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
     <li><%= link_to t('layout.about'), 'home#about' %></li>
   </ul>

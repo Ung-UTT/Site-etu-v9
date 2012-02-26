@@ -3,8 +3,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_layout_vars, :set_locale, :set_mobile_format
-  helper_method :current_user_session, :current_user
+  before_filter :set_layout_vars, :set_locale
+  helper_method :'mobile?', :current_user_session, :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => I18n.t('c.application.denied') +
@@ -41,18 +41,30 @@ class ApplicationController < ActionController::Base
       @assos = Asso.all
     end
 
-    def set_mobile_format
-      if params[:classic]
-        if params[:classic] == 'false'
-          cookies[:force_classic] = 'false'
+    def mobile?
+      return @is_mobile if defined?(@is_mobile)
+
+      # Si l'utilisateur demande une version particulière, elle prévaut
+      if params[:mobile]
+        if params[:mobile] == 'true'
+          cookies[:force_mobile] = 'true'
+          @is_mobile = true
         else
-          cookies[:force_classic] = 'true'
+          cookies[:force_mobile] = 'false'
+          @is_mobile = false
         end
+        return @is_mobile
       end
 
-      if (detect_mobile? and cookies[:force_classic] != 'true') or cookies[:force_classic] == 'false'
-        request.format = :mobile
+      # Sinon, on regarde si c'est un téléphone ou si il a déjà choisi une version
+      # (Mobile et pas forcé normal) ou force mobile
+      if (detect_mobile? and cookies[:force_mobile] != 'false') or cookies[:force_mobile] == 'true'
+        @is_mobile = true
+      else
+        @is_mobile = false
       end
+
+      return @is_mobile
     end
 
     def current_user

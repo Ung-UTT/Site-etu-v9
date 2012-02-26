@@ -1,0 +1,293 @@
+/* Partie contenu */
+
+/* Cas général */
+
+#contents {
+  padding-top: 1px;
+  padding-right: $sidebar;
+  padding-bottom: 0;
+
+  .notice, .alert {
+    padding: 10px;
+    margin: 10px 10px 5px 10px;
+    background-color: grey;
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    word-wrap: break-word;
+  }
+
+  .notice {
+    background-color: #47D15F;
+    color: #003F0B;
+    border-color: #003F0B;
+  }
+
+  .alert {
+    background-color: #FF9086;
+    color: #BB1000;
+    border-color: #BB1000;
+  }
+
+  .content {
+    color: #555;
+    clear: left;
+    background: white;
+    margin: 10px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    word-wrap: break-word;
+    overflow: hidden;
+
+    a { @extend .basic-link; }
+
+    h1.title {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      font-size: 1.5em;
+      padding: 5px;
+      padding-left: 30px;
+      color: white;
+      background-color: $base - #333;
+      font-style: normal;
+      @include linear-gradient-top($base, $base - #333);
+
+      a { color: white; }
+    }
+
+    .blocks, .pagination, p, ul, ol, img, form, table, audio, video,
+    h2, h3, h4, h5, h6 {
+      margin: 8px;
+    }
+
+    h1 { font-size: 1.5em; font-style: bold; }
+    h2 { font-size: 1.4em; font-style: italic; }
+    h3 { font-size: 1.3em; font-weight: bold; }
+    h4 { font-size: 1.3em; font-style: italic; }
+    h5 { font-size: 1.2em; font-weight: bold; }
+    h6 { font-size: 1.2em; font-style: italic; }
+
+    .block {
+      border-bottom: 1px dashed $fond - #444;
+      padding: 5px;
+      margin-top: 10px;
+
+      header {
+        background: $fond;
+        padding: 5px;
+        border-radius: 5px;
+
+        .date {
+          float: left;
+          width: 40px;
+          height: 40px;
+          padding: 2px;
+          margin: 3px;
+          text-align: center;
+          vertical-align: middle;
+          border: 1px solid black;
+          border-radius: 5px;
+          color: white;
+          font-weight: bold;
+          background-color: $base - #333;
+          @include linear-gradient-top($base, $base - #333);
+        }
+
+        h2 {
+          padding: 5px;
+          padding-left: 65px;
+          font-weight: bold;
+          font-size: 1.2em;
+          font-style: normal;
+          margin: 0;
+        }
+
+        .details {
+          padding: 3px;
+          margin: 0;
+          margin-left: 65px;
+          font-style: italic;
+          color: #666;
+          background: $fond - #111;
+          border-radius: 5px;
+
+          li {
+            display: inline;
+            padding-right: 10px;
+
+            strong {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    .pagination {
+      text-align: center;
+      padding: 5px;
+    }
+
+    ul {
+      margin-left: 20px;
+
+      li {
+        list-style-type: circle;
+        margin-left: 10px;
+        padding: 2px;
+      }
+    }
+
+    p {
+      padding: 8px;
+      line-height: 120%;
+    }
+
+    img {
+      max-width: 920px - $sidebar;
+      max-height: 500px;
+    }
+
+    strong { font-weight: bold; }
+
+    .left { float: left; }
+
+    .right { float: right; }
+
+    .list-no-style li { list-style-type: none; }
+  }
+}
+
+/* Formulaires */
+
+#contents .content form {
+  .fields {
+    .field, .actions {
+      list-style: none;
+      clear: left;
+      padding-bottom: 10px;
+
+      label {
+        float: left;
+        width: 100px;
+        text-align: right;
+        padding: 5px;
+        padding-right: 10px;
+        font-weight: bold;
+      }
+
+      textarea {
+        width: 320px;
+        height: 100px;
+      }
+    }
+
+    .actions { margin-left: 125px; }
+  }
+
+  input { max-width: 150px; }
+}
+
+/* CSS spécifilist-style-type: none;que à certains controlleurs */
+
+#contents .content {
+  /* Albums photos */
+  .gallery {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  /* Liens en bas de chaque page (liste, modifier, supprimer, afficher, ...) */
+
+  form.button_to, form.button_to div, ul.actions li {
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Liens en bas de chaque page */
+
+  ul.actions {
+    margin-left: 10px;
+
+    li {
+      padding: 3px;
+      list-style-type: none;
+
+      input {
+        background: none;
+        border: none;
+        font-size: 1em;
+        @extend .basic-link;
+      }
+    }
+  }
+
+  ul.list-with-delete {
+    button, .button_to {
+      padding: 0;
+      margin: 0;
+      background: none;
+      border: none;
+
+      img {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+      }
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  ul.comments, ul.documents {
+    li {
+      list-style-type: none;
+
+      textarea#comment_content { height: 50px; }
+
+      img {
+        max-width: 100px;
+        max-height: 100px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  form#new_reminder, form.edit_reminder {
+    width: 210px;
+    height: 210px;
+    background: url('style/reminder_background.jpg') no-repeat;
+
+    textarea#reminder_content {
+      padding: 0;
+      margin: 0;
+      position: relative;
+      left: 15px;
+      top: 20px;
+      width: 150px;
+      height: 150px;
+      line-height: 1em;
+      background: none;
+      border: none;
+      resize: none;
+    }
+
+    .actions {
+      padding: 0;
+      margin: 0;
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}
