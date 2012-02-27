@@ -6,7 +6,6 @@ $sidebar: 0px; // largeur du menu à droite
 @import "reset", "layout", "content";
 
 body {
-  max-width: 400px;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -27,14 +26,5 @@ body {
     h2 a {
       font-size: 1.5em;
     }
-  }
-}
-
-#contents .content {
-  margin: 0;
-  padding: 0;
-
-  textarea, input {
-    max-width: 150px;
   }
 }

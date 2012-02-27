@@ -5,6 +5,7 @@
   <%= title_tag %>
 
   <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <%= stylesheet_link_tag :mobile %>
 
@@ -15,6 +16,20 @@
   <%= link_to :root do %>
     <%= image_tag 'style/banner-mini.jpg' %>
   <% end %>
+
+  <section id="contents">
+    <% unless notice.nil? %>
+    <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% unless alert.nil? %>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <% unless current_page?(root_url) %>
+    <%= yield %>
+    <% end %>
+  </section>
 
   <ul id="sidebar">
     <% if current_page?(root_url) %>
@@ -50,20 +65,6 @@
     </li>
     <% end %>
   </ul>
-
-  <section id="contents">
-    <% unless notice.nil? %>
-    <p class="notice"><%= notice %></p>
-    <% end %>
-
-    <% unless alert.nil? %>
-    <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <% unless current_page?(root_url) %>
-    <%= yield %>
-    <% end %>
-  </section>
 
   <ul id="footer">
     <li><a href="?mobile=false">Version Classique</a></li>
