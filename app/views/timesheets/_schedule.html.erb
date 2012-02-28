@@ -9,12 +9,12 @@
   <tr>
     <th><%= l Time.at(hour.to_i), :format => :hour %></th>
     <% (0..6).each do |day| %>
-      <th>
-        <% selected = courses_when(day, hour, timesheets) %>
-        <% unless selected.empty? %>
-          <%= list_of '', selected, :name %>
-        <% end %>
-      </th>
+    <th>
+      <% selected = courses_when(day, hour, timesheets) %>
+      <% unless selected.empty? %>
+        <%= list_of '', selected, :name %>
+      <% end %>
+    </th>
     <% end %>
   </tr>
   <% end %>

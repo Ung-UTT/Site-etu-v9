@@ -64,7 +64,8 @@ module ApplicationHelper
     if objects.empty?
       return nil
     else
-      res = '<p><strong>' + h(descr) + '</strong> :</p>' unless descr.empty?
+      res = ''
+      res += '<p><strong>' + h(descr) + '</strong> :</p>' unless descr.empty?
       res += '<ul>'
       objects.each do |object|
         content = object.send(attr)

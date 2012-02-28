@@ -56,10 +56,11 @@
         <li><%= link_to t('layout.polls'), polls_path %></li>
         <li><%= link_to t('layout.course'), courses_path %></li>
         <li><%= link_to t('layout.projects'), projects_path %></li>
-        <li><%= link_to t('layout.quotes'), quotes_path %></li>
         <% if can?(:manage, Role) or can?(:manage, Group) %>
           <li><%= link_to t('layout.groups'), groups_path %></li>
           <li><%= link_to t('layout.roles'), roles_path %></li>
+          <li><%= link_to t('layout.quotes'), quotes_path %></li>
+          <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
         <% end %>
       </ul>
     </li>
@@ -68,7 +69,6 @@
 
   <ul id="footer">
     <li><a href="?mobile=false">Version Classique</a></li>
-    <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
     <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
   </ul>
 

@@ -28,3 +28,17 @@ body {
     }
   }
 }
+
+#contents .content {
+  form .fields {
+    padding: 0;
+    margin: 0;
+
+    .field label {
+      float: none;
+      display: block;
+      width: auto;
+      text-align: left;
+    }
+  }
+}

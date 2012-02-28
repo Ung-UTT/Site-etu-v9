@@ -57,7 +57,7 @@
   </ul>
 
   <ul id="sidebar">
-    <li class="box login">
+    <li class="box">
       <% if current_user %>
         <%= render :partial => 'user_sessions/menu' %>
       <% else %>
@@ -65,7 +65,7 @@
       <% end %>
     </li>
 
-    <li class="box contents">
+    <li class="box">
       <h2><%= t('layout.content') %></h2>
       <ul>
         <li><%= link_to t('layout.users'), users_path %></li>
@@ -73,21 +73,28 @@
         <li><%= link_to t('layout.annals'), annals_path %></li>
         <li><%= link_to t('layout.classifieds'), classifieds_path %></li>
         <li><%= link_to t('layout.assos'), assos_path %></li>
-        <li><%= link_to t('layout.carpools'), carpools_path %></li>
-        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
         <li><%= link_to t('layout.events'), events_path %></li>
         <li><%= link_to t('layout.news'), {:controller => 'news'} %></li>
-        <li><%= link_to t('layout.polls'), polls_path %></li>
         <li><%= link_to t('layout.course'), courses_path %></li>
+      </ul>
+    </li>
+
+    <li class="box">
+      <h2>Services</h2>
+
+      <ul>
+        <li><%= link_to t('layout.carpools'), carpools_path %></li>
+        <li><%= link_to t('layout.polls'), polls_path %></li>
         <li><%= link_to t('layout.projects'), projects_path %></li>
-        <li><%= link_to t('layout.quotes'), quotes_path %></li>
       </ul>
     </li>
 
     <% if can?(:manage, Role) or can?(:manage, Group) %>
-    <li class="box contents">
+    <li class="box">
       <h2>Administration</h2>
       <ul>
+        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
+        <li><%= link_to t('layout.quotes'), quotes_path %></li>
         <li><%= link_to t('layout.groups'), groups_path %></li>
         <li><%= link_to t('layout.roles'), roles_path %></li>
       </ul>
@@ -95,7 +102,7 @@
     <% end %>
 
     <li class="box">
-      <h2><%= t('layout.services') %></h2>
+      <h2>Liens externes</h2>
       <ul>
         <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
         <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
@@ -107,15 +114,6 @@
         <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
         <li><%= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique' %></li>
         <li><%= link_to "N'UTT", 'http://etu.utt.fr/journal' %></li>
-      </ul>
-    </li>
-
-    <li class="box">
-      <h2><%= t('layout.assos_clubs') %></h2>
-      <ul>
-      <% @assos.each do |asso| %>
-        <li><%= link_to asso.name, asso %></li>
-      <% end %>
       </ul>
     </li>
   </ul>
