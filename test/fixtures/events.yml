@@ -21,3 +21,37 @@ surprise:
   location: Salle asso
   start_at: 2011-05-09 17:00:00
   end_at: 2011-05-09 23:00:00
+
+boom:
+  name: "*|boom Transformiste|*"
+  description: Fille en garçon et garçon en fille!!!
+  owner: foo
+  location: Ellipse UTT
+  start_at: 2012-03-1 18:00:00
+  end_at: 2012-03-2 03:00:00
+
+shooting:
+  name: Séance de shooting-photos
+  description: Venez vous prendre en photos par des pros
+  owner: bar
+  location: Studio UTT
+  start_at: 2012-03-12 15:00:00
+  end_at: 2012-03-12 21:00:00
+
+match:
+  name: Match Quart de finale UTT-INSA
+  description: Venez soutenir nos Rugbymen
+  owner: foo
+  location: Stade de Troyes
+  start_at: 2012-02-25 14:30:00
+  end_at: 2012-02-25 17:45:00
+
+<% 1.upto(15) do |i| %>
+<%= "event#{i}" %>:
+  name: <%= "#{i*2+3} ème grosse soirée de l'UTT" %>
+  description: <%= "Il y a #{i*12} étudiants qui ont déjà pris leurs préventes." %> 
+  owner: kevin 
+  location: <%= "#{i*10/3} rue Victor Hugo, 10000 TROYES" %>
+  start_at: <%= (20-i).weeks.ago.to_s(:db) %>
+  end_at: <%= (21-i).weeks.ago.to_s(:db) %>
+<% end %>

@@ -46,9 +46,9 @@ ipsum:
 <% 1.upto(15) do |i| %>
 <%= "journal#{i}" %>:
   title: "<%= "Journal n°#{i} : Il y a #{i**3} étudiants à l'UTT !" %>"
-  content: "<%= "L'UTT classée #{16 - i}éme école d'ingénieurs !" %>"
+  content: <%= "L'UTT classée #{16 - i}éme école d'ingénieurs !" %>
   user: kevin
   is_moderated: true
   created_at: <%= (15-i).weeks.ago.to_s(:db) %>
-  event: urgent
+  event: <%= "event#{i}" %>
 <% end %>

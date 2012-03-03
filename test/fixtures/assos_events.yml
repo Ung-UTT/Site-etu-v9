@@ -1,0 +1,60 @@
+BDE_party:
+  asso: BDE
+  event: party
+
+LibrUTT_urgent:
+  asso: LibrUTT
+  event: urgent
+
+BDE_surprise:
+  asso: BDE
+  event: surprise
+
+RugUTT_match:
+  asso: RugUTT
+  event: match
+
+BDE_match:
+  asso: BDE
+  event: match
+
+BDE_boom:
+  asso: BDE
+  event: boom
+
+PhotosUTT_shooting:
+  asso: PhotosUTT
+  event: shooting
+
+PhotosUTT_boom:
+  asso: PhotosUTT
+  event: boom
+
+Asso1UTT_event3:
+  asso: Asso1UTT
+  event: event3
+
+
+<% 1.upto(15) do |i| %>
+<%= "Asso#{i}UTT_event#{16-i}" %>:
+  asso: <%= "Asso#{i}UTT" %>
+  event: <%= "event#{16-i}" %>
+<% end %>
+
+<% 1.upto(8) do |i| %>
+<%= "RugUTT_event#{i}" %>:
+  asso: RugUTT
+  event: <%= "event#{i}" %>
+<% end %>
+
+<% 4.upto(10) do |i| %>
+<%= "PhotosUTT_event#{i}" %>:
+  asso: PhotosUTT
+  event: <%= "event#{i}" %>
+<% end %>
+
+<% 3.upto(12) do |i| %>
+<%= "BDE_event#{i}" %>:
+  asso: BDE
+  event: <%= "event#{i}" %>
+<% end %>
