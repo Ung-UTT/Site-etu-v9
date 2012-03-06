@@ -41,7 +41,7 @@
       <% end %>
     </li>
 
-    <li class="box contents">
+    <li class="box">
       <h2><%= t('layout.content') %></h2>
       <ul>
         <li><%= link_to t('layout.users'), users_path %></li>
@@ -49,23 +49,34 @@
         <li><%= link_to t('layout.annals'), annals_path %></li>
         <li><%= link_to t('layout.classifieds'), classifieds_path %></li>
         <li><%= link_to t('layout.assos'), assos_path %></li>
-        <li><%= link_to t('layout.carpools'), carpools_path %></li>
-        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
         <li><%= link_to t('layout.events'), events_path %></li>
         <li><%= link_to t('layout.news'), {:controller => 'news'} %></li>
-        <li><%= link_to t('layout.polls'), polls_path %></li>
         <li><%= link_to t('layout.course'), courses_path %></li>
+      </ul>
+    </li>
+
+    <li class="box">
+      <h2>Services</h2>
+      <ul>
+        <li><%= link_to t('layout.carpools'), carpools_path %></li>
+        <li><%= link_to t('layout.polls'), polls_path %></li>
         <li><%= link_to t('layout.projects'), projects_path %></li>
-        <% if can?(:manage, Role) or can?(:manage, Group) %>
-          <li><%= link_to t('layout.groups'), groups_path %></li>
-          <li><%= link_to t('layout.roles'), roles_path %></li>
-          <li><%= link_to t('layout.quotes'), quotes_path %></li>
-          <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
-        <% end %>
+      </ul>
+    </li>
+
+    <% if can?(:manage, Role) or can?(:manage, Group) %>
+    <li class="box">
+      <h2>Administration</h2>
+      <ul>
+        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
+        <li><%= link_to t('layout.quotes'), quotes_path %></li>
+        <li><%= link_to t('layout.groups'), groups_path %></li>
+        <li><%= link_to t('layout.roles'), roles_path %></li>
       </ul>
     </li>
     <% end %>
   </ul>
+  <% end %>
 
   <ul id="footer">
     <li><a href="?mobile=false">Version Classique</a></li>

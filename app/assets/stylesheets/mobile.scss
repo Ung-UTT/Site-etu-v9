@@ -16,16 +16,16 @@ body {
   width: 100%;
   font-size: 1.2em;
 
-  .box {
-    li {
-      line-height: 1.3em;
-    }
-  }
-
   .login {
     h2 a {
       font-size: 1.5em;
     }
+  }
+
+  a {
+    display: block;
+    padding: 5px;
+    font-size: 1.2em;
   }
 }
 
@@ -34,11 +34,17 @@ body {
     padding: 0;
     margin: 0;
 
-    .field label {
-      float: none;
-      display: block;
-      width: auto;
-      text-align: left;
+    .field {
+      input, textarea {
+        max-width: 100%;
+      }
+
+      label {
+        float: none;
+        display: block;
+        width: auto;
+        text-align: left;
+      }
     }
   }
 }
