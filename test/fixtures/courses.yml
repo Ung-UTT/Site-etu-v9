@@ -26,8 +26,8 @@ RE04:
   name: RE04
   description: Pour les nostalgiques de X25 et les technologies des années 50.
 
-#<% 1.upto(9) do |i| %>
-#<%= "XX0#{i}" %>:
- # name: $LABEL
-  #description: "<%= "C'est hyper chaud ! XX0#{i} (XX#{i+1}) est encore mieux)" %>"
-#<% end %>
+<% 1.upto(9) do |i| %>
+<%= "XX0#{i}" %>:
+  name: $LABEL
+  description: "<%= "C'est hyper chaud ! XX0#{i} (XX#{i+1}) est encore mieux)" %>"
+<% end %>
