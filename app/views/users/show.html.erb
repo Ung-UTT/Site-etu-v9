@@ -24,7 +24,9 @@
   <%= list_of t('timesheets.list'), @user.timesheets, :range %>
 
   <% unless @user.timesheets.empty? %>
+  <div id="edt">
     <%= render 'timesheets/schedule', :timesheets => @user.timesheets %>
+  </div>
   <% end %>
 
   <h2>Infos de débug :</h2>

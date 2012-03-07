@@ -1,5 +1,8 @@
 <h2><%= link_to current_user.login, current_user, :class => 'connect' %></h2>
 <ul>
+  <% unless current_user.timesheets.empty? %>
+    <li><%= link_to 'Votre emploi du temps', url_for(current_user) + '#edt' %></li>
+  <% end %>
   <li><%= link_to t('reminders.list'), reminders_path %></li>
   <li><%= link_to t('user_sessions.logout'), :logout %></li>
 </ul>
