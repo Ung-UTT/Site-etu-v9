@@ -33,4 +33,6 @@ SiteEtu::Application.routes.draw do
   end
 
   root :to => 'home#index'
+
+  match '*path' => 'application#render_record_not_found'
 end

@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_record_not_found
 
+  def render_record_not_found
+    render :template => "shared/404", :status => 404
+  end
+
   private
     def set_locale
       if params[:locale]
@@ -46,16 +50,8 @@ class ApplicationController < ActionController::Base
 
     # Pour gérer les 404 (objet non trouvé ou méthode non trouvée)
 
-    def render_record_not_found
-      render :template => "shared/404", :status => 404
-    end
-
     def method_missing(*args)
-      render_missing_page
-    end
-
-    def render_missing_page
-      render :template => "shared/404", :status => 404
+      render_record_not_found
     end
 
     # Méthodes publiques
