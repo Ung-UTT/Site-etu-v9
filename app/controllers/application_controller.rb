@@ -15,9 +15,12 @@ class ApplicationController < ActionController::Base
 
   def render_error(exception)
     logger.error '[500] ' + request.fullpath + ' | ' + exception.inspect
-    if Rails.env.production?
-      render :template => "shared/500", :status => 500
-    end
+
+    backtrace = exception.backtrace.first(5).map { |e| '<li>' + e + '</li>' }
+    backtrace = '<ul>' + backtrace.join("\n") + '</ul>'
+
+    render :template => "shared/500", :status => 500,
+           :locals => {:exception => exception, :backtrace => backtrace}
   end
 
   def render_not_found

@@ -6,3 +6,8 @@
   <p><%= image_tag '500.png' %></p>
   <p><a href="http://xkcd.com/292/">Dessin par XKCD.</a></p>
 </section>
+
+<section class="content">
+  <h1 class="title">Explication : <%= exception.to_s %></h1>
+  <%= backtrace.html_safe %>
+</section>
