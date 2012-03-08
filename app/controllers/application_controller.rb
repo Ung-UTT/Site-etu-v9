@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  around_filter :catch_exceptions
   before_filter :set_layout_vars, :set_locale
   helper_method :'mobile?', :current_user_session, :current_user
   layout :which_layout # Chosit le layout normal ou mobile
@@ -12,13 +13,29 @@ class ApplicationController < ActionController::Base
       " (#{exception.subject.to_s}##{exception.action.to_s})"
   end
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_record_not_found
+  def render_error(exception)
+    logger.error '[500] ' + request.fullpath + ' | ' + exception.inspect
+    if Rails.env.production?
+      render :template => "shared/500", :status => 500
+    end
+  end
 
-  def render_record_not_found
+  def render_not_found
+    logger.error '[404] ' + request.fullpath
     render :template => "shared/404", :status => 404
   end
 
   private
+    def catch_exceptions
+      yield
+      rescue => exception
+      if exception.is_a?(ActiveRecord::RecordNotFound)
+        render_not_found
+      else
+        render_error(exception)
+      end
+    end
+
     def set_locale
       if params[:locale]
         cookies[:locale] = params[:locale]
@@ -51,7 +68,7 @@ class ApplicationController < ActionController::Base
     # Pour gérer les 404 (objet non trouvé ou méthode non trouvée)
 
     def method_missing(*args)
-      render_record_not_found
+      render_not_found
     end
 
     # Méthodes publiques
