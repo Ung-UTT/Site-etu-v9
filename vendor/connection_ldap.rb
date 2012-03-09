@@ -8,7 +8,7 @@ require 'net/ldap'
 require 'date'
 
 # Accès au ldap du cri periodiquement afin de mettre à jour le ldap site étu
-# ATTENTION :
+# ATTENTION : Assurez vous de bien comprendre TOUT ce que fait le script avant de le modifier. 
 # Avant de changer quoi que ce soit ici, assurez vous de :
 # * avoir bien compris le fonctionnement du protocole LDAP
 # * avoir analysé la structure des schémas du LDAP de l'UTT et de celui de l'UNG
