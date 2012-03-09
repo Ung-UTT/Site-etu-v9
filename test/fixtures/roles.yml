@@ -27,3 +27,12 @@ BDE_member:
   asso: BDE
   lft: 9
   rgt: 10
+
+<% 1.upto(6) do |i| %>
+<%= "Asso#{i}UTT_member" %>:
+  name: member
+  asso: <%= "Asso#{i}UTT" %>
+  lft: <%= 11 + i %>
+  rgt: <%= 12 + i %>
+<% end %>
+

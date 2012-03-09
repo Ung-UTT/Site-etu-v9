@@ -29,22 +29,23 @@ RugUTT:
   description: |
     Parce que nous sommes fans du Rugby
   owner: bar
-  lft: 2
-  rgt: 4
+  lft: 7
+  rgt: 10
 
 PhotosUTT:
   name: PhotosUTT
   description: |
-   Oh, passionés de photos??? tu es le bienvenue
+   Oh, passionés de photos ??? tu es le bienvenue
   owner: foo
-  lft: 2
-  rgt: 5
+  parent: RugUTT
+  lft: 8
+  rgt: 9
 
 <% 1.upto(6) do |i| %>
-<%= "Asso#{i}UTT"%>:
+<%= "Asso#{i}UTT" %>:
   name: "<%= "Asso #{i}UTT" %>"
   description: "<%= "Nous cherchons #{i*20+i} membres!" %>"
   owner: bar
-  lft: <%= i %>
-  rgt: <%= i+1 %>
+  lft: <%= 11+i %>
+  rgt: <%= 12+i %>
 <%end %>
