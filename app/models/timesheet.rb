@@ -1,5 +1,3 @@
-#TODO: Revoir le stockage des horaires dans la BDD pour quelque chose
-#      de plus simple
 class Timesheet < ActiveRecord::Base
   validates_presence_of :day, :from, :to, :course
 

@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-#TODO: Tester les permissions basiques pour chaque cas (Anonyme, inscrit, UTTien, moderator, admin)
-
 describe Ability do
   describe 'Anonymous user' do
     before(:all) do

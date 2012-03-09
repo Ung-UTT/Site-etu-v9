@@ -2,7 +2,7 @@
   <%= title t('quotes.list') %>
 
   <% @quotes.each do |quote| %>
-    <blockquote><%= link_to quote.content, quote %></blockquote>
+    <blockquote><%= link_to quote.content, quote %> (<%= quote.tag %>)</blockquote>
   <% end %>
 
   <% if can? :create, Quote %>

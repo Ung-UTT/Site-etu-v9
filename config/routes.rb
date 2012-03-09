@@ -8,7 +8,7 @@ SiteEtu::Application.routes.draw do
   match 'users/password_reset' => 'Users#password_reset', :as => 'password_reset' # Oubli de mot de passe
   match 'about' => 'home#about' # Page "À propos"
 
-  # TODO: Réorganiser joliment les join/disjoin
+  # Les join/disjoin (à mettre dans des ressources et écrire les controlleurs)
   match 'events/:id/join' => 'events#join', :as => 'join_event'
   match 'events/:id/disjoin' => 'events#disjoin', :as => 'disjoin_event'
 

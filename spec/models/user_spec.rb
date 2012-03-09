@@ -67,7 +67,6 @@ describe User do
       @foo.courses.should == []
     end
 
-    # TODO: Ajouter des roles et des assos pour vraiment tester
     it 'should correctly respond for abilities' do
       @foo.is_member_of?(:fake_asso).should be_false
       @foo.is?(:fake_role).should be_false
@@ -77,8 +76,6 @@ describe User do
       @foo.save
       @foo.is_student?.should be_true
     end
-
-    # TODO: Tester ldap_attribute(s) si un serveur LDAP est présent
   end
 
   def basic_hash_user
