@@ -2,22 +2,22 @@ medianLE00:
   name: "Médian : What's your name?"
   description: Basic questions
   course: LE00
-  date: 2011-02-08 15:00:00
+  date: 2011-02-08
 
 finalLE01:
   name: "Final : Where is Brian?"
   description: "And where is the Brian's sister?"
   course: LE01
-  date: 2011-06-08 21:52:24
+  date: 2011-06-08
 
 finalLO14:
   name: "Final : Bash HardCore"
   description: "Final très très difficile"
   course: LO14
-  date: 2012-03-03 19:18:45
+  date: 2012-03-03
 
 finalRE04:
   name: "Final : Télécoms"
   description: Transformée de Fourier de ouf
   course: RE04
-  date: 2012-02-24 12:45:32
+  date: 2012-02-24

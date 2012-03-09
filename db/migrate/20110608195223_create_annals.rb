@@ -4,7 +4,7 @@ class CreateAnnals < ActiveRecord::Migration
       t.string     :name
       t.text       :description
       t.references :course
-      t.datetime   :date
+      t.date       :date
 
       t.timestamps
     end

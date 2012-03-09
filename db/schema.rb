@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.string   "name"
     t.text     "description"
     t.integer  "course_id"
-    t.datetime "date"
+    t.date     "date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
