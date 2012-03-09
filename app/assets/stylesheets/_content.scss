@@ -37,7 +37,7 @@
     padding-bottom: 5px;
     border-radius: 5px;
     word-wrap: break-word;
-    overflow: hidden;
+    overflow: visible;
 
     a { @extend .basic-link; }
 
@@ -158,34 +158,6 @@
   }
 }
 
-/* Formulaires */
-
-#contents .content form {
-  .fields {
-    .field, .actions {
-      list-style: none;
-      clear: left;
-      padding-bottom: 10px;
-
-      label {
-        float: left;
-        width: 100px;
-        text-align: right;
-        padding: 5px;
-        padding-right: 10px;
-        font-weight: bold;
-      }
-
-      textarea {
-        width: 320px;
-        height: 100px;
-      }
-    }
-
-    .actions { margin-left: 125px; }
-  }
-}
-
 /* CSS spécifilist-style-type: none;que à certains controlleurs */
 
 #contents .content {
@@ -287,5 +259,54 @@
       margin-top: 20px;
       text-align: center;
     }
+  }
+}
+
+/* Formulaires */
+
+#contents .content form {
+  .fields {
+    .field, .actions {
+      list-style: none;
+      clear: left;
+      padding-bottom: 10px;
+
+      label {
+        float: left;
+        width: 100px;
+        text-align: right;
+        padding: 5px;
+        padding-right: 10px;
+        font-weight: bold;
+      }
+
+      textarea {
+        width: 320px;
+        height: 100px;
+      }
+
+      .chzn-container {
+        ul, li {
+          list-style: none;
+          margin: 2px;
+          padding: 2px;
+        }
+      }
+
+      .chzn-container-multi {
+        min-width: 300px;
+
+        ul {
+          margin: 0;
+          padding: 0;
+
+          .search-choice {
+            padding-right: 20px;
+          }
+        }
+      }
+    }
+
+    .actions { text-align: center; }
   }
 }

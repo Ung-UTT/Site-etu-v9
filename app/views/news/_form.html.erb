@@ -12,7 +12,7 @@
     </li>
     <li class="field">
       <%= f.label :event_id, t('newss.event') %>
-      <%= f.select :event_id, events_select(@news) %>
+      <%= f.select :event_id, events_select(@news), {}, {:class => 'chosen'} %>
     </li>
 
     <% if can? :moderate, News %>
