@@ -8,7 +8,7 @@
     </li>
     <li class="field">
       <%= f.label :asso_id, t('roles.asso') %>
-      <%= f.select :asso_id, parent_select_options(Asso) %>
+      <%= f.select :asso_id, parent_select_options(Asso), {}, :class => 'chosen' %>
     </li>
     <li class="actions">
       <%= f.submit t('common.submit') %>

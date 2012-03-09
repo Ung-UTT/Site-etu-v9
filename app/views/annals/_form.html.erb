@@ -12,11 +12,11 @@
     </li>
     <li class="field">
       <%= f.label :course_id, t('annals.course') %>
-      <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] } %>
+      <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] }, {}, :class => 'chosen' %>
     </li>
     <li class="field">
       <%= f.label :date, t('annals.date') %>
-      <%= f.datetime_select :date %>
+      <%= f.date_select :date %>
     </li>
 
     <%= f.fields_for :documents do |nested_f| %>

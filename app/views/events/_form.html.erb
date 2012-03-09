@@ -23,11 +23,8 @@
       <%= f.datetime_select :end_at %>
     </li>
     <li class="field">
-      <%= label_tag 'assos', t('events.assos') %>
-      <% Asso.all.each do |asso| %>
-        <%= check_box_tag 'event[asso_ids][]', asso.id, @event.assos.include?(asso) %>
-        <%= asso.name %>
-      <% end %>
+      <%= label_tag :assos, t('events.assos') %>
+      <%= select_tag :assos, assos_select(@event), :multiple => true, :class => 'chosen' %>
     </li>
     <li class="actions">
       <%= f.submit t('common.submit') %>

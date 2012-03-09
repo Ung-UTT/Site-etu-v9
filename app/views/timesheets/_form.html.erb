@@ -24,14 +24,11 @@
     </li>
     <li class="field">
       <%= f.label 'course_id', t('timesheets.course') %>
-      <%= f.select 'course_id', course_select(@timesheet) %>
+      <%= f.select 'course_id', course_select(@timesheet), {}, :class => 'chosen' %>
     </li>
     <li class="field">
-      <%= label_tag 'users', t('timesheets.users') %>
-      <% User.all.each do |user| %>
-        <%= check_box_tag 'timesheet[user_ids][]', user.id, @timesheet.users.include?(user) %>
-        <%= user.login %>
-      <% end %>
+      <%= label_tag :users, t('timesheets.users') %>
+      <%= select_tag :users, users_select(@timesheet), :multiple => true, :class => 'chosen' %>
     </li>
     <li class="actions">
       <%= f.submit t('common.submit') %>

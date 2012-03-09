@@ -48,11 +48,7 @@
         <%= link_to_user user %>
       <% end %>
       <% if can? :update, role %>
-        <%= form_for(role, :url => join_role_path(role)) do |f| %>
-          <%= f.error_messages %>
-          <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
-          <%= f.submit t('common.add') %>
-        <% end %>
+        (<%= link_to t('common.edit'), edit_role_path(role) %>)
       <% end %>
     </li>
   <% end %>

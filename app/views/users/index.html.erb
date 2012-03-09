@@ -2,8 +2,10 @@
   <%= title t('users.list') %>
 
   <%= form_tag(users_path, :method => :get) do %>
-    <%= text_field_tag :q %>
-    <%= submit_tag t('common.search') %>
+    <ul class="fields">
+      <li class="field"><%= text_field_tag :q %></li>
+      <li class="field"><%= submit_tag t('common.search') %></li>
+    </ul>
   <% end %>
 
   <% if @users.empty? %>

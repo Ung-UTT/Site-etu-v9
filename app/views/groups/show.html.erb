@@ -18,8 +18,14 @@
 
   <% if can? :update, @group %>
     <%= form_for(@group, :url => join_group_path(@group)) do |f| %>
-      <%= f.select :users, User.all.map { |u| [u.login, u.id] } %>
-      <%= f.submit t('common.add') %>
+      <ul class="fields">
+        <li class="field">
+          <%= select_tag :users, users_select(@group), :class => 'chosen' %>
+        </li>
+        <li class="field">
+          <%= f.submit t('common.add') %>
+        </li>
+      </ul>
     <% end %>
   <% end %>
 

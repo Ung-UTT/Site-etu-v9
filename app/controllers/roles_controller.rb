@@ -26,7 +26,7 @@ class RolesController < ApplicationController
 
   def join
     @role = Role.find(params[:id])
-    @user = User.find(params[:role][:users])
+    @user = User.find(params[:users])
 
     if @role.users.include?(@user)
       redirect_to @role, :notice => t('c.roles.already_join')

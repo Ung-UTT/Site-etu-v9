@@ -14,7 +14,7 @@
     <% unless @project.new_record? %>
     <li class="field">
       <%= f.label :owner_id, t('projects.owner') %>
-      <%= f.select :owner_id, User.all.map { |u| [u.login, u.id] } %>
+      <%= f.select :owner_id, User.all.map { |u| [u.login, u.id] }, {}, :class => 'chosen' %>
     </li>
     <% end %>
 

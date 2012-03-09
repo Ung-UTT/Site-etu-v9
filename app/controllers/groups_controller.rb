@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1/join/2082
   def join
     @group = Group.find(params[:id])
-    @user = User.find(params[:group][:users])
+    @user = User.find(params[:users])
 
     if @group.users.include?(@user)
       redirect_to @group, :notice => t('c.groups.already_join')

@@ -49,8 +49,8 @@ class TimesheetsController < ApplicationController
   # POST /timesheets
   # POST /timesheets.xml
   def create
-    params[:timesheet][:user_ids] ||= []
     @timesheet = Timesheet.new(params[:timesheet])
+    @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     respond_to do |format|
       if @timesheet.save
@@ -66,8 +66,8 @@ class TimesheetsController < ApplicationController
   # PUT /timesheets/1
   # PUT /timesheets/1.xml
   def update
-    params[:timesheet][:user_ids] ||= []
     @timesheet = Timesheet.find(params[:id])
+    @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     respond_to do |format|
       if @timesheet.update_attributes(params[:timesheet])
