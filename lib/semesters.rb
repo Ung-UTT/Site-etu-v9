@@ -6,9 +6,9 @@ SEMESTERS = {
     # end_at : date du dernier jour
     # weeks : semaines : tableau de chaînes, chacune représentant une semaine
       # Chaque jour peut se voir attribué une lettre :
-      # R : semaine de rentrée
-      # A : semaine A
-      # B : semaine B
+      # R : jour de rentrée
+      # A : jour A
+      # B : jour B
       # P : pas cours (vacances, finaux, jours fériés, ...)
       # S : spécial (jour déplacé, ... ???)
 

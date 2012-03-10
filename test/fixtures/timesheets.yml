@@ -1,49 +1,46 @@
+# Pour représenter la date et l'heure, on utilise :
+# ANNEE-MOIS-JOURTHEURE:MINUTES:SECONDES+01:00
+# 2012-02-20T08:00:00+01:00
+
 re04_cm:
-  day: 0
-  from: 08:00:00
-  to: 10:00:00
+  start_at: 2012-02-20T08:00:00+01:00
+  end_at: 2012-02-20T10:00:00+01:00
   room: A001
   course: RE04
 
 re04_td:
-  day: 2
-  from: 14:00:00
-  to: 16:00:00
+  start_at: 2012-02-20T09:00:00+01:00
+  end_at: 2012-02-20T12:00:00+01:00
   room: M204
   course: RE04
 
 lo14_td:
-  day: 1
-  from: 10:00:00
-  to: 12:00:00
+  start_at: 2012-02-21T14:00:00+01:00
+  end_at: 2012-02-21T20:30:00+01:00
   room: P204
   course: LO14
 
 lo14_cm:
-  day: 2
-  from: 08:00:00
-  to: 10:00:00
+  start_at: 2012-02-21T13:00:00+01:00
+  end_at: 2012-02-21T17:15:00+01:00
   room: A002
   course: LO14
 
 lo12_td:
-  day: 3
-  from: 14:00:00
-  to: 16:00:00
+  start_at: 2012-02-23T08:00:00+01:00
+  end_at: 2012-02-23T12:00:00+01:00
   room: M204
   course: LO12
 
 lo12_cm:
-  day: 4
-  from: 08:00:00
-  to: 11:00:00
+  start_at: 2012-02-23T08:00:00+01:00
+  end_at: 2012-02-23T08:15:00+01:00
   room: S204
   course: LO12
 
 scd:
-  day: 4
-  from: 8:00:00
-  to: 12:00:00
+  start_at: 2012-02-24T18:00:00+01:00
+  end_at: 2012-02-24T19:00:00+01:00
   room: SCD
   course: LE00
 

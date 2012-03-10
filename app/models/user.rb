@@ -121,4 +121,15 @@ class User < ActiveRecord::Base
   def ldap_attribute(attr)
     ldap_attribute_for_username(login, attr)
   end
+
+  # Emploi du temps
+  def schedule
+    # Horaires pour chaque jour (lundi, mardi, ..., samedi)
+    res = [[],[],[],[],[],[]]
+    timesheets.each do |t|
+      # .wday est l'index du jour de la semaine (0 pour dimanche, ...)
+      res[t.start_at.wday-1].push(t) # On ajoute l'horaire
+    end
+    res
+  end
 end
