@@ -47,3 +47,12 @@ scd:
   room: SCD
   course: LE00
 
+<% 1.upto(9) do |i| %>
+<%= "XX0#{i}_td" %>:
+  day: <%= "#{i%7}" %>
+  from: <%= "#{i+5}:30:00" %>
+  to: <%= "#{i+7}:30:00" %>
+  room: <%= "S10#{i}" %>
+  course: <%= "XX0#{i}" %> 
+<% end %>
+

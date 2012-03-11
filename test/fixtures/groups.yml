@@ -3,3 +3,9 @@ p101:
 
 dormir:
   name: Rejoins ce groupe si toi aussi tu en as marre que le prof te reveille en amphi
+
+<% 1.upto(7) do |i| %>
+<%= "Group#{i}" %>:
+  name: <%= "Rejoins-nous si tu paies plus de #{i*150}€ pour ton loyer" %>
+<% end %>
+

@@ -1,12 +1,12 @@
 FritUTT:
-  name: FritUTT
+  name: Asso amateurs de frites
   description: Mangeur de frites ? Venez faire des frites-party avec nous :)
   owner: kevin
   lft: 1
   rgt: 4
 
 LibrUTT:
-  name: LibrUTT
+  name: Asso de Libristes de l'UTT
   description: |
     Oh mais que vois-je là ? Windows sur votre ordi, venez vite corriger
     cette erreur !
@@ -16,9 +16,9 @@ LibrUTT:
   rgt: 3
 
 BDE:
-  name: BDE
+  name: Bureau des Etudiants
   description: |
-    Le Bureau Des Étudiants (BDÉ), très important pour nous (donnez-nous de l'argent :D)
+    Le Bureau Des Étudiants (BDE), très important pour nous (donnez-nous de l'argent :D)
   owner: joe
   parent: FritUTT
   lft: 5
@@ -49,3 +49,10 @@ PhotosUTT:
   lft: <%= 11+i %>
   rgt: <%= 12+i %>
 <%end %>
+
+Pulsation:
+  name: Groupe de musique de l'UTT
+  description: Rendez-vous de tous les amateurs de musique, vous êtes les bienvenus!
+  owner: kevin
+  lft: 19
+  rgt: 20

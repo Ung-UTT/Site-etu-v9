@@ -34,7 +34,6 @@ Asso1UTT_event3:
   asso: Asso1UTT
   event: event3
 
-
 <% 1.upto(15) do |i| %>
 <%= "Asso#{i}UTT_event#{16-i}" %>:
   asso: <%= "Asso#{i}UTT" %>
@@ -57,4 +56,4 @@ Asso1UTT_event3:
 <%= "BDE_event#{i}" %>:
   asso: BDE
   event: <%= "event#{i}" %>
-<% end %>
+<% end %> 

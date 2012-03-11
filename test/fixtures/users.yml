@@ -1,3 +1,4 @@
+
 <% ['joe', 'kevin', 'foo', 'bar'].each do |user| %>
 <% u = User.simple_create(user, 'changez-moi') %>
 
@@ -11,3 +12,5 @@
   auth_token: <%= u.auth_token %>
 <% u.destroy %>
 <% end %>
+
+

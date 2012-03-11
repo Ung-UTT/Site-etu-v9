@@ -6,7 +6,7 @@ medianLE00:
 
 finalLE01:
   name: "Final : Where is Brian?"
-  description: "And where is the Brian's sister?"
+  description: "And where is Brian's sister?"
   course: LE01
   date: 2011-06-08
 
@@ -21,3 +21,11 @@ finalRE04:
   description: Transformée de Fourier de ouf
   course: RE04
   date: 2012-02-24
+
+<% 1.upto(9) do |i| %>
+<%= "medianXX0#{i}" %>:
+  name: "<%= "Median : Ne portera que sur le chapitre #{i} du cours" %>"
+  description: "<%= "Ce median sera plus facile que celui de XX0#{10-i}" %>"
+  course: "<%= "XX0#{i}" %>"
+  date: 2012-03-23
+<% end %>

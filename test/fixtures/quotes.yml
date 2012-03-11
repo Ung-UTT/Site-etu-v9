@@ -1,11 +1,11 @@
 joke:
   content: "Est-ce qu'en Chine, plus il y a de fous, moins on riz ?"
-  user : joe
+  user: joe
   tag: "jokes"
 
 cumul:
   content: "Savais-tu que tu pouvais faire un cumul des emplois du temps de tes câmârâdes ?"
-  user : kevin
+  user: kevin
   tag: "tooltips"
 
 shadok:

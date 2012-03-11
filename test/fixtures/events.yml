@@ -55,3 +55,11 @@ match:
   start_at: <%= (20-i).weeks.ago.to_s(:db) %>
   end_at: <%= (21-i).weeks.ago.to_s(:db) %>
 <% end %>
+  
+concert:
+  name: concert de M. Biloulou
+  description: Derniere UTT de l'annee
+  owner: kevin
+  location: amphi M500
+  start_at: 2011-12-15 17:00:00
+  end_at: 2011-12-15 23:00:00

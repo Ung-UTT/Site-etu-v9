@@ -1,0 +1,27 @@
+
+<% ['joe', 'kevin', 'foo', 'bar'].each do |user| %>
+<% 1.upto(2) do |i| %>
+<%= "#{user}_group#{i}" %>:
+  group: <%= "Group#{i}" %>
+  user: <%= "#{user}" %>
+<% end %>
+<% end %>
+
+
+<% ['foo', 'bar'].each do |user| %>
+<% 3.upto(5) do |i| %>
+<%= "#{user}_group#{i}" %>:
+  group: <%= "Group#{i}" %>
+  user: <%= "#{user}" %>
+<% end %>
+<% end %>
+
+
+<% ['joe', 'kevin', 'foo'].each do |user| %>
+<% 6.upto(7) do |i| %>
+<%= "#{user}_group#{i}" %>:
+  group: <%= "Group#{i}" %>
+  user: <%= "#{user}" %>
+<% end %>
+<% end %>
+

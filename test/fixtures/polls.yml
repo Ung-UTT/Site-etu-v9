@@ -6,3 +6,9 @@ raclette:
 chevre:
   name: "Avez-vous déjà mangé du fromage de chévre avec son coulis de fruits rouges ?"
   user: joe
+
+siteEtuV9:
+  name: "Etes vous satisfait du design du nouveau site etu?"
+  user: foo
+  
+

@@ -20,7 +20,7 @@ LO12:
 
 LO14:
   name: LO14
-  description: Moi, j'suis marseillais et j'aime bien faire du Bash hardcore (ou pas) !
+  description: Moi, j'suis marseillais et j'aime bien faire du Bash hardcore (ou pas).
 
 RE04:
   name: RE04
@@ -28,6 +28,6 @@ RE04:
 
 <% 1.upto(9) do |i| %>
 <%= "XX0#{i}" %>:
-  name: $LABEL
-  description: "<%= "C'est hyper chaud ! XX0#{i} (XX#{i+1}) est encore mieux)" %>"
+  name: <%= "XX0#{i}" %>
+  description: <%= "C'est hyper chaud ! XX0#{i} (XX#{i+1}) est encore mieux)" %>
 <% end %>
