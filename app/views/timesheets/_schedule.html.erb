@@ -1,21 +1,9 @@
-<table>
-  <tr>
-    <th></th>
-    <% (0..6).each do |day| %>
-      <th><%= day_names[day] %></th>
-    <% end %>
-  </tr>
-  <% (7.hours..21.hours).step(30.minutes) do |hour| %>
-  <tr>
-    <th><%= l Time.at(hour.to_i), :format => :hour %></th>
-    <% (0..6).each do |day| %>
-    <th>
-      <% selected = courses_when(day, hour, timesheets) %>
-      <% unless selected.empty? %>
-        <%= list_of '', selected, :name %>
+<table class="schedule">
+  <% complete_schedule(@schedule).each do |row| %>
+    <tr>
+      <% row.each do |col| %>
+        <%=raw col %>
       <% end %>
-    </th>
-    <% end %>
-  </tr>
+    </tr>
   <% end %>
 </table>

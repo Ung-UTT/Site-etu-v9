@@ -2,11 +2,6 @@
   <%= title(t('timesheet') + ' : ' + @timesheet.range) %>
 
   <p>
-    <strong><%= t('timesheets.room') %></strong> :
-    <%= @timesheet.room %>
-  </p>
-
-  <p>
     <strong><%= t('timesheets.course') %></strong> :
     <%= link_to @timesheet.course.name, @timesheet.course %>
   </p>

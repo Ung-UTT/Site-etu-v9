@@ -3,20 +3,16 @@
 
   <ul class="fields">
     <li class="field">
-      <%= f.label :day, t('timesheets.day') %>
-      <%= f.select :day, day_select(@timesheet) %>
+      <%= f.label :start_at, t('timesheets.from') %>
+      <%= f.datetime_select :start_at %>
     </li>
     <li class="field">
-      <%= f.label :from, t('timesheets.from') %>
-      <%= f.time_select :from, {:minute_step => 5} %>
-    </li>
-    <li class="field">
-      <%= f.label :to, t('timesheets.to') %>
-      <%= f.time_select :to, {:minute_step => 5} %>
+      <%= f.label :end_at, t('timesheets.to') %>
+      <%= f.datetime_select :end_at %>
     </li>
     <li class="field">
       <%= f.label :week, t('timesheets.week') %>
-      <%= f.select :week, week_select(@timesheet) %>
+      <%= f.select :week, options_for_select([nil, 'A', 'B'], @timesheet.week) %>
     </li>
     <li class="field">
       <%= f.label :room, t('timesheets.room') %>

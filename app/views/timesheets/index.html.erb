@@ -14,7 +14,6 @@
   <% @timesheets.each do |timesheet| %>
     <li>
       <%= link_to timesheet.range, timesheet %>
-      (<%= link_to timesheet.course.name, timesheet.course %>)
     </li>
   <% end %>
   </ul>

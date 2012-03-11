@@ -8,6 +8,18 @@ class Timesheet < ActiveRecord::Base
   has_many :timesheets_user, :dependent => :destroy
   has_many :users, :through => :timesheets_user, :uniq => true
 
+  # Mixe les timesheets pour en faire un emploi du temps
+  def self.make_schedule(array_of_timesheets)
+    timesheets = array_of_timesheets.flatten.uniq
+    # Horaires pour chaque jour (lundi, mardi, ..., samedi)
+    res = [[],[],[],[],[],[]]
+    timesheets.each do |t|
+      # .wday est l'index du jour de la semaine (0 pour dimanche, ...)
+      res[t.start_at.wday-1].push(t) # On ajoute l'horaire
+    end
+    res
+  end
+
   # Temps défini par cette horaire
   def range
     t_room = room ? " en #{room}" : ''

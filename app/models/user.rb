@@ -124,12 +124,6 @@ class User < ActiveRecord::Base
 
   # Emploi du temps
   def schedule
-    # Horaires pour chaque jour (lundi, mardi, ..., samedi)
-    res = [[],[],[],[],[],[]]
-    timesheets.each do |t|
-      # .wday est l'index du jour de la semaine (0 pour dimanche, ...)
-      res[t.start_at.wday-1].push(t) # On ajoute l'horaire
-    end
-    res
+    Timesheet.make_schedule([timesheets])
   end
 end

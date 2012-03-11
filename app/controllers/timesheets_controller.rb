@@ -11,6 +11,8 @@ class TimesheetsController < ApplicationController
       @timesheets = User.find(params[:users]).map(&:timesheets).flatten.uniq
     end
 
+    @schedule = Timesheet.make_schedule(@timesheets)
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @timesheets }
@@ -32,7 +34,6 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/new.xml
   def new
     @timesheet = Timesheet.new
-    timenize
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +44,6 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/1/edit
   def edit
     @timesheet = Timesheet.find(params[:id])
-    timenize
   end
 
   # POST /timesheets
@@ -91,10 +91,4 @@ class TimesheetsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
-  private
-    def timenize
-      @timesheet.from = Time.at(@timesheet.from)
-      @timesheet.to = Time.at(@timesheet.to)
-    end
 end

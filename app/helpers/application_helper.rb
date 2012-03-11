@@ -1,10 +1,6 @@
 # encoding: UTF-8
 
 module ApplicationHelper
-  def day_names
-    I18n.t('date.day_names')
-  end
-
   # Title
 
   def title(page_title, options={})
@@ -44,14 +40,6 @@ module ApplicationHelper
   def users_select(object = nil)
     default = object.nil? ? nil : object.users.map(&:id)
     options_for_select(User.all.map { |a| [a.login, a.id] }, default)
-  end
-
-  def week_select(object)
-    options_for_select([nil, 'A', 'B'], object.week)
-  end
-
-  def day_select(object)
-    options_for_select(day_names.map {|d| [d, day_names.index(d)]}, day_names[object.day])
   end
 
   # Links to
@@ -103,6 +91,61 @@ module ApplicationHelper
     end
   end
 
+  # Variables pour l'emploi du temps
+
+  def array_of_days
+    day = DateTime.parse 'Monday'
+    res = [day]
+    5.times do
+      day += 1.day
+      res.push(day)
+    end
+    return res
+  end
+
+  def array_of_hours
+    hours = []
+    (8.hours..22.hours).step(30.minutes) do |h|
+      hours.push(Time.at(h.to_i))
+    end
+    return hours
+  end
+
+  # Tableau des horaires seulement
+  def mix_timesheets(schedule)
+    days = array_of_days
+    hours = array_of_hours
+    # Autant de colonnes que de jours
+    # Autant de lignes qu'il y a de creneaux horaires
+    table = Array.new(hours.size, Array.new(days.size, '<td>test</td>'))
+
+    # ... ajoute les bons horaires...
+
+    return table
+  end
+
+  # Emploi du temps avec les jours, les heures et les horaires
+  def complete_schedule(schedule)
+    schedule = mix_timesheets(schedule)
+
+    # Ajoute une ligne avec les jours
+    days = array_of_days.map do |day|
+      '<td class="sch_day">' + l(day, :format => :day) + '</td>'
+    end
+    schedule = [days].concat(schedule)
+
+    # Ajoute la colonne avec les heures
+    hours = array_of_hours.map {|hour| l(hour, :format => :hour)}
+    hours = [''].concat(hours).map do |hour|
+      '<td class="sch_hour">' + hour + '</td>'
+    end
+    schedule.size.times do |i|
+      schedule[i] = [hours[i]].concat(schedule[i]) # Ajoute l'heure sur la première colonne
+    end
+
+    return schedule
+  end
+
   # Others
 
   def courses_when(day, hour, timesheets)
@@ -122,6 +165,10 @@ module ApplicationHelper
   end
 
   def md(text)
-    text.nil? ? nil : RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe
+    if text.nil?
+      return nil
+    else
+      return RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe
+    end
   end
 end
