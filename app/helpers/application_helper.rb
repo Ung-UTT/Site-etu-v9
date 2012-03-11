@@ -111,46 +111,30 @@ module ApplicationHelper
     return hours
   end
 
-  # Tableau des horaires seulement
-  def mix_timesheets(schedule)
-    days = array_of_days
-    hours = array_of_hours
-    # Autant de colonnes que de jours
-    # Autant de lignes qu'il y a de creneaux horaires
-    table = Array.new(hours.size, Array.new(days.size, '<td>test</td>'))
+  # Emploi du temps
 
-    # ... ajoute les bons horaires...
+  def timesheets_to_json(timesheets)
+    schedule = []
 
-    return table
+    # On remplit l'emploi du temps selon les normes de FullCalendar
+    timesheets.map do |ts|
+      schedule.push({
+        'title' => h(ts.course.name), # TODO: Ajouter type
+        'start' => ts.start_at.iso8601,
+        'end' => ts.end_at.iso8601,
+        'url' => url_for(ts), # Lien vers l'horaire
+      })
+    end
+
+    return schedule.to_json.html_safe
   end
 
-  # Emploi du temps avec les jours, les heures et les horaires
-  def complete_schedule(schedule)
-    schedule = mix_timesheets(schedule)
-
-    # Ajoute une ligne avec les jours
-    days = array_of_days.map do |day|
-      '<td class="sch_day">' + l(day, :format => :day) + '</td>'
-    end
-    schedule = [days].concat(schedule)
-
-    # Ajoute la colonne avec les heures
-    hours = array_of_hours.map {|hour| l(hour, :format => :hour)}
-    hours = [''].concat(hours).map do |hour|
-      '<td class="sch_hour">' + hour + '</td>'
-    end
-    schedule.size.times do |i|
-      schedule[i] = [hours[i]].concat(schedule[i]) # Ajoute l'heure sur la première colonne
-    end
-
-    return schedule
+  def start_date_of_semester
+    date = SEMESTERS.last['start_at']
+    return [date.year, date.month - 1, date.day].to_json
   end
 
   # Others
-
-  def courses_when(day, hour, timesheets)
-    timesheets.select {|t| t.during?(day, hour)}.map(&:course)
-  end
 
   def button_to_delete(label, link)
     button_to label, link, :confirm => t('common.confirm'), :method => :delete

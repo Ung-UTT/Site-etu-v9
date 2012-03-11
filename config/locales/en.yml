@@ -306,8 +306,8 @@ en:
   timesheets:
     list: "List of timesheets"
     day: "Day"
-    from: "From"
-    to: "To"
+    start_at: "From"
+    end_at: "To"
     week: "Week"
     room: "Room"
     course: "Course during the timesheet"

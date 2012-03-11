@@ -1,9 +1,14 @@
-<table class="schedule">
-  <% complete_schedule(@schedule).each do |row| %>
-    <tr>
-      <% row.each do |col| %>
-        <%=raw col %>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<noscript>
+  <ul>
+    <% schedule.each do |t| %>
+      <li><%= t.range %></li>
+    <% end %>
+  </ul>
+</noscript>
+
+<div class="schedule"></div>
+
+<script>
+  fullcalendar_schedule = <%= timesheets_to_json(schedule) %>;
+  fullcalendar_schedule_start = <%= start_date_of_semester %>;
+</script>

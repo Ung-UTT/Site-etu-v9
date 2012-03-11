@@ -8,18 +8,6 @@ class Timesheet < ActiveRecord::Base
   has_many :timesheets_user, :dependent => :destroy
   has_many :users, :through => :timesheets_user, :uniq => true
 
-  # Mixe les timesheets pour en faire un emploi du temps
-  def self.make_schedule(array_of_timesheets)
-    timesheets = array_of_timesheets.flatten.uniq
-    # Horaires pour chaque jour (lundi, mardi, ..., samedi)
-    res = [[],[],[],[],[],[]]
-    timesheets.each do |t|
-      # .wday est l'index du jour de la semaine (0 pour dimanche, ...)
-      res[t.start_at.wday-1].push(t) # On ajoute l'horaire
-    end
-    res
-  end
-
   # Temps défini par cette horaire
   def range
     t_room = room ? " en #{room}" : ''
@@ -29,5 +17,20 @@ class Timesheet < ActiveRecord::Base
     t_week = (week and !week.empty?) ? " (semaine #{week})" : ''
 
     "#{course.name}#{t_room} : Le #{t_day} de #{t_start_at} à #{t_end_at}#{t_week}"
+  end
+
+  # Transformat les timesheets pour en faire des objets qui forment
+  # un emploi du temps (avec la forme de FullCalendar)
+  def self.make_schedule(array_of_timesheets)
+    timesheets = array_of_timesheets.flatten.uniq
+
+    # Le semestre actuel est le dernier
+    semester = SEMESTERS.last
+    # On sélectionne les horaires de ce semestre
+    timesheets = timesheets.select do |ts|
+      ts.start_at >= semester['start_at'] && ts.start_at <= semester['end_at']
+    end
+
+    return timesheets
   end
 end

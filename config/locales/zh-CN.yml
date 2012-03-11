@@ -306,8 +306,8 @@ zh-CN:
   timesheets:
     list: "时间表"
     day: "天"
-    from: "从"
-    to: "到"
+    start_at: "从"
+    end_at: "到"
     week: "星期"
     room: "教室"
     course: "本时段的课程"

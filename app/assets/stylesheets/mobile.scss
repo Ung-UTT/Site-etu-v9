@@ -3,7 +3,7 @@ $base: #297E9D; // Bleu clair de base
 $fond: #EEEEEE; // Gris clair du fond
 $sidebar: 0px; // largeur du menu à droite
 
-@import "reset", "layout", "content", "chosen";
+@import "reset", "layout", "content", "chosen", "fullcalendar";
 
 body {
   width: 100%;
