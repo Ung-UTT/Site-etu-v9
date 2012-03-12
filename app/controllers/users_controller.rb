@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       if user.nil? and user.perishable_token_date > Time.now
         flash[:alert] =  t('c.users.bad_token')
       else
-        user.password = ActiveSupport::SecureRandom.hex(2)
+        user.password = SecureRandom.hex(2)
         user.password_confirmation = user.password
         user.perishable_token = nil
         user.perishable_token_date = nil
