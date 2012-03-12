@@ -123,6 +123,7 @@ module ApplicationHelper
         'start' => ts.start_at.iso8601,
         'end' => ts.end_at.iso8601,
         'url' => url_for(ts), # Lien vers l'horaire
+        'allDay' => false,
       })
     end
 
@@ -131,7 +132,20 @@ module ApplicationHelper
 
   def start_date_of_semester
     date = SEMESTERS.last['start_at']
-    return [date.year, date.month - 1, date.day].to_json
+    return {'year' => date.year,
+            'month' => date.month - 1,
+            'day' => date.day}.to_json
+  end
+
+  def dates_translations
+    dates = {
+      'monthNames' => I18n.t('date.month_names').compact, # Enléve le 'nil'
+      'monthNamesShort' => I18n.t('date.abbr_month_names').compact,
+      'dayNames' => I18n.t('date.day_names'),
+      'dayNamesShort' => I18n.t('date.abbr_day_names'),
+    }
+
+    return dates.to_json
   end
 
   # Others

@@ -10,5 +10,6 @@
 
 <script>
   fullcalendar_schedule = <%= timesheets_to_json(schedule) %>;
-  fullcalendar_schedule_start = <%= start_date_of_semester %>;
+  fullcalendar_schedule_start = <%=raw start_date_of_semester %>;
+  fullcalendar_schedule_dates = <%=raw dates_translations %>;
 </script>

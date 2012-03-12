@@ -29,9 +29,14 @@ $(function () {
     },
     events: fullcalendar_schedule, // Événements définis dans _schedule.html.erb
     // Débute le jour de la rentrée
-    year: fullcalendar_schedule_start[0],
-    month: fullcalendar_schedule_start[1],
-    date: fullcalendar_schedule_start[2],
+    year: fullcalendar_schedule_start['year'],
+    month: fullcalendar_schedule_start['month'],
+    date: fullcalendar_schedule_start['day'],
+    // Traductions
+    monthNames: fullcalendar_schedule_dates['monthNames'],
+    monthNamesShort: fullcalendar_schedule_dates['monthNamesShort'],
+    dayNames: fullcalendar_schedule_dates['dayNames'],
+    dayNamesShort: fullcalendar_schedule_dates['dayNamesShort'],
   });
 
   // Agenda complet
