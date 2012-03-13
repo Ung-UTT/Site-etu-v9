@@ -23,6 +23,10 @@
       <%= f.select 'course_id', course_select(@timesheet), {}, :class => 'chosen' %>
     </li>
     <li class="field">
+      <%= f.label :category, 'Type' %>
+      <%= f.select :category, options_for_select(Timesheet::CATEGORIES, @timesheet.category) %>
+    </li>
+    <li class="field">
       <%= label_tag :users, t('timesheets.users') %>
       <%= select_tag :users, users_select(@timesheet), :multiple => true, :class => 'chosen' %>
     </li>

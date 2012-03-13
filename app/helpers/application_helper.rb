@@ -132,7 +132,7 @@ module ApplicationHelper
     # On remplit l'emploi du temps selon les normes de FullCalendar
     timesheets.map do |ts|
       schedule.push({
-        'title' => h(ts.course.name), # TODO: Ajouter type
+        'title' => h(ts.short_range),
         'start' => ts.start_at.iso8601,
         'end' => ts.end_at.iso8601,
         'url' => url_for(ts), # Lien vers l'horaire

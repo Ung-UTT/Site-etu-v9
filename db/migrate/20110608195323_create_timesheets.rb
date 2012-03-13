@@ -8,6 +8,7 @@ class CreateTimesheets < ActiveRecord::Migration
       t.string     :semester # P2012, A2012, ... (définis dans lib/semesters.rb)
       t.string     :week # rien, A ou B
       t.string     :room # A201, B205, ...
+      t.string     :category # CM, TD, TP
       t.references :course
 
       t.timestamps

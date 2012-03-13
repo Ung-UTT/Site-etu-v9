@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.string   "semester"
     t.string   "week"
     t.string   "room"
+    t.string   "category"
     t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
