@@ -308,8 +308,8 @@ fr:
   timesheets:
     list: "Liste des horaires"
     day: "Jour"
-    from: "Depuis"
-    to: "jusqu'à"
+    start_at: "Depuis"
+    end_at: "jusqu'à"
     week: "Semaine"
     room: "Salle"
     course: "UV durant cet horaire"

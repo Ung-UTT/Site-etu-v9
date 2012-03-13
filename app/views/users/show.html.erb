@@ -25,7 +25,7 @@
 
   <% unless @user.timesheets.empty? %>
   <div id="edt">
-    <%= render 'timesheets/schedule', :timesheets => @user.timesheets %>
+    <%= render 'timesheets/schedule', :schedule => @user.schedule %>
   </div>
   <% end %>
 

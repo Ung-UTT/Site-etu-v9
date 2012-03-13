@@ -1,9 +1,52 @@
 //= require jquery
 //= require rails
 //= require chosen
+//= require fullcalendar
 
 $(function () {
+  // Selecteurs et selecteurs multiples
+  // Permet de rechercher dans un grande liste
   $('select.chosen').chosen();
+
+  // Pour pas charger ça tout le temps :
+  // (événements définis dans _schedule.html.erb)
+  if (fullcalendar_schedule) {
+    // Emploi du temps (horaires, vue semaine)
+    $('.schedule').fullCalendar({
+      header: { // Pas de header
+        left:   '',
+        center: '',
+        right:  ''
+      },
+      firstDay: 1, // Lundi
+      defaultView: 'agendaWeek', // Vue semaine à-la-google-agenda
+      allDaySlot: false, // Ne pas afficher la ligne des événements de toute une journée
+      axisFormat: "H'h'(mm)", // Heure de la forme : 8h, 10h, 9h30...
+      firstHour: 8, // Démare à 8h
+      minTime: 8, // On ne va pas en dessous de 8h
+      maxTime: 23, // On ne va pas à plus de 23h
+      columnFormat: {
+        month: 'dddd', // Monday
+        week: 'dddd', // Monday
+        day: 'dddd'  // Monday
+      },
+      events: fullcalendar_schedule,
+      // Débute le jour de la rentrée
+      year: fullcalendar_schedule_start['year'],
+      month: fullcalendar_schedule_start['month'],
+      date: fullcalendar_schedule_start['day'],
+      // Traductions
+      monthNames: fullcalendar_schedule_dates['monthNames'],
+      monthNamesShort: fullcalendar_schedule_dates['monthNamesShort'],
+      dayNames: fullcalendar_schedule_dates['dayNames'],
+      dayNamesShort: fullcalendar_schedule_dates['dayNamesShort'],
+    });
+  }
+
+  // Agenda complet
+  $('.agenda').fullCalendar({
+    firstDay: 1, // Lundi
+  });
 
   // Code Konami (suppprime éléments quand on clique dessus
   // et "Echap" : met un BSOD

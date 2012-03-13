@@ -60,6 +60,16 @@
       margin: 8px;
     }
 
+    .fc {
+      table {
+        margin: 0; /* Enléve le margin pour les tableau de FullCalendar */
+      }
+
+      a, div {
+        max-width: none; /* Permet aux événemnts d'être de la bonne taille */
+      }
+    }
+
     h1 { font-size: 1.5em; font-style: bold; }
     h2 { font-size: 1.4em; font-style: italic; }
     h3 { font-size: 1.3em; font-weight: bold; }

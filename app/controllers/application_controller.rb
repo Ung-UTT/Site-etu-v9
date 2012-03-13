@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   helper_method :'mobile?', :current_user_session, :current_user
   layout :which_layout # Chosit le layout normal ou mobile
 
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => I18n.t('c.application.denied') +
-      " (#{exception.subject.to_s}##{exception.action.to_s})"
+  def render_not_found
+    logger.error '[404] ' + request.fullpath
+    render :template => "shared/404", :status => 404
   end
 
   def render_error(exception)
@@ -23,9 +23,17 @@ class ApplicationController < ActionController::Base
            :locals => {:exception => exception, :backtrace => backtrace}
   end
 
-  def render_not_found
-    logger.error '[404] ' + request.fullpath
-    render :template => "shared/404", :status => 404
+  def render_access_denied(exception)
+    message = "#{I18n.t('c.application.denied')}"
+    message +=" (#{exception.subject.to_s}##{exception.action.to_s})"
+
+    logger.error '[401] ' + request.fullpath + ' | ' + message
+
+    if current_user
+      redirect_to root_url, :alert => message
+    else
+      redirect_to login_url, :alert => message
+    end
   end
 
   private
@@ -34,6 +42,8 @@ class ApplicationController < ActionController::Base
       rescue => exception
       if exception.is_a?(ActiveRecord::RecordNotFound)
         render_not_found
+      elsif exception.is_a?(CanCan::AccessDenied)
+        render_access_denied(exception)
       else
         render_error(exception)
       end

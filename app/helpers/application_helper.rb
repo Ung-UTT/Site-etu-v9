@@ -1,10 +1,6 @@
 # encoding: UTF-8
 
 module ApplicationHelper
-  def day_names
-    I18n.t('date.day_names')
-  end
-
   # Title
 
   def title(page_title, options={})
@@ -44,14 +40,6 @@ module ApplicationHelper
   def users_select(object = nil)
     default = object.nil? ? nil : object.users.map(&:id)
     options_for_select(User.all.map { |a| [a.login, a.id] }, default)
-  end
-
-  def week_select(object)
-    options_for_select([nil, 'A', 'B'], object.week)
-  end
-
-  def day_select(object)
-    options_for_select(day_names.map {|d| [d, day_names.index(d)]}, day_names[object.day])
   end
 
   # Links to
@@ -103,11 +91,78 @@ module ApplicationHelper
     end
   end
 
-  # Others
+  # Variables pour l'emploi du temps
 
-  def courses_when(day, hour, timesheets)
-    timesheets.select {|t| t.during?(day, hour)}.map(&:course)
+  def array_of_days
+    day = DateTime.parse 'Monday'
+    res = [day]
+    5.times do
+      day += 1.day
+      res.push(day)
+    end
+    return res
   end
+
+  def array_of_hours
+    hours = []
+    (8.hours..22.hours).step(30.minutes) do |h|
+      hours.push(Time.at(h.to_i))
+    end
+    return hours
+  end
+
+  # Emploi du temps
+
+  def timesheets_to_json(timesheets)
+    schedule = []
+    # 13 couleurs différentes, claires
+    colors = ['#9696DE', '#96C0DE', '#96DED6', '#96DEB5', '#A0DE96',
+              '#BCDE96', '#DEDE96', '#DEBE96', '#DEA396', '#DE96A5',
+              '#DE96BE', '#DC96DE', '#BE96DE']
+    # Les cours
+    names = timesheets.map{|t| t.course.name}.uniq
+    # On va associer à chaque cours une couleur
+    i = 0
+    hash = Hash.new # Va contenir les couples "UV" => "#couleur"
+    names.each do |name|
+      hash.update({name => colors[i]})
+      i = (i+1) % colors.size # Ca va au début si ya trop de cours différents
+    end
+
+    # On remplit l'emploi du temps selon les normes de FullCalendar
+    timesheets.map do |ts|
+      schedule.push({
+        'title' => h(ts.short_range),
+        'start' => ts.start_at.iso8601,
+        'end' => ts.end_at.iso8601,
+        'url' => url_for(ts), # Lien vers l'horaire
+        'allDay' => false,
+        'color' => hash[ts.course.name],
+      })
+    end
+
+    return schedule.to_json.html_safe
+  end
+
+  def start_date_of_semester
+    date = SEMESTERS.last['start_at']
+    return {'year' => date.year,
+            'month' => date.month - 1,
+            'day' => date.day}.to_json
+  end
+
+  def dates_translations
+    dates = {
+      'monthNames' => I18n.t('date.month_names').compact, # Enléve le 'nil'
+      'monthNamesShort' => I18n.t('date.abbr_month_names').compact,
+      'dayNames' => I18n.t('date.day_names'),
+      'dayNamesShort' => I18n.t('date.abbr_day_names'),
+    }
+
+    return dates.to_json
+  end
+
+  # Others
 
   def button_to_delete(label, link)
     button_to label, link, :confirm => t('common.confirm'), :method => :delete
@@ -122,6 +177,10 @@ module ApplicationHelper
   end
 
   def md(text)
-    text.nil? ? nil : RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe
+    if text.nil?
+      return nil
+    else
+      return RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe
+    end
   end
 end

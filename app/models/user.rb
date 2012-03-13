@@ -121,4 +121,9 @@ class User < ActiveRecord::Base
   def ldap_attribute(attr)
     ldap_attribute_for_username(login, attr)
   end
+
+  # Emploi du temps
+  def schedule
+    Timesheet.make_schedule([timesheets])
+  end
 end

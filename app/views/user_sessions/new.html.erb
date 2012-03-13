@@ -1,6 +1,19 @@
 <section class="content">
   <%= title t('user_sessions.login') %>
 
+  <p>
+    Pour vous connecter au site étu, utilisez votre compte UTT :
+  </p>
+
+  <h3><%= link_to 'Connexion avec le compte UTT', cas_new_path %></h3>
+
+  <p>
+    Si vous n'arrivez pas à vous connecter avec le lien ci-dessus (ça
+    veut dire que le problème vient de l'UTT), vous pouvez vous
+    connecter avec votre compte de secours, mais attention, ce n'est pas
+    le même mot de passe (il faut que vous l'ayez changé).
+  </p>
+
   <%= form_tag(:controller => 'user_sessions', :action => 'create') do %>
     <ul class="fields">
       <li class="field">
