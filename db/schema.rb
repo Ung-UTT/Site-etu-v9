@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "assos_events", :id => false, :force => true do |t|
+  create_table "assos_events", :force => true do |t|
     t.integer  "asso_id"
     t.integer  "event_id"
     t.datetime "created_at", :null => false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "events_users", :id => false, :force => true do |t|
+  create_table "events_users", :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "groups_users", :id => false, :force => true do |t|
+  create_table "groups_users", :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "projects_users", :id => false, :force => true do |t|
+  create_table "projects_users", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "roles_users", :id => false, :force => true do |t|
+  create_table "roles_users", :force => true do |t|
     t.integer  "role_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "timesheets_users", :id => false, :force => true do |t|
+  create_table "timesheets_users", :force => true do |t|
     t.integer  "timesheet_id"
     t.integer  "user_id"
     t.datetime "created_at",   :null => false
