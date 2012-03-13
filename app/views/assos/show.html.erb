@@ -1,6 +1,11 @@
 <section class="content">
   <%= title(t('asso') + ' : ' + @asso.name) %>
-  <%= image_tag @asso.image.asset.url unless @asso.image.nil? %>
+
+  <% unless @asso.image.nil? %>
+  <p>
+    <%= image_tag @asso.image.asset.url %>
+  </p>
+  <% end %>
 
   <%=md @asso.description %>
 

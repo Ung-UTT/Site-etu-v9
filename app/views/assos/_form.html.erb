@@ -10,6 +10,13 @@
       <%= f.label :image, t('assos.image') %>
       <%= f.file_field :image %>
     </li>
+    <% unless @asso.image.nil? %>
+    <li class="field">
+      <%= label_tag :image_delete, t('common.delete') %>
+      <%= check_box_tag :image_delete %>
+      <%= image_tag @asso.image.asset.url, :class => 'thumb' %>
+    </li>
+    <% end %>
     <li class="field">
       <%= f.label :description, t('assos.description') %>
       <%= f.text_area :description %>

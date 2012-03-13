@@ -1,5 +1,6 @@
 # encoding: utf-8
 class AssosController < ApplicationController
+  before_filter :process_image, :only => [:create, :update]
   load_and_authorize_resource
 
   # GET /assos
@@ -74,7 +75,6 @@ class AssosController < ApplicationController
   # POST /assos.xml
   def create
     @asso = Asso.new(params[:asso])
-    params[:asso][:image] = Image.new(:asset => params[:asso][:image])
     @asso.owner = current_user
 
     respond_to do |format|
@@ -92,10 +92,11 @@ class AssosController < ApplicationController
   # PUT /assos/1.xml
   def update
     @asso = Asso.find(params[:id])
-    if params[:asso][:image].nil?
-      params[:asso][:image] = @asso.image
-    else
-      params[:asso][:image] = Image.new(:asset => params[:asso][:image])
+    puts params[:asso]
+
+    # Si la case "supprimer" est cochée, on supprime l'image
+    if params[:image_delete]
+      @asso.image = nil
     end
 
     respond_to do |format|
@@ -122,6 +123,8 @@ class AssosController < ApplicationController
   end
 
   private
-    def load_logo
+    # Permet de créer l'image à partir du fichier
+    def process_image
+      params[:asso][:image] = Image.new(:asset => params[:asso][:image])
     end
 end
