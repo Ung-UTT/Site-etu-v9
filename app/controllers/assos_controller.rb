@@ -33,6 +33,8 @@ class AssosController < ApplicationController
     if current_user.is_member_of? @asso
       redirect_to @asso, :notice => t('c.assos.already_join')
     else
+      # Chaque asso a un rôle membre, une fois que l'utilisateur a ce rôle
+      # il fait parti de l'asso
       current_user.roles << @asso.member
       current_user.save
       redirect_to @asso, :notice => t('c.assos.join')
@@ -46,6 +48,7 @@ class AssosController < ApplicationController
     unless current_user.assos.include?(@asso)
       redirect_to @asso, :notice => t('c.assos.already_disjoin')
     else
+      # On retire tout les rôles de l'utilisateur dans l'asso
       @asso.delete_user(current_user)
       redirect_to @asso, :notice => t('c.assos.disjoin')
     end

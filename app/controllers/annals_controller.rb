@@ -30,6 +30,7 @@ class AnnalsController < ApplicationController
   # GET /annals/new.xml
   def new
     @annal = Annal.new
+    # Permet d'avoir des formulaires pour 5 documents
     5.times { @annal.documents.build }
 
     respond_to do |format|
@@ -42,9 +43,9 @@ class AnnalsController < ApplicationController
   def edit
     @annal = Annal.find(params[:id])
 
+    # Permet d'avoir au minimum un formulaire
     @annal.documents.build
-
-    if @annal.documents.size < 5
+    if @annal.documents.size < 5 # On ajoute des formulaires pour au moins 5 documents
       (5 - @annal.documents.size).times { @annal.documents.build }
     end
   end
