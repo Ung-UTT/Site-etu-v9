@@ -115,6 +115,19 @@ module ApplicationHelper
 
   def timesheets_to_json(timesheets)
     schedule = []
+    # 13 couleurs différentes, claires
+    colors = ['#9696DE', '#96C0DE', '#96DED6', '#96DEB5', '#A0DE96',
+              '#BCDE96', '#DEDE96', '#DEBE96', '#DEA396', '#DE96A5',
+              '#DE96BE', '#DC96DE', '#BE96DE']
+    # Les cours
+    names = timesheets.map{|t| t.course.name}.uniq
+    # On va associer à chaque cours une couleur
+    i = 0
+    hash = Hash.new # Va contenir les couples "UV" => "#couleur"
+    names.each do |name|
+      hash.update({name => colors[i]})
+      i = (i+1) % colors.size # Ca va au début si ya trop de cours différents
+    end
 
     # On remplit l'emploi du temps selon les normes de FullCalendar
     timesheets.map do |ts|
@@ -124,6 +137,7 @@ module ApplicationHelper
         'end' => ts.end_at.iso8601,
         'url' => url_for(ts), # Lien vers l'horaire
         'allDay' => false,
+        'color' => hash[ts.course.name],
       })
     end
 
