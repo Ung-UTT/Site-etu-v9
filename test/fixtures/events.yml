@@ -49,13 +49,13 @@ match:
 <% 1.upto(15) do |i| %>
 <%= "event#{i}" %>:
   name: <%= "#{i*2+3} ème grosse soirée de l'UTT" %>
-  description: <%= "Il y a #{i*12} étudiants qui ont déjà pris leurs préventes." %> 
-  owner: kevin 
+  description: <%= "Il y a #{i*12} étudiants qui ont déjà pris leurs préventes." %>
+  owner: kevin
   location: <%= "#{i*10/3} rue Victor Hugo, 10000 TROYES" %>
   start_at: <%= (20-i).weeks.ago.to_s(:db) %>
   end_at: <%= (21-i).weeks.ago.to_s(:db) %>
 <% end %>
-  
+
 concert:
   name: concert de M. Biloulou
   description: Derniere UTT de l'annee

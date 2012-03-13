@@ -6,13 +6,11 @@ kevin_re04_cm:
   user: joe
   timesheet: re04_cm
 
- 
 <% ['joe', 'kevin', 'foo', 'bar'].each do |user| %>
 <%= "#{user}_lo14_cm" %>:
   user: <%= "#{user}" %>
   timesheet: lo14_cm
 <% end %>
-
 
 <% ['joe','kevin' ,'foo', 'bar'].each do |user| %>
 <%= "#{user}_lo12_cm" %>:

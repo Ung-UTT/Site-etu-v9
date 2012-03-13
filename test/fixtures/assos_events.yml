@@ -56,4 +56,4 @@ Asso1UTT_event3:
 <%= "BDE_event#{i}" %>:
   asso: BDE
   event: <%= "event#{i}" %>
-<% end %> 
+<% end %>
