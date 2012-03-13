@@ -23,7 +23,7 @@
       <%= f.fields_for :preference do |f_pref| %>
         <li class="field">
           <%= f_pref.label :quote_type %>
-          <%= f_pref.select :quote_type, Preference::QUOTES_TYPES %>
+          <%= f_pref.select :quote_type, Quote::TAGS %>
         </li>
 
         <li class="field">

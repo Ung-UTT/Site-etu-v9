@@ -25,6 +25,7 @@ $(function () {
       firstHour: 8, // Démare à 8h
       minTime: 8, // On ne va pas en dessous de 8h
       maxTime: 23, // On ne va pas à plus de 23h
+      weekends: false, // TODO: Cacher seulement dimanche
       columnFormat: {
         month: 'dddd', // Monday
         week: 'dddd', // Monday

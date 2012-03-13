@@ -1,10 +1,10 @@
 class Quote < ActiveRecord::Base
-  TYPES = %w(all quotes tooltips jokes none)
+  TAGS = %w(all quotes tooltips jokes none)
 
   paginates_per 30
 
   validates_presence_of :content
-  validates :tag, :inclusion => {:in => Quote::TYPES}
+  validates :tag, :inclusion => {:in => Quote::TAGS}
 
   has_paper_trail
 

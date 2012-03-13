@@ -91,34 +91,14 @@ module ApplicationHelper
     end
   end
 
-  # Variables pour l'emploi du temps
-
-  def array_of_days
-    day = DateTime.parse 'Monday'
-    res = [day]
-    5.times do
-      day += 1.day
-      res.push(day)
-    end
-    return res
-  end
-
-  def array_of_hours
-    hours = []
-    (8.hours..22.hours).step(30.minutes) do |h|
-      hours.push(Time.at(h.to_i))
-    end
-    return hours
-  end
-
   # Emploi du temps
 
   def timesheets_to_json(timesheets)
     schedule = []
-    # 13 couleurs différentes, claires
-    colors = ['#9696DE', '#96C0DE', '#96DED6', '#96DEB5', '#A0DE96',
-              '#BCDE96', '#DEDE96', '#DEBE96', '#DEA396', '#DE96A5',
-              '#DE96BE', '#DC96DE', '#BE96DE']
+    # Couleurs différentes, foncées
+    colors = ['#343D91', '#346F91', '#34916D', '#349143', '#599134',
+              '#899134', '#916734', '#914034', '#913457', '#91347E',
+              '#7B3491']
     # Les cours
     names = timesheets.map{|t| t.course.name}.uniq
     # On va associer à chaque cours une couleur

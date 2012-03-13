@@ -205,7 +205,6 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
   create_table "timesheets", :force => true do |t|
     t.datetime "start_at"
     t.datetime "end_at"
-    t.string   "semester"
     t.string   "week"
     t.string   "room"
     t.string   "category"
