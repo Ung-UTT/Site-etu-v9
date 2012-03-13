@@ -1,0 +1,14 @@
+<noscript>
+  <ul>
+    <% agenda.each do |t| %>
+      <li><%= t['title'] %></li>
+    <% end %>
+  </ul>
+</noscript>
+
+<div class="agenda"></div>
+
+<script>
+  fullcalendar_agenda = <%= agenda_to_json(agenda) %>;
+  fullcalendar_agenda_dates = <%= dates_translations %>;
+</script>

@@ -1,22 +1,26 @@
 <section class="content">
-  <h1 class="title">Bienvenue</h1>
-  <p>
-    <%= image_tag 'home/logo_ung.png', :class => 'left' %>
-    UTTien (ancien, actuel ou futur), ou curieux… l'UNG te souhaite la
-    bienvenue sur LE site des étudiants de l'Université de technologie de
-    Troyes…
-  </p>
-  <p>
-    Pourquoi un site étudiant ? Peut être pour trouver pleins d'infos
-    indispensables à la vie d'UTTien (Mails, Trombinoscope, Emploi du
-    temps, Agenda, Clubs &amp; Assos…) pouvoir exprimer le dynamisme de
-    notre vie étudiante ! (Album photo, Forum) et nous rendre pleins de
-    services (Petites annonces, Covoiturage, Annales…)
-  </p>
-  <p>
-    A très bientôt… à Troyes ou ailleurs… <br />
-    <%= link_to "UTT Net Group", :root %>
-  </p>
+  <% if current_user %>
+    <%= render 'timesheets/agenda', :agenda => current_user.agenda %>
+  <% else %>
+    <h1 class="title">Bienvenue</h1>
+    <p>
+      <%= image_tag 'home/logo_ung.png', :class => 'left' %>
+      UTTien (ancien, actuel ou futur), ou curieux… l'UNG te souhaite la
+      bienvenue sur LE site des étudiants de l'Université de technologie de
+      Troyes…
+    </p>
+    <p>
+      Pourquoi un site étudiant ? Peut être pour trouver pleins d'infos
+      indispensables à la vie d'UTTien (Mails, Trombinoscope, Emploi du
+      temps, Agenda, Clubs &amp; Assos…) pouvoir exprimer le dynamisme de
+      notre vie étudiante ! (Album photo, Forum) et nous rendre pleins de
+      services (Petites annonces, Covoiturage, Annales…)
+    </p>
+    <p>
+      A très bientôt… à Troyes ou ailleurs… <br />
+      <%= link_to "UTT Net Group", :root %>
+    </p>
+  <% end %>
 </section>
 
 <%= render :template => 'news/index' %>

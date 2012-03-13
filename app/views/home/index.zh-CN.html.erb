@@ -1,18 +1,22 @@
 <section class="content">
-  <h1 class="title">欢迎</h1>
-  <p>
-    <%= image_tag 'home/logo_ung.png', :class => 'left' %>
-    UTT的同学们大家好, UNG社团欢迎你来到我们的学生网站。
-  </p>
-  <p>
-    为什么要创建一个学生网站? 为了帮助你找到一切关于学校生活的必备信息(邮件,校友录,时间表,
-    日历，社团活动等),为了展示学生丰富多彩的校园生活(相册,论坛)以及提供一些服务
-    (跳蚤市场, 拼车, 历届考题等)
-  </p>
-  <p>
-    期待再次与你相遇… 在特鲁瓦或是在其他地方… <br />
-    <%= link_to "UTT Net Group", :root %>
-  </p>
+  <% if current_user %>
+    <%= render 'timesheets/agenda', :agenda => current_user.agenda %>
+  <% else %>
+    <h1 class="title">欢迎</h1>
+    <p>
+      <%= image_tag 'home/logo_ung.png', :class => 'left' %>
+      UTT的同学们大家好, UNG社团欢迎你来到我们的学生网站。
+    </p>
+    <p>
+      为什么要创建一个学生网站? 为了帮助你找到一切关于学校生活的必备信息(邮件,校友录,时间表,
+      日历，社团活动等),为了展示学生丰富多彩的校园生活(相册,论坛)以及提供一些服务
+      (跳蚤市场, 拼车, 历届考题等)
+    </p>
+    <p>
+      期待再次与你相遇… 在特鲁瓦或是在其他地方… <br />
+      <%= link_to "UTT Net Group", :root %>
+    </p>
+  <% end %>
 </section>
 
 <%= render :template => 'news/index' %>

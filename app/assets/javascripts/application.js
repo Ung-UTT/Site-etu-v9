@@ -10,7 +10,7 @@ $(function () {
 
   // Pour pas charger ça tout le temps :
   // (événements définis dans _schedule.html.erb)
-  if (fullcalendar_schedule) {
+  if (typeof(fullcalendar_schedule) != 'undefined') {
     // Emploi du temps (horaires, vue semaine)
     $('.schedule').fullCalendar({
       header: { // Pas de header
@@ -45,9 +45,23 @@ $(function () {
   }
 
   // Agenda complet
-  $('.agenda').fullCalendar({
-    firstDay: 1, // Lundi
-  });
+  // (événements définis dans _agenda.html.erb)
+  if (typeof(fullcalendar_agenda) != 'undefined') {
+    // Emploi du temps (horaires, vue semaine)
+    $('.agenda').fullCalendar({
+      firstDay: 1, // Lundi
+      defaultView: 'agendaWeek', // Vue semaine à-la-google-agenda
+      axisFormat: "H'h'(mm)", // Heure de la forme : 8h, 10h, 9h30...
+      firstHour: 8, // Démare à 8h
+      events: fullcalendar_agenda,
+      // Traductions
+      monthNames: fullcalendar_agenda_dates['monthNames'],
+      monthNamesShort: fullcalendar_agenda_dates['monthNamesShort'],
+      dayNames: fullcalendar_agenda_dates['dayNames'],
+      dayNamesShort: fullcalendar_agenda_dates['dayNamesShort'],
+    });
+  }
+
 
   // Code Konami (suppprime éléments quand on clique dessus
   // et "Echap" : met un BSOD

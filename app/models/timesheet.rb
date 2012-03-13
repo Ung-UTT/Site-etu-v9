@@ -29,8 +29,16 @@ class Timesheet < ActiveRecord::Base
     "#{t_category}#{course.name}#{t_room}"
   end
 
-  # Transformat les timesheets pour en faire des objets qui forment
-  # un emploi du temps (avec la forme de FullCalendar)
+  # Traduit l'horaire en un hash exploitable par FullCalendar
+  def to_fullcalendar
+    return { 'title' => short_range,
+             'start_at' => start_at,
+             'end_at' => end_at,
+             'object' => self,
+             'course' => course.name }
+  end
+
+  # Selectionne les horaires du semestre actuel
   def self.make_schedule(array_of_timesheets)
     timesheets = array_of_timesheets.flatten.uniq
 
@@ -42,5 +50,38 @@ class Timesheet < ActiveRecord::Base
     end
 
     return timesheets
+  end
+
+  # Fait la répétition des horaires selon le semestre
+  def self.make_agenda(array_of_timesheets)
+    agenda = []
+
+    # Déjà on selectionne les horaires du semestre
+    timesheets = make_schedule(array_of_timesheets)
+
+    # Le semestre actuel est le dernier
+    semester = SEMESTERS.last
+
+    # On prend chaque horaire et on le répéte
+    timesheets.each do |ts|
+      start_at = semester['start_at']
+      index = 0
+
+      begin
+        day = semester['weeks'][index][ts.start_at.wday, 1]
+
+        if (!ts.week.nil? and ts.week == day) or
+           (ts.week.nil? and ['A', 'B'].include?(day))
+          hash = ts.to_fullcalendar
+          hash['start_at'] += index.weeks
+          hash['end_at'] += index.weeks
+          agenda.push(hash)
+        end
+
+        index += 1
+      end while (start_at + index.weeks) < semester['end_at']
+    end
+
+    return agenda
   end
 end
