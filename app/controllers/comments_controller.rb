@@ -1,4 +1,6 @@
 # encoding: utf-8
+
+# Les commentaires sont toujours associés à un contenu (@commentable)
 class CommentsController < ApplicationController
   load_and_authorize_resource
 

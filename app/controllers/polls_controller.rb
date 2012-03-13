@@ -17,6 +17,7 @@ class PollsController < ApplicationController
   # GET /polls/1.json
   def show
     @poll = Poll.find(params[:id])
+    # Récupére le vote de l'utilisateur actuel
     @vote = @poll.voted_by?(current_user) ? @poll.vote_of(current_user) : nil
 
     respond_to do |format|
@@ -29,7 +30,7 @@ class PollsController < ApplicationController
   # GET /polls/new.json
   def new
     @poll = Poll.new
-    5.times { @poll.answers.build }
+    5.times { @poll.answers.build } # Permet de créer 5 réponses d'un coup
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,8 +42,8 @@ class PollsController < ApplicationController
   def edit
     @poll = Poll.find(params[:id])
 
+    # Au moins un formulaire de réponse
     @poll.answers.build
-
     if @poll.answers.size < 5
       (5 - @poll.answers.size).times { @poll.answers.build }
     end

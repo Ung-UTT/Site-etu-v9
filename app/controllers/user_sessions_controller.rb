@@ -2,9 +2,11 @@
 class UserSessionsController < ApplicationController
   skip_authorization_check
 
+  # Page de connexion
   def new
   end
 
+  # Connexion
   def create
     user = User.authenticate(params[:login], params[:password])
     if user
@@ -21,12 +23,14 @@ class UserSessionsController < ApplicationController
     end
   end
 
+  # Déconnexion
   def destroy
     cas = current_user.cas
-    cookies.delete(:auth_token)
-    session[:cas_user] = nil
+    cookies.delete(:auth_token) # Supprime le cookie de connexion
+    session[:cas_user] = nil # Supprime le cookie du CAS
     flash[:notice] = t('c.user_sessions.destroy')
     if cas
+      # Déconnexion globale du CAS (Single Sign Out)
       redirect_to Rails.application.config.rubycas.cas_base_url + '/logout?service=' + CGI::escape(root_path(:only_path => false))
     else
       redirect_to :root

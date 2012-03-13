@@ -6,11 +6,14 @@ class TimesheetsController < ApplicationController
   # GET /timesheets.xml
   def index
     if params[:users].nil? or params[:users].empty?
+      # Récupére tout les horaires
       @timesheets = Timesheet.all
     else
+      # Récupére tout les horaires des utilisateurs passés en paramétres
       @timesheets = User.find(params[:users]).map(&:timesheets).flatten.uniq
     end
 
+    # Va trier les horaires pour prendre seulement ceux du semestre actuel
     @schedule = Timesheet.make_schedule(@timesheets)
 
     respond_to do |format|

@@ -25,14 +25,6 @@ class QuotesController < ApplicationController
     end
   end
 
-  # GET /quotes/random
-  # GET /quotes/random.xml
-  def random
-    @quote = Quote.random
-
-    redirect_to @quote
-  end
-
   # GET /quotes/new
   # GET /quotes/new.xml
   def new

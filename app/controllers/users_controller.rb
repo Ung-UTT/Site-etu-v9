@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if params[:q].nil?
       @users = User.all
     else
+      # Recherche simple dans le trombi
       query = '%' + params[:q].split.join('%') + '%'
       @users = User.where('login LIKE :query', {:query => query})
     end

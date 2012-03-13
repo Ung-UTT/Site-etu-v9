@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = @event.comments
     @documents = @event.documents
-    @news = @event.news.page(params[:page])
+    @news = @event.news.page(params[:page]) # Les daymails associés
 
     respond_to do |format|
       format.html # show.html.erb

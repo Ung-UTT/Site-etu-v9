@@ -3,7 +3,7 @@
 class HomeController < ApplicationController
   skip_authorization_check
 
-  def index
+  def index # Page d'accueil
     @news = News.where(:is_moderated => true).page(params[:page])
   end
 

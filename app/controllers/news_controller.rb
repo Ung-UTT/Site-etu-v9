@@ -1,16 +1,11 @@
 # encoding: utf-8
 class NewsController < ApplicationController
   load_and_authorize_resource
-  before_filter :verify_sender, :only => :daymail
 
   # GET /news
   # GET /news.xml
   def index
-    if mobile?
-      @news = News.page(params[:page]).per(15)
-    else
-      @news = News.page(params[:page])
-    end
+    @news = News.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,7 +17,6 @@ class NewsController < ApplicationController
   # GET /news/1.xml
   def show
     @news = News.find(params[:id])
-
     @comments = @news.comments
     @documents = @news.documents
 
@@ -30,13 +24,6 @@ class NewsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @news }
     end
-  end
-
-  # GET /news/daymail
-  def daymail
-    system '/var/lib/gems/1.8/bin/rake daymail &'
-    flash[:notice] = t('c.news.daymail')
-    redirect_to :root
   end
 
   # GET /news/new
@@ -103,11 +90,4 @@ class NewsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
-  private
-    def verify_sender
-      authenticate_or_request_with_http_basic('Alors comme ca tu veux envoyer le Daymail ?') do |username, password|
-        username == 'daymailsender' and password == 'jesuisuncron'
-      end
-    end
 end
