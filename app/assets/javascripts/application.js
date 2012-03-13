@@ -52,6 +52,22 @@ $(function () {
       firstDay: 1, // Lundi
       defaultView: 'agendaWeek', // Vue semaine à-la-google-agenda
       axisFormat: "H'h'(mm)", // Heure de la forme : 8h, 10h, 9h30...
+      columnFormat: {
+        month: 'dddd', // Monday
+        week: 'dddd d', // Monday
+        day: 'dddd d'  // Monday
+      },
+      timeFormat: {
+        'agenda' : '',
+        '': '',
+      },
+      titleFormat: {
+        month: 'MMMM yyyy',                             // September 2009
+        week: "d MMMM{'&#8212;' d MMMM} yyyy", // Sep 7 - 13 2009
+        day: 'dddd, MMM d, yyyy'                  // Tuesday, Sep 8, 2009
+      },
+      allDaySlot: false, // Ne pas afficher la ligne des événements de toute une journée
+      weekends: false, // TODO: Cacher seulement dimanche
       firstHour: 8, // Démare à 8h
       events: fullcalendar_agenda,
       // Traductions

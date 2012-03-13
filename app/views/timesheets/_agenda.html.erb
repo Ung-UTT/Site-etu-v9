@@ -1,7 +1,9 @@
+<h1 class="title">Agenda</h1>
+
 <noscript>
   <ul>
     <% agenda.each do |t| %>
-      <li><%= t['title'] %></li>
+      <li><%= t['object'].range %></li>
     <% end %>
   </ul>
 </noscript>
