@@ -66,20 +66,22 @@ class Timesheet < ActiveRecord::Base
     # On prend chaque horaire et on le répéte
     timesheets.each do |ts|
       start_at = semester['start_at']
-      index = 0
+      index = 0 # Nombre de semaines depuis la rentrée
 
       begin
-        day = semester['weeks'][index][ts.start_at.wday, 1]
+        day = semester['weeks'][index][ts.start_at.wday, 1] # cf lib/semesters.rb
 
-        if (!ts.week.nil? and ts.week == day) or
-           (ts.week.nil? and ['A', 'B'].include?(day))
+        if (!ts.week.nil? and ts.week == day) or # Semaine A ou semaine B
+           (ts.week.nil? and ['A', 'B'].include?(day)) # Il y a cours ce jour là ?
           hash = ts.to_fullcalendar
+          # Comme une répétition, on ajoute les semaines
           hash['start_at'] += index.weeks
           hash['end_at'] += index.weeks
           agenda.push(hash)
         end
 
         index += 1
+      # Tant que l'on est dans le semestre
       end while (start_at + index.weeks) < semester['end_at']
     end
 

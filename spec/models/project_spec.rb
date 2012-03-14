@@ -14,6 +14,6 @@ describe Project do
 
     it { should have_many(:comments) }
     it { should have_many(:documents) }
-    it { should have_many(:roles).through(:roles_user) }
+    it { should have_many(:users).through(:projects_user) }
   end
 end

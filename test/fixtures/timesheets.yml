@@ -27,6 +27,7 @@ lo14_cm:
   start_at: 2012-02-21T13:00:00+01:00
   end_at: 2012-02-21T17:00:00+01:00
   room: A002
+  category: CM
   course: LO14
 
 lo12_td:

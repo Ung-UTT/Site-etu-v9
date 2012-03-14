@@ -6,6 +6,7 @@ class Answer < ActiveRecord::Base
   belongs_to :poll
   has_many :votes
 
+  # Est-ce que l'utilisateur a répondu à cette question
   def voted_by?(user)
     votes.map(&:user_id).include?(user.id)
   end

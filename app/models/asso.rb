@@ -3,6 +3,7 @@ class Asso < ActiveRecord::Base
   validates_uniqueness_of :name
 
   has_paper_trail
+  # Une asso peut avoir une asso fille (c'est un club)
   acts_as_nested_set :dependent => :destroy
 
   belongs_to :image
@@ -17,13 +18,15 @@ class Asso < ActiveRecord::Base
 
   after_create do create_member end
 
+  # Crée un rôle de membre à la créationde l'asso
   def create_member
     Role.create(:name => 'member', :asso_id => self.id)
   end
 
   # Rôle membre spécifique à cette association (chaque association a un rôle membre)
+  # Si le rôle membre a été supprimé, on le re-crée
   def member
-    roles.select { |r| r.name == 'member' }.first
+    roles.select { |r| r.name == 'member' }.first || Role.create(:name => 'member', :asso => self)
   end
 
   # Enlever un utilisateur d'une association

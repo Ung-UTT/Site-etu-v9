@@ -4,6 +4,7 @@ class Role < ActiveRecord::Base
   validates_format_of :name, :with => /[a-zA-Z1-9_\- ']+/
 
   has_paper_trail
+  # Les rôles peuvent avoir des parents et des enfants (c'est un arbre de roles)
   acts_as_nested_set :dependent => :destroy
 
   belongs_to :asso
@@ -13,17 +14,4 @@ class Role < ActiveRecord::Base
 
   # Enlève le rôle supprimé aux utilisateurs
   before_destroy do self.users.delete_all end
-
-  # Transforme en symbol : "moderator" -> :moderator
-  def symbol
-    name.to_sym
-  end
-
-  # FIXME: Enlever ce workaround
-  protected
-    def set_default_left_and_right
-      Role.unscoped do
-        super
-      end
-    end
 end

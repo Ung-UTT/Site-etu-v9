@@ -15,13 +15,11 @@ describe Course do
     it { should have_many(:users).through(:timesheets) }
 
     it 'can add users via timesheets' do
-      courses(:LE00).timesheets << Timesheet.create(:day => 0, :from => Time.now, :to => Time.now + 2.hour)
+      courses(:LE00).timesheets << Timesheet.create(:start_at => Time.now,
+                          :end_at => Time.now + 2.hour, :category => 'CM')
       courses(:LE00).timesheets.first.users << users(:kevin)
-
       courses(:LE00).users.include?(users(:kevin)).should be_true
-
       courses(:LE00).timesheets.first.users.delete(users(:kevin))
-
       courses(:LE00).users.include?(users(:kevin)).should be_false
     end
   end

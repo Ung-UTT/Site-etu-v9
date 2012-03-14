@@ -19,13 +19,4 @@ describe Role do
 
     it { should have_many(:users).through(:roles_user) }
   end
-
-  describe 'Methods' do
-    it 'can return symbol of a role' do
-      r = Role.create(:name => 'role')
-      r.symbol.should == :role
-      r = Role.create(:name => "Complex-based's role_user")
-      r.symbol.should == :"Complex-based's role_user"
-    end
-  end
 end

@@ -12,10 +12,10 @@ describe Album do
   end
 
   it 'should find an album by event id' do
-    Album.find(@e1)[:event].should == @e1
+    Album.find(@e1).should == @e1
   end
 
   it 'should correctly convert event to album' do
-    Album.find(@e1)[:images].first.should == @image
+    Album.find(@e1).images.first.should == @image
   end
 end
