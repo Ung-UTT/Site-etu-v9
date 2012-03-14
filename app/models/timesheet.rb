@@ -31,11 +31,11 @@ class Timesheet < ActiveRecord::Base
 
   # Traduit l'horaire en un hash exploitable par FullCalendar
   def to_fullcalendar
-
     return { 'title' => "#{course.name}\n#{room}\n#{category}",
              'start_at' => start_at,
              'end_at' => end_at,
              'object' => self,
+             'alt' => range,
              'course' => course.name }
   end
 

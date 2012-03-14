@@ -127,8 +127,9 @@ class User < ActiveRecord::Base
     Timesheet.make_schedule([timesheets])
   end
 
-  # Agenda (horaires réélles et événements futurs)
+  # Agenda (horaires rééls et événements futurs)
   def agenda
-    Timesheet.make_agenda([timesheets])
+    agenda = Timesheet.make_agenda([timesheets])
+    agenda += Event.make_agenda
   end
 end

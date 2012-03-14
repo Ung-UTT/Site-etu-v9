@@ -143,7 +143,7 @@ module ApplicationHelper
       hash.update({name => colors[i]})
       i = (i+1) % colors.size # Ca va au début si ya trop de cours différents
     end
-    return hash
+    return hash.update({'_default' => '#6579C5'})
   end
 
   # Les horaires
@@ -157,13 +157,13 @@ module ApplicationHelper
     agenda = []
 
     # Les cours
-    courses = array_of_hash.map{|hash| hash['course']}.uniq
+    courses = array_of_hash.map {|hash| hash['course']}.compact.uniq
     # Une couleur est associée à chaque cours
     colors = map_courses_to_colors(courses)
 
     # On remplit l'emploi du temps selon les normes de FullCalendar
     array_of_hash.map do |hash|
-      hash.update({'color' => colors[hash['course']]})
+      hash.update({'color' => colors[hash['course'] || '_default']})
       object = event_to_json(hash)
       agenda.push(object)
     end

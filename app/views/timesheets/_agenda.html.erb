@@ -2,8 +2,8 @@
 
 <noscript>
   <ul>
-    <% agenda.each do |t| %>
-      <li><%= t['object'].range %></li>
+    <% agenda.map{|t| t['alt']}.uniq.each do |message| %>
+      <li><%= message %></li>
     <% end %>
   </ul>
 </noscript>
