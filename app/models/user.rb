@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
 
   # Est-ce qu'il a le rôle "name" (éventuelement dans le cadre d'une association)
   def is?(name, asso = nil)
-    res = roles.select { |r| r.symbol == name }
+    res = roles.select { |r| r.name.to_sym == name }
     if asso
       res = res & asso.roles
     end
