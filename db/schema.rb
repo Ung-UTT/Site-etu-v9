@@ -223,7 +223,6 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"
-    t.boolean  "cas"
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "perishable_token"

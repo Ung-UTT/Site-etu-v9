@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include EtuLdap
-  attr_accessible :login, :email, :password, :password_confirmation, :cas, :preference_attributes
+  attr_accessible :login, :email, :password, :password_confirmation, :preference_attributes
 
   attr_accessor :password
   before_create :generate_token
@@ -107,9 +107,16 @@ class User < ActiveRecord::Base
     !res.empty?
   end
 
-  # Est-ce un étudiant ?
+  # Est-ce un étudiant ? (est-ce qu'il a le rôle d'étudiant ?)
   def is_student?
-    !cas.nil? && cas == true
+    is?(:student)
+  end
+
+  # L'utilisateur devient un étudiant
+  def become_a_student
+    unless is_student?
+      roles << (Role.find_by_name('student') || Role.create(:name => 'student'))
+    end
   end
 
   # Attributs LDAP de cet utilisateur

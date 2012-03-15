@@ -3,7 +3,6 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string    :login
       t.string    :email
-      t.boolean   :cas
 
       # Générés
       t.string    :crypted_password

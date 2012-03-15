@@ -38,7 +38,7 @@
     <%= @user.preference.locale %>,
     <% end %>
     <strong>Uttien ?</strong>
-    <%= @user.cas ? 'Oui' : 'Non' %>,
+    <%= @user.is_student? ? 'Oui' : 'Non' %>,
     <strong>ID</strong> :
     <%= @user.id %>
   </p>

@@ -12,31 +12,22 @@ class CasController < ApplicationController
     else
       # On a le pseudo de l'utilisateur
       if current_user # Si il est déjà connecté
-        add_cas(current_user)
+        current_user.become_a_student
         redirect_to :root, :notice => "#{session[:cas_user]}, ton compte UTT a été ajouté !"
       # Si il existe déjà dans la base de données
       elsif @user = User.find_by_login(session[:cas_user])
-        add_cas(@user)
+        @user.become_a_student
         cookies[:auth_token] = @user.auth_token
         redirect_to :root, :notice => "#{session[:cas_user]}, te revoilà !"
       else # Sinon on crée un compte
         password = SecureRandom.base64 # Génére un mot de passe que personne ne connaîtra
         @user = User.create(:login => session[:cas_user], :password => password,
-                            :password_confirmation => password, :cas => true,
+                            :password_confirmation => password,
                             :email => session[:cas_user] + '@utt.fr')
+        @user.become_a_student
         cookies[:auth_token] = @user.auth_token
         redirect_to :root, :notice => "#{session[:cas_user]}, te voilà connecté avec ton compte UTT."
       end
     end
   end
-
-  private
-    # Noter dans le profil de l'utilisateur que c'est un UTTien (il viens du cas)
-    # TODO: Remplacer par le rôle UTTien
-    def add_cas(user)
-      unless user.cas == true
-        user.cas = true
-        user.save
-      end
-    end
 end

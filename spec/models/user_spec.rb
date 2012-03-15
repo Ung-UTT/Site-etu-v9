@@ -72,8 +72,7 @@ describe User do
       @foo.is?(:fake_role).should be_false
 
       @foo.is_student?.should be_false
-      @foo.cas = true
-      @foo.save
+      @foo.become_a_student
       @foo.is_student?.should be_true
     end
   end
