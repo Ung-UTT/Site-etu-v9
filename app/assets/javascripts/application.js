@@ -13,19 +13,9 @@ $(function () {
   if (typeof(fullcalendar_schedule) != 'undefined') {
     // Emploi du temps (horaires, vue semaine)
     $('.schedule').fullCalendar({
-      header: { // Pas de header
-        left:   '',
-        center: '',
-        right:  ''
-      },
-      firstDay: 1, // Lundi
-      defaultView: 'agendaWeek', // Vue semaine à-la-google-agenda
-      allDaySlot: false, // Ne pas afficher la ligne des événements de toute une journée
-      axisFormat: "H'h'(mm)", // Heure de la forme : 8h, 10h, 9h30...
-      firstHour: 8, // Démare à 8h
+      header: { left: '', center: '', right:  ''}, // Pas de header
       minTime: 8, // On ne va pas en dessous de 8h
       maxTime: 23, // On ne va pas à plus de 23h
-      weekends: false, // TODO: Cacher seulement dimanche
       columnFormat: {
         month: 'dddd', // Monday
         week: 'dddd', // Monday
@@ -49,26 +39,11 @@ $(function () {
   if (typeof(fullcalendar_agenda) != 'undefined') {
     // Emploi du temps (horaires, vue semaine)
     $('.agenda').fullCalendar({
-      firstDay: 1, // Lundi
-      defaultView: 'agendaWeek', // Vue semaine à-la-google-agenda
-      axisFormat: "H'h'(mm)", // Heure de la forme : 8h, 10h, 9h30...
       columnFormat: {
         month: 'dddd', // Monday
-        week: 'dddd d', // Monday
-        day: 'dddd d'  // Monday
+        week: 'dddd d', // Monday 19
+        day: 'dddd d'  // Monday 19
       },
-      timeFormat: {
-        'agenda' : '',
-        '': '',
-      },
-      titleFormat: {
-        month: 'MMMM yyyy',                             // September 2009
-        week: "d MMMM{'&#8212;' d MMMM} yyyy", // Sep 7 - 13 2009
-        day: 'dddd, MMM d, yyyy'                  // Tuesday, Sep 8, 2009
-      },
-      allDaySlot: false, // Ne pas afficher la ligne des événements de toute une journée
-      weekends: false, // TODO: Cacher seulement dimanche
-      firstHour: 8, // Démare à 8h
       events: fullcalendar_agenda,
       // Traductions
       monthNames: fullcalendar_agenda_dates['monthNames'],

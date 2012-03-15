@@ -68,13 +68,14 @@
       a, div {
         max-width: none; /* Permet aux événemnts d'être de la bonne taille */
       }
-    }
 
-    .agenda {
-      .fc-header-right { padding: 5px 10px 0 0; }
-      .fc-event-title {
-        padding-top: 5px;
-        padding-left: 5px;
+      .fc-header-right {
+        padding: 5px 10px 0 0; /* petit espace à droite et en haut du header */
+      }
+
+      .fc-event-inner {
+        text-align: center;
+        /* TODO: aligner verticalement ce block, mais bugs via table-cell) */
       }
     }
 
