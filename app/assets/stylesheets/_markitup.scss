@@ -33,3 +33,67 @@
     width: 400px;
   }
 }
+
+/* Boutons venant du set Markdown */
+
+.markItUp {
+  .markItUpButton1 a {
+    background-image:url(style/markItUp/h1.png);
+  }
+
+  .markItUpButton2 a {
+    background-image:url(style/markItUp/h2.png);
+  }
+
+  .markItUpButton3 a {
+    background-image:url(style/markItUp/h3.png);
+  }
+
+  .markItUpButton4 a {
+    background-image:url(style/markItUp/h4.png);
+  }
+
+  .markItUpButton5 a {
+    background-image:url(style/markItUp/h5.png);
+  }
+
+  .markItUpButton6 a {
+    background-image:url(style/markItUp/h6.png);
+  }
+
+  .markItUpButton7 a {
+    background-image:url(style/markItUp/bold.png);
+  }
+
+  .markItUpButton8 a {
+    background-image:url(style/markItUp/italic.png);
+  }
+
+  .markItUpButton9 a {
+    background-image:url(style/markItUp/list-bullet.png);
+  }
+
+  .markItUpButton10 a {
+    background-image:url(style/markItUp/list-numeric.png);
+  }
+
+  .markItUpButton11 a {
+    background-image:url(style/markItUp/picture.png);
+  }
+
+  .markItUpButton12 a {
+    background-image:url(style/markItUp/link.png);
+  }
+
+  .markItUpButton13 a {
+    background-image:url(style/markItUp/quotes.png);
+  }
+
+  .markItUpButton14 a {
+    background-image:url(style/markItUp/code.png);
+  }
+
+  .markItUp .preview a {
+    background-image:url(style/markItUp/preview.png);
+  }
+}

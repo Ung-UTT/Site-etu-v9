@@ -1,4 +1,3 @@
-
 $sidebar: 0px; // largeur du menu à droite
 
 @import "common";
@@ -35,13 +34,6 @@ body {
     .field {
       input, textarea {
         max-width: 100%;
-      }
-
-      label {
-        float: none;
-        display: block;
-        width: auto;
-        text-align: left;
       }
     }
   }
