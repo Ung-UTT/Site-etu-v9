@@ -60,25 +60,6 @@
       margin: 8px;
     }
 
-    .fc {
-      table {
-        margin: 0; /* Enléve le margin pour les tableau de FullCalendar */
-      }
-
-      a, div {
-        max-width: none; /* Permet aux événemnts d'être de la bonne taille */
-      }
-
-      .fc-header-right {
-        padding: 5px 10px 0 0; /* petit espace à droite et en haut du header */
-      }
-
-      .fc-event-inner {
-        text-align: center;
-        /* TODO: aligner verticalement ce block, mais bugs via table-cell) */
-      }
-    }
-
     h1 { font-size: 1.5em; font-style: bold; }
     h2 { font-size: 1.4em; font-style: italic; }
     h3 { font-size: 1.3em; font-weight: bold; }
@@ -293,45 +274,60 @@
   .fields {
     .field, .actions {
       list-style: none;
-      clear: left;
       padding-bottom: 10px;
 
       label {
-        float: left;
-        width: 100px;
-        text-align: right;
-        padding: 5px;
-        padding-right: 10px;
+        display: block;
         font-weight: bold;
+        margin: 5px;
       }
 
       textarea {
         width: 320px;
         height: 100px;
       }
-
-      .chzn-container {
-        ul, li {
-          list-style: none;
-          margin: 2px;
-          padding: 2px;
-        }
-      }
-
-      .chzn-container-multi {
-        min-width: 300px;
-
-        ul {
-          margin: 0;
-          padding: 0;
-
-          .search-choice {
-            padding-right: 20px;
-          }
-        }
-      }
     }
+  }
+}
 
-    .actions { text-align: center; }
+/* Corrections pour la librairie Chosen */
+#contents .content form .chzn-container {
+  ul, li {
+    list-style: none;
+    margin: 2px;
+    padding: 2px;
+  }
+}
+
+#contents .content form .chzn-container-multi {
+  min-width: 300px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    .search-choice {
+      padding-right: 20px;
+    }
+  }
+}
+
+/* Corrections pour la librairie FullCalendar */
+#contents .content .fc {
+  table {
+    margin: 0; /* Enléve le margin pour les tableau de FullCalendar */
+  }
+
+  a, div {
+    max-width: none; /* Permet aux événemnts d'être de la bonne taille */
+  }
+
+  .fc-header-right {
+    padding: 5px 10px 0 0; /* petit espace à droite et en haut du header */
+  }
+
+  .fc-event-inner {
+    text-align: center;
+    /* TODO: aligner verticalement ce block, mais bugs via table-cell) */
   }
 }

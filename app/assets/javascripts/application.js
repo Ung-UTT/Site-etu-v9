@@ -2,8 +2,13 @@
 //= require rails
 //= require chosen
 //= require fullcalendar
+//= require markitup
+//= require markdown
 
 $(function () {
+  // Éditeur WYSIWYM pour formater des textes avec le markdown
+  $("textarea").markItUp(mySettings);
+
   // Selecteurs et selecteurs multiples
   // Permet de rechercher dans un grande liste
   $('select.chosen').chosen();
