@@ -32,6 +32,11 @@
   textarea {
     width: 400px;
   }
+
+  .markItUpPreviewFrame {
+    width: 400px;
+    height: 200px;
+  }
 }
 
 /* Boutons venant du set Markdown */
@@ -93,7 +98,7 @@
     background-image:url(style/markItUp/code.png);
   }
 
-  .markItUp .preview a {
+  .preview a {
     background-image:url(style/markItUp/preview.png);
   }
 }

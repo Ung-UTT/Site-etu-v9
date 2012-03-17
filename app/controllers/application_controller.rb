@@ -8,9 +8,14 @@ class ApplicationController < ActionController::Base
   # Permet de définir des variables utiles à toutes les vues
   before_filter :set_layout_vars, :set_locale
   # Méthode que l'on peut utiliser dans les controlleurs et dans les vues
-  helper_method :'mobile?', :current_user_session, :current_user
+  helper_method :'mobile?', :current_user_session, :current_user, :md
   # Chosit le layout normal ou mobile
   layout :which_layout
+
+  # Gére la prévisualisation du Markdown
+  def preview
+    render :text => md(params[:data])
+  end
 
   # Gére les erreurs 404
   def render_not_found
@@ -149,5 +154,14 @@ class ApplicationController < ActionController::Base
         end
       end
       nil
+    end
+
+    # Permet de transformer du Markdown en HTML
+    def md(text)
+      if text.nil?
+        return nil
+      else
+        return RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe
+      end
     end
 end

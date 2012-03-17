@@ -10,9 +10,16 @@
 // -------------------------------------------------------------------
 // Feel free to add more tags
 // -------------------------------------------------------------------
+
+// Dorian : définit l'url vers la page d'accueil via la bannière (ou /)
+ROOT_URL = $('.banner')[0];
+ROOT_URL = (typeof(ROOT_URL) == 'undefined') ? '/' : ROOT_URL.href;
+
 mySettings = {
-  previewParserPath:  '',
-  onShiftEnter:   {keepDefault:false, openWith:'\n\n'},
+  resizeHandle: false, // Dorian : Géré par le navigateur
+  previewAutoRefresh: true, // Dorian : Met à jour automatiquement la preview
+  previewParserPath: ROOT_URL + '/preview', // Dorian : prévisualisation via l'application Rails
+  onShiftEnter: {keepDefault:false, openWith:'\n\n'},
   markupSet: [
     {name:'First Level Heading', key:'1', placeHolder:'Your title here...', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '=') } },
     {name:'Second Level Heading', key:'2', placeHolder:'Your title here...', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '-') } },
@@ -20,21 +27,21 @@ mySettings = {
     {name:'Heading 4', key:'4', openWith:'#### ', placeHolder:'Your title here...' },
     {name:'Heading 5', key:'5', openWith:'##### ', placeHolder:'Your title here...' },
     {name:'Heading 6', key:'6', openWith:'###### ', placeHolder:'Your title here...' },
-    {separator:'---------------' },
+    {separator:'-' },
     {name:'Bold', key:'B', openWith:'**', closeWith:'**'},
     {name:'Italic', key:'I', openWith:'_', closeWith:'_'},
-    {separator:'---------------' },
+    {separator:'-' },
     {name:'Bulleted List', openWith:'- ' },
     {name:'Numeric List', openWith:function(markItUp) {
       return markItUp.line+'. ';
     }},
-    {separator:'---------------' },
+    {separator:'-' },
     {name:'Picture', key:'P', openWith:'![', closeWith:']([![Url:!:http://]!])', placeHolder:'A description...'},
     {name:'Link', key:'L', openWith:'[', closeWith:']([![Url:!:http://]!])', placeHolder:'Your text to link here...' },
-    {separator:'---------------'},
+    {separator:'-'},
     {name:'Quotes', openWith:'> '},
     {name:'Code Block / Code', openWith:'(!(\t|!|`)!)', closeWith:'(!(`)!)'},
-    {separator:'---------------'},
+    {separator:'-'},
     {name:'Preview', call:'preview', className:"preview"}
   ]
 }

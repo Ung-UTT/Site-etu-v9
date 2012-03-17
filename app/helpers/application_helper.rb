@@ -105,14 +105,6 @@ module ApplicationHelper
     end
   end
 
-  def md(text)
-    if text.nil?
-      return nil
-    else
-      return RDiscount.new(text, :filter_html, :autolink, :no_pseudo_protocols).to_html.html_safe
-    end
-  end
-
   # Emploi du temps
 
   # Traduit une suite de paramètres en un hash prêt à être utilisé
