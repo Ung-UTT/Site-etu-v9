@@ -7,7 +7,7 @@
 
 $(function () {
   // Éditeur WYSIWYM pour formater des textes avec le markdown
-  $("textarea").markItUp(mySettings);
+  $("textarea.rich-content").markItUp(mySettings);
 
   // Selecteurs et selecteurs multiples
   // Permet de rechercher dans un grande liste

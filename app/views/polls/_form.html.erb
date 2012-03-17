@@ -8,7 +8,7 @@
     </li>
     <li class="field">
       <%= f.label :description, t('polls.description') %>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, :class => 'rich-content' %>
     </li>
 
     <%= f.fields_for :answers do |nested_f| %>
