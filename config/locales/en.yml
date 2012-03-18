@@ -167,7 +167,8 @@ en:
   carpools:
     list: "List of carpools"
     description: "Description"
-    location: "Location"
+    departure: "Departure"
+    arrival: "Arrival"
     date: "Date"
     is_driver: "Driver?"
 

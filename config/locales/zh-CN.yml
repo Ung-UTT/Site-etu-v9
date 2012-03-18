@@ -167,7 +167,6 @@ zh-CN:
   carpools:
     list: "拼车信息"
     description: "说明"
-    location: "地点"
     date: "日期"
     is_driver: "您是驾驶员吗?"
 

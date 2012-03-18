@@ -169,7 +169,8 @@ fr:
   carpools:
     list: "Covoiturages"
     description: "Description"
-    location: "Lieu"
+    departure: "Départ"
+    arrival: "Arrivée"
     date: "Date"
     is_driver: "Conducteur ?"
 

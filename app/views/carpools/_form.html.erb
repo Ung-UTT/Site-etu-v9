@@ -7,8 +7,12 @@
       <%= f.text_area :description, :class => 'rich-content' %>
     </li>
     <li class="field">
-      <%= f.label :location, t('carpools.location') %>
-      <%= f.text_field :location %>
+      <%= f.label :departure, t('carpools.departure') %>
+      <%= f.text_field :departure %>
+    </li>
+    <li class="field">
+      <%= f.label :arrival, t('carpools.arrival') %>
+      <%= f.text_field :arrival %>
     </li>
     <li class="field">
       <%= f.label :date, t('carpools.date') %>

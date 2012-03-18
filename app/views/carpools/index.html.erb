@@ -1,9 +1,19 @@
 <section class="content">
   <%= title t('carpools.list') %>
 
+  <h2>Conducteurs</h2>
+
   <ul>
-  <% @carpools.each do |carpool| %>
-    <li><%= link_to carpool.location, carpool %></li>
+  <% @drivers.each do |carpool| %>
+    <li><%= link_to carpool.way, carpool %></li>
+  <% end %>
+  </ul>
+
+  <h2>Passagers</h2>
+
+  <ul>
+  <% @not_drivers.each do |carpool| %>
+    <li><%= link_to carpool.way, carpool %></li>
   <% end %>
   </ul>
 

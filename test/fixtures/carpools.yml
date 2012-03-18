@@ -1,20 +1,23 @@
 paris:
   description: Voiture de compétition !
-  location: Paris, 16ème
+  departure: Paris, 16ème
+  arrival: À 500m de l'UTT
   date: 2011-05-05 22:55:39
   is_driver: false
   user: joe
 
 USA:
   description: Il y a de la place dans mon bateau ;)
-  location: New York, USA
+  departure: New York, USA
+  arrival: À côté de l'UTT
   date: 2011-04-05 20:55:39
   is_driver: true
   user: joe
 
 Troyes:
   description: Venez tous au cimetiére (animaux morts acceptés)
-  location: À côté du cimetiére de Troyes
+  departure: À côté du cimetiére de Troyes
+  arrival: Chez toi
   date: 2011-03-05 20:55:39
   is_driver: true
   user: kevin
@@ -22,7 +25,8 @@ Troyes:
 <% 1.upto(5) do |i| %>
 <%= "paris#{i}" %>:
   description: "<%= "#{i} places dans la voiture" %>"
-  location: "<%= "#{i} place de la statue minuscule, 10000 Troyes" %>"
+  departure: "<%= "#{i} place de la statue minuscule, 10000 Troyes" %>"
+  arrival: Loin de l'UTT
   date: <%= (20-i).weeks.ago.to_s(:db) %>
   is_driver: <%= i%2 == 0 %>
   user: kevin

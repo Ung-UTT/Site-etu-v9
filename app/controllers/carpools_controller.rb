@@ -6,6 +6,8 @@ class CarpoolsController < ApplicationController
   # GET /carpools.xml
   def index
     @carpools = Carpool.all
+    @drivers = @carpools.select{|car| car.is_driver}
+    @not_drivers = @carpools.select{|car| !car.is_driver}
 
     respond_to do |format|
       format.html # index.html.erb
