@@ -14,7 +14,7 @@
     <li>
       <span class="answer">
         <% if @vote.answer == answer %>
-          <%= button_to_delete('x ' + answer.content, answer) %>
+          <%= button_to_delete('x ' + answer.content, @vote) %>
         <% else %>
           <%= answer.content %>
         <% end %>
