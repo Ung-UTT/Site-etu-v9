@@ -12,7 +12,7 @@
   <ul class="list-with-delete">
     <% @poll.answers.each do |answer| %>
     <li>
-      <%= answer.content %> (<%= answer.votes.size %>)
+      <%= answer.content %> (<%= answer.percent %>% )
       <%= delete_button(image_tag("icons/delete.png"), @vote) if @vote.answer == answer %>
     </li>
     <% end %>

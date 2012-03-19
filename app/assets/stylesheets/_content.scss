@@ -206,6 +206,8 @@
     }
   }
 
+  /* Listes avec des boutons pour supprimer des éléments (commentaires, ...) */
+
   ul.list-with-delete {
     button, .button_to {
       padding: 0;
@@ -239,6 +241,8 @@
       }
     }
   }
+
+  /* CSS spécifique aux pense-bêtes */
 
   form#new_reminder, form.edit_reminder {
     width: 210px;
