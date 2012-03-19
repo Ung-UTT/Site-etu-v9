@@ -209,7 +209,7 @@
   /* Listes avec des boutons pour supprimer des éléments (commentaires, ...) */
 
   ul.list-with-delete {
-    button, .button_to {
+    button, .button_to, .button_to input {
       padding: 0;
       margin: 0;
       background: none;
@@ -268,6 +268,38 @@
       margin: 0;
       margin-top: 20px;
       text-align: center;
+    }
+  }
+
+  /* Barre des sondages : inspiré de : http://www.alistapart.com/d/accessibledata/example-final.html */
+
+  ul.poll li {
+    position: relative;
+    display: block;
+
+    .answer {
+      padding: 5px;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .count {
+      position: absolute;
+      top : 0;
+      right: 0;
+      color: #AAA;
+      padding: 5px;
+    }
+
+    .index {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: $base + #333;
+      border-radius: 10px;
+      @include linear-gradient-top($base + #444, $base + #222);
     }
   }
 }

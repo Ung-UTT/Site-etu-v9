@@ -9,11 +9,18 @@
   </p>
 
   <% if @vote %>
-  <ul class="list-with-delete">
+  <ul class="list-with-delete poll">
     <% @poll.answers.each do |answer| %>
     <li>
-      <%= answer.content %> (<%= answer.percent %>% )
-      <%= delete_button(image_tag("icons/delete.png"), @vote) if @vote.answer == answer %>
+      <span class="answer">
+        <% if @vote.answer == answer %>
+          <%= button_to_delete('x ' + answer.content, answer) %>
+        <% else %>
+          <%= answer.content %>
+        <% end %>
+      </span>
+      <span class="count"><%= answer.votes.size %></span>
+      <span class="index" style="width: <%= answer.percent %>%"></span>
     </li>
     <% end %>
   </ul>
