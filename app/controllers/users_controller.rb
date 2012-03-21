@@ -9,8 +9,7 @@ class UsersController < ApplicationController
       @users = User.all
     else
       # Recherche simple dans le trombi
-      query = '%' + params[:q].split.join('%') + '%'
-      @users = User.where('login LIKE :query', {:query => query})
+      @users = User.search(params[:q])
     end
 
     respond_to do |format|

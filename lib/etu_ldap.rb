@@ -7,16 +7,14 @@ module EtuLdap
   @@ldap = Net::LDAP.new(:host => 'localhost', :port => 1389, :base => "dn:dc=utt,dc=fr", :auth => @@ung_auth)
 
   def ldap_attributes_for_username(ldap_uid, options={})
-    @@ldap.search(:base => "uid=#{ldap_uid.downcase},ou=people,dc=utt,dc=fr") do |entry|
-      return flatten_entry(entry)
-    end
-  end
-
-  def ldap_attribute_for_username(ldap_uid, attr)
-    ldap_uid.downcase!
-    @@ldap.search(:base => "uid=#{ldap_uid},ou=people,dc=utt,dc=fr", :attributes => ["#{attr}"]) do |e|
-      val = e.send("#{attr}")
-      return unpack(val)
+    unless @@ldap.nil?
+      begin
+        @@ldap.search(:base => "uid=#{ldap_uid.downcase},ou=people,dc=utt,dc=fr") do |entry|
+          return flatten_entry(entry)
+        end
+      rescue => e
+        @@ldap = nil
+      end
     end
   end
 

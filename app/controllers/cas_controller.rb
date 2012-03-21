@@ -21,10 +21,18 @@ class CasController < ApplicationController
         redirect_to :root, :notice => "#{session[:cas_user]}, te revoilà !"
       else # Sinon on crée un compte
         password = SecureRandom.base64 # Génére un mot de passe que personne ne connaîtra
-        @user = User.create(:login => session[:cas_user], :password => password,
-                            :password_confirmation => password,
-                            :email => session[:cas_user] + '@utt.fr')
-        @user.become_a_student
+        @user = User.new(:login => session[:cas_user], :password => password,
+                            :password_confirmation => password)
+        if @user.ldap_attributes.empty?
+          # Pas accès au LDAP
+          @user.email =  @user.login + '@utt.fr'
+        else
+          # Accès au LDAP
+          @user.email = @user.ldap_attributes['mail']
+        end
+
+        @user.save
+
         cookies[:auth_token] = @user.auth_token
         redirect_to :root, :notice => "#{session[:cas_user]}, te voilà connecté avec ton compte UTT."
       end

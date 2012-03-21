@@ -1,10 +1,20 @@
 <section class="content">
-  <%= title(t('user') + ' : ' + @user.login) %>
+  <%= title(t('user') + ' : ' + @user.real_name) %>
 
+  <% if @user.ldap_attributes %>
+  <p class="profil"><%= link_to_user @user %>
+  <ul>
+    <li><strong>Niveau</strong> : <%= @user.ldap_attributes['niveau'] %></li>
+    <li><strong>Filière</strong> : <%= @user.ldap_attributes['filiere'] %></li>
+    <li><strong>ID étu</strong> : <%= @user.ldap_attributes['supannetuid'] %></li>
+    <li><strong>UVs</strong> : <%= @user.ldap_attributes['uv'].join(', ') %></li>
+  </ul>
+  <% else %>
   <p>
     <strong><%= t('users.email') %></strong> :
     <%= @user.email %>
   </p>
+  <% end %>
 
   <%= list_of t('courses.list'), @user.courses, :name %>
   <%= list_of t('roles.list'), @user.roles, :name %>

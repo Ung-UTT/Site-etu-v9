@@ -9,16 +9,16 @@ SEMESTERS = [
       # R : jour de rentrée
       # A : jour A
       # B : jour B
-      # P : pas cours (vacances, finaux, jours fériés, ...)
+      # V : pas cours (vacances, finaux, jours fériés, ...)
       # S : spécial (jour déplacé, ... ???)
 
   {
     'name' => 'P2012',
     'start_at' => Date.new(2012, 2, 20), # 20 février 2012
     'end_at' => Date.new(2012, 6, 30), # 30 juin 2012
-    'weeks' => ['RRRRRR', 'AAAAAA', 'PPPPPP', 'BBBBBB', 'AAAAAA',
-                'BBBBBB', 'AAAAAA', 'PBBBBB', 'BAAAAA', 'ABBBBB',
-                'PPPPPP', 'BPAAAA', 'AABPPP', 'BBABBB', 'PASAAA',
-                'BBBBBB', 'AAAAAA', 'BBBBBB', 'PPPPPP']
+    'weeks' => ['RRRRRR', 'AAAAAA', 'VVVVVV', 'BBBBBB', 'AAAAAA',
+                'BBBBBB', 'AAAAAA', 'VBBBBB', 'BAAAAA', 'ABBBBB',
+                'VVVVVV', 'BVAAAA', 'AABVVV', 'BBABBB', 'VASAAA',
+                'BBBBBB', 'AAAAAA', 'BBBBBB', 'VVVVVV']
   },
 ]

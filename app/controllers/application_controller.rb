@@ -56,7 +56,8 @@ class ApplicationController < ActionController::Base
 
       rescue => exception
         # Erreur 404
-        if exception.is_a?(ActiveRecord::RecordNotFound)
+        if exception.is_a?(ActiveRecord::RecordNotFound) or
+           exception.is_a?(ActionView::MissingTemplate)
           render_not_found
         # Problème de droit
         elsif exception.is_a?(CanCan::AccessDenied)

@@ -39,7 +39,7 @@ module ApplicationHelper
 
   def users_select(object = nil)
     default = object.nil? ? nil : object.users.map(&:id)
-    options_for_select(User.all.map { |a| [a.login, a.id] }, default)
+    options_for_select(User.all.map { |a| [a.real_name, a.id] }, default)
   end
 
   # Links to
@@ -69,9 +69,15 @@ module ApplicationHelper
 
   def link_to_user(user)
     if can? :read, user
-      link_to user.login, user
+      if user.ldap_attributes.nil?
+        link_to user.login, user
+      else
+        link_to user, :title => user.ldap_attributes['displayname'] do
+          image_tag(user.ldap_attributes['jpegphoto'], :class => 'user')
+        end
+      end
     else
-      user.login
+      user.real_name
     end
   end
 

@@ -47,6 +47,19 @@ class User < ActiveRecord::Base
   has_many :timesheets_user, :dependent => :destroy
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
+  # Recherche parmi les utilisateurs
+  def self.search(name)
+    # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
+    names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
+    User.all.select do |u|
+      content = [u.login]
+      if u.ldap_attributes
+        content.push(u.ldap_attributes['displayname'])
+      end
+      /(#{names})/i.match(content.join(' '))
+    end
+  end
+
   # Retourne l'utilisateur si le couple login/password est bon
   def self.authenticate(login, password)
     user = find_by_login(login)
@@ -57,7 +70,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Créer un utilisateur rapidement
+  # Créer un utilisateur rapidement (juste pour les tests)
   def self.simple_create(login, password)
     User.create(:login => login, :email => "#{login}@example.org",
                 :password => password, :password_confirmation => password)
@@ -90,7 +103,7 @@ class User < ActiveRecord::Base
 
   # Cours = cours dans lesquels l'utilisateur participe à une horaire
   def courses
-    timesheets.map(&:course).uniq
+    timesheets.map(&:course).compact.uniq
   end
 
   # Est-ce qu'il est membre d'une association
@@ -114,19 +127,18 @@ class User < ActiveRecord::Base
 
   # L'utilisateur devient un étudiant
   def become_a_student
-    unless is_student?
+    # Devenir étudiant (rôle) si il ne l'est pas déjà et si il a le type
+    # étudiant (à condition que le LDAP fonctionne)
+    if !is_student? and ldap_attributes and ldap_attributes['employeetype'] == 'student'
       roles << (Role.find_by_name('student') || Role.create(:name => 'student'))
     end
   end
 
   # Attributs LDAP de cet utilisateur
+  # Retourne nil si le serveur LDAP est inaccessible ou l'utilisateur n'a
+  # pas d'informations dans le LDAP.
   def ldap_attributes
-    ldap_attributes_for_username(login)
-  end
-
-  # Attribut LDAP particulier
-  def ldap_attribute(attr)
-    ldap_attribute_for_username(login, attr)
+    @cached_ldap_attributes ||= ldap_attributes_for_username(login)
   end
 
   # Emploi du temps
@@ -138,5 +150,14 @@ class User < ActiveRecord::Base
   def agenda
     agenda = Timesheet.make_agenda([timesheets])
     agenda += Event.make_agenda
+  end
+
+  # Nom réel si on l'a (Prénom NOM) sinon login (prenono)
+  def real_name
+    if ldap_attributes.nil?
+      login
+    else
+      ldap_attributes['displayname']
+    end
   end
 end

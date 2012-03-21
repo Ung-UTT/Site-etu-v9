@@ -1,4 +1,4 @@
-<h2><%= link_to current_user.login, current_user, :class => 'connect' %></h2>
+<h2><%= link_to current_user.real_name, current_user, :class => 'connect' %></h2>
 <ul>
   <% unless current_user.timesheets.empty? %>
     <li><%= link_to 'Votre emploi du temps', url_for(current_user) + '#edt' %></li>
