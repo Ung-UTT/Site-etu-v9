@@ -27,14 +27,15 @@ def ldap_routine
   # Connection aux deux annuaires LDAP
   # TODO/FIXME virer les port et hosts foireux utilisés pour tester le script depuis l'ext
   ldap_utt = Net::LDAP.new(:host => 'localhost', :port => 389, :base => "dn:dc=utt,dc=fr")
-  ung_auth = {:method => :simple, :username => "cn=Manager,dc=utt,dc=fr", :password => "tototo" } # TODO/FIXME changer le mot de passe et utiliser tls?
+  # TODO/FIXME changer le mot de passe et utiliser tls?
+  ung_auth = {:method => :simple, :username => "cn=Manager,dc=utt,dc=fr", :password => ENV["LDAP_PASSWORD"] }
   ldap_ung = Net::LDAP.new(:host => 'localhost', :port => 1389, :base => "dn:dc=utt,dc=fr", :auth => ung_auth)
   puts "ca bind : " + ldap_ung.bind.inspect
 
   ########################################################################
   # ETAPE 1 -  Création des nœuds de niv 1 et 2 si besoin (la première fois)
   ########################################################################
-  # creation du nœud racine si besoin
+  # création du nœud racine si besoin
   root_attr = {
     :o => "UTT",
     :dc => "UTT",

@@ -3,7 +3,7 @@ require 'net/ldap'
 
 module EtuLdap
   # TODO/FIXME changer le mot de passe et utiliser tls?
-  @@ung_auth = {:method => :simple, :username => "cn=Manager,dc=utt,dc=fr", :password => "tototo" }
+  @@ung_auth = {:method => :simple, :username => "cn=Manager,dc=utt,dc=fr", :password => ENV["LDAP_PASSWORD"] }
   @@ldap = Net::LDAP.new(:host => 'localhost', :port => 1389, :base => "dn:dc=utt,dc=fr", :auth => @@ung_auth)
 
   def ldap_attributes_for_username(ldap_uid, options={})

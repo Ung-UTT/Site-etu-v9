@@ -70,6 +70,18 @@ Voilà, lancez `rails server` et vous devriez voir apparaître le magnifique sit
 * Pour regénérer un environement fonctionnel : `rake dev:reset` (crée des
   base de données pour les environements production, development et test)
 
+### Le LDAP (pour ceux qui ont les accès) :
+
+Pour accèder au LDAP du serveur de test (et donc aux informations adaptées
+pour le site étudiant sur les étudiants) :
+
+* Connectez-vous au VPN de Ginny
+* Faîtes un tunnel pour utiliser le LDAP de Ginny en tant que localhost :
+ssh -L 1389:localhost:389 VOTRE_LOGIN@172.16.1.102`
+* Si vous voulez accéder au LDAP de l'UTT, faîtes :
+`sudo ssh -L 389:ldap.utt.fr:389 VOTRE_LOGIN@172.16.1.102`
+* Avant de lancer le serveur, faîtes : `export LDAP_PASSWORD="LE_MOT_DE_PASSE"`
+
 #### Pour Git :
 
 * Copier ce dépôt sur votre ordi : `git clone https://VOTRE-LOGIN-GITHUB@github.com/Ung-UTT/Site-etu-v9.git`
