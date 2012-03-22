@@ -1,7 +1,8 @@
 class Role < ActiveRecord::Base
+  attr_accessible :name, :asso_id, :parent_id
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => [:asso_id]
-  validates_format_of :name, :with => /[a-zA-Z1-9_\- ']+/
+  validates_format_of :name, :with => /\A[a-zA-Z1-9_\- ']+\z/
 
   has_paper_trail
   # Les rôles peuvent avoir des parents et des enfants (c'est un arbre de roles)

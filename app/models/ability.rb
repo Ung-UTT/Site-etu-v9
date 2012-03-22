@@ -28,7 +28,6 @@ class Ability
         can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
         can :read, Reminder, :user_id => user.id
         can :create, News
-        can :read, News, :is_moderated => true
 
         can [:create, :update, :destroy], Role do |asso|
           asso.nil? and asso.owner_id == user.id

@@ -30,6 +30,7 @@ class CasController < ApplicationController
           # Accès au LDAP
           @user.email = @user.ldap_attributes['mail']
         end
+        @user.become_a_student
 
         @user.save
 
