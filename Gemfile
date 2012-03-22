@@ -21,7 +21,7 @@ gem 'paperclip'   # Gestion de fichier
 gem 'kaminari'    # Pagination
 gem 'paper_trail' # Historique
 gem 'rdiscount'   # Parsage (Markdown)
-gem 'awesome_nested_set' # "Arbres" (Associations, Groupes, ...)
+gem 'awesome_nested_set' # "Arbres" (Associations, Rôles, ...)
 gem 'net-ldap'    # Manipulation d'annuaires LDAP
 
 group :test do

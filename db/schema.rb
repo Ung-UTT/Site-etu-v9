@@ -114,22 +114,6 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "groups_users", :force => true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "content"

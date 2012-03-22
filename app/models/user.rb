@@ -35,9 +35,6 @@ class User < ActiveRecord::Base
   has_many :events_user, :dependent => :destroy
   has_many :events, :through => :events_user, :uniq => true
 
-  has_many :groups_user, :dependent => :destroy
-  has_many :groups, :through => :groups_user, :uniq => true
-
   has_many :projects_user, :dependent => :destroy
   has_many :projects, :through => :projects_user, :uniq => true
 
@@ -93,7 +90,7 @@ class User < ActiveRecord::Base
 
   # Préférences par défaut d'un utilisateur
   def create_preferences
-    Preference.create(:user => self, :locale => I18n.default_locale.to_s, :quote_type => 'all')
+    Preference.create(:user_id => id, :locale => I18n.default_locale.to_s, :quote_type => 'all')
   end
 
   # Associations = associations dans lesquelles l'utilisateur a un rôle

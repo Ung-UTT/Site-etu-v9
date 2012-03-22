@@ -41,7 +41,6 @@ describe User do
     it { should have_many(:created_projects) }
 
     it { should have_many(:events).through(:events_user) }
-    it { should have_many(:groups).through(:groups_user) }
     it { should have_many(:projects).through(:projects_user) }
     it { should have_many(:roles).through(:roles_user) }
     it { should have_many(:timesheets).through(:timesheets_user) }
