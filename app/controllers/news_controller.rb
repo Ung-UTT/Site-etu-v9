@@ -52,7 +52,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       if @news.save
-        format.html { redirect_to(@news, :notice => t('c.news.create')) }
+        format.html { redirect_to(@news, :notice => t('c.create')) }
         format.xml  { render :xml => @news, :status => :created, :location => @news }
       else
         format.html { render :action => "new" }
@@ -70,7 +70,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       if @news.update_attributes(params[:news])
-        format.html { redirect_to(@news, :notice => t('c.news.update')) }
+        format.html { redirect_to(@news, :notice => t('c.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

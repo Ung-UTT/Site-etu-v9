@@ -57,7 +57,7 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @poll, :notice => t('c.polls.create') }
+        format.html { redirect_to @poll, :notice => t('c.create') }
         format.json { render :json => @poll, :status => :created, :location => @poll }
       else
         format.html { render :action => "new" }
@@ -73,7 +73,7 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       if @poll.update_attributes(params[:poll])
-        format.html { redirect_to @poll, :notice => t('c.polls.update') }
+        format.html { redirect_to @poll, :notice => t('c.update') }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

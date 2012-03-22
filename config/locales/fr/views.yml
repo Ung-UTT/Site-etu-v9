@@ -1,0 +1,200 @@
+fr:
+  # Views
+  common:
+    add: "Ajouter"
+    confirm: "Êtes vous sûr ?"
+    delete: "Supprimer"
+    edit: "Modifier"
+    list: "Lister"
+    show: "Afficher"
+    submit: "Envoyer"
+    search: "Rechercher"
+    none: "Aucun"
+
+  annal: "Annale"
+  answer: "Réponse"
+  asso: "Asso"
+  carpool: "Covoiturage"
+  classified: "Petite annonce"
+  comment:
+    one: "Un commentaire"
+    other: "%{count} commentaires"
+  course: "UV"
+  document: "Document"
+  event: "Évènement"
+  image: "Image"
+  news: "News"
+  poll: "Sondage"
+  preference: "Préférence"
+  project: "Projet"
+  quote: "Citation"
+  reminder: "Pense-bête"
+  role: "Role"
+  timesheet: "Horaire"
+  user: "Utilisateur"
+  user_session: "Connexion"
+
+  annals:
+    list: "Annales"
+    name: "Nom"
+    date: "Date"
+    description: "Description"
+    course: "UV associée"
+
+  assos:
+    list: "Assos et clubs"
+    name: "Nom"
+    description: "Description"
+    owner: "Président"
+    parent: "Asso parente"
+    children: "Clubs fils"
+    join: "Joindre"
+    disjoin: "Quitter"
+    roles: "Rôles de l'asso"
+    events: "Évènements de l'asso"
+    add_role: "Ajouter un rôle"
+    users: "Membres"
+
+  carpools:
+    list: "Covoiturages"
+    description: "Description"
+    departure: "Départ"
+    arrival: "Arrivée"
+    date: "Date"
+    is_driver: "Conducteur ?"
+
+  classifieds:
+    list: "Petites annonces"
+    title: "Titre"
+    description: "Description"
+    price: "Prix"
+    location: "Lieu"
+    user: "Vendeur"
+
+  comments:
+    list: "Commentaires"
+    content: "Cotenu"
+    user: "Auteur"
+
+  courses:
+    list: "UVs"
+    name: "Nom"
+    description: "Description"
+    users: "Étudiants"
+    annals: "Annales de cette UV"
+
+  documents:
+    list: "Documents"
+
+  events:
+    list: "Évènements"
+    name: "Nom"
+    description: "Description"
+    location: "Lieu"
+    start_at: "Commence le"
+    end_at: "Fini le"
+    owner: "Créé par"
+    users: "Participants"
+    assos: "Organisé par"
+    join: "Participer"
+    disjoin: "Ne plus participer"
+    daymail:
+      one: "Un daymail"
+      other: "%{count} daymails"
+
+  newss:
+    list: "News"
+    title: "Titre"
+    content: "Contenu"
+    user: "Auteur"
+    event: "Évènement associé"
+    is_moderated: "Modérée ?"
+    moderate: "Modére-moi !"
+    date: "Date"
+    hour: "Heure"
+    comments: "Commentaires"
+
+  polls:
+    list: "Sondages"
+    name: "Nom"
+    description: "Description"
+    user: "Auteur"
+
+  preferences:
+    list: "Vos préférences"
+    locale: "Langue"
+    quote_type: "Type de citations"
+
+  projects:
+    list: "Projets"
+    name: "Nom"
+    description: "Description"
+    owner: "Chef de projet"
+    users: "Participants"
+    join: "Joindre"
+    disjoin: "Quitter"
+
+  quotes:
+    list: "Citations"
+    content: "Contenu"
+    by: "de"
+
+  reminders:
+    list: "Pense-bêtes"
+    content: "Contenu"
+    user: "Utilisateur"
+
+  roles:
+    list: "Rôles"
+    name: "Nom"
+    asso: "Asso associée"
+    parent: "Parent"
+    users: "Utilisateurs"
+    default:
+      superAdmin: "SuperAdministrateur"
+      admin: "Administrateur"
+      moderator: "Moderateur"
+
+  timesheets:
+    list: "Liste des horaires"
+    day: "Jour"
+    start_at: "Depuis"
+    end_at: "jusqu'à"
+    week: "Semaine"
+    room: "Salle"
+    course: "UV durant cet horaire"
+    cumulate: "Cumuler"
+    users: "Participants"
+
+  users:
+    list: "Utilisateurs"
+    login: "Pseudo"
+    email: "Email"
+    password: "Mot de passe"
+    password_confirmation: "Confirmation"
+    password_reset: "Vous avez oublié votre mot de passe ?"
+    add: "Créer un compte"
+    count:
+      one: "Un utilisateur"
+      other: "%{count} utilisateurs"
+    assos: "President des assocations"
+    events: "Créateur des évènements"
+    projects: "Chef de projets des projets"
+
+  user_sessions:
+    login: "Connexion alternative"
+    logout: "Se déconnecter"
+    cas: "Connexion"
+
+  votes:
+    count:
+      one: "Un vote"
+      other: "%{count} votes"
+    delete: "Supprimer votre vote"
+
+  views:
+    pagination:
+      first: "Première"
+      previous: "Précédente"
+      next: "Suivante"
+      last: "Dernière"

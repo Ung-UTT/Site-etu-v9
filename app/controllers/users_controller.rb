@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         cookies[:auth_token] = @user.auth_token
-        format.html { redirect_to(:root, :notice => t('c.users.create')) }
+        format.html { redirect_to(:root, :notice => t('c.create')) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -95,7 +95,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => t('c.users.update')) }
+        format.html { redirect_to(@user, :notice => t('c.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

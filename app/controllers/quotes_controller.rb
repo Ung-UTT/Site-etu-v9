@@ -49,7 +49,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to(@quote, :notice => t('c.quotes.create')) }
+        format.html { redirect_to(@quote, :notice => t('c.create')) }
         format.xml  { render :xml => @quote, :status => :created, :location => @quote }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.update_attributes(params[:quote])
-        format.html { redirect_to(@quote, :notice => t('c.quotes.update')) }
+        format.html { redirect_to(@quote, :notice => t('c.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

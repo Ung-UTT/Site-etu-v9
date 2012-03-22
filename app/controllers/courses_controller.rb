@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to(@course, :notice => t('c.courses.create')) }
+        format.html { redirect_to(@course, :notice => t('c.create')) }
         format.xml  { render :xml => @course, :status => :created, :location => @course }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        format.html { redirect_to(@course, :notice => t('c.courses.update')) }
+        format.html { redirect_to(@course, :notice => t('c.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

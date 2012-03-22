@@ -57,7 +57,7 @@ class TimesheetsController < ApplicationController
 
     respond_to do |format|
       if @timesheet.save
-        format.html { redirect_to(@timesheet, :notice => t('c.timesheets.create')) }
+        format.html { redirect_to(@timesheet, :notice => t('c.create')) }
         format.xml  { render :xml => @timesheet, :status => :created, :location => @timesheet }
       else
         format.html { render :action => "new" }
@@ -74,7 +74,7 @@ class TimesheetsController < ApplicationController
 
     respond_to do |format|
       if @timesheet.update_attributes(params[:timesheet])
-        format.html { redirect_to(@timesheet, :notice => t('c.timesheets.update')) }
+        format.html { redirect_to(@timesheet, :notice => t('c.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
