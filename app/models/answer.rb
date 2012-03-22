@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
+  attr_accessible :content, :poll_id
   validates_presence_of :content, :poll
 
   has_paper_trail

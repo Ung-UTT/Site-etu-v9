@@ -1,6 +1,7 @@
 class Classified < ActiveRecord::Base
   paginates_per 50
 
+  attr_accessible :title, :description, :price, :location
   validates_presence_of :title, :description
 
   has_paper_trail

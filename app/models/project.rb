@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   paginates_per 20
 
+  attr_accessible :name, :description
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
 

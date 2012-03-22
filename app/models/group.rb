@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  attr_accessible :name, :parent_id
   validates_presence_of :name
 
   has_paper_trail

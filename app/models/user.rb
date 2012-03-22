@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  validates :email, :presence => true, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+  validates :email, :presence => true, :format => {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
   paginates_per 30
 
