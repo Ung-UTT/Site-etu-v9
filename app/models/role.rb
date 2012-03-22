@@ -10,9 +10,15 @@ class Role < ActiveRecord::Base
 
   belongs_to :asso
 
+  has_many :wikis, :dependent => :destroy
+
   has_many :roles_user, :dependent => :destroy
   has_many :users, :through => :roles_user, :uniq => true
 
   # Enlève le rôle supprimé aux utilisateurs
   before_destroy do self.users.delete_all end
+
+  def name_with_asso
+    name + (asso ? " (#{asso.name})" : '')
+  end
 end

@@ -1,0 +1,27 @@
+<section class="content">
+  <%= title @wiki.title %>
+
+  <%=md @wiki.content %>
+
+  <% if @wiki.role %>
+  <p>
+    <strong>Role</strong> :
+    <%= @wiki.role.name_with_asso %>
+  </p>
+  <% end %>
+
+  <% unless @wiki.children.empty? %>
+  <p> Pages :
+    <ul>
+      <% @wiki.children.each do |wiki| %>
+        <li><%= link_to wiki.title, wiki %></li>
+      <% end %>
+    </ul>
+  </p>
+  <% end %>
+
+  <%= render 'layouts/show_actions', {:ressource => @wiki} %>
+</section>
+
+<%= render 'documents/list_and_add', {:documentable => @wiki, :documents => @documents} %>
+

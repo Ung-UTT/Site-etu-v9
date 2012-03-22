@@ -1,0 +1,36 @@
+accueil:
+  title: Page principale
+  content: |
+    Vous voilà sur l'accueil du wiki.
+    ## Techniquement
+    Ceci est la racine de l'arbre des pages.
+  lft: 1
+  rgt: 8
+
+page_FritUTT:
+  title: FritUTT l'asso des frites
+  content: |
+    "Toutes les infos que FritUTT se partagent sont ici..."
+  role: FritUTT_member
+  parent: accueil
+  lft: 2
+  rgt: 3
+
+page_LibrUTT:
+  title: LibrUTT l'asso des oufs
+  content: |
+    "Toutes les infos que LibrUTT se partagent sont ici..."
+  role: LibrUTT_member
+  parent: accueil
+  lft: 4
+  rgt: 7
+
+secret_page_LibrUTT:
+  title: LibrUTT secrets
+  content: |
+    > La voie est libre... mais la route est longue !
+    Oué c'est ça le **secret** de LibrUTT :D
+  role: treasurer
+  parent: page_LibrUTT
+  lft: 5
+  rgt: 6

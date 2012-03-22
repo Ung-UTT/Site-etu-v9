@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111107232254) do
+ActiveRecord::Schema.define(:version => 20120322161749) do
 
   create_table "annals", :force => true do |t|
     t.string   "name"
@@ -249,6 +249,17 @@ ActiveRecord::Schema.define(:version => 20111107232254) do
   create_table "votes", :force => true do |t|
     t.integer  "answer_id"
     t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "wikis", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "role_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

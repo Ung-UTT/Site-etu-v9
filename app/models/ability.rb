@@ -54,6 +54,11 @@ class Ability
         end
 
         can :destroy, Comment, :user_id => user.id
+
+        can :manage, Wiki do |wiki|
+          # Pas de rôle (public) ou l'utisateur le rôle requis
+          wiki.role.nil? or user.roles.include?(wiki.role)
+        end
       end # / student?
 
       if user.is? :moderator

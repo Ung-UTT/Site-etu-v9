@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def title_tag
-    content_tag(:title, content_for(:title).empty?  ? "Site étudiant de l'UTT" : content_for(:title))
+    content_tag(:title, content_for(:title).empty? ? "Site étudiant de l'UTT" : content_for(:title))
   end
 
   # Select options
@@ -17,8 +17,16 @@ module ApplicationHelper
   def parent_select_options(name)
     options_for_select(
       nested_set_options(name) do |i|
-        asso = i.parent ? "(#{i.parent.name})" : ''
-        "#{'..' * i.level} #{i.name} #{asso}"
+        if name == Wiki
+          "#{'..' * i.level} #{i.title}"
+        elsif name == Asso
+          asso = i.parent ? "(#{i.parent.name})" : ''
+          "#{'..' * i.level} #{i.name} #{asso}"
+        elsif name == Role
+          "#{'..' * i.level} #{i.name_with_asso}"
+        else
+          "???"
+        end
       end.unshift(['Pas de parent', nil])
     )
   end
