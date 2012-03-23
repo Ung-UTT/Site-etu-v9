@@ -12,10 +12,14 @@ describe Comment do
     it { should belong_to(:commentable) }
 
     it 'can be added to some contents' do
-      com = Comment.create(:content => 'Content', :user => users(:kevin), :commentable => news(:lorem))
+      com = Comment.new(:content => 'Content', :user_id => users(:kevin).id)
+      com.commentable = news(:lorem)
+      com.save
       news(:lorem).comments.include?(com).should be_true
 
-      com2 = Comment.create(:content => 'Content', :user => users(:joe), :commentable => classifieds(:magic))
+      com2 = Comment.create(:content => 'Content', :user_id => users(:joe).id)
+      com2.commentable = classifieds(:magic)
+      com2.save
       classifieds(:magic).comments.include?(com2).should be_true
     end
   end

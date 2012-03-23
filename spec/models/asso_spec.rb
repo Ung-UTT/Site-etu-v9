@@ -21,7 +21,7 @@ describe Asso do
 
   describe 'Methods' do
     before do
-      @a = Asso.create(:name => 'Asso', :owner => users(:kevin))
+      @a = Asso.create(:name => 'Asso', :owner_id => users(:kevin).id)
       @a.save
     end
 
@@ -45,7 +45,7 @@ describe Asso do
     end
 
     it 'can have nested assos' do
-      @b = Asso.new(:name => 'Asso B', :owner => users(:joe), :parent => @a)
+      @b = Asso.new(:name => 'Asso B', :owner_id => users(:joe).id, :parent_id => @a.id)
       @b.save.should be_true
 
       @b.parent.should == @a

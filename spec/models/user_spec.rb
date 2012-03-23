@@ -69,10 +69,6 @@ describe User do
     it 'should correctly respond for abilities' do
       @foo.is_member_of?(:fake_asso).should be_false
       @foo.is?(:fake_role).should be_false
-
-      @foo.is_student?.should be_false
-      @foo.become_a_student
-      @foo.is_student?.should be_true
     end
   end
 
