@@ -1,5 +1,4 @@
 class Carpool < ActiveRecord::Base
-  attr_accessible :description, :departure, :arrival, :date, :is_driver, :user_id
   validates_presence_of :description
 
   has_paper_trail

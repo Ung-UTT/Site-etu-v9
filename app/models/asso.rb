@@ -1,5 +1,4 @@
 class Asso < ActiveRecord::Base
-  attr_accessible :name, :description, :owner_id, :image, :parent_id
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
 

@@ -1,5 +1,4 @@
 class Document < ActiveRecord::Base
-  attr_accessible :asset, :documentable_id, :documentable_type
   validates_attachment_presence :asset
 
   has_paper_trail

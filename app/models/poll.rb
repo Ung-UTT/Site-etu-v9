@@ -1,5 +1,4 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :name, :description, :user_id
   validates_presence_of :name
 
   belongs_to :user

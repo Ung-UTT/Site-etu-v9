@@ -3,7 +3,6 @@ class Quote < ActiveRecord::Base
 
   paginates_per 30
 
-  attr_accessible :content, :tag, :user_id
   validates_presence_of :content
   validates :tag, :inclusion => {:in => Quote::TAGS}
 

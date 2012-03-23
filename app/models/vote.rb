@@ -1,5 +1,4 @@
 class Vote < ActiveRecord::Base
-  attr_accessible :answer_id, :user_id
   validate :uniqueness_of_vote_per_answer
 
   belongs_to :answer

@@ -1,5 +1,4 @@
 class Wiki < ActiveRecord::Base
-  attr_accessible :title, :content, :role_id, :parent_id
   validates_presence_of :title
 
   has_paper_trail
