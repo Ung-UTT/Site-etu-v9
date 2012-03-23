@@ -18,7 +18,7 @@ describe Poll do
     it 'should know if user has already votes' do
       p = Poll.create(:name => 'Poll answer?')
       p.answers << Answer.create(:content => 'Answer')
-      Vote.create(:answer => p.answers.first, :user => users(:kevin))
+      Vote.create(:answer_id => p.answers.first.id, :user_id => users(:kevin).id)
       p.voted_by?(users(:kevin)).should be_true
       p.voted_by?(users(:joe)).should be_false
     end

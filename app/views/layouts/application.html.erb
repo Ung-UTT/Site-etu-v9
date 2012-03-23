@@ -19,38 +19,33 @@
   <% end %>
 
   <ul id="topbar">
-    <li id="language-selector">
-      <%= link_to image_tag('icons/french.png'),"?locale=fr" %>
-      <%= link_to image_tag('icons/english.png'),"?locale=en" %>
-      <%= link_to image_tag('icons/chinese.png'),"?locale=zh-CN" %>
-    </li>
     <li>
-      <%= link_to :root, :title => t('layout.home') do
+      <%= link_to :root, :title => t('layout.home_title') do
         image_tag('icons/home.png') + t('layout.home')
       end %>
     </li>
     <li>
-      <%= link_to User, :title => t('layout.users') do
+      <%= link_to User, :title => t('layout.users_title') do
         image_tag('icons/users.png') + t('layout.users')
       end %>
     </li>
     <li>
-      <%= link_to albums_path, :title => t('layout.albums') do
-        image_tag('icons/albums.png') + t('layout.albums')
+      <%= link_to events_path, :title => t('layout.events') do
+        image_tag('icons/event.png') + t('layout.events')
       end %>
     </li>
     <li>
-      <%= link_to classifieds_path, :title => t('layout.classifieds') do
+      <%= link_to classifieds_path, :title => t('layout.classifieds_title') do
         image_tag('icons/classifieds.png') + t('layout.classifieds')
       end %>
     </li>
     <li>
-      <%= link_to :root, :title => t('layout.buckutt') do
+      <%= link_to :root, :title => t('layout.buckutt_title') do
         image_tag('icons/buckutt.png') + t('layout.buckutt')
       end %>
     </li>
     <li>
-      <%= link_to :root, :title => t('layout.mails') do
+      <%= link_to :root, :title => t('layout.mails_title') do
         image_tag('icons/mails.png') + t('layout.mails')
       end %>
     </li>
@@ -69,7 +64,6 @@
       <h2><%= t('layout.content') %></h2>
       <ul>
         <li><%= link_to t('layout.users'), users_path %></li>
-        <li><%= link_to t('layout.albums'), albums_path %></li>
         <li><%= link_to t('layout.annals'), annals_path %></li>
         <li><%= link_to t('layout.classifieds'), classifieds_path %></li>
         <li><%= link_to t('layout.assos'), assos_path %></li>
@@ -86,16 +80,15 @@
         <li><%= link_to t('layout.carpools'), carpools_path %></li>
         <li><%= link_to t('layout.polls'), polls_path %></li>
         <li><%= link_to t('layout.projects'), projects_path %></li>
+        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
       </ul>
     </li>
 
-    <% if can?(:manage, Role) or can?(:manage, Group) %>
+    <% if can?(:manage, Role) %>
     <li class="box">
       <h2>Administration</h2>
       <ul>
-        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
         <li><%= link_to t('layout.quotes'), quotes_path %></li>
-        <li><%= link_to t('layout.groups'), groups_path %></li>
         <li><%= link_to t('layout.roles'), roles_path %></li>
       </ul>
     </li>

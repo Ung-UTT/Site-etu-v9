@@ -12,10 +12,14 @@ describe Document do
     it { should belong_to(:documentable) }
 
     it 'can be added to some contents' do
-      doc = Document.create(:asset => file_from_assets('image.png'), :documentable => annals(:medianLE00))
+      doc = Document.new(:asset => file_from_assets('image.png'))
+      doc.documentable = annals(:medianLE00)
+      doc.save
       annals(:medianLE00).documents.include?(doc).should be_true
 
-      doc2 = Document.create(:asset => file_from_assets('image.ico'), :documentable => classifieds(:magic))
+      doc2 = Document.new(:asset => file_from_assets('image.ico'))
+      doc2.documentable = classifieds(:magic)
+      doc2.save
       classifieds(:magic).documents.include?(doc2).should be_true
     end
 

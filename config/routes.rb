@@ -23,11 +23,8 @@ SiteEtu::Application.routes.draw do
   match 'roles/:id/join' => 'roles#join', :as => 'join_role'
   match 'roles/:id/disjoin/:user_id' => 'roles#disjoin', :as => 'disjoin_role'
 
-  match 'groups/:id/join' => 'groups#join', :as => 'join_group'
-  match 'groups/:id/disjoin/:user_id' => 'groups#disjoin', :as => 'disjoin_group'
-
   # Ressources
-  resources :albums, :answers, :authorizations, :groups, :polls, :reminders,
+  resources :answers, :authorizations, :polls, :reminders,
             :roles, :timesheets, :users, :user_sessions, :votes
   resources :annals, :assos, :classifieds, :carpools, :courses, :events,
             :projects, :quotes, :news, :wikis do

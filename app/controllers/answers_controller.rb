@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer.poll, :notice => t('c.answers.create') }
+        format.html { redirect_to @answer.poll, :notice => t('c.create') }
         format.json { render :json => @answer, :status => :created, :location => @answer.poll }
       else
         format.html { render :action => "new" }

@@ -73,7 +73,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to(@role, :notice => t('c.roles.create')) }
+        format.html { redirect_to(@role, :notice => t('c.create')) }
         format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
         format.html { render :action => "new" }
@@ -89,7 +89,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        format.html { redirect_to(@role, :notice => t('c.roles.update')) }
+        format.html { redirect_to(@role, :notice => t('c.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

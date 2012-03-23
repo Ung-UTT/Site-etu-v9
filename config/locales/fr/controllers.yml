@@ -1,0 +1,45 @@
+fr:
+  # Controllers
+  c:
+    create: "Ça a bien été créée."
+    update: "Ça a bien été mise à jour."
+
+    application:
+      denied: "Vous n'avez pas le droit d'effectuer cette action."
+
+    assos:
+      already_join: "Vous êtes déjà dans cette asso."
+      join: "Vous êtes maintenant membre de l'asso."
+      already_disjoin: "Vous n'êtes pas dans cette asso."
+      disjoin: "Vous venez de quitter cette asso."
+
+    events:
+      already_join: "Vous participez déjà à cet évènement."
+      join: "Vous participez maintenant à cet évènement."
+      already_disjoin: "Vous ne participez pas à cet évènement."
+      disjoin: "Vous ne participez plus à cet évènement."
+
+    projects:
+      already_join: "Vous participez déjà à ce projet."
+      join: "Vous participez maintenant à ce projet."
+      already_disjoin: "Vous ne participez pas à ce projet."
+      disjoin: "Vous ne participez maintenant plus à ce projet."
+
+    roles:
+      join: "L'utilisateur a maintenant ce rôle."
+      already_disjoin: "L'utilisateur n'avait pas ce rôle."
+      disjoin: "L'utilisateur n'a plus ce rôle."
+
+    users:
+      bad_email: "Mauvaise adresse mail."
+      email_sent: "Le lien de confirmation vous a été envoyé, vérifiez votre boîte de reception."
+      bad_token: "Votre token est mauvais ou a expiré."
+      new_password: "Votre nouveau mot de passe est %{password}, ne l'oubliez plus ;)."
+
+    user_sessions:
+      create: "Vous êtes maintenant connecté."
+      destroy: "Vous êtes maintenant déconnecté."
+      failed: "La connexion a échoué"
+
+    votes:
+      create: "Votre vote a bien été comptabilisé."

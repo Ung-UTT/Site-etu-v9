@@ -1,6 +1,7 @@
 class Annal < ActiveRecord::Base
   paginates_per 50
 
+  attr_accessible :name, :description, :course_id, :date
   validates_presence_of :name
 
   has_paper_trail

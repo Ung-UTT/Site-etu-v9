@@ -41,7 +41,6 @@ describe User do
     it { should have_many(:created_projects) }
 
     it { should have_many(:events).through(:events_user) }
-    it { should have_many(:groups).through(:groups_user) }
     it { should have_many(:projects).through(:projects_user) }
     it { should have_many(:roles).through(:roles_user) }
     it { should have_many(:timesheets).through(:timesheets_user) }
@@ -70,10 +69,6 @@ describe User do
     it 'should correctly respond for abilities' do
       @foo.is_member_of?(:fake_asso).should be_false
       @foo.is?(:fake_role).should be_false
-
-      @foo.is_student?.should be_false
-      @foo.become_a_student
-      @foo.is_student?.should be_true
     end
   end
 

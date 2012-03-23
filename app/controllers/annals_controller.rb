@@ -57,7 +57,7 @@ class AnnalsController < ApplicationController
 
     respond_to do |format|
       if @annal.save
-        format.html { redirect_to(@annal, :notice => t('c.annals.create')) }
+        format.html { redirect_to(@annal, :notice => t('c.create')) }
         format.xml  { render :xml => @annal, :status => :created, :location => @annal }
       else
         format.html { render :action => "new" }
@@ -73,7 +73,7 @@ class AnnalsController < ApplicationController
 
     respond_to do |format|
       if @annal.update_attributes(params[:annal])
-        format.html { redirect_to(@annal, :notice => t('c.annals.update')) }
+        format.html { redirect_to(@annal, :notice => t('c.update')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

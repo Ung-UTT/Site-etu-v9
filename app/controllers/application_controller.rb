@@ -93,6 +93,8 @@ class ApplicationController < ActionController::Base
         # Cookie ou dans HTTP_ACCEPT_LANGUAGE ou :fr par défaut
         I18n.locale = cookies[:locale] || http_accept_language.scan(/^[a-z]{2}/).first
       end
+
+      I18n.locale = I18n.default_locale unless I18n.available_locales.include?(I18n.locale)
     end
 
     # Variable utiles dans le layout

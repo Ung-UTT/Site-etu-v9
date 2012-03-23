@@ -24,7 +24,7 @@ class Ability
       can :manage, User, :id => user.id
 
       if user.is_student? # UTTiens ou anciens
-        can :read, [Album, Answer, Course, User]
+        can :read, [Answer, Course, User]
         can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
         can :read, Reminder, :user_id => user.id
         can :create, News
