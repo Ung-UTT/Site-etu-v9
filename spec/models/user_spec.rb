@@ -34,7 +34,6 @@ describe User do
     it { should have_many(:news) }
     it { should have_many(:polls) }
     it { should have_many(:quotes) }
-    it { should have_many(:reminders) }
     it { should have_many(:votes) }
     it { should have_many(:created_assos) }
     it { should have_many(:created_events) }

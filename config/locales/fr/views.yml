@@ -28,7 +28,6 @@ fr:
   preference: "Préférence"
   project: "Projet"
   quote: "Citation"
-  reminder: "Pense-bête"
   role: "Role"
   timesheet: "Horaire"
   user: "Utilisateur"
@@ -138,11 +137,6 @@ fr:
     list: "Citations"
     content: "Contenu"
     by: "de"
-
-  reminders:
-    list: "Pense-bêtes"
-    content: "Contenu"
-    user: "Utilisateur"
 
   roles:
     list: "Rôles"

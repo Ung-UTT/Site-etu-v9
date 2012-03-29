@@ -167,19 +167,6 @@
 /* CSS spécifique à certains controlleurs */
 
 #contents .content {
-  /* Albums photos */
-  .gallery {
-    margin: 0;
-    padding: 0;
-
-    li {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-  }
-
   /* Liens en bas de chaque page (liste, modifier, supprimer, afficher, ...) */
 
   form.button_to, form.button_to div, ul.actions li {
@@ -239,35 +226,6 @@
         max-height: 100px;
         vertical-align: middle;
       }
-    }
-  }
-
-  /* CSS spécifique aux pense-bêtes */
-
-  form#new_reminder, form.edit_reminder {
-    width: 210px;
-    height: 210px;
-    background: url('style/reminder_background.jpg') no-repeat;
-
-    textarea#reminder_content {
-      padding: 0;
-      margin: 0;
-      position: relative;
-      left: 15px;
-      top: 20px;
-      width: 150px;
-      height: 150px;
-      line-height: 1em;
-      background: none;
-      border: none;
-      resize: none;
-    }
-
-    .actions {
-      padding: 0;
-      margin: 0;
-      margin-top: 20px;
-      text-align: center;
     }
   }
 
