@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include EtuLdap
   attr_accessible :login, :email, :password, :password_confirmation, :preference_attributes
 
   attr_accessor :password
@@ -67,7 +66,8 @@ class User < ActiveRecord::Base
   end
 
   # Créer un utilisateur rapidement (juste pour les tests)
-  def self.simple_create(login, password)
+  def self.simple_create(login, password = nil)
+    password ||= SecureRandom.base64
     User.create(:login => login, :email => "#{login}@example.org",
                 :password => password, :password_confirmation => password)
   end
