@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :login, :email, :password, :password_confirmation, :preference_attributes
+  attr_accessible(:login, :email, :password, :password_confirmation,
+                  :preference_attributes, :profil_attributes)
 
   attr_accessor :password
   before_create :generate_token
@@ -17,7 +18,10 @@ class User < ActiveRecord::Base
   has_paper_trail
 
   has_one :preference, :dependent => :destroy
-  accepts_nested_attributes_for :preference, :allow_destroy => true
+  accepts_nested_attributes_for :preference
+
+  has_one :profil, :dependent => :destroy
+  accepts_nested_attributes_for :profil
 
   has_many :carpools, :dependent => :destroy
   has_many :classifieds, :dependent => :destroy
