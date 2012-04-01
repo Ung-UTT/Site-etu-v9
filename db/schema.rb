@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "level"
-    t.string   "filiere"
+    t.string   "specilisation"
     t.string   "phone"
     t.string   "room"
     t.text     "description"

@@ -12,7 +12,7 @@ class CreateProfils < ActiveRecord::Migration
       t.string     :firstname
       t.string     :lastname
       t.string     :level
-      t.string     :filiere
+      t.string     :specilisation
 
       # Surtout pour les profs
       t.string     :phone

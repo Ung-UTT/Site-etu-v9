@@ -3,6 +3,7 @@
 require File.expand_path("../../config/environment", __FILE__)
 require 'rubygems'
 require 'net-ldap'
+require 'open-uri'
 
 DB_FILE = Rails.root.join('vendor', 'ldap.marshal')
 
@@ -33,6 +34,7 @@ else
     attrs.each do |attr|
       val = st[attr]
       val = val.to_s unless attr == 'uv' # Les attributs seuls sont dans un tableau
+      val = nil if val == 'NC'
       tmp_hash.merge!({attr => val})
     end
     tmp_hash
@@ -44,11 +46,46 @@ else
   File.open(DB_FILE, 'w+') {|f| f.write(Marshal.dump(students))}
 end
 
+# XXX-test
+students = students.select{|st| st['uid'] == 'mariedor'}
+
 puts "Insertion des étudiants dans la base de données"
 students.each do |st|
   puts "#{st['supannetuid']} : #{st['displayname']}"
+
+  puts st.inspect
+
+  # Créer ou mettre à jour
   u = User.find_by_login(st['uid']) || User.simple_create(st['uid'])
+
+  # Mail et photo de profil
   u.email = st['mail']
-  u.save
+  begin
+    picture = open(st['jpegphoto'])
+  rescue
+    puts "Pas de photo de profil car pas d'accès Internet"
+    picture = nil
+  end
+
+  u.image = Image.new(:asset => picture) if picture
+
+  # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
+  u.build_profil unless u.profil
+
+  u.profil.utt_id = st['uid']
+  u.profil.firstname = st['givenname']
+  u.profil.lastname = st['sn']
+  u.profil.level = st['niveau']
+  u.profil.specilisation = st['filiere']
+  u.profil.phone = st['telephonenumber']
+  u.profil.room = st['roomnumber']
+
+  # Les UVs sont ajoutées via les emploi du temps
+  # (Un utilisateur suit un cours si il participe à au moins une horaire)
+
+  # On sauvegarde le tout
+  unless u.save
+    puts u.errors.inspect
+  end
 end
 
