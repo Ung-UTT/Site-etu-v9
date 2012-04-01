@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  validates :email, :presence => true, :format => {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  validates :email, :presence => true, :format =>
+    { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   paginates_per 30
 
@@ -52,8 +53,8 @@ class User < ActiveRecord::Base
     names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
     User.all.select do |u|
       content = [u.login]
-      if u.ldap_attributes
-        content.push(u.ldap_attributes['displayname'])
+      if u.profil
+        content.push(u.real_name)
       end
       /(#{names})/i.match(content.join(' '))
     end
@@ -93,27 +94,37 @@ class User < ActiveRecord::Base
 
   # Préférences par défaut d'un utilisateur
   def create_preferences
-    Preference.create(:user_id => id, :locale => I18n.default_locale.to_s, :quote_type => 'all')
+    Preference.create(:user_id => self.id,
+      :locale => I18n.default_locale.to_s, :quote_type => 'all')
   end
 
   # Associations = associations dans lesquelles l'utilisateur a un rôle
   def assos
-    roles.map(&:asso).compact.uniq
+    self.roles.map(&:asso).compact.uniq
   end
 
   # Cours = cours dans lesquels l'utilisateur participe à une horaire
   def courses
-    timesheets.map(&:course).compact.uniq
+    self.timesheets.map(&:course).compact.uniq
   end
+
+  # L'utilisateur devient un étudiant (utilisé dans le script d'import)
+  def become_a_student
+    # Devenir étudiant (rôle)
+    if !is_student?
+      roles << (Role.find_by_name('student') || Role.create(:name => 'student'))
+    end
+  end
+
 
   # Est-ce qu'il est membre d'une association
   def is_member_of?(asso)
-    assos.include?(asso)
+    self.assos.include?(asso)
   end
 
   # Est-ce qu'il a le rôle "name" (éventuelement dans le cadre d'une association)
   def is?(name, asso = nil)
-    res = roles.select { |r| r.name.to_sym == name }
+    res = self.roles.select { |r| r.name.to_sym == name }
     if asso
       res = res & asso.roles
     end
@@ -122,42 +133,26 @@ class User < ActiveRecord::Base
 
   # Est-ce un étudiant ? (est-ce qu'il a le rôle d'étudiant ?)
   def is_student?
-    is?(:student)
-  end
-
-  # L'utilisateur devient un étudiant
-  def become_a_student
-    # Devenir étudiant (rôle) si il ne l'est pas déjà et si il a le type
-    # étudiant (à condition que le LDAP fonctionne)
-    if !is_student? and ldap_attributes and ldap_attributes['employeetype'] == 'student'
-      roles << (Role.find_by_name('student') || Role.create(:name => 'student'))
-    end
-  end
-
-  # Attributs LDAP de cet utilisateur
-  # Retourne nil si le serveur LDAP est inaccessible ou l'utilisateur n'a
-  # pas d'informations dans le LDAP.
-  def ldap_attributes
-    @cached_ldap_attributes ||= ldap_attributes_for_username(login)
+    self.is?(:student)
   end
 
   # Emploi du temps
   def schedule
-    Timesheet.make_schedule([timesheets])
+    Timesheet.make_schedule([self.timesheets])
   end
 
   # Agenda (horaires rééls et événements futurs)
   def agenda
-    agenda = Timesheet.make_agenda([timesheets])
+    agenda = Timesheet.make_agenda([self.timesheets])
     agenda += Event.make_agenda
   end
 
   # Nom réel si on l'a (Prénom NOM) sinon login (prenono)
   def real_name
-    if ldap_attributes.nil?
-      login
+    if profil.nil?
+      self.login
     else
-      ldap_attributes['displayname']
+      "#{self.profil.firstname} #{self.profil.lastname}"
     end
   end
 end

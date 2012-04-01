@@ -46,42 +46,44 @@ else
   File.open(DB_FILE, 'w+') {|f| f.write(Marshal.dump(students))}
 end
 
-# XXX-test
-students = students.select{|st| st['uid'] == 'mariedor'}
-
 puts "Insertion des étudiants dans la base de données"
 students.each do |st|
   puts "#{st['supannetuid']} : #{st['displayname']}"
 
-  puts st.inspect
-
   # Créer ou mettre à jour
   u = User.find_by_login(st['uid']) || User.simple_create(st['uid'])
 
-  # Mail et photo de profil
+  # E-Mail
   u.email = st['mail']
+
+  # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
+  u.build_profil.save unless u.profil
+
+  # Photo de profil
   begin
-    picture = open(st['jpegphoto'])
-  rescue
+    picture = Image.from_url(st['jpegphoto'])
+  rescue => e
+    puts e.inspect
     puts "Pas de photo de profil car pas d'accès Internet"
     picture = nil
   end
-
-  u.image = Image.new(:asset => picture) if picture
-
-  # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
-  u.build_profil unless u.profil
+  picture.inspect
+  u.profil.image = Image.new(:asset => picture) if picture
 
   u.profil.utt_id = st['uid']
   u.profil.firstname = st['givenname']
   u.profil.lastname = st['sn']
   u.profil.level = st['niveau']
-  u.profil.specilisation = st['filiere']
+  u.profil.specialization = st['filiere']
+  u.profil.role = st['employeetype']
   u.profil.phone = st['telephonenumber']
   u.profil.room = st['roomnumber']
 
   # Les UVs sont ajoutées via les emploi du temps
   # (Un utilisateur suit un cours si il participe à au moins une horaire)
+
+  # Ajouter le rôle d'étudiant si il l'est ;-)
+  u.become_a_student if st['employeetype'] == 'student'
 
   # On sauvegarde le tout
   unless u.save

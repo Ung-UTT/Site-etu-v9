@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 module ApplicationHelper
-  # Title
+  # Titre de la page
 
   def title(page_title, options={})
     content_for(:title, page_title.to_s)
@@ -10,6 +10,37 @@ module ApplicationHelper
 
   def title_tag
     content_tag(:title, content_for(:title).empty? ? "Site étudiant de l'UTT" : content_for(:title))
+  end
+
+  # Raccourcis pour les vues
+
+  # <li> conditionnelle à ce que ce qui est montré n'est pas vide
+  def not_empty_li(descr, value)
+    unless value.nil? or value.empty?
+      return "<li><strong>#{h(descr)}</strong> : #{h(value)}</li>".html_safe
+    end
+    return nil
+  end
+
+  # Liste de liens vers des objets (en le montrant que l'attribut) avec
+  # une description
+  def list_of(descr, objects, attr, comments=false)
+    if objects.empty?
+      return nil
+    else
+      res = ''
+      res += '<p><strong>' + h(descr) + '</strong> :</p>' unless descr.empty?
+      res += '<ul>'
+      objects.each do |object|
+        content = object.send(attr)
+        if comments
+          object = [object.commentable, object]
+        end
+        res += '<li>' + link_to(h(content), object) + '</li>'
+      end
+      res += '</ul>'
+      return res.html_safe
+    end
   end
 
   # Select options
@@ -56,36 +87,17 @@ module ApplicationHelper
     return [comment.commentable, comment]
   end
 
-  def list_of(descr, objects, attr, comments=false)
-    if objects.empty?
-      return nil
-    else
-      res = ''
-      res += '<p><strong>' + h(descr) + '</strong> :</p>' unless descr.empty?
-      res += '<ul>'
-      objects.each do |object|
-        content = object.send(attr)
-        if comments
-          object = [object.commentable, object]
-        end
-        res += '<li>' + link_to(h(content), object) + '</li>'
-      end
-      res += '</ul>'
-      return res.html_safe
-    end
-  end
-
   def link_to_user(user)
     if can? :read, user
-      if user.ldap_attributes.nil?
-        link_to user.login, user
+      if user.profil.nil? or user.profil.image.nil?
+        link_to user.real_name, user
       else
-        link_to user, :title => user.ldap_attributes['displayname'] do
-          image_tag(user.ldap_attributes['jpegphoto'], :class => 'user')
+        link_to user, :title => user.real_name do
+          image_tag(user.profil.image.asset.url, :class => 'user')
         end
       end
     else
-      user.real_name
+      user.nil? ? '' : user.real_name
     end
   end
 

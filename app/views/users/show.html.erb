@@ -1,20 +1,29 @@
 <section class="content">
   <%= title(t('user') + ' : ' + @user.real_name) %>
 
-  <% if @user.ldap_attributes %>
-  <p class="profil"><%= link_to_user @user %>
-  <ul>
-    <li><strong>Niveau</strong> : <%= @user.ldap_attributes['niveau'] %></li>
-    <li><strong>Filière</strong> : <%= @user.ldap_attributes['filiere'] %></li>
-    <li><strong>ID étu</strong> : <%= @user.ldap_attributes['supannetuid'] %></li>
-    <li><strong>UVs</strong> : <%= @user.ldap_attributes['uv'].join(', ') %></li>
-  </ul>
-  <% else %>
-  <p>
-    <strong><%= t('users.email') %></strong> :
-    <%= @user.email %>
-  </p>
+  <% if @user.profil.image %>
+  <p class="profil"><%= link_to_user @user %></p>
   <% end %>
+
+  <ul>
+    <%= not_empty_li(t('users.email'), @user.email) %>
+    <%= not_empty_li('Adresse UTTienne', @user.profil.utt_address) %></li>
+    <%= not_empty_li('Adresse des parents', @user.profil.parents_address) %></li>
+    <%= not_empty_li('Surnom', @user.profil.surname) %></li>
+    <%= not_empty_li('Jadis', @user.profil.once) %></li>
+
+    <%= not_empty_li('ID étu', @user.profil.utt_id) %></li>
+    <%= not_empty_li('Prénom', @user.profil.firstname) %></li>
+    <%= not_empty_li('Nom', @user.profil.lastname) %></li>
+    <%= not_empty_li('Niveau', @user.profil.level) %></li>
+    <%= not_empty_li('Filière', @user.profil.specialization) %></li>
+    <%= not_empty_li("Rôle à l'UTT", @user.profil.role) %></li>
+
+    <%= not_empty_li("Téléphone", @user.profil.phone) %></li>
+    <%= not_empty_li("Salle", @user.profil.room) %></li>
+  </ul>
+
+  <%=md @user.profil.description %>
 
   <%= list_of t('courses.list'), @user.courses, :name %>
   <%= list_of t('roles.list'), @user.roles, :name %>
@@ -41,10 +50,10 @@
   <h2>Infos de débug :</h2>
   <p>
     <% unless @user.preference.nil? %>
-    <strong>Quote type</strong> :
-    <%= @user.preference.quote_type %>,
-    <strong>Locale</strong> :
-    <%= @user.preference.locale %>,
+      <strong>Quote type</strong> :
+      <%= @user.preference.quote_type %>,
+      <strong>Locale</strong> :
+      <%= @user.preference.locale %>,
     <% end %>
     <strong>Uttien ?</strong>
     <%= @user.is_student? ? 'Oui' : 'Non' %>,

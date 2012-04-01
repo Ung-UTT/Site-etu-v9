@@ -20,13 +20,11 @@ class Ability
       can :create, User
       can :password_reset, User
     else # C'est un utilisateur connecté
-      can :manage, Reminder, :user_id => user.id
       can :manage, User, :id => user.id
 
       if user.is_student? # UTTiens ou anciens
         can :read, [Answer, Course, User]
         can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
-        can :read, Reminder, :user_id => user.id
         can :create, News
 
         can [:create, :update, :destroy], Role do |asso|
@@ -43,7 +41,7 @@ class Ability
         can :update, Annal
 
         # L'auteur peut mettre à jour et supprimer ses contenus
-        can [:update, :destroy], [Carpool, Classified, News, Poll, Quote, Reminder, Vote], :user_id => user.id
+        can [:update, :destroy], [Carpool, Classified, News, Poll, Quote, Vote], :user_id => user.id
         can [:update, :destroy], [Asso, Project, Event], :owner_id => user.id
         can [:update, :destroy], User, :id => user.id
         can [:create, :destroy], Answer do |answer|
