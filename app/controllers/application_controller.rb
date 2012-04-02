@@ -43,8 +43,7 @@ class ApplicationController < ActionController::Base
     logger.error '[500] ' + request.fullpath + ' | ' + exception.inspect
 
     # Une explication minimale du problème est fournie
-    backtrace = exception.backtrace.first(5).map { |e| '<li>' + e + '</li>' }
-    backtrace = '<ul>' + backtrace.join("\n") + '</ul>'
+    backtrace = exception.backtrace.first(5)
 
     render :template => "shared/500", :status => 500,
            :locals => {:exception => exception, :backtrace => backtrace}

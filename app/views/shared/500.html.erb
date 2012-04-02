@@ -9,5 +9,8 @@
 
 <section class="content">
   <h1 class="title">Explication : <%= exception.to_s %></h1>
-  <%= backtrace.html_safe %>
+  <ul>
+    <%= backtrace.each |b| %>
+    <li><%= b %></li>
+  </ul>
 </section>

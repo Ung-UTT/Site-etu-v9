@@ -43,7 +43,7 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to @wiki, :notice => 'Wiki was successfully created.' }
+        format.html { redirect_to @wiki, :notice => t('c.create') }
         format.json { render :json => @wiki, :status => :created, :location => @wiki }
       else
         format.html { render :action => "new" }
@@ -59,7 +59,7 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.update_attributes(params[:wiki])
-        format.html { redirect_to @wiki, :notice => 'Wiki was successfully updated.' }
+        format.html { redirect_to @wiki, :notice => t('c.update') }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

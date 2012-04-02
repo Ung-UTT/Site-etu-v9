@@ -13,6 +13,11 @@ fr:
       already_disjoin: "Vous n'êtes pas dans cette asso."
       disjoin: "Vous venez de quitter cette asso."
 
+    cas:
+      already_connected: "Vous êtes déjà connecté"
+      already_exist: "Vous êtes bien connecté grâche à votre compte UTT"
+      user_created: "Un compte vous a été créé"
+
     events:
       already_join: "Vous participez déjà à cet évènement."
       join: "Vous participez maintenant à cet évènement."
