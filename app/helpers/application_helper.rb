@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def title_tag
-    content_tag(:title, content_for(:title).empty? ? "Site étudiant de l'UTT" : content_for(:title))
+    content_tag(:title, content_for(:title).empty? ? t('helpers.title') : content_for(:title))
   end
 
   # Raccourcis pour les vues
@@ -58,7 +58,7 @@ module ApplicationHelper
         else
           "???"
         end
-      end.unshift(['Pas de parent', nil])
+      end.unshift([t('helpers.noparent'), nil])
     )
   end
 
@@ -68,12 +68,12 @@ module ApplicationHelper
 
   def events_select(object)
     default = object.event ? object.event.id : nil
-    options_for_select(Event.all.map { |a| [a.name, a.id] }.unshift(['Aucun', nil]), default)
+    options_for_select(Event.all.map { |a| [a.name, a.id] }.unshift([t('helpers.none'), nil]), default)
   end
 
   def course_select(object)
     default = object.course ? object.course.id : nil
-    options_for_select(Course.all.map { |a| [a.name, a.id] }.unshift(['Aucun', nil]), default)
+    options_for_select(Course.all.map { |a| [a.name, a.id] }.unshift([t('helpers.none'), nil]), default)
   end
 
   def users_select(object = nil)
@@ -105,7 +105,7 @@ module ApplicationHelper
 
   def link_to_users(users)
     if users.empty?
-      return 'Aucun'
+      return t('helpers.none')
     else
       return users.map { |u| link_to_user u}.join(' ').html_safe
     end
@@ -113,7 +113,7 @@ module ApplicationHelper
 
   def link_to_assos(object)
     if object.assos.empty?
-      return 'Aucune'
+      return t('helpers.none')
     else
       return object.assos.map { |a| link_to a.name, a }.join(' ').html_safe
     end

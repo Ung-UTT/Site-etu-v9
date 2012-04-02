@@ -1,0 +1,11 @@
+# Traductions dans les helpers
+
+fr:
+  helpers:
+    title: "Site étudiant de l'UTT"
+    noparent: "Pas de parent"
+    none: "Aucun"
+    add_agenda: "Ajouter à Google Agenda"
+    utt_event: "Événement UTT"
+    event_content: "Plus d'infos :"
+    invite_people: "Inviter des gens"
