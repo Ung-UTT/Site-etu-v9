@@ -106,8 +106,8 @@ faut être à l'UTT ou y accéder via un tunnel SSH (non expliqué ici).
 Vous devez lancer le scripts d'imports des étudiants en premier :
 
 * Il va chercher les étudiants sur le LDAP de l'UTT (et les met en cache
-dans le fichier vendor/ldap.marshal, à supprimer si vous voulez des infos
-plus récentes)
+dans le fichier vendor/data/ldap.marshal, à supprimer si vous voulez des
+infos plus récentes)
 * Pour chaque utilisateur trouvé, soit il le crée, soit il le met à jour
 * Les attributs enregistrés inclus le nom, le prénom, le niveau, ... etc
 mais pas les UVs, cela sera fait via les emploi du temps.

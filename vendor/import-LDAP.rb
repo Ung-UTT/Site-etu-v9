@@ -5,7 +5,7 @@ require 'rubygems'
 require 'net-ldap'
 require 'open-uri'
 
-DB_FILE = Rails.root.join('vendor', 'ldap.marshal')
+DB_FILE = Rails.root.join('vendor', 'data', 'ldap.marshal')
 
          # Éléves
 attrs = ['uid', 'mail', 'givenname', 'sn', 'displayname', 'employeetype',
@@ -15,6 +15,7 @@ attrs = ['uid', 'mail', 'givenname', 'sn', 'displayname', 'employeetype',
 
 puts "Récupuration des infos sur les étudiants"
 if File.exists?(DB_FILE)
+  puts "Utilisation de #{BD_FILE.to_s} (à supprimer si vous voulez les dernière infos du LDAP)"
   students = Marshal.load(File.read(DB_FILE))
 else
   begin
