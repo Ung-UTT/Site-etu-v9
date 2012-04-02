@@ -149,7 +149,7 @@ class User < ActiveRecord::Base
 
   # Nom réel si on l'a (Prénom NOM) sinon login (prenono)
   def real_name
-    if profil.nil?
+    if self.profil.nil? or (self.profil.firstname.nil? and self.profil.lastname.nil?)
       self.login
     else
       "#{self.profil.firstname} #{self.profil.lastname}"

@@ -7,7 +7,7 @@ class CreateProfils < ActiveRecord::Migration
       t.string     :surname # Surnom
       t.string     :once # Jadis
 
-      # Fournis par l'UTT
+      # Fournis par l'UTT (pas modifiables)
       t.string     :utt_id
       t.string     :firstname
       t.string     :lastname

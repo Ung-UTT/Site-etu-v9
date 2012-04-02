@@ -89,7 +89,9 @@ module ApplicationHelper
 
   def link_to_user(user)
     if can? :read, user
-      if user.profil.nil? or user.profil.image.nil?
+      if user.nil?
+        ''
+      elsif user.profil.nil? or user.profil.image.nil?
         link_to user.real_name, user
       else
         link_to user, :title => user.real_name do

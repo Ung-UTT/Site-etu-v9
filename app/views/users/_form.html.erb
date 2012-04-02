@@ -33,6 +33,39 @@
       <% end %>
     <% end %>
 
+    <% if @user.profil %>
+      <%= f.fields_for :profil do |f_profil| %>
+        <li class="field">
+          <%= f_profil.label :utt_address %>
+          <%= f_profil.text_field :utt_address %>
+        </li>
+        <li class="field">
+          <%= f_profil.label :parents_address %>
+          <%= f_profil.text_field :parents_address %>
+        </li>
+        <li class="field">
+          <%= f_profil.label :surname %>
+          <%= f_profil.text_field :surname %>
+        </li>
+        <li class="field">
+          <%= f_profil.label :once %>
+          <%= f_profil.text_field :once %>
+        </li>
+        <li class="field">
+          <%= f_profil.label :phone %>
+          <%= f_profil.text_field :phone %>
+        </li>
+        <li class="field">
+          <%= f_profil.label :room %>
+          <%= f_profil.text_field :room %>
+        </li>
+        <li class="field">
+          <%= f_profil.label :description %>
+          <%= f_profil.text_area :description, :class => 'rich-content' %>
+        </li>
+      <% end %>
+    <% end %>
+
     <li class="actions">
       <%= f.submit t('common.submit') %>
     </li>
