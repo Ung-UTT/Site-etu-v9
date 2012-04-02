@@ -1,7 +1,7 @@
 <section class="content">
   <%= title t('carpools.list') %>
 
-  <h2>Conducteurs</h2>
+  <h2><%= t('carpools.drivers') %></h2>
 
   <ul>
   <% @drivers.each do |carpool| %>
@@ -9,7 +9,7 @@
   <% end %>
   </ul>
 
-  <h2>Passagers</h2>
+  <h2><%= t('carpool.passengers') %></h2>
 
   <ul>
   <% @not_drivers.each do |carpool| %>

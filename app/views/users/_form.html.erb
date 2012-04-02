@@ -22,12 +22,12 @@
     <% if !@user.new_record? %>
       <%= f.fields_for :preference do |f_pref| %>
         <li class="field">
-          <%= f_pref.label :quote_type %>
+          <%= f_pref.label :quote_type, t('users.quote_type') %>
           <%= f_pref.select :quote_type, Quote::TAGS %>
         </li>
 
         <li class="field">
-          <%= f_pref.label :locale %>
+          <%= f_pref.label :locale, t('users.locale') %>
           <%= f_pref.select :locale, I18n.available_locales.map(&:to_s) %>
         </li>
       <% end %>
@@ -36,27 +36,27 @@
     <% if @user.profil %>
       <%= f.fields_for :profil do |f_profil| %>
         <li class="field">
-          <%= f_profil.label :utt_address %>
+          <%= f_profil.label :utt_address, t('profil.utt_address') %>
           <%= f_profil.text_field :utt_address %>
         </li>
         <li class="field">
-          <%= f_profil.label :parents_address %>
+          <%= f_profil.label :parents_address, t('profil.parents_address') %>
           <%= f_profil.text_field :parents_address %>
         </li>
         <li class="field">
-          <%= f_profil.label :surname %>
+          <%= f_profil.label :surname, t('profil.surname') %>
           <%= f_profil.text_field :surname %>
         </li>
         <li class="field">
-          <%= f_profil.label :once %>
+          <%= f_profil.label :once, t('profil.once') %>
           <%= f_profil.text_field :once %>
         </li>
         <li class="field">
-          <%= f_profil.label :phone %>
+          <%= f_profil.label :phone,  t('profil.phone') %>
           <%= f_profil.text_field :phone %>
         </li>
         <li class="field">
-          <%= f_profil.label :description %>
+          <%= f_profil.label :description,  t('profil.description') %>
           <%= f_profil.text_area :description, :class => 'rich-content' %>
         </li>
       <% end %>

@@ -75,7 +75,7 @@
     </li>
 
     <li class="box">
-      <h2>Services</h2>
+      <h2><%= t('layout.services') %></h2>
       <ul>
         <li><%= link_to t('layout.carpools'), carpools_path %></li>
         <li><%= link_to t('layout.polls'), polls_path %></li>
@@ -86,7 +86,7 @@
 
     <% if can?(:manage, Role) %>
     <li class="box">
-      <h2>Administration</h2>
+      <h2><%= t('layout.admin') %></h2>
       <ul>
         <li><%= link_to t('layout.quotes'), quotes_path %></li>
         <li><%= link_to t('layout.roles'), roles_path %></li>
@@ -95,7 +95,7 @@
     <% end %>
 
     <li class="box">
-      <h2>Liens externes</h2>
+      <h2><%= t('layout.extern_links') %></h2>
       <ul>
         <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
         <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
@@ -124,7 +124,7 @@
   </section>
 
   <ul id="footer">
-    <li><a href="?mobile=true">Version Mobile</a></li>
+    <li><a href="?mobile=true"><%= t('layout.mobile') %></a></li>
     <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
     <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
     <li><%= link_to t('layout.rules'), {:controller => :home, :action => :rules} %></li>

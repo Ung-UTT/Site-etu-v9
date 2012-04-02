@@ -1,14 +1,13 @@
 <section class="content">
-  <%= title 'Mince, ya un problème' %>
+  <%= title t('views.error500.title') %>
 
-  <p>Parce que ça arrive même aux meilleurs, tu peux nous dire comment tu as découvert cette erreur ?</p>
-  <p>Par l'ung-liste, ou en parlant directement à quelqu'un de l'UNG (par exemple en salle asso).</p>
+  <p><%= t('views.error500.content') %></p>
   <p><%= image_tag '500.png' %></p>
-  <p><a href="http://xkcd.com/292/">Dessin par XKCD.</a></p>
+  <p><a href="http://xkcd.com/292/"><%= t('views.error500.credit') %></a></p>
 </section>
 
 <section class="content">
-  <h1 class="title">Explication : <%= exception.to_s %></h1>
+  <h1 class="title"><%= t('views.error500.explain') %> <%= exception.to_s %></h1>
   <ul>
     <%= backtrace.each |b| %>
     <li><%= b %></li>

@@ -7,20 +7,20 @@
 
   <ul>
     <%= not_empty_li(t('users.email'), @user.email) %>
-    <%= not_empty_li('Adresse UTTienne', @user.profil.utt_address) %></li>
-    <%= not_empty_li('Adresse des parents', @user.profil.parents_address) %></li>
-    <%= not_empty_li('Surnom', @user.profil.surname) %></li>
-    <%= not_empty_li('Jadis', @user.profil.once) %></li>
+    <%= not_empty_li(t('profil.utt_address')), @user.profil.utt_address) %></li>
+    <%= not_empty_li(t('profil.parents_address'), @user.profil.parents_address) %></li>
+    <%= not_empty_li(t('profil.surname'), @user.profil.surname) %></li>
+    <%= not_empty_li(t('profil.once'), @user.profil.once) %></li>
 
-    <%= not_empty_li('ID étu', @user.profil.utt_id) %></li>
-    <%= not_empty_li('Prénom', @user.profil.firstname) %></li>
-    <%= not_empty_li('Nom', @user.profil.lastname) %></li>
-    <%= not_empty_li('Niveau', @user.profil.level) %></li>
-    <%= not_empty_li('Filière', @user.profil.specialization) %></li>
-    <%= not_empty_li("Rôle à l'UTT", @user.profil.role) %></li>
+    <%= not_empty_li(t('profil.utt_id'), @user.profil.utt_id) %></li>
+    <%= not_empty_li(t('profil.firstname'), @user.profil.firstname) %></li>
+    <%= not_empty_li(t('profil.lastname'), @user.profil.lastname) %></li>
+    <%= not_empty_li(t('profil.level'), @user.profil.level) %></li>
+    <%= not_empty_li(t('profil.specialization'), @user.profil.specialization) %></li>
+    <%= not_empty_li(t('profil.role'), @user.profil.role) %></li>
 
-    <%= not_empty_li("Téléphone", @user.profil.phone) %></li>
-    <%= not_empty_li("Salle", @user.profil.room) %></li>
+    <%= not_empty_li(t('profil.phone'), @user.profil.phone) %></li>
+    <%= not_empty_li(t('profil.room'), @user.profil.room) %></li>
   </ul>
 
   <%=md @user.profil.description %>
@@ -46,20 +46,6 @@
     <%= render 'timesheets/schedule', :schedule => @user.schedule %>
   </div>
   <% end %>
-
-  <h2>Infos de débug :</h2>
-  <p>
-    <% unless @user.preference.nil? %>
-      <strong>Quote type</strong> :
-      <%= @user.preference.quote_type %>,
-      <strong>Locale</strong> :
-      <%= @user.preference.locale %>,
-    <% end %>
-    <strong>Uttien ?</strong>
-    <%= @user.is_student? ? 'Oui' : 'Non' %>,
-    <strong>ID</strong> :
-    <%= @user.id %>
-  </p>
 
   <%= render 'layouts/show_actions', {:ressource => @user} %>
 </section>

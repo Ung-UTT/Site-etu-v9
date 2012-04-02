@@ -3,13 +3,9 @@
 
   <blockquote><%= link_to @quote.content, @quote %></blockquote>
 
-  <p>
-    <%= t('quotes.by') %> <%= link_to_user @quote.user  %>
-  </p>
+  <p><%= t('quotes.by') %> <%= link_to_user @quote.user  %></p>
 
-  <p>
-    <strong>Type</strong> : <%= @quote.tag %>
-  </p>
+  <p><strong>Type</strong> : <%= @quote.tag %></p>
 
   <%= render 'layouts/show_actions', {:ressource => @quote} %>
 </section>

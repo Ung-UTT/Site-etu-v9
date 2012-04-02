@@ -61,6 +61,8 @@ fr:
     arrival: "Arrivée"
     date: "Date"
     is_driver: "Conducteur ?"
+    drivers: "Conducteurs"
+    passengers: "Passagers"
 
   classifieds:
     list: "Petites annonces"
@@ -137,6 +139,7 @@ fr:
     list: "Citations"
     content: "Contenu"
     by: "de"
+    type: "Type"
 
   roles:
     list: "Rôles"
@@ -145,7 +148,6 @@ fr:
     parent: "Parent"
     users: "Utilisateurs"
     default:
-      superAdmin: "SuperAdministrateur"
       admin: "Administrateur"
       moderator: "Moderateur"
 
@@ -159,6 +161,7 @@ fr:
     course: "UV durant cet horaire"
     cumulate: "Cumuler"
     users: "Participants"
+    agenda: "Agenda"
 
   users:
     list: "Utilisateurs"
@@ -174,6 +177,22 @@ fr:
     assos: "President des assocations"
     events: "Créateur des évènements"
     projects: "Chef de projets des projets"
+    quote_type: "Type de citations"
+    locale: "Langue du site"
+
+  profil:
+    utt_address: "Adresse UTTienne"
+    parents_address: "Adresse des parents"
+    surname: "Surnom"
+    one: "Jadis"
+    utt_id: "ID UTT"
+    firstname: "Prénom"
+    lastname: "Nom"
+    level: "Niveau"
+    specialization: "Filière"
+    role: "Role"
+    phone: "Télphone"
+    room: "Salle"
 
   user_sessions:
     login: "Connexion alternative"
@@ -192,3 +211,17 @@ fr:
       previous: "Précédente"
       next: "Suivante"
       last: "Dernière"
+
+    error404:
+      title: "404 : La page n'a pas été trouvée"
+      content: "Vous avez peut-être mal tapé l'adresse ou cette page a été déplacée."
+
+    error500:
+      title: "Mince, ya un problème"
+      content: |
+        Parce que ça arrive même aux meilleurs, tu peux nous dire
+        comment tu as découvert cette erreur ? Par l'ung-liste, ou en
+        parlant directement à quelqu'un de l'UNG (par exemple en salle
+        asso).
+      credit: "Dessin par XKCD"
+      explain: "Explication :"
