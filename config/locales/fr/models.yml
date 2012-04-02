@@ -1,0 +1,11 @@
+# Traductions dans les modèles des classes
+
+fr:
+  model:
+    timesheet:
+      week: "Semaine"
+      range: "%{short} : Le %{day} de %{start} à %{end} %{week}"
+      short:"%{category} %{name} %{room}"
+
+    vote:
+      uniqueness: "Vous ne pouvez pas voter plusieurs fois pour ce sondage"
