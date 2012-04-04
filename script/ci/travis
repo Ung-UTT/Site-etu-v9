@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+export RAILS_ENV=test
+rake db:drop db:setup db:migrate
+rake
+
