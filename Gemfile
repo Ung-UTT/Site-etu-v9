@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-gem 'rails', '3.2.0'
+gem 'rails', '~> 3.2.0'
 gem 'sqlite3'
 
 # Gems desormais obligatoires
