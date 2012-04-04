@@ -31,7 +31,7 @@ else
 
   # Tranformation du tableau d'objets LDAP en un tableau de hashs
   students.map! do |st|
-    tmp_hash = Hash.new # Chaque étudiant est stok
+    tmp_hash = Hash.new # Chaque étudiant est stocké
     attrs.each do |attr|
       val = st[attr]
       val = val.to_s unless attr == 'uv' # Les attributs seuls sont dans un tableau
