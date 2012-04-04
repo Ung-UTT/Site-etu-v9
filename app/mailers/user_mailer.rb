@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
   def password_reset(user)
     @user = user
     mail(:to => user.email,
-         :subject => '[Site étu] Vous avez oublié votre mot de passe')
+         :subject => t('mailers.user.password_reset.subject'))
   end
 end
 

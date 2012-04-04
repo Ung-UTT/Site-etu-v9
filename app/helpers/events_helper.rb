@@ -16,7 +16,7 @@ module EventsHelper
     description = CGI::escape(@event.description)
     url = CGI::escape(request.url)
     link_to image_tag("others/mailto.png"),
-      "mailto:?Subject=[#{t('helpers.utt_event'}] #{name}&body=%0A%0A" +
+      "mailto:?Subject=[#{t('helpers.utt_event')}] #{name}&body=%0A%0A" <<
       "#{description}%0A%0A#{t('helpers.event_content', :url => url)}",
       :title => t('helpers.invite_people')
   end
