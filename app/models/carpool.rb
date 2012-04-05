@@ -8,6 +8,6 @@ class Carpool < ActiveRecord::Base
   has_many :documents, :as => :documentable, :dependent => :destroy
 
   def way
-    departure + ' → ' + arrival
+    departure + ' &rarr; ' + arrival
   end
 end

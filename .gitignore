@@ -9,3 +9,4 @@ config/initializers/secret_token.rb
 Session.vim
 .rvmrc
 vendor/data/*
+coverage

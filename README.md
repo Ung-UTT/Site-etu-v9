@@ -112,7 +112,7 @@ infos plus récentes)
 * Les attributs enregistrés inclus le nom, le prénom, le niveau, ... etc
 mais pas les UVs, cela sera fait via les emploi du temps.
 
-### Tester
+### Tester [![Build Status](https://secure.travis-ci.org/Ung-UTT/Site-etu-v9.png?branch=master)](http://travis-ci.org/Ung-UTT/Site-etu-v9)
 
 Avant d'envoyer votre contribution sur GitHub, assurez-vous que tout les
 tests passent avec : `rspec`.
