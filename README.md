@@ -112,6 +112,17 @@ infos plus récentes)
 * Les attributs enregistrés inclus le nom, le prénom, le niveau, ... etc
 mais pas les UVs, cela sera fait via les emploi du temps.
 
+##### Les emploi du temps :
+
+(Qui incluent donc les cours et les horaires)
+
+À partir des emploi du temps donnés par l'UTT (.sql) :
+
+* Créer une table/utilisateur/mot de passe : "utt_edt" (modifiables dans
+  le script)
+* Importez les .sql dans cette base : salles (rel_seance_salle), puis
+  les horaires (export_UNGXXX).
+
 ### Tester [![Build Status](https://secure.travis-ci.org/Ung-UTT/Site-etu-v9.png?branch=master)](http://travis-ci.org/Ung-UTT/Site-etu-v9)
 
 Avant d'envoyer votre contribution sur GitHub, assurez-vous que tout les
