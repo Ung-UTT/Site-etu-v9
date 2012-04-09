@@ -7,10 +7,10 @@ SiteEtu::Application.routes.draw do
   match 'news/daymail' => 'News#daymail' # Envoyer le Daymail
   match 'users/password_reset' => 'Users#password_reset', :as => 'password_reset' # Oubli de mot de passe
   match 'about' => 'home#about' # Page "À propos"
-  match 'rules' => 'home#rules' # Page "Régles"
+  match 'rules' => 'home#rules' # Page "Règles"
   match 'preview' => 'application#preview' # Prévisualisation Markdown
 
-  # Les join/disjoin (à mettre dans des ressources et écrire les controlleurs)
+  # Les join/disjoin (à mettre dans des ressources et écrire les contrôleurs)
   match 'events/:id/join' => 'events#join', :as => 'join_event'
   match 'events/:id/disjoin' => 'events#disjoin', :as => 'disjoin_event'
 
