@@ -28,5 +28,6 @@ group :test do
   gem 'rspec-rails'      # Classes des tests
   gem 'shoulda-matchers' # Fonctions des tests
   gem 'autotest-rails'   # Lancer automatiquement les tests
+  gem 'factory_girl_rails' # Fixtures suck
   gem 'simplecov', :require => false
 end
