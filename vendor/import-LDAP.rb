@@ -52,7 +52,10 @@ students.each do |st|
   puts "#{st['supannetuid']} : #{st['displayname']}"
 
   # Créer ou mettre à jour
-  u = User.find_by_login(st['uid']) || User.simple_create(st['uid'])
+  login = st['uid']
+  unless u = User.find_by_login(login)
+    u = User.create(login: login, email: "#{login}@utt.fr")
+  end
 
   # E-Mail
   u.email = st['mail']
