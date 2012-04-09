@@ -91,11 +91,11 @@ module ApplicationHelper
     if can? :read, user
       if user.nil?
         ''
-      elsif user.profil.nil? or user.profil.image.nil?
+      elsif user.profile.nil? or user.profile.image.nil?
         link_to user.real_name, user
       else
         link_to user, :title => user.real_name do
-          image_tag(user.profil.image.asset.url, :class => 'user')
+          image_tag(user.profile.image.asset.url, :class => 'user')
         end
       end
     else

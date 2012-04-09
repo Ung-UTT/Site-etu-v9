@@ -1,8 +1,8 @@
 fr:
   # Controllers
   c:
-    create: "Ça a bien été créée."
-    update: "Ça a bien été mise à jour."
+    create: "Ça a bien été créé."
+    update: "Ça a bien été mis à jour."
 
     application:
       denied: "Vous n'avez pas le droit d'effectuer cette action."

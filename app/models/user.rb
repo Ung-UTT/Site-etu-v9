@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible(:login, :email, :password, :password_confirmation,
-                  :preference_attributes, :profil_attributes)
+                  :preference_attributes, :profile_attributes)
 
   attr_accessor :password
   before_create :generate_token
@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   has_one :preference, :dependent => :destroy
   accepts_nested_attributes_for :preference
 
-  has_one :profil, :dependent => :destroy
-  accepts_nested_attributes_for :profil
+  has_one :profile, :dependent => :destroy
+  accepts_nested_attributes_for :profile
 
   has_many :carpools, :dependent => :destroy
   has_many :classifieds, :dependent => :destroy
@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
     User.all.select do |u|
       content = [u.login]
-      if u.profil
+      if u.profile
         content.push(u.real_name)
       end
       /(#{names})/i.match(content.join(' '))
@@ -149,10 +149,10 @@ class User < ActiveRecord::Base
 
   # Nom réel si on l'a (Prénom NOM) sinon login (prenono)
   def real_name
-    if self.profil.nil? or (self.profil.firstname.nil? and self.profil.lastname.nil?)
+    if self.profile.nil? or (self.profile.firstname.nil? and self.profile.lastname.nil?)
       self.login
     else
-      "#{self.profil.firstname} #{self.profil.lastname}"
+      "#{self.profile.firstname} #{self.profile.lastname}"
     end
   end
 end

@@ -180,7 +180,7 @@ fr:
     quote_type: "Type de citations"
     locale: "Langue du site"
 
-  profil:
+  profile:
     utt_address: "Adresse UTTienne"
     parents_address: "Adresse des parents"
     surname: "Surnom"
