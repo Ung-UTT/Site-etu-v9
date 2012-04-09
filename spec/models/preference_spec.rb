@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Preference do
-  fixtures :users
+  before do
+    FactoryGirl.build :user
+  end
 
   describe 'Validations' do
     it { should validate_presence_of(:user_id) }
