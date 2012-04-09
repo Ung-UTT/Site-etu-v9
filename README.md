@@ -66,7 +66,6 @@ Voilà, lancez `rails server` et vous devriez voir apparaître le magnifique sit
 
 > **Attention** : Détruit toutes les données de la base !
 
-* Pour générer plein de contenu : `rake db:fixtures:load`
 * Pour regénérer un environement fonctionnel : `rake dev:reset` (crée des
   base de données pour les environements production, development et test)
 
