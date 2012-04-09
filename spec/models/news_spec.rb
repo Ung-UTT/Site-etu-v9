@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe News do
-  fixtures :users
-
   describe 'Validations' do
     it { should validate_presence_of(:title) }
   end

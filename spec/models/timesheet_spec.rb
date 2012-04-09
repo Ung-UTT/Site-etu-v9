@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Timesheet do
-  fixtures :users
-
   describe 'Validations' do
     it { should validate_presence_of(:start_at) }
     it { should validate_presence_of(:end_at) }

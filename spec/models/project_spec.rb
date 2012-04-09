@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Project do
-  fixtures :users
-
   describe 'Validations' do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:owner) }

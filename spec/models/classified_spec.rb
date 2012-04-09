@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Classified do
-  fixtures :classifieds, :users
-
   describe 'Validations' do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:description) }
