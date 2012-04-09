@@ -7,7 +7,6 @@ SimpleCov.start 'rails'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'factory_girl'
 require 'paperclip/matchers'
 require 'cancan/matchers'
 
@@ -16,7 +15,6 @@ require 'cancan/matchers'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
   config.include Paperclip::Shoulda::Matchers
 
   # == Mock Framework
