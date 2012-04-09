@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "profils", :force => true do |t|
+  create_table "profiles", :force => true do |t|
     t.string   "utt_address"
     t.string   "parents_address"
     t.string   "surname"

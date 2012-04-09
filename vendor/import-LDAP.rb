@@ -61,7 +61,7 @@ students.each do |st|
   u.email = st['mail']
 
   # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
-  u.build_profil.save unless u.profil
+  u.build_profile.save unless u.profile
 
   # Photo de profil
   begin
@@ -72,16 +72,16 @@ students.each do |st|
     picture = nil
   end
   picture.inspect
-  u.profil.image = Image.new(:asset => picture) if picture
+  u.profile.image = Image.new(:asset => picture) if picture
 
-  u.profil.utt_id = st['uid']
-  u.profil.firstname = st['givenname']
-  u.profil.lastname = st['sn']
-  u.profil.level = st['niveau']
-  u.profil.specialization = st['filiere']
-  u.profil.role = st['employeetype']
-  u.profil.phone = st['telephonenumber']
-  u.profil.room = st['roomnumber']
+  u.profile.utt_id = st['uid']
+  u.profile.firstname = st['givenname']
+  u.profile.lastname = st['sn']
+  u.profile.level = st['niveau']
+  u.profile.specialization = st['filiere']
+  u.profile.role = st['employeetype']
+  u.profile.phone = st['telephonenumber']
+  u.profile.room = st['roomnumber']
 
   # Les UVs sont ajoutées via les emploi du temps
   # (Un utilisateur suit un cours si il participe à au moins une horaire)

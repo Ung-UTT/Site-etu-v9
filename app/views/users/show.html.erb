@@ -1,29 +1,29 @@
 <section class="content">
   <%= title(t('user') + ' : ' + @user.real_name) %>
 
-  <% if @user.profil.image %>
-  <p class="profil"><%= link_to_user @user %></p>
+  <% if @user.profile.image %>
+  <p class="profile"><%= link_to_user @user %></p>
   <% end %>
 
   <ul>
     <%= not_empty_li(t('users.email'), @user.email) %>
-    <%= not_empty_li(t('profil.utt_address'), @user.profil.utt_address) %></li>
-    <%= not_empty_li(t('profil.parents_address'), @user.profil.parents_address) %></li>
-    <%= not_empty_li(t('profil.surname'), @user.profil.surname) %></li>
-    <%= not_empty_li(t('profil.once'), @user.profil.once) %></li>
+    <%= not_empty_li(t('profile.utt_address'), @user.profile.utt_address) %></li>
+    <%= not_empty_li(t('profile.parents_address'), @user.profile.parents_address) %></li>
+    <%= not_empty_li(t('profile.surname'), @user.profile.surname) %></li>
+    <%= not_empty_li(t('profile.once'), @user.profile.once) %></li>
 
-    <%= not_empty_li(t('profil.utt_id'), @user.profil.utt_id) %></li>
-    <%= not_empty_li(t('profil.firstname'), @user.profil.firstname) %></li>
-    <%= not_empty_li(t('profil.lastname'), @user.profil.lastname) %></li>
-    <%= not_empty_li(t('profil.level'), @user.profil.level) %></li>
-    <%= not_empty_li(t('profil.specialization'), @user.profil.specialization) %></li>
-    <%= not_empty_li(t('profil.role'), @user.profil.role) %></li>
+    <%= not_empty_li(t('profile.utt_id'), @user.profile.utt_id) %></li>
+    <%= not_empty_li(t('profile.firstname'), @user.profile.firstname) %></li>
+    <%= not_empty_li(t('profile.lastname'), @user.profile.lastname) %></li>
+    <%= not_empty_li(t('profile.level'), @user.profile.level) %></li>
+    <%= not_empty_li(t('profile.specialization'), @user.profile.specialization) %></li>
+    <%= not_empty_li(t('profile.role'), @user.profile.role) %></li>
 
-    <%= not_empty_li(t('profil.phone'), @user.profil.phone) %></li>
-    <%= not_empty_li(t('profil.room'), @user.profil.room) %></li>
+    <%= not_empty_li(t('profile.phone'), @user.profile.phone) %></li>
+    <%= not_empty_li(t('profile.room'), @user.profile.room) %></li>
   </ul>
 
-  <%=md @user.profil.description %>
+  <%=md @user.profile.description %>
 
   <%= list_of t('courses.list'), @user.courses, :name %>
   <%= list_of t('roles.list'), @user.roles, :name %>

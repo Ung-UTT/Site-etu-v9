@@ -1,6 +1,6 @@
-class CreateProfils < ActiveRecord::Migration
+class CreateProfiles < ActiveRecord::Migration
   def change
-    create_table :profils do |t|
+    create_table :profiles do |t|
       # Fiche trombi rempli par l'étudiant
       t.string     :utt_address
       t.string     :parents_address

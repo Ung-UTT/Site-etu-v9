@@ -33,31 +33,31 @@
       <% end %>
     <% end %>
 
-    <% if @user.profil %>
-      <%= f.fields_for :profil do |f_profil| %>
+    <% if @user.profile %>
+      <%= f.fields_for :profile do |f_profile| %>
         <li class="field">
-          <%= f_profil.label :utt_address, t('profil.utt_address') %>
-          <%= f_profil.text_field :utt_address %>
+          <%= f_profile.label :utt_address, t('profile.utt_address') %>
+          <%= f_profile.text_field :utt_address %>
         </li>
         <li class="field">
-          <%= f_profil.label :parents_address, t('profil.parents_address') %>
-          <%= f_profil.text_field :parents_address %>
+          <%= f_profile.label :parents_address, t('profile.parents_address') %>
+          <%= f_profile.text_field :parents_address %>
         </li>
         <li class="field">
-          <%= f_profil.label :surname, t('profil.surname') %>
-          <%= f_profil.text_field :surname %>
+          <%= f_profile.label :surname, t('profile.surname') %>
+          <%= f_profile.text_field :surname %>
         </li>
         <li class="field">
-          <%= f_profil.label :once, t('profil.once') %>
-          <%= f_profil.text_field :once %>
+          <%= f_profile.label :once, t('profile.once') %>
+          <%= f_profile.text_field :once %>
         </li>
         <li class="field">
-          <%= f_profil.label :phone,  t('profil.phone') %>
-          <%= f_profil.text_field :phone %>
+          <%= f_profile.label :phone,  t('profile.phone') %>
+          <%= f_profile.text_field :phone %>
         </li>
         <li class="field">
-          <%= f_profil.label :description,  t('profil.description') %>
-          <%= f_profil.text_area :description, :class => 'rich-content' %>
+          <%= f_profile.label :description,  t('profile.description') %>
+          <%= f_profile.text_area :description, :class => 'rich-content' %>
         </li>
       <% end %>
     <% end %>
