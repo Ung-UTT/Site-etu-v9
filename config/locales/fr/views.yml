@@ -184,7 +184,7 @@ fr:
     utt_address: "Adresse UTTienne"
     parents_address: "Adresse des parents"
     surname: "Surnom"
-    one: "Jadis"
+    once: "Jadis"
     utt_id: "ID UTT"
     firstname: "Prénom"
     lastname: "Nom"
