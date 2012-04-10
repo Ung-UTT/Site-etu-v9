@@ -58,6 +58,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.2.0)
+    mysql2 (0.3.11)
     net-ldap (0.3.1)
     paper_trail (2.6.3)
       activerecord (~> 3.0)
@@ -146,6 +147,7 @@ DEPENDENCIES
   cancan
   dynamic_form
   kaminari
+  mysql2
   net-ldap
   paper_trail
   paperclip

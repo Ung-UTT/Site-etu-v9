@@ -30,3 +30,9 @@ group :test do
   gem 'autotest-rails'   # Lancer automatiquement les tests
   gem 'simplecov', :require => false
 end
+
+# Gems required to import data from old v7
+group :import do
+  gem 'mysql2'
+end
+

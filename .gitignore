@@ -11,3 +11,4 @@ Session.vim
 .rvmrc
 vendor/data/*
 coverage
+lib/tasks/import/data/
