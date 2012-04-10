@@ -1,11 +1,9 @@
-role_admin = Role.create(:name => 'admin')
-role_moderator = Role.create(:name => 'moderator')
+%w(admin moderator).each do |login|
+  unless User.find_by_login(login)
+    user = User.simple_create(login, 'changez-moi')
+    role = Role.create!(name: login) unless role = Role.find_by_name(login)
+    user.roles << role
+    user.save!
+  end
+end
 
-admin = User.simple_create('admin', 'changez-moi')
-moderator = User.simple_create('moderator', 'changez-moi')
-
-admin.roles << role_admin
-admin.save
-
-moderator.roles << role_moderator
-moderator.save
