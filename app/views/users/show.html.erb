@@ -36,7 +36,6 @@
   <%= list_of t('newss.list'), @user.news, :title %>
   <%= list_of t('classifieds.list'), @user.classifieds, :title %>
   <%= list_of t('carpools.list'), @user.carpools, :description %>
-  <%= list_of t('quotes.list'), @user.quotes, :content %>
   <%= list_of t('comments.list'), @user.comments, :content, true %>
   <%= list_of t('users.projects'), @user.created_projects, :name %>
   <%= list_of t('projects.list'), @user.projects, :name %>

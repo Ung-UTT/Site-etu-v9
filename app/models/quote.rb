@@ -8,6 +8,5 @@ class Quote < ActiveRecord::Base
 
   has_paper_trail
 
-  belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
 end

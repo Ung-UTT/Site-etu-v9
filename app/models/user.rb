@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :news, :dependent => :destroy
   has_many :polls, :dependent => :destroy
-  has_many :quotes, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :created_assos, :foreign_key => 'owner_id', :class_name => 'Asso', :dependent => :destroy
   has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
