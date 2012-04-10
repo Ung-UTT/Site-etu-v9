@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
   create_table "quotes", :force => true do |t|
     t.string   "content"
     t.string   "tag"
-    t.integer  "user_id"
+    t.string   "author"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
