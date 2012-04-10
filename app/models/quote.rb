@@ -1,5 +1,5 @@
 class Quote < ActiveRecord::Base
-  TAGS = %w(all quotes tooltips jokes none)
+  TAGS = %w(all wikipedia quote tip joke)
 
   paginates_per 30
 
