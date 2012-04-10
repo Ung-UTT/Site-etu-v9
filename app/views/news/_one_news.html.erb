@@ -1,6 +1,6 @@
 <section class="block">
   <header>
-    <section class="date"><%=raw l(news.created_at, :format => '%d <br /> %b') %></section>
+    <section class="date"><%= content_tag(:span, raw(l(news.created_at, :format => '%d<br />%b')), :title => news.created_at) %></section>
     <h2>
       <%= link_to news.title, news %>
       <% if !news.is_moderated and can? :moderate, News %>
