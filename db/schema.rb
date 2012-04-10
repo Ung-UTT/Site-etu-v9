@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
 
   create_table "assos", :force => true do |t|
     t.string   "name"
+    t.string   "website"
+    t.string   "email"
     t.text     "description"
     t.integer  "owner_id"
     t.integer  "image_id"
