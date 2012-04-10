@@ -9,6 +9,14 @@
 
   <%=md @asso.description %>
 
+  <dl>
+    <%= content_tag(:dt, 'Website') %>
+    <%= content_tag(:dd, link_to(@asso.website)) %>
+
+    <%= content_tag(:dt, 'Email') %>
+    <%= content_tag(:dd, mail_to(@asso.email)) %>
+  </dl>
+
   <p>
     <strong><%= t('assos.users') %></strong> :
     <%= link_to_users @asso.users %>
