@@ -13,14 +13,23 @@ describe User do
     end
   end
 
-  describe 'Methods' do
-    before do
-      @user ||= create(:user)
+  describe "#simple_create" do
+    it "should create a user with a password" do
+      expect {
+        User.simple_create("simplewithpass", "pass")
+      }.to change{User.count}.by(1)
     end
 
-    it 'should authentificate a correct user' do
-      User.authenticate(@user.login, '').should == nil
-      User.authenticate(@user.login, @user.password).should == @user
+    it "should create a user without a password" do
+      expect {
+        User.simple_create("simplewithoutpass")
+      }.to change{User.count}.by(1)
+    end
+  end
+
+  context 'with a user' do
+    before do
+      @user ||= create(:user)
     end
 
     it 'should have token and preference' do
@@ -36,6 +45,13 @@ describe User do
     it 'should correctly respond for abilities' do
       @user.is_member_of?(:fake_asso).should be_false
       @user.is?(:fake_role).should be_false
+    end
+
+    describe "#authentificate" do
+      it 'should authentificate a correct user' do
+        User.authenticate(@user.login, '').should == nil
+        User.authenticate(@user.login, @user.password).should == @user
+      end
     end
   end
 end
