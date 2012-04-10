@@ -6,7 +6,7 @@ class Ability
   def initialize(user)
     # Les règles se lisent assez facilement, pour la première :
     # Tout le monde peut lire les petites annonces, les associations, et les événements, ... etc
-    can :read, [Classified, Asso, Event]
+    can :read, [Classified, Asso, Event, Quote]
     can :read, News, :is_moderated => true
     can :read, Document do |obj|
       !obj.documentable.nil? and can?(:read, obj.documentable)
