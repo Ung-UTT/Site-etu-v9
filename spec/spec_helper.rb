@@ -7,6 +7,7 @@ SimpleCov.start 'rails'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'factory_girl'
 require 'paperclip/matchers'
 require 'cancan/matchers'
 
@@ -15,6 +16,7 @@ require 'cancan/matchers'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
   config.include Paperclip::Shoulda::Matchers
 
   # == Mock Framework
@@ -27,7 +29,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/test/fixtures"
+  # config.fixture_path = "#{::Rails.root}/test/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

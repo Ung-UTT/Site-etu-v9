@@ -119,7 +119,7 @@ fr:
       not_an_integer: doit être un nombre entier
       odd: doit être impair
       record_invalid: ! 'La validation a échoué : %{errors}'
-      taken: n'est pas disponible
+      taken: est déjà utilisé(e)
       too_long:
         one: est trop long (pas plus de %{count} caractère)
         other: est trop long (pas plus de %{count} caractères)

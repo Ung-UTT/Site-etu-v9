@@ -6,4 +6,3 @@
     user.save!
   end
 end
-

@@ -69,11 +69,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Créer un utilisateur rapidement (juste pour les tests)
+  # Créer un utilisateur rapidement
   def self.simple_create(login, password = nil)
     password ||= SecureRandom.base64
-    User.create(:login => login, :email => "#{login}@example.org",
-                :password => password, :password_confirmation => password)
+    User.create!(login: login, email: "#{login}@utt.fr", password: password)
   end
 
   # Ne stocke pas le mot de passe en clair
