@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
+
+# /!\ À éxécuter avec ruby 1.8.7 /!\ à cause d'un bug dans la gem 'net-ldap'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rubygems'
@@ -13,20 +16,22 @@ attrs = ['uid', 'mail', 'givenname', 'sn', 'displayname', 'employeetype',
          # Profs
          'roomnumber', 'telephonenumber', 'businesscategory']
 
-puts "Récupuration des infos sur les étudiants"
+puts "Get informations about students :"
 if File.exists?(DB_FILE)
-  puts "Utilisation de #{BD_FILE.to_s} (à supprimer si vous voulez les dernière infos du LDAP)"
+  puts "Use #{DB_FILE.to_s} (delete it if you want the last updates)"
   students = Marshal.load(File.read(DB_FILE))
 else
   begin
     utt = Net::LDAP.new(:host => 'ldap.utt.fr', :port => 389, :base => "dn:dc=utt,dc=fr")
   rescue
-    puts "Impossible de se connecter au LDAP de l'UTT"
+    puts "Can't connect to LDAP server"
     exit
   end
 
-  puts "Chargement depuis le LDAP de l'UTT (long)"
+  puts "Search students (slow)..."
+
   # Recherche de tout les étudiants
+  # FIXME: ne fonctionne pas avec ruby 1.9.x à cause de la gem 'net-ldap'
   students = utt.search(:base => 'ou=people,dc=utt,dc=fr')
 
   # Tranformation du tableau d'objets LDAP en un tableau de hashs
@@ -47,7 +52,7 @@ else
   File.open(DB_FILE, 'w+') {|f| f.write(Marshal.dump(students))}
 end
 
-puts "Insertion des étudiants dans la base de données"
+puts "Add students to the database"
 students.each do |st|
   puts "#{st['supannetuid']} : #{st['displayname']}"
 
@@ -65,13 +70,13 @@ students.each do |st|
     picture = Image.from_url(st['jpegphoto'])
   rescue => e
     puts e.inspect
-    puts "Pas de photo de profil car pas d'accès Internet"
+    puts "No photo because there is no internet access"
     picture = nil
   end
-  picture.inspect
+
   u.profile.image = Image.new(:asset => picture) if picture
 
-  u.profile.utt_id = st['uid']
+  u.profile.utt_id = st['supannetuid']
   u.profile.firstname = st['givenname']
   u.profile.lastname = st['sn']
   u.profile.level = st['niveau']
@@ -91,4 +96,3 @@ students.each do |st|
     puts u.errors.inspect
   end
 end
-
