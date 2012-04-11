@@ -22,7 +22,7 @@ DB_FILE = Rails.root.join('vendor', 'data', 'schedule.marshal')
 #   "end" : [19, 30], ...
 
 if File.exists?(DB_FILE)
-  puts "Use #{BD_FILE.to_s}"
+  puts "Use #{DB_FILE.to_s}"
   timesheets = Marshal.load(File.read(DB_FILE))
 else
   puts "You must cconvert schedules first"
@@ -42,18 +42,27 @@ timesheets.each do |ts|
     :room => ts['room'], # Salle
     :category => ts['type'], # CM, TD, TP
     # Crée le cours s'il n'existe pas
-    :course => Cours.find_or_create_by_name(ts['uv']),
+    :course => Course.find_or_create_by_name(ts['uv'])
   )
 
   # Trouver les étudiants
-  users = User.all.select? {|user| ts['students'].include?(user.login)}
-
-  if users.nil? or users.empty?
-    puts "You must import users first"
+  if ts['students'].empty?
+    puts 'No students for this timesheet'
   else
-    # Ajouter l'horaire aux étudiants
-    users.each do |user|
-      user.timesheets << timesheet
+    users = User.all.select {|user| ts['students'].include?(user.login)}
+
+    if users.nil? or users.empty?
+      puts 'You must import students first'
+      puts timesheet.inspect
+      puts ts['students'].inspect
+    else
+      # Ajouter l'horaire aux étudiants
+      users.each do |user|
+        puts user.timesheets.inspect
+        user.timesheets << timesheet
+        user.save
+        puts user.timesheets.inspect
+      end
     end
   end
 end

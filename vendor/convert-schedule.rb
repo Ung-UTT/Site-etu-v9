@@ -43,26 +43,25 @@ def find_student_with(ts)
 
   # Recherche par ID étudiant
   profile = Profile.find_by_utt_id(id)
-  unless profile.nil? or profile.empty?
-    return profile.user.login if profile
+  if !profile.nil? and !profile.user.nil? and !profile.user.login.nil?
+    return profile.user.login
   end
 
   # Recherche par élimination : branche, nom, prénom
   profiles = Profile.find_by_level(level)
-  profiles = profiles.select {|p| p.lastname =~ names[0] }
-  profiles = profiles.select {|p| p.firstname =~ names[1] }
+  if profiles
+    profiles = profiles.select {|p| p.lastname =~ names[0] }
+    profiles = profiles.select {|p| p.firstname =~ names[1] }
+  end
 
-  if profiles.size == 1
+  if profile.nil? or profile.empty?
+    return '' # TODO: Proposer un choix plus large
+  elsif profiles.size == 1
     return profiles.first.user.login
-  elsif profiles.size > 1
+  else
     # TODO: Choisir manuellement entre les utilisateurs
     puts 'Plusieurs étudiants trouvés, à vous de choisir :'
     return profiles.first.user.login
-  else
-    puts 'Aucun utilisateur trouvé...'
-    # TODO: Faire choisir via un choix plus large d'utilisateurs
-    # (seulement nom, seulement prénom, ...)
-    return ''
   end
 end
 
@@ -95,7 +94,7 @@ else
   rooms_names = rooms.map{|r| r[1]}
 
   # Récupére les horaires
-  query = base.query("SELECT * FROM #{TIMESHEETS_TABLE}")
+  query = base.query("SELECT * FROM #{TIMESHEETS_TABLE} ORDER BY uv LIMIT 200")
   timesheets = []
   query.each do |ts|
     timesheets.push(ts)
@@ -104,35 +103,43 @@ else
   # Tableau de hash (traduction noms des champs, et parsage des valeurs)
   timesheets = timesheets.map do |ts|
     tmp_hash = Hash.new
-    attrs.each do |attr, translation|
-      val = ts[attr] # Récupére la valeur
 
-      case translation
-        when 'week', 'students'
-          val = val.to_i
-        when 'students'
-          # Trouver l'étudiant par rapport aux indices laissés par l'UTT...
-          val = [find_student_with(ts)]
-        when 'room'
-          # Selectionne la salle qui correspond à l'id de l'horaire et
-          # récupère la nom de la salle
-          val = rooms_index.find_index(val) # index de la salle correspondante
-          val = val ? rooms_names[val] : '' # Si on a pas réussi à trouver de salle
-        when 'day'
-          # Passe de lundi ... samedi à 0-6
-          days = {'lundi' => 0, 'mardi' => 1, 'mercredi' => 2,
-                  'jeudi' => 3, 'vendredi' => 4, 'samedi' => 5}
-          val = days[val] || 0
-        when 'start', 'end'
-          # De "19:30" à [19, 30]
-          val = val.split(':')
-          val = val.size == 1 ? [0, 0] : val.map(&:to_i) # Format spécial
+    student = find_student_with(ts)
+
+    if student.empty?
+      nil
+    else
+      attrs.each do |attr, translation|
+        val = ts[attr] # Récupére la valeur
+
+        case translation
+          when 'week'
+            val = val.to_i # 1 ou 2
+          when 'students'
+            # Trouver l'étudiant par rapport aux indices laissés par l'UTT...
+            val = student
+          when 'room'
+            # Selectionne la salle qui correspond à l'id de l'horaire et
+            # récupère la nom de la salle
+            val = rooms_index.find_index(val) # index de la salle correspondante
+            val = val ? rooms_names[val] : '' # Si on a pas réussi à trouver de salle
+          when 'day'
+            # Passe de lundi ... samedi à 0-6
+            days = {'lundi' => 0, 'mardi' => 1, 'mercredi' => 2,
+                    'jeudi' => 3, 'vendredi' => 4, 'samedi' => 5}
+            val = days[val] || 0
+          when 'start', 'end'
+            # De "19:30" à [19, 30]
+            val = val.split(':')
+            val = val.size == 1 ? [0, 0] : val.map(&:to_i) # Format spécial
+        end
+
+        tmp_hash.merge!({translation => val})
       end
-
-      tmp_hash.merge!({translation => val})
+      tmp_hash
     end
-    tmp_hash
   end
+  timesheets = timesheets.compact
 
   # Rassembler les mêmes horaires en mettant la liste des étudiants dedans
 
@@ -143,9 +150,13 @@ else
   # Met ça sous le format normal avec les logins des étudiants dans "students"
   timesheets = timesheets.map do |ts|
     ts = ts.last # Horaires depuis [TC201AM01TD11701860, [horaire, horaire, ...]]
-    students = ts.map{|t| t['students']} # logins des étudiants
+
+    # logins des étudiants
+    students = ts.map{|t| t['students']}
+    puts students.inspect
+
     ts = ts.first # Toutes les horaires sont les mêmes, on prend la première
-    ts['students'] = students # On met les logins des étudiants
+    ts['students'] = students  # On met les logins des étudiants trouvés
     ts
   end
 
