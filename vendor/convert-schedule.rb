@@ -10,8 +10,9 @@
 # des propriétés utiles bien présentées
 
 require File.expand_path("../../config/environment", __FILE__)
+require 'mysql2'
 
-DB_FILE = 'data/schedule.marshal'
+DB_FILE = Rails.root.join('vendor', 'data', 'schedule.marshal')
 
 # Nom de la table des horaires
 TIMESHEETS_TABLE = 'export_UNGA11'
@@ -41,22 +42,22 @@ def find_student_with(ts)
   names = names.map{|n| /^#{Regexp.escape(n)}/i }
 
   # Recherche par ID étudiant
-  profil = Profil.find_by_utt_id(id)
-  unless profil.nil? or profil.empty?
-    return profil.profil.user.login if profil
+  profile = Profile.find_by_utt_id(id)
+  unless profile.nil? or profile.empty?
+    return profile.user.login if profile
   end
 
   # Recherche par élimination : branche, nom, prénom
-  profils = Profil.find_by_level(level)
-  profils = profils.select {|p| p.lastname =~ names[0] }
-  profils = profils.select {|p| p.firstname =~ names[1] }
+  profiles = Profile.find_by_level(level)
+  profiles = profiles.select {|p| p.lastname =~ names[0] }
+  profiles = profiles.select {|p| p.firstname =~ names[1] }
 
-  if profils.size == 1
-    return profils.first.user.login
-  elsif profils.size > 1
+  if profiles.size == 1
+    return profiles.first.user.login
+  elsif profiles.size > 1
     # TODO: Choisir manuellement entre les utilisateurs
     puts 'Plusieurs étudiants trouvés, à vous de choisir :'
-    return profils.first.user.login
+    return profiles.first.user.login
   else
     puts 'Aucun utilisateur trouvé...'
     # TODO: Faire choisir via un choix plus large d'utilisateurs
@@ -72,8 +73,12 @@ if File.exists?(DB_FILE)
   exit
 else
   begin
-    # Connexion : serveur, utilisateur, mdp, base
-    base = Mysql.real_connect('localhost', 'utt_edt', 'utt_edt', 'utt_edt')
+    base = Mysql2::Client.new(
+      :host => 'localhost',
+      :username => 'utt_edt',
+      :password => 'utt_edt',
+      :database => 'utt_edt'
+    )
   rescue
     puts "Can't connect to the MySQL server"
     exit
@@ -82,8 +87,8 @@ else
   # Récupére les salles
   query = base.query('SELECT * FROM rel_seance_salle')
   rooms = []
-  while room = query.fetch_row do
-    rooms.push(room)
+  query.each(:as => :array) do |room|
+    rooms.push([room[0], room[1]])
   end
   # Sépare les index et les noms
   rooms_index = rooms.map{|r| r[0]}
@@ -92,11 +97,9 @@ else
   # Récupére les horaires
   query = base.query("SELECT * FROM #{TIMESHEETS_TABLE}")
   timesheets = []
-  while ts = query.fetch_hash do
+  query.each do |ts|
     timesheets.push(ts)
   end
-
-  base.close if base # Déconnexion
 
   # Tableau de hash (traduction noms des champs, et parsage des valeurs)
   timesheets = timesheets.map do |ts|

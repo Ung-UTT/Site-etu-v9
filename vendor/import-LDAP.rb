@@ -47,7 +47,7 @@ else
   end
 
   # Ne garder que les personnes (pas les ordis, les comptes d'administrations, ... etc)
-  students.select {|st| !st['supannetuid'].empty?}
+  students = students.reject {|st| st['supannetuid'].empty? }
 
   File.open(DB_FILE, 'w+') {|f| f.write(Marshal.dump(students))}
 end
@@ -60,7 +60,7 @@ students.each do |st|
   u = User.find_by_login(st['uid']) || User.simple_create(st['uid'])
 
   # E-Mail
-  u.email = st['mail']
+  u.email = st['mail'] || st['uid'] + '@utt.fr'
 
   # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
   u.build_profile.save unless u.profile

@@ -4,10 +4,10 @@ namespace :import do
   desc "Import data from old MySQL database"
   task :mysql => :environment do
     client = Mysql2::Client.new(
-      :host => "localhost",
-      :username => "root",
-      :password => "lol",
-      :database => "news"
+      :host => 'localhost',
+      :username => 'root',
+      :password => 'lol',
+      :database => 'news'
     )
 
     News.delete_all

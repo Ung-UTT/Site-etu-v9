@@ -12,7 +12,7 @@ class News < ActiveRecord::Base
 
   class << self
     def visible
-      where(is_moderated: true).order('updated_at DESC')
+      where(:is_moderated => true).order('updated_at DESC')
     end
   end
 end

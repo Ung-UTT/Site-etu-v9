@@ -8,7 +8,7 @@
 
 require File.expand_path("../../config/environment", __FILE__)
 
-DB_FILE = 'data/schedule.marshal'
+DB_FILE = Rails.root.join('vendor', 'data', 'schedule.marshal')
 
 # Attributs dans le fichier convertit :
 #   "weekname" : T, A, B
