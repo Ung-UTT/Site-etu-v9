@@ -1,15 +1,8 @@
 require 'spec_helper'
 
 describe Poll do
-  describe 'Validations' do
+  describe 'validations' do
     it { should validate_presence_of(:name) }
-  end
-
-  describe 'Associations' do
-    it { should belong_to(:user) }
-
-    it { should have_many(:answers) }
-    it { should have_many(:votes) }
   end
 
   describe '#voted_by?' do

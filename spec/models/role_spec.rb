@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Role do
-  describe 'Validations' do
+  describe 'validations' do
     it { should validate_presence_of(:name) }
     it {
       Role.create(:name => 'Role')
@@ -9,12 +9,6 @@ describe Role do
     }
     it { should allow_value('Role name').for(:name) }
     it { should allow_value("Complex-based's role_user").for(:name) }
-    #FIXME: it { should_not allow_value("Viv@ lês {RÔLES}").for(:name) }
-  end
-
-  describe 'Associations' do
-    it { should belong_to(:asso) }
-
-    it { should have_many(:users).through(:roles_user) }
+    it { should_not allow_value("Viva les {ROLES}").for(:name) }
   end
 end

@@ -61,6 +61,11 @@ FactoryGirl.define do
     quote_type 'all'
   end
 
+  factory :project do
+    sequence(:name) {|n| "Project #{n}" }
+    association :owner, factory: :user
+  end
+
   factory :timesheet do
     start_at { Time.now }
     end_at { Time.now + 2.hours }
