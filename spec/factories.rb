@@ -1,12 +1,6 @@
 # Doc: https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
 
 FactoryGirl.define do
-  sequence(:asso_name) {|n| "Asso #{n}"}
-  sequence(:poll_name) {|n| "Poll #{n}"}
-  sequence(:news_title) {|n| "News #{n}"}
-  sequence(:login) {|n| "login#{n}"}
-
-
   factory :annal do
     name "Final : What's your name?"
     description "Basic questions"
@@ -14,7 +8,8 @@ FactoryGirl.define do
   end
 
   factory :asso, aliases: [:club] do
-    name { FactoryGirl.generate(:asso_name) }
+    sequence(:name) {|n| "Asso #{n}" }
+
     association :owner, factory: :user
   end
 
@@ -38,19 +33,21 @@ FactoryGirl.define do
   end
 
   factory :news do
-    title { FactoryGirl.generate(:news_title) }
+    sequence(:title) {|n| "News #{n}" }
+
     content "What a news!"
     is_moderated true
   end
 
   factory :user do
-    login { FactoryGirl.generate(:login) }
+    sequence(:login) {|n| "login#{n}" }
+
     email { "#{login}@utt.fr" }
     password { SecureRandom.base64 }
   end
 
   factory :poll do
-    name { FactoryGirl.generate(:poll_name) }
+    sequence(:name) {|n| "Poll #{n}" }
 
     factory :poll_with_answers do
       after_create do |poll|
