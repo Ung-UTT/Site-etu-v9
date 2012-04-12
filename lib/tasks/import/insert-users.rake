@@ -1,7 +1,7 @@
 namespace :import do
   namespace :schedules do
     desc "Insert users in the database"
-    task :import do
+    task :insert do
       DB_FILE = Rails.root.join('cache',  'ldap.marshal')
 
       if File.exists?(DB_FILE)
@@ -20,7 +20,7 @@ namespace :import do
         u = User.find_by_login(st['uid']) || User.simple_create(st['uid'])
 
         # E-Mail
-        u.email = st['mail'] || st['uid'] + '@utt.fr'
+        u.email = st['mail'] || "#{st['uid']}@utt.fr"
 
         # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
         u.build_profile.save unless u.profile

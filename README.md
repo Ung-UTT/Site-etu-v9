@@ -97,7 +97,17 @@ sont assez extraordinaires !
 
 #### Les scripts d'import :
 
-##### Le LDAP :
+Il y a beaucoup d'étudiants (environ 3000) donc ça prend du temps d'importer
+les étudiants, les emploi du temps et les données de la v7.
+
+##### semesters.rb
+
+Changez le fichier `config/initializers/semesters.rb` pour y ajouter le
+nouveau semestre (s'il n'est pas déjà mis). Vous aurez besoin de l'emploi
+du temps des semaines A et B. (c'est documenté sur comment faire dans le
+fichier).
+
+##### Les étudiants (via le LDAP) :
 
 Pour accèder au LDAP (et donc aux informations sur les étudiants) il
 faut être à l'UTT ou y accéder via un tunnel SSH (non expliqué ici).
@@ -105,15 +115,15 @@ faut être à l'UTT ou y accéder via un tunnel SSH (non expliqué ici).
 Vous devez lancer le scripts d'imports des étudiants en premier :
 
 * Il va chercher les étudiants sur le LDAP de l'UTT (et les met en cache
-dans le fichier vendor/data/ldap.marshal, à supprimer si vous voulez des
+dans le fichier cache/ldap.marshal, à supprimer si vous voulez des
 infos plus récentes)
 * Pour chaque utilisateur trouvé, soit il le crée, soit il le met à jour
 * Les attributs enregistrés inclus le nom, le prénom, le niveau, ... etc
 mais pas les UVs, cela sera fait via les emploi du temps.
+* Lancez la convertion des étudiants avec : `rake import:users:convert`
+* Puis l'insertion dans la base de données avec : `rake import:users:insert`.
 
-##### Les emploi du temps :
-
-(Qui incluent donc les cours et les horaires)
+##### Les emploi du temps (les cours et les horaires)
 
 À partir des emploi du temps donnés par l'UTT (.sql) :
 
@@ -121,6 +131,17 @@ mais pas les UVs, cela sera fait via les emploi du temps.
   le script)
 * Importez les .sql dans cette base : salles (rel_seance_salle), puis
   les horaires (export_UNGXXX).
+* Changez le nom de l'export dans `lib/tasks/import/convert-users.rake`
+  (export_UNGXXX)
+* Lancez la conversion des emploi du temps : `rake import:schedules:convert`
+* Puis l'insertion des emploi du temps : `rake import:schedules:insert`
+
+###### Les données du site étu v7
+
+* Il faut déjà exporter les tables via PhpMyAdmin sur la v7
+* Cf: `lib/tasks/import/v7.rake` pour les tables à prendre, où mettre les
+  exports, quelle base/utilisateur créer, ... etc
+* Puis faîtes `rake import:v7` pour importer les données
 
 ### Tester [![Build Status](https://secure.travis-ci.org/Ung-UTT/Site-etu-v9.png?branch=master)](http://travis-ci.org/Ung-UTT/Site-etu-v9)
 
@@ -129,6 +150,9 @@ tests passent avec : `rspec`.
 
 Ou si vous écrivez des tests, utilisez `bundle exec autotest` pour les
 faire passer au fur et à mesure que vous les écrivez.
+
+Le mieux serait même quand c'est possible d'écrire le test avant de
+résoudre le bug ou de coder la fonctionnalité.
 
 ## Licence
 
