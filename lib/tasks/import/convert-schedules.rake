@@ -1,4 +1,5 @@
 require 'mysql2'
+require 'readline'
 
 namespace :import do
   namespace :schedules do
@@ -35,6 +36,7 @@ namespace :import do
       # Retourne le login de l'étudiant
       def find_student_with(ts)
         id = ts['etu_id']
+        uv = ts['uv']
         level = ts['branche']
         names = ts['nom_prenom'].split(' ') # FOUQUET JU, COLSON VAL, ...
         names.push('') while names.size < 2
@@ -48,19 +50,32 @@ namespace :import do
 
         # Recherche par élimination : branche, nom, prénom
         profiles = Profile.find_by_level(level)
-        if profiles
+
+        # Recherche par nom, avec restauration si rien de trouvé
+        if profiles and profiles.size > 1
+          save_profiles = profiles.map{|p| p.dup}
           profiles = profiles.select {|p| p.lastname =~ names[0] }
+          profiles = save_profiles if profiles.empty?
+        end
+
+        # Recherche par prénom, avec restauration si rien de trouvé
+        if profiles.size > 1
+          save_profiles = profiles.map{|p| p.dup}
           profiles = profiles.select {|p| p.firstname =~ names[1] }
+          profiles = save_profiles if profiles.empty?
         end
 
         if profile.nil? or profile.empty?
+          puts "No students found for #{uv} : #{id} #{level} #{names.join(' ')}"
           return '' # TODO: Proposer un choix plus large
         elsif profiles.size == 1
           return profiles.first.user.login
         else
-          # TODO: Choisir manuellement entre les utilisateurs
-          puts 'Plusieurs étudiants trouvés, à vous de choisir :'
-          return profiles.first.user.login
+          puts 'Choose between students found :'
+          puts "Indices : #{uv} : #{id} #{level} #{names.join(' ')}"
+          profiles.each{|profile| puts "#{profile.user.login} : #{profile.level}" }
+          login = Readline.readline('> ')
+          return login
         end
       end
 
