@@ -1,8 +1,8 @@
 require 'mysql2'
 
 namespace :import do
-  desc "Import data from old MySQL database"
-  task :mysql => :environment do
+  desc "Import data, of the student website v7, from old MySQL database"
+  task :v7 do
     client = Mysql2::Client.new(
       :host => 'localhost',
       :username => 'root',
