@@ -3,7 +3,7 @@
 
   <blockquote><%= link_to @quote.content, @quote %></blockquote>
 
-  <p><%= t('quotes.by') %> <%= link_to_user @quote.user  %></p>
+  <p><%= t('quotes.by') %> <%= @quote.author %></p>
 
   <p><strong>Type</strong> : <%= @quote.tag %></p>
 

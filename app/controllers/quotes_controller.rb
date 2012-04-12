@@ -45,7 +45,6 @@ class QuotesController < ApplicationController
   # POST /quotes.xml
   def create
     @quote = Quote.new(params[:quote])
-    @quote.user = current_user
 
     respond_to do |format|
       if @quote.save

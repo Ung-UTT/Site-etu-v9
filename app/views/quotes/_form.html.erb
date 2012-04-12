@@ -7,6 +7,10 @@
       <%= f.text_field :content %>
     </li>
     <li class="field">
+      <%= f.label :author, t('quotes.by') %>
+      <%= f.text_field :author %>
+    </li>
+    <li class="field">
       <%= f.label :tag, t('quotes.type') %>
       <%= f.select :tag, Quote::TAGS %>
     </li>
