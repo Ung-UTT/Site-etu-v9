@@ -76,8 +76,8 @@ namespace :import do
         :website => row[:web],
         :email => row[:email],
         :description => row[:description],
-        :owner_id => Profile.all.select do |u|
-            "#{u.firstname} #{u.lastname}" == row[:nom_responsable]
+        :owner_id => Profile.all.detect do |profile|
+            "#{profile.firstname} #{profile.lastname}" == row[:nom_responsable]
           end.try(:user_id) || User.find_by_login('admin').id
       )
       print '.'

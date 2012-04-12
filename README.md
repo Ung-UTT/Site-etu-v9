@@ -136,7 +136,7 @@ mais pas les UVs, cela sera fait via les emploi du temps.
 * Lancez la conversion des emploi du temps : `rake import:schedules:convert`
 * Puis l'insertion des emploi du temps : `rake import:schedules:insert`
 
-###### Les données du site étu v7
+##### Les données du site étu v7
 
 * Il faut déjà exporter les tables via PhpMyAdmin sur la v7
 * Cf: `lib/tasks/import/v7.rake` pour les tables à prendre, où mettre les
