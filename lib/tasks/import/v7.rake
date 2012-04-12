@@ -23,7 +23,7 @@ namespace :import do
     ].each do |results|
       results.each(:symbolize_keys => true) do |row|
         # next unless row[:actif] == 'Y'
-        user = User.find_by_login(row[:login]) || User.simple_create row[:login]
+        user = User.find_by_login(row[:login]) || User.simple_create(row[:login])
         user.email = (row[:email].blank? ? "#{row[:login]}@utt.fr" : row[:email])
         user.created_at = row[:dateCreation]
         user.save

@@ -2,7 +2,7 @@ namespace :import do
   namespace :schedules do
     desc "Insert schedules in the database (need schedule.marhsal from convertion)"
     task :insert do
-      DB_FILE = Rails.root.join('cache', 'schedule.marshal')
+      DB_FILE = Rails.root.join('tmp', 'schedule.marshal')
 
       # Attributs dans le fichier convertit :
       #   "weekname" : T, A, B

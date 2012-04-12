@@ -1,14 +1,17 @@
+require File.expand_path('../../../../config/environment', __FILE__)
+require 'net-ldap'
+
 namespace :import do
-  namespace :schedules do
+  namespace :users do
     desc "Insert users in the database"
     task :insert do
-      DB_FILE = Rails.root.join('cache',  'ldap.marshal')
+      DB_FILE = Rails.root.join('tmp', 'ldap.marshal')
 
       if File.exists?(DB_FILE)
-        puts "Get schedules informations for #{DB_FILE}"
+        puts "Get students informations from #{DB_FILE}"
         students = Marshal.load(File.read(DB_FILE))
       else
-        puts "You have to convert schedules first"
+        puts "You have to convert users first"
         exit
       end
 

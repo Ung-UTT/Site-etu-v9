@@ -120,7 +120,7 @@ infos plus récentes)
 * Pour chaque utilisateur trouvé, soit il le crée, soit il le met à jour
 * Les attributs enregistrés inclus le nom, le prénom, le niveau, ... etc
 mais pas les UVs, cela sera fait via les emploi du temps.
-* Lancez la convertion des étudiants avec : `rake import:users:convert`
+* Lancez la convertion des étudiants avec : `./lib/convert-users.rb`
 * Puis l'insertion dans la base de données avec : `rake import:users:insert`.
 
 ##### Les emploi du temps (les cours et les horaires)
