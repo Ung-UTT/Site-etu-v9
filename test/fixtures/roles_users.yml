@@ -1,7 +1,0 @@
-<% 1.upto(6) do |i| %>
-<% ['joe','kevin' ,'foo', 'bar'].each do |user| %>
-<%= "Asso#{i}UTT_member_#{user}" %>:
-  role: <%= "Asso#{i}UTT_member" %>
-  user: <%= "#{user}" %>
-<% end %>
-<% end %>

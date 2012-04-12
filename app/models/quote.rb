@@ -1,5 +1,5 @@
 class Quote < ActiveRecord::Base
-  TAGS = %w(all quotes tooltips jokes none)
+  TAGS = %w(all wikipedia quote tip joke)
 
   paginates_per 30
 
@@ -8,6 +8,5 @@ class Quote < ActiveRecord::Base
 
   has_paper_trail
 
-  belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
 end

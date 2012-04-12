@@ -51,8 +51,8 @@ Vous allez mettre le code source du site étu sur votre ordi : `git clone https:
 Maintenant placez-vous dans le dossier du site étu (`cd Site-Etu-v9`) et faîtes :
 `bundle install` (installe les extensions requises)
 
-`rake db:create db:migrate db:fixtures:load db:seed` (Pour créer la base de données
-et la remplir de pleins de données fausses, puis de données essentielles)
+`rake db:setup db:migrate` (Pour créer la base de données et la remplir de
+pleins de données fausses, puis de données essentielles)
 
 Voilà, lancez `rails server` et vous devriez voir apparaître le magnifique site
 étu sur [localhost:3000](http://localhost:3000). Bravo !
@@ -66,7 +66,6 @@ Voilà, lancez `rails server` et vous devriez voir apparaître le magnifique sit
 
 > **Attention** : Détruit toutes les données de la base !
 
-* Pour générer plein de contenu : `rake db:fixtures:load`
 * Pour regénérer un environement fonctionnel : `rake dev:reset` (crée des
   base de données pour les environements production, development et test)
 
