@@ -112,14 +112,12 @@ class User < ActiveRecord::Base
     self.timesheets.map(&:course).compact.uniq
   end
 
-  # L'utilisateur devient un étudiant (utilisé dans le script d'import)
-  def become_a_student
-    # Devenir étudiant (rôle)
-    if !is_student?
-      roles << (Role.find_by_name('student') || Role.create(:name => 'student'))
+  def become_a! role
+    unless is?(role)
+      role = role.to_s
+      roles << (Role.find_by_name(role) || Role.create(:name => role))
     end
   end
-
 
   # Est-ce qu'il est membre d'une association
   def is_member_of?(asso)

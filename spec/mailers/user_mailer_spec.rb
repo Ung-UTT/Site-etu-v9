@@ -5,7 +5,7 @@ describe UserMailer do
 
   before do
     @news ||= create_list(:news, 2)
-    @user = stub('user',
+    @user ||= stub('user',
       real_name: 'Joe Dupont',
       email: 'joe.dupont@example.net'
     )
