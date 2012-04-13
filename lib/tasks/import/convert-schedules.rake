@@ -1,7 +1,9 @@
 # encoding: utf-8
 
 require 'mysql2'
-require Rails.root.join('lib', 'find_student')
+# require Rails.root.join('lib', 'find_student')
+# FIXME: commented out while the lib breaks the build
+# (libraries should NOT need the environment)
 
 namespace :import do
   namespace :schedules do
