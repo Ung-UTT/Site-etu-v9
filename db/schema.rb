@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -147,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.string   "parents_address"
     t.string   "surname"
     t.string   "once"
-    t.string   "utt_id"
+    t.integer  "utt_id"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "level"

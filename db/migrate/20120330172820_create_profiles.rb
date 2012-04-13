@@ -8,7 +8,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string     :once # Jadis
 
       # Fournis par l'UTT (pas modifiables)
-      t.string     :utt_id
+      t.integer    :utt_id
       t.string     :firstname
       t.string     :lastname
       t.string     :level

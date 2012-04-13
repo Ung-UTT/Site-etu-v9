@@ -9,3 +9,8 @@ fr:
 
     vote:
       uniqueness: "Vous ne pouvez pas voter plusieurs fois pour ce sondage"
+
+  time:
+    formats:
+      day: '%d'
+      hour: '%Hh%M'

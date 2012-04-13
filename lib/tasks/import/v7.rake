@@ -35,7 +35,7 @@ namespace :import do
             :lastname => row[:nom],
             :surname => row[:surnom],
             :once => row[:jadis],
-            :utt_id => row[:idEtu],
+            :utt_id => row[:idEtu].to_i,
             :level => row[:branche],
             :specialization => row[:filiere],
             :role => row[:LDAPdescription],

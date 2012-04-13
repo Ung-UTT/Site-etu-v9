@@ -14,7 +14,7 @@ attrs = ['uid', 'mail', 'givenname', 'sn', 'displayname', 'employeetype',
 
 puts "Get informations about students :"
 if File.exists?(DB_FILE)
-  puts "#{DB_FILE.to_s} already exists, you can now import users"
+  puts "#{DB_FILE.to_s.split('/').last} already exists, you can now insert users"
   exit
 end
 
