@@ -151,8 +151,16 @@ tests passent avec : `rspec`.
 Ou si vous écrivez des tests, utilisez `bundle exec autotest` pour les
 faire passer au fur et à mesure que vous les écrivez.
 
-Le mieux serait même quand c'est possible d'écrire le test avant de
-résoudre le bug ou de coder la fonctionnalité.
+Afin d'avoir un code de qualité et peu de maintenance nécessaire, nous
+pratiquons le [TDD](http://en.wikipedia.org/wiki/Test-driven_development). Cela
+implique cinq étapes simples pour corriger un bug ou implémenter une nouvelle
+fonctionnalité :
+
+1. Écrire un test pour mettre en évidence le bug ou décrire la fonctionnalité
+2. Vérifier que ce test échoue
+3. Corriger le bug ou implémenter la fonctionnalité
+4. Vérifier que ce test passe
+5. Faire un seul commit contenant le code et les tests
 
 ## Licence
 
