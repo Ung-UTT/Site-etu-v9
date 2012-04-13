@@ -1,11 +1,11 @@
 <%= @user.real_name %>, le BDE te présente le Daymail du <%= @date %> !
 
 Sommaire :
-<% @news.each do |news| %>
+<% @content[:news].each do |news| %>
 * <%= news.title %>
 <% end %>
 
-<% @news.each do |news| %>
+<% @content[:news].each do |news| %>
 # <%= news.title %>
 <%= news.content %>
 

@@ -1,12 +1,14 @@
 class UserMailer < ActionMailer::Base
   default :from => "bde@utt.fr"
 
-  def daymail(user)
-    @user = user
-    @news = News.where('created_at > ?', Time.now - 1.day)
+  def daymail(user, content)
+    @user, @content = user, content
     @date = I18n.l(Date.today, :format => :long)
-    mail(:to => user.email,
-         :subject => '[Daymail] ' + @date)
+
+    mail(:to => user.email, :subject => '[Daymail] ' + @date) do |format|
+      format.html
+      format.text
+    end
   end
 
   def password_reset(user)
