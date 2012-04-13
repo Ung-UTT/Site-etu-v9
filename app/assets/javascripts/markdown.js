@@ -12,7 +12,6 @@
 // -------------------------------------------------------------------
 
 // Dorian : définit l'url vers la page d'accueil via la bannière (ou /)
-ROOT_URL = $('.banner')[0];
 ROOT_URL = (typeof(ROOT_URL) == 'undefined') ? '/' : ROOT_URL.href;
 
 mySettings = {
@@ -21,12 +20,12 @@ mySettings = {
   previewParserPath: ROOT_URL + '/preview', // Dorian : prévisualisation via l'application Rails
   onShiftEnter: {keepDefault:false, openWith:'\n\n'},
   markupSet: [
-    {name:'First Level Heading', key:'1', placeHolder:'Your title here...', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '=') } },
-    {name:'Second Level Heading', key:'2', placeHolder:'Your title here...', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '-') } },
-    {name:'Heading 3', key:'3', openWith:'### ', placeHolder:'Your title here...' },
-    {name:'Heading 4', key:'4', openWith:'#### ', placeHolder:'Your title here...' },
-    {name:'Heading 5', key:'5', openWith:'##### ', placeHolder:'Your title here...' },
-    {name:'Heading 6', key:'6', openWith:'###### ', placeHolder:'Your title here...' },
+    {name:'First Level Heading', key:'1', placeHolder:'Votre titre...', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '=') } },
+    {name:'Second Level Heading', key:'2', placeHolder:'Votre titre...', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '-') } },
+    {name:'Heading 3', key:'3', openWith:'### ', placeHolder:'Votre titre...' },
+    {name:'Heading 4', key:'4', openWith:'#### ', placeHolder:'Votre titre...' },
+    {name:'Heading 5', key:'5', openWith:'##### ', placeHolder:'Votre titre...' },
+    {name:'Heading 6', key:'6', openWith:'###### ', placeHolder:'Votre titre...' },
     {separator:'-' },
     {name:'Bold', key:'B', openWith:'**', closeWith:'**'},
     {name:'Italic', key:'I', openWith:'_', closeWith:'_'},
@@ -36,8 +35,8 @@ mySettings = {
       return markItUp.line+'. ';
     }},
     {separator:'-' },
-    {name:'Picture', key:'P', openWith:'![', closeWith:']([![Url:!:http://]!])', placeHolder:'A description...'},
-    {name:'Link', key:'L', openWith:'[', closeWith:']([![Url:!:http://]!])', placeHolder:'Your text to link here...' },
+    {name:'Picture', key:'P', openWith:'![', closeWith:']([![Url:!:http://]!])', placeHolder:'Une description...'},
+    {name:'Link', key:'L', openWith:'[', closeWith:']([![Url:!:http://]!])', placeHolder:'Le texte du lien...' },
     {separator:'-'},
     {name:'Quotes', openWith:'> '},
     {name:'Code Block / Code', openWith:'(!(\t|!|`)!)', closeWith:'(!(`)!)'},

@@ -130,6 +130,7 @@
     <li><%= link_to t('layout.rules'), {:controller => :home, :action => :rules} %></li>
   </ul>
 
+  <script>ROOT_URL = "<%= root_path(:only_path => false) %>";</script>
   <%= javascript_include_tag :application %>
 </body>
 </html>
