@@ -13,6 +13,19 @@ describe User do
     end
   end
 
+  describe "#students" do
+    it "returns all students" do
+      students = [ create(:student), create(:student) ]
+      User.students.should =~ students
+    end
+
+    it "returns only students" do
+      user = create(:user)
+      user.is_student?.should be_false
+      User.students.should_not include user
+    end
+  end
+
   describe "#simple_create" do
     it "should create a user with a password" do
       expect {

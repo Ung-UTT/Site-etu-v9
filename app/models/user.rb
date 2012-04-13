@@ -46,33 +46,39 @@ class User < ActiveRecord::Base
   has_many :timesheets_user, :dependent => :destroy
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
-  # Recherche parmi les utilisateurs
-  def self.search(name)
-    # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
-    names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
-    User.all.select do |u|
-      content = [u.login]
-      if u.profile
-        content.push(u.real_name)
+  class << self
+    def students
+      User.all.select(&:is_student?)
+    end
+
+    # Recherche parmi les utilisateurs
+    def search(name)
+      # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
+      names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
+      User.all.select do |u|
+        content = [u.login]
+        if u.profile
+          content.push(u.real_name)
+        end
+        /(#{names})/i.match(content.join(' '))
       end
-      /(#{names})/i.match(content.join(' '))
     end
-  end
 
-  # Retourne l'utilisateur si le couple login/password est bon
-  def self.authenticate(login, password)
-    user = find_by_login(login)
-    if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
+    # Retourne l'utilisateur si le couple login/password est bon
+    def authenticate(login, password)
+      user = find_by_login(login)
+      if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
+        user
+      else
+        nil
+      end
     end
-  end
 
-  # Créer un utilisateur rapidement
-  def self.simple_create(login, password = nil)
-    password ||= SecureRandom.base64
-    User.create!(login: login, email: "#{login}@utt.fr", password: password)
+    # Créer un utilisateur rapidement
+    def simple_create(login, password = nil)
+      password ||= SecureRandom.base64
+      User.create!(login: login, email: "#{login}@utt.fr", password: password)
+    end
   end
 
   # Ne stocke pas le mot de passe en clair
