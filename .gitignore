@@ -13,3 +13,4 @@ Session.vim
 vendor/data/
 coverage
 lib/tasks/import/data/
+vendor/bundle/
