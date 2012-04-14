@@ -2,24 +2,29 @@ source 'http://rubygems.org'
 
 gem 'rake'
 gem 'rails'
-gem 'sqlite3'
-
-gem 'uglifier'     # Compression des assets
-gem 'therubyracer' # Interprétation JS
-gem 'sass'         # CSS simplifié
-gem 'dynamic_form' # Rend les formulaires plus lisibles
-
-gem 'bcrypt-ruby', :require => 'bcrypt' # Chiffrement des mots de passe
 
 gem 'rubycas-client', '2.2.1' # Version spécifique requise
 gem 'rubycas-client-rails' # CAS
 
+gem 'bcrypt-ruby', :require => 'bcrypt' # Chiffrement des mots de passe
+gem 'dynamic_form' # Rend les formulaires plus lisibles
 gem 'cancan'      # Permissions
 gem 'paperclip'   # Gestion de fichier
 gem 'kaminari'    # Pagination
 gem 'paper_trail' # Historique
 gem 'rdiscount'   # Parsage (Markdown)
 gem 'awesome_nested_set' # "Arbres" (Associations, Rôles, ...)
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'     # Compression des assets
+  gem 'therubyracer' # Interprétation JS
+end
 
 group :test do
   gem 'rspec-rails'      # Classes des tests
@@ -34,3 +39,4 @@ group :import do
   gem 'mysql2', :require => false # Intéragir avec les bases MySQL
   gem 'net-ldap', :require => false # Manipulation d'annuaires LDAP
 end
+
