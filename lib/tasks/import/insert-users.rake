@@ -1,5 +1,3 @@
-require 'net-ldap'
-
 namespace :import do
   namespace :users do
     desc "Insert users in the database"
