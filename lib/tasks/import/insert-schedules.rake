@@ -1,7 +1,7 @@
 namespace :import do
   namespace :schedules do
     desc "Insert schedules in the database (need schedule.marhsal from convertion)"
-    task :insert do
+    task :insert => :environment do
       DB_FILE = Rails.root.join('tmp', 'schedule.marshal')
 
       # Attributs dans le fichier convertit :
@@ -31,6 +31,7 @@ namespace :import do
           puts "UV : #{ts['uv']}"
 
           # Créer l'horaire
+          # FIXME : Trouver si l'horaire existe déjà
           timesheet = Timesheet.create(
             # Date du premier cours (on sait pas donc première semaine de rentrée
             :start_at => SEMESTERS.last['start_at'] + ts['day'].days +

@@ -130,9 +130,8 @@ mais pas les UVs, cela sera fait via les emploi du temps.
 * Créer une table/utilisateur/mot de passe : "utt_edt" (modifiables dans
   le script)
 * Importez les .sql dans cette base : salles (rel_seance_salle), puis
-  les horaires (export_UNGXXX).
-* Changez le nom de l'export dans `lib/tasks/import/convert-users.rake`
-  (export_UNGXXX)
+  les horaires (vue_edt_etu) (vous aurez peut-être besoin de [créer la
+  table](https://github.com/Ung-UTT/Site-etu-v9/wiki/Problèmes-systèmes-résolus))
 * Lancez la conversion des emploi du temps : `rake import:schedules:convert`
 * Puis l'insertion des emploi du temps : `rake import:schedules:insert`
 

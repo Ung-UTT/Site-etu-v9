@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users.xml
   def index
     if params[:q].nil?
-      @users = User.all
+      @users = User.page(params[:page])
     else
       # Recherche simple dans le trombi
       @users = User.search(params[:q])

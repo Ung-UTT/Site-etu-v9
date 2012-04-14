@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :format =>
     { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
-  paginates_per 30
+  paginates_per 100
 
   has_paper_trail
 
@@ -47,16 +47,11 @@ class User < ActiveRecord::Base
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
   # Recherche parmi les utilisateurs
+  # TODO: Recherche dans prénom, nom, etc (mais rapide)
   def self.search(name)
     # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
     names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
-    User.all.select do |u|
-      content = [u.login]
-      if u.profile
-        content.push(u.real_name)
-      end
-      /(#{names})/i.match(content.join(' '))
-    end
+    User.select{|u| u.login =~ /(#{names})/i}
   end
 
   # Retourne l'utilisateur si le couple login/password est bon
@@ -114,7 +109,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   # Est-ce qu'il est membre d'une association
   def is_member_of?(asso)
     self.assos.include?(asso)
@@ -145,12 +139,16 @@ class User < ActiveRecord::Base
     agenda += Event.make_agenda
   end
 
-  # Nom réel si on l'a (Prénom NOM) sinon login (prenono)
+  # Nom réel si on l'a (Prénom NOM) sinon login (nomprenom)
   def real_name
+    return @cached_real_name unless @cached_real_name.nil?
+
     if self.profile.nil? or (self.profile.firstname.nil? and self.profile.lastname.nil?)
-      self.login
+      @cached_real_name = self.login
     else
-      "#{self.profile.firstname} #{self.profile.lastname}"
+      @cached_real_name ="#{self.profile.firstname} #{self.profile.lastname}"
     end
+
+    @cached_real_name
   end
 end

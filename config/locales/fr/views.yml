@@ -211,6 +211,7 @@ fr:
       previous: "Précédente"
       next: "Suivante"
       last: "Dernière"
+      truncate: "…"
 
     error404:
       title: "404 : La page n'a pas été trouvée"

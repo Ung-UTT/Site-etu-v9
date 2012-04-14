@@ -16,16 +16,17 @@ namespace :import do
 
       puts "Add students to the database"
       ActiveRecord::Base.transaction do # Permet d'être beaucoup plus rapide !
-        students.each do |st|
+        students.select{|s| s['mail'].empty?}.each do |st|
           puts "#{st['supannetuid']} : #{st['displayname']}"
 
           # Créer ou mettre à jour
           u = User.find_by_login(st['uid']) || User.simple_create(st['uid'])
 
           # E-Mail
-          u.email = st['mail']
+          u.email = st['mail'].emptuy
           if u.email.nil? or u.email.nil?
             u.email = "#{u.login}@utt.fr"
+            puts "Email : " + u.email
           end
 
           # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
