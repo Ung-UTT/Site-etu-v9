@@ -1,19 +1,15 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-gem 'rails', '~> 3.2.0'
+gem 'rails'
 gem 'sqlite3'
 
-# Pour importer des données
-
-# Gems desormais obligatoires
-gem 'uglifier'     # Compréssion des assets
+gem 'uglifier'     # Compression des assets
 gem 'therubyracer' # Interprétation JS
 gem 'sass'         # CSS simplifié
 gem 'dynamic_form' # Rend les formulaires plus lisibles
 
-# Chiffrement des mots de passe
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt-ruby', :require => 'bcrypt' # Chiffrement des mots de passe
 
 gem 'rubycas-client', '2.2.1' # Version spécifique requise
 gem 'rubycas-client-rails' # CAS
@@ -33,8 +29,8 @@ group :test do
   gem 'simplecov', :require => false
 end
 
-# Necessaires pour l'import de données
+# Nécessaires pour l'import de données
 group :import do
-  gem 'mysql2' # Intéragir avec les bases MySQL
-  gem 'net-ldap' # Manipulation d'annuaires LDAP
+  gem 'mysql2', :require => false # Intéragir avec les bases MySQL
+  gem 'net-ldap', :require => false # Manipulation d'annuaires LDAP
 end
