@@ -20,7 +20,8 @@ namespace :import do
           puts "#{st['supannetuid']} : #{st['displayname']}"
 
           # Créer ou mettre à jour
-          u = User.find_by_login(st['uid']) || User.simple_create(st['uid'])
+          u = User.find_by_login(st['uid']) || User.new(:login => st['uid'])
+          u.password = u.password_confirmation = SecureRandom.base64
 
           # E-Mail
           u.email = st['mail']
