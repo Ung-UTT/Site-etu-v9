@@ -36,7 +36,10 @@ end
 
 # Nécessaires pour l'import de données
 group :import do
-  gem 'mysql2', :require => false # Intéragir avec les bases MySQL
   gem 'net-ldap', :require => false # Manipulation d'annuaires LDAP
+end
+
+group :production do
+  gem 'mysql2'
 end
 

@@ -1,0 +1,24 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  poll: 5
+  timeout: 5000
+
+development:
+  <<: *sqlite
+  database: db/development.sqlite3
+
+test:
+  <<: *sqlite
+  database: db/test.sqlite3
+
+production:
+  adapter: mysql2
+  host: localhost
+  username: root
+  password:
+  database: site-etu-v9_production
+  pool: 100
+  reconnect: true
+  timeout: 5000
+  encoding: utf8
+
