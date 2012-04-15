@@ -12,5 +12,7 @@ class CreateTimesheets < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :timesheets, :course_id
   end
 end

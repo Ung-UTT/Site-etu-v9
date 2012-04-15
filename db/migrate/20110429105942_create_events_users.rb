@@ -6,5 +6,8 @@ class CreateEventsUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :events_users, :event_id
+    add_index :events_users, :user_id
   end
 end

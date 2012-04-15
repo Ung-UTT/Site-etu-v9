@@ -6,5 +6,7 @@ class CreateAnswers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :answers, :poll_id
   end
 end

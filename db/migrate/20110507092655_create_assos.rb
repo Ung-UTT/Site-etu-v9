@@ -15,5 +15,7 @@ class CreateAssos < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :assos, :owner_id
   end
 end

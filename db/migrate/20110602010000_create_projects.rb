@@ -7,5 +7,7 @@ class CreateProjects < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :projects, :owner_id
   end
 end

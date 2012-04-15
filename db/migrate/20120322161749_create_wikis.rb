@@ -12,5 +12,7 @@ class CreateWikis < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :wikis, :role_id
   end
 end

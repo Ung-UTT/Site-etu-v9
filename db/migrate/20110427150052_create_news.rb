@@ -9,5 +9,8 @@ class CreateNews < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :news, :user_id
+    add_index :news, :event_id
   end
 end

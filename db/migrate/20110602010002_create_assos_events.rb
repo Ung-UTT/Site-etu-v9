@@ -6,5 +6,8 @@ class CreateAssosEvents < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :assos_events, :asso_id
+    add_index :assos_events, :event_id
   end
 end

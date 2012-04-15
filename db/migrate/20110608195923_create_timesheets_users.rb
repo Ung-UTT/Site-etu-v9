@@ -6,5 +6,8 @@ class CreateTimesheetsUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :timesheets_users, :timesheet_id
+    add_index :timesheets_users, :user_id
   end
 end

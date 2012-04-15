@@ -9,5 +9,7 @@ class CreateClassifieds < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :classifieds, :user_id
   end
 end

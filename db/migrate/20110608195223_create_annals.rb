@@ -8,5 +8,7 @@ class CreateAnnals < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :annals, :course_id
   end
 end

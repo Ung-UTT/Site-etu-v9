@@ -7,5 +7,7 @@ class CreatePolls < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :polls, :user_id
   end
 end

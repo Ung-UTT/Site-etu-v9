@@ -10,5 +10,7 @@ class CreateDocuments < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :documents, [:documentable_id, :documentable_type]
   end
 end

@@ -6,5 +6,8 @@ class CreateProjectsUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :projects_users, :project_id
+    add_index :projects_users, :user_id
   end
 end

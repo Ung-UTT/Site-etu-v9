@@ -22,12 +22,16 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "annals", ["course_id"], :name => "index_annals_on_course_id"
+
   create_table "answers", :force => true do |t|
     t.string   "content"
     t.integer  "poll_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "answers", ["poll_id"], :name => "index_answers_on_poll_id"
 
   create_table "assos", :force => true do |t|
     t.string   "name"
@@ -43,12 +47,17 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "assos", ["owner_id"], :name => "index_assos_on_owner_id"
+
   create_table "assos_events", :force => true do |t|
     t.integer  "asso_id"
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "assos_events", ["asso_id"], :name => "index_assos_events_on_asso_id"
+  add_index "assos_events", ["event_id"], :name => "index_assos_events_on_event_id"
 
   create_table "carpools", :force => true do |t|
     t.text     "description"
@@ -61,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "carpools", ["user_id"], :name => "index_carpools_on_user_id"
+
   create_table "classifieds", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -71,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "classifieds", ["user_id"], :name => "index_classifieds_on_user_id"
+
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -79,6 +92,9 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "courses", :force => true do |t|
     t.string   "name"
@@ -99,6 +115,8 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",         :null => false
   end
 
+  add_index "documents", ["documentable_id", "documentable_type"], :name => "index_documents_on_documentable_id_and_documentable_type"
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -110,12 +128,17 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "events", ["owner_id"], :name => "index_events_on_owner_id"
+
   create_table "events_users", :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "events_users", ["event_id"], :name => "index_events_users_on_event_id"
+  add_index "events_users", ["user_id"], :name => "index_events_users_on_user_id"
 
   create_table "news", :force => true do |t|
     t.string   "title"
@@ -127,6 +150,9 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",   :null => false
   end
 
+  add_index "news", ["event_id"], :name => "index_news_on_event_id"
+  add_index "news", ["user_id"], :name => "index_news_on_user_id"
+
   create_table "polls", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -135,6 +161,8 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "polls", ["user_id"], :name => "index_polls_on_user_id"
+
   create_table "preferences", :force => true do |t|
     t.string   "locale"
     t.string   "quote_type"
@@ -142,6 +170,8 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "preferences", ["user_id"], :name => "index_preferences_on_user_id"
 
   create_table "profiles", :force => true do |t|
     t.string   "utt_address"
@@ -163,6 +193,8 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -171,12 +203,17 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "projects", ["owner_id"], :name => "index_projects_on_owner_id"
+
   create_table "projects_users", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "projects_users", ["project_id"], :name => "index_projects_users_on_project_id"
+  add_index "projects_users", ["user_id"], :name => "index_projects_users_on_user_id"
 
   create_table "quotes", :force => true do |t|
     t.string   "content"
@@ -196,12 +233,17 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "roles", ["asso_id"], :name => "index_roles_on_asso_id"
+
   create_table "roles_users", :force => true do |t|
     t.integer  "role_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "timesheets", :force => true do |t|
     t.datetime "start_at"
@@ -214,12 +256,17 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "timesheets", ["course_id"], :name => "index_timesheets_on_course_id"
+
   create_table "timesheets_users", :force => true do |t|
     t.integer  "timesheet_id"
     t.integer  "user_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "timesheets_users", ["timesheet_id"], :name => "index_timesheets_users_on_timesheet_id"
+  add_index "timesheets_users", ["user_id"], :name => "index_timesheets_users_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "login"
@@ -253,6 +300,9 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "votes", ["answer_id"], :name => "index_votes_on_answer_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+
   create_table "wikis", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -263,5 +313,7 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "wikis", ["role_id"], :name => "index_wikis_on_role_id"
 
 end
