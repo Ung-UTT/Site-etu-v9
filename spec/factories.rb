@@ -44,6 +44,24 @@ FactoryGirl.define do
 
     email { "#{login}@utt.fr" }
     password { SecureRandom.base64 }
+
+    factory :student do
+      after_create do |user|
+        user.become_a! :student
+      end
+    end
+
+    factory :moderator do
+      after_create do |user|
+        user.become_a! :moderator
+      end
+    end
+
+    factory :admin do
+      after_create do |user|
+        user.become_a! :admin
+      end
+    end
   end
 
   factory :poll do

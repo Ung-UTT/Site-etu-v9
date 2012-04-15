@@ -1,29 +1,30 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-gem 'rails', '~> 3.2.0'
-gem 'sqlite3'
-
-# Pour importer des données
-
-# Gems desormais obligatoires
-gem 'uglifier'     # Compréssion des assets
-gem 'therubyracer' # Interprétation JS
-gem 'sass'         # CSS simplifié
-gem 'dynamic_form' # Rend les formulaires plus lisibles
-
-# Chiffrement des mots de passe
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'rails'
 
 gem 'rubycas-client', '2.2.1' # Version spécifique requise
 gem 'rubycas-client-rails' # CAS
 
+gem 'bcrypt-ruby', :require => 'bcrypt' # Chiffrement des mots de passe
+gem 'dynamic_form' # Rend les formulaires plus lisibles
 gem 'cancan'      # Permissions
 gem 'paperclip'   # Gestion de fichier
 gem 'kaminari'    # Pagination
 gem 'paper_trail' # Historique
 gem 'rdiscount'   # Parsage (Markdown)
 gem 'awesome_nested_set' # "Arbres" (Associations, Rôles, ...)
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'     # Compression des assets
+  gem 'therubyracer' # Interprétation JS
+end
 
 group :test do
   gem 'rspec-rails'      # Classes des tests
@@ -33,8 +34,12 @@ group :test do
   gem 'simplecov', :require => false
 end
 
-# Necessaires pour l'import de données
+# Nécessaires pour l'import de données
 group :import do
-  gem 'mysql2' # Intéragir avec les bases MySQL
-  gem 'net-ldap' # Manipulation d'annuaires LDAP
+  gem 'net-ldap', :require => false # Manipulation d'annuaires LDAP
 end
+
+group :production do
+  gem 'mysql2'
+end
+

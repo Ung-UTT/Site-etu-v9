@@ -12,6 +12,15 @@
 </head>
 
 <body>
+  <p id="beta">
+    Salut visiteur égaré, ce site est toujours en développement, toutes tes
+    actions ici seront perdues. Cependant, tu es chaleureusement encouragé à le
+    tester et rapporter tout bug ou idée d'amélioration via
+    <a href="mailto:ung+site-etu-v9@utt.fr">ung@utt.fr</a> ou directement sur
+    <a href="https://github.com/Ung-UTT/Site-etu-v9/issues">Github</a>.
+    Merci ! &#9786;
+  </p>
+
   <blockquote id="quote"><%= @random_quote.content %></blockquote>
 
   <%= link_to :root, :class => 'banner' do %>
@@ -63,6 +72,7 @@
     <li class="box">
       <h2><%= t('layout.content') %></h2>
       <ul>
+        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
         <li><%= link_to t('layout.users'), users_path %></li>
         <li><%= link_to t('layout.annals'), annals_path %></li>
         <li><%= link_to t('layout.classifieds'), classifieds_path %></li>
@@ -80,7 +90,6 @@
         <li><%= link_to t('layout.carpools'), carpools_path %></li>
         <li><%= link_to t('layout.polls'), polls_path %></li>
         <li><%= link_to t('layout.projects'), projects_path %></li>
-        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
       </ul>
     </li>
 

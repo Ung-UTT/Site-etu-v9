@@ -1,5 +1,3 @@
-require 'net-ldap'
-
 namespace :import do
   namespace :users do
     desc "Insert users in the database"
@@ -58,7 +56,7 @@ namespace :import do
           # (Un utilisateur suit un cours si il participe à au moins une horaire)
 
           # Ajouter le rôle d'étudiant si il l'est
-          u.become_a_student if st['employeetype'] == 'student'
+          u.become_a!(:student) if st['employeetype'] == 'student'
 
           # On sauvegarde le tout
           unless u.save

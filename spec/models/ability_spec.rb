@@ -1,15 +1,44 @@
 require 'spec_helper'
 
+# Helper to spoof an user identity
+def as(user)
+  before do
+    @user = user ? create(user) : nil
+    @ability = Ability.new @user
+  end
+
+  subject { @ability }
+end
+
 describe Ability do
-  describe 'Anonymous user' do
-    before(:all) do
-      @ability = Ability.new(nil)
-    end
+  # XXX: We don't test all abilities here, it would be redundant with the model.
+  # Instead, we test at least one ability for each context.
 
-    subject { @ability }
-
+  context 'as an anonymous user' do
+    as nil
     it { should be_able_to(:read, News.new(:is_moderated => true)) }
     it { should be_able_to(:read, Classified.new) }
     it { should_not be_able_to(:read, User.new) }
   end
+
+  context 'as an authenticated user' do
+    as :user
+    it { should be_able_to(:manage, User, :id => @user.id) }
+  end
+
+  context 'as a student' do
+    as :student
+    it { should be_able_to(:create, News) }
+  end
+
+  context 'as a moderator' do
+    as :moderator
+    it { should be_able_to(:manage, Asso) }
+  end
+
+  context 'as an admin' do
+    as :admin
+    it { should be_able_to(:manage, :all) }
+  end
 end
+

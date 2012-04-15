@@ -46,28 +46,35 @@ class User < ActiveRecord::Base
   has_many :timesheets_user, :dependent => :destroy
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
-  # Recherche parmi les utilisateurs
-  # TODO: Recherche dans prénom, nom, etc (mais rapide)
-  def self.search(name)
-    # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
-    names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
-    User.select{|u| u.login =~ /(#{names})/i}
-  end
-
-  # Retourne l'utilisateur si le couple login/password est bon
-  def self.authenticate(login, password)
-    user = find_by_login(login)
-    if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
+  class << self
+    def students
+      User.select(&:is_student?)
     end
-  end
 
-  # Créer un utilisateur rapidement
-  def self.simple_create(login, password = nil)
-    password ||= SecureRandom.base64
-    User.create!(login: login, email: "#{login}@utt.fr", password: password)
+    # Recherche parmi les utilisateurs
+    # TODO: Recherche dans prénom, nom, etc (mais rapide)
+    def self.search(name)
+      # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
+      names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
+      User.select{|u| u.login =~ /(#{names})/i}
+      end
+    end
+
+    # Retourne l'utilisateur si le couple login/password est bon
+    def authenticate(login, password)
+      user = find_by_login(login)
+      if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
+        user
+      else
+        nil
+      end
+    end
+
+    # Créer un utilisateur rapidement
+    def simple_create(login, password = nil)
+      password ||= SecureRandom.base64
+      User.create!(login: login, email: "#{login}@utt.fr", password: password)
+    end
   end
 
   # Ne stocke pas le mot de passe en clair
@@ -101,11 +108,10 @@ class User < ActiveRecord::Base
     self.timesheets.map(&:course).compact.uniq
   end
 
-  # L'utilisateur devient un étudiant (utilisé dans le script d'import)
-  def become_a_student
-    # Devenir étudiant (rôle)
-    if !is_student?
-      roles << (Role.find_by_name('student') || Role.create(:name => 'student'))
+  def become_a! role
+    unless is?(role)
+      role = role.to_s
+      roles << (Role.find_by_name(role) || Role.create(:name => role))
     end
   end
 

@@ -1,3 +1,5 @@
+# Site étudiant de l'UTT [![Build Status](https://secure.travis-ci.org/Ung-UTT/Site-etu-v9.png?branch=master)](http://travis-ci.org/Ung-UTT/Site-etu-v9) [![Dependency Status](https://gemnasium.com/Ung-UTT/Site-etu-v9.png)](https://gemnasium.com/Ung-UTT/Site-etu-v9)
+
 ## Si vous êtes un étudiant
 
 Vous devriez aller voir le [wiki](https://github.com/Ung-UTT/Site-etu-v9/wiki).
@@ -142,7 +144,7 @@ mais pas les UVs, cela sera fait via les emploi du temps.
   exports, quelle base/utilisateur créer, ... etc
 * Puis faîtes `rake import:v7` pour importer les données
 
-### Tester [![Build Status](https://secure.travis-ci.org/Ung-UTT/Site-etu-v9.png?branch=master)](http://travis-ci.org/Ung-UTT/Site-etu-v9)
+### Tester
 
 Avant d'envoyer votre contribution sur GitHub, assurez-vous que tout les
 tests passent avec : `rspec`.

@@ -1,6 +1,7 @@
 language: ruby
 script: 'script/ci/travis'
 rvm:
+  - 1.9.2
   - 1.9.3
 notifications:
   email: false

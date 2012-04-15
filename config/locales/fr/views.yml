@@ -152,7 +152,7 @@ fr:
       moderator: "Moderateur"
 
   timesheets:
-    list: "Liste des horaires"
+    list: "Emploi du temps"
     day: "Jour"
     start_at: "Depuis"
     end_at: "jusqu'à"

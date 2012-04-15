@@ -28,6 +28,14 @@ body {
   background-color: $fond;
 }
 
+#beta {
+    border: 1px solid;
+    margin: 0;
+    padding: 15px 10px 15px 50px;
+    color: #9F6000;
+    background: #FEEFB3 url(image_path('icons/warning.png')) no-repeat 10px center;
+}
+
 #quote, #contents .content blockquote {
   padding: 10px;
   text-align: center;
