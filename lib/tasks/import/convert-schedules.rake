@@ -66,24 +66,26 @@ namespace :import do
         profiles = PROFILES if profiles.empty? # Branche qui n'existe pas :D (CV01, ...)
 
         # Recherche par combinaisons des indices (nom et prénom découpés)
-        # On récupére les indices que l'on tri par taille
-        clues = names.split.sort{|c1,c2| c2.size <=> c1.size}.map{|c| Regexp.escape(c)}
-        # On génére toutes les combinaisons possibles entre eux
-        clues = clues.size.downto(0).map{|i| clues.combination(i+1).to_a}.flatten(1)
-        # Recherche de plus en plus précise pour trouver l'étudiant
+        # On récupére les indices que l'on tri par taille et que l'on met
+        # en Regexp
+        clues = names.split.sort{|c1,c2| c2.size <=> c1.size}.map do |c|
+          /#{Regexp.escape(c)}/i
+        end
+        # Recherche de plus en plus précise (au mieux l'étudiant a tout les indices
         clues.each do |clue|
           new = profiles.select do |p|
-            "#{p.firstname} #{p.lastname}" =~ /(#{clue.join('|')})/i
+            p.firstname =~ clue || p.lastname =~ clue
           end
           profiles = new unless new.empty?
         end
 
         if profiles.nil? or profiles.empty? or profiles.size > 200
+          puts
           puts "Can't find #{names} (level : #{level}), you should find" <<
                "a way to find this student and write his login below :"
           puts Readline.readline('> ')
         elsif profiles.size == 1
-          print '|'
+          print '|' # Mieux qu'un point... une barre :D
           return find_user(profiles.first.user_id)
         else
           begin
