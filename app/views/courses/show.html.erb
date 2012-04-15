@@ -10,6 +10,8 @@
 
   <%= list_of t('courses.annals'), @course.annals, :name %>
 
+  <%= render 'timesheets/schedule', :schedule => @course.schedule %>
+
   <%= render 'layouts/show_actions', {:ressource => @course} %>
 </section>
 

@@ -8,4 +8,8 @@ class Course < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
   has_many :users, :through => :timesheets, :uniq => true
+
+  def schedule
+    Timesheet.make_schedule(self.timesheets)
+  end
 end
