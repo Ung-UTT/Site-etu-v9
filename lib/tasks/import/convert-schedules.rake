@@ -52,10 +52,6 @@ namespace :import do
       # manipulation humaine... mais ne devrait pas
       # Retourne le login de l'étudiant
       def find_student(id, names, level)
-        names = names.split(' ') || [] # FOUQUET JU, COLSON VAL, ...
-        names.push('') while names.size < 2
-        reg_names = names.map{|n| /^#{Regexp.escape(n)}/i }
-
         if id < 99000 # IDs existants vraiment
           # Recherche par ID étudiant
           profile = PROFILES.detect {|p| p.utt_id == id }
@@ -67,33 +63,40 @@ namespace :import do
 
         # Recherche par élimination : branche, nom, prénom
         profiles = PROFILES.select {|p| p.level == level}
+        profiles = PROFILES if profiles.empty? # Branche qui n'existe pas :D (CV01, ...)
 
-        # Recherche par nom, avec restauration si rien de trouvé
-        if !profiles.nil? and profiles.size > 1
-          new = profiles.select {|p| p.lastname =~ reg_names[0] }
-          profiles = new if new.size > 1
+        # Recherche par combinaisons des indices (nom et prénom découpés)
+        # On récupére les indices que l'on tri par taille
+        clues = names.split.sort{|c1,c2| c2.size <=> c1.size}.map{|c| Regexp.escape(c)}
+        # On génére toutes les combinaisons possibles entre eux
+        clues = clues.size.downto(0).map{|i| clues.combination(i+1).to_a}.flatten(1)
+        # Recherche de plus en plus précise pour trouver l'étudiant
+        clues.each do |clue|
+          new = profiles.select do |p|
+            "#{p.firstname} #{p.lastname}" =~ /(#{clue.join('|')})/i
+          end
+          profiles = new unless new.empty?
         end
 
-        # Recherche par prénom, avec restauration si rien de trouvé
-        if !profiles.nil? and profiles.size > 1
-          new = profiles.select {|p| p.firstname =~ reg_names[1] }
-          profiles = new if new.size > 1
-        end
-
-        if profiles.nil? or profiles.empty?
-          # FIXME: Avec les bons emplois du temps, on cherchera à tout
-          #        tout prix à trouver quelqu'un, là pour les tests on
-          #        ignore les étudiants non trouvés
-          print 'F'
-          return '' # TODO: Proposer un choix plus large
+        if profiles.nil? or profiles.empty? or profiles.size > 200
+          puts "Can't find #{names} (level : #{level}), you should find" <<
+               "a way to find this student and write his login below :"
+          puts Readline.readline('> ')
         elsif profiles.size == 1
-          puts "On a trouve quelqu'un"
+          print '|'
           return find_user(profiles.first.user_id)
         else
-          puts 'Choose between students found :'
-          puts "Indices : #{id} #{level} #{names.join(' ')}"
-          profiles.each {|profile| puts "#{profile.user.login} : #{profile.level}" }
-          login = Readline.readline('> ')
+          begin
+            puts
+            puts 'Choose between students :'
+            puts "Clues : #{names}"
+            profiles.each do |p|
+              puts "_ #{profiles.index(p) + 1} : #{p.firstname} #{p.lastname} (#{p.user.login})"
+            end
+            index = Readline.readline('> ').to_i - 1
+            puts "Vous devez mettre un nombre valide" if index == -1
+          end while index == -1 # Gestion des erreurs (si l'utilisateur tape le login)
+          login = profiles[index].user.login
           return login
         end
       end
@@ -130,7 +133,7 @@ namespace :import do
       # Va chercher les vrais utilisateurs via les indices laissés
       puts "Find students..."
       users = timesheets.map {|t| t['student'] }.uniq
-      users = users.map {|u| [u, find_student(u[0], u[1], u[2])]}
+      users = users.map {|u| [u, find_student(u[0], u[1].downcase, u[2])]}
       puts
 
       # Rassembler les mêmes horaires en mettant la liste des étudiants dedans
