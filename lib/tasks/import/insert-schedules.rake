@@ -6,7 +6,6 @@ namespace :import do
 
       # Attributs dans le fichier convertit :
       #   "weekname" : T, A, B
-      #   "week" : 1, 2 : toutes les semaines, ou 1 semaine sur 2 # FIXME : utile ?
       #   "room" : C101, A002, ...
       #   "students" : ['mariedor', 'thevenin', ...]
       #   "uv" : MTX2, LE08

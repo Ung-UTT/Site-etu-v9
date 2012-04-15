@@ -28,7 +28,6 @@ end
 puts "Search students (slow)..."
 
 # Recherche de tout les étudiants
-# FIXME: ne fonctionne pas avec ruby 1.9.x à cause de la gem 'net-ldap'
 students = utt.search(:base => 'ou=people,dc=utt,dc=fr')
 
 # Tranformation du tableau d'objets LDAP en un tableau de hashs

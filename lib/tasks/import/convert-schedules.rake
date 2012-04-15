@@ -22,7 +22,6 @@ namespace :import do
       # Attributs à traduire
       attrs = {
         'weekname' => 'weekname', # T, A, B
-        'semaine' => 'week', # 1, 2 : toutes les semaines, ou 1 semaine sur 2 # FIXME : utile ?
         'id' => 'room', # C101, A002, ...
         'students' => 'students', # ['mariedor', 'thevenin' ...]
         'uv' => 'uv', # MTX2, LE08
@@ -159,8 +158,6 @@ namespace :import do
           val = ts[attr] # Récupére la valeur
 
           case translation
-            when 'week'
-              val = val.to_i # 1 ou 2
             when 'room'
               # Selectionne la salle qui correspond à l'id de l'horaire et
               # récupère la nom de la salle

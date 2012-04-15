@@ -31,16 +31,11 @@ namespace :import do
           u.build_profile.save unless u.profile
 
           # Photo de profil
-          if false # FIXME: Trop long avec les photos... faut les télécharger à part
           begin
             picture = Image.from_url(st['jpegphoto'])
+            u.profile.image = Image.new(:asset => picture)
           rescue => e
-            puts e.inspect
-            puts "No photo because there is no internet access"
-            picture = nil
-          end
-
-          u.profile.image = Image.new(:asset => picture) if picture
+            puts e.inspect # Pas internet, 404, etc...
           end
 
           u.profile.utt_id = st['supannetuid'].to_i
