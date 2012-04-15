@@ -12,13 +12,6 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
-  host: localhost
-  username: root
-  password:
-  database: site-etu-v9_production
-  pool: 100
-  reconnect: true
-  timeout: 5000
-  encoding: utf8
+  <<: *sqlite
+  database: db/production.sqlite3
 

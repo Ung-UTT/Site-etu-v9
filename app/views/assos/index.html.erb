@@ -5,7 +5,7 @@
     <% @assos.each do |asso| %>
     <li>
       <%= content_tag(:strong, link_to(asso.name, asso)) %>
-      <%= content_tag(:span, truncate(asso.description, length: 60), title: asso.description) %>
+      <%= content_tag(:span, truncate(asso.description, :length => 60), :title => asso.description) %>
     </li>
     <% end %>
   </ul>

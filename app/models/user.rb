@@ -73,7 +73,8 @@ class User < ActiveRecord::Base
     # Créer un utilisateur rapidement
     def simple_create(login, password = nil)
       password ||= SecureRandom.base64
-      User.create!(login: login, email: "#{login}@utt.fr", password: password)
+      User.create(:login => login, :email => "#{login}@utt.fr",
+                  :password => password, :password_confirmation => password)
     end
   end
 
