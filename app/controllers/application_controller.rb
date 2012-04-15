@@ -62,6 +62,8 @@ class ApplicationController < ActionController::Base
         elsif exception.is_a?(CanCan::AccessDenied)
           render_access_denied(exception)
         else # Autre erreur
+          # TODO: Il serait bien que les admins soient notifiés
+          # (voir comment : mail, table en BDD, ...)
           render_error(exception)
         end
     end

@@ -8,8 +8,6 @@ class WikisController < ApplicationController
     redirect_to @wiki
   end
 
-  # GET /wikis/1
-  # GET /wikis/1.json
   def show
     @wiki = Wiki.find(params[:id])
     @documents = @wiki.documents
@@ -20,63 +18,40 @@ class WikisController < ApplicationController
     end
   end
 
-  # GET /wikis/new
-  # GET /wikis/new.json
   def new
     @wiki = Wiki.new
 
-    respond_to do |format|
-      format.html { redirect_to @wiki, :notice => 'Wiki was successfully created.' }
-      format.json { render :json => @wiki, :status => :created, :location => @wiki }
-    end
+    redirect_to @wiki, :notice => 'Wiki was successfully created.'
   end
 
-  # GET /wikis/1/edit
   def edit
     @wiki = Wiki.find(params[:id])
   end
 
-  # POST /wikis
-  # POST /wikis.json
   def create
     @wiki = Wiki.new(params[:wiki])
 
-    respond_to do |format|
-      if @wiki.save
-        format.html { redirect_to @wiki, :notice => t('c.create') }
-        format.json { render :json => @wiki, :status => :created, :location => @wiki }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @wiki.errors, :status => :unprocessable_entity }
-      end
+    if @wiki.save
+      redirect_to @wiki, :notice => t('c.create')
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /wikis/1
-  # PUT /wikis/1.json
   def update
     @wiki = Wiki.find(params[:id])
 
-    respond_to do |format|
-      if @wiki.update_attributes(params[:wiki])
-        format.html { redirect_to @wiki, :notice => t('c.update') }
-        format.json { head :no_content }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @wiki.errors, :status => :unprocessable_entity }
-      end
+    if @wiki.update_attributes(params[:wiki])
+      redirect_to @wiki, :notice => t('c.update')
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /wikis/1
-  # DELETE /wikis/1.json
   def destroy
     @wiki = Wiki.find(params[:id])
     @wiki.destroy
 
-    respond_to do |format|
-      format.html { redirect_to wikis_url }
-      format.json { head :no_content }
-    end
+    redirect_to wikis_url
   end
 end

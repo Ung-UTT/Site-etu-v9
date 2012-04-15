@@ -2,8 +2,6 @@
 class AnnalsController < ApplicationController
   load_and_authorize_resource
 
-  # GET /annals
-  # GET /annals.xml
   def index
     @annals = Annal.all
 
@@ -13,8 +11,6 @@ class AnnalsController < ApplicationController
     end
   end
 
-  # GET /annals/1
-  # GET /annals/1.xml
   def show
     @annal = Annal.find(params[:id])
     @comments = @annal.comments
@@ -26,20 +22,12 @@ class AnnalsController < ApplicationController
     end
   end
 
-  # GET /annals/new
-  # GET /annals/new.xml
   def new
     @annal = Annal.new
     # Permet d'avoir des formulaires pour 5 documents
     5.times { @annal.documents.build }
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @annal }
-    end
   end
 
-  # GET /annals/1/edit
   def edit
     @annal = Annal.find(params[:id])
 
@@ -50,47 +38,30 @@ class AnnalsController < ApplicationController
     end
   end
 
-  # POST /annals
-  # POST /annals.xml
   def create
     @annal = Annal.new(params[:annal])
 
-    respond_to do |format|
-      if @annal.save
-        format.html { redirect_to(@annal, :notice => t('c.create')) }
-        format.xml  { render :xml => @annal, :status => :created, :location => @annal }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @annal.errors, :status => :unprocessable_entity }
-      end
+    if @annal.save
+      redirect_to(@annal, :notice => t('c.create'))
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /annals/1
-  # PUT /annals/1.xml
   def update
     @annal = Annal.find(params[:id])
 
-    respond_to do |format|
-      if @annal.update_attributes(params[:annal])
-        format.html { redirect_to(@annal, :notice => t('c.update')) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @annal.errors, :status => :unprocessable_entity }
-      end
+    if @annal.update_attributes(params[:annal])
+      redirect_to(@annal, :notice => t('c.update'))
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /annals/1
-  # DELETE /annals/1.xml
   def destroy
     @annal = Annal.find(params[:id])
     @annal.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(annals_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(annals_url)
   end
 end
