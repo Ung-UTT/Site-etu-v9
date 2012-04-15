@@ -29,11 +29,11 @@ body {
 }
 
 #beta {
-    border: 1px solid;
-    margin: 0;
-    padding: 15px 10px 15px 50px;
-    color: #9F6000;
-    background: #FEEFB3 url(image_path('icons/warning.png')) no-repeat 10px center;
+  border: 1px solid;
+  margin: 0;
+  padding: 15px 10px 15px 50px;
+  color: #9F6000;
+  background: #FEEFB3 url(image_path('others/warning.png')) no-repeat 10px center;
 }
 
 #quote, #contents .content blockquote {
@@ -73,7 +73,39 @@ body {
     img { padding: 0; }
   }
 
-  li { display: inline; }
+  li {
+    display: inline-block;
+    margin: 8px 0;
+
+    a {
+      background: url('icons.png') no-repeat;
+      padding: 10px 5px 10px 36px;
+    }
+  }
+
+  li.home a {
+    background-position: 0 -33.7px*4;
+  }
+
+  li.users a {
+    background-position: 0 0;
+  }
+
+  li.events a {
+    background-position: 0 -33.7px*6;
+  }
+
+  li.classifieds a {
+    background-position: 0 -33.7px*8;
+  }
+
+  li.buckutt a {
+    background-position: 0 -33.7px*9;
+  }
+
+  li.mails a {
+    background-position: 0 -33.7px*2;
+  }
 }
 
 #sidebar {

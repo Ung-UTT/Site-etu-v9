@@ -28,35 +28,23 @@
   <% end %>
 
   <ul id="topbar">
-    <li>
-      <%= link_to :root, :title => t('layout.home_title') do
-        image_tag('icons/home.png') + t('layout.home')
-      end %>
+    <li class="home">
+      <%= link_to t('layout.home'), :root, :title => t('layout.home_title') %>
     </li>
-    <li>
-      <%= link_to User, :title => t('layout.users_title') do
-        image_tag('icons/users.png') + t('layout.users')
-      end %>
+    <li class="users">
+      <%= link_to t('layout.users'), User, :title => t('layout.users_title') %>
     </li>
-    <li>
-      <%= link_to events_path, :title => t('layout.events') do
-        image_tag('icons/event.png') + t('layout.events')
-      end %>
+    <li class="events">
+      <%= link_to t('layout.events'), events_path, :title => t('layout.events') %>
     </li>
-    <li>
-      <%= link_to classifieds_path, :title => t('layout.classifieds_title') do
-        image_tag('icons/classifieds.png') + t('layout.classifieds')
-      end %>
+    <li class="classifieds">
+      <%= link_to t('layout.classifieds'), classifieds_path, :title => t('layout.classifieds_title') %>
     </li>
-    <li>
-      <%= link_to :root, :title => t('layout.buckutt_title') do
-        image_tag('icons/buckutt.png') + t('layout.buckutt')
-      end %>
+    <li class="buckutt">
+      <%= link_to t('layout.buckutt'), :root, :title => t('layout.buckutt_title') %>
     </li>
-    <li>
-      <%= link_to :root, :title => t('layout.mails_title') do
-        image_tag('icons/mails.png') + t('layout.mails')
-      end %>
+    <li class="mails">
+      <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
     </li>
   </ul>
 
