@@ -18,7 +18,9 @@
       height: 16px;
       text-indent: -10000px;
       background-repeat: no-repeat;
-      padding: 3px;
+      margin: 3px;
+
+      background-image: url('markItUp.png');
     }
   }
 
@@ -42,63 +44,63 @@
 /* Boutons venant du set Markdown */
 
 .markItUp {
-  .markItUpButton1 a {
-    background-image:url(style/markItUp/h1.png);
+  .markItUpButton1 a { /* h1 */
+    background-position:-16px*2 0;
   }
 
-  .markItUpButton2 a {
-    background-image:url(style/markItUp/h2.png);
+  .markItUpButton2 a { /* h2 */
+    background-position:-16px*3 0;
   }
 
-  .markItUpButton3 a {
-    background-image:url(style/markItUp/h3.png);
+  .markItUpButton3 a { /* h3 */
+    background-position:-16px*4 0;
   }
 
-  .markItUpButton4 a {
-    background-image:url(style/markItUp/h4.png);
+  .markItUpButton4 a { /* h4 */
+    background-position:-16px*5 0;
   }
 
-  .markItUpButton5 a {
-    background-image:url(style/markItUp/h5.png);
+  .markItUpButton5 a { /* h5 */
+    background-position:-16px*6 0;
   }
 
-  .markItUpButton6 a {
-    background-image:url(style/markItUp/h6.png);
+  .markItUpButton6 a { /* h6 */
+    background-position:-16px*7 0;
   }
 
-  .markItUpButton7 a {
-    background-image:url(style/markItUp/bold.png);
+  .markItUpButton7 a { /* gras */
+    background-position: 0 0;
   }
 
-  .markItUpButton8 a {
-    background-image:url(style/markItUp/italic.png);
+  .markItUpButton8 a { /* italique */
+    background-position:-16px*8 0;
   }
 
-  .markItUpButton9 a {
-    background-image:url(style/markItUp/list-bullet.png);
+  .markItUpButton9 a { /* liste par points */
+    background-position:-16px*10 0;
   }
 
-  .markItUpButton10 a {
-    background-image:url(style/markItUp/list-numeric.png);
+  .markItUpButton10 a { /* liste numérotée */
+    background-position:-16px*11 0;
   }
 
-  .markItUpButton11 a {
-    background-image:url(style/markItUp/picture.png);
+  .markItUpButton11 a { /* image */
+    background-position:-16px*12 0;
   }
 
-  .markItUpButton12 a {
-    background-image:url(style/markItUp/link.png);
+  .markItUpButton12 a { /* lien */
+    background-position:-16px*9 0;
   }
 
-  .markItUpButton13 a {
-    background-image:url(style/markItUp/quotes.png);
+  .markItUpButton13 a { /* citation */
+    background-position:-16px*14 0;
   }
 
-  .markItUpButton14 a {
-    background-image:url(style/markItUp/code.png);
+  .markItUpButton14 a { /* code */
+    background-position:-16px 0;
   }
 
   .preview a {
-    background-image:url(style/markItUp/preview.png);
+    background-position:-16px*13 0;
   }
 }
