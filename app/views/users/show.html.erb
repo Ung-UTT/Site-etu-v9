@@ -27,6 +27,13 @@
 
   <%=md @user.profile.description if @user.profile %>
 
+  <% unless @user.timesheets.empty? %>
+  <div id="edt">
+    <%= render 'timesheets/schedule', :schedule => @user.schedule %>
+  </div>
+  <noscript><%= list_of t('timesheets.list'), @user.timesheets, :range %></noscript>
+  <% end %>
+
   <%= list_of t('courses.list'), @user.courses, :name %>
   <%= list_of t('roles.list'), @user.roles, :name %>
   <%= list_of t('users.assos'), @user.created_assos, :name %>
@@ -40,13 +47,6 @@
   <%= list_of t('users.projects'), @user.created_projects, :name %>
   <%= list_of t('projects.list'), @user.projects, :name %>
   <%= list_of t('polls.list'), @user.polls, :name %>
-  <%= list_of t('timesheets.list'), @user.timesheets, :range %>
-
-  <% unless @user.timesheets.empty? %>
-  <div id="edt">
-    <%= render 'timesheets/schedule', :schedule => @user.schedule %>
-  </div>
-  <% end %>
 
   <%= render 'layouts/show_actions', {:ressource => @user} %>
 </section>
