@@ -2,8 +2,6 @@
 class CarpoolsController < ApplicationController
   load_and_authorize_resource
 
-  # GET /carpools
-  # GET /carpools.xml
   def index
     @carpools = Carpool.all
     @drivers = @carpools.select{|car| car.is_driver}
@@ -15,8 +13,6 @@ class CarpoolsController < ApplicationController
     end
   end
 
-  # GET /carpools/1
-  # GET /carpools/1.xml
   def show
     @carpool = Carpool.find(params[:id])
     @comments = @carpool.comments
@@ -28,64 +24,39 @@ class CarpoolsController < ApplicationController
     end
   end
 
-  # GET /carpools/new
-  # GET /carpools/new.xml
   def new
     @carpool = Carpool.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @carpool }
-    end
   end
 
-  # GET /carpools/1/edit
   def edit
     @carpool = Carpool.find(params[:id])
   end
 
-  # POST /carpools
-  # POST /carpools.xml
   def create
     @carpool = Carpool.new(params[:carpool])
     @carpool.user = current_user
 
-    respond_to do |format|
-      if @carpool.save
-        format.html { redirect_to(@carpool, :notice => t('c.create')) }
-        format.xml  { render :xml => @carpool, :status => :created, :location => @carpool }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @carpool.errors, :status => :unprocessable_entity }
-      end
+    if @carpool.save
+      redirect_to(@carpool, :notice => t('c.create'))
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /carpools/1
-  # PUT /carpools/1.xml
   def update
     @carpool = Carpool.find(params[:id])
 
-    respond_to do |format|
-      if @carpool.update_attributes(params[:carpool])
-        format.html { redirect_to(@carpool, :notice => t('c.update')) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @carpool.errors, :status => :unprocessable_entity }
-      end
+    if @carpool.update_attributes(params[:carpool])
+      redirect_to(@carpool, :notice => t('c.update'))
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /carpools/1
-  # DELETE /carpools/1.xml
   def destroy
     @carpool = Carpool.find(params[:id])
     @carpool.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(carpools_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(carpools_url)
   end
 end

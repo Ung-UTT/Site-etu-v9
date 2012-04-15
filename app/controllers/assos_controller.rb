@@ -3,8 +3,6 @@ class AssosController < ApplicationController
   before_filter :process_image, :only => [:create, :update]
   load_and_authorize_resource
 
-  # GET /assos
-  # GET /assos.xml
   def index
     @assos = Asso.all
 
@@ -14,8 +12,6 @@ class AssosController < ApplicationController
     end
   end
 
-  # GET /assos/1
-  # GET /assos/1.xml
   def show
     @asso = Asso.find(params[:id])
     @comments = @asso.comments
@@ -27,7 +23,6 @@ class AssosController < ApplicationController
     end
   end
 
-  # PUT /assos/1/join
   def join
     @asso = Asso.find(params[:id])
 
@@ -42,7 +37,6 @@ class AssosController < ApplicationController
     end
   end
 
-  # PUT /assos/1/disjoin
   def disjoin
     @asso = Asso.find(params[:id])
 
@@ -55,41 +49,25 @@ class AssosController < ApplicationController
     end
   end
 
-  # GET /assos/new
-  # GET /assos/new.xml
   def new
     @asso = Asso.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @asso }
-    end
   end
 
-  # GET /assos/1/edit
   def edit
     @asso = Asso.find(params[:id])
   end
 
-  # POST /assos
-  # POST /assos.xml
   def create
     @asso = Asso.new(params[:asso])
     @asso.owner = current_user
 
-    respond_to do |format|
-      if @asso.save
-        format.html { redirect_to(@asso, :notice => t('c.create')) }
-        format.xml  { render :xml => @asso, :status => :created, :location => @asso }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @asso.errors, :status => :unprocessable_entity }
-      end
+    if @asso.save
+      redirect_to(@asso, :notice => t('c.create'))
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /assos/1
-  # PUT /assos/1.xml
   def update
     @asso = Asso.find(params[:id])
     puts params[:asso]
@@ -99,27 +77,18 @@ class AssosController < ApplicationController
       @asso.image = nil
     end
 
-    respond_to do |format|
-      if @asso.update_attributes(params[:asso])
-        format.html { redirect_to(@asso, :notice => t('c.update')) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @asso.errors, :status => :unprocessable_entity }
-      end
+    if @asso.update_attributes(params[:asso])
+      redirect_to(@asso, :notice => t('c.update'))
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /assos/1
-  # DELETE /assos/1.xml
   def destroy
     @asso = Asso.find(params[:id])
     @asso.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(assos_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(assos_url)
   end
 
   private

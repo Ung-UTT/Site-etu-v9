@@ -2,8 +2,6 @@
 class TimesheetsController < ApplicationController
   load_and_authorize_resource
 
-  # GET /timesheets
-  # GET /timesheets.xml
   def index
     if params[:users].nil? or params[:users].empty?
       # Récupére tout les horaires
@@ -22,8 +20,6 @@ class TimesheetsController < ApplicationController
     end
   end
 
-  # GET /timesheets/1
-  # GET /timesheets/1.xml
   def show
     @timesheet = Timesheet.find(params[:id])
 
@@ -33,65 +29,40 @@ class TimesheetsController < ApplicationController
     end
   end
 
-  # GET /timesheets/new
-  # GET /timesheets/new.xml
   def new
     @timesheet = Timesheet.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @timesheet }
-    end
   end
 
-  # GET /timesheets/1/edit
   def edit
     @timesheet = Timesheet.find(params[:id])
   end
 
-  # POST /timesheets
-  # POST /timesheets.xml
   def create
     @timesheet = Timesheet.new(params[:timesheet])
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
-    respond_to do |format|
-      if @timesheet.save
-        format.html { redirect_to(@timesheet, :notice => t('c.create')) }
-        format.xml  { render :xml => @timesheet, :status => :created, :location => @timesheet }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @timesheet.errors, :status => :unprocessable_entity }
-      end
+    if @timesheet.save
+      redirect_to(@timesheet, :notice => t('c.create'))
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /timesheets/1
-  # PUT /timesheets/1.xml
   def update
     @timesheet = Timesheet.find(params[:id])
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
-    respond_to do |format|
-      if @timesheet.update_attributes(params[:timesheet])
-        format.html { redirect_to(@timesheet, :notice => t('c.update')) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @timesheet.errors, :status => :unprocessable_entity }
-      end
+    if @timesheet.update_attributes(params[:timesheet])
+      redirect_to(@timesheet, :notice => t('c.update'))
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /timesheets/1
-  # DELETE /timesheets/1.xml
   def destroy
     @timesheet = Timesheet.find(params[:id])
     @timesheet.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(timesheets_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(timesheets_url)
   end
 end
