@@ -27,11 +27,13 @@ namespace :import do
 
       ActiveRecord::Base.transaction do # Permet d'être beaucoup plus rapide !
         timesheets.each do |ts|
-          puts "UV : #{ts['uv']}"
+          print '.'
+
+          # Horaires possibles
+          timesheets = Course.find_by_name(ts['uv']).timesheets
 
           # Créer l'horaire
-          # FIXME : Trouver si l'horaire existe déjà
-          timesheet = Timesheet.create(
+          new = Timesheet.new(
             # Date du premier cours (on sait pas donc première semaine de rentrée
             :start_at => SEMESTERS.last['start_at'] + ts['day'].days +
                          ts['start'][0].hours + ts['start'][1].minutes,
@@ -45,22 +47,37 @@ namespace :import do
             :course => Course.find_or_create_by_name(ts['uv'])
           )
 
+          # Si l'horaire existe déjà, la choisir
+          ids = [:start_at, :end_at, :week, :room, :category, :course_id]
+          timesheet = timesheets.detect do |t|
+            ids.map{|id| t[id] == new[id]}.uniq == [true]
+          end
+
+          # Sinon la créer
+          if timesheet.nil?
+            timesheet = new
+            timesheet.save
+          end
+
           # Trouver les étudiants
           if ts['students'].empty?
             puts 'No students for this timesheet'
-          else
-            users = USERS.select {|user| ts['students'].include?(user.login)}
+            next
+          end
 
-            if users.nil? or users.empty?
-              puts "Can't find students"
-            else
-              # Ajouter l'horaire aux étudiants
-              users.each do |user|
-                user.timesheets << timesheet
-              end
-            end
+          users = USERS.select {|user| ts['students'].include?(user.login)}
+          if users.size != ts['students'].size
+            # Ne devrait jamais arriver
+            puts "\nSome students can't be found for #{timesheet.short_range}"
+          end
+
+          # Ajouter l'horaire aux étudiants
+          users.each do |user|
+            user.timesheets << timesheet
           end
         end
+        puts
+        puts "Done"
       end
     end
   end
