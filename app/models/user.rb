@@ -52,11 +52,12 @@ class User < ActiveRecord::Base
     end
 
     # Recherche parmi les utilisateurs
-    # TODO: Recherche dans prénom, nom, etc (mais rapide)
-    def self.search(name)
+    def search(name)
       # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
       names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
-      User.select{|u| u.login =~ /(#{names})/i}
+      profiles = Profile.find(:all, :include => :user).select do |p|
+        "#{p.user.login} #{p.firstname} #{p.lastname} #{p.level}" =~ /(#{names})/i
+      end.map(&:user)
     end
 
     # Retourne l'utilisateur si le couple login/password est bon

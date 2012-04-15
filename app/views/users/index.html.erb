@@ -3,7 +3,7 @@
 
   <%= form_tag(users_path, :method => :get) do %>
     <ul class="fields">
-      <li class="field"><%= text_field_tag :q %></li>
+      <li class="field"><%= text_field_tag :q, params[:q] %></li>
       <li class="field"><%= submit_tag t('common.search') %></li>
     </ul>
   <% end %>
