@@ -19,6 +19,7 @@ $(function () {
     // Emploi du temps (horaires, vue semaine)
     $('.schedule').fullCalendar({
       header: { left: '', center: '', right:  ''}, // Pas de header
+      height: 800,
       minTime: 8, // On ne va pas en dessous de 8h
       maxTime: 23, // On ne va pas à plus de 23h
       columnFormat: {

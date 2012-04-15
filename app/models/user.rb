@@ -57,7 +57,6 @@ class User < ActiveRecord::Base
       # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
       names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
       User.select{|u| u.login =~ /(#{names})/i}
-      end
     end
 
     # Retourne l'utilisateur si le couple login/password est bon
