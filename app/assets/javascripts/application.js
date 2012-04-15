@@ -21,7 +21,7 @@ $(function () {
       header: { left: '', center: '', right:  ''}, // Pas de header
       height: 800,
       minTime: 8, // On ne va pas en dessous de 8h
-      maxTime: 20, // On ne va pas à plus de 23h
+      maxTime: 20, // On ne va pas à plus de 20h
       columnFormat: {
         month: 'dddd', // Monday
         week: 'dddd', // Monday
