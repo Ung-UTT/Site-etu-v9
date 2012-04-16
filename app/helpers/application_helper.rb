@@ -44,6 +44,8 @@ module ApplicationHelper
   end
 
   # Select options
+  # TODO: Nettoyer cette section, et voir ce qui peut passer dans les
+  # vues ou être rassemblé en un seul helper
 
   def parent_select_options(name)
     options_for_select(
@@ -76,9 +78,9 @@ module ApplicationHelper
     options_for_select(Course.all.map { |a| [a.name, a.id] }.unshift([t('helpers.none'), nil]), default)
   end
 
-  def users_select(object = nil)
-    default = object.nil? ? nil : object.users.map(&:id)
-    options_for_select(User.all.map { |a| [a.real_name, a.id] }, default)
+  def users_select(object)
+    array = object.users.map{|u| [u.real_name, u.id]}
+    options_for_select(array.unshift([t('helpers.none'), nil]), object.users.map(&:id))
   end
 
   # Links to
@@ -111,6 +113,7 @@ module ApplicationHelper
     end
   end
 
+  # TODO: Faire un helper plus général
   def link_to_assos(object)
     if object.assos.empty?
       return t('helpers.none')
@@ -134,6 +137,7 @@ module ApplicationHelper
   end
 
   # Emploi du temps
+  # TODO: Mettre ça dans un autre fichier que l'on inclu dans celui-là
 
   # Traduit une suite de paramètres en un hash prêt à être utilisé
   # object est l'objet vers lequel on va lié la case qui l'affiche

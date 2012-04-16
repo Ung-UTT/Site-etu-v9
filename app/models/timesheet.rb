@@ -40,7 +40,7 @@ class Timesheet < ActiveRecord::Base
 
   # Selectionne les horaires du semestre actuel
   def self.make_schedule(timesheets)
-    timesheets = timesheets.to_a if timesheets.class != Array
+    timesheets = [timesheets].compact if timesheets.class != Array
     timesheets = timesheets.uniq
 
     # Le semestre actuel est le dernier
@@ -54,11 +54,11 @@ class Timesheet < ActiveRecord::Base
   end
 
   # Fait la répétition des horaires selon le semestre
-  def self.make_agenda(array_of_timesheets)
+  def self.make_agenda(timesheets)
     agenda = []
 
     # Déjà on selectionne les horaires du semestre
-    timesheets = make_schedule(array_of_timesheets)
+    timesheets = make_schedule(timesheets)
 
     # Le semestre actuel est le dernier
     semester = SEMESTERS.last

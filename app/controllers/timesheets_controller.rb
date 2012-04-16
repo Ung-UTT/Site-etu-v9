@@ -4,10 +4,10 @@ class TimesheetsController < ApplicationController
 
   def index
     if params[:users].nil? or params[:users].empty?
-      # Récupére tout les horaires
-      @timesheets = Timesheet.all
+      # Récupére aucun horaire
+      @timesheets = []
     else
-      # Récupére tout les horaires des utilisateurs passés en paramétres
+      # Récupére tous les horaires des utilisateurs passés en paramétres
       @timesheets = User.find(params[:users]).map(&:timesheets).flatten.uniq
     end
 
