@@ -57,8 +57,6 @@
       color: white;
       background-color: $base - #333;
       font-style: normal;
-      font-weight: bold;
-      font-family: "Dancing Script", cursive;
       @include linear-gradient-top($base, $base - #333);
 
       a { color: white; }

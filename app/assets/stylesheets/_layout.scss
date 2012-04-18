@@ -1,19 +1,5 @@
 /* Layout */
 
-@font-face {
-    font-family: "Dancing Script";
-    font-style: normal;
-    font-weight: bold;
-    src: local("Dancing Script Bold"), local("DancingScript-Bold"), url("https://themes.googleusercontent.com/static/fonts/dancingscript/v2/KGBfwabt0ZRLA5W1ywjowQr4FYEmOdWJS9Fc8b-cYmo.woff") format("woff");
-}
-
-@font-face {
-    font-family: "Dancing Script";
-    font-style: normal;
-    font-weight: normal;
-    src: local("Dancing Script"), local("DancingScript"), url("https://themes.googleusercontent.com/static/fonts/dancingscript/v2/DK0eTGXiZjN6yA8zAEyM2bDH3ri20rYH10B2w3wbVeU.woff") format("woff");
-}
-
 // Fonctions pour éviter les répétitions de code
 // et les pavés de codes (-moz-, -o-, ...), ...
 
@@ -137,13 +123,13 @@ body {
     a { @extend .basic-link; }
 
     h2 {
-      font-size: 1.5em;
-      font-family: "Dancing Script", cursive;
+      font-size: 1.3em;
       padding: 5px;
 
       .connect {
         color: $base - #555;
         font-weight: bold;
+        font-size: 1.3em;
       }
     }
 
