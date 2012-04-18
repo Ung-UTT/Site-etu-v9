@@ -7,7 +7,7 @@
   padding-right: $sidebar;
   padding-bottom: 0;
 
-  .notice, .alert {
+  .notice, .warning, .alert {
     padding: 10px;
     margin: 10px 10px 5px 10px;
     background-color: grey;
@@ -29,6 +29,13 @@
     border-color: #BB1000;
   }
 
+  .warning {
+    padding: 15px 10px 15px 50px;
+    color: #9F6000;
+    border-color: #9F6000;
+    background: #FEEFB3 url('others/warning.png') no-repeat 10px center;
+  }
+
   .content {
     color: #555;
     clear: left;
@@ -44,12 +51,14 @@
     h1.title {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
-      font-size: 1.5em;
+      font-size: 1.7em;
       padding: 5px;
       padding-left: 30px;
       color: white;
       background-color: $base - #333;
       font-style: normal;
+      font-weight: bold;
+      font-family: "Dancing Script", cursive;
       @include linear-gradient-top($base, $base - #333);
 
       a { color: white; }
@@ -139,7 +148,6 @@
     }
 
     p {
-      padding: 8px;
       line-height: 120%;
     }
 
