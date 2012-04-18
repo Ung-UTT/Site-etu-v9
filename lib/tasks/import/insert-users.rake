@@ -1,3 +1,5 @@
+require 'net-ldap' # Sinon : undefined class/module Net::BER::
+
 namespace :import do
   namespace :users do
     desc "Insert users in the database"
@@ -28,15 +30,16 @@ namespace :import do
           end
 
           # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
-          u.build_profile.save unless u.profile
+          u.build_profile unless u.profile
 
           # Photo de profil
           begin
             picture = Image.from_url(st['jpegphoto'])
-            u.profile.image = Image.new(:asset => picture)
           rescue => e
             puts e.inspect # Pas internet, 404, etc...
           end
+
+          u.profile.image = Image.new(:asset => picture) unless picture.nil?
 
           u.profile.utt_id = st['supannetuid'].to_i
           u.profile.firstname = st['givenname']
