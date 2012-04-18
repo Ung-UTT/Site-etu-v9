@@ -44,7 +44,7 @@ fr:
     user_sessions:
       create: "Vous êtes maintenant connecté."
       destroy: "Vous êtes maintenant déconnecté."
-      failed: "La connexion a échoué"
+      failed: "La connexion a échoué."
 
     votes:
       create: "Votre vote a bien été comptabilisé."
