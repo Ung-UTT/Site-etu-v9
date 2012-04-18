@@ -1,5 +1,5 @@
-<h2><strong><%= link_to t('user_sessions.cas'), cas_new_path, :class => 'connect' %></strong></h2>
+<h2><%= t('user_sessions.my_account') %></h2>
 <ul>
-  <li><%= link_to t('user_sessions.login'), login_path %></li>
-  <li><%= link_to t('users.add'), new_user_path %></li>
+  <li><%= link_to t('user_sessions.cas'), cas_new_path %></h2>
+  <li><%= link_to t('user_sessions.login'), login_path, title: "Si tu n'as pas de compte CAS" %></li>
 </ul>
