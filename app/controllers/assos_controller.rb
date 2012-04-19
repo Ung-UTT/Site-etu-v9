@@ -4,8 +4,6 @@ class AssosController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @assos = Asso.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @assos }
@@ -13,7 +11,6 @@ class AssosController < ApplicationController
   end
 
   def show
-    @asso = Asso.find(params[:id])
     @comments = @asso.comments
     @documents = @asso.documents
 
@@ -50,15 +47,12 @@ class AssosController < ApplicationController
   end
 
   def new
-    @asso = Asso.new
   end
 
   def edit
-    @asso = Asso.find(params[:id])
   end
 
   def create
-    @asso = Asso.new(params[:asso])
     @asso.owner = current_user
 
     if @asso.save
@@ -69,9 +63,6 @@ class AssosController < ApplicationController
   end
 
   def update
-    @asso = Asso.find(params[:id])
-    puts params[:asso]
-
     # Si la case "supprimer" est cochée, on supprime l'image
     if params[:image_delete]
       @asso.image = nil
@@ -85,15 +76,14 @@ class AssosController < ApplicationController
   end
 
   def destroy
-    @asso = Asso.find(params[:id])
     @asso.destroy
 
     redirect_to(assos_url)
   end
 
   private
-    # Permet de créer l'image à partir du fichier
-    def process_image
-      params[:asso][:image] = Image.new(:asset => params[:asso][:image])
-    end
+  # Permet de créer l'image à partir du fichier
+  def process_image
+    params[:asso][:image] = Image.new(:asset => params[:asso][:image])
+  end
 end

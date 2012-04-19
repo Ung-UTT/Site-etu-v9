@@ -3,8 +3,6 @@ class CoursesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @courses = Course.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @courses }
@@ -12,7 +10,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
     @comments = @course.comments
     @documents = @course.documents
 
@@ -23,16 +20,12 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = Course.new
   end
 
   def edit
-    @course = Course.find(params[:id])
   end
 
   def create
-    @course = Course.new(params[:course])
-
     if @course.save
       redirect_to(@course, :notice => t('c.create'))
     else
@@ -41,8 +34,6 @@ class CoursesController < ApplicationController
   end
 
   def update
-    @course = Course.find(params[:id])
-
     if @course.update_attributes(params[:course])
       redirect_to(@course, :notice => t('c.update'))
     else
@@ -51,7 +42,6 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    @course = Course.find(params[:id])
     @course.destroy
 
     redirect_to(courses_url)

@@ -38,7 +38,7 @@ class DocumentsController < ApplicationController
   end
 
   private
-    def find_documentable
-      @documentable = find_polymorphicable
-    end
+  def find_documentable
+    @documentable = find_polymorphicable
+  end
 end

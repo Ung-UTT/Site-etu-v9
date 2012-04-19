@@ -3,7 +3,6 @@ class VotesController < ApplicationController
   load_and_authorize_resource
 
   def create
-    @vote = Vote.new(params[:vote])
     @vote.user = current_user
 
     if @vote.save
@@ -14,7 +13,6 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @vote = Vote.find(params[:id])
     @vote.destroy
 
     redirect_to @vote.answer.poll

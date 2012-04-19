@@ -21,8 +21,6 @@ class TimesheetsController < ApplicationController
   end
 
   def show
-    @timesheet = Timesheet.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @timesheet }
@@ -30,15 +28,12 @@ class TimesheetsController < ApplicationController
   end
 
   def new
-    @timesheet = Timesheet.new
   end
 
   def edit
-    @timesheet = Timesheet.find(params[:id])
   end
 
   def create
-    @timesheet = Timesheet.new(params[:timesheet])
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     if @timesheet.save
@@ -49,7 +44,6 @@ class TimesheetsController < ApplicationController
   end
 
   def update
-    @timesheet = Timesheet.find(params[:id])
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     if @timesheet.update_attributes(params[:timesheet])
@@ -60,7 +54,6 @@ class TimesheetsController < ApplicationController
   end
 
   def destroy
-    @timesheet = Timesheet.find(params[:id])
     @timesheet.destroy
 
     redirect_to(timesheets_url)

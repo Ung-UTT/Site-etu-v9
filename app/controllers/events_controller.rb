@@ -12,7 +12,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     @comments = @event.comments
     @documents = @event.documents
     @news = @event.news.page(params[:page]) # Les daymails associés
@@ -45,15 +44,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def create
-    @event = Event.new(params[:event])
     @event.owner = current_user
     @event.assos = params[:assos] ? Asso.find(params[:assos]) : []
 
@@ -65,7 +61,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
     @event.assos = params[:assos] ? Asso.find(params[:assos]) : []
 
     if @event.update_attributes(params[:event])
@@ -76,7 +71,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
 
     redirect_to(events_url)

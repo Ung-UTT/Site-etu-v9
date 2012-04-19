@@ -12,7 +12,6 @@ class ClassifiedsController < ApplicationController
   end
 
   def show
-    @classified = Classified.find(params[:id])
     @comments = @classified.comments
     @documents = @classified.documents
 
@@ -23,15 +22,12 @@ class ClassifiedsController < ApplicationController
   end
 
   def new
-    @classified = Classified.new
   end
 
   def edit
-    @classified = Classified.find(params[:id])
   end
 
   def create
-    @classified = Classified.new(params[:classified])
     @classified.user = current_user
 
     if @classified.save
@@ -42,8 +38,6 @@ class ClassifiedsController < ApplicationController
   end
 
   def update
-    @classified = Classified.find(params[:id])
-
     if @classified.update_attributes(params[:classified])
       redirect_to(@classified, :notice => t('c.update'))
     else
@@ -52,7 +46,6 @@ class ClassifiedsController < ApplicationController
   end
 
   def destroy
-    @classified = Classified.find(params[:id])
     @classified.destroy
 
     redirect_to(classifieds_url)

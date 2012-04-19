@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   end
 
   private
-    def find_commentable
-      @commentable = find_polymorphicable
-    end
+  def find_commentable
+    @commentable = find_polymorphicable
+  end
 end

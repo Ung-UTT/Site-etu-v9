@@ -19,18 +19,13 @@ class WikisController < ApplicationController
   end
 
   def new
-    @wiki = Wiki.new
-
     redirect_to @wiki, :notice => 'Wiki was successfully created.'
   end
 
   def edit
-    @wiki = Wiki.find(params[:id])
   end
 
   def create
-    @wiki = Wiki.new(params[:wiki])
-
     if @wiki.save
       redirect_to @wiki, :notice => t('c.create')
     else
@@ -39,8 +34,6 @@ class WikisController < ApplicationController
   end
 
   def update
-    @wiki = Wiki.find(params[:id])
-
     if @wiki.update_attributes(params[:wiki])
       redirect_to @wiki, :notice => t('c.update')
     else
@@ -49,7 +42,6 @@ class WikisController < ApplicationController
   end
 
   def destroy
-    @wiki = Wiki.find(params[:id])
     @wiki.destroy
 
     redirect_to wikis_url
