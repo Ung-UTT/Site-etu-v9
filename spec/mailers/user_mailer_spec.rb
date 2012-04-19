@@ -16,7 +16,7 @@ describe UserMailer do
     ActionMailer::Base.deliveries.count.should == 1
   end
 
-  it "contains expected informations" do
+  it "contains expected information" do
     deliver
 
     # we send it in both text and HTML so it should be 'multipart/alternative'

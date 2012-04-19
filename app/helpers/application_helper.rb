@@ -79,7 +79,7 @@ module ApplicationHelper
   end
 
   def users_select(object)
-    array = object.users.map{|u| [u.real_name, u.id]}
+    array = object.users.map { |u| [u.real_name, u.id] }
     options_for_select(array.unshift([t('helpers.none'), nil]), object.users.map(&:id))
   end
 

@@ -57,9 +57,9 @@ FactoryGirl.define do
       end
     end
 
-    factory :admin do
+    factory :administrator do
       after_create do |user|
-        user.become_a! :admin
+        user.become_a! :administrator
       end
     end
   end

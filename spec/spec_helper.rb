@@ -1,12 +1,20 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 
-require 'simplecov'
-SimpleCov.start 'rails'
+if ENV["COVERAGE"]
+  require 'simplecov'
+  SimpleCov.start 'rails'
+  SimpleCov.at_exit do
+    SimpleCov.result.format!
+    exit(2) if SimpleCov.result.covered_percent < 50 # Mwahaha! :P
+  end
+end
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rails'
+require 'capybara/rspec'
 require 'factory_girl'
 require 'paperclip/matchers'
 require 'cancan/matchers'

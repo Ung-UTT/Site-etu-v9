@@ -1,4 +1,5 @@
 class Asso < ActiveRecord::Base
+  attr_accessible :name, :description, :image
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
 
@@ -16,17 +17,18 @@ class Asso < ActiveRecord::Base
   has_many :assos_event, :dependent => :destroy
   has_many :events, :through => :assos_event, :uniq => true
 
-  after_create do create_member end
+  after_create :create_member
 
   # Crée un rôle de membre à la créationde l'asso
   def create_member
-    Role.create(:name => 'member', :asso_id => self.id)
+    unless roles.map(&:name).include?('member')
+      roles << Role.create(:name => 'member')
+    end
   end
 
   # Rôle membre spécifique à cette association (chaque association a un rôle membre)
-  # Si le rôle membre a été supprimé, on le re-crée
   def member
-    roles.select { |r| r.name == 'member' }.first || Role.create(:name => 'member', :asso => self)
+    roles.detect { |r| r.name == 'member' }
   end
 
   # Enlever un utilisateur d'une association

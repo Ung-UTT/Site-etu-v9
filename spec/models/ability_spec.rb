@@ -16,7 +16,6 @@ describe Ability do
 
   context 'as an anonymous user' do
     as nil
-    it { should be_able_to(:read, News.new(:is_moderated => true)) }
     it { should be_able_to(:read, Classified.new) }
     it { should_not be_able_to(:read, User.new) }
   end
@@ -36,8 +35,8 @@ describe Ability do
     it { should be_able_to(:manage, Asso) }
   end
 
-  context 'as an admin' do
-    as :admin
+  context 'as an administrator' do
+    as :administrator
     it { should be_able_to(:manage, :all) }
   end
 end

@@ -1,4 +1,5 @@
 class Role < ActiveRecord::Base
+  attr_accessible :name
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => [:asso_id]
   validates_format_of :name, :with => /\A[a-zA-Z1-9_\- ']+\z/

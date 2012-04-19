@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   class << self
     def students
-      User.select(&:is_student?)
+      User.select(&:student?)
     end
 
     # Recherche parmi les utilisateurs via une chaîne
@@ -102,8 +102,7 @@ class User < ActiveRecord::Base
 
   # Préférences par défaut d'un utilisateur
   def create_preferences
-    Preference.create(:user_id => self.id,
-      :locale => I18n.default_locale.to_s, :quote_type => 'all')
+    self.preference_attributes = { :locale => I18n.default_locale.to_s, :quote_type => 'all' }
   end
 
   # Associations = associations dans lesquelles l'utilisateur a un rôle
@@ -128,18 +127,23 @@ class User < ActiveRecord::Base
     self.assos.include?(asso)
   end
 
-  # Est-ce qu'il a le rôle "name" (éventuelement dans le cadre d'une association)
-  def is?(name, asso = nil)
-    res = self.roles.select { |r| r.name.to_sym == name }
+  # Est-ce qu'il a le rôle (éventuelement dans le cadre d'une association)
+  def is?(role, asso = nil)
+    role = role.name if role.is_a? Role
+    role = role.to_sym
+    res = self.roles.select { |r| r.name.to_sym == role }
     if asso
-      res = res & asso.roles
+      res &= asso.roles
     end
     !res.empty?
   end
 
-  # Est-ce un étudiant ? (est-ce qu'il a le rôle d'étudiant ?)
-  def is_student?
-    self.is?(:student)
+  def student?; is?(:student) end
+  def moderator?; is?(:moderator) end
+  def administrator?; is?(:administrator) end
+
+  def role_list
+    roles.map(&:name).map(&:to_sym)
   end
 
   # Emploi du temps

@@ -25,7 +25,7 @@ class UserSessionsController < ApplicationController
 
   # Déconnexion
   def destroy
-    redirect_to_cas = current_user.is_student?
+    redirect_to_cas = current_user.student?
     cookies.delete(:auth_token) # Supprime le cookie de connexion
     session[:cas_user] = nil # Supprime le cookie du CAS
     flash[:notice] = t('c.user_sessions.destroy')

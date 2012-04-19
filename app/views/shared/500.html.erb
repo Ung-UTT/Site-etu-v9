@@ -8,9 +8,5 @@
 
 <section class="content">
   <h1 class="title"><%= t('views.error500.explain') %> <%= exception.to_s %></h1>
-  <ul>
-    <%= backtrace.each do |b| %>
-    <li><%= b %></li>
-    <% end %>
-  </ul>
+  <pre><%= exception.backtrace.join("\n") %></pre>
 </section>

@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   paginates_per 20
 
+  attr_accessible :name, :description, :location, :start_at, :end_at
   validates_presence_of :name
 
   default_scope :order => 'start_at DESC'

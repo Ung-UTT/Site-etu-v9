@@ -1,6 +1,9 @@
 class News < ActiveRecord::Base
   paginates_per 5
 
+  accessible(default:   [:title, :content, :event_id],
+             moderator: [:is_moderated])
+
   validates_presence_of :title
 
   has_paper_trail

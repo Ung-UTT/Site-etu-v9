@@ -21,7 +21,7 @@ describe User do
 
     it "returns only students" do
       user = create(:user)
-      user.is_student?.should be_false
+      user.student?.should be_false
       User.students.should_not include user
     end
   end

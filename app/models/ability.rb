@@ -21,8 +21,11 @@ class Ability
       can :password_reset, User
     else # C'est un utilisateur connecté
       can :manage, User, :id => user.id
+      can :show, Role do |role|
+        user.is? role
+      end
 
-      if user.is_student? # UTTiens ou anciens
+      if user.student? # UTTiens ou anciens
         can :read, [Answer, Course, User]
         can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
         can :create, News
@@ -59,12 +62,14 @@ class Ability
         end
       end # / student?
 
-      if user.is? :moderator
-        can :manage, [Asso, Answer, Annal, Carpool, Classified, Comment, Event, Poll, Quote]
+      if user.moderator?
+        can :manage, [Asso, Answer, Annal, Carpool, Classified, Comment, Event, News, Poll, Quote]
       end
-      if user.is? :admin
+      if user.administrator?
         can :manage, :all
       end
+
+      cannot :destroy, User, id: user.id # no suicide please
     end # / user?
   end
 end

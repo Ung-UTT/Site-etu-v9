@@ -42,5 +42,8 @@ module SiteEtu
 
     config.action_mailer.default_url_options = { :host => 'etu.utt.fr' }
     config.rubycas.cas_base_url = 'https://cas.utt.fr/cas'
+
+    # Protect mass assignment
+    config.active_record.whitelist_attributes = true
   end
 end

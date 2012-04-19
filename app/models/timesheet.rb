@@ -1,6 +1,7 @@
 class Timesheet < ActiveRecord::Base
   CATEGORIES = %w(CM TD TP)
 
+  attr_accessible :start_at, :end_at, :week, :category, :room
   validates_presence_of :start_at, :end_at, :category, :course
   validates :category, :inclusion => {:in => Timesheet::CATEGORIES}
 
