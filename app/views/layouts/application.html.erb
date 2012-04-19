@@ -21,15 +21,9 @@
     Merci ! &#9786;
   </p>
 
-  <blockquote id="quote"><%= @random_quote.content %></blockquote>
-
-  <%= link_to :root, :class => 'banner' do %>
-    <%= image_tag 'others/banner.jpg' %>
-  <% end %>
-
   <ul id="topbar">
-    <li class="home">
-      <%= link_to t('layout.home'), :root, :title => t('layout.home_title') %>
+    <li class="logo">
+      <%= link_to image_tag('others/logo.png'), :root, :title => t('layout.home') %>
     </li>
     <li class="users">
       <%= link_to t('layout.users'), User, :title => t('layout.users_title') %>
@@ -44,6 +38,8 @@
       <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
     </li>
   </ul>
+
+  <blockquote id="quote"><%= @random_quote.content %></blockquote>
 
   <ul id="sidebar">
     <li class="box">

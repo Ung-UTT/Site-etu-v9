@@ -40,7 +40,6 @@ body {
   padding: 10px;
   text-align: center;
   color: $fond - #555;
-  background: white;
   font-style: italic;
 
   &:before { content: "« "; }
@@ -49,7 +48,6 @@ body {
 
 #topbar {
   padding: 5px 5px;
-  text-align: center;
   border-bottom: 1px solid ($fond - #222);
   @include linear-gradient-top(white, $fond);
 
@@ -65,6 +63,7 @@ body {
     padding: 0 5px;
   }
 
+  // Ne sert que s'il y a plusieurs langues d'actives
   #language-selector {
     float: right;
     margin: 0;
@@ -79,12 +78,23 @@ body {
 
     a {
       background: url('icons.png') no-repeat;
-      padding: 10px 5px 10px 36px;
+      padding: 10px 15px 10px 36px;
     }
   }
 
-  li.home a {
-    background-position: 0 -33.7px*4;
+  li.logo {
+    margin: 0;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: solid 1px ($fond - #333);
+
+    a {
+      background-position: -1000px 0;
+
+      &:hover {
+        background-position: 0 -33.7px*4;
+      }
+    }
   }
 
   li.users a {
