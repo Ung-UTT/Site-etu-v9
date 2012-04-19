@@ -32,12 +32,13 @@ group :test do
   gem 'autotest-rails'   # Lancer automatiquement les tests
   gem 'factory_girl_rails' # Fixtures suck
   gem 'capybara'
-  gem 'simplecov', :require => false
+  gem 'simplecov'
+  gem 'rails_best_practices'
 end
 
 # Nécessaires pour l'import de données
 group :import do
-  gem 'net-ldap', :require => false # Manipulation d'annuaires LDAP
+  gem 'net-ldap' # Manipulation d'annuaires LDAP
 end
 
 group :production do
