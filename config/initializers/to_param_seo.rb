@@ -1,7 +1,7 @@
 module ActiveRecord
   class Base
     def to_param
-      param_string = attributes.keys.select {|k| ['name', 'title', 'login', 'content'].include?(k) }.first
+      param_string = attributes.keys.detect { |k| ['name', 'title', 'login', 'content'].include?(k) }
       if param_string.nil?
         super
       else
