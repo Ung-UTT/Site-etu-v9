@@ -1,11 +1,6 @@
 <section class="content">
   <%= title t('common.add') %>
 
-  <p class="warning">
-    Tu n'as pas besoin de créer un compte si tu es inscrit à l'UTT. Dans ce cas, connecte toi via le <%= link_to 'compte UTT', cas_new_path %>.
-    Si tu es un ancien ou futur UTTien, tu dois en revanche créer un compte sur le site.
-  </p>
-
   <%= render 'form' %>
 
   <ul class="actions"><li><%= link_to t('common.list'), ressources %></li></ul>
