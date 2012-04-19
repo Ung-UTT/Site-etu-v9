@@ -38,6 +38,7 @@ end
 
 # Nécessaires pour l'import de données
 group :import do
+  gem 'mysql2'
   gem 'net-ldap' # Manipulation d'annuaires LDAP
 end
 

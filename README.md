@@ -51,7 +51,7 @@ Puis installez Rails via Rubygems : `sudo gem install rails --no-ri --no-rdoc` (
 Vous allez mettre le code source du site étu sur votre ordi : `git clone https://VOTRE-PSEUDO-GITHUB@github.com/Ung-UTT/Site-etu-v9.git`
 
 Maintenant placez-vous dans le dossier du site étu (`cd Site-Etu-v9`) et faîtes :
-`bundle install` (installe les extensions requises)
+`bundle install --without production` (installe les extensions requises)
 
 Il faut décrire les bases de données que vous allez utiliser dans
 `db/database.yml`, vous pouvez prendre celles par défaut en faisant :

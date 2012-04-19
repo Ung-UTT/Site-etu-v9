@@ -1,12 +1,13 @@
 # encoding: utf-8
 
-require 'mysql2'
 require 'readline'
 
 namespace :import do
   namespace :schedules do
     desc "Convert schedules from the UTT export (need MySQL database with schedules)"
     task :convert => :environment do
+      require 'mysql2'
+
       DB_FILE = Rails.root.join('tmp', 'schedule.marshal')
       TIMESHEETS_TABLE = 'vue_edt_etu'
 
