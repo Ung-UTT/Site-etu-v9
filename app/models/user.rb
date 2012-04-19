@@ -51,12 +51,19 @@ class User < ActiveRecord::Base
       User.select(&:is_student?)
     end
 
-    # Recherche parmi les utilisateurs
-    def search(name)
+    # Recherche parmi les utilisateurs via une chaîne
+    # Exemple : User.search("Emm Car") => [User (Emmanuel Carquin), ...]
+    def search(clues)
+      # FIXME : Enlever les accents (peut-être : http://snippets.dzone.com/posts/show/2384)
       # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
-      names = name.split(' ').map{|n| Regexp.escape(n)}.join('|') # Emm|Car|...
+      clues = clues.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
       profiles = Profile.find(:all, :include => :user).select do |p|
-        "#{p.user.login} #{p.firstname} #{p.lastname} #{p.level}" =~ /(#{names})/i
+        # Le profil fait parti des profils recherchés si il contient
+        # chacun des indices
+        string = [p.user.login, p.firstname, p.lastname, p.level].join(' ')
+        clues.all? do |clue|
+          string.include?(clue)
+        end
       end.map(&:user)
     end
 
