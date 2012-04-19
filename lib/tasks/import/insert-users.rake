@@ -1,9 +1,9 @@
-require 'net-ldap' # Sinon : undefined class/module Net::BER::
-
 namespace :import do
   namespace :users do
     desc "Insert users in the database"
     task :insert => :environment do
+      require 'net-ldap' # Sinon : undefined class/module Net::BER::
+
       DB_FILE = Rails.root.join('tmp', 'ldap.marshal')
 
       if File.exists?(DB_FILE)
