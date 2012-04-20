@@ -1,8 +1,9 @@
 fr:
   # Controllers
   c:
-    create: "Ça a bien été créé."
-    update: "Ça a bien été mis à jour."
+    created: "Ça a bien été créé."
+    updated: "Ça a bien été mis à jour."
+    created_but_not_moderated: "Ça a bien été créé (en attente de modération)."
 
     application:
       denied: "Vous n'avez pas le droit d'effectuer cette action."
@@ -42,9 +43,9 @@ fr:
       new_password: "Votre nouveau mot de passe est %{password}, ne l'oubliez plus ;)."
 
     user_sessions:
-      create: "Vous êtes maintenant connecté."
-      destroy: "Vous êtes maintenant déconnecté."
+      created: "Vous êtes maintenant connecté."
+      destroyed: "Vous êtes maintenant déconnecté."
       failed: "La connexion a échoué."
 
     votes:
-      create: "Votre vote a bien été comptabilisé."
+      created: "Votre vote a bien été comptabilisé."

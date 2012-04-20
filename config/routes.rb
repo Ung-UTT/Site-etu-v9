@@ -24,7 +24,8 @@ SiteEtu::Application.routes.draw do
   match 'roles/:id/disjoin/:user_id' => 'roles#disjoin', :as => 'disjoin_role'
 
   # Ressources
-  resources :answers, :authorizations, :polls, :roles, :timesheets,
+  resources :answers, :only => [:create, :destroy]
+  resources :authorizations, :polls, :roles, :timesheets,
             :users, :user_sessions, :votes
   resources :annals, :assos, :classifieds, :carpools, :courses, :events,
             :projects, :quotes, :news, :wikis do

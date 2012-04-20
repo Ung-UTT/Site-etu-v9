@@ -9,7 +9,6 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
     @documents = @wiki.documents
 
     respond_to do |format|
@@ -27,7 +26,7 @@ class WikisController < ApplicationController
 
   def create
     if @wiki.save
-      redirect_to @wiki, :notice => t('c.create')
+      redirect_to @wiki, :notice => t('c.created')
     else
       render :action => "new"
     end
@@ -35,7 +34,7 @@ class WikisController < ApplicationController
 
   def update
     if @wiki.update_attributes(params[:wiki])
-      redirect_to @wiki, :notice => t('c.update')
+      redirect_to @wiki, :notice => t('c.updated')
     else
       render :action => "edit"
     end

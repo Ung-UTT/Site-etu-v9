@@ -1,14 +1,19 @@
 <section class="content">
-  <%= title(t('carpool') + ' : ' + @carpool.way) %>
+  <%= title("#{t('carpool')} #{t('carpools.from')} #{@carpool.departure} #{t('carpools.to')} #{@carpool.arrival}") %>
 
   <p>
     <strong><%= t('carpools.is_driver') %></strong>
-    <%= @carpool.is_driver ? 'Conducteur' : 'Passager' %>
+    <%= @carpool.is_driver ? t('yes') : t('no') %>
   </p>
 
   <p>
     <strong><%= t('carpools.date') %></strong> :
     <%= l(@carpool.date, :format => :long) %>
+  </p>
+
+  <p>
+    <strong><%= t('carpools.user') %></strong> :
+    <%= @carpool.user.real_name %>
   </p>
 
   <%=md @carpool.description %>

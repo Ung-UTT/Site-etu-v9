@@ -32,7 +32,7 @@ class CarpoolsController < ApplicationController
     @carpool.user = current_user
 
     if @carpool.save
-      redirect_to(@carpool, :notice => t('c.create'))
+      redirect_to(@carpool, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -40,7 +40,7 @@ class CarpoolsController < ApplicationController
 
   def update
     if @carpool.update_attributes(params[:carpool])
-      redirect_to(@carpool, :notice => t('c.update'))
+      redirect_to(@carpool, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @events = Event.page(params[:page])
+    @events = @events.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,8 +23,6 @@ class EventsController < ApplicationController
   end
 
   def join
-    @event = Event.find(params[:id])
-
     if @event.users.exists?(current_user)
       redirect_to @event, :notice => t('c.events.already_join')
     else
@@ -35,8 +33,6 @@ class EventsController < ApplicationController
   end
 
   def disjoin
-    @event = Event.find(params[:id])
-
     @event.users.delete(current_user)
     @event.save
 
@@ -54,7 +50,7 @@ class EventsController < ApplicationController
     @event.assos = params[:assos] ? Asso.find(params[:assos]) : []
 
     if @event.save
-      redirect_to(@event, :notice => t('c.create'))
+      redirect_to(@event, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -64,7 +60,7 @@ class EventsController < ApplicationController
     @event.assos = params[:assos] ? Asso.find(params[:assos]) : []
 
     if @event.update_attributes(params[:event])
-      redirect_to(@event, :notice => t('c.update'))
+      redirect_to(@event, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

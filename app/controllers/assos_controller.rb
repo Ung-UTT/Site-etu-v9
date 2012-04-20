@@ -21,8 +21,6 @@ class AssosController < ApplicationController
   end
 
   def join
-    @asso = Asso.find(params[:id])
-
     if current_user.is_member_of? @asso
       redirect_to @asso, :notice => t('c.assos.already_join')
     else
@@ -35,8 +33,6 @@ class AssosController < ApplicationController
   end
 
   def disjoin
-    @asso = Asso.find(params[:id])
-
     unless current_user.assos.include?(@asso)
       redirect_to @asso, :notice => t('c.assos.already_disjoin')
     else

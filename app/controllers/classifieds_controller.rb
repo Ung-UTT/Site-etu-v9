@@ -3,7 +3,7 @@ class ClassifiedsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @classifieds = Classified.order('created_at desc').page(params[:page])
+    @classifieds = @classifieds.order('created_at desc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,7 +31,7 @@ class ClassifiedsController < ApplicationController
     @classified.user = current_user
 
     if @classified.save
-      redirect_to(@classified, :notice => t('c.create'))
+      redirect_to(@classified, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -39,7 +39,7 @@ class ClassifiedsController < ApplicationController
 
   def update
     if @classified.update_attributes(params[:classified])
-      redirect_to(@classified, :notice => t('c.update'))
+      redirect_to(@classified, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

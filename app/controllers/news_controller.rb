@@ -3,7 +3,7 @@ class NewsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @news = News.visible.page(params[:page])
+    @news = @news.visible.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,15 +35,15 @@ class NewsController < ApplicationController
     @news.user = current_user
 
     if @news.save
-      redirect_to(@news, :notice => t('c.create'))
+      redirect_to(news_index_url, :notice => t('c.created_but_not_moderated'))
     else
       render :action => "new"
     end
   end
 
   def update
-    if update_attributes_with_roles
-      redirect_to(@news, :notice => t('c.update'))
+    if @news.update_attributes(params[:news])
+      redirect_to(@news, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

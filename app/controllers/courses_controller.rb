@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
 
   def create
     if @course.save
-      redirect_to(@course, :notice => t('c.create'))
+      redirect_to(@course, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -35,7 +35,7 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update_attributes(params[:course])
-      redirect_to(@course, :notice => t('c.update'))
+      redirect_to(@course, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

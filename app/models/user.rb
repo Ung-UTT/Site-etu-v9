@@ -107,12 +107,12 @@ class User < ActiveRecord::Base
 
   # Associations = associations dans lesquelles l'utilisateur a un rôle
   def assos
-    self.roles.map(&:asso).compact.uniq
+    roles.map(&:asso).compact.uniq
   end
 
   # Cours = cours dans lesquels l'utilisateur participe à une horaire
   def courses
-    self.timesheets.map(&:course).compact.uniq
+    timesheets.map(&:course).compact.uniq
   end
 
   def become_a! role
@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
 
   # Est-ce qu'il est membre d'une association
   def is_member_of?(asso)
-    self.assos.include?(asso)
+    assos.include?(asso)
   end
 
   # Est-ce qu'il a le rôle (éventuelement dans le cadre d'une association)
@@ -141,10 +141,6 @@ class User < ActiveRecord::Base
   def student?; is?(:student) end
   def moderator?; is?(:moderator) end
   def administrator?; is?(:administrator) end
-
-  def role_list
-    roles.map(&:name).map(&:to_sym)
-  end
 
   # Emploi du temps
   def schedule

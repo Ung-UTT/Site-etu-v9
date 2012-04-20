@@ -20,14 +20,14 @@ class PollsController < ApplicationController
   end
 
   def new
-    5.times { @poll.answers.build } # Permet de créer 5 réponses d'un coup
+    Poll::MAX_ANSWERS.times { @poll.answers.build }
   end
 
   def edit
     # Au moins un formulaire de réponse
     @poll.answers.build
-    if @poll.answers.size < 5
-      (5 - @poll.answers.size).times { @poll.answers.build }
+    if @poll.answers.size < Poll::MAX_ANSWERS
+      (Poll::MAX_ANSWERS - @poll.answers.size).times { @poll.answers.build }
     end
   end
 
@@ -35,7 +35,7 @@ class PollsController < ApplicationController
     @poll.user = current_user
 
     if @poll.save
-      redirect_to @poll, :notice => t('c.create')
+      redirect_to @poll, :notice => t('c.created')
     else
       render :action => "new"
     end
@@ -43,7 +43,7 @@ class PollsController < ApplicationController
 
   def update
     if @poll.update_attributes(params[:poll])
-      redirect_to @poll, :notice => t('c.update')
+      redirect_to @poll, :notice => t('c.updated')
     else
       render :action => "edit"
     end

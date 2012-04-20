@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
 
   attr_accessible :name, :description, :location, :start_at, :end_at
   validates_presence_of :name
+  validate :start_at_cannot_be_after_end_at
 
   default_scope :order => 'start_at DESC'
   has_paper_trail
@@ -22,13 +23,19 @@ class Event < ActiveRecord::Base
   # Enlève les participations des utilisateurs à l'événement supprimé
   before_destroy do self.users.delete_all end
 
+  def start_at_cannot_be_after_end_at
+    unless start_at.blank? or end_at.blank?
+      errors.add(:end_at, "can't be before the start") if start_at > end_at
+    end
+  end
+
   # Traduit l'événement en un hash exploitable par FullCalendar
   def to_fullcalendar
-    return { 'title' => name,
-             'start_at' => start_at,
-             'end_at' => end_at,
-             'object' => self,
-             'alt' => name }
+    { 'title' => name,
+       'start_at' => start_at,
+       'end_at' => end_at,
+       'object' => self,
+       'alt' => name }
   end
 
   def self.make_agenda

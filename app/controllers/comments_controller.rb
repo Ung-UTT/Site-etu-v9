@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     # Commentaires anonymes sur les UVs
     @comment.user = current_user unless @commentable.class == Course
     if @comment.save
-      flash[:notice] = t('c.create')
+      flash[:notice] = t('c.created')
     end
     redirect_to @commentable
   end

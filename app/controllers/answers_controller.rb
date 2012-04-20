@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
 
   def create
     if @answer.save
-      redirect_to @answer.poll, :notice => t('c.create')
+      redirect_to @answer.poll, :notice => t('c.created')
     else
       render :action => "new"
     end

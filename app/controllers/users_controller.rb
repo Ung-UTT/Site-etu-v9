@@ -4,10 +4,10 @@ class UsersController < ApplicationController
 
   def index
     if params[:q].nil?
-      @users = User.page(params[:page])
+      @users = @users.page(params[:page])
     else
       # Recherche simple dans le trombi
-      @users = User.search(params[:q])
+      @users = @users.search(params[:q])
       @users = Kaminari::paginate_array(@users).page(params[:page]).per(100)
     end
 
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   def create
     if @user.save
       cookies[:auth_token] = @user.auth_token
-      redirect_to(:root, :notice => t('c.create'))
+      redirect_to(:root, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      redirect_to(@user, :notice => t('c.update'))
+      redirect_to(@user, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

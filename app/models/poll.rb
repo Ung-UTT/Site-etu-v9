@@ -1,5 +1,7 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :name, :description
+  MAX_ANSWERS = 5
+
+  attr_accessible :name, :description, :answers_attributes
   validates_presence_of :name
 
   belongs_to :user
@@ -18,6 +20,6 @@ class Poll < ActiveRecord::Base
 
   # Trouve le vote de l'utilisateur
   def vote_of(user)
-    vote = votes.select{ |v| v.user_id == user.id}.first
+    vote = votes.detect{ |v| v.user_id == user.id }
   end
 end

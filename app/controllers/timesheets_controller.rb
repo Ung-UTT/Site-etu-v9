@@ -37,7 +37,7 @@ class TimesheetsController < ApplicationController
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     if @timesheet.save
-      redirect_to(@timesheet, :notice => t('c.create'))
+      redirect_to(@timesheet, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -47,7 +47,7 @@ class TimesheetsController < ApplicationController
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     if @timesheet.update_attributes(params[:timesheet])
-      redirect_to(@timesheet, :notice => t('c.update'))
+      redirect_to(@timesheet, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

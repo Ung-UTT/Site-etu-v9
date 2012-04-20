@@ -17,9 +17,6 @@ class RolesController < ApplicationController
   end
 
   def join
-    @role = Role.find(params[:id])
-    @user = User.find(params[:users])
-
     if @role.users.include?(@user)
       redirect_to @role, :notice => t('c.roles.already_join')
     else
@@ -29,14 +26,6 @@ class RolesController < ApplicationController
   end
 
   def disjoin
-    @role = Role.find(params[:id])
-
-    # Ne peut que supprimer sa partition aux rôles (sauf si il a du pouvoir)
-    if params[:user_id].to_i != current_user.id
-      authorize! :destroy, @role
-    end
-
-    @user = User.find(params[:user_id])
     @role.users.delete(@user)
 
     redirect_to @role, :notice => t('c.roles.disjoin')
@@ -50,7 +39,7 @@ class RolesController < ApplicationController
 
   def create
     if @role.save
-      redirect_to(@role, :notice => t('c.create'))
+      redirect_to(@role, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -58,7 +47,7 @@ class RolesController < ApplicationController
 
   def update
     if @role.update_attributes(params[:role])
-      redirect_to(@role, :notice => t('c.update'))
+      redirect_to(@role, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

@@ -58,9 +58,12 @@ fr:
     list: "Covoiturages"
     description: "Description"
     departure: "Départ"
+    from: "de"
     arrival: "Arrivée"
+    to: "à"
     date: "Date"
     is_driver: "Conducteur ?"
+    user: "Qui"
     drivers: "Conducteurs"
     passengers: "Passagers"
 
@@ -120,6 +123,7 @@ fr:
     name: "Nom"
     description: "Description"
     user: "Auteur"
+    vote: "Voter"
 
   preferences:
     list: "Vos préférences"
@@ -148,7 +152,7 @@ fr:
     parent: "Parent"
     users: "Utilisateurs"
     default:
-      admin: "Administrateur"
+      administrator: "Administrateur"
       moderator: "Moderateur"
 
   timesheets:
@@ -173,6 +177,7 @@ fr:
     remember_me: "Se souvenir de moi"
     add: "Créer un compte"
     count:
+      zero: "Aucun utilisateur"
       one: "Un utilisateur"
       other: "%{count} utilisateurs"
     assos: "President des assocations"

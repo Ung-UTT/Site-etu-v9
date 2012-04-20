@@ -34,7 +34,7 @@ class AnnalsController < ApplicationController
 
   def create
     if @annal.save
-      redirect_to(@annal, :notice => t('c.create'))
+      redirect_to(@annal, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -42,7 +42,7 @@ class AnnalsController < ApplicationController
 
   def update
     if @annal.update_attributes(params[:annal])
-      redirect_to(@annal, :notice => t('c.update'))
+      redirect_to(@annal, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

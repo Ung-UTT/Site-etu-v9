@@ -9,16 +9,10 @@
   </p>
 
   <% if @vote %>
-  <ul class="list-with-delete poll">
+  <ul class="poll">
     <% @poll.answers.each do |answer| %>
     <li>
-      <span class="answer">
-        <% if @vote.answer == answer %>
-          <%= button_to_delete('x ' + answer.content, @vote) %>
-        <% else %>
-          <%= answer.content %>
-        <% end %>
-      </span>
+      <span class="answer"><%= answer.content %></span>
       <span class="count"><%= answer.votes.size %></span>
       <span class="index" style="width: <%= answer.percent %>%"></span>
     </li>
@@ -33,7 +27,7 @@
         <%= f.label :"answer_id_#{answer.id}", answer.content %>
       </li>
       <% end %>
-      <li><%= f.submit t('common.submit') %></li>
+      <li><%= f.submit t('polls.vote') %></li>
     </ul>
     <% end %>
   <% end %>

@@ -26,7 +26,7 @@ class QuotesController < ApplicationController
 
   def create
     if @quote.save
-      redirect_to(@quote, :notice => t('c.create'))
+      redirect_to(@quote, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -34,7 +34,7 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update_attributes(params[:quote])
-      redirect_to(@quote, :notice => t('c.update'))
+      redirect_to(@quote, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

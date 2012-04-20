@@ -9,10 +9,10 @@ class Ability
     can :read, [Classified, Asso, Event, Quote]
     can :read, News, :is_moderated => true
     can :read, Document do |obj|
-      !obj.documentable.nil? and can?(:read, obj.documentable)
+      obj.documentable and can?(:read, obj.documentable)
     end
     can :read, Comment do |obj|
-      !obj.commentable.nil? and can?(:read, obj.commentable)
+      obj.commentable and can?(:read, obj.commentable)
     end
 
     # Si c'est un visiteur anonyme
@@ -26,35 +26,42 @@ class Ability
       end
 
       if user.student? # UTTiens ou anciens
-        can :read, [Answer, Course, User]
+        can :read, [Answer, Course, User, Timesheet]
         can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
-        can :create, News
-
-        can [:create, :update, :destroy], Role do |asso|
-          asso.nil? and asso.owner_id == user.id
+        can :create, News do |news|
+          !news.is_moderated
         end
 
-        can [:read, :update], Preference, :user_id => user.id
+        can :create, Role do |role|
+          role.asso.nil? and role.parent.nil?
+        end
+        can :update, Role do |role|
+          role.asso and role.asso.owner == user
+        end
 
-        can [:join, :disjoin], [Event, Asso]
-        can :disjoin, Role # cf dans le controlleur : ce doit être son rôle
+        can [:read, :update], Preference, user: user
+
+        can [:join, :disjoin], Event
+        can :join, Asso
+        can :disjoin, Asso, owner: !user
+        # can :disjoin, Role # cf dans le controlleur : ce doit être son rôle
 
         # On ne garde pas l'identité de celui qui met l'annale en ligne,
         # donc elles appartiennent à tout le monde
         can :update, Annal
 
         # L'auteur peut mettre à jour et supprimer ses contenus
-        can [:update, :destroy], [Carpool, Classified, News, Poll, Quote, Vote], :user_id => user.id
-        can [:update, :destroy], [Asso, Project, Event], :owner_id => user.id
-        can [:update, :destroy], User, :id => user.id
+        can [:update, :destroy], [Carpool, Classified, News, Poll, Quote], user: user
+        can [:update, :destroy], [Asso, Project, Event], owner: user
+        can :update, User, id: user.id
         can [:create, :destroy], Answer do |answer|
-          !answer.poll.nil? and can?(:update, answer.poll)
+          answer.poll and can?(:update, answer.poll)
         end
         can [:create, :destroy], Document do |doc|
-          !doc.documentable.nil? and can?(:update, doc.documentable)
+          doc.documentable and can?(:update, doc.documentable)
         end
 
-        can :destroy, Comment, :user_id => user.id
+        # can :destroy, Comment, user: user
 
         can :manage, Wiki do |wiki|
           # Pas de rôle (public) ou l'utisateur le rôle requis

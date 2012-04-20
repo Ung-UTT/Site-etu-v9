@@ -20,8 +20,6 @@ class ProjectsController < ApplicationController
   end
 
   def join
-    @project = Project.find(params[:id])
-
     if @project.users.include?(current_user)
       redirect_to @project, :notice => t('c.projects.already_join')
     else
@@ -32,8 +30,6 @@ class ProjectsController < ApplicationController
   end
 
   def disjoin
-    @project = Project.find(params[:id])
-
     unless current_user.projects.include?(@project)
       redirect_to @project, :notice => t('c.projects.already_disjoin')
     else
@@ -52,7 +48,7 @@ class ProjectsController < ApplicationController
     @project.owner = current_user
 
     if @project.save
-      redirect_to(@project, :notice => t('c.create'))
+      redirect_to(@project, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -60,7 +56,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(params[:project])
-      redirect_to(@project, :notice => t('c.update'))
+      redirect_to(@project, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

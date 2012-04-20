@@ -1,16 +1,20 @@
 <section class="content">
   <%= title t('roles.list') %>
 
-  <ul>
-  <% @roles.each do |role| %>
-    <li>
-      <%= link_to role do %>
-        <%= t('roles.default.'+role.name, :default => role.name) %>
-        <%= (role.asso ? " (#{role.asso.name})" : '') %>
-      <% end %>
-    </li>
+  <% nested_set_options(Role) { |role| [role, role.level] }.each do |(role,level), id| %>
+    <p style="padding-left: <%= level * 15 %>px">
+      <%= link_to role do t("roles.default.#{role.name}", default: role.name); end %>
+      :
+      <%= "#{t('asso')} #{role.asso.name}, " if role.asso %>
+      <span title="<%= truncate(role.users.map(&:login).join(', '), length: 50) %>">
+        <%= case (count = role.users.count)
+          when 0 then t("users.count.zero")
+          when 1 then t("users.count.one")
+          else t("users.count.other", count: count)
+        end %>
+      <span>
+    </p>
   <% end %>
-  </ul>
 
   <% if can? :create, Role %>
     <ul class="actions"><li><%= link_to t('common.add'), new_role_path %></li></ul>

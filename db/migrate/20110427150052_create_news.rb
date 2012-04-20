@@ -5,7 +5,7 @@ class CreateNews < ActiveRecord::Migration
       t.text       :content
       t.references :user
       t.references :event
-      t.boolean    :is_moderated
+      t.boolean    :is_moderated, default: false
 
       t.timestamps
     end

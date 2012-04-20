@@ -1,8 +1,7 @@
 # encoding: utf-8
 class DocumentsController < ApplicationController
-  load_and_authorize_resource
-
   before_filter :find_documentable
+  load_and_authorize_resource
 
   def index
     @documents = @documentable.documents
@@ -26,7 +25,7 @@ class DocumentsController < ApplicationController
     @document = @documentable.documents.build(params[:document])
 
     if @document.save
-      flash[:notice] = t('c.create')
+      flash[:notice] = t('c.created')
     end
     redirect_to @documentable
   end

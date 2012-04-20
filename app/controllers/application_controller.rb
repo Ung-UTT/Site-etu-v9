@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
   around_filter :catch_exceptions
   # Permet de définir des variables utiles à toutes les vues
   before_filter :set_layout_vars, :set_locale
-  # CanCan doesn't know about our user roles so we need to assign attributes
-  # before its before_filter on :create action
-  # (see https://github.com/ryanb/cancan/wiki/Controller-Authorization-Example)
-  before_filter :assign_attributes_with_roles, only: :create
   # Méthode que l'on peut utiliser dans les controlleurs et dans les vues
   helper_method :'mobile?', :current_user_session, :current_user, :md
   # Chosit le layout normal ou mobile
@@ -165,44 +161,6 @@ class ApplicationController < ActionController::Base
     RDiscount.new(text,
       :filter_html, :autolink, :no_pseudo_protocols
     ).to_html.html_safe unless text.nil?
-  end
-
-  # Set all attributes that the current user is allowed to based on his roles
-  def set_attributes_with_roles action
-    raise "Action must be either :create or :update." \
-      unless [:create, :update].include? action
-
-    return if current_user.nil?
-
-    name = self.class.name.sub(/Controller\z/, '')
-    begin
-      model = name.constantize
-    rescue NameError
-      return # if there's no associated model
-    end
-    object = name.underscore
-
-    instance_variable_set(:"@#{object}", model.new) if action == :create
-
-    current_user.role_list.each do |role|
-      begin
-        instance_variable_get(:"@#{object}") \
-          .assign_attributes(params[object.to_sym], as: role)
-      rescue ActiveModel::MassAssignmentSecurity::Error
-        next
-      end
-      break
-    end
-
-    instance_variable_get(:"@#{object}").save if action == :update
-  end
-
-  def assign_attributes_with_roles
-    set_attributes_with_roles :create
-  end
-
-  def update_attributes_with_roles
-    set_attributes_with_roles :update
   end
 
   def detect_mobile?
