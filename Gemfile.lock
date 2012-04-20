@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/rubycas/rubycas-client-rails.git
+  revision: 7770e761e3416c3ddc5d326fb41ee4fc5bbc8e2a
+  specs:
+    rubycas-client-rails (0.1.1)
+      rails (>= 3.0.0)
+      rubycas-client (~> 2.3.9.rc1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -35,6 +43,7 @@ GEM
       ZenTest (~> 4.5)
     awesome_nested_set (2.1.3)
       activerecord (>= 3.0.0)
+    awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     cancan (1.6.7)
@@ -45,7 +54,7 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    childprocess (0.3.1)
+    childprocess (0.3.2)
       ffi (~> 1.0.6)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
@@ -61,7 +70,7 @@ GEM
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
-    factory_girl (3.1.0)
+    factory_girl (3.1.1)
       activesupport (>= 3.0.0)
     factory_girl_rails (3.1.0)
       factory_girl (~> 3.1.0)
@@ -83,7 +92,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.18)
-    multi_json (1.2.0)
+    multi_json (1.3.2)
     mysql2 (0.3.11)
     net-ldap (0.3.1)
     nokogiri (1.5.2)
@@ -113,8 +122,9 @@ GEM
       activesupport (= 3.2.3)
       bundler (~> 1.0)
       railties (= 3.2.3)
-    rails_best_practices (1.9.0)
+    rails_best_practices (1.9.1)
       activesupport
+      awesome_print
       colored
       erubis
       i18n
@@ -144,11 +154,8 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.9.0)
-    rubycas-client (2.2.1)
+    rubycas-client (2.3.9.rc1)
       activesupport
-    rubycas-client-rails (0.1.0)
-      rails (>= 3.0.0)
-      rubycas-client (>= 2.2.0)
     rubyzip (0.9.7)
     sass (3.1.15)
     sass-rails (3.2.5)
@@ -161,18 +168,18 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
-    sexp_processor (3.1.0)
+    sexp_processor (3.2.0)
     shoulda-matchers (1.1.0)
       activesupport (>= 3.0.0)
-    simplecov (0.6.1)
-      multi_json (~> 1.0)
+    simplecov (0.6.2)
+      multi_json (~> 1.3)
       simplecov-html (~> 0.5.3)
     simplecov-html (0.5.3)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.5)
+    sqlite3 (1.3.6)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
     thor (0.14.6)
@@ -209,8 +216,7 @@ DEPENDENCIES
   rake
   rdiscount
   rspec-rails
-  rubycas-client (= 2.2.1)
-  rubycas-client-rails
+  rubycas-client-rails!
   sass-rails
   shoulda-matchers
   simplecov
