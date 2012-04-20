@@ -16,7 +16,7 @@ fr:
 
     cas:
       already_connected: "Vous êtes déjà connecté."
-      already_exist: "Vous êtes bien connecté grâche à votre compte UTT."
+      already_exist: "Vous êtes bien connecté grâce à votre compte UTT."
       user_created: "Un compte vous a été créé."
 
     events:

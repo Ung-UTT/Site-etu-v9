@@ -19,6 +19,8 @@ class CasController < ApplicationController
         redirect_to :root, :notice => t('c.cas.already_exist')
       else # Sinon on crée un compte
         @user = User.simple_create(session[:cas_user])
+        @user.roles << Role.utt
+        @user.save!
 
         cookies[:auth_token] = @user.auth_token
         redirect_to :root, :notice => t('c.cas.user_created')

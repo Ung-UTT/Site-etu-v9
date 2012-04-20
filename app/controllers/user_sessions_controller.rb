@@ -25,10 +25,12 @@ class UserSessionsController < ApplicationController
 
   # Déconnexion
   def destroy
-    redirect_to_cas = current_user && current_user.student?
+    redirect_to_cas = current_user && current_user.utt?
+
     cookies.delete(:auth_token) # Supprime le cookie de connexion
     session[:cas_user] = nil # Supprime le cookie du CAS
     flash[:notice] = t('c.user_sessions.destroyed')
+
     if redirect_to_cas
       # Déconnexion globale du CAS (Single Sign Out)
       redirect_to Rails.application.config.rubycas.cas_base_url + '/logout?service=' + CGI::escape(root_path(:only_path => false))

@@ -1,5 +1,8 @@
 class Role < ActiveRecord::Base
-  attr_accessible :name, :asso_id
+  # List of special roles not associated to any asso nor parent
+  SPECIALS = %w(administrator moderator utt student)
+
+  attr_accessible :name, :asso_id, :parent_id
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => [:asso_id]
   validates_format_of :name, :with => /\A[a-zA-Z1-9_\- ']+\z/
@@ -19,8 +22,19 @@ class Role < ActiveRecord::Base
   before_destroy do self.users.delete_all end
 
   class << self
-    def administrator
-      Role.find(name: 'administrator', parent_id: nil, asso_id: nil)
+    def create_special_role role
+      Role.create!(name: role, parent_id: nil, asso_id: nil)
+    end
+
+    def get_special_role role
+      Role.where(name: role, parent_id: nil, asso_id: nil).first
+    end
+
+    # Defines shortcuts like Role.utt and so on
+    SPECIALS.each do |role|
+      define_method role.to_sym do
+        get_special_role role
+      end
     end
   end
 
@@ -28,3 +42,4 @@ class Role < ActiveRecord::Base
     name + (asso ? " (#{asso.name})" : '')
   end
 end
+

@@ -138,10 +138,6 @@ class User < ActiveRecord::Base
     !res.empty?
   end
 
-  def student?; is?(:student) end
-  def moderator?; is?(:moderator) end
-  def administrator?; is?(:administrator) end
-
   # Emploi du temps
   def schedule
     Timesheet.make_schedule(self.timesheets)
@@ -164,5 +160,12 @@ class User < ActiveRecord::Base
     end
 
     @cached_real_name
+  end
+
+  # Define helpers like user.utt? for special roles
+  Role::SPECIALS.each do |role|
+    define_method(:"#{role}?") do
+      roles.include? Role.get_special_role(role)
+    end
   end
 end
