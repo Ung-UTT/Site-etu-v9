@@ -13,6 +13,12 @@
 </head>
 
 <body>
+  <% unless current_user %>
+    <%= link_to cas_new_path, {class: 'connect', title: t('user_sessions.cas')} do %>
+      <%= image_tag('others/connect.png') %>
+    <% end %>
+  <% end %>
+
   <%= link_to :root, :class => 'banner' do %>
     <%= image_tag 'others/banner.jpg' %>
   <% end %>
