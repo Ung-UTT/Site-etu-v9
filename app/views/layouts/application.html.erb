@@ -6,7 +6,12 @@
 
   <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
 
-  <%= stylesheet_link_tag :all %>
+  <% if mobile? %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= stylesheet_link_tag :mobile %>
+  <% else %>
+    <%= stylesheet_link_tag :all %>
+  <% end %>
 
   <%= csrf_meta_tag %>
 </head>
@@ -27,85 +32,99 @@
     Merci ! &#9786;
   </p>
 
-  <ul id="topbar" class="illustrated">
-    <li class="logo">
-      <%= link_to image_tag('others/logo.png'), :root, :title => t('layout.home') %>
-    </li>
-    <li class="users">
-      <%= link_to t('layout.users'), User, :title => t('layout.users_title') %>
-    </li>
-    <li class="events">
-      <%= link_to t('layout.events'), events_path, :title => t('layout.events') %>
-    </li>
-    <li class="buckutt">
-      <%= link_to t('layout.buckutt'), :root, :title => t('layout.buckutt_title') %>
-    </li>
-    <li class="mails">
-      <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
-    </li>
-  </ul>
+  <% if mobile? %>
+    <%= image_tag('others/logo.png', :id => 'logo') %>
+  <% else %>
+    <ul id="topbar" class="illustrated">
+      <li class="logo">
+        <%= link_to image_tag('others/logo.png'), :root, :title => t('layout.home') %>
+      </li>
+      <li class="users">
+        <%= link_to t('layout.users'), User, :title => t('layout.users_title') %>
+      </li>
+      <li class="events">
+        <%= link_to t('layout.events'), events_path, :title => t('layout.events') %>
+      </li>
+      <li class="buckutt">
+        <%= link_to t('layout.buckutt'), :root, :title => t('layout.buckutt_title') %>
+      </li>
+      <li class="mails">
+        <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
+      </li>
+    </ul>
 
-  <blockquote id="quote"><%= @random_quote.content %></blockquote>
+    <blockquote id="quote"><%= @random_quote.content %></blockquote>
+  <% end %>
 
-  <ul id="sidebar">
-    <li class="box">
-      <% if current_user %>
-        <%= render :partial => 'user_sessions/menu' %>
-      <% else %>
-        <%= render :partial => 'user_sessions/login' %>
+  <% unless mobile? and !current_page?(root_url) %>
+    <ul id="sidebar">
+      <li class="box">
+        <% if current_user %>
+          <h2><%= link_to current_user.real_name, current_user %></h2>
+          <ul>
+            <% unless current_user.timesheets.empty? %>
+              <li><%= link_to t('layout.schedule'), url_for(current_user) + '#edt' %></li>
+            <% end %>
+            <li><%= link_to t('user_sessions.logout'), :logout %></li>
+          </ul>
+        <% else %>
+          <ul>
+            <li><%= link_to t('user_sessions.login'), login_path %></li>
+          </ul>
+        <% end %>
+      </li>
+
+      <li class="box">
+        <h2><%= t('layout.content') %></h2>
+        <ul class="illustrated">
+          <li class="timesheets"><%= link_to t('layout.timesheets'), timesheets_path %></li>
+          <li class="users"><%= link_to t('layout.users'), users_path %></li>
+          <li class="annals"><%= link_to t('layout.annals'), annals_path %></li>
+          <li class="classifieds"><%= link_to t('layout.classifieds'), classifieds_path %></li>
+          <li class="assos"><%= link_to t('layout.assos'), assos_path %></li>
+          <li class="events"><%= link_to t('layout.events'), events_path %></li>
+          <li class="news"><%= link_to t('layout.news'), {:controller => 'news'} %></li>
+          <li class="course"><%= link_to t('layout.course'), courses_path %></li>
+          <li class="wiki"><%= link_to t('layout.wiki'), wikis_path %></li>
+        </ul>
+      </li>
+
+      <li class="box">
+        <h2><%= t('layout.services') %></h2>
+        <ul class="illustrated">
+          <li class="carpools"><%= link_to t('layout.carpools'), carpools_path %></li>
+          <li class="polls"><%= link_to t('layout.polls'), polls_path %></li>
+          <li class="projects"><%= link_to t('layout.projects'), projects_path %></li>
+        </ul>
+      </li>
+
+      <% if can?(:manage, Role) %>
+      <li class="box">
+        <h2><%= t('layout.admin') %></h2>
+        <ul>
+          <li><%= link_to t('layout.quotes'), quotes_path %></li>
+          <li><%= link_to t('layout.roles'), roles_path %></li>
+        </ul>
+      </li>
       <% end %>
-    </li>
 
-    <li class="box">
-      <h2><%= t('layout.content') %></h2>
-      <ul class="illustrated">
-        <li class="timesheets"><%= link_to t('layout.timesheets'), timesheets_path %></li>
-        <li class="users"><%= link_to t('layout.users'), users_path %></li>
-        <li class="annals"><%= link_to t('layout.annals'), annals_path %></li>
-        <li class="classifieds"><%= link_to t('layout.classifieds'), classifieds_path %></li>
-        <li class="assos"><%= link_to t('layout.assos'), assos_path %></li>
-        <li class="events"><%= link_to t('layout.events'), events_path %></li>
-        <li class="news"><%= link_to t('layout.news'), {:controller => 'news'} %></li>
-        <li class="course"><%= link_to t('layout.course'), courses_path %></li>
-        <li class="wiki"><%= link_to t('layout.wiki'), wikis_path %></li>
-      </ul>
-    </li>
-
-    <li class="box">
-      <h2><%= t('layout.services') %></h2>
-      <ul class="illustrated">
-        <li class="carpools"><%= link_to t('layout.carpools'), carpools_path %></li>
-        <li class="polls"><%= link_to t('layout.polls'), polls_path %></li>
-        <li class="projects"><%= link_to t('layout.projects'), projects_path %></li>
-      </ul>
-    </li>
-
-    <% if can?(:manage, Role) %>
-    <li class="box">
-      <h2><%= t('layout.admin') %></h2>
-      <ul>
-        <li><%= link_to t('layout.quotes'), quotes_path %></li>
-        <li><%= link_to t('layout.roles'), roles_path %></li>
-      </ul>
-    </li>
-    <% end %>
-
-    <li class="box">
-      <h2><%= t('layout.extern_links') %></h2>
-      <ul>
-        <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
-        <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
-        <li><%= link_to 'Sports', 'http://www-suaps.utt.fr' %></li>
-        <li><%= link_to 'BDE', 'http://bde.utt.fr' %></li>
-        <li><%= link_to 'Gala', 'http://gala.utt.fr' %></li>
-        <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
-        <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
-        <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
-        <li><%= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique' %></li>
-        <li><%= link_to "N'UTT", 'http://etu.utt.fr/journal' %></li>
-      </ul>
-    </li>
-  </ul>
+      <li class="box">
+        <h2><%= t('layout.extern_links') %></h2>
+        <ul>
+          <li><%= link_to 'UTT', 'http://www.utt.fr' %></li>
+          <li><%= link_to 'ENT', 'http://ent.utt.fr' %></li>
+          <li><%= link_to 'Sports', 'http://www-suaps.utt.fr' %></li>
+          <li><%= link_to 'BDE', 'http://bde.utt.fr' %></li>
+          <li><%= link_to 'Gala', 'http://gala.utt.fr' %></li>
+          <li><%= link_to 'Intégration', 'http://integration.utt.fr' %></li>
+          <li><%= link_to 'La roue verte', 'http://laroueverte.utt.fr' %></li>
+          <li><%= link_to 'UTT Arena', 'http://uttarena.org' %></li>
+          <li><%= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique' %></li>
+          <li><%= link_to "N'UTT", 'http://etu.utt.fr/journal' %></li>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
 
   <section id="contents">
     <% unless notice.nil? %>
@@ -120,7 +139,12 @@
   </section>
 
   <ul id="footer">
-    <li><a href="?mobile=true"><%= t('layout.mobile') %></a></li>
+    <% if mobile? %>
+      <li><a href="?mobile=false"><%= t('layout.desktop') %></a></li>
+    <% else %>
+      <li><a href="?mobile=true"><%= t('layout.mobile') %></a></li>
+    <% end %>
+
     <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
     <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
     <li><%= link_to t('layout.rules'), {:controller => :home, :action => :rules} %></li>

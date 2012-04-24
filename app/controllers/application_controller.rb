@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_layout_vars, :set_locale
   # Méthode que l'on peut utiliser dans les controlleurs et dans les vues
   helper_method :'mobile?', :current_user_session, :current_user, :md
-  # Chosit le layout normal ou mobile
-  layout :which_layout
 
   # Gére les erreurs 404
   def render_not_found
@@ -132,11 +130,6 @@ class ApplicationController < ActionController::Base
     end
 
     return @is_mobile
-  end
-
-  # Le layout dépend juste du type de support (mobile ou pas)
-  def which_layout
-    mobile? ? 'mobile' : 'application'
   end
 
   # Retourne l'utilisateur actuel (si il y en a un)
