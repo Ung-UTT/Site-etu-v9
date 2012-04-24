@@ -13,7 +13,6 @@
 
 .basic-link {
   color: $base - #333;
-  text-decoration: none;
 
   &:hover { text-decoration: underline; }
 }
@@ -81,48 +80,11 @@ body {
   }
 
   li {
+    // Voir .illustrated pour le reste
     display: inline-block;
     margin: 8px 0;
 
-    a {
-      background: url('icons.png') no-repeat;
-      padding: 10px 15px 10px 36px;
-    }
-  }
-
-  li.logo {
-    margin: 0;
-    margin-right: 20px;
-    padding-right: 20px;
-    border-right: solid 1px ($fond - #333);
-
-    a {
-      background-position: -1000px 0;
-
-      &:hover {
-        background-position: 0 -33.7px*4;
-      }
-    }
-  }
-
-  li.users a {
-    background-position: 0 0;
-  }
-
-  li.events a {
-    background-position: 0 -33.7px*6;
-  }
-
-  li.classifieds a {
-    background-position: 0 -33.7px*8;
-  }
-
-  li.buckutt a {
-    background-position: 0 -33.7px*9;
-  }
-
-  li.mails a {
-    background-position: 0 -33.7px*2;
+    a { padding: 10px 15px 10px 36px; }
   }
 }
 
@@ -150,6 +112,13 @@ body {
 
       li { padding: 2px; }
     }
+
+    ul.illustrated {
+      li a {
+        display: block;
+        padding: 10px 15px 10px 36px;
+      }
+    }
   }
 }
 
@@ -169,4 +138,47 @@ body {
       color: white;
     }
   }
+}
+
+ul.illustrated {
+  li a {
+    background: url('icons.png') no-repeat;
+  }
+
+  li.logo {
+    margin: 0;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: solid 1px ($fond - #333);
+
+    a {
+      background-position: -1000px 0;
+
+      &:hover {
+        background-position: 0 -33.7px*4;
+      }
+    }
+  }
+
+  li.users a { background-position: 0 0; }
+
+  li.timesheets a { background-position: 0 -33.7px*1; }
+
+  li.mails a { background-position: 0 -33.7px*2; }
+
+  li.logout a { background-position: 0 -33.7px*3; }
+
+  // Le quatrième c'est le logo de page d'accueil
+
+  li.wiki a { background-position: 0 -33.7px*5; }
+
+  li.events a { background-position: 0 -33.7px*6; }
+
+  li.courses a { background-position: 0 -33.7px*7; }
+
+  li.classifieds a { background-position: 0 -33.7px*8; }
+
+  li.buckutt a { background-position: 0 -33.7px*9; }
+
+  li.annals a { background-position: 0 -33.7px*9; }
 }

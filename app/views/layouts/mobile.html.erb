@@ -49,25 +49,25 @@
 
     <li class="box">
       <h2><%= t('layout.content') %></h2>
-      <ul>
-        <li><%= link_to t('layout.timesheets'), timesheets_path %></li>
-        <li><%= link_to t('layout.users'), users_path %></li>
-        <li><%= link_to t('layout.annals'), annals_path %></li>
-        <li><%= link_to t('layout.classifieds'), classifieds_path %></li>
-        <li><%= link_to t('layout.assos'), assos_path %></li>
-        <li><%= link_to t('layout.events'), events_path %></li>
-        <li><%= link_to t('layout.news'), {:controller => 'news'} %></li>
-        <li><%= link_to t('layout.course'), courses_path %></li>
-        <li><%= link_to t('layout.wiki'), wikis_path %></li>
+      <ul class="illustrated">
+        <li class="timesheets"><%= link_to t('layout.timesheets'), timesheets_path %></li>
+        <li class="users"><%= link_to t('layout.users'), users_path %></li>
+        <li class="annals"><%= link_to t('layout.annals'), annals_path %></li>
+        <li class="classifieds"><%= link_to t('layout.classifieds'), classifieds_path %></li>
+        <li class="assos"><%= link_to t('layout.assos'), assos_path %></li>
+        <li class="events"><%= link_to t('layout.events'), events_path %></li>
+        <li class="news"><%= link_to t('layout.news'), {:controller => 'news'} %></li>
+        <li class="course"><%= link_to t('layout.course'), courses_path %></li>
+        <li class="wiki"><%= link_to t('layout.wiki'), wikis_path %></li>
       </ul>
     </li>
 
     <li class="box">
       <h2><%= t('layout.services') %></h2>
-      <ul>
-        <li><%= link_to t('layout.carpools'), carpools_path %></li>
-        <li><%= link_to t('layout.polls'), polls_path %></li>
-        <li><%= link_to t('layout.projects'), projects_path %></li>
+      <ul class="illustrated">
+        <li class="carpools"><%= link_to t('layout.carpools'), carpools_path %></li>
+        <li class="polls"><%= link_to t('layout.polls'), polls_path %></li>
+        <li class="projects"><%= link_to t('layout.projects'), projects_path %></li>
       </ul>
     </li>
 
