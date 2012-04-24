@@ -23,15 +23,6 @@
     <% end %>
   <% end %>
 
-  <p id="beta">
-    Salut visiteur égaré, ce site est toujours en développement, toutes tes
-    actions ici seront perdues. Cependant, tu es chaleureusement encouragé à le
-    tester et rapporter tout bug ou idée d'amélioration via
-    <a href="mailto:ung+site-etu-v9@utt.fr">ung@utt.fr</a> ou directement sur
-    <a href="https://github.com/Ung-UTT/Site-etu-v9/issues">Github</a>.
-    Merci ! &#9786;
-  </p>
-
   <% if mobile? %>
     <%= image_tag('others/logo.png', :id => 'logo') %>
   <% else %>
@@ -52,6 +43,16 @@
         <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
       </li>
     </ul>
+
+    <p id="beta">
+      <a href="#" title="Cacher ce truc" style="float: right" onclick="$('#beta').fadeOut()">[X]</a>
+      Salut visiteur égaré, ce site est toujours en développement, toutes tes
+      actions ici seront perdues. Cependant, tu es chaleureusement encouragé à le
+      tester et rapporter tout bug ou idée d'amélioration via
+      <a href="mailto:ung+site-etu-v9@utt.fr">ung@utt.fr</a> ou directement sur
+      <a href="https://github.com/Ung-UTT/Site-etu-v9/issues">Github</a>.
+      Merci ! &#9786;
+    </p>
 
     <blockquote id="quote"><%= @random_quote.content %></blockquote>
   <% end %>
