@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/rubycas/rubycas-client-rails.git
   revision: 7770e761e3416c3ddc5d326fb41ee4fc5bbc8e2a
+  ref: 7770e761
   specs:
     rubycas-client-rails (0.1.1)
       rails (>= 3.0.0)

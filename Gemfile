@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rake'
 gem 'rails'
 
-gem 'rubycas-client-rails', :git => 'https://github.com/rubycas/rubycas-client-rails.git'
+gem 'rubycas-client-rails', :git => 'https://github.com/rubycas/rubycas-client-rails.git', :ref => '7770e761'
 
 gem 'bcrypt-ruby', :require => 'bcrypt' # Chiffrement des mots de passe
 gem 'dynamic_form' # Rend les formulaires plus lisibles
