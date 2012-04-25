@@ -201,9 +201,11 @@ fr:
     room: "Salle"
 
   user_sessions:
-    login: "Si tu n'as pas de compte UTT"
     logout: "Se déconnecter"
-    cas: "Connexion"
+    connection:
+      alternative: "Pas de compte UTT ?"
+      alternative_title: "Connexion alternative"
+      cas_title: "Connexion UTT"
 
   votes:
     count:

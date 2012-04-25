@@ -19,9 +19,12 @@
 <body>
   <div id="topbar">
     <% unless current_user %>
-      <%= link_to cas_new_path, {id: 'connect', title: t('user_sessions.cas')} do %>
-        <%= image_tag('others/connect.png') %>
-      <% end %>
+      <ul id="connect">
+        <li><%= link_to cas_new_path, {class: 'cas', title: t('user_sessions.connection.cas_title')} do %>
+          <%= image_tag('others/connect.png') %>
+        <% end %></li>
+        <li><%= link_to t('user_sessions.connection.alternative'), login_path, class: 'alternative', title: t('user_sessions.connection.alternative_title') %></li>
+      </ul>
     <% end %>
 
     <% if mobile? %>
@@ -63,8 +66,8 @@
 
   <% unless mobile? and !current_page?(root_url) %>
     <ul id="sidebar">
+      <% if current_user %>
       <li class="box">
-        <% if current_user %>
           <h2><%= link_to current_user.real_name, current_user %></h2>
           <ul>
             <% unless current_user.timesheets.empty? %>
@@ -72,12 +75,8 @@
             <% end %>
             <li><%= link_to t('user_sessions.logout'), :logout %></li>
           </ul>
-        <% else %>
-          <ul>
-            <li><%= link_to t('user_sessions.login'), login_path %></li>
-          </ul>
-        <% end %>
       </li>
+      <% end %>
 
       <li class="box">
         <h2><%= t('layout.content') %></h2>
