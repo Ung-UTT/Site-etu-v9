@@ -4,7 +4,7 @@ namespace :import do
     task :insert => :environment do
       require 'net-ldap' # Sinon : undefined class/module Net::BER::
 
-      DB_FILE = Rails.root.join('tmp', 'ldap.marshal')
+      DB_FILE = File.join(File.dirname(__FILE__), 'data', 'ldap.marshal')
 
       if File.exists?(DB_FILE)
         puts "Get students informations from #{DB_FILE}"
@@ -52,6 +52,8 @@ namespace :import do
 
           # Les UVs sont ajoutées via les emploi du temps
           # (Un utilisateur suit un cours si il participe à au moins une horaire)
+
+          u.become_a!(:utt) # assuming all imported users have a CAS account
 
           # Ajouter le rôle d'étudiant si il l'est
           u.become_a!(:student) if st['employeetype'] == 'student'
