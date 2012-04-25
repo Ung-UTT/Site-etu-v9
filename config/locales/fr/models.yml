@@ -4,7 +4,7 @@ fr:
   model:
     timesheet:
       week: "Semaine"
-      range: "%{short} le %{day} de %{start} à %{end} %{week}"
+      range: "%{short} le %{week_day} de %{start} à %{end} %{week}"
       short: "%{category} de %{name} en %{room}"
 
     vote:
@@ -12,5 +12,5 @@ fr:
 
   time:
     formats:
-      day: '%d'
+      week_day: '%A'
       hour: '%Hh%M'
