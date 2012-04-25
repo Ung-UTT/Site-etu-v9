@@ -17,33 +17,37 @@
 </head>
 
 <body>
-  <% unless current_user %>
-    <%= link_to cas_new_path, {class: 'connect', title: t('user_sessions.cas')} do %>
-      <%= image_tag('others/connect.png') %>
+  <div id="topbar">
+    <% unless current_user %>
+      <%= link_to cas_new_path, {id: 'connect', title: t('user_sessions.cas')} do %>
+        <%= image_tag('others/connect.png') %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <% if mobile? %>
-    <%= image_tag('others/logo.png', :id => 'logo') %>
-  <% else %>
-    <ul id="topbar" class="illustrated">
-      <li class="logo">
-        <%= link_to image_tag('others/logo.png'), :root, :title => t('layout.home') %>
-      </li>
-      <li class="users">
-        <%= link_to t('layout.users'), User, :title => t('layout.users_title') %>
-      </li>
-      <li class="events">
-        <%= link_to t('layout.events'), events_path, :title => t('layout.events') %>
-      </li>
-      <li class="buckutt">
-        <%= link_to t('layout.buckutt'), :root, :title => t('layout.buckutt_title') %>
-      </li>
-      <li class="mails">
-        <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
-      </li>
-    </ul>
+    <% if mobile? %>
+      <%= image_tag('others/logo.png', :id => 'logo') %>
+    <% else %>
+      <ul class="illustrated">
+        <li class="logo">
+          <%= link_to image_tag('others/logo.png'), :root, :title => t('layout.home') %>
+        </li>
+        <li class="users">
+          <%= link_to t('layout.users'), User, :title => t('layout.users_title') %>
+        </li>
+        <li class="events">
+          <%= link_to t('layout.events'), events_path, :title => t('layout.events') %>
+        </li>
+        <li class="buckutt">
+          <%= link_to t('layout.buckutt'), :root, :title => t('layout.buckutt_title') %>
+        </li>
+        <li class="mails">
+          <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
 
+  <% unless mobile? %>
     <p id="beta">
       <a href="#" title="Cacher ce truc" style="float: right" onclick="$('#beta').fadeOut()">[X]</a>
       Salut visiteur égaré, ce site est toujours en développement, toutes tes

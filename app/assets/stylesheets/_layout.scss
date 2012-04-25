@@ -37,12 +37,6 @@ body {
   border-radius: 5px;
 }
 
-.connect {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 #quote, #contents .content blockquote {
   padding: 5px;
   text-align: center;
@@ -54,7 +48,7 @@ body {
 }
 
 #topbar {
-  padding: 5px 5px;
+  padding: 0;
   border-bottom: 1px solid ($fond - #222);
   @include linear-gradient-top(white, $fond);
 
@@ -68,6 +62,13 @@ body {
   img {
     vertical-align: middle;
     padding: 0 5px;
+  }
+
+  #connect {
+    float: right;
+    padding: 0;
+
+    img { padding: 0; }
   }
 
   // Ne sert que s'il y a plusieurs langues d'actives
