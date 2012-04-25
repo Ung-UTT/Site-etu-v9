@@ -15,12 +15,13 @@ class Timesheet < ActiveRecord::Base
   # Temps défini par cette horaire
   def range
     t_day = I18n.l(start_at, :format => :day)
+    t_month = I18n.l(start_at, :format => :month)
     t_start_at = I18n.l(start_at, :format => :hour)
     t_end_at = I18n.l(end_at, :format => :hour)
     t_week = (week and !week.empty?) ? " (#{I18n.t('model.timesheet.week')} #{week})" : ''
 
     I18n.t('model.timesheet.range', :short => short_range, :day => t_day,
-      :start => t_start_at, :end => t_end_at, :week => t_week)
+      :month => t_month, :start => t_start_at, :end => t_end_at, :week => t_week)
   end
 
   # Description sans les heures

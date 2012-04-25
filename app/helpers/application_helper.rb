@@ -90,36 +90,12 @@ module ApplicationHelper
     return [comment.commentable, comment]
   end
 
-  def link_to_user(user)
-    if can? :read, user
-      if user.nil?
-        ''
-      elsif user.profile.nil? or user.profile.image.nil?
-        link_to user.real_name, user
-      else
-        link_to user, :title => user.real_name do
-          image_tag(user.profile.image.asset.url, :class => 'user')
-        end
-      end
-    else
-      user.nil? ? '' : user.real_name
-    end
-  end
-
-  def link_to_users(users)
-    if users.empty?
-      return t('helpers.none')
-    else
-      return users.map { |u| link_to_user u}.join(' ').html_safe
-    end
-  end
-
   # TODO: Faire un helper plus général
   def link_to_assos(object)
     if object.assos.empty?
       return t('helpers.none')
     else
-      return object.assos.map { |a| link_to a.name, a }.join(' ').html_safe
+      return object.assos.map { |a| link_to a.name, a }.join(', ').html_safe
     end
   end
 
@@ -157,9 +133,8 @@ module ApplicationHelper
   # {"MATH01" => "#231233", "LE08" => "#981822", ...}
   def map_courses_to_colors(courses)
     # Couleurs différentes, foncées
-    colors = ['#343D91', '#346F91', '#34916D', '#349143', '#599134',
-              '#899134', '#916734', '#914034', '#913457', '#91347E',
-              '#7B3491']
+    colors = ['#343D91', '#346F91', '#34916D', '#349143', '#599134', '#899134',
+              '#916734', '#914034', '#913457', '#91347E', '#7B3491']
 
     # On va associer à chaque cours une couleur
     i = 0

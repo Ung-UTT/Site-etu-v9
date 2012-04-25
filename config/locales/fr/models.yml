@@ -4,13 +4,14 @@ fr:
   model:
     timesheet:
       week: "Semaine"
-      range: "%{short} : Le %{day} de %{start} à %{end} %{week}"
-      short: "%{category} %{name} %{room}"
+      range: "%{short} le %{day} %{month} de %{start} à %{end} %{week}"
+      short: "%{category} de %{name} en %{room}"
 
     vote:
       uniqueness: "Vous ne pouvez pas voter plusieurs fois pour ce sondage"
 
   time:
     formats:
+      month: '%b'
       day: '%d'
       hour: '%Hh%M'
