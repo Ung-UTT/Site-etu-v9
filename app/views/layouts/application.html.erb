@@ -20,10 +20,15 @@
   <div id="topbar">
     <% unless current_user %>
       <ul id="connect">
-        <li><%= link_to cas_new_path, {class: 'cas', title: t('user_sessions.connection.cas_title')} do %>
-          <%= image_tag('others/connect.png') %>
-        <% end %></li>
-        <li><%= link_to t('user_sessions.connection.alternative'), login_path, class: 'alternative', title: t('user_sessions.connection.alternative_title') %></li>
+        <li>
+          <%= link_to cas_new_path, {class: 'cas', title: t('user_sessions.connection.cas_title')} do %>
+            <%= image_tag('others/connect.png') %>
+          <% end %>
+        </li>
+        <li>
+            <%= link_to t('user_sessions.connection.alternative'), login_path,
+                        {class: 'alternative', title: t('user_sessions.connection.alternative_title')} %>
+        </li>
       </ul>
     <% end %>
 
@@ -158,4 +163,5 @@
   <%= javascript_include_tag :application %>
 </body>
 </html>
+
 <!-- <%= Rails.application.config.version %> -->
