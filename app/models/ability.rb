@@ -78,5 +78,9 @@ class Ability
 
       cannot :destroy, User, id: user.id # no suicide please
     end # / user?
+
+    cannot :destroy, Role do |role|
+      Role.get_special_role(role.name) # cannot delete special roles
+    end
   end
 end

@@ -23,10 +23,12 @@ class Role < ActiveRecord::Base
 
   class << self
     def create_special_role role
+      raise "This is not a special role." unless SPECIALS.include? role
       Role.create!(name: role, parent_id: nil, asso_id: nil)
     end
 
     def get_special_role role
+      return nil unless SPECIALS.include? role
       Role.where(name: role, parent_id: nil, asso_id: nil).first
     end
 
