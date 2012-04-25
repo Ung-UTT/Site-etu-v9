@@ -6,7 +6,7 @@
       <%= link_to role do t("roles.default.#{role.name}", default: role.name); end %>
       :
       <%= "#{t('asso')} #{role.asso.name}, " if role.asso %>
-      <span title="<%= truncate(role.users.map(&:login).join(', '), length: 50) %>">
+      <span title="<%= truncate(role.users.map(&:login).join(', '), length: 80, separator: ',') %>">
         <%= case (count = role.users.count)
           when 0 then t("users.count.zero")
           when 1 then t("users.count.one")

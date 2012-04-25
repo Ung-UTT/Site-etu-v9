@@ -1,8 +1,8 @@
 namespace :import do
   namespace :schedules do
-    desc "Insert schedules in the database (need schedule.marhsal from convertion)"
+    desc "Insert schedules in the database (need schedule.marhsal from conversion)"
     task :insert => :environment do
-      DB_FILE = Rails.root.join('tmp', 'schedule.marshal')
+      DB_FILE = File.join(File.dirname(__FILE__), 'data', 'schedule.marshal')
 
       # Attributs dans le fichier convertit :
       #   "weekname" : T, A, B
@@ -19,7 +19,7 @@ namespace :import do
         # Ouvre le fichier en BINARY mode à cause de problèmes d'encodage
         timesheets = Marshal.load(File.open(DB_FILE, 'rb').read)
       else
-        puts "You must cconvert schedules first"
+        puts "You must convert schedules first"
         exit
       end
 
@@ -28,9 +28,6 @@ namespace :import do
       ActiveRecord::Base.transaction do # Permet d'être beaucoup plus rapide !
         timesheets.each do |ts|
           print '.'
-
-          # Horaires possibles
-          timesheets = Course.find_by_name(ts['uv']).timesheets
 
           # Créer l'horaire
           new = Timesheet.new(
@@ -46,6 +43,9 @@ namespace :import do
             # Crée le cours s'il n'existe pas
             :course => Course.find_or_create_by_name(ts['uv'])
           )
+
+          # Horaires possibles
+          timesheets = Course.find_by_name(ts['uv']).timesheets
 
           # Si l'horaire existe déjà, la choisir
           ids = [:start_at, :end_at, :week, :room, :category, :course_id]

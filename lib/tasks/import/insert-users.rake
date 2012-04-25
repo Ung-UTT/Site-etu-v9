@@ -8,7 +8,7 @@ namespace :import do
 
       if File.exists?(DB_FILE)
         puts "Get students informations from #{DB_FILE}"
-        students = Marshal.load(File.read(DB_FILE))
+        students = Marshal.load(File.open(DB_FILE, 'rb').read)
       else
         puts "You have to convert users first"
         exit
