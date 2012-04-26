@@ -5,4 +5,5 @@
 rake import:users:insert
 rake import:schedules:insert
 rake import:mysql
+rake import:files
 

@@ -10,7 +10,6 @@ class AnnalsController < ApplicationController
   end
 
   def show
-    @comments = @annal.comments
     @documents = @annal.documents
 
     respond_to do |format|
@@ -20,16 +19,11 @@ class AnnalsController < ApplicationController
   end
 
   def new
-    # Permet d'avoir des formulaires pour 5 documents
-    5.times { @annal.documents.build }
   end
 
   def edit
     # Permet d'avoir au minimum un formulaire
     @annal.documents.build
-    if @annal.documents.size < 5 # On ajoute des formulaires pour au moins 5 documents
-      (5 - @annal.documents.size).times { @annal.documents.build }
-    end
   end
 
   def create

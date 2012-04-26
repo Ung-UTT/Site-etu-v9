@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 20120330172820) do
 
   create_table "annals", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
+    t.string   "semester"
+    t.integer  "year"
+    t.string   "type"
     t.integer  "course_id"
-    t.date     "date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "annals", ["course_id"], :name => "index_annals_on_course_id"
@@ -145,9 +145,9 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "event_id"
-    t.boolean  "is_moderated"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "is_moderated", :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "news", ["event_id"], :name => "index_news_on_event_id"

@@ -1,17 +1,22 @@
 class Annal < ActiveRecord::Base
+  SEMESTERS = %w[A P] # Automne ou Printemps
+  TYPES = %w[P M F A] # Partial, Median, Final ou Autre
+
   paginates_per 50
 
-  attr_accessible :name, :description, :date
-  validates_presence_of :name
+  attr_accessible :course, :semester, :year, :type
+  validates_presence_of :course, :semester, :year, :type, :document
+  validates_inclusion_of :semester, in: SEMESTERS
+  validates_inclusion_of :type, in: TYPES
+  validates_uniqueness_of [:course, :year, :semester, :type]
 
   has_paper_trail
 
   belongs_to :course
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :documents, :as => :documentable, :dependent => :destroy
+  has_one :document, :as => :documentable, :dependent => :destroy
 
-  # Dans un formulaire d'une annale, on peut ajouter des documents
   # On ne garde que les documents qui ne pas vides
-  accepts_nested_attributes_for :documents, :allow_destroy => true,
+  accepts_nested_attributes_for :document, :allow_destroy => true,
     :reject_if => lambda { |d| d[:asset].blank? }
 end
+

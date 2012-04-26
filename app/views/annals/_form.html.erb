@@ -3,23 +3,23 @@
 
   <ul class="fields">
     <li class="field">
-      <%= f.label :name, t('annals.name') %>
-      <%= f.text_field :name %>
-    </li>
-    <li class="field">
-      <%= f.label :description, t('annals.description') %>
-      <%= f.text_area :description, :class => 'rich-content' %>
-    </li>
-    <li class="field">
       <%= f.label :course_id, t('annals.course') %>
       <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] }, {}, :class => 'chosen' %>
     </li>
     <li class="field">
-      <%= f.label :date, t('annals.date') %>
-      <%= f.date_select :date %>
+      <%= f.label :semester, t('annals.semester') %>
+      <%= f.select :semester, Annal::SEMESTERS %>
+    </li>
+    <li class="field">
+      <%= f.label :year, t('annals.year') %>
+      <%= f.select :year, (Time.now.year - 1)..Time.now.year %>
+    </li>
+    <li class="field">
+      <%= f.label :type, t('annals.type') %>
+      <%= f.select :type, Annal::TYPES %>
     </li>
 
-    <%= f.fields_for :documents do |nested_f| %>
+    <%= f.fields_for :document do |nested_f| %>
     <li class="field">
       <% if nested_f.object.new_record? %>
         <%= nested_f.label :asset, t('document') %>

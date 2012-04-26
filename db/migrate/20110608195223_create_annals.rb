@@ -1,10 +1,10 @@
 class CreateAnnals < ActiveRecord::Migration
   def change
     create_table :annals do |t|
-      t.string     :name
-      t.text       :description
+      t.string     :semester
+      t.integer    :year
+      t.string     :type
       t.references :course
-      t.date       :date
 
       t.timestamps
     end

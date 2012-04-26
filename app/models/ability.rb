@@ -26,8 +26,8 @@ class Ability
       end
 
       if user.student? # UTTiens ou anciens
-        can :read, [Answer, Course, User, Timesheet]
-        can [:read, :create], [Asso, Annal, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
+        can :read, [Annal, Answer, Course, User, Timesheet]
+        can [:read, :create], [Asso, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
         can :create, News do |news|
           !news.is_moderated
         end
@@ -45,10 +45,6 @@ class Ability
         can :join, Asso
         can :disjoin, Asso, owner: !user
         # can :disjoin, Role # cf dans le controlleur : ce doit être son rôle
-
-        # On ne garde pas l'identité de celui qui met l'annale en ligne,
-        # donc elles appartiennent à tout le monde
-        can :update, Annal
 
         # L'auteur peut mettre à jour et supprimer ses contenus
         can [:update, :destroy], [Carpool, Classified, News, Poll, Quote], user: user
@@ -70,7 +66,7 @@ class Ability
       end # / student?
 
       if user.moderator?
-        can :manage, [Asso, Answer, Annal, Carpool, Classified, Comment, Event, News, Poll, Quote]
+        can :manage, [Asso, Answer, Carpool, Classified, Comment, Event, News, Poll, Quote]
       end
       if user.administrator?
         can :manage, :all
