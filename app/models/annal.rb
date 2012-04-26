@@ -1,14 +1,14 @@
 class Annal < ActiveRecord::Base
   SEMESTERS = %w[A P] # Automne ou Printemps
-  TYPES = %w[P M F A] # Partial, Median, Final ou Autre
+  TYPES = %w[P M F A] # Partiel, Médian, Final ou Autre
 
   paginates_per 50
 
-  attr_accessible :course, :semester, :year, :type
+  attr_accessible :course, :semester, :year, :type, :document
   validates_presence_of :course, :semester, :year, :type, :document
   validates_inclusion_of :semester, in: SEMESTERS
   validates_inclusion_of :type, in: TYPES
-  validates_uniqueness_of [:course, :year, :semester, :type]
+  validates_uniqueness_of :course_id, scope: [:year, :semester, :type]
 
   has_paper_trail
 
