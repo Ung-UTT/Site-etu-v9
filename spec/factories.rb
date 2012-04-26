@@ -2,9 +2,10 @@
 
 FactoryGirl.define do
   factory :annal do
-    name "Final : What's your name?"
-    description "Basic questions"
-    date "2011-02-08"
+    semester 'P'
+    year 2012
+    type 'F'
+    course
   end
 
   factory :asso, aliases: [:club] do
@@ -30,6 +31,10 @@ FactoryGirl.define do
   factory :course do
     name "LE00"
     description "What's your name ? My name is Bond, James Bond."
+  end
+
+  factory :document do
+    asset { file_from_assets('document.pdf') }
   end
 
   factory :news do
