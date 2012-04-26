@@ -91,7 +91,7 @@ FactoryGirl.define do
 
   factory :timesheet do
     start_at { Time.now }
-    end_at { Time.now + 2.hours }
+    duration { 120 }
     category 'CM'
   end
 

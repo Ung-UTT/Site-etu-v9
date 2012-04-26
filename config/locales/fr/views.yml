@@ -159,7 +159,7 @@ fr:
     list: "Emploi du temps"
     day: "Jour"
     start_at: "Depuis"
-    end_at: "jusqu'à"
+    duration: "Durée (en minutes)"
     week: "Semaine"
     room: "Salle"
     course: "UV durant cet horaire"
@@ -196,7 +196,7 @@ fr:
     lastname: "Nom"
     level: "Niveau"
     specialization: "Filière"
-    role: "Role"
+    role: "Rôle"
     phone: "Télphone"
     room: "Salle"
 

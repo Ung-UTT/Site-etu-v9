@@ -70,7 +70,8 @@ namespace :import do
   namespace :schedules do
     desc "Insert schedules in the database (need schedule.marhsal from conversion)"
     task :insert => :environment do
-      DB_FILE = File.join(File.dirname(__FILE__), 'data', 'schedule.marshal')
+      # Dans le dossier temporaire de Rails
+      DB_FILE = Rails.root.join('tmp', 'schedule.marshal')
 
       # Attributs dans le fichier convertit :
       #   "weekname" : T, A, B
@@ -102,8 +103,9 @@ namespace :import do
             # Date du premier cours (on sait pas donc première semaine de rentrée
             :start_at => SEMESTERS.last['start_at'] + ts['day'].days +
                          ts['start'][0].hours + ts['start'][1].minutes,
-            :end_at => SEMESTERS.last['start_at'] + ts['day'].days +
-                       ts['end'][0].hours + ts['end'][1].minutes,
+            # Durée : fin - début (heures et minutes)
+            :duration => (ts['end'][0] - ts['start'][0])*60 +
+                          ts['end'][1] - ts['start'][0],
             # Semaine A, semaine B ou rien
             :week => ts['weekname'] == 'T' ? nil : ts['weekname'],
             :room => ts['room'], # Salle
@@ -116,7 +118,7 @@ namespace :import do
           timesheets = Course.find_by_name(ts['uv']).timesheets
 
           # Si l'horaire existe déjà, la choisir
-          ids = [:start_at, :end_at, :week, :room, :category, :course_id]
+          ids = [:start_at, :duration, :week, :room, :category, :course_id]
           timesheet = timesheets.detect do |t|
             ids.map{|id| t[id] == new[id]}.uniq == [true]
           end

@@ -1,8 +1,8 @@
 class Timesheet < ActiveRecord::Base
   CATEGORIES = %w(CM TD TP)
 
-  attr_accessible :start_at, :end_at, :week, :category, :room, :course
-  validates_presence_of :start_at, :end_at, :category, :course
+  attr_accessible :start_at, :duration, :week, :category, :room, :course
+  validates_presence_of :start_at, :duration, :category, :course
   validates :category, :inclusion => {:in => Timesheet::CATEGORIES}
 
   has_paper_trail
@@ -16,7 +16,7 @@ class Timesheet < ActiveRecord::Base
   def range
     t_week_day = I18n.l(start_at, :format => :week_day)
     t_start_at = I18n.l(start_at, :format => :hour)
-    t_end_at = I18n.l(end_at, :format => :hour)
+    t_end_at = I18n.l(start_at + duration.minutes, :format => :hour)
     t_week = (week and !week.empty?) ? " (#{I18n.t('model.timesheet.week')} #{week})" : ''
 
     I18n.t('model.timesheet.range', :short => short_range, :week_day => t_week_day,
@@ -33,7 +33,7 @@ class Timesheet < ActiveRecord::Base
   def to_fullcalendar
     return { 'title' => "#{course.name} #{category}\n#{room}\n#{week}",
              'start_at' => start_at,
-             'end_at' => end_at,
+             'end_at' => start_at + duration.minutes,
              'object' => self,
              'alt' => range,
              'course' => course.name }
