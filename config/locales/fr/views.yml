@@ -52,7 +52,9 @@ fr:
     roles: "Rôles de l'asso"
     events: "Évènements de l'asso"
     add_role: "Ajouter un rôle"
-    users: "Membres"
+    members: "Adhérents"
+    your_roles: "Tes rôles"
+    available_roles: "Rôles de l'asso"
 
   carpools:
     list: "Covoiturages"
@@ -113,7 +115,7 @@ fr:
     user: "Auteur"
     event: "Évènement associé"
     is_moderated: "Modérée ?"
-    moderate: "Modére-moi !"
+    moderate: "Modére moi !"
     date: "Date"
     hour: "Heure"
     comments: "Commentaires"
@@ -169,13 +171,14 @@ fr:
 
   users:
     list: "Utilisateurs"
-    login: "Pseudo"
+    login: "Login"
     email: "Email"
     password: "Mot de passe"
     password_confirmation: "Confirmation"
     password_reset: "Vous avez oublié votre mot de passe ?"
     remember_me: "Se souvenir de moi"
     add: "Créer un compte"
+    sign_in: "Connexion"
     count:
       zero: "Aucun utilisateur"
       one: "Un utilisateur"

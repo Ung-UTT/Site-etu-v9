@@ -14,9 +14,9 @@
   </p>
 
   <% if @project.users.include?(current_user) %>
-    <p><%= link_to t('projects.disjoin'), disjoin_project_path(@project), :method => 'PUT' %></p>
-  <% elsif can? :'join', Project %>
-    <p><%= link_to t('projects.join'), join_project_path(@project), :method => 'PUT' %></p>
+    <p><%= link_to t('projects.disjoin'), disjoin_project_path(@project), :method => :post %></p>
+  <% elsif can? :join, @project %>
+    <p><%= link_to t('projects.join'), join_project_path(@project), :method => :post %></p>
   <% end %>
 
   <%= render 'layouts/show_actions', {:ressource => @project} %>

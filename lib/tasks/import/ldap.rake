@@ -53,10 +53,8 @@ namespace :import do
           # Les UVs sont ajoutées via les emploi du temps
           # (Un utilisateur suit un cours si il participe à au moins une horaire)
 
-          u.become_a!(:utt) # assuming all imported users have a CAS account
-
           # Ajouter le rôle d'étudiant si il l'est
-          u.become_a!(:student) if st['employeetype'] == 'student'
+          u.add_role(:student) if st['employeetype'] == 'student'
 
           # On sauvegarde le tout
           unless u.save

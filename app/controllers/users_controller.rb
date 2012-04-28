@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def show
     respond_to do |format|
       format.html # show.html.erb
@@ -24,58 +27,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def password_reset
-    if params[:email]
-      user = User.find_by_email(params[:email])
-      if user.nil?
-        flash[:alert] = t('c.users.bad_email')
-      else
-        user.perishable_token = SecureRandom.hex
-        user.perishable_token_date = Time.now + 1.week
-        UserMailer.password_reset(user)
-        flash[:notice] = t('c.users.email_sent')
-      end
-    elsif params[:token]
-      user = User.find_by_perishable_token(params[:token])
-      if user.nil? and user.perishable_token_date > Time.now
-        flash[:alert] =  t('c.users.bad_token')
-      else
-        user.password = SecureRandom.hex(2)
-        user.password_confirmation = user.password
-        user.perishable_token = nil
-        user.perishable_token_date = nil
-        user.save
-        redirect_to :root, :notice => t('c.users.new_password', :password => user.password)
-      end
-    end
-  end
-
-  def new
-  end
-
-  def edit
-  end
-
-  def create
-    if @user.save
-      cookies[:auth_token] = @user.auth_token
-      redirect_to(:root, :notice => t('c.created'))
-    else
-      render :action => "new"
-    end
-  end
-
   def update
     if @user.update_attributes(params[:user])
-      redirect_to(@user, :notice => t('c.updated'))
+      redirect_to(root_path, :notice => t('c.updated'))
     else
       render :action => "edit"
     end
-  end
-
-  def destroy
-    @user.destroy
-
-    redirect_to(users_url)
   end
 end

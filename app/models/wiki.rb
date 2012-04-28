@@ -1,12 +1,11 @@
 class Wiki < ActiveRecord::Base
-  attr_accessible :title, :content
+  attr_accessible :title, :content, :parent_id
   validates_presence_of :title
 
   has_paper_trail
   # Arbre des pages du wiki
   acts_as_nested_set :dependent => :destroy
 
-  belongs_to :role
   has_many :documents, :as => :documentable, :dependent => :destroy
 
   # Page d'accueil (définie par la première page sans parent)

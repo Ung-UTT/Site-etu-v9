@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330172820) do
+ActiveRecord::Schema.define(:version => 20120426194809) do
 
   create_table "annals", :force => true do |t|
     t.string   "semester"
@@ -49,15 +49,14 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
 
   add_index "assos", ["owner_id"], :name => "index_assos_on_owner_id"
 
-  create_table "assos_events", :force => true do |t|
+  create_table "assos_events", :id => false, :force => true do |t|
     t.integer  "asso_id"
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "assos_events", ["asso_id"], :name => "index_assos_events_on_asso_id"
-  add_index "assos_events", ["event_id"], :name => "index_assos_events_on_event_id"
+  add_index "assos_events", ["asso_id", "event_id"], :name => "index_assos_events_on_asso_id_and_event_id"
 
   create_table "carpools", :force => true do |t|
     t.text     "description"
@@ -130,15 +129,14 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
 
   add_index "events", ["owner_id"], :name => "index_events_on_owner_id"
 
-  create_table "events_users", :force => true do |t|
+  create_table "events_users", :id => false, :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "events_users", ["event_id"], :name => "index_events_users_on_event_id"
-  add_index "events_users", ["user_id"], :name => "index_events_users_on_user_id"
+  add_index "events_users", ["event_id", "user_id"], :name => "index_events_users_on_event_id_and_user_id"
 
   create_table "news", :force => true do |t|
     t.string   "title"
@@ -205,15 +203,14 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
 
   add_index "projects", ["owner_id"], :name => "index_projects_on_owner_id"
 
-  create_table "projects_users", :force => true do |t|
+  create_table "projects_users", :id => false, :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "projects_users", ["project_id"], :name => "index_projects_users_on_project_id"
-  add_index "projects_users", ["user_id"], :name => "index_projects_users_on_user_id"
+  add_index "projects_users", ["project_id", "user_id"], :name => "index_projects_users_on_project_id_and_user_id"
 
   create_table "quotes", :force => true do |t|
     t.string   "content"
@@ -225,25 +222,14 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.integer  "asso_id"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
-  add_index "roles", ["asso_id"], :name => "index_roles_on_asso_id"
-
-  create_table "roles_users", :force => true do |t|
-    t.integer  "role_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
-  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "timesheets", :force => true do |t|
     t.datetime "start_at"
@@ -258,29 +244,42 @@ ActiveRecord::Schema.define(:version => 20120330172820) do
 
   add_index "timesheets", ["course_id"], :name => "index_timesheets_on_course_id"
 
-  create_table "timesheets_users", :force => true do |t|
-    t.integer  "timesheet_id"
-    t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "timesheets_users", :id => false, :force => true do |t|
+    t.integer "timesheet_id"
+    t.integer "user_id"
   end
 
-  add_index "timesheets_users", ["timesheet_id"], :name => "index_timesheets_users_on_timesheet_id"
-  add_index "timesheets_users", ["user_id"], :name => "index_timesheets_users_on_user_id"
+  add_index "timesheets_users", ["timesheet_id", "user_id"], :name => "index_timesheets_users_on_timesheet_id_and_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "login"
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "perishable_token"
-    t.datetime "perishable_token_date"
-    t.string   "auth_token"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.string   "login",                  :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_roles", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false

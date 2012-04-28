@@ -15,16 +15,23 @@ class CasController < ApplicationController
         redirect_to :root, :notice => t('c.cas.already_connected')
       # Si il existe déjà dans la base de données
       elsif @user = User.find_by_login(session[:cas_user])
-        cookies[:auth_token] = @user.auth_token
+        sign_in(@user)
         redirect_to :root, :notice => t('c.cas.already_exist')
       else # Sinon on crée un compte
         @user = User.simple_create(session[:cas_user])
-        @user.roles << Role.utt
         @user.save!
-
-        cookies[:auth_token] = @user.auth_token
+        sign_in(@user)
         redirect_to :root, :notice => t('c.cas.user_created')
       end
     end
+  end
+
+  def destroy
+    sign_out(@user)
+    redirect_to [
+      Rails.application.config.rubycas.cas_base_url,
+      '/logout?service=',
+      CGI::escape(root_path(:only_path => false))
+    ].join, :notice => t('c.user_sessions.destroyed')
   end
 end

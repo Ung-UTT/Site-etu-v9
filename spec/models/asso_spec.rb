@@ -2,32 +2,25 @@ require 'spec_helper'
 
 describe Asso do
   before do
-    @user = create(:user)
-    @asso = create(:asso, owner: @user)
+    @asso = create :asso
   end
 
-  it 'should have a member role' do
-    @asso.member.should_not be_nil
+  it "can add a new member" do
+    user = create :user
+    user.add_role :member, @asso
+    @asso.users.should include user
   end
 
-  it 'can delete user' do
-    @asso.member.users.should be_empty
-    @asso.users.should be_empty
-
-    @asso.member.users << @user
-
-    @asso.users.first.should == @user
-    @asso.member.users.first.should == @user
-
-    @asso.delete_user(@user)
-
-    @asso.member.users.should be_empty
-    @asso.users.should be_empty
+  it "can remove a member" do
+    user = create :user
+    user.add_role :member, @asso
+    @asso.users.should include user
+    user.remove_role :member, @asso
+    @asso.users.should_not include user
   end
 
-  it 'can have nested assos' do
+  it "can have nested assos" do
     club = create(:asso, parent: @asso)
-
     club.parent.should == @asso
     @asso.children.should include club
   end

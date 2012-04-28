@@ -11,10 +11,6 @@
       <%= f.text_area :content, :class => 'rich-content' %>
     </li>
     <li class="field">
-      <%= f.label :role_id, 'Role' %>
-      <%= f.select :role_id, parent_select_options(Role), {}, :class => 'chosen' %>
-    </li>
-    <li class="field">
       <%= f.label :parent_id, 'Parent' %>
       <%= f.select :parent_id, parent_select_options(Wiki), {}, :class => 'chosen' %>
     </li>

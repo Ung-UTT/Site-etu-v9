@@ -1,16 +1,15 @@
 class User < ActiveRecord::Base
-  attr_accessible(:login, :email, :password, :password_confirmation,
-                  :preference_attributes, :profile_attributes)
+  rolify
+  devise :database_authenticatable, :lockable, :recoverable, :rememberable,
+         :trackable, :validatable
 
-  attr_accessor :password
-  before_create :generate_token
+  attr_accessible :email, :password, :password_confirmation, :remember_me # Devise
+  attr_accessible :login, :preference_attributes, :profile_attributes
+
   after_create :create_preferences
-  before_save :encrypt_password
 
-  validates :login, :presence => true, :uniqueness => true
-  validates_uniqueness_of :login
-  validates_presence_of :password, :on => :create
-  validates_confirmation_of :password
+  validates_presence_of :login
+  validates_uniqueness_of :login, :case_sensitive => false
   validates :email, :presence => true, :format =>
     { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
@@ -40,15 +39,12 @@ class User < ActiveRecord::Base
   has_many :projects_user, :dependent => :destroy
   has_many :projects, :through => :projects_user, :uniq => true
 
-  has_many :roles_user, :dependent => :destroy
-  has_many :roles, :through => :roles_user, :uniq => true
-
   has_many :timesheets_user, :dependent => :destroy
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
   class << self
     def students
-      User.select(&:student?)
+      User.select { |user| user.has_role? :student }
     end
 
     # Recherche parmi les utilisateurs via une chaîne
@@ -67,37 +63,15 @@ class User < ActiveRecord::Base
       end.map(&:user)
     end
 
-    # Retourne l'utilisateur si le couple login/password est bon
-    def authenticate(login, password)
-      user = find_by_login(login)
-      if user && user.crypted_password == BCrypt::Engine.hash_secret(password, user.password_salt)
-        user
-      else
-        nil
-      end
-    end
-
     # Créer un utilisateur rapidement
     def simple_create(login, password = nil)
-      password ||= SecureRandom.base64
-      User.create(:login => login, :email => "#{login}@utt.fr",
-                  :password => password, :password_confirmation => password)
+      password ||= Devise.friendly_token[0,20]
+      User.create!(
+        :login => login,
+        :email => "#{login}@utt.fr",
+        :password => password
+      )
     end
-  end
-
-  # Ne stocke pas le mot de passe en clair
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.crypted_password = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-
-  # Génére le token de sécurité qui est propre à un utilisateur
-  def generate_token
-    begin
-      self.auth_token = SecureRandom.hex
-    end while User.exists?(:auth_token => self.auth_token)
   end
 
   # Préférences par défaut d'un utilisateur
@@ -105,37 +79,9 @@ class User < ActiveRecord::Base
     self.preference_attributes = { :locale => I18n.default_locale.to_s, :quote_type => 'all' }
   end
 
-  # Associations = associations dans lesquelles l'utilisateur a un rôle
-  def assos
-    roles.map(&:asso).compact.uniq
-  end
-
   # Cours = cours dans lesquels l'utilisateur participe à une horaire
   def courses
     timesheets.map(&:course).compact.uniq
-  end
-
-  def become_a! role
-    unless is?(role)
-      role = role.to_s
-      roles << (Role.find_by_name(role) || Role.create(:name => role))
-    end
-  end
-
-  # Est-ce qu'il est membre d'une association
-  def is_member_of?(asso)
-    assos.include?(asso)
-  end
-
-  # Est-ce qu'il a le rôle (éventuelement dans le cadre d'une association)
-  def is?(role, asso = nil)
-    role = role.name if role.is_a? Role
-    role = role.to_sym
-    res = self.roles.select { |r| r.name.to_sym == role }
-    if asso
-      res &= asso.roles
-    end
-    !res.empty?
   end
 
   # Emploi du temps
@@ -160,12 +106,5 @@ class User < ActiveRecord::Base
     end
 
     @cached_real_name
-  end
-
-  # Define helpers like user.utt? for special roles
-  Role::SPECIALS.each do |role|
-    define_method(:"#{role}?") do
-      roles.include? Role.get_special_role(role)
-    end
   end
 end

@@ -29,9 +29,9 @@
   </p>
 
   <% if @event.users.include?(current_user) %>
-    <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => 'PUT' %></p>
-  <% elsif can? :'join', Event %>
-    <p><%= link_to t('events.join'), join_event_path(@event), :method => 'PUT' %></p>
+    <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => :post %></p>
+  <% elsif can? :join, @event %>
+    <p><%= link_to t('events.join'), join_event_path(@event), :method => :post %></p>
   <% end %>
 
   <%= render 'layouts/show_actions', {:ressource => @event} %>

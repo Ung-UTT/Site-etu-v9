@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
 
   # Permet de récupérer les erreurs et de les traiter
   around_filter :catch_exceptions
+
+  # before_filter :authenticate_user!
   # Permet de définir des variables utiles à toutes les vues
   before_filter :set_layout_vars, :set_locale
   # Méthode que l'on peut utiliser dans les controlleurs et dans les vues
-  helper_method :'mobile?', :current_user_session, :current_user, :md
+  helper_method :'mobile?', :md
 
   # Gére les erreurs 404
   def render_not_found
@@ -25,9 +27,6 @@ class ApplicationController < ActionController::Base
   # Gére les accès refusés
   def render_access_denied(exception)
     message = t('c.application.denied')
-    if Rails.env.development?
-      message << " (#{exception.subject.to_s}##{exception.action.to_s})"
-    end
 
     logger.error '[401] ' + request.fullpath + ' | ' + message
 
@@ -35,7 +34,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => message
     else
       # Redirige vers la page de login si l'utilisateur n'est pas déjà loggé
-      redirect_to login_url, :alert => message
+      redirect_to new_user_session_url, :alert => message
     end
   end
 
@@ -98,10 +97,10 @@ class ApplicationController < ActionController::Base
   def set_layout_vars
     if current_user
       # On utilise les préférences utilisateurs pour les citations
-      @random_quote = Quote.where(:tag => current_user.preference.quote_type).random
+      @random_quote = Quote.where(tag: current_user.preference.quote_type).random
     end
     # Sinon on en prend une au hasard, et si il n'y en a pas, on en crée une vide
-    @random_quote ||= Quote.random || Quote.new
+    @random_quote ||= Quote.random || 'Qui boit la gnôle casse la bagnôle !' # oh la belle citation par défaut :P
   end
 
   # Mobile ou pas mobile ?
@@ -130,11 +129,6 @@ class ApplicationController < ActionController::Base
     end
 
     return @is_mobile
-  end
-
-  # Retourne l'utilisateur actuel (si il y en a un)
-  def current_user
-    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
 
   # Méthode pratique dans certaines classes pour trouver l'objet associé

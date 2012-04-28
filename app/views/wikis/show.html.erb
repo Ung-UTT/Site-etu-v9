@@ -3,13 +3,6 @@
 
   <%=md @wiki.content %>
 
-  <% if @wiki.role %>
-  <p>
-    <strong>Role</strong> :
-    <%= @wiki.role.name_with_asso %>
-  </p>
-  <% end %>
-
   <% unless @wiki.children.empty? %>
   <p> Pages :
     <ul>

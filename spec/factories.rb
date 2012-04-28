@@ -52,19 +52,19 @@ FactoryGirl.define do
 
     factory :student do
       after_create do |user|
-        user.become_a! :student
+        user.add_role :student
       end
     end
 
     factory :moderator do
       after_create do |user|
-        user.become_a! :moderator
+        user.add_role :moderator
       end
     end
 
     factory :administrator do
       after_create do |user|
-        user.become_a! :administrator
+        user.add_role :administrator
       end
     end
   end

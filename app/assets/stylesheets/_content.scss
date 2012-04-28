@@ -1,5 +1,4 @@
 /* Partie contenu */
-/* Partie contenu */
 
 /* Cas général */
 
@@ -64,8 +63,18 @@
     }
 
     .blocks, .pagination, p, ul, ol, img, form, table, audio, video,
-    h2, h3, h4, h5, h6, pre {
+    h2, h3, h4, h5, h6, pre, dl {
       margin: 8px;
+    }
+
+    dl {
+      dt {
+        font-weight: bold;
+        padding: 16px 0 8px;
+      }
+      dd {
+        padding: 0 10px;
+      }
     }
 
     pre { overflow: auto; }

@@ -4,10 +4,11 @@ gem 'rake'
 gem 'rails'
 
 gem 'rubycas-client-rails', :git => 'https://github.com/rubycas/rubycas-client-rails.git', :ref => '7770e761'
+gem 'devise'
+gem 'cancan'
+gem 'rolify'
 
-gem 'bcrypt-ruby', :require => 'bcrypt' # Chiffrement des mots de passe
 gem 'dynamic_form' # Rend les formulaires plus lisibles
-gem 'cancan'      # Permissions
 gem 'paperclip'   # Gestion de fichier
 gem 'kaminari'    # Pagination
 gem 'paper_trail' # Historique
@@ -31,6 +32,7 @@ group :test do
   gem 'autotest-rails'   # Lancer automatiquement les tests
   gem 'factory_girl_rails' # Fixtures suck
   gem 'capybara'
+  gem 'spork'
   gem 'simplecov'
   gem 'rails_best_practices'
 end

@@ -1,0 +1,31 @@
+<section class="content">
+  <%= title t('users.login') %>
+
+  <p class="warning">
+    Si tu es inscrit à l'UTT, connecte toi via le <%= link_to 'compte UTT', new_cas_path %>.
+    La connexion alternative sert uniquement aux anciens UTTiens.
+  </p>
+
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <ul class="fields">
+      <li class="field">
+        <%= f.label :login, t('users.login') %>
+        <%= f.text_field :login %>
+      </li>
+      <li class="field">
+        <%= f.label :password, t('users.password') %>
+        <%= f.password_field :password %>
+      </li>
+      <li class="field">
+        <%= f.label :remember_me, t('users.remember_me') %>
+        <%= f.check_box :remember_me %>
+      </li>
+      <li class="actions">
+        <%= f.submit t('common.submit') %>
+      </li>
+    </ul>
+  <% end %>
+
+  <%= render "links" %>
+</section>
+

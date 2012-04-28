@@ -4,5 +4,5 @@
 <% end %>
 <%= comment.content %>
 <% if can? :destroy, comment %>
-  <%= delete_button image_tag("icons/delete.png"), [commentable, comment] %>
+  <%= delete_button t('common.delete'), [commentable, comment] %>
 <% end %>

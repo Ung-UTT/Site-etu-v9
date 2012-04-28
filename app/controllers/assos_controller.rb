@@ -13,6 +13,16 @@ class AssosController < ApplicationController
   def show
     @comments = @asso.comments
     @documents = @asso.documents
+    @joinable_roles = Asso::DEFAULT_ROLES.collect do |role|
+      if can? :join, @asso and !current_user.has_role? role, @asso
+        [t("model.role.roles.#{role}", default: role), role]
+      end
+    end.compact
+    @disjoinable_roles = @asso.roles.map(&:name).collect do |role|
+      if can? :disjoin, @asso and current_user.has_role? role, @asso
+        [t("model.role.roles.#{role}", default: role), role]
+      end
+    end.compact
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,24 +31,22 @@ class AssosController < ApplicationController
   end
 
   def join
-    if current_user.is_member_of? @asso
-      redirect_to @asso, :notice => t('c.assos.already_join')
+    role = params[:asso][:roles]
+    if @asso.has_user? current_user, role
+      redirect_to @asso, :notice => t('c.assos.already_joined', role: t("model.role.roles.#{role}", default: role))
     else
-      # Chaque asso a un rôle membre, une fois que l'utilisateur a ce rôle
-      # il fait parti de l'asso
-      current_user.roles << @asso.member
-      current_user.save
-      redirect_to @asso, :notice => t('c.assos.join')
+      @asso.add_user current_user, role
+      redirect_to @asso, :notice => t('c.assos.joined', role: t("model.role.roles.#{role}", default: role))
     end
   end
 
   def disjoin
-    unless current_user.assos.include?(@asso)
-      redirect_to @asso, :notice => t('c.assos.already_disjoin')
+    role = params[:asso][:roles]
+    unless @asso.has_user? current_user, role
+      redirect_to @asso, :notice => t('c.assos.already_disjoined', role: t("model.role.roles.#{role}", default: role))
     else
-      # On retire tout les rôles de l'utilisateur dans l'asso
-      @asso.delete_user(current_user)
-      redirect_to @asso, :notice => t('c.assos.disjoin')
+      @asso.remove_user current_user, role
+      redirect_to @asso, :notice => t('c.assos.disjoined', role: t("model.role.roles.#{role}", default: role))
     end
   end
 
@@ -52,7 +60,7 @@ class AssosController < ApplicationController
     @asso.owner = current_user
 
     if @asso.save
-      redirect_to(@asso, :notice => t('c.create'))
+      redirect_to(@asso, :notice => t('c.created'))
     else
       render :action => "new"
     end
@@ -65,7 +73,7 @@ class AssosController < ApplicationController
     end
 
     if @asso.update_attributes(params[:asso])
-      redirect_to(@asso, :notice => t('c.update'))
+      redirect_to(@asso, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

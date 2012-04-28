@@ -31,18 +31,7 @@ class RolesController < ApplicationController
     redirect_to @role, :notice => t('c.roles.disjoin')
   end
 
-  def new
-  end
-
   def edit
-  end
-
-  def create
-    if @role.save
-      redirect_to(@role, :notice => t('c.created'))
-    else
-      render :action => "new"
-    end
   end
 
   def update

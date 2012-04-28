@@ -10,4 +10,8 @@ class Quote < ActiveRecord::Base
   has_paper_trail
 
   has_many :comments, :as => :commentable, :dependent => :destroy
+
+  def to_s
+    content
+  end
 end

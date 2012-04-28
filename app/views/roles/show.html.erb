@@ -1,13 +1,6 @@
 <section class="content">
   <%= title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, :default => @role.name)) %>
 
-  <% if @role.asso %>
-  <p>
-    <strong><%= t('roles.asso') %></strong> :
-    <%= link_to @role.asso.name, @role.asso %>
-  </p>
-  <% end %>
-
   <p>
     <strong><%= t('roles.users') %></strong> :
   </p>

@@ -4,8 +4,8 @@ namespace :db do
     raise unless Rails.env.development?
     %w(administrator moderator).each do |login|
       user = User.simple_create(login, 'changez-moi')
-      user.roles << Role.get_special_role(login)
       user.save!
+      user.add_role login.to_sym
     end
   end
 end

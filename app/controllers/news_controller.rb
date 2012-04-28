@@ -3,7 +3,8 @@ class NewsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @news = @news.visible.page(params[:page])
+    @news = @news.visible unless current_user.has_role? :moderator
+    @news = @news.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

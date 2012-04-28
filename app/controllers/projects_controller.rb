@@ -21,20 +21,20 @@ class ProjectsController < ApplicationController
 
   def join
     if @project.users.include?(current_user)
-      redirect_to @project, :notice => t('c.projects.already_join')
+      redirect_to @project, :notice => t('c.projects.already_joined')
     else
       @project.users << current_user
       @project.save
-      redirect_to @project, :notice => t('c.projects.join')
+      redirect_to @project, :notice => t('c.projects.joined')
     end
   end
 
   def disjoin
     unless current_user.projects.include?(@project)
-      redirect_to @project, :notice => t('c.projects.already_disjoin')
+      redirect_to @project, :notice => t('c.projects.already_disjoined')
     else
       @project.users.delete(current_user)
-      redirect_to @project, :notice => t('c.projects.disjoin')
+      redirect_to @project, :notice => t('c.projects.disjoined')
     end
   end
 

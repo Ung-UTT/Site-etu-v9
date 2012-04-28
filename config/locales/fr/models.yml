@@ -2,6 +2,13 @@
 
 fr:
   model:
+    role:
+      as: "en tant que"
+      roles:
+        member: "membre"
+        treasurer: "trésorier"
+        secretary: "secrétaire"
+
     timesheet:
       week: "Semaine"
       range: "%{short} le %{week_day} de %{start} à %{end} %{week}"

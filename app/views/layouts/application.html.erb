@@ -21,12 +21,12 @@
     <% unless current_user %>
       <ul id="connect">
         <li>
-          <%= link_to cas_new_path, {class: 'cas', title: t('user_sessions.connection.cas_title')} do %>
+          <%= link_to new_cas_path, {class: 'cas', title: t('user_sessions.connection.cas_title')} do %>
             <%= image_tag('others/connect.png') %>
           <% end %>
         </li>
         <li>
-            <%= link_to t('user_sessions.connection.alternative'), login_path,
+            <%= link_to t('user_sessions.connection.alternative'), new_user_session_path,
                         {class: 'alternative', title: t('user_sessions.connection.alternative_title')} %>
         </li>
       </ul>
@@ -66,7 +66,7 @@
       Merci ! &#9786;
     </p>
 
-    <blockquote id="quote"><%= @random_quote.content %></blockquote>
+    <blockquote id="quote"><%= @random_quote %></blockquote>
   <% end %>
 
   <% unless mobile? and !current_page?(root_url) %>
@@ -78,7 +78,7 @@
             <% unless current_user.timesheets.empty? %>
               <li><%= link_to t('layout.schedule'), url_for(current_user) + '#edt' %></li>
             <% end %>
-            <li><%= link_to t('user_sessions.logout'), :logout %></li>
+            <li><%= link_to t('user_sessions.logout'), (session[:cas_user] ? :cas : :destroy_user_session), method: :delete %></li>
           </ul>
       </li>
       <% end %>
@@ -155,8 +155,8 @@
     <% end %>
 
     <li><%= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new' %></li>
-    <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
     <li><%= link_to t('layout.rules'), {:controller => :home, :action => :rules} %></li>
+    <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
   </ul>
 
   <script>ROOT_URL = "<%= root_path(:only_path => false) %>";</script>

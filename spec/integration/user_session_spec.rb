@@ -2,26 +2,14 @@ require 'spec_helper'
 
 feature "Logging in/out" do
   background do
-    Capybara.default_selector = :xpath
-    @login, @password = 'toto', 'oups'
+    @login, @password = 'toto', 'superpass'
     create :user, login: @login, password: @password
   end
 
-  def log_in_with password
-    visit login_path
-    page.should_not have_xpath('//a[@href="/logout"]')
-
-    within('//form[@action="/user_sessions"]') do
-      fill_in 'login', with: @login
-      fill_in 'password', with: password
-      find('.//input[@type="submit"]').click
-    end
-  end
-
   scenario "Logging in then logging out" do
-    log_in_with @password
+    sign_in @login, @password
     current_path.should == '/'
-    logout = find('//a[@href="/logout"]')
+    logout = find('//a[@href="/users/sign_out"]')
 
     logout.click
     current_path.should == '/'
@@ -29,8 +17,8 @@ feature "Logging in/out" do
   end
 
   scenario "Trying to log in with incorrect credentials" do
-    log_in_with ''
-    current_path.should == '/user_sessions'
+    sign_in @login, @password * 2
+    current_path.should == '/users/sign_in'
     page.should_not have_xpath('//a[@href="/logout"]')
   end
 end

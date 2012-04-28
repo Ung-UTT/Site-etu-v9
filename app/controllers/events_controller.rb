@@ -24,11 +24,11 @@ class EventsController < ApplicationController
 
   def join
     if @event.users.exists?(current_user)
-      redirect_to @event, :notice => t('c.events.already_join')
+      redirect_to @event, :notice => t('c.events.already_joined')
     else
       @event.users << current_user
       @event.save
-      redirect_to @event, :notice => t('c.events.join')
+      redirect_to @event, :notice => t('c.events.joined')
     end
   end
 
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
     @event.users.delete(current_user)
     @event.save
 
-    redirect_to @event, :notice => t('c.events.disjoin')
+    redirect_to @event, :notice => t('c.events.disjoined')
   end
 
   def new
