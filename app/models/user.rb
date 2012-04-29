@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me # Devise
   attr_accessible :login, :preference_attributes, :profile_attributes
 
+  delegate :can?, :cannot?, :to => :ability
+
   after_create :create_preferences
 
   validates_presence_of :login
@@ -72,6 +74,10 @@ class User < ActiveRecord::Base
         :password => password
       )
     end
+  end
+
+  def ability
+    @ability ||= Ability.new(self)
   end
 
   # Préférences par défaut d'un utilisateur

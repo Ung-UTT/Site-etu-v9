@@ -39,4 +39,20 @@ class Asso < ActiveRecord::Base
   def remove_user user, role
     user.remove_role role, self
   end
+
+  def joinable_roles user
+    Asso::DEFAULT_ROLES.collect do |role|
+      if user.can?(:join, self) and !has_user?(user, role)
+        [I18n.t("model.role.roles.#{role}", default: role), role]
+      end
+    end.compact
+  end
+
+  def disjoinable_roles user
+    roles.map(&:name).collect do |role|
+      if user.can?(:disjoin, self) and has_user?(user, role)
+        [I18n.t("model.role.roles.#{role}", default: role), role]
+      end
+    end.compact
+  end
 end

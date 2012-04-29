@@ -13,16 +13,8 @@ class AssosController < ApplicationController
   def show
     @comments = @asso.comments
     @documents = @asso.documents
-    @joinable_roles = Asso::DEFAULT_ROLES.collect do |role|
-      if can? :join, @asso and !current_user.has_role? role, @asso
-        [t("model.role.roles.#{role}", default: role), role]
-      end
-    end.compact
-    @disjoinable_roles = @asso.roles.map(&:name).collect do |role|
-      if can? :disjoin, @asso and current_user.has_role? role, @asso
-        [t("model.role.roles.#{role}", default: role), role]
-      end
-    end.compact
+    @joinable_roles = @asso.joinable_roles(current_user)
+    @disjoinable_roles = @asso.disjoinable_roles(current_user)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -151,7 +151,7 @@ mais pas les UVs, cela sera fait via les emploi du temps.
 ### Tester
 
 Avant d'envoyer votre contribution sur GitHub, assurez-vous que tout les
-tests passent avec : `rspec`.
+tests passent avec : `rspec spec`.
 
 Ou si vous écrivez des tests, utilisez `bundle exec autotest` pour les
 faire passer au fur et à mesure que vous les écrivez.
