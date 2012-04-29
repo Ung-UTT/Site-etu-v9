@@ -25,8 +25,10 @@ describe Asso do
       [user1, user2, user3].each { |u| @asso.users.should include u }
     end
 
-    it "includes the owner" do
-      @asso.users.should include @asso.owner
+    it "includes the owner once" do
+      owner = @asso.owner
+      @asso.add_user owner, :boss
+      @asso.users.count(owner).should == 1
     end
   end
 
