@@ -24,14 +24,12 @@ class Asso < ActiveRecord::Base
   end
 
   def users
-    # Fetch all users with at least one role on this asso
-    user_ids = UsersRole.where(role_id: roles.map(&:id)).map(&:user_id).uniq
-    user_ids.collect { |id| User.find id } << owner
+    # Fetch all users with at least one role on this asso + the owner
+    roles.map(&:users).flatten.uniq << owner
   end
 
   def has_user? user, role
-    return false unless role = roles.where(name: role).first
-    !UsersRole.where(role_id: role.id, user_id: user.id).empty?
+    Asso.with_role(role, user).include? self
   end
 
   def add_user user, role
