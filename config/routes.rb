@@ -13,7 +13,7 @@ SiteEtu::Application.routes.draw do
   resources :users, :only => [:index, :edit, :show, :update]
   resources :roles, :only => [:index, :edit, :show, :update, :destroy]
   resources :authorizations, :polls, :timesheets, :votes, :quotes
-  resources :courses, :only => [:index, :show] do
+  resources :courses do
     resources :comments
   end
   resources :annals, :assos, :classifieds, :carpools, :events, :projects,
