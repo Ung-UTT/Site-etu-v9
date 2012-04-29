@@ -22,6 +22,7 @@ end
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
+  gem 'haml-rails'
   gem 'uglifier'     # Compression des assets
   gem 'therubyracer' # Interprétation JS
 end
