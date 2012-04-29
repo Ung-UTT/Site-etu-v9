@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     params.delete(:login)
-    if @user.update_with_password(params[:user])
+    if @user.update_without_password(params[:user])
       redirect_to(@user, :notice => t('c.updated'))
     else
       render :action => "edit"
