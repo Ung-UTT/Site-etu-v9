@@ -16,21 +16,6 @@ class RolesController < ApplicationController
     end
   end
 
-  def join
-    if @role.users.include?(@user)
-      redirect_to @role, :notice => t('c.roles.already_join')
-    else
-      @role.users << @user
-      redirect_to @role, :notice => t('c.roles.join')
-    end
-  end
-
-  def disjoin
-    @role.users.delete(@user)
-
-    redirect_to @role, :notice => t('c.roles.disjoin')
-  end
-
   def edit
   end
 
