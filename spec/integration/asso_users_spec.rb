@@ -19,7 +19,7 @@ feature "Displaying an asso's page" do
         form = find("//form[@action=\"#{action}\"]")
         within(form) do
           find(".//option[@value=\"#{role}\"]").select_option
-          find('.//input[@type="submit"]').click
+          submit_form
         end
 
         if action == actions.last and role == roles.last
