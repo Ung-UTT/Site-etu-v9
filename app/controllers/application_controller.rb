@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   # Permet de récupérer les erreurs et de les traiter
   around_filter :catch_exceptions
-
-  # before_filter :authenticate_user!
   # Permet de définir des variables utiles à toutes les vues
   before_filter :set_layout_vars, :set_locale
   # Méthode que l'on peut utiliser dans les controlleurs et dans les vues
