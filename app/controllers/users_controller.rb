@@ -28,8 +28,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
-      redirect_to(root_path, :notice => t('c.updated'))
+    params.delete(:login)
+    if @user.update_with_password(params[:user])
+      redirect_to(@user, :notice => t('c.updated'))
     else
       render :action => "edit"
     end

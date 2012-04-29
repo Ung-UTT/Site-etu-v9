@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me # Devise
-  attr_accessible :login, :preference_attributes, :profile_attributes
+  attr_accessible :preference_attributes, :profile_attributes
 
   after_create :create_preferences
 

@@ -15,11 +15,7 @@ class Ability
       obj.commentable and can?(:read, obj.commentable)
     end
 
-    # Si c'est un visiteur anonyme
-    if !user
-      can :create, User
-      can :password_reset, User
-    else # C'est un utilisateur connecté
+    if user # C'est un utilisateur connecté
       can :read, User
       can :manage, User, id: user.id
 

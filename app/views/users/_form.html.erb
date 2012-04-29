@@ -3,20 +3,8 @@
 
   <ul class="fields">
     <li class="field">
-      <%= f.label :login, t('users.login') %>
-      <%= f.text_field :login %>
-    </li>
-    <li class="field">
       <%= f.label :email, t('users.email') %>
       <%= f.text_field :email %>
-    </li>
-    <li class="field">
-      <%= f.label :password, t('users.password') %>
-      <%= f.password_field :password %>
-    </li>
-    <li class="field">
-      <%= f.label :password_confirmation, t('users.password_confirmation') %>
-      <%= f.password_field :password_confirmation %>
     </li>
 
     <% if !@user.new_record? %>
@@ -61,6 +49,11 @@
         </li>
       <% end %>
     <% end %>
+
+    <li class="field">
+      <%= f.label :current_password, t('users.current_password') %>
+      <%= f.password_field :current_password %>
+    </li>
 
     <li class="actions">
       <%= f.submit t('common.submit') %>
