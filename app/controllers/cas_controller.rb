@@ -19,7 +19,6 @@ class CasController < ApplicationController
         redirect_to :root, :notice => t('c.cas.already_exist')
       else # Sinon on crée un compte
         @user = User.simple_create(session[:cas_user])
-        @user.save!
         sign_in(@user)
         redirect_to :root, :notice => t('c.cas.user_created')
       end
