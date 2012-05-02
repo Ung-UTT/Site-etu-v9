@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
         # chacun des indices
         string = [p.user.login, p.firstname, p.lastname, p.level].join(' ')
         clues.all? do |clue|
-          string.include?(clue)
+          string.downcase.include?(clue)
         end
       end.map(&:user)
     end
