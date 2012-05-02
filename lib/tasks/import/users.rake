@@ -1,4 +1,5 @@
 # encoding: utf-8
+# encoding: utf-8
 
 namespace :import do
   namespace :users do
@@ -36,13 +37,12 @@ namespace :import do
           u.build_profile unless u.profile
 
           # Photo de profil
-          if false # XXX : pas internet
           begin
             picture = Image.from_url(st['jpegphoto'])
           rescue => e
             puts e.inspect # Pas internet, 404, etc...
           end
-          end
+
           u.profile.image = Image.new(:asset => picture) unless picture.nil?
 
           u.profile.utt_id = st['supannetuid'].to_i

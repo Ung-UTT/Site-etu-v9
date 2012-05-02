@@ -33,7 +33,7 @@
     <% end %>
 
     <% if mobile? %>
-      <%= image_tag('others/logo.png', :id => 'logo') %>
+     <%= link_to image_tag('others/logo.png'), :root, { title: t('layout.home'), id: 'logo' } %>
     <% else %>
       <ul class="illustrated">
         <li class="logo">
