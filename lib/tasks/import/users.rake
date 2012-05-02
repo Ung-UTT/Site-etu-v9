@@ -96,39 +96,42 @@ namespace :import do
 
       threads = [] # Téléchargements en paralléle
 
-      photos.each do |photo|
-        # Exemmple : tmp/photos/28765.jpg
-        location = PHOTOS_DIR + photo.split('/').last
-        unless File.exists?(location)
-          threads << Thread.new(location, photo) do
-            # On va chercher le fichier sur Internet et on l'enregistre
-            begin
-              file = open(location, "wb")
-              file.write(open(photo).read)
-              file.close
-              print '.'
-            rescue => e
-              puts "\n" + e.inspect
+      photos.each_slice(100) do |slice|
+        # On télécharge les photos par 100
+        slice.each do |photo|
+          # Exemmple : tmp/photos/28765.jpg
+          location = PHOTOS_DIR + photo.split('/').last
+          unless File.exists?(location)
+            threads << Thread.new(location, photo) do
+              # On va chercher le fichier sur Internet et on l'enregistre
+              begin
+                file = open(location, "wb")
+                file.write(open(photo).read)
+                file.close
+                print '.'
+              rescue => e
+                puts "\n" + e.inspect
+              end
             end
           end
         end
-      end
 
-      threads.each { |t| t.join } # Attend que les threads se terminent
+        threads.each { |t| t.join } # Attend que les threads se terminent
+      end
 
       puts "Add photos to users :"
       ActiveRecord::Base.transaction do # Permet d'être beaucoup plus rapide !
         students.each do |student|
           user = User.find_by_login(student['uid'])
 
-          next if student.nil? # Pas encore importé
+          next if user.nil? # Pas encore importé
 
           print '.'
 
           # Va chercher l'image et l'ajoute au profil
           file = File.open(PHOTOS_DIR + student['jpegphoto'].split('/').last)
-          u.profile.image = Image.new(:asset => file)
-          u.save
+          user.profile.image = Image.new(:asset => file)
+          user.save
         end
       end
     end
