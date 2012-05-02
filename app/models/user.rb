@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     def search(clues)
       # FIXME : Enlever les accents (peut-être : http://snippets.dzone.com/posts/show/2384)
       # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
-      clues = clues.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
+      clues = clues.downcase.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
       profiles = Profile.find(:all, :include => :user).select do |p|
         # Le profil fait parti des profils recherchés si il contient
         # chacun des indices
