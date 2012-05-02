@@ -47,8 +47,6 @@ namespace :import do
           # Les UVs sont ajoutées via les emploi du temps
           # (Un utilisateur suit un cours si il participe à au moins une horaire)
 
-          u.add_role('utt') # Tout les utilisateurs importés sont à l'UTT
-
           # Ajouter le rôle d'étudiant si il l'est
           u.add_role('student') if st['employeetype'] == 'student'
 
@@ -62,8 +60,8 @@ namespace :import do
             # utilisés plusieurs fois
             puts
             puts "#{st['supannetuid']} : #{st['displayname']}"
-            puts "Error : " + e.inspect
-            puts "User : " + u.inspect
+            puts "Error: " + e.inspect
+            puts "User: " + u.inspect
           end
         end
       end
@@ -94,7 +92,7 @@ namespace :import do
       students = students.reject { |s| s['jpegphoto'].nil? }
       photos = students.map { |s| s['jpegphoto'] }
 
-      threads = [] # Téléchargements en paralléle
+      threads = [] # Téléchargements en parallèle
 
       photos.each_slice(100) do |slice|
         # On télécharge les photos par 100
