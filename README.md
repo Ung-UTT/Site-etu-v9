@@ -72,8 +72,8 @@ Voilà, lancez `rails server` et vous devriez voir apparaître le magnifique sit
 
 > **Attention** : Détruit toutes les données de la base !
 
-* Pour regénérer un environement fonctionnel : `rake dev:reset` (crée des
-  base de données pour les environements production, development et test)
+* Pour regénérer un environement fonctionnel : `rake dev:reset` (recrée la
+  base de données pour l'environement de développement)
 
 #### Pour Git :
 
