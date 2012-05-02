@@ -101,53 +101,6 @@ modifications.
 N'hésitez pas à vous renseigner sur [Git](http://gitref.org/), ses fonctionnalités
 sont assez extraordinaires !
 
-#### Les scripts d'import :
-
-Il y a beaucoup d'étudiants (environ 3000) donc ça prend du temps d'importer
-les étudiants, les emploi du temps et les données de la v7.
-
-##### semesters.rb
-
-Changez le fichier `config/initializers/semesters.rb` pour y ajouter le
-nouveau semestre (s'il n'est pas déjà mis). Vous aurez besoin de l'emploi
-du temps des semaines A et B. (c'est documenté sur comment faire dans le
-fichier).
-
-##### Les étudiants (via le LDAP) :
-
-Pour accèder au LDAP (et donc aux informations sur les étudiants) il
-faut être à l'UTT ou y accéder via un tunnel SSH (non expliqué ici).
-
-Vous devez lancer le scripts d'imports des étudiants en premier :
-
-* Il va chercher les étudiants sur le LDAP de l'UTT (et les met en cache
-dans le fichier cache/ldap.marshal, à supprimer si vous voulez des
-infos plus récentes)
-* Pour chaque utilisateur trouvé, soit il le crée, soit il le met à jour
-* Les attributs enregistrés inclus le nom, le prénom, le niveau, ... etc
-mais pas les UVs, cela sera fait via les emploi du temps.
-* Lancez la convertion des étudiants avec : `./lib/convert-users.rb`
-* Puis l'insertion dans la base de données avec : `rake import:users:insert`.
-
-##### Les emploi du temps (les cours et les horaires)
-
-À partir des emploi du temps donnés par l'UTT (.sql) :
-
-* Créer une table/utilisateur/mot de passe : "utt_edt" (modifiables dans
-  le script)
-* Importez les .sql dans cette base : salles (rel_seance_salle), puis
-  les horaires (vue_edt_etu) (vous aurez peut-être besoin de [créer la
-  table](https://github.com/Ung-UTT/Site-etu-v9/wiki/Problèmes-systèmes-résolus))
-* Lancez la conversion des emploi du temps : `rake import:schedules:convert`
-* Puis l'insertion des emploi du temps : `rake import:schedules:insert`
-
-##### Les données du site étu v7
-
-* Il faut déjà exporter les tables via PhpMyAdmin sur la v7
-* Cf: `lib/tasks/import/v7.rake` pour les tables à prendre, où mettre les
-  exports, quelle base/utilisateur créer, ... etc
-* Puis faîtes `rake import:v7` pour importer les données
-
 ### Tester
 
 Avant d'envoyer votre contribution sur GitHub, assurez-vous que tout les
