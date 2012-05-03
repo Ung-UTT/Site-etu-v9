@@ -1,14 +1,17 @@
 # encoding: utf-8
 class TimesheetsController < ApplicationController
   load_and_authorize_resource
+  before_filter :set_first_users, only: [:index, :new, :edit]
 
   def index
     if params[:users].nil? or params[:users].empty?
       # Récupére aucun horaire
       @timesheets = []
+      @users = []
     else
       # Récupére tous les horaires des utilisateurs passés en paramétres
-      @timesheets = User.find(params[:users]).map(&:timesheets).flatten.uniq
+      @users = User.find(params[:users])
+      @timesheets = @users.map(&:timesheets).flatten.uniq
     end
 
     # Va trier les horaires pour prendre seulement ceux du semestre actuel
