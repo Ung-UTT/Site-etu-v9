@@ -59,7 +59,7 @@ module ApplicationHelper
         elsif name == Role
           "#{'..' * i.level} #{i.name_with_asso}"
         else
-          "???"
+          i.inspect
         end
       end.unshift([t('helpers.noparent'), nil])
     )
@@ -79,10 +79,12 @@ module ApplicationHelper
     options_for_select(Course.all.map { |a| [a.name, a.id] }.unshift([t('helpers.none'), nil]), default)
   end
 
-  def users_select(object = nil)
-    users = User.first(20) | (object.nil? ? [] : object.users)
+  # Un tableau des utilisateurs disponibles
+  # Et un tableau des utilisateurs déjà selectionnés
+  def users_select(users = [], selected = [])
+    users = User.first(20) | users | selected
     array = users.map { |u| [u.login, u.id] } # FIXME : real_name après fusion User/Profile
-    options_for_select(array.unshift([t('helpers.none'), nil]), users.map(&:id))
+    options_for_select(array, selected.map(&:id))
   end
 
   # Links to

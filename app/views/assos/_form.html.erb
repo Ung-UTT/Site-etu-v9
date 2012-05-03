@@ -28,7 +28,7 @@
     <% unless @asso.new_record? %>
     <li class="field">
       <%= f.label :owner_id, t('assos.owner') %>
-      <%= f.select :owner_id, users_select(@asso), {}, :class => 'users-chosen' %>
+      <%= f.select :owner_id, users_select(@asso.users, [@asso.owner]), {}, :class => 'users-chosen' %>
     </li>
     <% end %>
     <li class="actions">

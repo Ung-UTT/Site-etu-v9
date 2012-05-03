@@ -11,7 +11,6 @@ SiteEtu::Application.routes.draw do
 
   resources :answers, :only => [:create, :destroy]
   resources :users, :only => [:index, :edit, :show, :update]
-  resources :roles, :only => [:index, :edit, :show, :update, :destroy]
   resources :authorizations, :polls, :timesheets, :votes, :quotes
   resources :courses do
     resources :comments
@@ -21,7 +20,7 @@ SiteEtu::Application.routes.draw do
     resources :comments
     resources :documents
   end
-  resources :assos, :events, :projects do
+  resources :assos, :events, :projects, :roles do
     member do
       post :join
       post :disjoin

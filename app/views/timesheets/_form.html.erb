@@ -28,7 +28,7 @@
     </li>
     <li class="field">
       <%= label_tag :users, t('timesheets.users') %>
-      <%= select_tag :users, users_select(@timesheet), :multiple => true, :class => 'users-chosen' %>
+      <%= select_tag :users, users_select(User.first(20), @timesheet.users), :multiple => true, :class => 'users-chosen' %>
     </li>
     <li class="actions">
       <%= f.submit t('common.submit') %>

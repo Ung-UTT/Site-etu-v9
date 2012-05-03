@@ -12,8 +12,9 @@
     <li>
       <%= link_to_user user %>
       <% if can? :update, user %>
-        <%= button_to 'X', disjoin_role_path(@role, user),
-            :confirm => t('common.confirm'), :method => :delete %>
+        <%= form_for(@role, :url => disjoin_role_path(@role)) do |f| %>
+          <%= f.submit 'X' %>
+        <% end %>
       <% end %>
     </li>
     <% end %>
@@ -23,7 +24,7 @@
     <%= form_for(@role, :url => join_role_path(@role)) do |f| %>
       <ul class="fields">
         <li class="field">
-          <%= select_tag :users, users_select(@role), :class => 'users-chosen' %>
+          <%= select_tag :users, users_select(User.first(20), @role.users), :class => 'users-chosen' %>
         </li>
         <li class="field">
           <%= f.submit t('common.add') %>
