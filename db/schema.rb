@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20120426194809) do
   create_table "annals", :force => true do |t|
     t.string   "semester"
     t.integer  "year"
-    t.string   "type"
+    t.string   "kind"
     t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

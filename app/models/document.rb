@@ -22,7 +22,7 @@ class Document < ActiveRecord::Base
 
     file.rewind
 
-    return file
+    file
   end
 
 

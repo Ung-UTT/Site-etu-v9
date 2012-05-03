@@ -3,7 +3,7 @@ class CreateAnnals < ActiveRecord::Migration
     create_table :annals do |t|
       t.string     :semester
       t.integer    :year
-      t.string     :type
+      t.string     :kind
       t.references :course
 
       t.timestamps

@@ -8,18 +8,18 @@
     </li>
     <li class="field">
       <%= f.label :semester, t('annals.semester') %>
-      <%= f.select :semester, Annal::SEMESTERS %>
+      <%= f.select :semester, Annal::SEMESTERS.map { |s| [ t("model.annal.semesters.#{s}"), s ] } %>
     </li>
     <li class="field">
       <%= f.label :year, t('annals.year') %>
       <%= f.select :year, (Time.now.year - 1)..Time.now.year %>
     </li>
     <li class="field">
-      <%= f.label :type, t('annals.type') %>
-      <%= f.select :type, Annal::TYPES %>
+      <%= f.label :kind, t('annals.kind') %>
+      <%= f.select :kind, Annal::KINDS.collect { |k| [ t("model.annal.kinds.#{k}"), k ] } %>
     </li>
 
-    <%= f.fields_for :document do |nested_f| %>
+    <%= f.fields_for :documents do |nested_f| %>
     <li class="field">
       <% if nested_f.object.new_record? %>
         <%= nested_f.label :asset, t('document') %>

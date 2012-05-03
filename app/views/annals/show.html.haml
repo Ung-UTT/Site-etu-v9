@@ -1,0 +1,24 @@
+%section.content
+  = title t('annal')
+
+  %dl
+    %dt
+      = t('annals.course')
+    %dd
+      = link_to @annal.course.name, @annal.course
+    %dt
+      = t('annals.year')
+    %dd
+      = @annal.year
+    %dt
+      = t('annals.semester')
+    %dd
+      = t("model.annal.semesters.#{@annal.semester}")
+    %dt
+      = t('annals.kind')
+    %dd
+      = t("model.annal.kinds.#{@annal.kind}")
+
+  = render 'layouts/show_actions', {ressource: @annal}
+
+= render 'documents/list_and_add', {documentable: @annal, documents: @documents}

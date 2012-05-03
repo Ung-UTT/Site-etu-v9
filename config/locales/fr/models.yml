@@ -2,6 +2,16 @@
 
 fr:
   model:
+    annal:
+      semesters:
+        P: "Printemps"
+        A: "Automne"
+      kinds:
+        P: "Partiel"
+        M: "Médian"
+        F: "Final"
+        A: "Autre"
+
     role:
       as: "en tant que"
       roles:

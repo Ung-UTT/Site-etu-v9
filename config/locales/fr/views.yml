@@ -35,9 +35,9 @@ fr:
 
   annals:
     list: "Annales"
-    name: "Nom"
-    date: "Date"
-    description: "Description"
+    semester: "Semestre"
+    year: "Année"
+    kind: "Type"
     course: "UV associée"
 
   assos:

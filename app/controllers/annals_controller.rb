@@ -2,9 +2,11 @@
 class AnnalsController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :build_documents, only: [:new, :edit]
+
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @annals }
     end
   end
@@ -13,7 +15,7 @@ class AnnalsController < ApplicationController
     @documents = @annal.documents
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @annal }
     end
   end
@@ -22,14 +24,13 @@ class AnnalsController < ApplicationController
   end
 
   def edit
-    # Permet d'avoir au minimum un formulaire
-    @annal.documents.build
   end
 
   def create
     if @annal.save
       redirect_to(@annal, :notice => t('c.created'))
     else
+      build_documents
       render :action => "new"
     end
   end
@@ -38,6 +39,7 @@ class AnnalsController < ApplicationController
     if @annal.update_attributes(params[:annal])
       redirect_to(@annal, :notice => t('c.updated'))
     else
+      build_documents
       render :action => "edit"
     end
   end
@@ -46,5 +48,10 @@ class AnnalsController < ApplicationController
     @annal.destroy
 
     redirect_to(annals_url)
+  end
+
+  private
+  def build_documents
+    @annal.documents.build
   end
 end

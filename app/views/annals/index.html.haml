@@ -4,8 +4,7 @@
   %ul
     - @annals.each do |annal|
       %li
-        = link_to annal.name, annal
-        = "(#{t('annals.course')} : #{annal.course.name}, #{t('annals.date')} : #{l annal.date})"
+        = link_to annal, annal
 
   - if can? :create, Annal
     %ul.actions
