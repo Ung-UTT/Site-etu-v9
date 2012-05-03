@@ -281,19 +281,38 @@
     }
   }
 
-  /* Photo d'utilisateur (dans le trombi et le profil) */
-  .profile img.user {
-    max-width: 100px;
-    max-height: 100px;
-  }
 
   /* Dans un titre de news, événements, ... */
   img.user {
     padding:0;
     margin:0;
     max-width: 30px;
-    max-height: 30px;
     vertical-align: middle;
+  }
+
+  /* Spécifique au trombi */
+
+  .profile {
+    /* Photo d'utilisateur (dans le trombi et le profil) */
+    img.user { max-width: 100px; }
+
+    .user_frame {
+      text-align: center;
+      display: inline-block;
+      margin: 5px;
+      margin-bottom: 10px;
+
+      .image { margin: 5px; }
+
+      .name {
+        display: inline-block;
+        font-size: 0.8em;
+        width: 130px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
   }
 }
 

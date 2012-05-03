@@ -6,8 +6,9 @@ module UsersHelper
       elsif user.image.nil?
         link_to user.real_name, user
       else
-        link_to user, :title => user.real_name do
-          image_tag(user.image.asset.url, :class => 'user')
+        link_to user, title: user.real_name do
+          image_tag(user.image.asset.url, class: 'user')
+                    alt: user.real_name)
         end
       end
     else

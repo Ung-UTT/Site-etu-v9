@@ -1,0 +1,18 @@
+%section.content
+  = title t('users.list')
+
+  = form_tag(users_path, :method => :get) do
+    %ul.fields
+      %li.field= text_field_tag :q, params[:q]
+      %li.field= submit_tag t('common.search')
+
+  - if @users.empty?
+    %p= t('common.none')
+  - else
+    .profile
+      - @users.each do |user|
+        .user_frame
+          .image= link_to_user user
+          %strong.name= user.real_name
+    = paginate @users
+
