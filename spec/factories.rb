@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :annal do
     semester 'P'
     year 2012
-    type 'F'
+    kind 'F'
     course
   end
 
