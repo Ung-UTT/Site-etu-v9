@@ -171,28 +171,6 @@ ActiveRecord::Schema.define(:version => 20120426194809) do
 
   add_index "preferences", ["user_id"], :name => "index_preferences_on_user_id"
 
-  create_table "profiles", :force => true do |t|
-    t.string   "utt_address"
-    t.string   "parents_address"
-    t.string   "surname"
-    t.string   "once"
-    t.integer  "utt_id"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "level"
-    t.string   "specialization"
-    t.string   "role"
-    t.string   "phone"
-    t.string   "room"
-    t.text     "description"
-    t.integer  "user_id"
-    t.integer  "image_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
-
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -254,6 +232,20 @@ ActiveRecord::Schema.define(:version => 20120426194809) do
   create_table "users", :force => true do |t|
     t.string   "login",                  :default => "", :null => false
     t.string   "email",                  :default => "", :null => false
+    t.string   "utt_address"
+    t.string   "parents_address"
+    t.string   "surname"
+    t.string   "once"
+    t.integer  "utt_id"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "level"
+    t.string   "specialization"
+    t.string   "role"
+    t.string   "phone"
+    t.string   "room"
+    t.text     "description"
+    t.integer  "image_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "encrypted_password",     :default => "", :null => false

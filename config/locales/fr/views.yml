@@ -188,8 +188,6 @@ fr:
     projects: "Chef de projets des projets"
     quote_type: "Type de citations"
     locale: "Langue du site"
-
-  profile:
     utt_address: "Adresse UTTienne"
     parents_address: "Adresse des parents"
     surname: "Surnom"

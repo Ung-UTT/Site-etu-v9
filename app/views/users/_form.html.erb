@@ -19,35 +19,31 @@
           <%= f_pref.select :locale, I18n.available_locales.map(&:to_s) %>
         </li>
       <% end %>
-    <% end %>
 
-    <% if @user.profile %>
-      <%= f.fields_for :profile do |f_profile| %>
-        <li class="field">
-          <%= f_profile.label :utt_address, t('profile.utt_address') %>
-          <%= f_profile.text_field :utt_address %>
-        </li>
-        <li class="field">
-          <%= f_profile.label :parents_address, t('profile.parents_address') %>
-          <%= f_profile.text_field :parents_address %>
-        </li>
-        <li class="field">
-          <%= f_profile.label :surname, t('profile.surname') %>
-          <%= f_profile.text_field :surname %>
-        </li>
-        <li class="field">
-          <%= f_profile.label :once, t('profile.once') %>
-          <%= f_profile.text_field :once %>
-        </li>
-        <li class="field">
-          <%= f_profile.label :phone,  t('profile.phone') %>
-          <%= f_profile.text_field :phone %>
-        </li>
-        <li class="field">
-          <%= f_profile.label :description,  t('profile.description') %>
-          <%= f_profile.text_area :description, :class => 'rich-content' %>
-        </li>
-      <% end %>
+      <li class="field">
+        <%= f.label :utt_address, t('user.utt_address') %>
+        <%= f.text_field :utt_address %>
+      </li>
+      <li class="field">
+        <%= f.label :parents_address, t('user.parents_address') %>
+        <%= f.text_field :parents_address %>
+      </li>
+      <li class="field">
+        <%= f.label :surname, t('user.surname') %>
+        <%= f.text_field :surname %>
+      </li>
+      <li class="field">
+        <%= f.label :once, t('user.once') %>
+        <%= f.text_field :once %>
+      </li>
+      <li class="field">
+        <%= f.label :phone,  t('user.phone') %>
+        <%= f.text_field :phone %>
+      </li>
+      <li class="field">
+        <%= f.label :description,  t('user.description') %>
+        <%= f.text_area :description, :class => 'rich-content' %>
+      </li>
     <% end %>
 
     <li class="actions">

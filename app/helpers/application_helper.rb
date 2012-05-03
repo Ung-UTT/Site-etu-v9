@@ -83,7 +83,7 @@ module ApplicationHelper
   # Et un tableau des utilisateurs déjà selectionnés
   def users_select(users = [], selected = [])
     users = User.first(20) | users | selected
-    array = users.map { |u| [u.login, u.id] } # FIXME : real_name après fusion User/Profile
+    array = users.map { |u| u.real_name }
     options_for_select(array, selected.map(&:id))
   end
 

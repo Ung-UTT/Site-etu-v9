@@ -3,11 +3,11 @@ module UsersHelper
     if can? :read, user
       if user.nil?
         ''
-      elsif user.profile.nil? or user.profile.image.nil?
+      elsif user.image.nil?
         link_to user.real_name, user
       else
         link_to user, :title => user.real_name do
-          image_tag(user.profile.image.asset.url, :class => 'user')
+          image_tag(user.image.asset.url, :class => 'user')
         end
       end
     else

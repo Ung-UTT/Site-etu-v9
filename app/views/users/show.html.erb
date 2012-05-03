@@ -1,31 +1,29 @@
 <section class="content">
   <%= title(t('user') + ' : ' + @user.real_name) %>
 
-  <% if @user.profile.try :image %>
+  <% if @user.image %>
   <p class="profile"><%= link_to_user @user %></p>
   <% end %>
 
   <ul>
     <%= not_empty_li(t('users.email'), mail_to(@user.email)) %>
-    <% if @user.profile %>
-      <%= not_empty_li(t('profile.firstname'), @user.profile.firstname) %>
-      <%= not_empty_li(t('profile.lastname'), @user.profile.lastname) %>
+    <%= not_empty_li(t('user.firstname'), @user.firstname) %>
+    <%= not_empty_li(t('user.lastname'), @user.lastname) %>
 
-      <%= not_empty_li(t('profile.utt_address'), @user.profile.utt_address) %>
-      <%= not_empty_li(t('profile.parents_address'), @user.profile.parents_address) %>
-      <%= not_empty_li(t('profile.surname'), @user.profile.surname) %>
-      <%= not_empty_li(t('profile.once'), @user.profile.once) %>
+    <%= not_empty_li(t('user.utt_address'), @user.utt_address) %>
+    <%= not_empty_li(t('user.parents_address'), @user.parents_address) %>
+    <%= not_empty_li(t('user.surname'), @user.surname) %>
+    <%= not_empty_li(t('user.once'), @user.once) %>
 
-      <%= not_empty_li(t('profile.level'), @user.profile.level) %>
-      <%= not_empty_li(t('profile.specialization'), @user.profile.specialization) %>
-      <%= not_empty_li(t('profile.role'), @user.profile.role) %>
+    <%= not_empty_li(t('user.level'), @user.level) %>
+    <%= not_empty_li(t('user.specialization'), @user.specialization) %>
+    <%= not_empty_li(t('user.role'), @user.role) %>
 
-      <%= not_empty_li(t('profile.phone'), @user.profile.phone) %>
-      <%= not_empty_li(t('profile.room'), @user.profile.room) %>
-    <% end %>
+    <%= not_empty_li(t('user.phone'), @user.phone) %>
+    <%= not_empty_li(t('user.room'), @user.room) %>
   </ul>
 
-  <%=md @user.profile.description if @user.profile %>
+  <%=md @user.description %>
 
   <% unless @user.timesheets.empty? %>
   <div id="edt">

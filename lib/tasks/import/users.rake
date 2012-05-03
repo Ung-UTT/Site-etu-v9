@@ -32,17 +32,15 @@ namespace :import do
             u.email = "#{u.login}@utt.fr" # Mieux que rien (pour deux personnes...)
           end
 
-          # On va écrire les détails dans le profil (le crée s'il ne l'est pas déjà)
-          u.build_profile unless u.profile
-
-          u.profile.utt_id = st['supannetuid'].to_i
-          u.profile.firstname = st['givenname']
-          u.profile.lastname = st['sn']
-          u.profile.level = st['niveau']
-          u.profile.specialization = st['filiere']
-          u.profile.role = st['employeetype'].force_encoding('utf-8')
-          u.profile.phone = st['telephonenumber']
-          u.profile.room = st['roomnumber']
+          # On va écrire les détails dans le profil
+          u.utt_id = st['supannetuid'].to_i
+          u.firstname = st['givenname']
+          u.lastname = st['sn']
+          u.level = st['niveau']
+          u.specialization = st['filiere']
+          u.role = st['employeetype'].force_encoding('utf-8')
+          u.phone = st['telephonenumber']
+          u.room = st['roomnumber']
 
           # Les UVs sont ajoutées via les emploi du temps
           # (Un utilisateur suit un cours si il participe à au moins une horaire)
@@ -128,7 +126,7 @@ namespace :import do
 
           # Va chercher l'image et l'ajoute au profil
           file = File.open(PHOTOS_DIR + student['jpegphoto'].split('/').last)
-          user.profile.image = Image.new(:asset => file)
+          user.image = Image.new(:asset => file)
           user.save
         end
       end

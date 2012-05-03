@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me # Devise
-  attr_accessible :login, :preference_attributes, :profile_attributes
+  attr_accessible :login, :preference_attributes
 
   delegate :can?, :cannot?, :to => :ability
 
@@ -19,11 +19,9 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
+  has_one :image, :dependent => :destroy, :as => :documentable
   has_one :preference, :dependent => :destroy
   accepts_nested_attributes_for :preference
-
-  has_one :profile, :dependent => :destroy
-  accepts_nested_attributes_for :profile
 
   has_many :carpools, :dependent => :destroy
   has_many :classifieds, :dependent => :destroy
@@ -55,8 +53,8 @@ class User < ActiveRecord::Base
       # FIXME : Enlever les accents (peut-être : http://snippets.dzone.com/posts/show/2384)
       # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
       clues = clues.downcase.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
-      profiles = Profile.find(:all, :include => :user).select do |p|
-        # Le profil fait parti des profils recherchés si il contient
+      users = User.all.select do |p|
+        # Le utilisateur fait parti des utilisateurs recherchés si il contient
         # chacun des indices
         string = [p.user.login, p.firstname, p.lastname, p.level].join(' ')
         clues.all? do |clue|
@@ -105,10 +103,10 @@ class User < ActiveRecord::Base
   def real_name
     return @cached_real_name unless @cached_real_name.nil?
 
-    if self.profile.nil? or (self.profile.firstname.nil? and self.profile.lastname.nil?)
-      @cached_real_name = self.login
+    if firstname.nil? and lastname.nil?
+      @cached_real_name = login
     else
-      @cached_real_name ="#{self.profile.firstname} #{self.profile.lastname}"
+      @cached_real_name ="#{firstname} #{lastname}"
     end
 
     @cached_real_name

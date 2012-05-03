@@ -24,7 +24,7 @@ namespace :import do
       user.save
 
       unless row[:prenom].empty? # real people seem to have a "prenom"
-        profile = Profile.create( # FIXME merge with data from LDAP
+        user = User.create( # FIXME merge with data from LDAP
           :user_id => user.id,
           :firstname => row[:prenom],
           :lastname => row[:nom],
@@ -70,8 +70,8 @@ namespace :import do
         :website => row[:web],
         :email => row[:email],
         :description => row[:description],
-        :owner_id => Profile.all.detect do |profile|
-            "#{profile.firstname} #{profile.lastname}" == row[:nom_responsable]
+        :owner_id => User.all.detect do |user|
+            "#{user.firstname} #{user.lastname}" == row[:nom_responsable]
           end.try(:user_id) || User.find_by_login('admin').id
       )
       print '.'
