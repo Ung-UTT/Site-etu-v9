@@ -41,6 +41,7 @@ class Asso < ActiveRecord::Base
   end
 
   def joinable_roles user
+    return [] if user.nil?
     Asso::DEFAULT_ROLES.collect do |role|
       if user.can?(:join, self) and !has_user?(user, role)
         [I18n.t("model.role.roles.#{role}", default: role), role]
@@ -49,6 +50,7 @@ class Asso < ActiveRecord::Base
   end
 
   def disjoinable_roles user
+    return [] if user.nil?
     roles.map(&:name).collect do |role|
       if user.can?(:disjoin, self) and has_user?(user, role)
         [I18n.t("model.role.roles.#{role}", default: role), role]

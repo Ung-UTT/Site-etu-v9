@@ -79,9 +79,10 @@ module ApplicationHelper
     options_for_select(Course.all.map { |a| [a.name, a.id] }.unshift([t('helpers.none'), nil]), default)
   end
 
-  def users_select(object)
-    array = object.users.map { |u| [u.real_name, u.id] }
-    options_for_select(array.unshift([t('helpers.none'), nil]), object.users.map(&:id))
+  def users_select(object = nil)
+    users = User.first(20) | (object.nil? ? [] : object.users)
+    array = users.map { |u| [u.login, u.id] } # FIXME : real_name après fusion User/Profile
+    options_for_select(array.unshift([t('helpers.none'), nil]), users.map(&:id))
   end
 
   # Links to

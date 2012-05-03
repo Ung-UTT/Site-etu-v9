@@ -13,14 +13,14 @@
       owner: link_to_user(@asso.owner),
       your_roles: @disjoinable_roles.empty? ? nil : form_for(@asso, url: disjoin_asso_path, method: :post) do |f|
         raw [
-          f.label(:roles, "#{t('assos.disjoin')} le role de"),
+          f.label(:roles, "#{t('assos.disjoin')} le role de "),
           f.select(:roles, @disjoinable_roles),
           f.submit(t('c.roles.revoke'))
         ].join
       end,
       available_roles: @joinable_roles.empty? ? nil : form_for(@asso, url: join_asso_path, method: :post) do |f|
         raw [
-          f.label(:roles, "#{t('assos.join')} en tant que"),
+          f.label(:roles, "#{t('assos.join')} en tant que "),
           f.select(:roles, @joinable_roles),
           f.submit(t('c.roles.grant'))
         ].join

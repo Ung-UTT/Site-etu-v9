@@ -1,6 +1,7 @@
 //= require jquery
 //= require rails
 //= require chosen
+//= require ajax-chosen
 //= require fullcalendar
 //= require markitup
 //= require markdown
@@ -12,6 +13,21 @@ $(function () {
   // Selecteurs et selecteurs multiples
   // Permet de rechercher dans un grande liste
   $('select.chosen').chosen();
+
+  // Les listes d'utilisateurs sont trop grandes, on les charge donc via
+  // des requêtes AJAX
+  $('select.users-chosen').ajaxChosen({
+      method: 'GET',
+      url: '/users.json',
+      dataType: 'json',
+      jsonTermKey: 'q', // Variable de recherches (?q=...)
+    }, function (data) {
+        var terms = {};
+        $.each(data, function (i, val) {
+            terms[val['id']] = val['login'];
+        });
+        return terms;
+    });
 
   // Pour pas charger ça tout le temps :
   // (événements définis dans _schedule.html.erb)

@@ -159,7 +159,9 @@
     <li><%= link_to t('layout.about'), {:controller => :home, :action => :about} %></li>
   </ul>
 
-  <script>ROOT_URL = "<%= root_path(:only_path => false) %>";</script>
+  <script type="text/javascript" charset="utf-8">
+    var ROOT_PATH = "<%= root_path(:only_path => false) %>";
+  </script>
   <%= javascript_include_tag :application %>
 </body>
 </html>

@@ -64,6 +64,9 @@ class AssosController < ApplicationController
       @asso.image = nil
     end
 
+    @asso.owner = User.find(params[:asso][:owner_id])
+    params[:asso].delete(:owner_id)
+
     if @asso.update_attributes(params[:asso])
       redirect_to(@asso, :notice => t('c.updated'))
     else
