@@ -7,3 +7,4 @@ Encoding.default_internal = Encoding::UTF_8
 
 # Initialize the rails application
 SiteEtu::Application.initialize!
+

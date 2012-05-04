@@ -5,10 +5,10 @@ namespace :import do
       require 'mysql2'
 
       client = Mysql2::Client.new(
-        :host => 'localhost',
-        :username => 'utt_db',
-        :password => 'utt_db',
-        :database => 'utt_db'
+        host: 'localhost',
+        username: 'utt_db',
+        password: 'utt_db',
+        database: 'utt_db'
       )
 
       puts "Loading dumps into DB..."
