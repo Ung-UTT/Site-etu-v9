@@ -67,6 +67,7 @@ namespace :import do
       results = client.query("SELECT * FROM citation ORDER BY id")
       results.each(:symbolize_keys => true) do |row|
         next unless row[:active] == 1
+        next if row[:source] == 'wikipedia'
         next if Quote.find_by_content(row[:text])
         quote = Quote.create(
           :content => row[:text],
@@ -121,15 +122,13 @@ namespace :import do
         results.each(:symbolize_keys => true) do |row|
           next if row[:eval].blank?
 
-          user = User.find_by_login(row[:login]) || import_user
           course = Course.find_by_name(row[:uv]) || Course.create!(name: row[:uv])
-          next if course.comments.find_by_user_id_and_content(user.id, row[:eval])
+          next if course.comments.find_by_content_and_created_at(row[:eval], row[:date_eval])
 
           comment = course.comments.new(
             :content => row[:eval],
             # :grade => row[:eval_note] # FIXME
           )
-          comment.user = user
           comment.created_at = row[:date_eval]
           comment.save
           print '.'
@@ -140,7 +139,7 @@ namespace :import do
       # TODO: import moar data!
 
       puts "Done."
-      puts "Don't forget to set unknown assos' owners and courses' comments manually then delete the 'import' user!"
+      puts "Don't forget to set unknown assos' owners manually then delete the 'import' user!"
     end
 
 
