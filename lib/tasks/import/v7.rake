@@ -3,6 +3,7 @@ namespace :import do
     desc "Import data, of the student website v7, from old MySQL database"
     task :mysql => :environment do
       require 'mysql2'
+      require 'htmlentities'
 
       client = Mysql2::Client.new(
         host: 'localhost',
@@ -69,7 +70,7 @@ namespace :import do
         next if row[:source] == 'wikipedia'
         next if Quote.find_by_content(row[:text])
         quote = Quote.create(
-          :content => CGI.unescapeHTML(row[:text]),
+          :content => HTMLEntities.new.decode(row[:text]),
           :tag => (row[:source] == 'humour' ? 'joke' : row[:source]),
           :author => row[:more]
         )
