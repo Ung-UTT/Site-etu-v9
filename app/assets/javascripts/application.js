@@ -75,7 +75,6 @@ $(function () {
     });
   }
 
-
   // Code Konami (suppprime éléments quand on clique dessus
   // et "Echap" : met un BSOD
   var keys = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];

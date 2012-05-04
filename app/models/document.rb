@@ -25,7 +25,6 @@ class Document < ActiveRecord::Base
     file
   end
 
-
   # Est-ce une image ?
   def image?
     !(asset_file_name =~ /\.(png|jpe?g|gif)\Z/).nil?

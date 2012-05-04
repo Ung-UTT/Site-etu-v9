@@ -142,7 +142,6 @@ namespace :import do
       puts "Don't forget to set unknown assos' owners manually then delete the 'import' user!"
     end
 
-
     desc "Import data, of the student website v7, from file sharings"
     task :files => :environment do
       DIR = '/tmp/annals'
