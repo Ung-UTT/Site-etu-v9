@@ -70,7 +70,7 @@ class Timesheet < ActiveRecord::Base
       index = 0 # Nombre de semaines depuis la rentrée
 
       begin
-        day = semester['weeks'][index][ts.start_at.wday, 1] # cf lib/semesters.rb
+        day = semester['weeks'][index][ts.start_at.wday - 1, 1] # cf lib/semesters.rb
 
         if (!ts.week.nil? and ts.week == day) or # Semaine A ou semaine B
            (ts.week.nil? and ['A', 'B'].include?(day)) # Il y a cours ce jour là ?
