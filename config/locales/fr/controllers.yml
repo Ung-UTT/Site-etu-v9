@@ -10,13 +10,13 @@ fr:
 
     assos:
       already_joined: "Tu es déjà %{role} de cette asso."
-      joined: "Tu êtes maintenant %{role} de l'asso."
+      joined: "Tu es maintenant %{role} de l'asso."
       already_disjoined: "Tu n'as pas le rôle de %{role} dans cette asso."
       disjoined: "Tu n'es plus %{role} de cette asso."
 
     cas:
       already_connected: "Tu es déjà connecté."
-      already_exist: "Tu es bien connecté grâce à votre compte UTT."
+      already_exist: "Tu es bien connecté grâce à ton compte UTT."
       user_created: "Un compte t'a été créé."
 
     events:
