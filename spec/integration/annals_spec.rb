@@ -9,7 +9,6 @@ feature "Managing annals" do
     sign_in login, password
     visit new_annal_path
 
-    puts page.body
     form = find("//form[@action=\"/annals\"]")
     within(form) do
       attach_file :annal_documents_attributes_0_asset, file_from_assets('document.pdf').path

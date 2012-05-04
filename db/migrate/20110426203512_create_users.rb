@@ -26,7 +26,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text       :description
 
       # Photo de profil
-      t.references :image #, :polymorphic => true
+      t.references :image
 
       t.timestamps
     end

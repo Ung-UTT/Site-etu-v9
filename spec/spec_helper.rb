@@ -14,7 +14,7 @@ Spork.prefork do
     SimpleCov.start 'rails'
     SimpleCov.at_exit do
       SimpleCov.result.format!
-      exit(2) if SimpleCov.result.covered_percent < 50 # Mwahaha! :P
+      exit(2) if SimpleCov.result.covered_percent < 60 # Mwahaha! :P
     end
   end
 
