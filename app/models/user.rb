@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
          :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me # Devise
-  attr_accessible :login, :preference_attributes
+  attr_accessible :login, :preference_attributes, :utt_address,
+                  :parents_address, :surname, :once, :phone, :description
 
   delegate :can?, :cannot?, :to => :ability
 
