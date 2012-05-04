@@ -55,8 +55,7 @@ class ApplicationController < ActionController::Base
     elsif exception.is_a?(CanCan::AccessDenied)
       render_access_denied(exception)
     else # Autre erreur
-      # TODO: Il serait bien que les admins soient notifiés
-      # (voir comment : mail, table en BDD, ...)
+      UserMailer.error(exception)
       render_error(exception)
     end
   end
@@ -120,13 +119,10 @@ class ApplicationController < ActionController::Base
 
     # Sinon, on regarde si c'est un téléphone ou si il a déjà choisi une version
     # (Mobile et pas forcé normal) ou force mobile
-    if (detect_mobile? and cookies[:force_mobile] != 'false') or cookies[:force_mobile] == 'true'
-      @is_mobile = true
-    else
-      @is_mobile = false
-    end
+    @is_mobile = (detect_mobile? and cookies[:force_mobile] != 'false') or
+                 (cookies[:force_mobile] == 'true')
 
-    return @is_mobile
+    @is_mobile
   end
 
   # Méthode pratique dans certaines classes pour trouver l'objet associé
@@ -134,9 +130,7 @@ class ApplicationController < ActionController::Base
   # Exemple : Pour trouve la news associée quand on poste un commentaire
   def find_polymorphicable
     params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
+      return $1.classify.constantize.find(value) if name =~ /(.+)_id$/
     end
     nil
   end

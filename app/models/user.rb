@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
   class << self
+    def administrators
+      User.select { |user| user.has_role? :administrator }
+    end
+
     def students
       User.select { |user| user.has_role? :student }
     end

@@ -15,6 +15,19 @@ describe User do
     end
   end
 
+  describe "#administrators" do
+    it "returns all administrators" do
+      administrators = [ create(:administrator), create(:administrator) ]
+      User.administrators.should =~ administrators
+    end
+
+    it "returns only administrators" do
+      user = create(:user)
+      user.has_role?(:administrator).should be_false
+      User.administrators.should_not include user
+    end
+  end
+
   describe "#students" do
     it "returns all students" do
       students = [ create(:student), create(:student) ]
