@@ -1,0 +1,9 @@
+%ul.actions
+  - if can? :update, ressource
+    %li
+      = link_to t('common.edit'), {:action => :edit, :id => ressource}
+  - if can? :destroy, ressource
+    %li
+      = button_to t('common.delete'), ressource,            |
+        :confirm => t('common.confirm'), :method => :delete |
+  %li= link_to t('common.list'), {:action => :index}

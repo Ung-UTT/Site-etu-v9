@@ -71,4 +71,3 @@ class Ability
     asso = Asso.find(asso_id) and asso.owner == user
   end
 end
-
