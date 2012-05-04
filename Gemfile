@@ -43,7 +43,6 @@ end
 group :import do
   gem 'mysql2'
   gem 'net-ldap' # Manipulation d'annuaires LDAP
-  gem 'htmlentities'
 end
 
 group :production do
