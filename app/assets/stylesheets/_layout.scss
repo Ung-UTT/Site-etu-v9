@@ -90,15 +90,6 @@ body {
     }
   }
 
-  // Ne sert que s'il y a plusieurs langues d'actives
-  #language-selector {
-    float: right;
-    margin: 0;
-    margin-right: 5px;
-
-    img { padding: 0; }
-  }
-
   li {
     // Voir .illustrated pour le reste
     display: inline-block;
