@@ -55,6 +55,8 @@ fr:
     members: "Adhérents"
     your_roles: "Tes rôles"
     available_roles: "Rôles de l'asso"
+    website: "Site web"
+    email: "Courriel"
 
   carpools:
     list: "Covoiturages"

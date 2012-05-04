@@ -2,7 +2,7 @@ module UsersHelper
   def link_to_user(user)
     if can? :read, user
       if user.nil?
-        ''
+        t('unknown')
       elsif user.image.nil?
         link_to user.real_name, user
       else
@@ -12,7 +12,7 @@ module UsersHelper
         end
       end
     else
-      user.nil? ? '' : user.real_name
+      user.nil? ? t('unknown') : user.real_name
     end
   end
 
