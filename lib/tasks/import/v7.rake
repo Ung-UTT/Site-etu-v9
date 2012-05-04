@@ -17,43 +17,48 @@ namespace :import do
         system "mysql -uutt_db -putt_db utt_db < #{file}"
       end
 
-      print "Importing users..."
+      # temporary user used for import
+      import_user = User.find_by_login('import') || User.simple_create('import')
+
+      print "Importing users (may take a while)..."
+      users = client.query("SELECT * FROM usersInfo ORDER BY dateCreation")
+
       ActiveRecord::Base.transaction do
-        # real people seem to have a "prenom"
-        real_users = client.query("SELECT * FROM usersInfo WHERE prenom != '' ORDER BY dateCreation")
+        users.each(:symbolize_keys => true) do |row|
+          row[:email] = "#{row[:login]}@utt.fr" if row[:email].blank?
 
-        real_users.each(:symbolize_keys => true) do |row|
-          user = User.find_by_login(row[:login]) || User.simple_create(row[:login])
-          user.email = (row[:email].blank? ? "#{row[:login]}@utt.fr" : row[:email])
-
-          {
-            :created_at => row[:dateCreation],
-            :firstname => row[:prenom],
-            :lastname => row[:nom],
-            :surname => row[:surnom],
-            :once => row[:jadis],
-            :utt_id => row[:idEtu].to_i,
-            :level => row[:branche],
-            :specialization => row[:filiere],
-            :role => row[:LDAPdescription],
-            :phone => row[:gsm],
-            :utt_address => %w[
-              adr_3_rue adr_3_ville adr_3_cp adr_3_pays
-            ].map{|i| row[i.to_sym]}.join(' '),
-            :parents_address => %w[
-              adr_p_rue adr_p_ville adr_p_cp adr_p_pays
-            ].map{|i| row[i.to_sym]}.join(' ')
-          }.each do |key, value|
-            value.strip! if value.is_a? String
-            value = nil if value == ''
-            old_value = user.send key
-            if old_value != value and !value.nil?
-              puts "#{user.login}##{key}: overriding #{old_value.inspect} with #{value.inspect}"
-              user.send "#{key}=", value
+          # import only existing users from LDAP
+          if user = User.find_by_login_and_email(row[:login], row[:email])
+            {
+              :created_at => row[:dateCreation],
+              :firstname => row[:prenom],
+              :lastname => row[:nom],
+              :surname => row[:surnom],
+              :once => row[:jadis],
+              :utt_id => row[:idEtu].to_i,
+              :level => row[:branche],
+              :specialization => row[:filiere],
+              :role => row[:LDAPdescription],
+              :phone => row[:gsm],
+              :utt_address => %w[
+                adr_3_rue adr_3_ville adr_3_cp adr_3_pays
+              ].map{|i| row[i.to_sym]}.join(' '),
+              :parents_address => %w[
+                adr_p_rue adr_p_ville adr_p_cp adr_p_pays
+              ].map{|i| row[i.to_sym]}.join(' ')
+            }.each do |key, value|
+              value.strip! if value.is_a? String
+              value = nil if value == ''
+              old_value = user.send key
+              if old_value != value and !value.nil?
+                $stderr.puts "#{user.login}##{key}: overriding #{old_value.inspect} with #{value.inspect}"
+                user.send "#{key}=", value
+              end
             end
-          end
 
-          user.save
+            user.save
+            print '.'
+          end
         end
       end
       puts
@@ -62,6 +67,7 @@ namespace :import do
       results = client.query("SELECT * FROM citation ORDER BY id")
       results.each(:symbolize_keys => true) do |row|
         next unless row[:active] == 1
+        next if Quote.find_by_content(row[:text])
         quote = Quote.create(
           :content => row[:text],
           :tag => (row[:source] == 'humour' ? 'joke' : row[:source]),
@@ -76,6 +82,7 @@ namespace :import do
       results = client.query("SELECT * FROM club_asso ORDER BY id")
       results.each(:symbolize_keys => true) do |row|
         next if row[:type] == 0 # deleted asso
+        next if Asso.find_by_name(row[:intitule])
         asso = Asso.create(
           :name => row[:intitule],
           :website => row[:web],
@@ -83,7 +90,7 @@ namespace :import do
           :description => row[:description],
           :owner_id => User.all.detect do |user|
               "#{user.firstname} #{user.lastname}" == row[:nom_responsable]
-            end.try(:user_id) || User.find_by_login('admin').id
+            end.try(:id) || import_user.id
         )
         print '.'
       end
@@ -93,38 +100,47 @@ namespace :import do
       print "Importing news..."
       results = client.query("SELECT * FROM news_liste ORDER BY id_news")
       results.each(:symbolize_keys => true) do |row|
-        news = News.create!(
+        next if News.find_by_title_and_content(row[:titre], row[:information])
+        news = News.new(
           :title => row[:titre],
           :content => row[:information],
-          :user => User.find_by_login(row[:auteur_login]),
-          :is_moderated => true,
-          :created_at => row[:date_creation]
+          :is_moderated => true
         )
+        news.user = User.find_by_login(row[:auteur_login])
+        news.created_at = row[:date_creation]
+        news.save
         print '.'
       end
       puts
 
       # dependencies: users, courses
-      print "Importing course comments..."
+      print "Importing course comments (may take a while)..."
       results = client.query("SELECT * FROM users_uvs ORDER BY annee")
-      results.each(:symbolize_keys => true) do |row|
-        next if row[:eval].blank?
 
-        course = Course.find_by_name(row[:uv]) || Course.create!(name: row[:uv])
+      ActiveRecord::Base.transaction do
+        results.each(:symbolize_keys => true) do |row|
+          next if row[:eval].blank?
 
-        course.comments.create!(
-          :user => User.find_by_login(row[:login]),
-          :content => row[:eval],
-          # :grade => row[:eval_note], # FIXME
-          :created_at => row[:date_eval]
-        )
-        print '.'
+          user = User.find_by_login(row[:login]) || import_user
+          course = Course.find_by_name(row[:uv]) || Course.create!(name: row[:uv])
+          next if course.comments.find_by_user_id_and_content(user.id, row[:eval])
+
+          comment = course.comments.new(
+            :content => row[:eval],
+            # :grade => row[:eval_note] # FIXME
+          )
+          comment.user = user
+          comment.created_at = row[:date_eval]
+          comment.save
+          print '.'
+        end
       end
       puts
 
       # TODO: import moar data!
 
       puts "Done."
+      puts "Don't forget to set unknown assos' owners and courses' comments manually then delete the 'import' user!"
     end
 
 

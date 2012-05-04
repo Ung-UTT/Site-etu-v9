@@ -10,43 +10,43 @@ namespace :import do
       DB_FILE = Rails.root.join('tmp', 'users.marshal')
 
       if File.exists?(DB_FILE)
-        puts "Get students informations from #{DB_FILE}"
-        students = Marshal.load(File.open(DB_FILE, 'rb').read)
+        puts "Get users informations from #{DB_FILE}"
+        users = Marshal.load(File.open(DB_FILE, 'rb').read)
       else
         puts "You have to convert users first"
         exit
       end
 
-      puts "Add students to the database"
+      puts "Add users to the database"
       ActiveRecord::Base.transaction do # Permet d'être beaucoup plus rapide !
-        students.each do |st|
+        users.each do |user|
           print '.' # Un point par personne
 
           # Créer ou mettre à jour
-          u = User.find_by_login(st['uid']) || User.new(:login => st['uid'])
-          u.password = u.password_confirmation = SecureRandom.base64
+          u = User.find_by_login(user['uid']) || User.new(:login => user['uid'])
+          u.password = u.password_confirmation = Devise.friendly_token[0,20]
 
           # E-Mail
-          u.email = st['mail']
-          if u.email.nil? or u.email.empty?
+          u.email = user['mail']
+          if u.email.blank?
             u.email = "#{u.login}@utt.fr" # Mieux que rien (pour deux personnes...)
           end
 
           # On va écrire les détails dans le profil
-          u.utt_id = st['supannetuid'].to_i
-          u.firstname = st['givenname']
-          u.lastname = st['sn']
-          u.level = st['niveau']
-          u.specialization = st['filiere']
-          u.role = st['employeetype'].force_encoding('utf-8')
-          u.phone = st['telephonenumber']
-          u.room = st['roomnumber']
+          u.utt_id = user['supannetuid'].to_i
+          u.firstname = user['givenname']
+          u.lastname = user['sn']
+          u.level = user['niveau']
+          u.specialization = user['filiere']
+          u.role = user['employeetype'].force_encoding('utf-8')
+          u.phone = user['telephonenumber']
+          u.room = user['roomnumber']
 
           # Les UVs sont ajoutées via les emploi du temps
           # (Un utilisateur suit un cours si il participe à au moins une horaire)
 
-          # Ajouter le rôle d'étudiant si il l'est
-          u.add_role('student') if st['employeetype'] == 'student'
+          # Ajouter le rôle d'étudiant si il l'euser
+          u.add_role('student') if user['employeetype'] == 'student'
 
           # On sauvegarde le tout
           begin
@@ -57,7 +57,7 @@ namespace :import do
             # Les seules erreurs qu'il reste sont des mails spéciaux
             # utilisés plusieurs fois
             puts
-            puts "#{st['supannetuid']} : #{st['displayname']}"
+            puts "#{user['supannetuid']} : #{user['displayname']}"
             puts "Error: " + e.inspect
             puts "User: " + u.inspect
           end
