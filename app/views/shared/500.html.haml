@@ -8,5 +8,5 @@
     %a{href: "http://xkcd.com/292/"} t('views.error500.credit')
 
 %section.content
-  %h1.title "#{t('views.error500.explain'} #{exception.to_s}
+  %h1.title "#{t('views.error500.explain')} #{exception.to_s}"
   %pre= exception.backtrace.join("\n")
