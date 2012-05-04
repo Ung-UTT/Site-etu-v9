@@ -2,12 +2,11 @@ require 'spec_helper'
 
 feature "Logging in/out" do
   background do
-    @login, @password = 'toto', 'superpass'
-    create :user, login: @login, password: @password
+    @user = create :user
   end
 
   scenario "Logging in then logging out" do
-    sign_in @login, @password
+    sign_in @user.login, @user.password
     current_path.should == '/'
     logout = find('//a[@href="/users/sign_out"]')
 
@@ -17,7 +16,7 @@ feature "Logging in/out" do
   end
 
   scenario "Trying to log in with incorrect credentials" do
-    sign_in @login, @password * 2
+    sign_in @user.login, @user.password * 2
     current_path.should == '/users/sign_in'
     page.should_not have_xpath('//a[@href="/logout"]')
   end

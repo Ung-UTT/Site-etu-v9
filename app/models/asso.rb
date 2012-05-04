@@ -2,7 +2,7 @@ class Asso < ActiveRecord::Base
   DEFAULT_ROLES = %w[member treasurer secretary]
   resourcify
 
-  attr_accessible :name, :description, :image, :owner, :parent_id
+  attr_accessible :name, :description, :image, :owner_id, :parent_id
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
 

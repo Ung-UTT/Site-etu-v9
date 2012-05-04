@@ -2,10 +2,9 @@ require 'spec_helper'
 
 feature "Managing news" do
   scenario "Submitting a news" do
-    login, password = 'toto', 'superpass'
-    user = create :student, login: login, password: password
+    user = create :student
 
-    sign_in login, password
+    sign_in user.login, user.password
     visit new_news_path
 
     form = find("//form[@action=\"/news\"]")
@@ -19,7 +18,10 @@ feature "Managing news" do
         2. ???
         3. Profit
       CONTENT
-      submit_form
+
+      expect {
+        submit_form
+      }.to change{News.count}.by(1)
     end
 
     current_path.should == news_index_path
@@ -28,10 +30,9 @@ feature "Managing news" do
 
   scenario "Moderating a news" do
     news = create :news, is_moderated: false
-    login, password = 'modo', 'superpass'
-    user = create :moderator, login: login, password: password
+    user = create :moderator
 
-    sign_in login, password
+    sign_in user.login, user.password
     visit news_path(news)
     find_link(I18n.t('newss.moderate')).click
 

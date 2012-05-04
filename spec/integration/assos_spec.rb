@@ -1,17 +1,33 @@
 require 'spec_helper'
 
-feature "Displaying an asso's page" do
-  background do
-    @asso = create :asso
-    @login, @password = 'toto', 'superpass'
-    @user = create :student, login: @login, password: @password
+feature "Managing an asso" do
+  scenario "Creating an asso" do
+    user = create :student
 
-    sign_in @login, @password
-    visit asso_path(@asso)
+    sign_in user.login, user.password
+    visit new_asso_path
+
+    form = find("//form[@action=\"/assos\"]")
+    within(form) do
+      fill_in :name, with: "UNG"
+
+      expect {
+        submit_form
+      }.to change{Asso.count}.by(1)
+    end
+
+    current_path.should == asso_path(Asso.last)
+    page_should_have_notice
   end
 
   scenario "Joining/disjoining an asso" do
-    actions = [join_asso_path(@asso), disjoin_asso_path(@asso)]
+    asso = create :asso
+    user = create :student
+
+    sign_in user.login, user.password
+    visit asso_path(asso)
+
+    actions = [join_asso_path(asso), disjoin_asso_path(asso)]
     roles = %w(member treasurer)
 
     actions.each do |action|
