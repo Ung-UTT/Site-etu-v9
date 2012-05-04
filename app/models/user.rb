@@ -50,17 +50,16 @@ class User < ActiveRecord::Base
     # Recherche parmi les utilisateurs via une chaîne
     # Exemple : User.search("Emm Car") => [User (Emmanuel Carquin), ...]
     def search(clues)
-      # FIXME : Enlever les accents (peut-être : http://snippets.dzone.com/posts/show/2384)
       # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
-      clues = clues.downcase.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
-      users = User.all.select do |p|
+      clues = clues.downcase.to_ascii.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
+      users = User.select do |p|
         # Le utilisateur fait parti des utilisateurs recherchés si il contient
         # chacun des indices
-        string = [p.user.login, p.firstname, p.lastname, p.level].join(' ')
+        string = [p.login, p.firstname, p.lastname, p.level].join(' ')
         clues.all? do |clue|
-          string.downcase.include?(clue)
+          string.downcase.to_ascii.include?(clue)
         end
-      end.map(&:user)
+      end
     end
 
     # Créer un utilisateur rapidement

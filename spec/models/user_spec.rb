@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'spec_helper'
 
 describe User do
@@ -23,6 +25,30 @@ describe User do
       user = create(:user)
       user.has_role?(:student).should be_false
       User.students.should_not include user
+    end
+  end
+
+  describe "#search" do
+    it "works with simple search" do
+      joe = create :user, login: 'joe'
+      User.search('joe').should include joe
+    end
+
+    it "works with non [a-z]" do
+      accent = create :user, firstname: 'Accentué'
+      User.search('accentue').should include accent
+    end
+
+    it "works with partial search" do
+      full = create :user, firstname: 'full'
+      User.search('fu').should include full
+    end
+
+    it "ignores the case" do
+      camel = create :user, firstname: 'STranGeCAse'
+      User.search('strangecase').should include camel
+      User.search('STRANGECASE').should include camel
+      User.search('StrangeCase').should include camel
     end
   end
 

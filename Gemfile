@@ -14,6 +14,7 @@ gem 'kaminari'    # Pagination
 gem 'paper_trail' # Historique
 gem 'rdiscount'   # Parsage (Markdown)
 gem 'awesome_nested_set' # "Arbres" (Associations, Rôles, ...)
+gem 'stringex'
 
 group :development do
   gem 'sqlite3'
