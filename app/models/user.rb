@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :lockable, :recoverable, :rememberable,
          :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me # Devise
-  attr_accessible :login, :preference_attributes, :utt_address,
+  attr_accessible :email, :login, :password, :password_confirmation,
+                  :remember_me, :preference_attributes, :utt_address,
                   :parents_address, :surname, :once, :phone, :description
 
   delegate :can?, :cannot?, :to => :ability

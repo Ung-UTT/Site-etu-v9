@@ -11,12 +11,12 @@
       <%= f.fields_for :preference do |f_pref| %>
         <li class="field">
           <%= f_pref.label :quote_type, t('users.quote_type') %>
-          <%= f_pref.select :quote_type, Quote::TAGS %>
+          <%= f_pref.select :quote_type, Quote::TAGS.map { |tag| [ t("model.quote.tags.#{tag}"), tag ] }  %>
         </li>
 
         <li class="field">
           <%= f_pref.label :locale, t('users.locale') %>
-          <%= f_pref.select :locale, I18n.available_locales.map(&:to_s) %>
+          <%= f_pref.select :locale, I18n.available_locales.map(&:to_s).map { |locale| [ t("locales.#{locale}"), locale ] } %>
         </li>
       <% end %>
 

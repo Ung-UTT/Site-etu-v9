@@ -12,6 +12,13 @@ fr:
         F: "Final"
         A: "Autre"
 
+    quote:
+      tags:
+        all: "Toutes"
+        joke: "Blague"
+        quote: "Citation"
+        tip: "Astuce"
+
     role:
       as: "en tant que"
       roles:

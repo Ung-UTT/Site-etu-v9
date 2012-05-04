@@ -4,3 +4,7 @@ fr:
   of: "de"
   unknown: "inconnu"
 
+  locales:
+    en: "English"
+    fr: "Français"
+
