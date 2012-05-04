@@ -5,5 +5,6 @@ namespace :dev do
   task :reset do
     sh %{rm -f db/*.sqlite3 db/schema.rb}
     sh %{rake db:migrate db:seed}
+    sh %{rake db:migrate db:seed RAILS_ENV=test}
   end
 end
