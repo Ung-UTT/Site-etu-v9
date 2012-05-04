@@ -51,7 +51,6 @@ namespace :import do
               value = nil if value == ''
               old_value = user.send key
               if old_value != value and !value.nil?
-                $stderr.puts "#{user.login}##{key}: overriding #{old_value.inspect} with #{value.inspect}"
                 user.send "#{key}=", value
               end
             end
@@ -88,7 +87,7 @@ namespace :import do
           :name => row[:intitule],
           :website => row[:web],
           :email => row[:email],
-          :description => row[:description],
+          :description => row[:description].gsub(/<[^>]*>/, ''),
           :owner_id => User.all.detect do |user|
               "#{user.firstname} #{user.lastname}" == row[:nom_responsable]
             end.try(:id) || import_user.id
@@ -104,11 +103,12 @@ namespace :import do
         next if News.find_by_title_and_content(row[:titre], row[:information])
         news = News.new(
           :title => row[:titre],
-          :content => row[:information],
+          :content => row[:information].gsub(/<[^>]*>/, ''),
           :is_moderated => true
         )
         news.user = User.find_by_login(row[:auteur_login])
         news.created_at = row[:date_creation]
+        news.updated_at = row[:date_creation]
         news.save
         print '.'
       end
