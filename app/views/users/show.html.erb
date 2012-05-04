@@ -7,20 +7,20 @@
 
   <ul>
     <%= not_empty_li(t('users.email'), mail_to(@user.email)) %>
-    <%= not_empty_li(t('user.firstname'), @user.firstname) %>
-    <%= not_empty_li(t('user.lastname'), @user.lastname) %>
+    <%= not_empty_li(t('users.firstname'), @user.firstname) %>
+    <%= not_empty_li(t('users.lastname'), @user.lastname) %>
 
-    <%= not_empty_li(t('user.utt_address'), @user.utt_address) %>
-    <%= not_empty_li(t('user.parents_address'), @user.parents_address) %>
-    <%= not_empty_li(t('user.surname'), @user.surname) %>
-    <%= not_empty_li(t('user.once'), @user.once) %>
+    <%= not_empty_li(t('users.utt_address'), @user.utt_address) %>
+    <%= not_empty_li(t('users.parents_address'), @user.parents_address) %>
+    <%= not_empty_li(t('users.surname'), @user.surname) %>
+    <%= not_empty_li(t('users.once'), @user.once) %>
 
-    <%= not_empty_li(t('user.level'), @user.level) %>
-    <%= not_empty_li(t('user.specialization'), @user.specialization) %>
-    <%= not_empty_li(t('user.role'), @user.role) %>
+    <%= not_empty_li(t('users.level'), @user.level) %>
+    <%= not_empty_li(t('users.specialization'), @user.specialization) %>
+    <%= not_empty_li(t('users.role'), @user.role) %>
 
-    <%= not_empty_li(t('user.phone'), @user.phone) %>
-    <%= not_empty_li(t('user.room'), @user.room) %>
+    <%= not_empty_li(t('users.phone'), @user.phone) %>
+    <%= not_empty_li(t('users.room'), @user.room) %>
   </ul>
 
   <%=md @user.description %>

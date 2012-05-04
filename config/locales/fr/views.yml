@@ -200,6 +200,7 @@ fr:
     role: "Rôle"
     phone: "Télphone"
     room: "Salle"
+    description: "Description"
 
   user_sessions:
     logout: "Se déconnecter"
