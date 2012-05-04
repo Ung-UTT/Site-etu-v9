@@ -1,0 +1,133 @@
+!!!
+%html
+  %head
+    %meta{charset: "utf-8"}
+    
+    = title_tag
+
+    %link{href: image_path('favicon.ico'), rel: "shortcut icon"}
+    
+    - if mobile?
+      %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
+      = stylesheet_link_tag :mobile
+    - else
+      = stylesheet_link_tag :all
+    
+    = csrf_meta_tag
+
+  %body
+    #topbar
+      - unless current_user
+        %ul#connect
+          %li
+            = link_to new_cas_path, {class: 'cas', title: t('user_sessions.connection.cas_title')} do
+              = image_tag('others/connect.png')
+          %li
+            = link_to t('user_sessions.connection.alternative'), new_user_session_path,      |
+              {class: 'alternative', title: t('user_sessions.connection.alternative_title')} |
+      
+      - if mobile?
+        = link_to image_tag('others/logo.png'), :root, { title: t('layout.home'), id: 'logo' }
+      - else
+        %ul.illustrated
+          %li.logo
+            = link_to image_tag('others/logo.png'), :root, title: t('layout.home')
+          %li.users
+            = link_to t('layout.users'), User, title: t('layout.users_title')
+          %li.events
+            = link_to t('layout.events'), events_path, title: t('layout.events')
+          %li.buckutt
+            = link_to t('layout.buckutt'), :root, title: t('layout.buckutt_title')
+          %li.mails
+            = link_to t('layout.mails'), :root, title: t('layout.mails_title')
+          - if current_user
+            %li.logout.connected
+              = link_to '', (session[:cas_user] ? :cas : :destroy_user_session), |
+                method: :delete, title: t('user_sessions.logout')                |
+            %li.timesheets.connected
+              = link_to '', url_for(current_user) + '#schedule', |
+                title: t('layout.schedule')                      |
+            %li.none.connected
+              = link_to_user current_user
+    
+    - unless mobile?
+      %p#beta
+        %a{href: "#", onclick: "$('#beta').fadeOut()", style: "float: right", title: "Cacher ce truc"} [X]
+        Salut visiteur égaré, ce site est toujours en développement, toutes tes
+        actions ici seront perdues. Cependant, tu es chaleureusement encouragé à le
+        tester et rapporter tout bug ou idée d'amélioration via
+        %a{:href => "mailto:ung+site-etu-v9@utt.fr"} ung@utt.fr
+        ou directement sur
+        %a{href: "https://github.com/Ung-UTT/Site-etu-v9/issues"} Github
+        Merci ! ☺
+    
+      %blockquote#quote= @random_quote
+    
+    - unless mobile? and !current_page?(root_url)
+      %ul#sidebar
+        %li.box
+          %h2= t('layout.content')
+          %ul.illustrated
+            %li.timesheets= link_to t('layout.timesheets'), timesheets_path
+            %li.users= link_to t('layout.users'), users_path
+            %li.annals= link_to t('layout.annals'), annals_path
+            %li.classifieds= link_to t('layout.classifieds'), classifieds_path
+            %li.assos= link_to t('layout.assos'), assos_path
+            %li.events= link_to t('layout.events'), events_path
+            %li.news= link_to t('layout.news'), {controller: 'news'}
+            %li.course= link_to t('layout.course'), courses_path
+            %li.wiki= link_to t('layout.wiki'), wikis_path
+        
+        %li.box
+          %h2= t('layout.services')
+          %ul.illustrated
+            %li.carpools= link_to t('layout.carpools'), carpools_path
+            %li.polls= link_to t('layout.polls'), polls_path
+            %li.projects= link_to t('layout.projects'), projects_path
+        
+        - if can?(:manage, Role)
+          %li.box
+            %h2= t('layout.admin')
+            %ul
+              %li= link_to t('layout.quotes'), quotes_path
+              %li= link_to t('layout.roles'), roles_path
+        
+        %li.box
+          %h2= t('layout.extern_links')
+          %ul
+            %li= link_to 'UTT', 'http://www.utt.fr'
+            %li= link_to 'ENT', 'http://ent.utt.fr'
+            %li= link_to 'Sports', 'http://www-suaps.utt.fr'
+            %li= link_to 'BDE', 'http://bde.utt.fr'
+            %li= link_to 'Gala', 'http://gala.utt.fr'
+            %li= link_to 'Intégration', 'http://integration.utt.fr'
+            %li= link_to 'La roue verte', 'http://laroueverte.utt.fr'
+            %li= link_to 'UTT Arena', 'http://uttarena.org'
+            %li= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique'
+            %li= link_to "N'UTT", 'http://etu.utt.fr/journal'
+    
+    %section#contents
+      - unless notice.nil?
+        %p.notice= notice
+      - unless alert.nil?
+        %p.alert= alert
+    
+      = yield
+    
+    %ul#footer
+      - if mobile?
+        %li
+          %a{href: "?mobile=false"}= t('layout.desktop')
+      - else
+        %li
+          %a{href: "?mobile=true"}= t('layout.mobile')
+      %li= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new'
+      %li= link_to t('layout.rules'), {controller: :home, action: :rules}
+      %li= link_to t('layout.about'), {controller: :home, action: :about}
+    %script{charset: "utf-8", type: "text/javascript"}
+      var ROOT_PATH = "#{root_path(only_path: false)}";
+    = javascript_include_tag :application
+
+/
+  = Rails.application.config.version
+
