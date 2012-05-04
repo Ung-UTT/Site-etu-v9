@@ -6,30 +6,30 @@ fr:
     created_but_not_moderated: "Ça a bien été créé (en attente de modération)."
 
     application:
-      denied: "Vous n'avez pas le droit d'effectuer cette action."
+      denied: "Tu n'as pas le droit d'effectuer cette action."
 
     assos:
-      already_joined: "Vous êtes déjà %{role} de cette asso."
-      joined: "Vous êtes maintenant %{role} de l'asso."
-      already_disjoined: "Vous n'avez pas le role de %{role} dans cette asso."
-      disjoined: "Vous n'êtes plus %{role} de cette asso."
+      already_joined: "Tu es déjà %{role} de cette asso."
+      joined: "Tu êtes maintenant %{role} de l'asso."
+      already_disjoined: "Tu n'as pas le rôle de %{role} dans cette asso."
+      disjoined: "Tu n'es plus %{role} de cette asso."
 
     cas:
-      already_connected: "Vous êtes déjà connecté."
-      already_exist: "Vous êtes bien connecté grâce à votre compte UTT."
-      user_created: "Un compte vous a été créé."
+      already_connected: "Tu es déjà connecté."
+      already_exist: "Tu es bien connecté grâce à votre compte UTT."
+      user_created: "Un compte t'a été créé."
 
     events:
-      already_joined: "Vous participez déjà à cet évènement."
-      joined: "Vous participez maintenant à cet évènement."
-      already_disjoined: "Vous ne participez pas à cet évènement."
-      disjoined: "Vous ne participez plus à cet évènement."
+      already_joined: "Tu participes déjà à cet évènement."
+      joined: "Tu participes maintenant à cet évènement."
+      already_disjoined: "Tu ne participes pas à cet évènement."
+      disjoined: "Tu ne participes plus à cet évènement."
 
     projects:
-      already_joined: "Vous participez déjà à ce projet."
-      joined: "Vous participez maintenant à ce projet."
-      already_disjoined: "Vous ne participez pas à ce projet."
-      disjoined: "Vous ne participez maintenant plus à ce projet."
+      already_joined: "Tu participes déjà à ce projet."
+      joined: "Tu participes maintenant à ce projet."
+      already_disjoined: "Tu ne participes pas à ce projet."
+      disjoined: "Tu ne participes maintenant plus à ce projet."
 
     roles:
       joined: "L'utilisateur a maintenant ce rôle."
@@ -42,8 +42,8 @@ fr:
       bad_email: "Mauvaise adresse mail."
 
     user_sessions:
-      created: "Vous êtes maintenant connecté."
-      destroyed: "Vous êtes maintenant déconnecté."
+      created: "Tu es maintenant connecté."
+      destroyed: "Tu es maintenant déconnecté."
       failed: "La connexion a échoué."
 
     votes:

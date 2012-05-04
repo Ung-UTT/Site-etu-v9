@@ -25,7 +25,7 @@ fr:
       short: "%{category} de %{name} en %{room}"
 
     vote:
-      uniqueness: "Vous ne pouvez pas voter plusieurs fois pour ce sondage"
+      uniqueness: "Tu ne peux pas voter plusieurs fois pour ce sondage."
 
   time:
     formats:

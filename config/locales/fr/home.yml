@@ -21,7 +21,7 @@ fr:
       content: |
         ## Le site
 
-        Voilà, vous y êtes, n'hésitez pas à cliquer sur tout les liens ;).
+        Voilà, tu y es, n'hésite pas à cliquer sur tous les liens ;).
 
         ## Nous
 
@@ -47,15 +47,14 @@ fr:
     rules:
       title: "Règles"
       content: |
-        En utilisant ce site, vous acceptez les règles suivantes :
+        En utilisant ce site, tu acceptes les règles suivantes :
 
-        * Vous êtes responsable de tout contenu que vous postez sur ce site.
-        * Tout contenu illégal pourra être supprimé et votre compte bloqué
-          sans préavis. Nous en garederons tout de même trace si des
-          autorités nous demande une copie.
-        * Votre compte peut être mis en lecture seule : vous ne pouvez que
-          lire et ne pouvez plus poster/modifier/supprimer aucun contenu.
-        * Vous avez droit de demander la suppréssion de contenu vous
-          concernant.
-        * Vous pouvez demander toutes les informations que
-          nous possédons sur vous dans notre base de données.
+        * Tu es responsable de tout contenu que tu postes sur ce site.
+        * Tout contenu illégal pourra être supprimé et ton compte bloqué sans
+          préavis. Nous en garederons tout de même trace si des autorités nous
+          demande une copie.
+        * Ton compte peut être mis en lecture seule : tu ne peux que lire et
+          plus poster/modifier/supprimer aucun contenu.
+        * Tu as le droit de demander la suppression de contenu te concernant.
+        * Tu peux demander toutes les informations que nous possédons sur toi
+          dans notre base de données.

@@ -2,7 +2,7 @@ fr:
   # Views
   common:
     add: "Ajouter"
-    confirm: "Êtes vous sûr ?"
+    confirm: "Es-tu sûr ?"
     delete: "Supprimer"
     edit: "Modifier"
     list: "Lister"
@@ -128,7 +128,7 @@ fr:
     vote: "Voter"
 
   preferences:
-    list: "Vos préférences"
+    list: "Tes préférences"
     locale: "Langue"
     quote_type: "Type de citations"
 
@@ -175,7 +175,7 @@ fr:
     email: "Email"
     password: "Mot de passe"
     password_confirmation: "Confirmation"
-    password_reset: "Vous avez oublié votre mot de passe ?"
+    password_reset: "Tu as oublié ton mot de passe ?"
     remember_me: "Se souvenir de moi"
     add: "Créer un compte"
     sign_in: "Connexion"
@@ -213,7 +213,7 @@ fr:
     count:
       one: "Un vote"
       other: "%{count} votes"
-    delete: "Supprimer votre vote"
+    delete: "Supprimer ton vote"
 
   views:
     pagination:
@@ -225,7 +225,7 @@ fr:
 
     error404:
       title: "404 : La page n'a pas été trouvée"
-      content: "Vous avez peut-être mal tapé l'adresse ou cette page a été déplacée."
+      content: "Tu as peut-être mal tapé l'adresse ou cette page a été déplacée."
 
     error500:
       title: "Mince, ya un problème"
