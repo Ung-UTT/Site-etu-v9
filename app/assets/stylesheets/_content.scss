@@ -288,8 +288,11 @@
   /* Spécifique au trombi */
 
   .profile {
-    /* Photo d'utilisateur (dans le trombi et le profil) */
-    img.user { max-width: 100px; }
+    /* Photo d'utilisateur (dans le trombil) */
+    img.user {
+      float: right;
+      max-width: 100px;
+    }
 
     .user_frame {
       text-align: center;
