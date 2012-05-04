@@ -1,0 +1,12 @@
+%section.content
+  = title t('views.error500.title')
+
+  %p= t('views.error500.content')
+
+  %p
+    = image_tag 'errors/500.png'
+    %a{href: "http://xkcd.com/292/"} t('views.error500.credit')
+
+%section.content
+  %h1.title "#{t('views.error500.explain'} #{exception.to_s}
+  %pre= exception.backtrace.join("\n")
