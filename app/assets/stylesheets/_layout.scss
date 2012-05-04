@@ -42,6 +42,7 @@ body {
   text-align: center;
   color: $fond - #555;
   font-style: italic;
+  clear: both;
 
   &:before { content: "« "; }
   &:after { content : " »"; }
@@ -68,12 +69,12 @@ body {
     float: right;
     text-align: right;
 
-    * {
+    li, a, img {
       padding: 0;
     }
 
     li {
-      display: inherit;
+      display: block;
       margin: 0 0 5px;
 
       .alternative {
@@ -97,6 +98,11 @@ body {
     margin: 8px 0;
 
     a { padding: 10px 15px 10px 36px; }
+  }
+
+  li.none a {
+    background-image: none;
+    padding-left: 15px;
   }
 }
 
@@ -158,9 +164,7 @@ ul.illustrated {
   }
 
   li.logo {
-    margin: 0;
-    margin-right: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
     border-right: solid 1px ($fond - #333);
 
     a {
@@ -169,6 +173,15 @@ ul.illustrated {
       &:hover {
         background-position: 0 -33.7px*4;
       }
+    }
+  }
+
+  li.connected {
+    float: right;
+
+    a {
+      min-height: 15px;
+      display: block;
     }
   }
 

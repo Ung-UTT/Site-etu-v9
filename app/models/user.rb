@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :format =>
     { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
-  paginates_per 30
+  paginates_per 32
 
   has_paper_trail
 

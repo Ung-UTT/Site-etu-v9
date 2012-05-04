@@ -26,7 +26,7 @@
   <%=md @user.description %>
 
   <% unless @user.timesheets.empty? %>
-  <div id="edt">
+  <div id="schedule">
     <%= render 'timesheets/schedule', :schedule => @user.schedule %>
   </div>
   <noscript><%= list_of t('timesheets.list'), @user.timesheets, :range %></noscript>

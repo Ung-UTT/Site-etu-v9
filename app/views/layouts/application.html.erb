@@ -51,6 +51,19 @@
         <li class="mails">
           <%= link_to t('layout.mails'), :root, :title => t('layout.mails_title') %>
         </li>
+        <% if current_user %>
+          <li class="logout connected">
+              <%= link_to '', (session[:cas_user] ? :cas : :destroy_user_session),
+                  method: :delete, title: t('user_sessions.logout') %>
+          </li>
+          <li class="timesheets connected">
+              <%= link_to '', url_for(current_user) + '#schedule',
+                  title: t('layout.schedule') %>
+          </li>
+          <li class="none connected">
+            <%= link_to_user current_user %>
+          </li>
+        <% end %>
       </ul>
     <% end %>
   </div>
@@ -71,18 +84,6 @@
 
   <% unless mobile? and !current_page?(root_url) %>
     <ul id="sidebar">
-      <% if current_user %>
-      <li class="box">
-          <h2><%= link_to current_user.real_name, current_user %></h2>
-          <ul>
-            <% unless current_user.timesheets.empty? %>
-              <li><%= link_to t('layout.schedule'), url_for(current_user) + '#edt' %></li>
-            <% end %>
-            <li><%= link_to t('user_sessions.logout'), (session[:cas_user] ? :cas : :destroy_user_session), method: :delete %></li>
-          </ul>
-      </li>
-      <% end %>
-
       <li class="box">
         <h2><%= t('layout.content') %></h2>
         <ul class="illustrated">
