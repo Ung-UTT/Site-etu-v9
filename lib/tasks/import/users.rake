@@ -68,6 +68,7 @@ namespace :import do
     desc "Ajoute les photos des utilisateurs"
     task :add_photos => :environment do
       require 'open-uri'
+      require 'net-ldap' # Sinon : undefined class/module Net::BER::
 
       DB_FILE = Rails.root.join('tmp', 'users.marshal')
       PHOTOS_DIR = Rails.root.join('tmp', 'photos')
@@ -85,7 +86,7 @@ namespace :import do
       # Crée le dossier si il ne l'est pas déjà
       Dir.mkdir(PHOTOS_DIR) unless File::directory?(PHOTOS_DIR)
 
-      puts "Download photos :"
+      puts "Download photos:"
       # Seulement ceux qui ont des photos
       students = students.reject { |s| s['jpegphoto'].nil? }
       photos = students.map { |s| s['jpegphoto'] }
@@ -106,7 +107,7 @@ namespace :import do
                 file.close
                 print '.'
               rescue => e
-                puts "\n" + e.inspect
+                puts "\n#{photo}: " + e.inspect
               end
             end
           end
@@ -115,7 +116,7 @@ namespace :import do
         threads.each { |t| t.join } # Attend que les threads se terminent
       end
 
-      puts "Add photos to users :"
+      puts "Add photos to users:"
       ActiveRecord::Base.transaction do # Permet d'être beaucoup plus rapide !
         students.each do |student|
           user = User.find_by_login(student['uid'])
