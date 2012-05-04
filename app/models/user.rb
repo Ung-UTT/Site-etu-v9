@@ -101,14 +101,10 @@ class User < ActiveRecord::Base
 
   # Nom réel si on l'a (Prénom NOM) sinon login (nomprenom)
   def real_name
-    return @cached_real_name unless @cached_real_name.nil?
-
     if firstname.nil? and lastname.nil?
-      @cached_real_name = login
+      login
     else
-      @cached_real_name ="#{firstname} #{lastname}"
+      "#{firstname} #{lastname}"
     end
-
-    @cached_real_name
   end
 end
