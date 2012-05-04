@@ -84,11 +84,12 @@ namespace :import do
       results.each(:symbolize_keys => true) do |row|
         next if row[:type] == 0 # deleted asso
         next if Asso.find_by_name(row[:intitule])
+        row[:description] = row[:description].gsub(/<[^>]*>/, '')
         asso = Asso.create(
           :name => row[:intitule],
           :website => row[:web],
           :email => row[:email],
-          :description => row[:description].gsub(/<[^>]*>/, ''),
+          :description => row[:description],
           :owner_id => User.all.detect do |user|
               "#{user.firstname} #{user.lastname}" == row[:nom_responsable]
             end.try(:id) || import_user.id
@@ -101,10 +102,11 @@ namespace :import do
       print "Importing news..."
       results = client.query("SELECT * FROM news_liste ORDER BY id_news")
       results.each(:symbolize_keys => true) do |row|
+        row[:information] = row[:information].gsub(/<[^>]*>/, '')
         next if News.find_by_title_and_content(row[:titre], row[:information])
         news = News.new(
           :title => row[:titre],
-          :content => row[:information].gsub(/<[^>]*>/, ''),
+          :content => row[:information],
           :is_moderated => true
         )
         news.user = User.find_by_login(row[:auteur_login])
