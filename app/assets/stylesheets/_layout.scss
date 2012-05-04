@@ -37,12 +37,15 @@ body {
   border-radius: 5px;
 }
 
+#quote {
+  clear: both; // Pour la photo, elle dépasse sur les petits écrans
+}
+
 #quote, #contents .content blockquote {
   padding: 5px;
   text-align: center;
   color: $fond - #555;
   font-style: italic;
-  clear: both;
 
   &:before { content: "« "; }
   &:after { content : " »"; }
