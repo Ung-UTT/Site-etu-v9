@@ -48,15 +48,17 @@ class User < ActiveRecord::Base
   #        for others cases)
   # default_scope :include => :image
 
+  # Return all administrators
+  def self.administrators
+    Role.find_by_name('administrator').users
+  end
+
+  # Return all students
+  def self.students
+    Role.find_by_name('student').users
+  end
+
   class << self
-    def administrators
-      Role.find_by_name('administrator').users
-    end
-
-    def students
-      Role.find_by_name('student').users
-    end
-
     # Recherche parmi les utilisateurs via une chaîne
     # Exemple : User.search("Emm Car") => [User (Emmanuel Carquin), ...]
     def search(clues)
