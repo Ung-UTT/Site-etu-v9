@@ -8,7 +8,7 @@
     <%= link_to_users @course.users %>
   </p>
 
-  <%= list_of t('courses.annals'), @course.annals, :name %>
+  <%= list_of_objects t('courses.annals'), @course.annals, :name %>
 
   <%= render 'timesheets/schedule', :schedule => @course.schedule %>
 

@@ -24,7 +24,7 @@ module ApplicationHelper
 
   # Liste de liens vers des objets (en le montrant que l'attribut) avec
   # une description
-  def list_of(descr, objects, attr, comments=false)
+  def list_of_objects(descr, objects, attr, comments=false)
     objects = objects.select { |obj| current_ability.can? :show, obj }
     if objects.empty?
       return nil

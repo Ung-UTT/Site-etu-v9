@@ -287,10 +287,14 @@
 
   /* Spécifique au trombi */
 
+  .alone img.user {
+    float: left;
+    margin-right: 15px;
+  }
+
   .profile {
-    /* Photo d'utilisateur (dans le trombil) */
+    /* Photo d'utilisateur (dans le trombi) */
     img.user {
-      float: right;
       max-width: 100px;
     }
 
@@ -311,6 +315,10 @@
         text-overflow: ellipsis;
       }
     }
+  }
+
+  #schedule {
+    clear: left;
   }
 }
 
