@@ -25,9 +25,6 @@ class CreateUsers < ActiveRecord::Migration
       # Texte libre (passions, site, mails publiques, ...)
       t.text       :description
 
-      # Photo de profil
-      t.references :image
-
       t.timestamps
     end
 

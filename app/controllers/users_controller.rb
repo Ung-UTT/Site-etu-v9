@@ -12,9 +12,8 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
-      format.json  { render :json => @users.first(20) }
+      format.html
+      format.json  { render json: @users }
     end
   end
 
@@ -23,17 +22,18 @@ class UsersController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      format.html
+      format.json  { render json: @user }
     end
   end
 
   def update
-    params.delete(:login)
+    params.delete(:login) # cannot update his login
+
     if @user.update_without_password(params[:user])
-      redirect_to(@user, :notice => t('c.updated'))
+      redirect_to(@user, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 end
