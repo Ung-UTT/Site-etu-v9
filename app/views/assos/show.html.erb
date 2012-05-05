@@ -28,7 +28,7 @@
       members: raw("<ul>" + @asso.roles.collect do |role|
         "<li>" + role.to_s + " : " + link_to_users(role.users) + "</li>"
       end.join + "</ul>"),
-      events: list_of('', @asso.events, :name)
+      events: list_of_objects('', @asso.events, :name)
     }.each do |key, value|
       next if value.blank? %>
       <%= content_tag(:dt, t("assos.#{key}")) %>
