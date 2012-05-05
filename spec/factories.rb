@@ -6,6 +6,7 @@ FactoryGirl.define do
     year 2012
     kind 'F'
     course
+    documents { [ create(:document) ] }
   end
 
   factory :asso, aliases: [:club] do
@@ -15,6 +16,15 @@ FactoryGirl.define do
   end
 
   factory :answer do
+  end
+
+  factory :carpool do
+    description "Wanna ride home?"
+    departure "Troyes"
+    arrival "Your home"
+    date { 2.days.from_now }
+    is_driver { [true, false].sample }
+    user
   end
 
   factory :classified do
@@ -37,11 +47,21 @@ FactoryGirl.define do
     asset { file_from_assets('document.pdf') }
   end
 
+  factory :event do
+    name "Big stuff!"
+  end
+
   factory :news do
     sequence(:title) {|n| "News #{n}" }
 
     content "What a news!"
     is_moderated true
+  end
+
+  factory :quote do
+    content "This is a good quote."
+    tag "quote"
+    author "Unknown"
   end
 
   factory :user do
@@ -89,13 +109,22 @@ FactoryGirl.define do
     association :owner, :factory => :user
   end
 
+  factory :role do
+    name "tester"
+  end
+
   factory :timesheet do
     start_at { Time.now }
     duration { 120 }
     category 'CM'
+    course
   end
 
   factory :vote do
+  end
+
+  factory :wiki do
+    title "Wiki"
   end
 end
 

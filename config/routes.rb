@@ -9,9 +9,10 @@ SiteEtu::Application.routes.draw do
   # Ressources
   resource :cas, :only => [:new, :destroy]
 
-  resources :answers, :only => [:create, :destroy]
+  resources :answers, :votes, only: [:create, :destroy]
   resources :users, :only => [:index, :edit, :show, :update]
-  resources :authorizations, :polls, :timesheets, :votes, :quotes
+  resources :polls, :timesheets, :quotes
+  resources :roles, except: [:new]
   resources :courses do
     resources :comments
   end
@@ -20,7 +21,8 @@ SiteEtu::Application.routes.draw do
     resources :comments
     resources :documents
   end
-  resources :assos, :events, :projects, :roles do
+  resources :assos, :events, :projects, only: [ ] do
+    # 'only: [ ]' because we don't want duplicated default routes (#index, #show, etc.)
     member do
       post :join
       post :disjoin

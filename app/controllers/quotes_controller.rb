@@ -10,8 +10,6 @@ class QuotesController < ApplicationController
   end
 
   def show
-    @comments = @quote.comments
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @quote }
