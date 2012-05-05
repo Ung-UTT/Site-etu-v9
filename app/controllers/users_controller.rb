@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     else
       # Recherche simple dans le trombi
       @users = @users.search(params[:q])
-      @users = Kaminari::paginate_array(@users).page(params[:page]).per(100)
+      @users = Kaminari::paginate_array(@users).page(params[:page]).per(32)
     end
 
     respond_to do |format|
