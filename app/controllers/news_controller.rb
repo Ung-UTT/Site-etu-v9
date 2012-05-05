@@ -23,13 +23,11 @@ class NewsController < ApplicationController
   end
 
   def new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @news }
-    end
+    render 'layouts/_new', locals: {ressources: news_index_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @news}
   end
 
   def create

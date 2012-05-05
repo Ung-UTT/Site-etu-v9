@@ -39,9 +39,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: projects_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @project}
   end
 
   def create

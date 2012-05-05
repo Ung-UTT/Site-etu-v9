@@ -21,9 +21,11 @@ class AnnalsController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: annals_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @annal}
   end
 
   def create

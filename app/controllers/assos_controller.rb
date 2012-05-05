@@ -43,9 +43,11 @@ class AssosController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: assos_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @asso}
   end
 
   def create

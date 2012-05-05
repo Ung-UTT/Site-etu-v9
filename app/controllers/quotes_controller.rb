@@ -19,9 +19,11 @@ class QuotesController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: quotes_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @quote}
   end
 
   def create

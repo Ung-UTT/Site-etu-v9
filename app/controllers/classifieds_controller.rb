@@ -22,9 +22,11 @@ class ClassifiedsController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: classifieds_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @classified}
   end
 
   def create

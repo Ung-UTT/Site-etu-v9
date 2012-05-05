@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @user}
   end
 
   def show

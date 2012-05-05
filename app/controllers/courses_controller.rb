@@ -20,9 +20,11 @@ class CoursesController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: courses_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @course}
   end
 
   def create

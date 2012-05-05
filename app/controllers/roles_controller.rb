@@ -19,6 +19,7 @@ class RolesController < ApplicationController
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @role}
   end
 
   def update

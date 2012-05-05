@@ -40,9 +40,11 @@ class EventsController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: events_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @event}
   end
 
   def create

@@ -21,6 +21,8 @@ class PollsController < ApplicationController
 
   def new
     Poll::MAX_ANSWERS.times { @poll.answers.build }
+
+    render 'layouts/_new', locals: {ressources: polls_path}
   end
 
   def edit
@@ -29,6 +31,8 @@ class PollsController < ApplicationController
     if @poll.answers.size < Poll::MAX_ANSWERS
       (Poll::MAX_ANSWERS - @poll.answers.size).times { @poll.answers.build }
     end
+
+    render 'layouts/_edit', locals: {ressource: @poll}
   end
 
   def create

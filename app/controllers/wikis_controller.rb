@@ -18,10 +18,11 @@ class WikisController < ApplicationController
   end
 
   def new
-    redirect_to @wiki, :notice => 'Wiki was successfully created.'
+    render 'layouts/_new', locals: {ressources: wikis_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource:  @wiki}
   end
 
   def create

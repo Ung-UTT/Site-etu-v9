@@ -23,9 +23,11 @@ class CarpoolsController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: carpools_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @carpool}
   end
 
   def create

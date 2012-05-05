@@ -31,9 +31,11 @@ class TimesheetsController < ApplicationController
   end
 
   def new
+    render 'layouts/_new', locals: {ressources: timesheets_path}
   end
 
   def edit
+    render 'layouts/_edit', locals: {ressource: @timesheet}
   end
 
   def create
