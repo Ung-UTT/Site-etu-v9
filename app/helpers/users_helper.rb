@@ -1,19 +1,13 @@
 module UsersHelper
   def link_to_user(user)
+    return nil if user.nil?
+
+    image = user.image.nil? ? 'others/nophoto.png' : user.image.asset.url
+    content = image_tag(image, class: 'user', alt: user.real_name)
     if can? :read, user
-      if user.nil?
-        t('unknown')
-      elsif user.image.nil?
-        link_to user.real_name, user
-      else
-        link_to user, title: user.real_name do
-          image_tag(user.image.asset.url, class: 'user',
-                    alt: user.real_name)
-        end
-      end
-    else
-      user.nil? ? t('unknown') : user.real_name
+      content = link_to(content, user, itle: user.real_name)
     end
+    content
   end
 
   def link_to_users(users)

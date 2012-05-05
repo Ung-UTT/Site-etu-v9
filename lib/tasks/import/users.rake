@@ -127,7 +127,9 @@ namespace :import do
           print '.'
 
           # Va chercher l'image et l'ajoute au profil
-          file = File.open(PHOTOS_DIR + student['jpegphoto'].split('/').last)
+          filename = PHOTOS_DIR + student['jpegphoto'].split('/').last
+          next if File.zero?(filename) # Exists and not empty
+          file = File.open(filename)
           user.image = Image.new(:asset => file)
           user.save
         end
