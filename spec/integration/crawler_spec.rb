@@ -37,7 +37,6 @@ feature "It does not raise any errors while browsing as an administrator" do # w
             /users/password/new
             /users/unlock/new
             /wikis
-            /wikis/new
           ].include?(path)
             current_path.should_not == path
           else
