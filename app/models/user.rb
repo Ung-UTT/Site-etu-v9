@@ -87,6 +87,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def hours_per_week
+    schedule.map(&:duration).sum / 60
+  end
+
   def ability
     @ability ||= Ability.new(self)
   end
