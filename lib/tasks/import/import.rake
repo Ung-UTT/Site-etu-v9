@@ -2,14 +2,11 @@ namespace :import do
   desc "Import ALL data (takes a while...)"
   task :full, :sure do |t, args|
     unless args[:sure] == 'yes-i-have-coffee'
-      puts 'Are you crazy?'
+      puts 'Are you crazy? Do-you-have-coffee?'
       exit 1
     end
 
-    sh %{rake import:users:insert}
-    sh %{rake import:schedules:insert}
-    sh %{rake import:mysql}
-    sh %{rake import:files}
+    sh %{rake import:users:insert import:users:add_photos import:schedules:insert import:v7:mysql}
   end
 end
 

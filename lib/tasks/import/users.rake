@@ -101,9 +101,10 @@ namespace :import do
           unless File.exists?(location)
             threads << Thread.new(location, photo) do
               # On va chercher le fichier sur Internet et on l'enregistre
+              file = open(location, "wb")
               begin
-                file = open(location, "wb")
-                file.write(open(photo).read)
+                content = open(photo).read
+                file.write(content)
                 file.close
                 print '.'
               rescue => e
