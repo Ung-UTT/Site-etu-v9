@@ -50,11 +50,11 @@ class User < ActiveRecord::Base
 
   class << self
     def administrators
-      User.select { |user| user.has_role? :administrator }
+      Role.find_by_name('administrator').users
     end
 
     def students
-      User.select { |user| user.has_role? :student }
+      Role.find_by_name('student').users
     end
 
     # Recherche parmi les utilisateurs via une chaîne
