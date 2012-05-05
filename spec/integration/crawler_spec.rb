@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "It does not raise any errors while browsing as an administrator" do # what a cool feature, huh?
   def visit_and_check path
-    # visit will fail if there's a error in the view (e.g. AbstractController::DoubleRenderError)
+    # visit will fail if there's an error in the view (e.g. AbstractController::DoubleRenderError)
     visit path
 
     # assert there's no 404.png, 500.png or the like
@@ -19,14 +19,16 @@ feature "It does not raise any errors while browsing as an administrator" do # w
     # not especially neat way of getting routes but didn't find better :/
     next unless route = line.match(/\A\s+(?<name>[^\s]+)\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new))\Z/)
 
+    # edge cases
+    next if route[:controller] == 'cas' and route[:action] == 'new'
+    next if route[:controller] == 'devise/unlocks' and route[:action] == 'show'
+
     scenario "#{route[:controller]}##{route[:action]} (path: #{route[:path]})" do
       # this also checks that every route has the controller and the action defined
       # i.e. routing specs - the lazy way!
 
       case route[:action]
       when 'index', 'new'
-        next if route[:controller] == 'cas' and route[:action] == 'new' # edge case
-
         begin
           path = send("#{route[:name]}_path")
           visit_and_check path
@@ -49,8 +51,6 @@ feature "It does not raise any errors while browsing as an administrator" do # w
         end
 
       when 'show'
-        next if route[:controller] == 'devise/unlocks' # edge case
-
         begin
           model = route[:controller].singularize
           object = create model
