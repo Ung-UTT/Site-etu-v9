@@ -43,6 +43,11 @@ class User < ActiveRecord::Base
   has_many :timesheets_user, :dependent => :destroy
   has_many :timesheets, :through => :timesheets_user, :uniq => true
 
+  # FIXME: We should optimize SQL querie for users, so it avoid the lot of
+  #        SQL queries for user's images (but we should preverse performance
+  #        for others cases)
+  # default_scope :include => :image
+
   class << self
     def administrators
       User.select { |user| user.has_role? :administrator }

@@ -92,7 +92,7 @@ $(function () {
       console.log(progress);
       console.log(event.keyCode);
       if (progress == keys.length) {
-        $('a, p, li, h1, h2, h3, header').click(function () {
+        $('a, p, li, h1, h2, h3, header, dt, dd').click(function () {
           $(this).fadeOut('slow');
           return false;
         });

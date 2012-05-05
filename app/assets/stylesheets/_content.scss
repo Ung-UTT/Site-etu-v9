@@ -288,8 +288,8 @@
   /* Spécifique au trombi */
 
   .alone img.user {
-    float: left;
-    margin-right: 15px;
+    float: right;
+    margin: 5px 15px 0 0;
   }
 
   .profile {
@@ -318,7 +318,7 @@
   }
 
   #schedule {
-    clear: left;
+    margin-top: 50px;
   }
 }
 

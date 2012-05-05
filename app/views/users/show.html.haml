@@ -4,19 +4,19 @@
   - if @user.image
     %p.profile.alone= link_to_user @user
 
-  %ul
-    = not_empty_li(t('users.email'), mail_to(@user.email))
-    = not_empty_li(t('users.firstname'), @user.firstname)
-    = not_empty_li(t('users.lastname'), @user.lastname)
-    = not_empty_li(t('users.utt_address'), @user.utt_address)
-    = not_empty_li(t('users.parents_address'), @user.parents_address)
-    = not_empty_li(t('users.surname'), @user.surname)
-    = not_empty_li(t('users.once'), @user.once)
-    = not_empty_li(t('users.level'), @user.level)
-    = not_empty_li(t('users.specialization'), @user.specialization)
-    = not_empty_li(t('users.role'), @user.role)
-    = not_empty_li(t('users.phone'), @user.phone)
-    = not_empty_li(t('users.room'), @user.room)
+  %dl
+    = not_empty_dd(t('users.email'), mail_to(@user.email))
+    = not_empty_dd(t('users.phone'), @user.phone)
+    = not_empty_dd(t('users.utt_address'), @user.utt_address)
+    = not_empty_dd(t('users.parents_address'), @user.parents_address)
+
+  %p
+    = not_empty_inline(t('users.level'), @user.level)
+    = not_empty_inline(t('users.specialization'), @user.specialization)
+    = not_empty_inline(t('users.role'), @user.role)
+    = not_empty_inline(t('users.room'), @user.room)
+    = not_empty_inline(t('users.surname'), @user.surname)
+    = not_empty_inline(t('users.once'), @user.once)
 
   = md @user.description
 
@@ -24,19 +24,6 @@
     #schedule
       = render('timesheets/schedule', schedule: @user.schedule)
       %noscript= list_of_objects(t('timesheets.list'), @user.timesheets, :range)
-
-  = list_of_objects(t('courses.list'), @user.courses, :name)
-  = list_of_objects(t('roles.list'), @user.roles, :name)
-  = list_of_objects(t('users.assos'), @user.created_assos, :name)
-  = list_of_objects(t('users.events'), @user.created_events, :name)
-  = list_of_objects(t('events.list'), @user.events, :name)
-  = list_of_objects(t('newss.list'), @user.news, :title)
-  = list_of_objects(t('classifieds.list'), @user.classifieds, :title)
-  = list_of_objects(t('carpools.list'), @user.carpools, :description)
-  = list_of_objects(t('comments.list'), @user.comments, :content, true)
-  = list_of_objects(t('users.projects'), @user.created_projects, :name)
-  = list_of_objects(t('projects.list'), @user.projects, :name)
-  = list_of_objects(t('polls.list'), @user.polls, :name)
 
   = render('layouts/show_actions', ressource: @user)
 

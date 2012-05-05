@@ -14,10 +14,18 @@ module ApplicationHelper
 
   # Raccourcis pour les vues
 
-  # <li> conditionnelle à ce que ce qui est montré n'est pas vide
-  def not_empty_li(descr, value)
+  # <dd> conditionnelle à ce que ce qui est montré n'est pas vide
+  def not_empty_dd(descr, value)
     unless value.nil? or value.empty?
-      return "<li><strong>#{h(descr)}</strong> : #{h(value)}</li>".html_safe
+      return "<dt>#{h(descr)}</dt><dd>#{h(value)}</dd>".html_safe
+    end
+    return nil
+  end
+
+  # affichage conditionnelle à ce que ce qui est montré n'est pas vide
+  def not_empty_inline(descr, value)
+    unless value.nil? or value.empty?
+      return " <strong>#{h(descr)}</strong> : #{h(value)} ".html_safe
     end
     return nil
   end
