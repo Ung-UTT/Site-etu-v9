@@ -206,7 +206,11 @@ ul.illustrated {
 
   li.buckutt a { background-position: 0 -33.7px*9; }
 
-  li.annals a { background-position: 0 -33.7px*9; }
+  li.annals a, li.polls a { background-position: 0 -33.7px*10; }
+
+  li.news a { background-position: 0 -33.7px*11; }
+
+  li.carpools a { background-position: 0 -33.7px*12; }
 }
 
 span.translation_missing {

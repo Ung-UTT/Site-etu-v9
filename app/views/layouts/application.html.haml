@@ -2,17 +2,17 @@
 %html
   %head
     %meta{charset: "utf-8"}
-    
+
     = title_tag
 
     %link{href: image_path('favicon.ico'), rel: "shortcut icon"}
-    
+
     - if mobile?
       %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
       = stylesheet_link_tag :mobile
     - else
       = stylesheet_link_tag :all
-    
+
     = csrf_meta_tag
 
   %body
@@ -25,7 +25,7 @@
           %li
             = link_to t('user_sessions.connection.alternative'), new_user_session_path,      |
               {class: 'alternative', title: t('user_sessions.connection.alternative_title')} |
-      
+
       - if mobile?
         = link_to image_tag('others/logo.png'), :root, { title: t('layout.home'), id: 'logo' }
       - else
@@ -49,7 +49,7 @@
                 title: t('layout.schedule')                      |
             %li.none.connected
               = link_to_user current_user
-    
+
     - unless mobile?
       %p#beta
         %a{href: "#", onclick: "$('#beta').fadeOut()", style: "float: right", title: "Cacher ce truc"} [X]
@@ -60,9 +60,9 @@
         ou directement sur
         %a{href: "https://github.com/Ung-UTT/Site-etu-v9/issues"} Github
         Merci ! ☺
-    
+
       %blockquote#quote= @random_quote
-    
+
     - unless mobile? and !current_page?(root_url)
       %ul#sidebar
         %li.box
@@ -75,23 +75,23 @@
             %li.assos= link_to t('layout.assos'), assos_path
             %li.events= link_to t('layout.events'), events_path
             %li.news= link_to t('layout.news'), {controller: 'news'}
-            %li.course= link_to t('layout.course'), courses_path
+            %li.courses= link_to t('layout.course'), courses_path
             %li.wiki= link_to t('layout.wiki'), wikis_path
-        
+
         %li.box
           %h2= t('layout.services')
           %ul.illustrated
             %li.carpools= link_to t('layout.carpools'), carpools_path
             %li.polls= link_to t('layout.polls'), polls_path
             %li.projects= link_to t('layout.projects'), projects_path
-        
+
         - if can?(:manage, Role)
           %li.box
             %h2= t('layout.admin')
             %ul
               %li= link_to t('layout.quotes'), quotes_path
               %li= link_to t('layout.roles'), roles_path
-        
+
         %li.box
           %h2= t('layout.extern_links')
           %ul
@@ -105,15 +105,15 @@
             %li= link_to 'UTT Arena', 'http://uttarena.org'
             %li= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique'
             %li= link_to "N'UTT", 'http://etu.utt.fr/journal'
-    
+
     %section#contents
       - unless notice.nil?
         %p.notice= notice
       - unless alert.nil?
         %p.alert= alert
-    
+
       = yield
-    
+
     %ul#footer
       - if mobile?
         %li
