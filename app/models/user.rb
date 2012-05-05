@@ -50,12 +50,14 @@ class User < ActiveRecord::Base
 
   # Return all administrators
   def self.administrators
-    Role.find_by_name('administrator').users
+    admin = Role.find_by_name('administrator')
+    admin.nil? ? [] : admin.users
   end
 
   # Return all students
   def self.students
-    Role.find_by_name('student').users
+    student = Role.find_by_name('student')
+    student.nil? ? [] : student.users
   end
 
   class << self
