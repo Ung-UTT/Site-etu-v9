@@ -22,11 +22,12 @@ feature "It does not raise any errors while browsing as an administrator" do # w
 
   `rake routes`.lines.each do |line|
     # not especially neat way of getting routes but didn't find better :/
-    next unless route = line.match(/\A\s+(?<name>[^\s]+)\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new))\Z/)
+    next unless route = line.match(/\A\s+(?<name>[^\s]+)\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new|edit))\Z/)
 
     # edge cases
     next if route[:controller] == 'cas' and route[:action] == 'new'
     next if route[:controller] == 'devise/unlocks' and route[:action] == 'show'
+    next if route[:controller] == 'devise/passwords' and route[:action] == 'edit'
 
     # don't test associated resources twice
     next if is_associated_resource?(route[:controller]) and route[:action] == 'show'
@@ -35,11 +36,13 @@ feature "It does not raise any errors while browsing as an administrator" do # w
       # this also checks that every route has the controller and the action defined
       # i.e. routing specs - the lazy way!
 
+      model = route[:controller].singularize
+
       case route[:action]
       when 'index', 'new'
         if is_associated_resource? route[:controller]
           # create a comment/document from factory
-          associated_object = create(route[:controller].singularize)
+          associated_object = create model
 
           # the commentable/documentable class name (e.g. asso, course, etc.)
           base_object_name = route[:path].match(/\A\/[^\/]+\/:(?<class>[^\/]+)_id\/#{route[:controller]}/)[:class]
@@ -66,15 +69,27 @@ feature "It does not raise any errors while browsing as an administrator" do # w
           current_path.should == path
         end
 
-      when 'show'
-        model = route[:controller].singularize
+      when 'show', 'edit'
         object = create model
 
         path = send("#{route[:name]}_path", object)
         visit_and_check path
 
-        # assert we haven't been somehow redirected
-        current_path.should == path
+        if route[:action] == 'show'
+          # assert we haven't been somehow redirected
+          current_path.should == path
+
+        else
+          # submit the form with no changes
+          submit_form
+
+          # should be successful
+          page_should_have_notice
+
+          # should display the object page
+          object_path = send("#{model}_path", object)
+          current_path.should == object_path
+        end
 
       else
         raise "WTF? Route parsing error?"
