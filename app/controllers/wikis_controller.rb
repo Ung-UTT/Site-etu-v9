@@ -10,6 +10,7 @@ class WikisController < ApplicationController
 
   def show
     @documents = @wiki.documents
+    @comments = @wiki.comments
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,14 +1,19 @@
 require 'spec_helper'
 
+def visit_and_check path
+  # visit will fail if there's an error in the view (e.g. AbstractController::DoubleRenderError)
+  visit path
+
+  # assert there's no 404.png, 500.png or the like
+  page.body.should_not have_xpath("//img[starts-with(@src, '/assets/errors/')]")
+end
+
+def is_associated_resource? controller
+  # polymorphicable classes
+  %(comments documents).include? controller
+end
+
 feature "It does not raise any errors while browsing as an administrator" do # what a cool feature, huh?
-  def visit_and_check path
-    # visit will fail if there's an error in the view (e.g. AbstractController::DoubleRenderError)
-    visit path
-
-    # assert there's no 404.png, 500.png or the like
-    page.body.should_not have_xpath("//img[starts-with(@src, '/assets/errors/')]")
-  end
-
   background do
     # browse as an administrator so he can see everything on all pages
     user = create :administrator
@@ -23,51 +28,56 @@ feature "It does not raise any errors while browsing as an administrator" do # w
     next if route[:controller] == 'cas' and route[:action] == 'new'
     next if route[:controller] == 'devise/unlocks' and route[:action] == 'show'
 
+    # don't test associated resources twice
+    next if is_associated_resource?(route[:controller]) and route[:action] == 'show'
+
     scenario "#{route[:controller]}##{route[:action]} (path: #{route[:path]})" do
       # this also checks that every route has the controller and the action defined
       # i.e. routing specs - the lazy way!
 
       case route[:action]
       when 'index', 'new'
-        begin
-          path = send("#{route[:name]}_path")
-          visit_and_check path
+        if is_associated_resource? route[:controller]
+          # create a comment/document from factory
+          associated_object = create(route[:controller].singularize)
 
-          # white-list of paths that should redirect when signed in
-          if %w[
-            /users/sign_in
-            /users/password/new
-            /users/unlock/new
-            /wikis
-          ].include?(path)
-            current_path.should_not == path
-          else
-            current_path.should == path
-          end
+          # the commentable/documentable class name (e.g. asso, course, etc.)
+          base_object_name = route[:path].match(/\A\/[^\/]+\/:(?<class>[^\/]+)_id\/#{route[:controller]}/)[:class]
 
-        rescue ActionController::RoutingError
-          # skip comments and documents
-          pending "skipping nested routes for now" # FIXME
+          base_object = create base_object_name
+          base_object.send(route[:controller]) << associated_object
+
+          path = send("#{route[:name]}_path", base_object)
+        else
+          path = send("#{route[:name]}_path") # non-nested route
+        end
+
+        visit_and_check path
+
+        # white-list of paths that should redirect when signed in
+        if %w[
+          /users/sign_in
+          /users/password/new
+          /users/unlock/new
+          /wikis
+        ].include?(path)
+          current_path.should_not == path
+        else
+          current_path.should == path
         end
 
       when 'show'
-        begin
-          model = route[:controller].singularize
-          object = create model
+        model = route[:controller].singularize
+        object = create model
 
-          path = send("#{route[:name]}_path", object)
-          visit_and_check path
+        path = send("#{route[:name]}_path", object)
+        visit_and_check path
 
-          # assert we haven't been somehow redirected
-          current_path.should == path
-
-        rescue ActionController::RoutingError
-          # skip comments and documents
-          pending "skipping nested routes for now" # FIXME
-        end
+        # assert we haven't been somehow redirected
+        current_path.should == path
 
       else
-        raise "WTF"
+        raise "WTF? Route parsing error?"
       end
     end
   end

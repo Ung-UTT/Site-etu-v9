@@ -14,12 +14,15 @@ SiteEtu::Application.routes.draw do
   resources :polls, :timesheets, :quotes
   resources :roles, except: [:new]
   resources :courses do
-    resources :comments
+    resources :comments, only: [:index, :show, :create, :destroy]
   end
-  resources :annals, :assos, :classifieds, :carpools, :events, :projects,
+  resources :annals do
+    resources :documents, only: [:index, :show, :create, :destroy]
+  end
+  resources :assos, :classifieds, :carpools, :events, :projects,
             :news, :wikis do
-    resources :comments
-    resources :documents
+    resources :comments, only: [:index, :show, :create, :destroy]
+    resources :documents, only: [:index, :show, :create, :destroy]
   end
   resources :assos, :events, :projects, only: [ ] do
     # 'only: [ ]' because we don't want duplicated default routes (#index, #show, etc.)

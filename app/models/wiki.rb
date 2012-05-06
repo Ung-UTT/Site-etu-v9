@@ -6,6 +6,7 @@ class Wiki < ActiveRecord::Base
   # Arbre des pages du wiki
   acts_as_nested_set :dependent => :destroy
 
+  has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :documents, :as => :documentable, :dependent => :destroy
 
   # Page d'accueil (définie par la première page sans parent)
