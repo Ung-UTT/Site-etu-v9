@@ -21,6 +21,8 @@ group :development do
   gem 'guard-rspec'
   gem 'spork'
   gem 'guard-spork'
+  gem 'rb-inotify'
+  gem 'libnotify'
 end
 
 group :assets do
@@ -38,8 +40,6 @@ group :test do
   gem 'capybara'
   gem 'simplecov'
   gem 'rails_best_practices'
-  gem 'rb-inotify'
-  gem 'libnotify'
 end
 
 # Nécessaires pour l'import de données
