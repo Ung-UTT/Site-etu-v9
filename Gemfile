@@ -18,6 +18,9 @@ gem 'stringex'
 
 group :development do
   gem 'sqlite3'
+  gem 'guard-rspec'
+  gem 'spork'
+  gem 'guard-spork'
 end
 
 group :assets do
@@ -31,12 +34,12 @@ end
 group :test do
   gem 'rspec-rails'      # Classes des tests
   gem 'shoulda-matchers' # Fonctions des tests
-  gem 'autotest-rails'   # Lancer automatiquement les tests
   gem 'factory_girl_rails' # Fixtures suck
   gem 'capybara'
-  gem 'spork'
   gem 'simplecov'
   gem 'rails_best_practices'
+  gem 'rb-inotify'
+  gem 'libnotify'
 end
 
 # Nécessaires pour l'import de données
