@@ -32,6 +32,7 @@ namespace :import do
             print '.'
 
             # Créer l'horaire
+            course = Course.find_or_create_by_name(ts['uv'])
             new = Timesheet.new(
               # Date du premier cours (on sait pas donc première semaine de rentrée
               :start_at => SEMESTERS.last['start_at'] + ts['day'].days +
@@ -44,7 +45,7 @@ namespace :import do
               :room => ts['room'], # Salle
               :category => ts['type'], # CM, TD, TP
               # Crée le cours s'il n'existe pas
-              :course => Course.find_or_create_by_name(ts['uv'])
+              :course_id => course.id
             )
 
             # Horaires possibles
