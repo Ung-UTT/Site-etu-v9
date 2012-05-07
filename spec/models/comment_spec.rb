@@ -8,4 +8,9 @@ describe Comment do
     comment.save
     news.comments.should include comment
   end
+
+  it 'describe itself correctly' do
+    comment = build :comment
+    comment.to_s.include?(comment.content.first(10)).should be_true
+  end
 end

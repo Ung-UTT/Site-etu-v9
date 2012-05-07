@@ -4,7 +4,7 @@ class TimesheetsController < ApplicationController
   before_filter :set_first_users, only: [:index, :new, :edit]
 
   def index
-    if params[:users].nil? or params[:users].empty?
+    if params[:users].blank?
       # Récupére aucun horaire
       @timesheets = []
       @users = []

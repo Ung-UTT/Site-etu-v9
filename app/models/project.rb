@@ -13,4 +13,10 @@ class Project < ActiveRecord::Base
 
   has_many :projects_user, :dependent => :destroy
   has_many :users, :through => :projects_user, :uniq => true
+
+  def to_s
+    res = name
+    res += " : #{description.truncate(140)}" unless description.blank?
+    res
+  end
 end

@@ -9,4 +9,9 @@ describe Course do
 
     course.users.should include user
   end
+
+  it 'describe itself correctly' do
+    course = build :course
+    course.to_s.include?(course.name).should be_true
+  end
 end

@@ -16,7 +16,7 @@ module ApplicationHelper
 
   # <dd> conditionnelle à ce que ce qui est montré n'est pas vide
   def not_empty_dd(descr, value)
-    unless value.nil? or value.empty?
+    unless value.blank?
       return "<dt>#{h(descr)}</dt><dd>#{h(value)}</dd>".html_safe
     end
     return nil
@@ -24,7 +24,7 @@ module ApplicationHelper
 
   # affichage conditionnelle à ce que ce qui est montré n'est pas vide
   def not_empty_inline(descr, value)
-    unless value.nil? or value.empty?
+    unless value.blank?
       return " <strong>#{h(descr)}</strong> : #{h(value)} ".html_safe
     end
     return nil

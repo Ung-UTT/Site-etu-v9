@@ -124,4 +124,8 @@ class User < ActiveRecord::Base
       "#{firstname} #{lastname}"
     end
   end
+
+  def to_s
+    real_name # TODO: Replace all occurences of real_name by to_s
+  end
 end

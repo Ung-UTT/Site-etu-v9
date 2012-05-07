@@ -88,4 +88,8 @@ class Timesheet < ActiveRecord::Base
 
     return agenda
   end
+
+  def to_s
+    range # TODO : Replace all occurences of range by to_s
+  end
 end

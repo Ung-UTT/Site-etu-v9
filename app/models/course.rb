@@ -13,4 +13,10 @@ class Course < ActiveRecord::Base
   def schedule
     Timesheet.make_schedule(self.timesheets)
   end
+
+  def to_s
+    res = name
+    res += " (#{description.truncate(140)})" unless description.blank?
+    res
+  end
 end

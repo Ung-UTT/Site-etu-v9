@@ -19,10 +19,6 @@ class Asso < ActiveRecord::Base
   has_many :assos_event, :dependent => :destroy
   has_many :events, :through => :assos_event, :uniq => true
 
-  def to_s
-    name
-  end
-
   def users
     # Fetch all users with at least one role on this asso + the owner
     roles.map(&:users).flatten.uniq | [owner]
@@ -56,5 +52,9 @@ class Asso < ActiveRecord::Base
         [I18n.t("model.role.roles.#{role}", default: role), role]
       end
     end.compact
+  end
+
+  def to_s
+    name
   end
 end

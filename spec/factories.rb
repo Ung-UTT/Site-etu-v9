@@ -16,6 +16,7 @@ FactoryGirl.define do
   end
 
   factory :answer do
+    content "Yes AND No"
   end
 
   factory :carpool do

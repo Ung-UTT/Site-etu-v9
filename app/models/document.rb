@@ -11,4 +11,8 @@ class Document < ActiveRecord::Base
   def image?
     !(asset_file_name =~ /\.(png|jpe?g|gif)\Z/).nil?
   end
+
+  def to_s
+    asset_file_name
+  end
 end

@@ -21,4 +21,8 @@ class Answer < ActiveRecord::Base
       return (100 * votes.size / count_all).round.to_i
     end
   end
+
+  def to_s
+    content
+  end
 end

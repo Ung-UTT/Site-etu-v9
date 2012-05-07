@@ -13,4 +13,8 @@ class Wiki < ActiveRecord::Base
   def self.homepage
     Wiki.where(:parent_id => nil).first || Wiki.create(:title => 'Accueil')
   end
+
+  def to_s
+    title
+  end
 end

@@ -16,4 +16,9 @@ describe Poll do
       poll.voted_by?(joe).should be_false
     end
   end
+
+  it 'describe itself correctly' do
+    poll = build :poll
+    poll.to_s.include?(poll.name).should be_true
+  end
 end

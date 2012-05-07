@@ -96,4 +96,10 @@ describe User do
       @user.has_role?(:fake_role).should be_false
     end
   end
+
+  it 'describe itself correctly' do
+    user = build :user
+    user.firstname = "#1"
+    user.to_s.include?(user.firstname).should be_true
+  end
 end

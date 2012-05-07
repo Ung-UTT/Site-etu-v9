@@ -16,4 +16,8 @@ class News < ActiveRecord::Base
       where(is_moderated: true).order('created_at DESC')
     end
   end
+
+  def to_s
+    title
+  end
 end

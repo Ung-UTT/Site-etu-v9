@@ -46,4 +46,8 @@ class Event < ActiveRecord::Base
   def images
     documents.select(&:image?)
   end
+
+  def to_s
+    name
+  end
 end

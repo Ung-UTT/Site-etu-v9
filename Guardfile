@@ -14,6 +14,8 @@ guard 'rspec', :version => 2, :all_after_pass => true, :all_on_start => false do
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/integration/#{m[1]}_spec.rb" }
+
+  ignore_paths 'public'
 end
 
 
@@ -25,5 +27,6 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
+  ignore_paths 'public'
 end
 

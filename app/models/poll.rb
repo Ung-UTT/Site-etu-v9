@@ -22,4 +22,8 @@ class Poll < ActiveRecord::Base
   def vote_of(user)
     vote = votes.detect{ |v| v.user_id == user.id }
   end
+
+  def to_s
+    name
+  end
 end
