@@ -6,7 +6,7 @@
   %p
     %strong= t('courses.users')
     = ':'
-    = link_to_users @course.users
+    = links_to_users @course.users
 
   %h2=t('courses.annals')
 
@@ -17,6 +17,9 @@
         - annals.each do |annal|
           %ul
             %li=link_to annal.to_s, annal
+
+  - if can? :create, Annal
+    %p= link_to t('common.add'), new_annal_path
 
   = render 'timesheets/schedule', schedule: @course.schedule
 

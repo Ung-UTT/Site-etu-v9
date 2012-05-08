@@ -24,7 +24,7 @@
     </li>
     <li class="field">
       <%= label_tag :assos, t('events.assos') %>
-      <%= select_tag :assos, assos_select(@event), multiple: true, class: 'chosen' %>
+      <%= select_tag :assos, select_objects(Asso.all, @event.assos), multiple: true, class: 'chosen' %>
     </li>
     <li class="actions">
       <%= f.submit t('common.submit') %>

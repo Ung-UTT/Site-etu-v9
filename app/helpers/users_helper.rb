@@ -8,7 +8,7 @@ module UsersHelper
     content
   end
 
-  def link_to_users(users)
+  def links_to_users(users)
     if users.empty?
       t('helpers.none')
     else

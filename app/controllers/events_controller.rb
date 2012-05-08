@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @events }
+      format.json { render json: @events }
     end
   end
 
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @event }
+      format.json { render json: @event }
     end
   end
 
@@ -40,11 +40,11 @@ class EventsController < ApplicationController
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: events_path}
+    render_new events_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @event}
+    render_edit @event
   end
 
   def create
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to(@event, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @event
     end
   end
 
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
     if @event.update_attributes(params[:event])
       redirect_to(@event, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @event
     end
   end
 

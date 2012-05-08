@@ -5,30 +5,30 @@ class QuotesController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @quotes }
+      format.json { render json: @quotes }
     end
   end
 
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @quote }
+      format.json { render json: @quote }
     end
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: quotes_path}
+    render_new quotes_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @quote}
+    render_edit @quote
   end
 
   def create
     if @quote.save
       redirect_to(@quote, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @quote
     end
   end
 
@@ -36,7 +36,7 @@ class QuotesController < ApplicationController
     if @quote.update_attributes(params[:quote])
       redirect_to(@quote, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @quote
     end
   end
 

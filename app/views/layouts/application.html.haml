@@ -68,15 +68,14 @@
         %li.box
           %h2= t('layout.content')
           %ul.illustrated
-            %li.timesheets= link_to t('layout.timesheets'), timesheets_path
             %li.users= link_to t('layout.users'), users_path
-            %li.annals= link_to t('layout.annals'), annals_path
             %li.classifieds= link_to t('layout.classifieds'), classifieds_path
             %li.assos= link_to t('layout.assos'), assos_path
             %li.events= link_to t('layout.events'), events_path
             %li.news= link_to t('layout.news'), {controller: 'news'}
             %li.courses= link_to t('layout.course'), courses_path
             %li.wiki= link_to t('layout.wiki'), wikis_path
+            %li.timesheets= link_to t('layout.timesheets'), timesheets_path
 
         %li.box
           %h2= t('layout.services')
@@ -130,4 +129,3 @@
 
 /
   = Rails.application.config.version
-

@@ -8,7 +8,7 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to @vote.answer.poll, notice: t('c.votes.created')
     else
-      render action: "new"
+      render_edit @vote
     end
   end
 

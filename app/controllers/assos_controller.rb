@@ -6,7 +6,7 @@ class AssosController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @assos }
+      format.json { render json: @assos }
     end
   end
 
@@ -18,7 +18,7 @@ class AssosController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @asso }
+      format.json { render json: @asso }
     end
   end
 
@@ -43,11 +43,11 @@ class AssosController < ApplicationController
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: assos_path}
+    render_new assos_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @asso}
+    render_edit @asso
   end
 
   def create
@@ -56,7 +56,7 @@ class AssosController < ApplicationController
     if @asso.save
       redirect_to(@asso, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @asso
     end
   end
 
@@ -69,7 +69,7 @@ class AssosController < ApplicationController
     if @asso.update_attributes(params[:asso])
       redirect_to(@asso, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @asso
     end
   end
 

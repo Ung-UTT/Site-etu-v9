@@ -1,22 +1,18 @@
 %section.block
   %header
-    %strong.date
-      = l(event.start_at, format: '%d <br /> %b') if event.start_at
+    %section.date
+      =raw l(event.start_at, format: '%d <br /> %b') if event.start_at
     %h2
       = link_to event.name, event
     %ul.details
       %li
-        = l(event.start_at, format: "%H:%M") if event.start_at
+        %strong= l(event.start_at, format: "%H:%M") if event.start_at
         = ' - ' + l(event.end_at, format: "%H:%M") if event.end_at
-      %dl
-        %dt
-          = t('events.assos')
-        %dd
-          = link_to_assos event
-        %dt
-          = t('events.location')
-        %dd
-          = event.location
+      %li
+        %strong= t('events.assos')
+        = links_to_objects event.assos
+      %li
+        %strong= t('events.location')
+        = event.location
 
   =md event.description
-

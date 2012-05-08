@@ -10,12 +10,12 @@
 
   <p>
     <strong><%= t('events.assos') %></strong> :
-    <%= link_to_assos @event %>
+    <%= links_to_objects @event.assos %>
   </p>
 
   <p>
     <strong><%= t('events.users') %></strong> :
-    <%= link_to_users @event.users %>
+    <%= links_to_users @event.users %>
   </p>
 
   <p>

@@ -7,5 +7,5 @@
 end %>
 
 <% if can? :destroy, document %>
-  <%= delete_button t('common.delete'), [documentable, document] %>
+  <%= button_to_delete t('common.delete'), [documentable, document] %>
 <% end %>

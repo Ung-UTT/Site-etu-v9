@@ -8,7 +8,7 @@ class CarpoolsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @carpools }
+      format.json { render json: @carpools }
     end
   end
 
@@ -18,16 +18,16 @@ class CarpoolsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @carpool }
+      format.json { render json: @carpool }
     end
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: carpools_path}
+    render_new carpools_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @carpool}
+    render_edit @carpool
   end
 
   def create
@@ -36,7 +36,7 @@ class CarpoolsController < ApplicationController
     if @carpool.save
       redirect_to(@carpool, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @carpool
     end
   end
 
@@ -44,7 +44,7 @@ class CarpoolsController < ApplicationController
     if @carpool.update_attributes(params[:carpool])
       redirect_to(@carpool, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @carpool
     end
   end
 

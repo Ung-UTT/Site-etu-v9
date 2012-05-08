@@ -4,7 +4,7 @@
   <ul class="fields">
     <li class="field">
       <%= f.label :course_id, t('annals.course') %>
-      <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] }, {}, class: 'chosen' %>
+      <%= f.select :course_id, select_objects(Course.all, @annal.course), {}, class: 'chosen' %>
     </li>
     <li class="field">
       <%= f.label :semester, t('annals.semester') %>

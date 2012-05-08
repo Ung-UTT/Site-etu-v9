@@ -25,11 +25,9 @@
       ].join
     end,
     members: raw('<ul>' + @asso.roles.collect do |role|
-      "<li>#{h(role.to_s)} : #{link_to_users(role.users)}</li>"
+      "<li>#{h(role.to_s)} : #{links_to_users(role.users)}</li>"
     end.join + '</ul>'),
-    events: raw('<ul>' + @asso.events.map do |event|
-      "<li>#{h(event.to_s)}</li>"
-    end.join + '</ul>'),
+    events: links_to_objects(@asso.events),
   }.each do |key, value|
     next if value.nil? or value.empty? %>
     <%= content_tag(:dt, t("assos.#{key}")) %>

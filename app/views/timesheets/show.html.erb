@@ -8,7 +8,7 @@
 
   <p>
     <strong><%= t('timesheets.users') %></strong> :
-    <%= link_to_users @timesheet.users %>
+    <%= links_to_users @timesheet.users %>
   </p>
 
   <%= render 'timesheets/schedule', schedule: Timesheet.make_schedule(@timesheet) %>

@@ -18,7 +18,7 @@ feature "Doing nasty stuff" do
     user = create :user
     sign_in user.login, user.password
 
-    visit courses_path
+    visit annals_path
 
     page_should_have_alert
     current_path.should == root_path

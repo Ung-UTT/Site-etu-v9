@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to @answer.poll, notice: t('c.created')
     else
-      render action: "new"
+      render_edit @answer
     end
   end
 

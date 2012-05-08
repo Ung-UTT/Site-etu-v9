@@ -1,0 +1,11 @@
+%section.content
+  = title t('annals.list')
+
+  %ul
+    - @annals.each do |annal|
+      %li
+        = link_to annal.to_s, annal
+
+  - if can? :create, Annal
+    %ul.actions
+      %li= link_to t('common.add'), new_annal_path

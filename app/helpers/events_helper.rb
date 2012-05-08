@@ -1,4 +1,5 @@
 module EventsHelper
+  # Link to add the event to Google Agenda
   def google_agenda_link(event)
     name = CGI::escape(event.name)
     location = CGI::escape(event.location.to_s)
@@ -11,6 +12,7 @@ module EventsHelper
       title: t('helpers.add_agenda')
   end
 
+  # Link to send the event by mail
   def mailto_link(event)
     name = CGI::escape(event.name)
     description = CGI::escape(event.description.to_s)

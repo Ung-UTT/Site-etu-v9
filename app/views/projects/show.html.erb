@@ -10,7 +10,7 @@
 
   <p>
     <strong><%= t('projects.users') %></strong> :
-    <%= link_to_users @project.users %>
+    <%= links_to_users @project.users %>
   </p>
 
   <% if @project.users.include?(current_user) %>

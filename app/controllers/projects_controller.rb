@@ -1,11 +1,12 @@
 # encoding: utf-8
 class ProjectsController < ApplicationController
   load_and_authorize_resource
+  before_filter :set_first_users, only: [:new, :edit]
 
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @projects }
+      format.json { render json: @projects }
     end
   end
 
@@ -15,7 +16,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @project }
+      format.json { render json: @project }
     end
   end
 
@@ -39,11 +40,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: projects_path}
+    render_new projects_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @project}
+    render_edit @project
   end
 
   def create
@@ -52,7 +53,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to(@project, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @project
     end
   end
 
@@ -60,7 +61,7 @@ class ProjectsController < ApplicationController
     if @project.update_attributes(params[:project])
       redirect_to(@project, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @project
     end
   end
 

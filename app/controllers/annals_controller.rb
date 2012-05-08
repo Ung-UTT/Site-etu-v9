@@ -4,22 +4,29 @@ class AnnalsController < ApplicationController
 
   before_filter :build_documents, only: [:new, :edit]
 
+  def index
+    respond_to do |format|
+      format.html
+      format.json { render json: @annals }
+    end
+  end
+
   def show
     @documents = @annal.documents
     @comments = @annal.comments
 
     respond_to do |format|
       format.html
-      format.json  { render json: @annal }
+      format.json { render json: @annal }
     end
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: annals_path}
+    render_new annals_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @annal}
+    render_edit @annal
   end
 
   def create
@@ -27,7 +34,7 @@ class AnnalsController < ApplicationController
       redirect_to(@annal, notice: t('c.created'))
     else
       build_documents
-      render action: "new"
+      render_edit @annal
     end
   end
 
@@ -36,7 +43,7 @@ class AnnalsController < ApplicationController
       redirect_to(@annal, notice: t('c.updated'))
     else
       build_documents
-      render action: "edit"
+      render_edit @annal
     end
   end
 
@@ -48,6 +55,6 @@ class AnnalsController < ApplicationController
 
   private
   def build_documents
-    @annal.documents.build
+    3.times { @annal.documents.build }
   end
 end

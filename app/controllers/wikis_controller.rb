@@ -19,18 +19,18 @@ class WikisController < ApplicationController
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: wikis_path}
+    render_new wikis_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource:  @wiki}
+    render_edit @wiki
   end
 
   def create
     if @wiki.save
       redirect_to @wiki, notice: t('c.created')
     else
-      render action: "new"
+      render_edit @wiki
     end
   end
 
@@ -38,7 +38,7 @@ class WikisController < ApplicationController
     if @wiki.update_attributes(params[:wiki])
       redirect_to @wiki, notice: t('c.updated')
     else
-      render action: "edit"
+      render_edit @wiki
     end
   end
 

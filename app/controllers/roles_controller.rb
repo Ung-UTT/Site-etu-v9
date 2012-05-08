@@ -5,7 +5,7 @@ class RolesController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @roles }
+      format.json { render json: @roles }
     end
   end
 
@@ -14,19 +14,19 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @role }
+      format.json { render json: @role }
     end
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @role}
+    render_edit @role
   end
 
   def update
     if @role.update_attributes(params[:role])
       redirect_to(@role, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @role
     end
   end
 

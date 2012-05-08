@@ -10,6 +10,7 @@
       <%= f.label :image, t('assos.image') %>
       <%= f.file_field :image %>
     </li>
+
     <% unless @asso.image.nil? %>
     <li class="field">
       <%= label_tag :image_delete, t('common.delete') %>
@@ -17,6 +18,7 @@
       <%= image_tag @asso.image.asset.url, class: 'thumb' %>
     </li>
     <% end %>
+
     <li class="field">
       <%= f.label :description, t('assos.description') %>
       <%= f.text_area :description, class: 'rich-content' %>
@@ -25,12 +27,14 @@
       <%= f.label :parent_id, t('assos.parent') %>
       <%= f.select :parent_id, parent_select_options(Asso), {}, class: 'chosen' %>
     </li>
+
     <% unless @asso.new_record? %>
     <li class="field">
       <%= f.label :owner_id, t('assos.owner') %>
-      <%= f.select :owner_id, users_select(@asso.users, [@asso.owner]), {}, class: 'users-chosen' %>
+      <%= f.select :owner_id, select_objects(@asso.users, @asso.owner), {}, class: 'users-chosen' %>
     </li>
     <% end %>
+
     <li class="actions">
       <%= f.submit t('common.submit') %>
     </li>

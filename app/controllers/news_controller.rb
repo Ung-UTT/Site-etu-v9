@@ -8,7 +8,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @news }
+      format.json { render json: @news }
     end
   end
 
@@ -18,16 +18,16 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @news }
+      format.json { render json: @news }
     end
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: news_index_path}
+    render_new news_index_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @news}
+    render_edit @news
   end
 
   def create
@@ -36,7 +36,7 @@ class NewsController < ApplicationController
     if @news.save
       redirect_to(news_index_url, notice: t('c.created_but_not_moderated'))
     else
-      render action: "new"
+      render_edit @news
     end
   end
 
@@ -44,7 +44,7 @@ class NewsController < ApplicationController
     if @news.update_attributes(params[:news])
       redirect_to(@news, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @news
     end
   end
 

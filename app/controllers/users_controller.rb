@@ -14,19 +14,19 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json  { render json: @users }
+      format.json { render json: @users }
     end
-  end
-
-  def edit
-    render 'layouts/_edit', locals: {ressource: @user}
   end
 
   def show
     respond_to do |format|
       format.html
-      format.json  { render json: @user }
+      format.json { render json: @user }
     end
+  end
+
+  def edit
+    render_edit @user
   end
 
   def update
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if @user.update_without_password(params[:user])
       redirect_to(@user, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @user
     end
   end
 end

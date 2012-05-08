@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @courses }
+      format.json { render json: @courses }
     end
   end
 
@@ -15,23 +15,23 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @course }
+      format.json { render json: @course }
     end
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: courses_path}
+    render_new courses_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @course}
+    render_edit @course
   end
 
   def create
     if @course.save
       redirect_to(@course, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @course
     end
   end
 
@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
     if @course.update_attributes(params[:course])
       redirect_to(@course, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @course
     end
   end
 

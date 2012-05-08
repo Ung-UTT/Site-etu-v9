@@ -7,7 +7,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @classifieds }
+      format.json { render json: @classifieds }
     end
   end
 
@@ -17,16 +17,16 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @classified }
+      format.json { render json: @classified }
     end
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: classifieds_path}
+    render_new classifieds_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @classified}
+    render_edit @classified
   end
 
   def create
@@ -35,7 +35,7 @@ class ClassifiedsController < ApplicationController
     if @classified.save
       redirect_to(@classified, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @classified
     end
   end
 
@@ -43,7 +43,7 @@ class ClassifiedsController < ApplicationController
     if @classified.update_attributes(params[:classified])
       redirect_to(@classified, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @classified
     end
   end
 

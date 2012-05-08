@@ -19,23 +19,23 @@ class TimesheetsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render xml: @timesheets }
+      format.json { render json: @timesheets }
     end
   end
 
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render xml: @timesheet }
+      format.json { render json: @timesheet }
     end
   end
 
   def new
-    render 'layouts/_new', locals: {ressources: timesheets_path}
+    render_new timesheets_path
   end
 
   def edit
-    render 'layouts/_edit', locals: {ressource: @timesheet}
+    render_edit @timesheet
   end
 
   def create
@@ -44,7 +44,7 @@ class TimesheetsController < ApplicationController
     if @timesheet.save
       redirect_to(@timesheet, notice: t('c.created'))
     else
-      render action: "new"
+      render_edit @timesheet
     end
   end
 
@@ -54,7 +54,7 @@ class TimesheetsController < ApplicationController
     if @timesheet.update_attributes(params[:timesheet])
       redirect_to(@timesheet, notice: t('c.updated'))
     else
-      render action: "edit"
+      render_edit @timesheet
     end
   end
 

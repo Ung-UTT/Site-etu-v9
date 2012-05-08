@@ -22,7 +22,7 @@ class PollsController < ApplicationController
   def new
     Poll::MAX_ANSWERS.times { @poll.answers.build }
 
-    render 'layouts/_new', locals: {ressources: polls_path}
+    render_new polls_path
   end
 
   def edit
@@ -32,7 +32,7 @@ class PollsController < ApplicationController
       (Poll::MAX_ANSWERS - @poll.answers.size).times { @poll.answers.build }
     end
 
-    render 'layouts/_edit', locals: {ressource: @poll}
+    render_edit @poll
   end
 
   def create
@@ -41,7 +41,7 @@ class PollsController < ApplicationController
     if @poll.save
       redirect_to @poll, notice: t('c.created')
     else
-      render action: "new"
+      render_edit @poll
     end
   end
 
@@ -49,7 +49,7 @@ class PollsController < ApplicationController
     if @poll.update_attributes(params[:poll])
       redirect_to @poll, notice: t('c.updated')
     else
-      render action: "edit"
+      render_edit @poll
     end
   end
 
