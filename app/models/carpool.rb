@@ -5,8 +5,8 @@ class Carpool < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :user
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :documents, :as => :documentable, :dependent => :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :documents, as: :documentable, dependent: :destroy
 
   def to_s
     "#{departure} - #{arrival}"

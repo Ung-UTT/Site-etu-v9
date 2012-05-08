@@ -19,14 +19,14 @@ class TimesheetsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @timesheets }
+      format.xml  { render xml: @timesheets }
     end
   end
 
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @timesheet }
+      format.xml  { render xml: @timesheet }
     end
   end
 
@@ -42,9 +42,9 @@ class TimesheetsController < ApplicationController
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     if @timesheet.save
-      redirect_to(@timesheet, :notice => t('c.created'))
+      redirect_to(@timesheet, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
@@ -52,9 +52,9 @@ class TimesheetsController < ApplicationController
     @timesheet.users = params[:users] ? User.find(params[:users]) : []
 
     if @timesheet.update_attributes(params[:timesheet])
-      redirect_to(@timesheet, :notice => t('c.updated'))
+      redirect_to(@timesheet, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

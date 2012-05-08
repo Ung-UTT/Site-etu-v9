@@ -6,7 +6,7 @@ class Poll < ActiveRecord::Base
 
   belongs_to :user
   has_many :answers
-  has_many :votes, :through => :answers, :uniq => true
+  has_many :votes, through: :answers, uniq: true
 
   # Pouvoir ajouter des réponses au sondage directement depuis le
   # formulaire de modification

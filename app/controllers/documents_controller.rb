@@ -8,7 +8,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @documents }
+      format.xml  { render xml: @documents }
     end
   end
 
@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @document }
+      format.xml  { render xml: @document }
     end
   end
 

@@ -14,7 +14,7 @@ module ActiveRecordExtensions
     # Random record from a class (Quote.random, Course.random, ...)
     def random
       if (c = count) != 0
-        find(:first, :offset => rand(c))
+        find(:first, offset: rand(c))
       end
     end
   end

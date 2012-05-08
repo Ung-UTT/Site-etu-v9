@@ -8,7 +8,7 @@ class CarpoolsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @carpools }
+      format.xml  { render xml: @carpools }
     end
   end
 
@@ -18,7 +18,7 @@ class CarpoolsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @carpool }
+      format.xml  { render xml: @carpool }
     end
   end
 
@@ -34,17 +34,17 @@ class CarpoolsController < ApplicationController
     @carpool.user = current_user
 
     if @carpool.save
-      redirect_to(@carpool, :notice => t('c.created'))
+      redirect_to(@carpool, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @carpool.update_attributes(params[:carpool])
-      redirect_to(@carpool, :notice => t('c.updated'))
+      redirect_to(@carpool, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

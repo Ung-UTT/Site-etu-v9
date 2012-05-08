@@ -6,7 +6,7 @@ describe Vote do
       user = create :user
       poll = create :poll_with_answers
 
-      params = { :answer => poll.answers.first, :user => user }
+      params = { answer: poll.answers.first, user: user }
       create(:vote, params)
       build(:vote, params).should be_invalid
     end

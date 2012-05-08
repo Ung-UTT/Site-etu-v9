@@ -12,7 +12,7 @@ FactoryGirl.define do
   factory :asso, aliases: [:club] do
     sequence(:name) {|n| "Asso #{n}" }
 
-    association :owner, :factory => :user
+    association :owner, factory: :user
   end
 
   factory :answer do
@@ -95,7 +95,7 @@ FactoryGirl.define do
 
     factory :poll_with_answers do
       after_create do |poll|
-        FactoryGirl.create_list(:answer, 3, :poll => poll, :content=> "Answer #{n}")
+        FactoryGirl.create_list(:answer, 3, poll: poll, :content=> "Answer #{n}")
       end
     end
   end
@@ -107,7 +107,7 @@ FactoryGirl.define do
 
   factory :project do
     sequence(:name) {|n| "Project #{n}" }
-    association :owner, :factory => :user
+    association :owner, factory: :user
   end
 
   factory :role do

@@ -1,12 +1,12 @@
 # encoding: utf-8
 class AssosController < ApplicationController
-  before_filter :process_image, :only => [:create, :update]
+  before_filter :process_image, only: [:create, :update]
   load_and_authorize_resource
 
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @assos }
+      format.xml  { render xml: @assos }
     end
   end
 
@@ -18,27 +18,27 @@ class AssosController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @asso }
+      format.xml  { render xml: @asso }
     end
   end
 
   def join
     role = params[:asso][:roles]
     if @asso.has_user? current_user, role
-      redirect_to @asso, :notice => t('c.assos.already_joined', role: t("model.role.roles.#{role}", default: role))
+      redirect_to @asso, notice: t('c.assos.already_joined', role: t("model.role.roles.#{role}", default: role))
     else
       @asso.add_user current_user, role
-      redirect_to @asso, :notice => t('c.assos.joined', role: t("model.role.roles.#{role}", default: role))
+      redirect_to @asso, notice: t('c.assos.joined', role: t("model.role.roles.#{role}", default: role))
     end
   end
 
   def disjoin
     role = params[:asso][:roles]
     unless @asso.has_user? current_user, role
-      redirect_to @asso, :notice => t('c.assos.already_disjoined', role: t("model.role.roles.#{role}", default: role))
+      redirect_to @asso, notice: t('c.assos.already_disjoined', role: t("model.role.roles.#{role}", default: role))
     else
       @asso.remove_user current_user, role
-      redirect_to @asso, :notice => t('c.assos.disjoined', role: t("model.role.roles.#{role}", default: role))
+      redirect_to @asso, notice: t('c.assos.disjoined', role: t("model.role.roles.#{role}", default: role))
     end
   end
 
@@ -54,9 +54,9 @@ class AssosController < ApplicationController
     @asso.owner = current_user
 
     if @asso.save
-      redirect_to(@asso, :notice => t('c.created'))
+      redirect_to(@asso, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
@@ -67,9 +67,9 @@ class AssosController < ApplicationController
     end
 
     if @asso.update_attributes(params[:asso])
-      redirect_to(@asso, :notice => t('c.updated'))
+      redirect_to(@asso, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 
@@ -82,6 +82,6 @@ class AssosController < ApplicationController
   private
   # Permet de créer l'image à partir du fichier
   def process_image
-    params[:asso][:image] = Image.new(:asset => params[:asso][:image])
+    params[:asso][:image] = Image.new(asset: params[:asso][:image])
   end
 end

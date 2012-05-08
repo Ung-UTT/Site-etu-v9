@@ -8,16 +8,16 @@ class Asso < ActiveRecord::Base
 
   has_paper_trail
   # Une asso peut avoir une asso fille (c'est un club)
-  acts_as_nested_set :dependent => :destroy
+  acts_as_nested_set dependent: :destroy
 
   belongs_to :image
   belongs_to :owner, :class_name => 'User'
 
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :documents, :as => :documentable, :dependent => :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :documents, as: :documentable, dependent: :destroy
 
-  has_many :assos_event, :dependent => :destroy
-  has_many :events, :through => :assos_event, :uniq => true
+  has_many :assos_event, dependent: :destroy
+  has_many :events, through: :assos_event, uniq: true
 
   def users
     # Fetch all users with at least one role on this asso + the owner

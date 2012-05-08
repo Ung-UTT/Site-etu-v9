@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def title(page_title, options={})
     content_for(:title, page_title.to_s)
-    content_tag(:h1, page_title, options.merge(:class =>'title'))
+    content_tag(:h1, page_title, options.merge(class:'title'))
   end
 
   def title_tag
@@ -91,14 +91,14 @@ module ApplicationHelper
   # Others
 
   def button_to_delete(label, link)
-    button_to label, link, :confirm => t('common.confirm'), :method => :delete
+    button_to label, link, confirm: t('common.confirm'), method: :delete
   end
 
   def delete_button(content, object)
-    form_for(object, :method => :delete, :html => {:class => 'button_to'}) do |f|
+    form_for(object, method: :delete, html: {class: 'button_to'}) do |f|
       f.error_messages
 
-      button_tag content, :confirm => t('common.confirm')
+      button_tag content, confirm: t('common.confirm')
     end
   end
 

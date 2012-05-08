@@ -4,14 +4,14 @@ class Wiki < ActiveRecord::Base
 
   has_paper_trail
   # Arbre des pages du wiki
-  acts_as_nested_set :dependent => :destroy
+  acts_as_nested_set dependent: :destroy
 
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :documents, :as => :documentable, :dependent => :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :documents, as: :documentable, dependent: :destroy
 
   # Page d'accueil (définie par la première page sans parent)
   def self.homepage
-    Wiki.where(:parent_id => nil).first || Wiki.create(:title => 'Accueil')
+    Wiki.where(:parent_id => nil).first || Wiki.create(title: 'Accueil')
   end
 
   def to_s

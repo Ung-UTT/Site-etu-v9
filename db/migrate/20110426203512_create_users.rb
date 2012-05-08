@@ -1,8 +1,8 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string :login, :null => false, :default => ""
-      t.string :email, :null => false, :default => ""
+      t.string :login, null: false, default: ""
+      t.string :email, null: false, default: ""
 
       # Fiche trombi rempli par l'étudiant
       t.string     :utt_address
@@ -28,7 +28,7 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :users, :login, :unique => true
-    add_index :users, :email, :unique => true
+    add_index :users, :login, unique: true
+    add_index :users, :email, unique: true
   end
 end

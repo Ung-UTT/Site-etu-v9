@@ -7,7 +7,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @classifieds }
+      format.xml  { render xml: @classifieds }
     end
   end
 
@@ -17,7 +17,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @classified }
+      format.xml  { render xml: @classified }
     end
   end
 
@@ -33,17 +33,17 @@ class ClassifiedsController < ApplicationController
     @classified.user = current_user
 
     if @classified.save
-      redirect_to(@classified, :notice => t('c.created'))
+      redirect_to(@classified, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @classified.update_attributes(params[:classified])
-      redirect_to(@classified, :notice => t('c.updated'))
+      redirect_to(@classified, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

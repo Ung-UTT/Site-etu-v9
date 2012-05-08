@@ -7,46 +7,46 @@ class User < ActiveRecord::Base
                   :remember_me, :preference_attributes, :utt_address,
                   :parents_address, :surname, :once, :phone, :description
 
-  delegate :can?, :cannot?, :to => :ability
+  delegate :can?, :cannot?, to: :ability
 
   after_create :create_preferences
 
   validates_presence_of :login
   validates_uniqueness_of :login, :case_sensitive => false
-  validates :email, :presence => true, :format =>
-    { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :email, presence: true, format:
+    { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   paginates_per 32
 
   has_paper_trail
 
-  has_one :image, :dependent => :destroy, :as => :documentable
-  has_one :preference, :dependent => :destroy
+  has_one :image, dependent: :destroy, as: :documentable
+  has_one :preference, dependent: :destroy
   accepts_nested_attributes_for :preference
 
-  has_many :carpools, :dependent => :destroy
-  has_many :classifieds, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
-  has_many :news, :dependent => :destroy
-  has_many :polls, :dependent => :destroy
-  has_many :votes, :dependent => :destroy
-  has_many :created_assos, :foreign_key => 'owner_id', :class_name => 'Asso', :dependent => :destroy
-  has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', :dependent => :destroy
-  has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', :dependent => :destroy
+  has_many :carpools, dependent: :destroy
+  has_many :classifieds, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :news, dependent: :destroy
+  has_many :polls, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :created_assos, :foreign_key => 'owner_id', :class_name => 'Asso', dependent: :destroy
+  has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', dependent: :destroy
+  has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', dependent: :destroy
 
-  has_many :events_user, :dependent => :destroy
-  has_many :events, :through => :events_user, :uniq => true
+  has_many :events_user, dependent: :destroy
+  has_many :events, through: :events_user, uniq: true
 
-  has_many :projects_user, :dependent => :destroy
-  has_many :projects, :through => :projects_user, :uniq => true
+  has_many :projects_user, dependent: :destroy
+  has_many :projects, through: :projects_user, uniq: true
 
-  has_many :timesheets_user, :dependent => :destroy
-  has_many :timesheets, :through => :timesheets_user, :uniq => true
+  has_many :timesheets_user, dependent: :destroy
+  has_many :timesheets, through: :timesheets_user, uniq: true
 
   # FIXME: We should optimize SQL querie for users, so it avoid the lot of
   #        SQL queries for user's images (but we should preverse performance
   #        for others cases)
-  # default_scope :include => :image
+  # default_scope include: :image
 
   # Return all administrators
   def self.administrators
@@ -80,9 +80,9 @@ class User < ActiveRecord::Base
     def simple_create(login, password = nil)
       password ||= Devise.friendly_token[0,20]
       User.create!(
-        :login => login,
-        :email => "#{login}@utt.fr",
-        :password => password
+        login: login,
+        email: "#{login}@utt.fr",
+        password: password
       )
     end
   end
@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
 
   # Préférences par défaut d'un utilisateur
   def create_preferences
-    self.preference_attributes = { :locale => I18n.default_locale.to_s, :quote_type => 'all' }
+    self.preference_attributes = { locale: I18n.default_locale.to_s, :quote_type => 'all' }
   end
 
   # Cours = cours dans lesquels l'utilisateur participe à une horaire

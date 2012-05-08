@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @comments }
+      format.xml  { render xml: @comments }
     end
   end
 
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @comment }
+      format.xml  { render xml: @comment }
     end
   end
 

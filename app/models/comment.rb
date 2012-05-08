@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :user
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, polymorphic: true
 
   def to_s
     content

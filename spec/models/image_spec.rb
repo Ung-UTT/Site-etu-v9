@@ -7,11 +7,11 @@ describe Image do
 
   describe 'Methods' do
     it 'should only accept images' do
-      img = Image.new(:asset => file_from_assets('image.png'))
+      img = Image.new(asset: file_from_assets('image.png'))
       img.save.should be_true
-      img = Image.new(:asset => file_from_assets('image.ico'))
+      img = Image.new(asset: file_from_assets('image.ico'))
       img.save.should be_false
-      img = Image.new(:asset => file_from_assets('document.pdf'))
+      img = Image.new(asset: file_from_assets('document.pdf'))
       img.save.should be_false
     end
   end

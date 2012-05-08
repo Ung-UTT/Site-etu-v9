@@ -5,14 +5,14 @@ class QuotesController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @quotes }
+      format.xml  { render xml: @quotes }
     end
   end
 
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @quote }
+      format.xml  { render xml: @quote }
     end
   end
 
@@ -26,17 +26,17 @@ class QuotesController < ApplicationController
 
   def create
     if @quote.save
-      redirect_to(@quote, :notice => t('c.created'))
+      redirect_to(@quote, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @quote.update_attributes(params[:quote])
-      redirect_to(@quote, :notice => t('c.updated'))
+      redirect_to(@quote, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

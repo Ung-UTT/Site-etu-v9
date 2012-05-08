@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @events }
+      format.xml  { render xml: @events }
     end
   end
 
@@ -18,17 +18,17 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @event }
+      format.xml  { render xml: @event }
     end
   end
 
   def join
     if @event.users.exists?(current_user)
-      redirect_to @event, :notice => t('c.events.already_joined')
+      redirect_to @event, notice: t('c.events.already_joined')
     else
       @event.users << current_user
       @event.save
-      redirect_to @event, :notice => t('c.events.joined')
+      redirect_to @event, notice: t('c.events.joined')
     end
   end
 
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
     @event.users.delete(current_user)
     @event.save
 
-    redirect_to @event, :notice => t('c.events.disjoined')
+    redirect_to @event, notice: t('c.events.disjoined')
   end
 
   def new
@@ -52,9 +52,9 @@ class EventsController < ApplicationController
     @event.assos = params[:assos] ? Asso.find(params[:assos]) : []
 
     if @event.save
-      redirect_to(@event, :notice => t('c.created'))
+      redirect_to(@event, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
@@ -62,9 +62,9 @@ class EventsController < ApplicationController
     @event.assos = params[:assos] ? Asso.find(params[:assos]) : []
 
     if @event.update_attributes(params[:event])
-      redirect_to(@event, :notice => t('c.updated'))
+      redirect_to(@event, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

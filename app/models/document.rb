@@ -5,7 +5,7 @@ class Document < ActiveRecord::Base
   has_paper_trail
   has_attached_file :asset
 
-  belongs_to :documentable, :polymorphic => true
+  belongs_to :documentable, polymorphic: true
 
   # Est-ce une image ?
   def image?

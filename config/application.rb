@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  # Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # Bundler.require(*Rails.groups(assets: %w(development test)))
   # If you want your assets lazily compiled in production, use this line
   Bundler.require(:default, :assets, Rails.env)
 end
@@ -42,7 +42,7 @@ module SiteEtu
     # Change this to expire all assets
     config.assets.version = "1.0"
 
-    config.action_mailer.default_url_options = { :host => 'etu.utt.fr' }
+    config.action_mailer.default_url_options = { host: 'etu.utt.fr' }
     config.rubycas.cas_base_url = 'https://cas.utt.fr/cas'
 
     # Protect mass assignment

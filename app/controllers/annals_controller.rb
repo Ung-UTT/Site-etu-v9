@@ -24,10 +24,10 @@ class AnnalsController < ApplicationController
 
   def create
     if @annal.save
-      redirect_to(@annal, :notice => t('c.created'))
+      redirect_to(@annal, notice: t('c.created'))
     else
       build_documents
-      render :action => "new"
+      render action: "new"
     end
   end
 

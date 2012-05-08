@@ -14,7 +14,7 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @wiki }
+      format.json { render json: @wiki }
     end
   end
 
@@ -28,17 +28,17 @@ class WikisController < ApplicationController
 
   def create
     if @wiki.save
-      redirect_to @wiki, :notice => t('c.created')
+      redirect_to @wiki, notice: t('c.created')
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @wiki.update_attributes(params[:wiki])
-      redirect_to @wiki, :notice => t('c.updated')
+      redirect_to @wiki, notice: t('c.updated')
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @courses }
+      format.xml  { render xml: @courses }
     end
   end
 
@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @course }
+      format.xml  { render xml: @course }
     end
   end
 
@@ -29,17 +29,17 @@ class CoursesController < ApplicationController
 
   def create
     if @course.save
-      redirect_to(@course, :notice => t('c.created'))
+      redirect_to(@course, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @course.update_attributes(params[:course])
-      redirect_to(@course, :notice => t('c.updated'))
+      redirect_to(@course, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

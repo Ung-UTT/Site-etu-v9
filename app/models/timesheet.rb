@@ -3,30 +3,30 @@ class Timesheet < ActiveRecord::Base
 
   attr_accessible :start_at, :duration, :week, :category, :room, :course_id
   validates_presence_of :start_at, :duration, :category, :course
-  validates :category, :inclusion => {:in => Timesheet::CATEGORIES}
+  validates :category, inclusion: {in: Timesheet::CATEGORIES}
 
   has_paper_trail
 
   belongs_to :course
 
-  has_many :timesheets_user, :dependent => :destroy
-  has_many :users, :through => :timesheets_user, :uniq => true
+  has_many :timesheets_user, dependent: :destroy
+  has_many :users, through: :timesheets_user, uniq: true
 
   # Temps défini par cette horaire
   def range
-    t_week_day = I18n.l(start_at, :format => :week_day)
-    t_start_at = I18n.l(start_at, :format => :hour)
-    t_end_at = I18n.l(start_at + duration.minutes, :format => :hour)
+    t_week_day = I18n.l(start_at, format: :week_day)
+    t_start_at = I18n.l(start_at, format: :hour)
+    t_end_at = I18n.l(start_at + duration.minutes, format: :hour)
     t_week = (week and !week.empty?) ? " (#{I18n.t('model.timesheet.week')} #{week})" : ''
 
-    I18n.t('model.timesheet.range', :short => short_range, :week_day => t_week_day,
-      :start => t_start_at, :end => t_end_at, :week => t_week)
+    I18n.t('model.timesheet.range', short: short_range, :week_day => t_week_day,
+      start: t_start_at, end: t_end_at, week: t_week)
   end
 
   # Description sans les heures
   def short_range
-    I18n.t('model.timesheet.short', :category => category,
-      :name => course.name, :room => room)
+    I18n.t('model.timesheet.short', category: category,
+      name: course.name, room: room)
   end
 
   # Traduit l'horaire en un hash exploitable par FullCalendar

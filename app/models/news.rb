@@ -8,8 +8,8 @@ class News < ActiveRecord::Base
 
   belongs_to :event
   belongs_to :user
-  has_many :documents, :as => :documentable, :dependent => :destroy
-  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :documents, as: :documentable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   class << self
     def visible

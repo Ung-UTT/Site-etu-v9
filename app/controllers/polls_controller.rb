@@ -5,7 +5,7 @@ class PollsController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @polls }
+      format.json { render json: @polls }
     end
   end
 
@@ -15,7 +15,7 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @poll }
+      format.json { render json: @poll }
     end
   end
 
@@ -39,17 +39,17 @@ class PollsController < ApplicationController
     @poll.user = current_user
 
     if @poll.save
-      redirect_to @poll, :notice => t('c.created')
+      redirect_to @poll, notice: t('c.created')
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @poll.update_attributes(params[:poll])
-      redirect_to @poll, :notice => t('c.updated')
+      redirect_to @poll, notice: t('c.updated')
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

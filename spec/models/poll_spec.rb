@@ -7,10 +7,10 @@ describe Poll do
 
   describe '#voted_by?' do
     it 'should know if user has already votes' do
-      kevin = create :user, :login => "kevin"
-      joe = create :user, :login => "joe"
+      kevin = create :user, login: "kevin"
+      joe = create :user, login: "joe"
       poll = create :poll_with_answers
-      create(:vote, :answer => poll.answers.sample, :user => kevin)
+      create(:vote, answer: poll.answers.sample, user: kevin)
 
       poll.voted_by?(kevin).should be_true
       poll.voted_by?(joe).should be_false

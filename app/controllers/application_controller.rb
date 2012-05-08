@@ -13,13 +13,13 @@ class ApplicationController < ActionController::Base
   # Gére les erreurs 404
   def render_not_found
     logger.error '[404] ' + request.fullpath
-    render :template => "shared/404", :status => 404
+    render template: "shared/404", status: 404
   end
 
   private
   # Gére la prévisualisation du Markdown
   def preview
-    render :text => md(params[:data])
+    render text: md(params[:data])
   end
 
   # Gére les accès refusés
@@ -29,10 +29,10 @@ class ApplicationController < ActionController::Base
     logger.error '[401] ' + request.fullpath + ' | ' + message
 
     if current_user
-      redirect_to root_url, :alert => message
+      redirect_to root_url, alert: message
     else
       # Redirige vers la page de login si l'utilisateur n'est pas déjà loggé
-      redirect_to new_user_session_url, :alert => message
+      redirect_to new_user_session_url, alert: message
     end
   end
 
@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
   def render_error(exception)
     logger.error '[500] ' + request.fullpath + ' | ' + exception.inspect
 
-    render :template => "shared/500", :status => 500,
-           :locals => {:exception => exception}
+    render template: "shared/500", status: 500,
+           locals: {exception: exception}
   end
 
   def catch_exceptions

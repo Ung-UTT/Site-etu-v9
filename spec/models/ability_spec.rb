@@ -22,7 +22,7 @@ describe Ability do
 
   context 'as an authenticated user' do
     as :user
-    it { should be_able_to(:manage, User, :id => @user.id) }
+    it { should be_able_to(:manage, User, id: @user.id) }
   end
 
   context 'as a student' do

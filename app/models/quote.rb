@@ -5,7 +5,7 @@ class Quote < ActiveRecord::Base
 
   attr_accessible :content, :tag, :author
   validates_presence_of :content
-  validates :tag, :inclusion => {:in => Quote::TAGS}
+  validates :tag, inclusion: {in: Quote::TAGS}
 
   has_paper_trail
 

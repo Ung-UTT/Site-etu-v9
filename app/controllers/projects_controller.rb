@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @projects }
+      format.xml  { render xml: @projects }
     end
   end
 
@@ -15,26 +15,26 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @project }
+      format.xml  { render xml: @project }
     end
   end
 
   def join
     if @project.users.include?(current_user)
-      redirect_to @project, :notice => t('c.projects.already_joined')
+      redirect_to @project, notice: t('c.projects.already_joined')
     else
       @project.users << current_user
       @project.save
-      redirect_to @project, :notice => t('c.projects.joined')
+      redirect_to @project, notice: t('c.projects.joined')
     end
   end
 
   def disjoin
     unless current_user.projects.include?(@project)
-      redirect_to @project, :notice => t('c.projects.already_disjoined')
+      redirect_to @project, notice: t('c.projects.already_disjoined')
     else
       @project.users.delete(current_user)
-      redirect_to @project, :notice => t('c.projects.disjoined')
+      redirect_to @project, notice: t('c.projects.disjoined')
     end
   end
 
@@ -50,17 +50,17 @@ class ProjectsController < ApplicationController
     @project.owner = current_user
 
     if @project.save
-      redirect_to(@project, :notice => t('c.created'))
+      redirect_to(@project, notice: t('c.created'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @project.update_attributes(params[:project])
-      redirect_to(@project, :notice => t('c.updated'))
+      redirect_to(@project, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

@@ -8,7 +8,7 @@ module EventsHelper
 
     link_to image_tag("others/google_agenda.png"),
       "https://www.google.com/calendar/b/0/render?action=TEMPLATE&text=#{name}&location=#{location}&dates=#{start_at}/#{end_at}&details=#{description}&pli=1&sf=true&output=xml",
-      :title => t('helpers.add_agenda')
+      title: t('helpers.add_agenda')
   end
 
   def mailto_link(event)
@@ -17,7 +17,7 @@ module EventsHelper
     url = CGI::escape(request.url)
     link_to image_tag("others/mailto.png"),
       "mailto:?Subject=[#{t('helpers.utt_event')}] #{name}&body=%0A%0A" +
-      "#{description}%0A%0A#{t('helpers.event_content', :url => url)}",
-      :title => t('helpers.invite_people')
+      "#{description}%0A%0A#{t('helpers.event_content', url: url)}",
+      title: t('helpers.invite_people')
   end
 end

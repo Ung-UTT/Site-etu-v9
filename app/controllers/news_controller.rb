@@ -8,7 +8,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @news }
+      format.xml  { render xml: @news }
     end
   end
 
@@ -18,7 +18,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @news }
+      format.xml  { render xml: @news }
     end
   end
 
@@ -34,17 +34,17 @@ class NewsController < ApplicationController
     @news.user = current_user
 
     if @news.save
-      redirect_to(news_index_url, :notice => t('c.created_but_not_moderated'))
+      redirect_to(news_index_url, notice: t('c.created_but_not_moderated'))
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @news.update_attributes(params[:news])
-      redirect_to(@news, :notice => t('c.updated'))
+      redirect_to(@news, notice: t('c.updated'))
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

@@ -7,10 +7,10 @@ SiteEtu::Application.routes.draw do
   match 'preview' => 'application#preview' # Prévisualisation Markdown
 
   # Ressources
-  resource :cas, :only => [:new, :destroy]
+  resource :cas, only: [:new, :destroy]
 
   resources :answers, :votes, only: [:create, :destroy]
-  resources :users, :only => [:index, :edit, :show, :update]
+  resources :users, only: [:index, :edit, :show, :update]
   resources :polls, :timesheets, :quotes
   resources :roles, except: [:new]
   resources :courses do
@@ -33,7 +33,7 @@ SiteEtu::Application.routes.draw do
     end
   end
 
-  root :to => 'home#index'
+  root to: 'home#index'
 
   match '*path' => 'application#render_not_found'
 end
