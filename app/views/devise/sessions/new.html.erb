@@ -6,7 +6,7 @@
     La connexion alternative sert uniquement aux anciens UTTiens.
   </p>
 
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <ul class="fields">
       <li class="field">
         <%= f.label :login, t('users.login') %>

@@ -14,21 +14,21 @@
     <li class="field">
       <%= label_tag :image_delete, t('common.delete') %>
       <%= check_box_tag :image_delete %>
-      <%= image_tag @asso.image.asset.url, :class => 'thumb' %>
+      <%= image_tag @asso.image.asset.url, class: 'thumb' %>
     </li>
     <% end %>
     <li class="field">
       <%= f.label :description, t('assos.description') %>
-      <%= f.text_area :description, :class => 'rich-content' %>
+      <%= f.text_area :description, class: 'rich-content' %>
     </li>
     <li class="field">
       <%= f.label :parent_id, t('assos.parent') %>
-      <%= f.select :parent_id, parent_select_options(Asso), {}, :class => 'chosen' %>
+      <%= f.select :parent_id, parent_select_options(Asso), {}, class: 'chosen' %>
     </li>
     <% unless @asso.new_record? %>
     <li class="field">
       <%= f.label :owner_id, t('assos.owner') %>
-      <%= f.select :owner_id, users_select(@asso.users, [@asso.owner]), {}, :class => 'users-chosen' %>
+      <%= f.select :owner_id, users_select(@asso.users, [@asso.owner]), {}, class: 'users-chosen' %>
     </li>
     <% end %>
     <li class="actions">

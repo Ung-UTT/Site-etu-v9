@@ -8,7 +8,7 @@
 
   <ul class="documents list-with-delete">
     <% documents.each do |document| %>
-    <li><%= render 'documents/one_document', {:documentable => documentable, :document => document} %></li>
+    <li><%= render 'documents/one_document', {documentable: documentable, document: document} %></li>
     <% end %>
     <% if can?(:create, documents.new) %>
       <%= form_for [documentable, documentable.documents.new] do |f| %>

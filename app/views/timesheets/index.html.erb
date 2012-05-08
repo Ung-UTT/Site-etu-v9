@@ -1,18 +1,18 @@
 <section class="content">
   <%= title t('timesheets.list') %>
 
-  <%= form_tag(timesheets_path, :method => :get) do %>
+  <%= form_tag(timesheets_path, method: :get) do %>
     <ul class="fields">
       <li class="field">
         <%= select_tag :users, users_select(@first_users, @users),
-              :multiple => true, :class => 'users-chosen' %>
+              multiple: true, class: 'users-chosen' %>
       </li>
       <li class="field"><%= submit_tag t('timesheets.cumulate') %></li>
     </ul>
   <% end %>
 
   <% if params[:users] %>
-    <%= render 'timesheets/schedule', :schedule => @schedule %>
+    <%= render 'timesheets/schedule', schedule: @schedule %>
   <% end %>
 
   <% if can? :create, Timesheet %>

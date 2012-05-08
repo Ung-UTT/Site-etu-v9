@@ -3,7 +3,7 @@
 
   <ul>
   <% @polls.each do |poll| %>
-    <li><%= link_to poll.name, poll %> (<%= t('votes.count', :count => poll.votes.size) %>)</li>
+    <li><%= link_to poll.name, poll %> (<%= t('votes.count', count: poll.votes.size) %>)</li>
   <% end %>
   </ul>
 

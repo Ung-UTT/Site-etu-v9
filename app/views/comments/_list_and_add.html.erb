@@ -8,7 +8,7 @@
 
   <ul class="comments list-with-delete">
     <% comments.each do |comment| %>
-      <li><%= render 'comments/one_comment', {:commentable => commentable, :comment => comment} %></li>
+      <li><%= render 'comments/one_comment', {commentable: commentable, comment: comment} %></li>
     <% end %>
 
     <% if can? :create, Comment %>

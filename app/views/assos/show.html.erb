@@ -37,8 +37,8 @@
   <% end %>
   </dl>
 
-  <%= render 'layouts/show_actions', {:ressource => @asso} %>
+  <%= render 'layouts/show_actions', {ressource: @asso} %>
 </section>
 
-<%= render 'documents/list_and_add', {:documentable => @asso, :documents => @documents} %>
-<%= render 'comments/list_and_add', {:commentable => @asso, :comments => @comments} %>
+<%= render 'documents/list_and_add', {documentable: @asso, documents: @documents} %>
+<%= render 'comments/list_and_add', {commentable: @asso, comments: @comments} %>

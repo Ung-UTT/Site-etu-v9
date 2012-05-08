@@ -1,7 +1,7 @@
 <% title(t('event') + ' : ' + @event.name) %>
 
 <section class="content">
-  <%= render 'one_event', {:event => @event} %>
+  <%= render 'one_event', {event: @event} %>
 
   <p>
     <strong><%= t('events.location') %></strong> :
@@ -29,17 +29,17 @@
   </p>
 
   <% if @event.users.include?(current_user) %>
-    <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), :method => :post %></p>
+    <p><%= link_to t('events.disjoin'), disjoin_event_path(@event), method: :post %></p>
   <% elsif can? :join, @event %>
-    <p><%= link_to t('events.join'), join_event_path(@event), :method => :post %></p>
+    <p><%= link_to t('events.join'), join_event_path(@event), method: :post %></p>
   <% end %>
 
-  <%= render 'layouts/show_actions', {:ressource => @event} %>
+  <%= render 'layouts/show_actions', {ressource: @event} %>
 </section>
 
 <% unless @event.news.empty? %>
-  <%= render :template => 'news/index' %>
+  <%= render template: 'news/index' %>
 <% end %>
 
-<%= render 'documents/list_and_add', {:documentable => @event, :documents => @documents} %>
-<%= render 'comments/list_and_add', {:commentable => @event, :comments => @comments} %>
+<%= render 'documents/list_and_add', {documentable: @event, documents: @documents} %>
+<%= render 'comments/list_and_add', {commentable: @event, comments: @comments} %>

@@ -1,10 +1,10 @@
 - unless mobile?
   %section.content
     - if current_user
-      = render 'timesheets/agenda', :agenda => current_user.agenda
+      = render 'timesheets/agenda', agenda: current_user.agenda
     - else
       %h1.title= t('home.index.title')
-      %p= image_tag 'others/logo_ung.png', :class => 'left'
+      %p= image_tag 'others/logo_ung.png', class: 'left'
       = md t('home.index.content')
 
-  = render :template => 'news/index'
+  = render template: 'news/index'

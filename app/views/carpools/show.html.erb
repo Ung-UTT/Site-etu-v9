@@ -8,7 +8,7 @@
 
   <p>
     <strong><%= t('carpools.date') %></strong> :
-    <%= l(@carpool.date, :format => :long) %>
+    <%= l(@carpool.date, format: :long) %>
   </p>
 
   <p>
@@ -18,8 +18,8 @@
 
   <%=md @carpool.description %>
 
-  <%= render 'layouts/show_actions', {:ressource => @carpool} %>
+  <%= render 'layouts/show_actions', {ressource: @carpool} %>
 </section>
 
-<%= render 'documents/list_and_add', {:documentable => @carpool, :documents => @documents} %>
-<%= render 'comments/list_and_add', {:commentable => @carpool, :comments => @comments} %>
+<%= render 'documents/list_and_add', {documentable: @carpool, documents: @documents} %>
+<%= render 'comments/list_and_add', {commentable: @carpool, comments: @comments} %>

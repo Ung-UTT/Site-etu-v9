@@ -13,9 +13,9 @@
   </p>
   <% end %>
 
-  <%= render 'layouts/show_actions', {:ressource => @wiki} %>
+  <%= render 'layouts/show_actions', {ressource: @wiki} %>
 </section>
 
-<%= render 'documents/list_and_add', {:documentable => @wiki, :documents => @documents} %>
-<%= render 'comments/list_and_add', {:commentable => @wiki, :comments => @comments} %>
+<%= render 'documents/list_and_add', {documentable: @wiki, documents: @documents} %>
+<%= render 'comments/list_and_add', {commentable: @wiki, comments: @comments} %>
 

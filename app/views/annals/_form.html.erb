@@ -4,7 +4,7 @@
   <ul class="fields">
     <li class="field">
       <%= f.label :course_id, t('annals.course') %>
-      <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] }, {}, :class => 'chosen' %>
+      <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] }, {}, class: 'chosen' %>
     </li>
     <li class="field">
       <%= f.label :semester, t('annals.semester') %>
@@ -12,7 +12,7 @@
     </li>
     <li class="field">
       <%= f.label :year, t('annals.year') %>
-      <%= f.select :year, (Time.now.year - 1)..Time.now.year %>
+      <%= f.select :year, (Time.now.year - 20)..Time.now.year %>
     </li>
     <li class="field">
       <%= f.label :kind, t('annals.kind') %>

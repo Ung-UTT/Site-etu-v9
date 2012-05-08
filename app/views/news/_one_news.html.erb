@@ -1,6 +1,6 @@
 <section class="block">
   <header>
-    <section class="date"><%= content_tag(:span, raw(l(news.created_at, :format => '%d<br />%b')), :title => news.created_at) %></section>
+    <section class="date"><%= content_tag(:span, raw(l(news.created_at, format: '%d<br />%b')), title: news.created_at) %></section>
     <h2>
       <%= link_to news.title, news %>
       <% if !news.is_moderated and can? :moderate, News %>
@@ -8,7 +8,7 @@
       <% end %>
     </h2>
     <ul class="details">
-      <li><strong><%= t('newss.hour') %> :</strong> <%= l(news.created_at, :format => '%Hh') %></li>
+      <li><strong><%= t('newss.hour') %> :</strong> <%= l(news.created_at, format: '%Hh') %></li>
       <li><strong><%= t('newss.user') %> :</strong> <%= link_to_user news.user %></li>
       <li><strong><%= t('newss.comments') %> :</strong> <%= news.comments.count %></li>
     </ul>

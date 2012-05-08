@@ -1,5 +1,5 @@
 <section class="content">
-  <%= title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, :default => @role.name)) %>
+  <%= title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, default: @role.name)) %>
 
   <p>
     <strong><%= t('roles.users') %></strong> :
@@ -15,5 +15,5 @@
     <% end %>
   </ul>
 
-  <%= render 'layouts/show_actions', {:ressource => @role} %>
+  <%= render 'layouts/show_actions', {ressource: @role} %>
 </section>
