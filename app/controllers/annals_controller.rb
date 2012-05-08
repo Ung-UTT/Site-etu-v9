@@ -4,13 +4,6 @@ class AnnalsController < ApplicationController
 
   before_filter :build_documents, only: [:new, :edit]
 
-  def index
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @annals }
-    end
-  end
-
   def show
     @documents = @annal.documents
 
