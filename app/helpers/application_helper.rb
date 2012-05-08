@@ -30,28 +30,6 @@ module ApplicationHelper
     return nil
   end
 
-  # Liste de liens vers des objets (en le montrant que l'attribut) avec
-  # une description
-  def list_of_objects(descr, objects, attr, comments=false)
-    objects = objects.select { |obj| current_ability.can? :show, obj }
-    if objects.empty?
-      return nil
-    else
-      res = ''
-      res += '<p><strong>' + h(descr) + '</strong> :</p>' unless descr.empty?
-      res += '<ul>'
-      objects.each do |object|
-        content = object.send(attr)
-        if comments
-          object = [object.commentable, object]
-        end
-        res += '<li>' + link_to(h(content), object) + '</li>'
-      end
-      res += '</ul>'
-      return res.html_safe
-    end
-  end
-
   # Select options
   # TODO: Nettoyer cette section, et voir ce qui peut passer dans les
   # vues ou être rassemblé en un seul helper
@@ -125,10 +103,11 @@ module ApplicationHelper
   end
 
   # Emploi du temps
-  # TODO: Mettre ça dans un autre fichier que l'on inclu dans celui-là
+  # TODO: Mettre ça dans un events_helper.rb
 
   # Traduit une suite de paramètres en un hash prêt à être utilisé
   # object est l'objet vers lequel on va lié la case qui l'affiche
+  # Le hash peut contenir un événement ou une horaire.
   def event_to_json(hash)
     return {
       'title' => h(hash['title']),

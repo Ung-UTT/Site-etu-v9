@@ -2,6 +2,8 @@ class Course < ActiveRecord::Base
   attr_accessible :name, :description
   validates_presence_of :name
 
+  default_scope :order => 'name ASC'
+
   has_paper_trail
 
   has_many :annals, :dependent => :destroy
@@ -16,7 +18,7 @@ class Course < ActiveRecord::Base
 
   def to_s
     res = name
-    res += " (#{description.truncate(140)})" unless description.blank?
+    res += " : #{description.truncate(140)}" unless description.blank?
     res
   end
 end

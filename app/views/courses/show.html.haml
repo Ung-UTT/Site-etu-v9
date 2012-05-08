@@ -1,0 +1,25 @@
+%section.content
+  = title(t('course') + ' : ' + @course.to_s)
+
+  = md @course.description
+
+  %p
+    %strong= t('courses.users')
+    = ':'
+    = link_to_users @course.users
+
+  %h2=t('courses.annals')
+
+  %ul
+    - @course.annals.group_by(&:kind).each do |kind, annals|
+      %li
+        = annals.first.readable_kind
+        - annals.each do |annal|
+          %ul
+            %li=link_to annal.to_s, annal
+
+  = render 'timesheets/schedule', schedule: @course.schedule
+
+  = render 'layouts/show_actions', ressource: @course
+
+= render 'comments/list_and_add', {commentable: @course, comments: @comments}

@@ -6,10 +6,11 @@ class AnnalsController < ApplicationController
 
   def show
     @documents = @annal.documents
+    @comments = @annal.comments
 
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @annal }
+      format.json  { render json: @annal }
     end
   end
 
@@ -32,10 +33,10 @@ class AnnalsController < ApplicationController
 
   def update
     if @annal.update_attributes(params[:annal])
-      redirect_to(@annal, :notice => t('c.updated'))
+      redirect_to(@annal, notice: t('c.updated'))
     else
       build_documents
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

@@ -1,38 +1,39 @@
 <section class="content">
-  <%= title(t('asso') + ' : ' + @asso.name) %>
+  <%= title(t('asso') + ' : ' + @asso.to_s) %>
 
   <dl>
-  <%
-    {
-      logo: @asso.image ? image_tag(@asso.image.asset.url) : nil,
-      description: md(@asso.description),
-      website: @asso.website ? link_to(@asso.website) : nil,
-      email: @asso.email ? mail_to(@asso.email) : nil,
-      parent: @asso.parent ? link_to(@asso.parent, @asso.parent) : nil,
-      children: raw(@asso.children.collect { |asso| link_to(asso, asso) }.join(', ')),
-      owner: link_to_user(@asso.owner),
-      your_roles: @disjoinable_roles.empty? ? nil : form_for(@asso, url: disjoin_asso_path, method: :post) do |f|
-        raw [
-          f.label(:roles, "#{t('assos.disjoin')} le role de "),
-          f.select(:roles, @disjoinable_roles),
-          f.submit(t('c.roles.revoke'))
-        ].join
-      end,
-      available_roles: @joinable_roles.empty? ? nil : form_for(@asso, url: join_asso_path, method: :post) do |f|
-        raw [
-          f.label(:roles, "#{t('assos.join')} en tant que "),
-          f.select(:roles, @joinable_roles),
-          f.submit(t('c.roles.grant'))
-        ].join
-      end,
-      members: raw("<ul>" + @asso.roles.collect do |role|
-        "<li>" + role.to_s + " : " + link_to_users(role.users) + "</li>"
-      end.join + "</ul>"),
-      events: list_of_objects('', @asso.events, :name)
-    }.each do |key, value|
-      next if value.blank? %>
-      <%= content_tag(:dt, t("assos.#{key}")) %>
-      <%= content_tag(:dd, value) %>
+   <% {
+    logo: @asso.image && image_tag(@asso.image.asset.url),
+    description: md(@asso.description),
+    website: @asso.website && link_to(@asso.website),
+    email: @asso.email && mail_to(@asso.email),
+    parent: @asso.parent && link_to(@asso.parent, @asso.parent),
+    children: raw(@asso.children.collect { |asso| link_to(asso, asso) }.join(', ')),
+    owner: link_to_user(@asso.owner),
+    your_roles: @disjoinable_roles.empty? ? nil : form_for(@asso, url: disjoin_asso_path, method: :post) do |f|
+      raw [
+        f.label(:roles, "#{t('assos.disjoin')} le role de "),
+        f.select(:roles, @disjoinable_roles),
+        f.submit(t('c.roles.revoke'))
+      ].join
+    end,
+    available_roles: @joinable_roles.empty? ? nil : form_for(@asso, url: join_asso_path, method: :post) do |f|
+      raw [
+        f.label(:roles, "#{t('assos.join')} en tant que "),
+        f.select(:roles, @joinable_roles),
+        f.submit(t('c.roles.grant'))
+      ].join
+    end,
+    members: raw('<ul>' + @asso.roles.collect do |role|
+      "<li>#{h(role.to_s)} : #{link_to_users(role.users)}</li>"
+    end.join + '</ul>'),
+    events: raw('<ul>' + @asso.events.map do |event|
+      "<li>#{h(event.to_s)}</li>"
+    end.join + '</ul>'),
+  }.each do |key, value|
+    next if value.nil? or value.empty? %>
+    <%= content_tag(:dt, t("assos.#{key}")) %>
+    <%= content_tag(:dd, value) %>
   <% end %>
   </dl>
 

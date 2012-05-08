@@ -243,6 +243,10 @@
         max-width: 100px;
         max-height: 100px;
         vertical-align: middle;
+
+        &.user {
+          max-width: 30px;
+        }
       }
     }
   }

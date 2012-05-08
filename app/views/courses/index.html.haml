@@ -1,0 +1,11 @@
+%section.content
+  = title t('courses.list')
+
+  %ul
+    - @courses.each do |course|
+      %li
+        = link_to course.to_s, course
+
+  - if can? :create, Course
+    %ul.actions
+      %li= link_to t('common.add'), new_course_path

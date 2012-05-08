@@ -17,6 +17,7 @@ SiteEtu::Application.routes.draw do
     resources :comments, only: [:index, :show, :create, :destroy]
   end
   resources :annals, except: [:index] do
+    resources :comments, only: [:index, :show, :create, :destroy]
     resources :documents, only: [:index, :show, :create, :destroy]
   end
   resources :assos, :classifieds, :carpools, :events, :projects,
