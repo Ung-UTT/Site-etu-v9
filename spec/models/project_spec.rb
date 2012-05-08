@@ -12,6 +12,6 @@ describe Project do
 
   it 'describe itself correctly' do
     project = build :project
-    project.to_s.include?(project.name).should be_true
+    project.to_s.should include project.name
   end
 end

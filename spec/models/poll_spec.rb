@@ -19,6 +19,6 @@ describe Poll do
 
   it 'describe itself correctly' do
     poll = build :poll
-    poll.to_s.include?(poll.name).should be_true
+    poll.to_s.should include poll.name
   end
 end

@@ -7,6 +7,6 @@ describe Event do
 
   it 'describe itself correctly' do
     event = build :event
-    event.to_s.include?(event.name).should be_true
+    event.to_s.should include event.name
   end
 end

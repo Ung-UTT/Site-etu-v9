@@ -12,6 +12,6 @@ describe Course do
 
   it 'describe itself correctly' do
     course = build :course
-    course.to_s.include?(course.name).should be_true
+    course.to_s.should include course.name
   end
 end

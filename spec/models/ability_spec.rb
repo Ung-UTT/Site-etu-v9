@@ -40,4 +40,3 @@ describe Ability do
     it { should be_able_to(:manage, :all) }
   end
 end
-

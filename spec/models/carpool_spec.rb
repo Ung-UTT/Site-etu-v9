@@ -7,7 +7,7 @@ describe Carpool do
 
   it 'describe itself correctly' do
     carpool = build :carpool
-    carpool.to_s.include?(carpool.departure.first(10)).should be_true
-    carpool.to_s.include?(carpool.arrival.first(10)).should be_true
+    carpool.to_s.should include carpool.departure.first(10)
+    carpool.to_s.should include carpool.arrival.first(10)
   end
 end

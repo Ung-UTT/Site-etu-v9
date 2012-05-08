@@ -8,6 +8,6 @@ describe Answer do
 
   it 'describe itself correctly' do
     answer = build :answer
-    answer.to_s.include?(answer.content.first(10)).should be_true
+    answer.to_s.should include answer.content.first(10)
   end
 end

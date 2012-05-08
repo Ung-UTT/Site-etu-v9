@@ -11,6 +11,6 @@ describe Classified do
 
   it 'describe itself correctly' do
     classified = build :classified
-    classified.to_s.include?(classified.title.first(10)).should be_true
+    classified.to_s.should include classified.title.first(10)
   end
 end

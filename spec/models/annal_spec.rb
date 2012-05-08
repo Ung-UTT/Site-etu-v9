@@ -14,8 +14,8 @@ describe Annal do
 
   it "describe itself correctly" do
     annal = build :annal
-    annal.to_s.include?(annal.course.name).should be_true
-    annal.to_s.include?(annal.year.to_s).should be_true
-    annal.to_s.include?(annal.semester).should be_true
+    annal.to_s.should include annal.course.name
+    annal.to_s.should include annal.year.to_s
+    annal.to_s.should include annal.semester
   end
 end

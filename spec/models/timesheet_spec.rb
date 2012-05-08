@@ -9,6 +9,6 @@ describe Timesheet do
 
   it 'describe itself correctly' do
     timesheet = build :timesheet
-    timesheet.to_s.include?(timesheet.course.name).should be_true
+    timesheet.to_s.should include timesheet.course.name
   end
 end

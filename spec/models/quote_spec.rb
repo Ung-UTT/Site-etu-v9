@@ -7,6 +7,6 @@ describe Quote do
 
   it 'describe itself correctly' do
     quote = build :quote
-    quote.to_s.include?(quote.content).should be_true
+    quote.to_s.should include quote.content
   end
 end

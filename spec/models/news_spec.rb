@@ -5,7 +5,7 @@ describe News do
 
   it 'describe itself correctly' do
     news = build :news
-    news.to_s.include?(news.title).should be_true
+    news.to_s.should include news.title
   end
 end
 

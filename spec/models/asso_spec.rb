@@ -57,7 +57,7 @@ describe Asso do
 
   it 'describe itself correctly' do
     asso = build :asso
-    asso.to_s.include?(asso.name).should be_true
+    asso.to_s.should include asso.name
   end
 end
 

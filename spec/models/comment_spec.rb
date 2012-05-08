@@ -11,6 +11,6 @@ describe Comment do
 
   it 'describe itself correctly' do
     comment = build :comment
-    comment.to_s.include?(comment.content.first(10)).should be_true
+    comment.to_s.should include comment.content.first(10)
   end
 end

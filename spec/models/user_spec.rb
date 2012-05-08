@@ -100,6 +100,6 @@ describe User do
   it 'describe itself correctly' do
     user = build :user
     user.firstname = "#1"
-    user.to_s.include?(user.firstname).should be_true
+    user.to_s.should include user.firstname
   end
 end
