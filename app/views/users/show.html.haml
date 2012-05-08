@@ -1,5 +1,5 @@
 %section.content
-  = title(t('user') + ' : ' + @user.real_name)
+  = title(t('user') + ' : ' + @user.to_s)
 
   - if @user.image
     %p.profile.alone= link_to_user @user
@@ -29,4 +29,3 @@
       = not_empty_dd(t('timesheets.hours_per_week'), @user.hours_per_week.to_s)
 
   = render('layouts/show_actions', ressource: @user)
-

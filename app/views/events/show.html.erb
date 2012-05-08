@@ -1,4 +1,4 @@
-<% title(t('event') + ' : ' + @event.name) %>
+<% title(t('event') + ' : ' + @event.to_s) %>
 
 <section class="content">
   <%= render 'one_event', {event: @event} %>
@@ -34,7 +34,7 @@
     <p><%= link_to t('events.join'), join_event_path(@event), method: :post %></p>
   <% end %>
 
-  <%= render 'layouts/show_actions', {ressource: @event} %>
+  <%= render 'layouts/show_actions', ressource: @event %>
 </section>
 
 <% unless @event.news.empty? %>

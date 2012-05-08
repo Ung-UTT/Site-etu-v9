@@ -18,7 +18,7 @@
 
   <%=md @carpool.description %>
 
-  <%= render 'layouts/show_actions', {ressource: @carpool} %>
+  <%= render 'layouts/show_actions', ressource: @carpool %>
 </section>
 
 <%= render 'documents/list_and_add', {documentable: @carpool, documents: @documents} %>

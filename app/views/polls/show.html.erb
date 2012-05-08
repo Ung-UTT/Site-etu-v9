@@ -1,5 +1,5 @@
 <section class="content">
-  <%= title(t('poll') + ' : ' + @poll.name) %>
+  <%= title(t('poll') + ' : ' + @poll.to_s) %>
 
   <%=md @poll.description %>
 
@@ -32,5 +32,5 @@
     <% end %>
   <% end %>
 
-  <%= render 'layouts/show_actions', {ressource: @poll} %>
+  <%= render 'layouts/show_actions', ressource: @poll %>
 </section>

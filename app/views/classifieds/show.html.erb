@@ -18,7 +18,7 @@
     <%= link_to_user @classified.user %>
   </p>
 
-  <%= render 'layouts/show_actions', {ressource: @classified} %>
+  <%= render 'layouts/show_actions', ressource: @classified %>
 </section>
 
 <%= render 'documents/list_and_add', {documentable: @classified, documents: @documents} %>

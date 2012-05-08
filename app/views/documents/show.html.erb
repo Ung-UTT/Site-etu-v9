@@ -1,5 +1,5 @@
 <section class="content">
-  <%= title(t('document') + ' : ' + @document.asset_file_name) %>
+  <%= title(t('document') + ' : ' + @document.to_s) %>
 
   <ul class="documents"><li>
       <%= render 'one_document', {documentable: @documentable, document: @document} %>

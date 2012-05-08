@@ -1,9 +1,9 @@
 <section class="content">
-  <% title(t('news') + ' : ' + @news.title) %>
+  <% title(t('news') + ' : ' + @news.to_s) %>
 
-  <%= render 'one_news', {news: @news} %>
+  <%= render 'one_news', news: @news %>
 
-  <%= render 'layouts/show_actions', {ressource: @news} %>
+  <%= render 'layouts/show_actions', ressource: @news %>
 </section>
 
 <%= render 'documents/list_and_add', {documentable: @news, documents: @documents} %>

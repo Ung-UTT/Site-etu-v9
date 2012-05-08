@@ -1,5 +1,5 @@
 <section class="content">
-  <%= title(t('project') + ' : ' + @project.name) %>
+  <%= title(t('project') + ' : ' + @project.to_s) %>
 
   <%=md @project.description %>
 
@@ -19,7 +19,7 @@
     <p><%= link_to t('projects.join'), join_project_path(@project), method: :post %></p>
   <% end %>
 
-  <%= render 'layouts/show_actions', {ressource: @project} %>
+  <%= render 'layouts/show_actions', ressource: @project %>
 </section>
 
 <%= render 'documents/list_and_add', {documentable: @project, documents: @documents} %>
