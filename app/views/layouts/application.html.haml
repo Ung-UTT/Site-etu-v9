@@ -51,16 +51,6 @@
               = link_to_user current_user
 
     - unless mobile?
-      %p#beta
-        %a{href: "#", onclick: "$('#beta').fadeOut()", style: "float: right", title: "Cacher ce truc"} [X]
-        Salut visiteur égaré, ce site est toujours en développement, toutes tes
-        actions ici seront perdues. Cependant, tu es chaleureusement encouragé à le
-        tester et rapporter tout bug ou idée d'amélioration via
-        %a{href: "mailto:ung+site-etu-v9@utt.fr"} ung@utt.fr
-        ou directement sur
-        %a{href: "https://github.com/Ung-UTT/Site-etu-v9/issues"} Github
-        Merci ! ☺
-
       %blockquote#quote= @random_quote
 
     - unless mobile? and !current_page?(root_url)
@@ -106,6 +96,17 @@
             %li= link_to "N'UTT", 'http://etu.utt.fr/journal'
 
     %section#contents
+      - if Rails.env.production?
+        %p.warning
+          %a{href: "#", onclick: "$(this.parentNode).fadeOut()", style: "float: right", title: "Cacher ce truc"} [X]
+          Salut visiteur égaré, ce site est toujours en développement, toutes tes
+          actions ici seront perdues. Cependant, tu es chaleureusement encouragé à le
+          tester et rapporter tout bug ou idée d'amélioration via
+          %a{href: "mailto:ung+site-etu-v9@utt.fr"} ung@utt.fr
+          ou directement sur
+          %a{href: "https://github.com/Ung-UTT/Site-etu-v9/issues"} Github
+          Merci ! ☺
+
       - unless notice.nil?
         %p.notice= notice
       - unless alert.nil?

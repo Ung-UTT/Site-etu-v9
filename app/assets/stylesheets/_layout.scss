@@ -27,16 +27,6 @@ body {
   background-color: $fond;
 }
 
-#beta {
-  display: none; // FIXME
-  border: 1px solid;
-  margin: 0;
-  padding: 15px 10px 15px 50px;
-  color: #9F6000;
-  background: #FEEFB3 url(image_path('others/warning.png')) no-repeat 10px center;
-  border-radius: 5px;
-}
-
 #quote {
   clear: both; // Pour la photo, elle dépasse sur les petits écrans
 }
