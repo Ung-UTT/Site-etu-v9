@@ -1,5 +1,7 @@
 <section class="content">
   <%= title(t('comment', count: 1) + ' : ' + @comment.to_s) %>
 
-  <ul class="comments"><li><%= render 'one_comment', {commentable: @commentable, comment: @comment} %></li></ul>
+  <ul class="comments list-with-delete"><li>
+    <%= render 'one_comment', {commentable: @commentable, comment: @comment} %>
+  </li></ul>
 </section>
