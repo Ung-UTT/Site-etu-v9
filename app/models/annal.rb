@@ -1,3 +1,4 @@
+
 class Annal < ActiveRecord::Base
   SEMESTERS = %w[A P] # Automne ou Printemps
   KINDS = %w[P M F A] # Partiel, Médian, Final ou Autre
@@ -17,8 +18,6 @@ class Annal < ActiveRecord::Base
   belongs_to :course
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
-
-
 
   # On ne garde que les documents qui ne pas vides
   accepts_nested_attributes_for :documents, :allow_destroy => true,

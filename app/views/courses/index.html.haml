@@ -1,10 +1,9 @@
 %section.content
   = title t('courses.list')
 
-  %ul
+  %ul.columns
     - @courses.each do |course|
-      %li
-        = link_to course.to_s, course
+      %li= link_to course.name, course
 
   - if can? :create, Course
     %ul.actions

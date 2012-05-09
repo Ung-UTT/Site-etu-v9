@@ -18,7 +18,7 @@ class Course < ActiveRecord::Base
 
   def to_s
     res = name
-    res += " : #{description.truncate(140)}" unless description.blank?
+    res += " : #{description.truncate(30)}" unless description.blank?
     res
   end
 end
