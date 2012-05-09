@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   paginates_per 32
 
+  default_scope order: 'firstname,lastname'
+
   has_paper_trail
 
   has_one :image, dependent: :destroy, as: :documentable

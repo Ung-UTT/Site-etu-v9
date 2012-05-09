@@ -6,6 +6,8 @@ class Asso < ActiveRecord::Base
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
 
+  default_scope order: 'name'
+
   has_paper_trail
   # Une asso peut avoir une asso fille (c'est un club)
   acts_as_nested_set dependent: :destroy

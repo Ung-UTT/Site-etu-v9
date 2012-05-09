@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
   attr_accessible :name, :description
   validates_presence_of :name
 
-  default_scope order: 'name ASC'
+  default_scope order: 'name'
 
   has_paper_trail
 

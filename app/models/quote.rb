@@ -7,6 +7,8 @@ class Quote < ActiveRecord::Base
   validates_presence_of :content
   validates :tag, inclusion: {in: Quote::TAGS}
 
+  default_scope order: 'content'
+
   has_paper_trail
 
   def to_s

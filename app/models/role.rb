@@ -3,8 +3,10 @@ class Role < ActiveRecord::Base
   validates_presence_of :name
 
   # Rolify
-  has_and_belongs_to_many :users, :join_table => :users_roles
+  has_and_belongs_to_many :users, join_table: :users_roles
   belongs_to :resource, polymorphic: true
+
+  default_scope order: 'name'
 
   has_paper_trail
 
@@ -15,4 +17,3 @@ class Role < ActiveRecord::Base
     str
   end
 end
-

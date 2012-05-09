@@ -10,11 +10,15 @@ class Annal < ActiveRecord::Base
   validates_inclusion_of :kind, in: KINDS
   validates_uniqueness_of :course_id, scope: [:year, :semester, :kind]
 
+  default_scope order: 'year DESC'
+
   has_paper_trail
 
   belongs_to :course
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+
+
 
   # On ne garde que les documents qui ne pas vides
   accepts_nested_attributes_for :documents, :allow_destroy => true,

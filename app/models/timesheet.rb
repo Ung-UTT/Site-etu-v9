@@ -5,6 +5,7 @@ class Timesheet < ActiveRecord::Base
   validates_presence_of :start_at, :duration, :category, :course
   validates :category, inclusion: {in: Timesheet::CATEGORIES}
 
+  default_scope order: 'start_at'
   has_paper_trail
 
   belongs_to :course

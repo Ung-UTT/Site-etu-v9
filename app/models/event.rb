@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   validate :start_at_cannot_be_after_end_at
 
   default_scope order: 'start_at DESC'
+
   has_paper_trail
 
   belongs_to :owner, :class_name => 'User'
