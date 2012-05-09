@@ -31,12 +31,14 @@ class Timesheet < ActiveRecord::Base
 
   # Traduit l'horaire en un hash exploitable par FullCalendar
   def to_fullcalendar
-    return { 'title' => "#{course.name} #{category}\n#{room}\n#{week}",
-             'start_at' => start_at,
-             'end_at' => start_at + duration.minutes,
-             'object' => self,
-             'alt' => range,
-             'course' => course.name }
+    {
+      'title' => "#{course.name} #{category}\n#{room}\n#{week}",
+      'start_at' => start_at,
+      'end_at' => start_at + duration.minutes,
+      'object' => self,
+      'alt' => range,
+      'course' => course.name
+    }
   end
 
   # Selectionne les horaires du semestre actuel
@@ -47,11 +49,9 @@ class Timesheet < ActiveRecord::Base
     # Le semestre actuel est le dernier
     semester = SEMESTERS.last
     # On sélectionne les horaires de ce semestre
-    timesheets = timesheets.select do |ts|
+    timesheets.select do |ts|
       ts.start_at >= semester['start_at'] && ts.start_at <= semester['end_at']
     end
-
-    return timesheets
   end
 
   # Fait la répétition des horaires selon le semestre
@@ -78,7 +78,7 @@ class Timesheet < ActiveRecord::Base
           # Comme une répétition, on ajoute les semaines
           hash['start_at'] += index.weeks
           hash['end_at'] += index.weeks
-          agenda.push(hash)
+          agenda << hash
         end
 
         index += 1
@@ -86,7 +86,7 @@ class Timesheet < ActiveRecord::Base
       end while (start_at + index.weeks) < semester['end_at']
     end
 
-    return agenda
+    agenda
   end
 
   def to_s

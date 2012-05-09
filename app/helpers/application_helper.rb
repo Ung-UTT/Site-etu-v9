@@ -17,13 +17,13 @@ module ApplicationHelper
 
   # Raccourcis pour les vues
 
-  # <dd> conditionnelle à ce que ce qui est montré n'est pas vide
+  # <dd> conditionnel à ce que ce qui est montré n'est pas vide
   def not_empty_dd(descr, value)
     return nil if value.blank?
     "<dt>#{h(descr)}</dt><dd>#{h(value)}</dd>".html_safe
   end
 
-  # Affichage conditionnelle à ce que ce qui est montré n'est pas vide
+  # Affichage conditionnel à ce que ce qui est montré n'est pas vide
   def not_empty_inline(descr, value)
     return nil if value.blank?
     " <strong>#{h(descr)}</strong> : #{h(value)} ".html_safe
@@ -39,13 +39,13 @@ module ApplicationHelper
   end
 
   # General select : need the objects that can be selected
-  # And optionnaly the selected objects
-  # And also optionnaly if the user can select no objects
+  # And optionally the selected objects
+  # And also optionally if the user can select no objects
   def select_objects(objects, selected = [], none = false)
     objects = objects.map { |object| [object.to_s, object.id] }
     objects.unshift([t('helpers.none'), nil]) if none
 
-    selected = [selected] if selected.class != Array
+    selected = [selected] unless selected.is_a? Array
     selected = selected.compact.map(&:id)
 
     options_for_select(objects, selected)
@@ -69,7 +69,7 @@ module ApplicationHelper
     end
   end
 
-  # Button to delete a ressource (with confirmation
+  # Button to delete a resource (with confirmation)
   def button_to_delete(label, link)
     button_to label, link, confirm: t('common.confirm'), method: :delete
   end

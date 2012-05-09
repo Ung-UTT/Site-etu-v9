@@ -1,10 +1,10 @@
-  # encoding: utf-8
+# encoding: utf-8
 
 module TimesheetsHelper
   # Emploi du temps
   # Traduit une suite de paramètres en un hash prêt à être utilisé
-  # object est l'objet vers lequel on va lié la case qui l'affiche
-  # Le hash peut contenir un événement ou une horaire.
+  # object est l'objet vers lequel on va lier la case qui l'affiche
+  # Le hash peut contenir un évènement ou une horaire.
   def event_to_json(hash)
     return nil unless hash.detect { |k, v| v.nil? }.nil?
 
@@ -27,19 +27,19 @@ module TimesheetsHelper
 
     # On va associer à chaque cours une couleur
     i = 0
-    hash = Hash.new # Va contenir les couples "UV" => "#couleur"
+    hash = {'_default' => '#6579C5'} # Va contenir les couples "UV" => "#couleur"
     courses.each do |name|
-      hash.update({name => colors[i]})
-      i = (i+1) % colors.size # Ca va au début si ya trop de cours différents
+      hash[name] = colors[i]
+      i = (i+1) % colors.size # Va au début si ya trop de cours différents
     end
-    return hash.update({'_default' => '#6579C5'})
+    hash
   end
 
   # Les horaires
   def timesheets_to_json(timesheets)
     agenda = []
     agenda = timesheets.map {|ts| ts.to_fullcalendar}
-    return agenda_to_json(agenda)
+    agenda_to_json(agenda)
   end
 
   def agenda_to_json(array_of_hash)
@@ -52,29 +52,32 @@ module TimesheetsHelper
 
     # On remplit l'emploi du temps selon les normes de FullCalendar
     array_of_hash.map do |hash|
-      hash.update({'color' => colors[hash['course'] || '_default']})
+      hash['color'] = colors[hash['course'] || '_default']
       object = event_to_json(hash)
-      agenda.push(object)
+      agenda << object
     end
 
-    return agenda.to_json.html_safe
+    agenda.to_json.html_safe
   end
 
   def start_date_of_semester
     date = SEMESTERS.last['start_at']
-    return {'year' => date.year,
-            'month' => date.month - 1,
-            'day' => date.day}.to_json.html_safe
+
+    {
+      'year' => date.year,
+      'month' => date.month - 1,
+      'day' => date.day
+    }.to_json.html_safe
   end
 
   def dates_translations
     dates = {
-      'monthNames' => I18n.t('date.month_names').compact, # Enléve le 'nil'
+      'monthNames' => I18n.t('date.month_names').compact,
       'monthNamesShort' => I18n.t('date.abbr_month_names').compact,
       'dayNames' => I18n.t('date.day_names'),
       'dayNamesShort' => I18n.t('date.abbr_day_names'),
     }
 
-    return dates.to_json.html_safe
+    dates.to_json.html_safe
   end
 end
