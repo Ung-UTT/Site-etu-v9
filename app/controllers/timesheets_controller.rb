@@ -1,7 +1,7 @@
 # encoding: utf-8
 class TimesheetsController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_first_users, only: [:index, :new, :edit]
+  before_filter :set_first_users, only: [:index, :new, :edit, :create]
 
   def index
     if params[:users].blank?

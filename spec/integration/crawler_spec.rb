@@ -4,6 +4,10 @@ def visit_and_check path
   # visit will fail if there's an error in the view (e.g. AbstractController::DoubleRenderError)
   visit path
 
+  check_page
+end
+
+def check_page
   # assert there's no 404.png, 500.png or the like
   page.body.should_not have_xpath("//img[starts-with(@src, '/assets/errors/')]")
 end
@@ -22,12 +26,16 @@ feature "It does not raise any errors while browsing as an administrator" do # w
 
   `rake routes`.lines.each do |line|
     # not especially neat way of getting routes but didn't find better :/
-    next unless route = line.match(/\A\s+(?<name>[^\s]+)\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new|edit))\Z/)
+    next unless route = line.match(/\A\s+(?<name>[^\s]+)\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new|create|edit))\Z/)
 
     # edge cases
     next if route[:controller] == 'cas' and route[:action] == 'new'
     next if route[:controller] == 'devise/unlocks' and route[:action] == 'show'
     next if route[:controller] == 'devise/passwords' and route[:action] == 'edit'
+    next if route[:controller].start_with? 'devise/' and route[:action] == 'create'
+    next if is_associated_resource? route[:controller] and route[:action] == 'create' # FIXME
+    next if %(annals timesheets).include? route[:controller] and route[:action] == 'create' # FIXME
+
 
     # don't test associated resources twice
     next if is_associated_resource?(route[:controller]) and route[:action] == 'show'
@@ -90,6 +98,19 @@ feature "It does not raise any errors while browsing as an administrator" do # w
           object_path = send("#{model}_path", object)
           current_path.should == object_path
         end
+
+      when 'create'
+        path = "/#{route[:controller]}"
+        attributes = attributes_for model
+        object = route[:controller].classify.downcase
+
+        klass = model.classify.constantize
+        expect {
+          page.driver.post(path, { object => attributes })
+        }.to change{klass.count}.by(1)
+
+        # should be successful
+        check_page
 
       else
         raise "WTF? Route parsing error?"

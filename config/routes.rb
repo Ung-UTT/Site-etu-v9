@@ -9,10 +9,9 @@ SiteEtu::Application.routes.draw do
   # Ressources
   resource :cas, only: [:new, :destroy]
 
-  resources :answers, :votes, only: [:create, :destroy]
   resources :users, only: [:index, :edit, :show, :update]
   resources :polls, :timesheets, :quotes
-  resources :roles, except: [:new]
+  resources :roles, except: [:new, :create]
   resources :courses do
     resources :comments, only: [:index, :show, :create, :destroy]
   end
