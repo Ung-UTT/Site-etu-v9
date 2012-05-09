@@ -71,6 +71,12 @@ FactoryGirl.define do
     email { "#{login}@utt.fr" }
     password { SecureRandom.base64 }
 
+    factory :user_with_schedule do
+      after_create do |user|
+        user.timesheets << FactoryGirl.create(:timesheet)
+      end
+    end
+
     factory :student do
       after_create do |user|
         user.add_role :student

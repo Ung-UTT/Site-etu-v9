@@ -23,7 +23,6 @@
   - unless @user.timesheets.empty?
     #schedule
       = render('timesheets/schedule', schedule: @user.schedule)
-      %noscript= list_of_objects(t('timesheets.list'), @user.timesheets, :range)
 
     %dl
       = not_empty_dd(t('timesheets.hours_per_week'), @user.hours_per_week.to_s)
