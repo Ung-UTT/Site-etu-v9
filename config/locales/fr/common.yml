@@ -3,8 +3,8 @@ fr:
   'no': "Non"
   of: "de"
   unknown: "inconnu"
+  back_to_content: "Revenir au contenu"
 
   locales:
     en: "English"
     fr: "Français"
-

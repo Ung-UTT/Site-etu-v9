@@ -9,7 +9,9 @@
     </h2>
     <ul class="details">
       <li><strong><%= t('newss.hour') %> :</strong> <%= l(news.created_at, format: '%Hh') %></li>
-      <li><strong><%= t('newss.user') %> :</strong> <%= link_to_user news.user %></li>
+      <% if news.user %>
+        <li><strong><%= t('newss.user') %> :</strong> <%= link_to_user news.user %></li>
+      <% end %>
       <li><strong><%= t('newss.comments') %> :</strong> <%= news.comments.count %></li>
     </ul>
   </header>

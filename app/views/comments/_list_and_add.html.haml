@@ -1,0 +1,27 @@
+- unless comments.empty? and cannot?(:create, Comment)
+  %section.content
+    - if params[:controller] == 'comments'
+      = title t('comment', count: comments.count)
+    - else
+      %h1.title= link_to t('comment', count: comments.count), [commentable, Comment]
+    %ul.comments.list-with-delete
+      - comments.each do |comment|
+        %li
+          = link_to '#', [commentable, comment]
+          - if comment.user
+            = link_to_user comment.user
+          = comment.content
+          - if can? :destroy, comment
+            = button_to_delete t('common.delete'), [commentable, comment]
+      - if can? :create, Comment
+        %li
+          = form_for [commentable, Comment.new] do |f|
+            %ul.fields
+              %li.field
+                = f.text_area :content
+              %li.actions
+                = f.submit t('common.add')
+
+    - if params[:controller] == 'comments'
+      %ul.actions
+        %li= link_to t('back_to_content'), @commentable

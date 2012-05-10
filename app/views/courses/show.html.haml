@@ -10,13 +10,16 @@
 
   %h2=t('courses.annals')
 
-  %ul
-    - @course.annals.group_by(&:kind).each do |kind, annals|
-      %li
-        = annals.first.readable_kind
-        - annals.each do |annal|
-          %ul
-            %li=link_to annal.to_s, annal
+  - if @course.annals.empty?
+    %p= t('helpers.none')
+  - else
+    %ul
+      - @course.annals.group_by(&:kind).each do |kind, annals|
+        %li
+          = annals.first.readable_kind
+          - annals.each do |annal|
+            %ul
+              %li=link_to annal.to_s, annal
 
   - if can? :create, Annal
     %p= link_to t('common.add'), new_annal_path
