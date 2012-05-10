@@ -9,9 +9,9 @@
       - documents.each do |document|
         %li
           - if document.image?
-            = link_to image_tag document.asset.url, document.asset.url
+            = link_to image_tag(document.asset.url), document.asset.url
           - else
-            = link_to document.asset_file_name, document.asset.url
+            = link_to document.to_s, document.asset.url
 
           - if can? :destroy, document
             = button_to_delete t('common.delete'), [documentable, document]
