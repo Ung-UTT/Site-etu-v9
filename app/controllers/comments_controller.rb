@@ -10,7 +10,10 @@ class CommentsController < ApplicationController
     @comments = @commentable.comments
 
     respond_to do |format|
-      format.html { render '_list_and_add', locals: {commentable: @commentable, comments: @comments} }
+      format.html do
+        render '_list_and_add', locals:
+          {commentable: @commentable, comments: @comments}
+      end
       format.json { render json: @comments }
     end
   end
@@ -19,7 +22,10 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.find(params[:id])
 
     respond_to do |format|
-      format.html { render '_list_and_add', locals: {commentable: @commentable, comments: [@comment]} }
+      format.html do
+        render '_list_and_add', locals:
+          {commentable: @commentable, comments: [@comment]}
+      end
       format.json { render json: @comment }
     end
   end

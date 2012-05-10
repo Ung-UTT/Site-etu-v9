@@ -4,6 +4,7 @@
       = title t('comment', count: comments.count)
     - else
       %h1.title= link_to t('comment', count: comments.count), [commentable, Comment]
+
     %ul.comments.list-with-delete
       - comments.each do |comment|
         %li

@@ -17,10 +17,14 @@ fr:
   carpool: "Covoiturage"
   classified: "Petite annonce"
   comment:
+    zero: "Aucun commentaire"
     one: "Un commentaire"
     other: "%{count} commentaires"
   course: "UV"
-  document: "Document"
+  document:
+    zero: "Aucun document"
+    one: "Un document"
+    other: "%{count} documents"
   event: "Évènement"
   image: "Image"
   news: "News"
@@ -80,8 +84,7 @@ fr:
     user: "Vendeur"
 
   comments:
-    list: "Commentaires"
-    content: "Cotenu"
+    content: "Contenu"
     user: "Auteur"
 
   courses:
@@ -90,9 +93,6 @@ fr:
     description: "Description"
     users: "Étudiants"
     annals: "Annales de cette UV"
-
-  documents:
-    list: "Documents"
 
   events:
     list: "Évènements"

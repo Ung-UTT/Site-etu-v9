@@ -7,17 +7,11 @@ class DocumentsController < ApplicationController
     @documents = @documentable.documents
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do
+        render '_list_and_add', locals:
+          {documentable: @documentable, documents: @documents}
+      end
       format.json { render json: @documents }
-    end
-  end
-
-  def show
-    @document = @documentable.documents.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @document }
     end
   end
 
