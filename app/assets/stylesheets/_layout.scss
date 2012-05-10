@@ -1,5 +1,7 @@
 /* Layout */
 
+$icon_size: 30px; // Taille des icônes
+
 // Fonctions pour éviter les répétitions de code
 // et les pavés de codes (-moz-, -o-, ...), ...
 
@@ -59,8 +61,6 @@ body {
   }
 
   img.user {
-    padding: 0;
-    margin: 0;
     max-width: 30px;
     vertical-align: middle;
   }
@@ -88,7 +88,7 @@ body {
     display: inline-block;
     margin: 8px 0;
 
-    a { padding: 10px 15px 10px 36px; }
+    a { padding: 5px 15px 5px 36px; }
   }
 
   li.none a {
@@ -125,7 +125,7 @@ body {
     ul.illustrated {
       li a {
         display: block;
-        padding: 10px 15px 10px 40px;
+        padding: 5px 15px 5px 40px;
       }
     }
   }
@@ -162,7 +162,7 @@ ul.illustrated {
       background-position: -1000px 0;
 
       &:hover {
-        background-position: 0 -33.7px*4;
+        background-position: 0 (-$icon_size*4);
       }
     }
   }
@@ -171,36 +171,36 @@ ul.illustrated {
     float: right;
 
     a {
-      min-height: 15px;
+      min-height: 20px;
       display: block;
     }
   }
 
   li.users a { background-position: 0 0; }
 
-  li.timesheets a { background-position: 0 -33.7px*1; }
+  li.timesheets a { background-position: 0 (-$icon_size*1); }
 
-  li.mails a { background-position: 0 -33.7px*2; }
+  li.mails a { background-position: 0 (-$icon_size*2); }
 
-  li.logout a { background-position: 0 -33.7px*3; }
+  li.logout a { background-position: 0 (-$icon_size*3); }
 
   // Le quatrième c'est le logo de page d'accueil
 
-  li.wiki a { background-position: 0 -33.7px*5; }
+  li.wiki a { background-position: 0 (-$icon_size*5); }
 
-  li.events a { background-position: 0 -33.5px*6; }
+  li.events a { background-position: 0 (-$icon_size*6); }
 
-  li.courses a { background-position: 0 -33.7px*7; }
+  li.courses a { background-position: 0 (-$icon_size*7); }
 
-  li.classifieds a { background-position: 0 -33.7px*8; }
+  li.classifieds a { background-position: 0 (-$icon_size*8); }
 
-  li.buckutt a { background-position: 0 -33.6px*9; }
+  li.buckutt a { background-position: 0 (-$icon_size*9); }
 
-  li.polls a { background-position: 0 -33.7px*10; }
+  li.polls a { background-position: 0 (-$icon_size*10); }
 
-  li.news a { background-position: 0 -33.7px*11; }
+  li.news a { background-position: 0 (-$icon_size*11); }
 
-  li.carpools a { background-position: 0 -33.7px*12; }
+  li.carpools a { background-position: 0 (-$icon_size*12); }
 }
 
 span.translation_missing {
