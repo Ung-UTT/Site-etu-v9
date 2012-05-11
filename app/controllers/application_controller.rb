@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
 
     return unless payload = params[:payload]
     push = JSON.parse payload
-    logger.info push.inspect
 
     if push["ref"] == "refs/heads/master"
       system "#{Rails.root}/script/deploy 2>&1 >> #{Rails.root}/log/deploy.log &"
