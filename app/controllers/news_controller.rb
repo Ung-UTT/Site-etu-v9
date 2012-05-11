@@ -3,7 +3,7 @@ class NewsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @news = @news.visible unless current_user.has_role? :moderator
+    @news = @news.visible unless current_ability.can? :manage, News
     @news = @news.page(params[:page])
 
     respond_to do |format|
