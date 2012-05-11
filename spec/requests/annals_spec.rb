@@ -8,8 +8,7 @@ feature "Managing annals" do
     sign_in user.login, user.password
     visit new_annal_path
 
-    form = find("//form[@action=\"/annals\"]")
-    within(form) do
+    within_form do
       attach_file :annal_documents_attributes_0_asset, file_from_assets('document.pdf').path
 
       expect {

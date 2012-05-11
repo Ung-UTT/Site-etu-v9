@@ -7,8 +7,7 @@ feature "Managing news" do
     sign_in user.login, user.password
     visit new_news_path
 
-    form = find("//form[@action=\"/news\"]")
-    within(form) do
+    within_form do
       fill_in :title, with: "Yo yo yo, y pleut des haricots"
       fill_in :content, with: <<-CONTENT
         Howto
@@ -37,8 +36,7 @@ feature "Managing news" do
     find_link(I18n.t('newss.moderate')).click
 
     current_path.should == edit_news_path(news)
-    form = find("//form[@action=\"#{news_path(news)}\"]")
-    within(form) do
+    within_form(action: news_path(news)) do
       check 'news_is_moderated'
       submit_form
     end

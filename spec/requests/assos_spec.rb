@@ -7,8 +7,7 @@ feature "Managing an asso" do
     sign_in user.login, user.password
     visit new_asso_path
 
-    form = find("//form[@action=\"/assos\"]")
-    within(form) do
+    within_form do
       fill_in :name, with: "UNG"
 
       expect {
@@ -32,8 +31,7 @@ feature "Managing an asso" do
 
     actions.each do |action|
       roles.each do |role|
-        form = find("//form[@action=\"#{action}\"]")
-        within(form) do
+        within_form(action: action) do
           find(".//option[@value=\"#{role}\"]").select_option
           submit_form
         end
