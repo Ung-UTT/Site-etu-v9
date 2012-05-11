@@ -2,6 +2,10 @@
 
 set -e # abort on errors
 
+[ -f tmp/deploying ] && exit 1 || touch tmp/deploying
+
+echo "Starting at $(date)..."
+
 export RAILS_ENV=production
 
 git pull
@@ -10,5 +14,8 @@ mv public/maintenance.html{.NO,}
 rake db:migrate
 touch tmp/restart.txt
 mv public/maintenance.html{,.NO}
-echo 'Deployed!'
+
+echo "Finished at $(date)."
+
+rm -f tmp/deploying
 

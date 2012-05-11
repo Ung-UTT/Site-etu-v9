@@ -16,12 +16,32 @@ class ApplicationController < ActionController::Base
     render template: "shared/404", status: 404
   end
 
-  private
+  def deploy
+    # Only Github and us are allowed to trigger the deploy script
+    return unless %w(
+      207.97.227.253
+      50.57.128.197
+      108.171.174.178
+      127.0.0.1
+    ).include? request.env['REMOTE_ADDR']
+
+    return unless payload = params[:payload]
+    push = JSON.parse payload
+    logger.info push.inspect
+
+    if push["ref"] == "refs/heads/master"
+      system "#{Rails.root}/script/deploy 2>&1 >> #{Rails.root}/log/deploy.log &"
+    end
+
+    render text: 'OK'
+  end
+
   # Gére la prévisualisation du Markdown
   def preview
     render text: md(params[:data])
   end
 
+  private
   # Gére les accès refusés
   def render_access_denied(exception)
     message = t('c.application.denied')

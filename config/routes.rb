@@ -1,11 +1,6 @@
 SiteEtu::Application.routes.draw do
   devise_for :users
 
-  # Routes spéciales
-  match 'about' => 'home#about' # Page "À propos"
-  match 'rules' => 'home#rules' # Page "Règles"
-  match 'preview' => 'application#preview' # Prévisualisation Markdown
-
   # Ressources
   resource :cas, only: [:new, :destroy]
 
@@ -30,5 +25,10 @@ SiteEtu::Application.routes.draw do
 
   root to: 'home#index'
 
+  # Routes spéciales
+  match 'about' => 'home#about', via: :get
+  match 'rules' => 'home#rules', via: :get
+  match 'deploy' => 'application#deploy', via: :get
+  match 'preview' => 'application#preview' # Prévisualisation Markdown
   match '*path' => 'application#render_not_found'
 end
