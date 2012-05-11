@@ -10,8 +10,9 @@ trap "rm -f $LOCK_FILE; echo exit $?; exit $?" INT TERM EXIT
 
 echo "Starting at $(date)..."
 
+git reset --hard
 git pull -v origin
-bundle install -V --deployment --without test development import
+bundle install --deployment --without test development import
 mv -v public/maintenance.html{.NO,}
 rake -tv db:migrate RAILS_ENV=production
 touch tmp/restart.txt
