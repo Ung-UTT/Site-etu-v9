@@ -1,21 +1,23 @@
 #!/bin/bash
 
-set -e # abort on errors
+set -u
 
-[ -f tmp/deploying ] && exit 1 || touch tmp/deploying
+cd "$(dirname $0)/.."
+
+LOCK_FILE=tmp/deploying
+trap "rm -f $LOCK_FILE; echo exit $?; exit $?" INT TERM EXIT
+[ -f $LOCK_FILE ] && exit 1 || touch $LOCK_FILE
 
 echo "Starting at $(date)..."
 
-export RAILS_ENV=production
-
-git pull
-bundle install --deployment --without test development import
-mv public/maintenance.html{.NO,}
-rake db:migrate
+git pull -v origin
+bundle install -V --deployment --without test development import
+mv -v public/maintenance.html{.NO,}
+rake -tv db:migrate RAILS_ENV=production
 touch tmp/restart.txt
-mv public/maintenance.html{,.NO}
+mv -v public/maintenance.html{,.NO}
 
 echo "Finished at $(date)."
 
-rm -f tmp/deploying
+rm -f $LOCK_FILE
 
