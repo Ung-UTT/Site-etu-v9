@@ -107,7 +107,7 @@ FactoryGirl.define do
   end
 
   factory :preference do
-    locale     'fr'
+    locale 'fr'
     quote_type 'all'
   end
 
@@ -124,7 +124,7 @@ FactoryGirl.define do
     start_at { Time.now }
     duration { 120 }
     category 'CM'
-    course
+    course_id { create(:course).id }
   end
 
   factory :vote do

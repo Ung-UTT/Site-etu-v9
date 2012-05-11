@@ -26,19 +26,24 @@ feature "It does not raise any errors while browsing as an administrator" do # w
 
   `rake routes`.lines.each do |line|
     # not especially neat way of getting routes but didn't find better :/
-    next unless route = line.match(/\A\s+(?<name>[^\s]+)\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new|create|edit))\Z/)
+    next unless route = line.match(/\A\s+(?<name>[^\s]+)?\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new|create|edit|destroy))\Z/)
 
-    # edge cases
-    next if route[:controller] == 'cas' and route[:action] == 'new'
+    # skip CAS
+    next if route[:controller] == 'cas'
+
+    # skip devise
     next if route[:controller] == 'devise/unlocks' and route[:action] == 'show'
     next if route[:controller] == 'devise/passwords' and route[:action] == 'edit'
     next if route[:controller].start_with? 'devise/' and route[:action] == 'create'
-    next if is_associated_resource? route[:controller] and route[:action] == 'create' # FIXME
-    next if %(annals timesheets).include? route[:controller] and route[:action] == 'create' # FIXME
 
+    # tested in annals_spec.rb
+    next if route[:controller] == 'annals' and route[:action] == 'create'
 
     # don't test associated resources twice
     next if is_associated_resource?(route[:controller]) and route[:action] == 'show'
+
+    # FIXME: test associated comments & documents
+    next if is_associated_resource? route[:controller] and %(create destroy).include? route[:action]
 
     scenario "#{route[:controller]}##{route[:action]} (path: #{route[:path]})" do
       # this also checks that every route has the controller and the action defined
@@ -102,14 +107,23 @@ feature "It does not raise any errors while browsing as an administrator" do # w
       when 'create'
         path = "/#{route[:controller]}"
         attributes = attributes_for model
-        object = route[:controller].classify.downcase
-
         klass = model.classify.constantize
+
         expect {
-          page.driver.post(path, { object => attributes })
+          page.driver.post(path, { model => attributes })
         }.to change{klass.count}.by(1)
 
-        # should be successful
+        check_page
+
+      when 'destroy'
+        object = create model
+        path = "/#{route[:controller]}/#{object.id}"
+        klass = model.classify.constantize
+
+        expect {
+          page.driver.delete(path)
+        }.to change{klass.count}.by(-1)
+
         check_page
 
       else
