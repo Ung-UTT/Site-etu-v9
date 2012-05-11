@@ -61,6 +61,7 @@ fr:
     available_roles: "Rôles de l'asso"
     website: "Site web"
     email: "Courriel"
+    image: "Image"
 
   carpools:
     list: "Covoiturages"
@@ -203,6 +204,8 @@ fr:
     phone: "Téléphone"
     room: "Salle"
     description: "Description"
+    timesheet:
+      hours_per_week: "Nombre d'heures par semaine"
 
   user_sessions:
     logout: "Se déconnecter"

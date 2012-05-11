@@ -58,10 +58,26 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
 
+    config.after(:suite) do
+      warn I18n.missing_translations.join("\n") unless I18n.missing_translations.nil?
+    end
+
     def file_from_assets(name)
       File.new(Rails.root + 'spec/assets' + name)
     end
   end
+
+  module I18n
+    class << self
+      attr_reader :missing_translations
+
+      def missing_translation(*args)
+        (@missing_translations ||= []) << args.first
+      end
+    end
+  end
+
+  I18n.exception_handler = :missing_translation
 
   Capybara.default_selector = :xpath
 end
