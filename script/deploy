@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e # abort on errors
+
+export RAILS_ENV=production
+
+git pull
+bundle install --deployment --without test development import
+mv public/maintenance.html{.NO,}
+rake db:migrate
+touch tmp/restart.txt
+mv public/maintenance.html{,.NO}
+echo 'Deployed!'
+

@@ -28,8 +28,6 @@ cat > /etc/apache2/sites-available/site-etu <<CONF
         Options -MultiViews
     </Directory>
 
-    RailsEnv production
-
     <LocationMatch "^/v9/assets/.*$">
         # Use of ETag is discouraged when Last-Modified is present
         Header unset ETag
@@ -39,11 +37,19 @@ cat > /etc/apache2/sites-available/site-etu <<CONF
         ExpiresActive On
         ExpiresDefault "access plus 1 year"
     </LocationMatch>
+
+    RailsEnv production
+
+    RewriteEngine On
+    RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+    RewriteCond %{REQUEST_FILENAME} !/maintenance.html
+    RewriteRule ^.*$ /maintenance.html [L]
 </VirtualHost>
 CONF
 
 a2enmod headers
 a2enmod expires
+a2enmod rewrite
 
 gem1.9.1 install bundler --no-ri --no-rdoc
 gem1.9.1 install passenger --no-ri --no-rdoc

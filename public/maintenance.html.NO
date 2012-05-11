@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="10;url=https://etu.utt.fr/v9/">
+  <title>Mise à jour !</title>
+  <style>
+    body { text-align: center }
+  </style>
+</head>
+
+<body>
+  <h1>Doh ! Une mise à jour est en cours...</h1>
+
+  <p>
+    Pour le plus grand bonheur de tous, une nouvelle version du site étu est en
+    cours de déploiement en ce moment même.
+  </p>
+  <p>
+    Cela ne devrait pas durer plus de quelques secondes.
+    Cette page se rafraichira automagiquement dans dix secondes.
+  </p>
+</body>
+</html>
+
