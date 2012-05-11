@@ -1,7 +1,7 @@
 namespace :import do
   namespace :schedules do
     desc "Insert schedules in the database (need schedule.marhsal from conversion)"
-    task :insert => :environment do
+    task insert: :environment do
       # Dans le dossier temporaire de Rails
       DB_FILE = Rails.root.join('tmp', 'schedules.marshal')
 
@@ -38,12 +38,12 @@ namespace :import do
               :start_at => SEMESTERS.last['start_at'] + ts['day'].days +
                            ts['start'][0].hours + ts['start'][1].minutes,
               # Durée : fin - début (heures et minutes)
-              :duration => (ts['end'][0] - ts['start'][0])*60 +
+              duration: (ts['end'][0] - ts['start'][0])*60 +
                             ts['end'][1] - ts['start'][0],
               # Semaine A, semaine B ou rien
-              :week => ts['weekname'] == 'T' ? nil : ts['weekname'],
-              :room => ts['room'], # Salle
-              :category => ts['type'], # CM, TD, TP
+              week: ts['weekname'] == 'T' ? nil : ts['weekname'],
+              room: ts['room'], # Salle
+              category: ts['type'], # CM, TD, TP
               # Crée le cours s'il n'existe pas
               :course_id => course.id
             )

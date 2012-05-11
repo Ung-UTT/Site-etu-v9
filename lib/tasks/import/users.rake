@@ -3,7 +3,7 @@
 namespace :import do
   namespace :users do
     desc "Insert users in the database"
-    task :insert => :environment do
+    task insert: :environment do
       require 'net-ldap' # Sinon : undefined class/module Net::BER::
 
       # Dans le dossier temporaire de Rails
@@ -23,7 +23,7 @@ namespace :import do
           print '.' # Un point par personne
 
           # Créer ou mettre à jour
-          u = User.find_by_login(user['uid']) || User.new(:login => user['uid'])
+          u = User.find_by_login(user['uid']) || User.new(login: user['uid'])
           u.password = u.password_confirmation = Devise.friendly_token[0,20]
 
           # E-Mail
@@ -130,7 +130,7 @@ namespace :import do
           filename = PHOTOS_DIR + student['jpegphoto'].split('/').last
           next if File.zero?(filename) # Exists and not empty
           file = File.open(filename)
-          user.image = Image.new(:asset => file)
+          user.image = Image.new(asset: file)
           user.save
         end
       end

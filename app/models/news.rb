@@ -4,7 +4,8 @@ class News < ActiveRecord::Base
   attr_accessible :title, :content, :event_id, :is_moderated
   validates_presence_of :title
 
-  scope :visible, conditions: {is_moderated: true}, order: 'created_at DESC'
+  default_scope order: 'created_at DESC'
+  scope :visible, conditions: {is_moderated: true}
 
   has_paper_trail
 

@@ -24,7 +24,7 @@ if File.exists?(DB_FILE)
 end
 
 begin
-  utt = Net::LDAP.new(host: 'ldap.utt.fr', port: 389, base: "dn:dc=utt,dc=fr")
+  utt = Net::LDAP.new(:host => 'ldap.utt.fr', :port => 389, :base => "dn:dc=utt,dc=fr")
 rescue
   puts "Can't connect to LDAP server"
   exit
@@ -33,7 +33,7 @@ end
 puts "Search students (slow)..."
 
 # Recherche de tout les étudiants
-students = utt.search(base: 'ou=people,dc=utt,dc=fr')
+students = utt.search(:base => 'ou=people,dc=utt,dc=fr')
 
 # Tranformation du tableau d'objets LDAP en un tableau de hashs
 students.map! do |st|

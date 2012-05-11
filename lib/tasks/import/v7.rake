@@ -1,7 +1,7 @@
 namespace :import do
   namespace :v7 do
     desc "Import data, of the student website v7, from old MySQL database"
-    task :mysql => :environment do
+    task mysql: :environment do
       require 'mysql2'
       require 'htmlentities'
 
@@ -32,15 +32,15 @@ namespace :import do
           if user = User.find_by_login_and_email(row[:login], row[:email])
             {
               :created_at => row[:dateCreation],
-              :firstname => row[:prenom],
-              :lastname => row[:nom],
-              :surname => row[:surnom],
-              :once => row[:jadis],
+              firstname: row[:prenom],
+              lastname: row[:nom],
+              surname: row[:surnom],
+              once: row[:jadis],
               :utt_id => row[:idEtu].to_i,
-              :level => row[:branche],
-              :specialization => row[:filiere],
-              :role => row[:LDAPdescription],
-              :phone => row[:gsm],
+              level: row[:branche],
+              specialization: row[:filiere],
+              role: row[:LDAPdescription],
+              phone: row[:gsm],
               :utt_address => %w[
                 adr_3_rue adr_3_ville adr_3_cp adr_3_pays
               ].map{|i| row[i.to_sym]}.join(' '),
@@ -70,9 +70,9 @@ namespace :import do
         next if row[:source] == 'wikipedia'
         next if Quote.find_by_content(row[:text])
         quote = Quote.create(
-          :content => HTMLEntities.new.decode(row[:text]),
-          :tag => (row[:source] == 'humour' ? 'joke' : row[:source]),
-          :author => row[:more]
+          content: HTMLEntities.new.decode(row[:text]),
+          tag: (row[:source] == 'humour' ? 'joke' : row[:source]),
+          author: row[:more]
         )
         print '.'
       end
@@ -86,10 +86,10 @@ namespace :import do
         next if Asso.find_by_name(row[:intitule])
         row[:description] = row[:description].gsub(/<[^>]*>/, '')
         asso = Asso.create(
-          :name => row[:intitule],
-          :website => row[:web],
-          :email => row[:email],
-          :description => row[:description],
+          name: row[:intitule],
+          website: row[:web],
+          email: row[:email],
+          description: row[:description],
           :owner_id => User.all.detect do |user|
               "#{user.firstname} #{user.lastname}" == row[:nom_responsable]
             end.try(:id) || import_user.id
@@ -105,8 +105,8 @@ namespace :import do
         row[:information] = row[:information].gsub(/<[^>]*>/, '')
         next if News.find_by_title_and_content(row[:titre], row[:information])
         news = News.new(
-          :title => row[:titre],
-          :content => row[:information],
+          title: row[:titre],
+          content: row[:information],
           :is_moderated => true
         )
         news.user = User.find_by_login(row[:auteur_login])
@@ -129,8 +129,8 @@ namespace :import do
           next if course.comments.find_by_content_and_created_at(row[:eval], row[:date_eval])
 
           comment = course.comments.new(
-            :content => row[:eval],
-            # :grade => row[:eval_note] # FIXME
+            content: row[:eval],
+            # grade: row[:eval_note] # FIXME
           )
           comment.created_at = row[:date_eval]
           comment.save
@@ -146,7 +146,7 @@ namespace :import do
     end
 
     desc "Import data, of the student website v7, from file sharings"
-    task :files => :environment do
+    task files: :environment do
       DIR = '/tmp/annals'
 
       unless File.directory? DIR
