@@ -58,7 +58,7 @@ module ApplicationHelper
       content_tag(:p, t('common.none'))
     else
       if list
-        a = content_tag(:ul) do
+        content_tag(:ul) do
           objects.map do |object|
             content_tag(:li, link_to(object.to_s, object))
           end.join.html_safe
