@@ -24,7 +24,6 @@
     #schedule
       = render('timesheets/schedule', schedule: @user.schedule)
 
-    %dl
-      = not_empty_inline(t('users.timesheet.hours_per_week'), @user.hours_per_week.to_s)
+    %p= not_empty_inline(t('users.timesheet.hours_per_week'), @user.hours_per_week.to_s)
 
   = render('layouts/show_actions', ressource: @user)
