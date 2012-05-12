@@ -1,0 +1,22 @@
+= form_for(@poll) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :name, t('polls.name')
+      = f.text_field :name
+
+    %li.field
+      = f.label :description, t('polls.description')
+      = f.text_area :description, class: 'rich-content'
+
+    = f.fields_for :answers do |nested_f|
+      %li.field
+        = nested_f.label :content, t('answer')
+        = nested_f.text_field :content
+        - unless nested_f.object.new_record?
+          = t('common.delete')
+          = nested_f.check_box :_destroy
+
+    %li.actions
+      = f.submit t('common.submit')

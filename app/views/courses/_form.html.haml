@@ -1,0 +1,14 @@
+= form_for(@course) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :name, t('courses.name')
+      = f.text_field :name
+
+    %li.field
+      = f.label :description, t('courses.description')
+      = f.text_area :description, class: 'rich-content'
+
+    %li.actions
+      = f.submit t('common.submit')

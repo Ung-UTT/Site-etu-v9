@@ -172,6 +172,7 @@ fr:
     cumulate: "Cumuler"
     users: "Participants"
     agenda: "Agenda"
+    type: "Type"
 
   users:
     list: "Utilisateurs"
@@ -242,3 +243,8 @@ fr:
         asso).
       credit: "Dessin par XKCD"
       explain: "Explication :"
+
+  wikis:
+    title: "Titre"
+    content: "Contenu"
+    parent: "Page parente"

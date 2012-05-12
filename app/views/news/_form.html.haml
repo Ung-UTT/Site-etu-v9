@@ -1,0 +1,23 @@
+= form_for(@news) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :title, t('newss.title')
+      = f.text_field :title
+
+    %li.field
+      = f.label :content, t('newss.content')
+      = f.text_area :content, class: 'rich-content'
+
+    %li.field
+      = f.label :event_id, t('newss.event')
+      = f.select :event_id, select_objects(Event.all, @news.event, true), {}, {class: 'chosen'}
+
+    - if can? :moderate, News
+      %li.field
+        = f.label :is_moderated, t('newss.is_moderated')
+        = f.check_box :is_moderated
+
+    %li.actions
+      = f.submit t('common.submit')

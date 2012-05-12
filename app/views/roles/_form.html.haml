@@ -1,0 +1,10 @@
+= form_for(@role) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :name, t('roles.name')
+      = f.text_field :name
+
+    %li.actions
+      = f.submit t('common.submit')

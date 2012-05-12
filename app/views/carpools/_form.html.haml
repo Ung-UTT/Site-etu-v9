@@ -1,0 +1,26 @@
+= form_for(@carpool) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :description, t('carpools.description')
+      = f.text_area :description, class: 'rich-content'
+
+    %li.field
+      = f.label :departure, t('carpools.departure')
+      = f.text_field :departure
+
+    %li.field
+      = f.label :arrival, t('carpools.arrival')
+      = f.text_field :arrival
+
+    %li.field
+      = f.label :date, t('carpools.date')
+      = f.datetime_select :date
+
+    %li.field
+      = f.label :is_driver, t('carpools.is_driver')
+      = f.check_box :is_driver
+
+    %li.actions
+      = f.submit t('common.submit')

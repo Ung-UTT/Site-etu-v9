@@ -1,0 +1,43 @@
+= form_for(@user) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :email, t('users.email')
+      = f.text_field :email
+
+    = f.fields_for :preference do |f_pref|
+      %li.field
+        = f_pref.label :quote_type, t('users.quote_type')
+        = f_pref.select :quote_type, select_quote_type
+
+      %li.field
+        = f_pref.label :locale, t('users.locale')
+        = f_pref.select :locale, select_locale
+
+    %li.field
+      = f.label :utt_address, t('users.utt_address')
+      = f.text_field :utt_address
+
+    %li.field
+      = f.label :parents_address, t('users.parents_address')
+      = f.text_field :parents_address
+
+    %li.field
+      = f.label :surname, t('users.surname')
+      = f.text_field :surname
+
+    %li.field
+      = f.label :once, t('users.once')
+      = f.text_field :once
+
+    %li.field
+      = f.label :phone, t('users.phone')
+      = f.text_field :phone
+
+    %li.field
+      = f.label :description, t('users.description')
+      = f.text_area :description, class: 'rich-content'
+
+    %li.actions
+      = f.submit t('common.submit')

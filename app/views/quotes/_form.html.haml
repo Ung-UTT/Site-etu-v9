@@ -1,0 +1,18 @@
+= form_for(@quote) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :content, t('quotes.content')
+      = f.text_field :content
+
+    %li.field
+      = f.label :author, t('quotes.by')
+      = f.text_field :author
+
+    %li.field
+      = f.label :tag, t('quotes.type')
+      = f.select :tag, Quote::TAGS
+
+    %li.actions
+      = f.submit t('common.submit')

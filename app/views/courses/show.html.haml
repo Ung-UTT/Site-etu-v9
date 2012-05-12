@@ -11,7 +11,7 @@
   %h2=t('courses.annals')
 
   - if @course.annals.empty?
-    %p= t('helpers.none')
+    %p= t('common.none')
   - else
     %ul
       - @course.annals.group_by(&:kind).each do |kind, annals|
