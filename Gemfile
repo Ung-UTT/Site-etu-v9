@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rake'
 gem 'rails'
+gem 'sqlite3'
 
 gem 'rubycas-client-rails', :git => 'https://github.com/rubycas/rubycas-client-rails.git', :ref => '7770e761'
 gem 'devise'
@@ -17,7 +18,6 @@ gem 'awesome_nested_set' # "Arbres" (Associations, Rôles, ...)
 gem 'stringex'
 
 group :development do
-  gem 'sqlite3'
   gem 'guard-rspec'
   gem 'spork'
   gem 'guard-spork'
