@@ -43,6 +43,7 @@ fr:
     year: "Année"
     kind: "Type"
     course: "UV associée"
+    document: "Fichier (image, pdf, …)"
 
   assos:
     list: "Assos et clubs"

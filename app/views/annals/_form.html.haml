@@ -1,0 +1,32 @@
+= form_for(@annal) do |f|
+  = f.error_messages
+
+  %ul.fields
+    %li.field
+      = f.label :course_id, t('annals.course')
+      = f.select :course_id, select_objects(Course.all, @annal.course), {}, class: 'chosen'
+
+    %li.field
+      = f.label :semester, t('annals.semester')
+      = f.select :semester, Annal::SEMESTERS.map { |s| [ t("model.annal.semesters.#{s}"), s ] }
+
+    %li.field
+      = f.label :year, t('annals.year')
+      = f.select :year, (1994..Time.now.year).to_a.reverse
+
+    %li.field
+      = f.label :kind, t('annals.kind')
+      = f.select :kind, Annal::KINDS.collect { |k| [ t("model.annal.kinds.#{k}"), k ] }
+
+    = f.fields_for :documents do |nested_f|
+      %li.field
+        - if nested_f.object.new_record?
+          = nested_f.label :asset, t('annals.document')
+          = nested_f.file_field :asset
+        - else
+          = nested_f.label :_destroy, t('common.delete')
+          = nested_f.object.asset_file_name unless nested_f.object.new_record?
+          = nested_f.check_box :_destroy
+
+    %li.actions
+      = f.submit t('common.submit')
