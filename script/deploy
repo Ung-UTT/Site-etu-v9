@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e # abort on errors
 set -u
 
 cd "$(dirname $0)/.."
@@ -19,6 +20,4 @@ touch tmp/restart.txt
 mv -v public/maintenance.html{,.NO}
 
 echo "Finished at $(date)."
-
-rm -f $LOCK_FILE
 
