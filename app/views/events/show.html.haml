@@ -1,6 +1,6 @@
-- title(@event.to_s)
-
 %section.content
+  - title(@event.to_s)
+
   = render 'one_event', {event: @event}
 
   = not_empty_inline(t('events.location'), @event.location, true)

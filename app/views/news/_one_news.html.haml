@@ -1,29 +1,18 @@
 %section.block
   %header
     %section.date= content_tag(:span, raw(l(news.created_at, format: '%d<br />%b')), title: news.created_at)
+
     %h2
       = link_to news.title, news
       - if !news.is_moderated and can? :moderate, News
         | #{link_to t('newss.moderate'), edit_news_path(news)}
+
     %ul.details
-      %li
-        %strong
-          = t('newss.hour')
-          \:
-        = l(news.created_at, format: '%Hh')
-      - if news.user
-        %li
-          %strong
-            = t('newss.user')
-            \:
-          = link_to_user news.user
-      %li
-        %strong
-          = t('newss.comments')
-          \:
-        = news.comments.count
+      %li= not_empty_inline(t('newss.hour'), l(news.created_at, format: '%Hh'))
+      %li= not_empty_inline(t('newss.user'), link_to_user(news.user))
+      %li= not_empty_inline(t('newss.comments'), news.comments.count)
+
   = md news.content
+
   - if news.event
-    %p
-      %strong= t('newss.event')
-      \: #{link_to news.event.name, news.event}
+    = not_empty_inline(t('newss.event'), link_to(news.event.to_s, news.event), true)
