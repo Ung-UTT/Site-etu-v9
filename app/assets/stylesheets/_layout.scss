@@ -50,7 +50,6 @@ body {
 
   a {
     color: #404040; /* gris foncé */
-    padding: 0 5px;
 
     &:hover { text-decoration: underline; }
   }
@@ -89,6 +88,28 @@ body {
     margin: 8px 0;
 
     a { padding: 5px 15px 5px 36px; }
+  }
+
+  li.connected {
+    float: right;
+
+    a {
+      min-height: 20px;
+      display: block;
+      margin: 0 5px;
+      padding: 5px;
+      width: 30px;
+      height: 20px;
+    }
+
+    input {
+      opacity: 0;
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+      padding: 5px;
+      cursor: pointer;
+    }
   }
 
   li.none a {
@@ -150,7 +171,7 @@ body {
 }
 
 ul.illustrated {
-  li a {
+  li a, li.connected div {
     background: url('icons.png') no-repeat;
   }
 
@@ -167,22 +188,13 @@ ul.illustrated {
     }
   }
 
-  li.connected {
-    float: right;
-
-    a {
-      min-height: 20px;
-      display: block;
-    }
-  }
-
   li.users a { background-position: 0 0; }
 
   li.timesheets a { background-position: 0 (-$icon_size*1); }
 
   li.mails a { background-position: 0 (-$icon_size*2); }
 
-  li.logout a { background-position: 0 (-$icon_size*3); }
+  li.logout div { background-position: 0 (-$icon_size*3); }
 
   // Le quatrième c'est le logo de page d'accueil
 

@@ -80,4 +80,10 @@ module TimesheetsHelper
 
     dates.to_json.html_safe
   end
+
+  def agenda_for_noscript(agenda)
+    agenda.map do |t|
+      { alt: t['alt'], url: url_for(t['object']) }
+    end.uniq
+  end
 end

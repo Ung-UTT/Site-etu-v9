@@ -42,13 +42,12 @@
             = link_to t('layout.mails'), :root, title: t('layout.mails_title')
           - if current_user
             %li.logout.connected
-              = link_to '', (session[:cas_user] ? :cas : :destroy_user_session), |
-                method: :delete, title: t('user_sessions.logout')                |
+              = button_to '', (session[:cas_user] ? :cas : :destroy_user_session), |
+                method: :delete, title: t('user_sessions.logout')                  |
             %li.timesheets.connected
               = link_to '', url_for(current_user) + '#schedule', |
                 title: t('layout.schedule')                      |
-            %li.none.connected
-              = link_to_user current_user
+            %li.none.connected= link_to_user current_user
 
     - unless mobile?
       %blockquote#quote= @random_quote
