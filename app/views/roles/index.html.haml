@@ -1,0 +1,21 @@
+%section.content
+  = title t('roles.list')
+  %table
+    %thead
+      %tr
+        %th Nom
+        %th Ressource
+        %th Utilisateurs
+    %tbody
+      - @roles.each do |role|
+        %tr
+          %td= link_to role do t("roles.default.#{role.name}", default: role.name); end
+          %td
+            = role.resource_id ? "#{role.resource_type}##{role.resource_id}" : (role.resource_type || "Global")
+            %td
+              %span{:title => truncate(role.users.map(&:login).join(', '), length: 80, separator: ',')}
+                = case (count = role.users.count)             |
+                    when 0 then t("users.count.zero")         |
+                    when 1 then t("users.count.one")          |
+                    else t("users.count.other", count: count) |
+                  end

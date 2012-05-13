@@ -1,0 +1,13 @@
+%section.content
+  = title t('timesheets.list')
+  = form_tag(timesheets_path, method: :get) do
+  %ul.fields
+    %li.field
+      = select_tag :users, select_objects(@first_users, @users), |
+        multiple: true, class: 'users-chosen'                    |
+    %li.field= submit_tag t('timesheets.cumulate')
+  - if params[:users]
+    = render 'timesheets/schedule', schedule: @schedule
+  - if can? :create, Timesheet
+    %ul.actions
+      %li= link_to t('common.add'), new_timesheet_path

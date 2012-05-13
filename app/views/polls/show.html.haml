@@ -1,0 +1,23 @@
+%section.content
+  = title(t('poll') + ' : ' + @poll.to_s)
+  = md @poll.description
+  %p
+    %strong= t('polls.user')
+    \:
+    \#{link_to_user @poll.user}
+  - if @vote
+    %ul.poll
+      - @poll.answers.each do |answer|
+        %li
+          %span.answer= answer.content
+          %span.count= answer.votes.size
+          %span.index{:style => "width: #{answer.percent}%"}
+  - elsif !@poll.answers.empty?
+    = form_for Vote.new do |f|
+      %ul.list-no-style
+        - @poll.answers.each do |answer|
+          %li
+            = f.radio_button :answer_id, answer.id
+            = f.label :"answer_id_#{answer.id}", answer.content
+        %li= f.submit t('polls.vote')
+  = render 'layouts/show_actions', ressource: @poll

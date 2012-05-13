@@ -1,0 +1,11 @@
+%section.content
+  = title t('projects.list')
+  %ul
+    - @projects.each do |project|
+      %li
+        %strong= link_to project.name, project
+        \:
+        \#{project.description}
+  - if can? :create, Project
+    %ul.actions
+      %li= link_to t('common.add'), new_project_path

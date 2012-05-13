@@ -1,0 +1,6 @@
+%section.content
+  - title(t('news') + ' : ' + @news.to_s)
+  = render 'one_news', news: @news
+  = render 'layouts/show_actions', ressource: @news
+= render 'documents/list_and_add', {documentable: @news, documents: @documents}
+= render 'comments/list_and_add', {commentable: @news, comments: @comments}

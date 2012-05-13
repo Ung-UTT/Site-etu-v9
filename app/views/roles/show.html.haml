@@ -1,0 +1,12 @@
+%section.content
+  = title(t('roles.name') + ' : ' + t('roles.default.'+@role.name, default: @role.name))
+  %p
+    %strong= t('roles.users')
+    \:
+  %ul
+    - if @role.users.empty?
+      %li= t('common.none')
+    - @role.users.each do |user|
+      %li
+        = link_to_user user
+  = render 'layouts/show_actions', {ressource: @role}
