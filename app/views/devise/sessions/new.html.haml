@@ -1,0 +1,25 @@
+%section.content
+  = title t('users.sign_in')
+
+  %p.notice
+    Si tu es inscrit à l'UTT, connecte toi via ton #{link_to 'compte UTT', new_cas_path}.
+    La connexion alternative sert uniquement aux anciens UTTiens.
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    %ul.fields
+      %li.field
+        = f.label :login, t('users.login')
+        = f.text_field :login
+
+      %li.field
+        = f.label :password, t('users.password')
+        = f.password_field :password
+
+      %li.field
+        = f.label :remember_me, t('users.remember_me')
+        = f.check_box :remember_me
+
+      %li.actions
+        = f.submit t('common.submit')
+
+  = render "links"

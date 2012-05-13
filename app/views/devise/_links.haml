@@ -1,0 +1,5 @@
+%ul.actions
+  - if controller_name != 'sessions'
+    %li= link_to t('users.sign_in'), new_session_path(resource_name)
+  - if controller_name != 'passwords'
+    %li= link_to t('users.password_reset'), new_password_path(resource_name)

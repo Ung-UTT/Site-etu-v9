@@ -178,7 +178,7 @@ fr:
 
   users:
     list: "Utilisateurs"
-    login: "Login"
+    login: "Nom d'utilisateur"
     email: "Email"
     password: "Mot de passe"
     password_confirmation: "Confirmation"

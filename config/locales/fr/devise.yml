@@ -35,7 +35,7 @@ fr:
       signed_up: 'Bienvenu, tu es connecté.'
       signed_up_but_unconfirmed: 'Un message contenant un lien de confirmation a été envoyé à ton adresse email. Ouvrez ce lien pour activer ton compte.'
       signed_up_but_inactive: "Tu es bien enregistré. Tu ne peux cependant pas tu connecter car ton compte n'est pas encore activé."
-      signed_up_but_locked: "Tu es bien enregistré. Tu ne peux cependant pas tu connecter car ton compte est verrouillé."
+      signed_up_but_locked: "Tu es bien enregistré. Tu ne peux cependant pas te connecter car ton compte est verrouillé."
       updated: 'Ton compte a été modifié avec succès.'
       update_needs_confirmation: "Ton compte a bien été mis à jour mais nous devons vérifier ton nouvelle adresse email. Merci de vérifier tes emails et de cliquer sur le lien de confirmation pour finaliser la validation de ton nouvelle adresse."
       destroyed: 'Ton compte a été supprimé avec succès. Nous espérons tu revoir bientôt.'
