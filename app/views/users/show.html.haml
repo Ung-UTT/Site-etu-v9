@@ -4,19 +4,20 @@
   - if @user.image
     %p.profile.alone= link_to_user @user
 
-  %dl
-    = not_empty_dd(t('users.email'), mail_to(@user.email))
-    = not_empty_dd(t('users.phone'), @user.phone)
-    = not_empty_dd(t('users.utt_address'), @user.utt_address)
-    = not_empty_dd(t('users.parents_address'), @user.parents_address)
+  %div.informations
+    %dl
+      = not_empty_dd(t('users.email'), mail_to(@user.email))
+      = not_empty_dd(t('users.phone'), @user.phone)
+      = not_empty_dd(t('users.utt_address'), @user.utt_address)
+      = not_empty_dd(t('users.parents_address'), @user.parents_address)
 
-  %p
-    = not_empty_inline(t('users.level'), @user.level)
-    = not_empty_inline(t('users.specialization'), @user.specialization)
-    = not_empty_inline(t('users.role'), @user.role)
-    = not_empty_inline(t('users.room'), @user.room)
-    = not_empty_inline(t('users.surname'), @user.surname)
-    = not_empty_inline(t('users.once'), @user.once)
+    %p
+      = not_empty_inline(t('users.level'), @user.level)
+      = not_empty_inline(t('users.specialization'), @user.specialization)
+      = not_empty_inline(t('users.role'), @user.role)
+      = not_empty_inline(t('users.room'), @user.room)
+      = not_empty_inline(t('users.surname'), @user.surname)
+      = not_empty_inline(t('users.once'), @user.once)
 
   = md @user.description
 
