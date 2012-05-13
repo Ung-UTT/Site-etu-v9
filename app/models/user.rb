@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   rolify
-  devise :database_authenticatable, :lockable, :recoverable, :rememberable,
-         :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable,
+         :validatable
 
   attr_accessible :email, :login, :password, :password_confirmation,
                   :remember_me, :preference_attributes, :utt_address,
