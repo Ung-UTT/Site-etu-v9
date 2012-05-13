@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Classified < ActiveRecord::Base
   paginates_per 50
 
@@ -11,6 +13,6 @@ class Classified < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   def to_s
-    title
+    "#{price}€ : #{title}"
   end
 end

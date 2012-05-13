@@ -1,0 +1,10 @@
+%section.content
+  = title t('classifieds.list')
+
+  = links_to_objects @classifieds, true
+
+  = paginate @classifieds
+
+  - if can? :create, Classified
+    %ul.actions
+      %li= link_to t('common.add'), new_classified_path

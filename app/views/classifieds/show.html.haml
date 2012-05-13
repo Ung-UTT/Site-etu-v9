@@ -1,0 +1,13 @@
+%section.content
+  = title(@classified.to_s)
+
+  %p
+    = not_empty_inline(t('classifieds.location'), @classified.location)
+    = not_empty_inline(t('classifieds.user'), link_to_user(@classified.user))
+
+  = md @classified.description
+
+  = render 'layouts/show_actions', ressource: @classified
+
+= render 'documents/list_and_add', {documentable: @classified, documents: @documents}
+= render 'comments/list_and_add', {commentable: @classified, comments: @comments}

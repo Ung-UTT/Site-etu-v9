@@ -20,13 +20,13 @@ module ApplicationHelper
   # <dd> conditionnel à ce que ce qui est montré n'est pas vide
   def not_empty_dd(descr, value)
     return nil if value.blank?
-    "<dt>#{h(descr)}</dt><dd>#{h(value)}</dd>".html_safe
+    content_tag(:dt, descr) + content_tag(:dd, value)
   end
 
   # Affichage conditionnel à ce que ce qui est montré n'est pas vide
   def not_empty_inline(descr, value)
     return nil if value.blank?
-    " <strong>#{h(descr)}</strong> : #{h(value)} ".html_safe
+    content_tag(:strong, descr) + " : #{h(value)} ".html_safe
   end
 
   # Select options
@@ -55,7 +55,7 @@ module ApplicationHelper
   # Can be inline or in a list
   def links_to_objects(objects, list = false)
     if objects.empty?
-      t('common.none')
+      content_tag(:p, t('common.none'))
     else
       if list
         a = content_tag(:ul) do
