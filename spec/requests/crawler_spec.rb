@@ -91,10 +91,9 @@ feature "It does not raise any errors while browsing as an administrator" do # w
         if route[:action] == 'show'
           # assert we haven't been somehow redirected
           current_path.should == path
-
         else
           # submit the form with no changes
-          submit_form
+          within_form { submit_form }
 
           # should be successful
           page_should_have_notice
@@ -132,4 +131,3 @@ feature "It does not raise any errors while browsing as an administrator" do # w
     end
   end
 end
-
