@@ -75,7 +75,9 @@ fr:
     is_driver: "Conducteur ?"
     user: "Qui"
     drivers: "Conducteurs"
+    driver: "Conducteur"
     passengers: "Passagers"
+    passenger: "Passager"
 
   classifieds:
     list: "Petites annonces"

@@ -16,6 +16,12 @@ class CarpoolsController < ApplicationController
     @comments = @carpool.comments
     @documents = @carpool.documents
 
+    if @carpool.is_driver
+      @driver_or_passenger =  I18n.t('carpools.driver')
+    else
+      @driver_or_passenger = I18n.t('carpools.passenger')
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @carpool }

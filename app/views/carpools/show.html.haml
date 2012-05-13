@@ -1,0 +1,13 @@
+%section.content
+  = title("#{@driver_or_passenger} : #{@carpool.to_s}")
+
+  %p
+    %strong= t('carpools.user')
+    = link_to_user @carpool.user
+
+  = md @carpool.description
+
+  = render 'layouts/show_actions', ressource: @carpool
+
+= render 'documents/list_and_add', {documentable: @carpool, documents: @documents}
+= render 'comments/list_and_add', {commentable: @carpool, comments: @comments}

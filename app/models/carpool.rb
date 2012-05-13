@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Carpool < ActiveRecord::Base
   attr_accessible :description, :departure, :arrival, :date, :is_driver
   validates_presence_of :description, :departure, :arrival, :date, :user
@@ -9,6 +11,6 @@ class Carpool < ActiveRecord::Base
   has_many :documents, as: :documentable, dependent: :destroy
 
   def to_s
-    "#{departure} - #{arrival}"
+    "#{departure} → #{arrival} (#{I18n.l(date, format: :short)})"
   end
 end
