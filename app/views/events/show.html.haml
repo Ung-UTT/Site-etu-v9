@@ -1,31 +1,26 @@
-- title(t('event') + ' : ' + @event.to_s)
+- title(@event.to_s)
+
 %section.content
   = render 'one_event', {event: @event}
-  %p
-    %strong= t('events.location')
-    \:
-    \#{@event.location}
-  %p
-    %strong= t('events.assos')
-    \:
-    \#{links_to_objects @event.assos}
-  %p
-    %strong= t('events.users')
-    \:
-    \#{links_to_users @event.users}
-  %p
-    %strong= t('events.owner')
-    \:
-    \#{link_to_user @event.owner}
-  %p
-    = google_agenda_link(@event)
-    = mailto_link(@event)
+
+  = not_empty_inline(t('events.location'), @event.location, true)
+  = not_empty_inline(t('events.assos'), links_to_objects(@event.assos), true)
+  = not_empty_inline(t('events.users'), links_to_users(@event.users), true)
+  = not_empty_inline(t('events.owner'), link_to_user(@event.owner), true)
+
   - if @event.users.include?(current_user)
     %p= link_to t('events.disjoin'), disjoin_event_path(@event), method: :post
   - elsif can? :join, @event
     %p= link_to t('events.join'), join_event_path(@event), method: :post
+
+  %p
+    = google_agenda_link(@event)
+    = mailto_link(@event)
+
   = render 'layouts/show_actions', ressource: @event
+
 - unless @event.news.empty?
   = render template: 'news/index'
+
 = render 'documents/list_and_add', {documentable: @event, documents: @documents}
 = render 'comments/list_and_add', {commentable: @event, comments: @comments}

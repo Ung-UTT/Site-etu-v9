@@ -1,9 +1,8 @@
 %section.content
   = title(@classified.to_s)
 
-  %p
-    = not_empty_inline(t('classifieds.location'), @classified.location)
-    = not_empty_inline(t('classifieds.user'), link_to_user(@classified.user))
+  = not_empty_inline(t('classifieds.location'), @classified.location, true)
+  = not_empty_inline(t('classifieds.user'), link_to_user(@classified.user), true)
 
   = md @classified.description
 

@@ -1,9 +1,12 @@
 %section.content
   = title t('events.list')
+
   %section.blocks
     - @events.each do |event|
       = render 'events/one_event', {event: event}
+
   = paginate @events
+
   - if can? :create, Event
     %ul.actions
       %li= link_to t('common.add'), new_event_path

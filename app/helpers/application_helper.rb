@@ -17,16 +17,17 @@ module ApplicationHelper
 
   # Raccourcis pour les vues
 
-  # <dd> conditionnel à ce que ce qui est montré n'est pas vide
+  # <dd> à condition que ce qui est montré ne soit pas vide
   def not_empty_dd(descr, value)
     return nil if value.blank?
     content_tag(:dt, descr) + content_tag(:dd, value)
   end
 
-  # Affichage conditionnel à ce que ce qui est montré n'est pas vide
-  def not_empty_inline(descr, value)
+  # <strong> à condition que ce qui est montré ne soit pas vide
+  def not_empty_inline(descr, value, paragraph = false)
     return nil if value.blank?
-    content_tag(:strong, descr) + " : #{h(value)} ".html_safe
+    res = content_tag(:strong, descr) + " : #{h(value)} ".html_safe
+    paragraph ? content_tag(:p, res) : res
   end
 
   # Select options
