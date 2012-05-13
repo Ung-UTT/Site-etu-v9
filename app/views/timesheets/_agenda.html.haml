@@ -1,9 +1,12 @@
 %h1.title= t('timesheets.agenda')
+
 %noscript
   %ul
-    - agenda.map{|t| t['alt']}.uniq.each do |message|
+    - agenda.map { |t| t['alt'] }.uniq.each do |message|
       %li= message
+
 .agenda
+
 :javascript
   fullcalendar_agenda =  agenda_to_json(agenda) ;
   fullcalendar_agenda_dates =  dates_translations ;
