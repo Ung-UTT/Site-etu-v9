@@ -47,4 +47,3 @@ feature "Managing news" do
     page.should have_content news.title
   end
 end
-

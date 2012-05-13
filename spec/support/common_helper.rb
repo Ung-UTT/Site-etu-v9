@@ -11,10 +11,9 @@ def submit_form
 end
 
 def within_form attributes = {}
-  xpath = attributes.map { |key, value| "@#{key}=\"#{value}\"" }.join(' and ')
-  xpath = "[#{xpath}]" unless xpath.blank?
-  within(:xpath, "//form#{xpath}") do
+  xpath = attributes.map { |key, value| " and @#{key}=\"#{value}\"" }.join
+  # Don't select the button_to forms (logout, delete, etc...)
+  within(:xpath, "//form[@class!='button_to'#{xpath}]") do
     yield
   end
 end
-

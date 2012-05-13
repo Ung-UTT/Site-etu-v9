@@ -7,4 +7,3 @@ def sign_in login, password
     submit_form
   end
 end
-
