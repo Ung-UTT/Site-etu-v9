@@ -5,7 +5,7 @@
     - @assos.each do |asso|
       %li
         %strong= link_to(asso.to_s, asso)
-        = asso.description.truncate(60)
+        = asso.description.truncate(60) unless asso.description.nil?
 
   - if can? :create, Asso
     %ul.actions
