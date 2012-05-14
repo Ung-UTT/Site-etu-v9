@@ -4,6 +4,7 @@ SiteEtu::Application.routes.draw do
   # Ressources
   resource :cas, only: [:new, :destroy]
 
+  resources :votes, only: [:create, :destroy]
   resources :users, only: [:index, :edit, :show, :update]
   resources :polls, :timesheets, :quotes
   resources :roles, except: [:new, :create]

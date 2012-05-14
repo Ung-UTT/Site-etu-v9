@@ -17,6 +17,7 @@ FactoryGirl.define do
 
   factory :answer do
     content "Yes AND No"
+    poll_id { create(:poll).id }
   end
 
   factory :carpool do
@@ -101,7 +102,7 @@ FactoryGirl.define do
 
     factory :poll_with_answers do
       after_create do |poll|
-        FactoryGirl.create_list(:answer, 3, poll: poll, :content=> "Answer #{n}")
+        FactoryGirl.create_list(:answer, 3, poll: poll, content: "Answer #{n}")
       end
     end
   end
@@ -128,10 +129,11 @@ FactoryGirl.define do
   end
 
   factory :vote do
+    user
+    answer_id { create(:answer).id }
   end
 
   factory :wiki do
     title "Wiki"
   end
 end
-

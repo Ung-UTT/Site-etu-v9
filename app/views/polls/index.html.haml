@@ -1,10 +1,12 @@
 %section.content
   = title t('polls.list')
+
   %ul
     - @polls.each do |poll|
       %li
-        = link_to poll.name, poll
+        = link_to poll.to_s, poll
         (#{t('votes.count', count: poll.votes.size)})
+
   - if can? :create, Poll
     %ul.actions
       %li= link_to t('common.add'), new_poll_path

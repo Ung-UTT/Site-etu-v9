@@ -1,4 +1,3 @@
-
 class Annal < ActiveRecord::Base
   SEMESTERS = %w[A P] # Automne ou Printemps
   KINDS = %w[P M F A] # Partiel, Médian, Final ou Autre
@@ -20,8 +19,7 @@ class Annal < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   # On ne garde que les documents qui ne pas vides
-  accepts_nested_attributes_for :documents, :allow_destroy => true,
-    :reject_if => lambda { |d| d[:asset].blank? }
+  accepts_nested_attributes_for :documents, allow_destroy: true, reject_if: :all_blank
 
   def readable_kind
     I18n.t("model.annal.kinds.#{kind}")

@@ -1,5 +1,5 @@
 class Poll < ActiveRecord::Base
-  MAX_ANSWERS = 5
+  DEFAULT_ANSWERS = 5
 
   attr_accessible :name, :description, :answers_attributes
   validates_presence_of :name
@@ -10,8 +10,7 @@ class Poll < ActiveRecord::Base
 
   # Pouvoir ajouter des réponses au sondage directement depuis le
   # formulaire de modification
-  accepts_nested_attributes_for :answers, :allow_destroy => true,
-    :reject_if => lambda { |d| d[:content].blank? }
+  accepts_nested_attributes_for :answers, allow_destroy: true, reject_if: :all_blank
 
   # Est-ce que l'utilisateur a déjà voté pour ce sondage ?
   def voted_by?(user)

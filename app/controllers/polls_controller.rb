@@ -20,17 +20,14 @@ class PollsController < ApplicationController
   end
 
   def new
-    Poll::MAX_ANSWERS.times { @poll.answers.build }
+    Poll::DEFAULT_ANSWERS.times { @poll.answers.build }
 
     render_new polls_path
   end
 
   def edit
-    # Au moins un formulaire de réponse
-    @poll.answers.build
-    if @poll.answers.size < Poll::MAX_ANSWERS
-      (Poll::MAX_ANSWERS - @poll.answers.size).times { @poll.answers.build }
-    end
+    # The user can type more answers than before (there is no limit)
+    (@poll.answers.size + Poll::DEFAULT_ANSWERS).times { @poll.answers.build }
 
     render_edit @poll
   end

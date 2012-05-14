@@ -24,6 +24,7 @@ feature "It does not raise any errors while browsing as an administrator" do # w
     sign_in user.login, user.password
   end
 
+  # FIXME: Use Rails.application.routes.routes.to_a to speed up tests
   `rake routes`.lines.each do |line|
     # not especially neat way of getting routes but didn't find better :/
     next unless route = line.match(/\A\s+(?<name>[^\s]+)?\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new|create|edit|destroy))\Z/)
