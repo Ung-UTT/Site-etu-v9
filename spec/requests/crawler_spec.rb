@@ -24,49 +24,49 @@ feature "It does not raise any errors while browsing as an administrator" do # w
     sign_in user.login, user.password
   end
 
-  # FIXME: Use Rails.application.routes.routes.to_a to speed up tests
-  `rake routes`.lines.each do |line|
-    # not especially neat way of getting routes but didn't find better :/
-    next unless route = line.match(/\A\s+(?<name>[^\s]+)?\s.+\s(?<path>[^\s]+)\s+(?<controller>[^\s]+)#(?<action>(index|show|new|create|edit|destroy))\Z/)
+  # Get ALL routes available
+  routes = Rails.application.routes.routes.to_a
 
-    # skip CAS
-    next if route[:controller] == 'cas'
+  # Test each valid routes
+  routes.each do |route|
+    next if route.defaults.empty?
 
-    # skip devise
-    next if route[:controller] == 'devise/unlocks' and route[:action] == 'show'
-    next if route[:controller] == 'devise/passwords' and route[:action] == 'edit'
-    next if route[:controller].start_with? 'devise/' and route[:action] == 'create'
+    name = route.name # Example: projects_path
+    path = route.path.spec.to_s.gsub('(.:format)','') # Example: /projects
+    controller = route.defaults[:controller] # Example: projects
+    action = route.defaults[:action] # Example: index
+    model = controller.singularize # Example: project
 
-    # tested in annals_spec.rb
-    next if route[:controller] == 'annals' and route[:action] == 'create'
+    # Remove Rails internal routes (assets, ...) and not tested routes
+    next if %w(rails/info cas).include?(controller) or
+      # Actions not tested
+      %w(update join disjoin render_not_found deploy).include?(action) or
+      (controller.start_with? 'devise/' and %w(create edit destroy).include?(action)) or
+      (controller == 'annals' and action == 'create') or # Already tested
+      # FIXME: Special validation
+      (controller == 'projects' and %w(create destroy).include?(action)) or
+      # FIXME: Test associated ressources (comments and documents)
+      (is_associated_resource?(controller) and %(show create destroy).include?(action))
 
-    # don't test associated resources twice
-    next if is_associated_resource?(route[:controller]) and route[:action] == 'show'
-
-    # FIXME: test associated comments & documents
-    next if is_associated_resource? route[:controller] and %(create destroy).include? route[:action]
-
-    scenario "#{route[:controller]}##{route[:action]} (path: #{route[:path]})" do
+    scenario "#{controller}##{action} (path: #{path})" do
       # this also checks that every route has the controller and the action defined
       # i.e. routing specs - the lazy way!
 
-      model = route[:controller].singularize
-
-      case route[:action]
+      case action
       when 'index', 'new'
-        if is_associated_resource? route[:controller]
+        if is_associated_resource? controller
           # create a comment/document from factory
           associated_object = create model
 
           # the commentable/documentable class name (e.g. asso, course, etc.)
-          base_object_name = route[:path].match(/\A\/[^\/]+\/:(?<class>[^\/]+)_id\/#{route[:controller]}/)[:class]
+          base_object_name = path.match(/\A\/[^\/]+\/:(?<class>[^\/]+)_id\/#{controller}/)[:class]
 
-          base_object = create base_object_name
-          base_object.send(route[:controller]) << associated_object
+          base_object = create base_object_name # Create the course, asso, ...
+          base_object.send(controller) << associated_object # Add the comment/document
 
-          path = send("#{route[:name]}_path", base_object)
+          path = send("#{name}_path", base_object) # Get the right path
         else
-          path = send("#{route[:name]}_path") # non-nested route
+          path = send("#{name}_path") # non-nested route
         end
 
         visit_and_check path
@@ -82,14 +82,13 @@ feature "It does not raise any errors while browsing as an administrator" do # w
         else
           current_path.should == path
         end
-
       when 'show', 'edit'
         object = create model
 
-        path = send("#{route[:name]}_path", object)
+        path = send("#{name}_path", object)
         visit_and_check path
 
-        if route[:action] == 'show'
+        if action == 'show'
           # assert we haven't been somehow redirected
           current_path.should == path
         else
@@ -103,9 +102,8 @@ feature "It does not raise any errors while browsing as an administrator" do # w
           object_path = send("#{model}_path", object)
           current_path.should == object_path
         end
-
       when 'create'
-        path = "/#{route[:controller]}"
+        path = "/#{controller}"
         attributes = attributes_for model
         klass = model.classify.constantize
 
@@ -114,10 +112,9 @@ feature "It does not raise any errors while browsing as an administrator" do # w
         }.to change{klass.count}.by(1)
 
         check_page
-
       when 'destroy'
         object = create model
-        path = "/#{route[:controller]}/#{object.id}"
+        path = "/#{controller}/#{object.id}"
         klass = model.classify.constantize
 
         expect {
@@ -125,9 +122,9 @@ feature "It does not raise any errors while browsing as an administrator" do # w
         }.to change{klass.count}.by(-1)
 
         check_page
-
       else
-        raise "WTF? Route parsing error?"
+        # Other actions : rules, about, ...
+        visit_and_check path
       end
     end
   end
