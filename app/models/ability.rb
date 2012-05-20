@@ -21,7 +21,7 @@ class Ability
 
       if user.has_role? :student # UTTiens ou anciens
         can :read, [Annal, Answer, Course, Timesheet]
-        can [:read, :create], [Asso, Carpool, Classified, Comment, Event, Project, Poll, Quote, Vote]
+        can [:read, :create], [Asso, Carpool, Classified, Comment, Event, Poll, Quote, Vote]
 
         # News
         can :create, News do |news|
@@ -36,6 +36,11 @@ class Ability
           role.resource_type == 'Asso' and is_asso_owner?(role.resource_id, user)
         end
 
+        can [:read, :update, :destroy], Project do |project|
+          project.users.include?(user)
+        end
+        can :create, Project
+
         can [:read, :update], Preference, user: user
 
         can [:join, :disjoin], [Asso, Event]
@@ -43,7 +48,6 @@ class Ability
 
         # L'auteur peut mettre à jour et supprimer ses contenus
         can [:update, :destroy], [Carpool, Classified, Poll, Quote], user: user
-        can [:update, :destroy], [Asso, Project, Event], owner: user
         can :update, User, id: user.id
         can [:create, :destroy], Answer do |answer|
           answer.poll and can?(:update, answer.poll)

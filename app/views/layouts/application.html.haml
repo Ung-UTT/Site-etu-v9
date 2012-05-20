@@ -36,8 +36,6 @@
             = link_to t('layout.users'), User, title: t('layout.users_title')
           %li.events
             = link_to t('layout.events'), events_path, title: t('layout.events')
-          %li.buckutt
-            = link_to t('layout.buckutt'), :root, title: t('layout.buckutt_title')
           %li.mails
             = link_to t('layout.mails'), :root, title: t('layout.mails_title')
           - if current_user
@@ -72,6 +70,7 @@
             %li.carpools= link_to t('layout.carpools'), carpools_path
             %li.polls= link_to t('layout.polls'), polls_path
             %li.projects= link_to t('layout.projects'), projects_path
+            %li.buckutt= link_to t('layout.buckutt'), root_url
 
         - if can?(:manage, Role)
           %li.box

@@ -16,7 +16,7 @@ SiteEtu::Application.routes.draw do
     resources :comments, only: [:index, :show, :create, :destroy]
     resources :documents, only: [:index, :create, :destroy]
   end
-  resources :assos, :events, :projects, only: [ ] do
+  resources :assos, :events, only: [ ] do
     # 'only: [ ]' because we don't want duplicated default routes (#index, #show, etc.)
     member do
       post :join

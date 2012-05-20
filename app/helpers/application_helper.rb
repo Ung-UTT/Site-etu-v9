@@ -43,7 +43,7 @@ module ApplicationHelper
   # And optionally the selected objects
   # And also optionally if the user can select no objects
   def select_objects(objects, selected = [], none = false)
-    objects = objects.map { |object| [object.to_s, object.id] }
+    objects = ((selected && objects) || []).map { |object| [object.to_s, object.id] }
     objects.unshift([t('common.none'), nil]) if none
 
     selected = [selected] unless selected.is_a? Array
@@ -55,7 +55,7 @@ module ApplicationHelper
   # List of objects (use to #to_s method)
   # Can be inline or in a list
   def links_to_objects(objects, list = false)
-    if objects.empty?
+    if objects.nil? or objects.empty?
       content_tag(:p, t('common.none'))
     else
       if list

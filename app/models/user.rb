@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :created_assos, :foreign_key => 'owner_id', :class_name => 'Asso', dependent: :destroy
   has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', dependent: :destroy
-  has_many :created_projects, :foreign_key => 'owner_id', :class_name => 'Project', dependent: :destroy
 
   has_many :events_user, dependent: :destroy
   has_many :events, through: :events_user, uniq: true
@@ -46,7 +45,7 @@ class User < ActiveRecord::Base
   has_many :timesheets, through: :timesheets_user, uniq: true
 
   # FIXME: We should optimize SQL querie for users, so it avoid the lot of
-  #        SQL queries for user's images (but we should preverse performance
+  #        SQL queries for user's images (but we should preserve performance
   #        for others cases)
   # default_scope include: :image
 

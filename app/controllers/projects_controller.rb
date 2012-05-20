@@ -20,26 +20,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def join
-    if @project.users.include?(current_user)
-      redirect_to @project, notice: t('c.projects.already_joined')
-    else
-      @project.users << current_user
-      @project.save
-      redirect_to @project, notice: t('c.projects.joined')
-    end
-  end
-
-  def disjoin
-    unless current_user.projects.include?(@project)
-      redirect_to @project, notice: t('c.projects.already_disjoined')
-    else
-      @project.users.delete(current_user)
-      redirect_to @project, notice: t('c.projects.disjoined')
-    end
-  end
-
   def new
+    @project.users << current_user
+
     render_new projects_path
   end
 
@@ -48,7 +31,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project.owner = current_user
+    @project.users = params[:users] ? User.find(params[:users]) : []
 
     if @project.save
       redirect_to(@project, notice: t('c.created'))
@@ -58,6 +41,8 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @project.users = params[:users] ? User.find(params[:users]) : []
+
     if @project.update_attributes(params[:project])
       redirect_to(@project, notice: t('c.updated'))
     else

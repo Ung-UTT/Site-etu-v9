@@ -12,6 +12,9 @@ fr:
         F: "Final"
         A: "Autre"
 
+    project:
+      at_least_one_user: "Au moins un utilisateur doit participer au projet"
+
     quote:
       tags:
         all: "Toutes"

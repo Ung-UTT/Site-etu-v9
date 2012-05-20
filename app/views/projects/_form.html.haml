@@ -10,10 +10,10 @@
       = f.label :description, t('projects.description')
       = f.text_area :description, class: 'rich-content'
 
-    - unless @project.new_record?
-      %li.field
-        = f.label :owner_id, t('projects.owner')
-        = f.select :owner_id, select_objects(@first_users, @project.owner), {}, class: 'chosen'
+    %li.field
+      = label_tag :users, t('timesheets.users')
+      = select_tag :users, select_objects(@first_users, @project.users, false), |
+        :multiple => true, :class => 'users-chosen'                            |
 
     %li.actions
       = f.submit t('common.submit')
