@@ -1,9 +1,11 @@
 %section.content
   = title t('quotes.list')
+
   - @quotes.each do |quote|
     %blockquote
       = link_to quote.content, quote
-      (#{quote.tag})
+      (#{t('quotes.by')} #{quote.author}, (#{quote.tag})
+
   - if can? :create, Quote
     %ul.actions
       %li= link_to t('common.add'), new_quote_path

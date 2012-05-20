@@ -1,10 +1,10 @@
 %section.content
   = title t('quotes.list')
+
   %blockquote= link_to @quote.content, @quote
+
   %p
     = t('quotes.by')
-    = @quote.author
-  %p
-    %strong Type
-    \: #{@quote.tag}
+    #{@quote.author} (#{@quote.tag})
+
   = render 'layouts/show_actions', {ressource: @quote}

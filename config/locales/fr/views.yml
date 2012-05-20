@@ -150,7 +150,7 @@ fr:
   quotes:
     list: "Citations"
     content: "Contenu"
-    by: "de"
+    by: "De"
     type: "Type"
 
   roles:

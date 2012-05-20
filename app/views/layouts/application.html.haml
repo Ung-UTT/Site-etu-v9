@@ -48,7 +48,9 @@
             %li.none.connected= link_to_user current_user
 
     - unless mobile?
-      %blockquote#quote= @random_quote
+      %blockquote#quote
+        = @random_quote
+        (#{t('quotes.by')} #{@random_quote.author})
 
     - unless mobile? and !current_page?(root_url)
       %ul#sidebar
