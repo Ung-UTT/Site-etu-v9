@@ -13,7 +13,9 @@ end
 def within_form attributes = {}
   xpath = attributes.map { |key, value| " and @#{key}=\"#{value}\"" }.join
   # Don't select the button_to forms (logout, delete, etc...)
-  within(:xpath, "//form[@class!='button_to'#{xpath}]") do
-    yield
+  within(:css, "#contents") do
+    within(:xpath, "//form[@class!='button_to'#{xpath}]") do
+      yield
+    end
   end
 end

@@ -1,6 +1,6 @@
 # More info at https://github.com/guard/guard#readme
 
-ignore_paths 'public'
+ignore_paths 'public/system/'
 
 guard 'rspec', version: 2, all_after_pass: true, all_on_start: false, wait: 60 do
   watch(%r{^spec/.+_spec\.rb$})

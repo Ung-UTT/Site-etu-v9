@@ -43,6 +43,8 @@ module ApplicationHelper
   # And optionally the selected objects
   # And also optionally if the user can select no objects
   def select_objects(objects, selected = [], none = false)
+    objects ||= []
+    selected ||= []
     objects = ((selected && objects) || []).map { |object| [object.to_s, object.id] }
     objects.unshift([t('common.none'), nil]) if none
 

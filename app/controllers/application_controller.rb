@@ -116,7 +116,9 @@ class ApplicationController < ActionController::Base
       @random_quote = Quote.where(tag: current_user.preference.quote_type).random
     end
     # Sinon on en prend une au hasard, et si il n'y en a pas, on en crée une vide
-    @random_quote ||= Quote.random || 'Qui boit la gnôle casse la bagnôle !' # oh la belle citation par défaut :P
+    @random_quote ||= Quote.random
+    # oh la belle citation par défaut :P
+    @random_quote ||= Quote.new(content: 'Qui boit la gnôle casse la bagnôle !')
   end
 
   # Mobile ou pas mobile ?

@@ -20,4 +20,3 @@ feature "Managing annals" do
     page_should_have_notice
   end
 end
-
