@@ -3,11 +3,10 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string     :name
       t.text       :description
-      t.references :owner
 
       t.timestamps
     end
 
-    add_index :projects, :owner_id
+    add_index :projects, :name
   end
 end

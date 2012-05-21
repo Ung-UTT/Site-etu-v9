@@ -57,7 +57,7 @@ module ApplicationHelper
   # List of objects (use to #to_s method)
   # Can be inline or in a list
   def links_to_objects(objects, list = false)
-    if objects.nil? or objects.empty?
+    if objects.blank?
       content_tag(:p, t('common.none'))
     else
       if list

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514090939) do
+ActiveRecord::Schema.define(:version => 20120426194809) do
 
   create_table "annals", :force => true do |t|
     t.string   "semester"
@@ -174,13 +174,11 @@ ActiveRecord::Schema.define(:version => 20120514090939) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "owner_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   add_index "projects", ["name"], :name => "index_projects_on_name"
-  add_index "projects", ["owner_id"], :name => "index_projects_on_owner_id"
 
   create_table "projects_users", :id => false, :force => true do |t|
     t.integer  "project_id"
