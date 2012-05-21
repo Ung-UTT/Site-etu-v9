@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby1.8
 # encoding: utf-8
+
 # Script à part car doit être éxécuté avec ruby 1.8.7 ! (bug de net-ldap)
-# Rake requiert l'environnement Rails donc ruby 1.9.2 donc on ne peut pas
-# utiliser rake
+# Rake requiert l'environnement Rails donc ruby 1.9 donc on ne peut pas utiliser
+# rake
 # Et s'il est placé dans lib/tasks : rake l'éxécutera lors de son chargement
 
 require 'rubygems'
