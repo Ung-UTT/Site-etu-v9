@@ -5,10 +5,11 @@
     %h2
       = link_to event.name, event
     %ul.details
-      %li
-        %strong= t('events.time')
-        = l(event.start_at, format: "%H:%M") if event.start_at
-        = ' - ' + l(event.end_at, format: "%H:%M") if event.end_at
+      - if event.start_at
+        %li
+          %strong= t('events.time')
+          = l(event.start_at, format: "%H:%M")
+          = ' - ' + l(event.end_at, format: "%H:%M") if event.end_at
       %li
         %strong= t('events.location')
         = event.location
