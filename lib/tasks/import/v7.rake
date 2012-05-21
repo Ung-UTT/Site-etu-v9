@@ -98,21 +98,22 @@ namespace :import do
       end
       puts
 
-      # dependencies: users
-      print "Importing news..."
-      results = client.query("SELECT * FROM news_liste ORDER BY id_news")
+      # dependencies: assos
+      print "Importing events..."
+      results = client.query("SELECT * FROM eventsListe ORDER BY id")
       results.each(:symbolize_keys => true) do |row|
-        row[:information] = row[:information].gsub(/<[^>]*>/, '')
-        next if News.find_by_title_and_content(row[:titre], row[:information])
-        news = News.new(
-          title: row[:titre],
-          content: row[:information],
-          :is_moderated => true
+        row[:description] = row[:description].gsub(/<[^>]*>/, '')
+        next if Event.find_by_name_and_description(row[:titre], row[:description])
+        event = Event.create(
+          name: row[:titre],
+          description: row[:description],
+          location: row[:lieu],
+          start_at: DateTime.parse("#{row[:date]} #{row[:heure]} +02"),
         )
-        news.user = User.find_by_login(row[:auteur_login])
-        news.created_at = row[:date_creation]
-        news.updated_at = row[:date_creation]
-        news.save
+        login = row[:login].downcase.gsub(/[^a-z]/, '').first(8)
+        if asso = Asso.all.detect { |asso| asso.name.downcase.gsub(/[^a-z]/, '').first(8) == login }
+          asso.events << event
+        end
         print '.'
       end
       puts

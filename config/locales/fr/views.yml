@@ -10,6 +10,7 @@ fr:
     submit: "Envoyer"
     search: "Rechercher"
     none: "Aucun"
+    unknown: "Inconnu"
 
   annal: "Annale"
   answer: "Réponse"
@@ -105,6 +106,7 @@ fr:
     location: "Lieu"
     start_at: "Commence le"
     end_at: "Fini le"
+    time: "Heure"
     owner: "Créé par"
     users: "Participants"
     assos: "Organisé par"
