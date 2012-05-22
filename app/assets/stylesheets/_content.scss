@@ -1,13 +1,13 @@
 /* Partie contenu */
 
 @mixin columns($count, $gap) {
-	-moz-column-count: $count;
-	-webkit-column-count: $count;
-	column-count: $count;
+  -moz-column-count: $count;
+  -webkit-column-count: $count;
+  column-count: $count;
 
-	-moz-column-gap: $gap;
-	-webkit-column-gap: $gap;
-	column-gap: $gap;
+  -moz-column-gap: $gap;
+  -webkit-column-gap: $gap;
+  column-gap: $gap;
 }
 
 /* Cas général */

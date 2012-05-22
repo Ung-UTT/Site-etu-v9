@@ -10,7 +10,7 @@ namespace :import do
       DB_FILE = Rails.root.join('tmp', 'users.marshal')
 
       if File.exists?(DB_FILE)
-        puts "Get users informations from #{DB_FILE}"
+        puts "Get users information from #{DB_FILE}"
         users = Marshal.load(File.open(DB_FILE, 'rb').read)
       else
         puts "You have to convert users first"
@@ -74,7 +74,7 @@ namespace :import do
       PHOTOS_DIR = Rails.root.join('tmp', 'photos')
 
       if File.exists?(DB_FILE)
-        puts "Get students informations from #{DB_FILE}"
+        puts "Get students information from #{DB_FILE}"
         students = Marshal.load(File.open(DB_FILE, 'rb').read)
       else
         puts "You have to convert users first"

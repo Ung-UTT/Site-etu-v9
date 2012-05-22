@@ -4,7 +4,6 @@
   - @quotes.each do |quote|
     %blockquote
       = link_to quote.content, quote
-      (#{t('quotes.by')} #{quote.author}, (#{quote.tag})
 
   - if can? :create, Quote
     %ul.actions
