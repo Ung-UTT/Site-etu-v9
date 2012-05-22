@@ -29,18 +29,26 @@ body {
   background-color: $fond;
 }
 
-#quote {
-  clear: both; // Pour la photo, elle dépasse sur les petits écrans
-}
-
-#quote, #contents .content blockquote {
+blockquote {
   padding: 5px;
   text-align: center;
-  color: $fond - #555;
+  color: $fond - #666;
   font-style: italic;
 
-  &:before { content: "« "; }
-  &:after { content : " »"; }
+  &:before { content: "« "; }
+  &:after { content : " »"; }
+}
+
+#quote {
+  text-align: center;
+
+  blockquote {
+    display: inline-block;
+  }
+
+  .author {
+    color: $fond - #555;
+  }
 }
 
 #topbar {
