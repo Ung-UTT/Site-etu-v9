@@ -114,7 +114,7 @@ namespace :import do
         row[:description] = row[:description].gsub(/<[^>]*>/, '')
         next if Event.find_by_name_and_description(row[:titre], row[:description])
         event = Event.create(
-          name: row[:titre],
+          name: row[:titre].blank? ? row[:description].truncate(30) : row[:titre],
           description: row[:description],
           location: row[:lieu],
           start_at: DateTime.parse("#{row[:date]} #{row[:heure]} +02"),

@@ -6,7 +6,7 @@ namespace :import do
       exit 1
     end
 
-    sh %{rake import:users:insert import:users:add_photos import:schedules:insert import:v7:mysql}
+    sh %{rake import:users:insert import:users:add_photos import:schedules:insert import:v7:mysql --trace}
   end
 end
 
