@@ -7,7 +7,7 @@ class CarpoolsController < ApplicationController
     @not_drivers = @carpools.select{|car| !car.is_driver}
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @carpools }
     end
   end
@@ -23,7 +23,7 @@ class CarpoolsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @carpool }
     end
   end

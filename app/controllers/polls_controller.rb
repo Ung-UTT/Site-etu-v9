@@ -4,7 +4,7 @@ class PollsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @polls }
     end
   end
@@ -14,7 +14,7 @@ class PollsController < ApplicationController
     @vote = @poll.voted_by?(current_user) ? @poll.vote_of(current_user) : nil
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @poll }
     end
   end

@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @projects }
     end
   end
@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     @documents = @project.documents
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @project }
     end
   end

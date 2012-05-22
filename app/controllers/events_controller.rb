@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     @events = @events.page(params[:page])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @events }
     end
   end
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @news = @event.news.page(params[:page]) # Les daymails associés
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @event }
     end
   end

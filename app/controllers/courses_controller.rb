@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @courses }
     end
   end
@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     @documents = @course.documents
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @course }
     end
   end

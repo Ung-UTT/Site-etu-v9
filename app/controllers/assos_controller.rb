@@ -5,7 +5,7 @@ class AssosController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @assos }
     end
   end
@@ -17,7 +17,7 @@ class AssosController < ApplicationController
     @disjoinable_roles = @asso.disjoinable_roles(current_user)
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @asso }
     end
   end

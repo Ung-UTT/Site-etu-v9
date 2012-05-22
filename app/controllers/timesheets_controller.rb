@@ -18,14 +18,14 @@ class TimesheetsController < ApplicationController
     @schedule = Timesheet.make_schedule(@timesheets)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @timesheets }
     end
   end
 
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @timesheet }
     end
   end

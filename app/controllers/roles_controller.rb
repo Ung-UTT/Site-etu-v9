@@ -4,7 +4,7 @@ class RolesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @roles }
     end
   end
@@ -13,7 +13,7 @@ class RolesController < ApplicationController
     set_first_users
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @role }
     end
   end

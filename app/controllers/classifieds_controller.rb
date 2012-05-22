@@ -6,7 +6,7 @@ class ClassifiedsController < ApplicationController
     @classifieds = @classifieds.order('created_at desc').page(params[:page])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @classifieds }
     end
   end
@@ -16,7 +16,7 @@ class ClassifiedsController < ApplicationController
     @documents = @classified.documents
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @classified }
     end
   end

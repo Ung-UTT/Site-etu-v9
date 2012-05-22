@@ -7,7 +7,7 @@ class NewsController < ApplicationController
     @news = @news.page(params[:page])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @news }
     end
   end
@@ -17,7 +17,7 @@ class NewsController < ApplicationController
     @documents = @news.documents
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @news }
     end
   end
