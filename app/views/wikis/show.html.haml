@@ -1,12 +1,16 @@
 %section.content
   = title @wiki.to_s
+
   = md @wiki.content
+
   - unless @wiki.children.empty?
     %p
-      Pages :
+      = t('wikis.pages')
       %ul
         - @wiki.children.each do |wiki|
           %li= link_to wiki.title, wiki
+
   = render 'layouts/show_actions', ressource: @wiki
+
 = render 'documents/list_and_add', {documentable: @wiki, documents: @documents}
 = render 'comments/list_and_add', {commentable: @wiki, comments: @comments}

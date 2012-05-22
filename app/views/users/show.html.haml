@@ -1,5 +1,5 @@
 %section.content
-  = title(t('user') + ' : ' + @user.to_s)
+  = title @user.to_s
 
   - if @user.image
     %p.profile.alone= link_to_user @user

@@ -241,10 +241,10 @@ fr:
     error500:
       title: "Mince, ya un problème"
       content: |
-        Parce que ça arrive même aux meilleurs, tu peux nous dire
+        "Parce que ça arrive même aux meilleurs, tu peux nous dire
         comment tu as découvert cette erreur ? Par l'ung-liste, ou en
         parlant directement à quelqu'un de l'UNG (par exemple en salle
-        asso).
+        asso)."
       credit: "Dessin par XKCD"
       explain: "Explication :"
 
@@ -252,3 +252,4 @@ fr:
     title: "Titre"
     content: "Contenu"
     parent: "Page parente"
+    pages: "Pages"

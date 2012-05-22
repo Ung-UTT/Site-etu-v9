@@ -63,7 +63,7 @@ Spork.prefork do
     end
 
     def file_from_assets(name)
-      File.new(Rails.root + 'spec/assets' + name)
+      File.new(Rails.root.join('spec', 'assets', name))
     end
   end
 
@@ -89,4 +89,3 @@ Spork.each_run do
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 end
-
