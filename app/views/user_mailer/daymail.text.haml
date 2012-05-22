@@ -1,10 +1,11 @@
-= @user.real_name
-, le BDE te présente le Daymail du #{@date} !
+#{@user.real_name}, le BDE te présente le Daymail du #{@date} !
 
 Sommaire :
 - @content[:news].each do |news|
   * #{news.title}
+
 - @content[:news].each do |news|
   \# #{news.title}
   \#{news.content}
+
 Distribué par l'UNG.
