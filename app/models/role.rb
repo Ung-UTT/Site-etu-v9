@@ -10,10 +10,18 @@ class Role < ActiveRecord::Base
 
   has_paper_trail
 
+  def short_users_list
+    users.first(20).map(&:login).join(', ').truncate(80)
+  end
+
   def to_s
     str = I18n.t("model.role.roles.#{name}", default: name)
-    str += " #{I18n.t('of')} #{resource_type}" if resource_type
-    str += " #{resource.name}" if resource_id
+    if resource_type
+      str += " #{I18n.t('of')} #{resource_type}"
+      str += " #{resource_id}" if resource_id
+    else
+      str += " (#{I18n.t('model.role.global')})"
+    end
     str
   end
 end

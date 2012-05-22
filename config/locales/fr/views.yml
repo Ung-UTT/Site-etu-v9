@@ -158,12 +158,9 @@ fr:
   roles:
     list: "Rôles"
     name: "Nom"
-    asso: "Asso associée"
+    resource: "Ressource"
     parent: "Parent"
     users: "Utilisateurs"
-    default:
-      administrator: "Administrateur"
-      moderator: "Moderateur"
 
   timesheets:
     list: "Emploi du temps"

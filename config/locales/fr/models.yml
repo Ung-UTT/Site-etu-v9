@@ -24,7 +24,10 @@ fr:
 
     role:
       as: "en tant que"
+      global: "Global"
       roles:
+        administrator: "Administrateur"
+        moderator: "Moderateur"
         member: "membre"
         treasurer: "trésorier"
         secretary: "secrétaire"
