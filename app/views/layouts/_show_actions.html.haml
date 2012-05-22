@@ -10,3 +10,7 @@
 
   - unless url_for({action: :index}).include?('?')
     %li= link_to t('common.list'), {action: :index}
+
+  - if can? :create, ressource.class
+    %li
+      = link_to t('common.add'), {action: :new}
