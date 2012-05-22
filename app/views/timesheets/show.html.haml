@@ -1,12 +1,10 @@
 %section.content
-  = title(t('timesheet') + ' : ' + @timesheet.to_s)
-  %p
-    %strong= t('timesheets.course')
-    \:
-    \#{link_to @timesheet.course.name, @timesheet.course}
-  %p
-    %strong= t('timesheets.users')
-    \:
-    \#{links_to_users @timesheet.users}
+  = title @timesheet.to_s
+
+  = not_empty_inline(t('timesheets.course'), link_to(@timesheet.course, @timesheet.course), true)
+
+  = not_empty_inline(t('timesheets.users'), links_to_users(@timesheet.users))
+
   = render 'timesheets/schedule', schedule: Timesheet.make_schedule(@timesheet)
+
   = render 'layouts/show_actions', {ressource: @timesheet, ressources: timesheets_path}

@@ -54,7 +54,7 @@ module ApplicationHelper
     options_for_select(objects, selected)
   end
 
-  # List of objects (use to #to_s method)
+  # List of objects (use the #to_s method)
   # Can be inline or in a list
   def links_to_objects(objects, list = false)
     if objects.blank?
@@ -67,7 +67,7 @@ module ApplicationHelper
           end.join.html_safe
         end
       else
-        objects.map { |object| link_to object.to_s, object }.join(', ').html_safe
+        objects.map { |object| link_to(object.to_s, object) }.join(', ').html_safe
       end
     end
   end
