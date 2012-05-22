@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :login, :password, :password_confirmation,
                   :remember_me, :preference_attributes, :utt_address,
-                  :parents_address, :surname, :once, :phone, :description
+                  :parents_address, :surname, :once, :phone, :description,
+                  :private_email, :website
 
   delegate :can?, :cannot?, to: :ability
 
@@ -13,8 +14,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :login
   validates_uniqueness_of :login, :case_sensitive => false
-  validates :email, presence: true, format:
-    { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates_inclusion_of :sex, in: %w(M F), allow_nil: true
+  validates_email_format_of :email
+  validates_email_format_of :private_email, allow_blank: true
 
   paginates_per 32
 

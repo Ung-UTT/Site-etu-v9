@@ -31,22 +31,31 @@ namespace :import do
           # import only existing users from LDAP
           if user = User.find_by_login_and_email(row[:login], row[:email])
             {
-              :created_at => row[:dateCreation],
+              created_at: row[:dateCreation],
               firstname: row[:prenom],
               lastname: row[:nom],
               surname: row[:surnom],
+              sex: row[:sexe] ? row[:sexe].tr('HF', 'MF') : nil,
+              birth_date: if row[:ddn]
+                date = Date.parse(row[:ddn].to_s)
+                date > Date.today ? nil : date
+              else
+                nil
+              end,
+              private_email: row[:emailPerso],
+              website: row[:pageWeb],
               once: row[:jadis],
-              :utt_id => row[:idEtu].to_i,
+              utt_id: row[:idEtu].to_i,
               level: row[:branche],
               specialization: row[:filiere],
               role: row[:LDAPdescription],
               phone: row[:gsm],
-              :utt_address => %w[
+              utt_address: %w[
                 adr_3_rue adr_3_ville adr_3_cp adr_3_pays
-              ].map{|i| row[i.to_sym]}.join(' '),
-              :parents_address => %w[
+              ].map{ |i| row[i.to_sym] }.join(' '),
+              parents_address: %w[
                 adr_p_rue adr_p_ville adr_p_cp adr_p_pays
-              ].map{|i| row[i.to_sym]}.join(' ')
+              ].map{ |i| row[i.to_sym] }.join(' ')
             }.each do |key, value|
               value.strip! if value.is_a? String
               value = nil if value == ''

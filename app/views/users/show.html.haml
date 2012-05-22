@@ -10,6 +10,8 @@
       = not_empty_dd(t('users.phone'), @user.phone)
       = not_empty_dd(t('users.utt_address'), @user.utt_address)
       = not_empty_dd(t('users.parents_address'), @user.parents_address)
+      = not_empty_dd(t('users.birth_date'), @user.birth_date ? l(@user.birth_date) : nil)
+      = not_empty_dd(t('users.website'), @user.website)
 
     %p
       = not_empty_inline(t('users.level'), @user.level)

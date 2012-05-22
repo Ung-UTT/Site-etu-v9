@@ -9,6 +9,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :parents_address
       t.string     :surname # Surnom
       t.string     :once # Jadis
+      t.date       :birth_date
+      t.string     :sex
+      t.string     :private_email
+      t.string     :website
 
       # Fournis par l'UTT (pas modifiables)
       t.integer    :utt_id

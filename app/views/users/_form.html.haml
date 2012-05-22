@@ -4,7 +4,7 @@
   %ul.fields
     %li.field
       = f.label :email, t('users.email')
-      = f.text_field :email
+      = f.email_field :email
 
     = f.fields_for :preference do |f_pref|
       %li.field
@@ -34,6 +34,14 @@
     %li.field
       = f.label :phone, t('users.phone')
       = f.text_field :phone
+
+    %li.field
+      = f.label :website, t('users.website')
+      = f.url_field :website
+
+    %li.field
+      = f.label :private_email, t('users.private_email')
+      = f.email_field :private_email
 
     %li.field
       = f.label :description, t('users.description')

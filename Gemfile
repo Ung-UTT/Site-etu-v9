@@ -16,6 +16,7 @@ gem 'paper_trail' # Historique
 gem 'rdiscount'   # Parsage (Markdown)
 gem 'awesome_nested_set' # "Arbres" (Associations, Rôles, ...)
 gem 'stringex'
+gem 'validates_email_format_of'
 
 group :development do
   gem 'guard-rspec'
