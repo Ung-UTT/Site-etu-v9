@@ -12,12 +12,6 @@ namespace :import do
         database: 'utt_db'
       )
 
-      puts "Loading dumps into DB..."
-      Dir[File.join(File.dirname(__FILE__), 'data/*.sql')].each do |file|
-        puts file
-        system "mysql -uutt_db -putt_db utt_db < #{file}"
-      end
-
       # temporary user used for import
       import_user = User.find_by_login('import') || User.simple_create('import')
 
