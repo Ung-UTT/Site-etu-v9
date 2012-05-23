@@ -2,7 +2,8 @@
   = title @annal.to_s
 
   %p
-    %strong= t('annals.course'), link_to @annal.course.to_s, @annal.course
+    %strong= t('annals.course')
+    = link_to(@annal.course.to_s, @annal.course)
 
   = render 'layouts/show_actions', resource: @annal
 

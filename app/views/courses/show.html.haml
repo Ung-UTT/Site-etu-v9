@@ -5,7 +5,7 @@
 
   = not_empty_inline(t('courses.users'), links_to_users(@course.users), true)
 
-  - if !@course.annal.empty? or can? :create, Annal
+  - if !@course.annals.empty? or can?(:create, Annal)
     %h2=t('courses.annals')
 
     - if @course.annals.empty?

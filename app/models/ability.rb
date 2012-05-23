@@ -20,8 +20,8 @@ class Ability
       can :manage, User, id: user.id
 
       if user.has_role? :student # UTTiens ou anciens
-        can :read, [Annal, Answer, Course, Timesheet]
-        can [:read, :create], [Asso, Carpool, Classified, Comment, Event, Poll, Quote, Vote]
+        can :read, [Answer, Course, Timesheet]
+        can [:read, :create], [Annal, Asso, Carpool, Classified, Comment, Event, Poll, Quote, Vote]
 
         # News
         can :create, News do |news|
