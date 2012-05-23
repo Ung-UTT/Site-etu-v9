@@ -14,6 +14,7 @@
           = comment.content
           - if can? :destroy, comment
             = button_to_delete t('common.delete'), [commentable, comment]
+
       - if can? :create, Comment
         %li
           = form_for [commentable, Comment.new] do |f|

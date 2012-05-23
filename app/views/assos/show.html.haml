@@ -48,7 +48,7 @@
     - unless @asso.events.empty?
       = not_empty_dd(t('assos.events'), links_to_objects(@asso.events))
 
-  = render 'layouts/show_actions', ressource: @asso
+  = render 'layouts/show_actions', resource: @asso
 
 = render 'documents/list_and_add', {documentable: @asso, documents: @documents}
 = render 'comments/list_and_add', {commentable: @asso, comments: @comments}

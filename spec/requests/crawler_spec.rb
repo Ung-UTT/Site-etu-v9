@@ -45,7 +45,7 @@ feature "It does not raise any errors while browsing as an administrator" do # w
       (controller == 'annals' and action == 'create') or # Already tested
       # FIXME: Special validation
       (controller == 'projects' and %w(create destroy).include?(action)) or
-      # FIXME: Test associated ressources (comments and documents)
+      # FIXME: Test associated resources (comments and documents)
       (is_associated_resource?(controller) and %(show create destroy).include?(action))
 
     scenario "#{controller}##{action} (path: #{path})" do

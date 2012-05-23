@@ -17,7 +17,7 @@
     = google_agenda_link(@event)
     = mailto_link(@event)
 
-  = render 'layouts/show_actions', ressource: @event
+  = render 'layouts/show_actions', resource: @event
 
 - unless @event.news.empty?
   = render template: 'news/index'

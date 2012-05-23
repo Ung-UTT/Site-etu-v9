@@ -169,13 +169,13 @@ class ApplicationController < ActionController::Base
   end
 
   # Shortcut to use the "new" layout
-  def render_new(ressources)
-    render 'layouts/_new', locals: {ressources: ressources}
+  def render_new(resources)
+    render 'layouts/_new', locals: {resources: resources}
   end
 
   # Shortcut to use the "edit" layout
-  def render_edit(ressource)
-    render 'layouts/_edit', locals: {ressource: ressource}
+  def render_edit(resource)
+    render 'layouts/_edit', locals: {resource: resource}
   end
 
   # Détecte si l'utilisateur utilise son portable

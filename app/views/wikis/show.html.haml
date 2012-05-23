@@ -10,7 +10,7 @@
         - @wiki.children.each do |wiki|
           %li= link_to wiki.title, wiki
 
-  = render 'layouts/show_actions', ressource: @wiki
+  = render 'layouts/show_actions', resource: @wiki
 
 = render 'documents/list_and_add', {documentable: @wiki, documents: @documents}
 = render 'comments/list_and_add', {commentable: @wiki, comments: @comments}

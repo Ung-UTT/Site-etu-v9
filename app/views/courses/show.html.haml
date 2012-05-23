@@ -5,24 +5,25 @@
 
   = not_empty_inline(t('courses.users'), links_to_users(@course.users), true)
 
-  %h2=t('courses.annals')
+  - if !@course.annal.empty? or can? :create, Annal
+    %h2=t('courses.annals')
 
-  - if @course.annals.empty?
-    %p= t('common.none')
-  - else
-    %ul
-      - @course.annals.group_by(&:kind).each do |kind, annals|
-        %li
-          = annals.first.readable_kind
-          - annals.each do |annal|
-            %ul
-              %li=link_to annal.to_s, annal
+    - if @course.annals.empty?
+      %p= t('common.none')
+    - else
+      %ul
+        - @course.annals.group_by(&:kind).each do |kind, annals|
+          %li
+            = annals.first.readable_kind
+            - annals.each do |annal|
+              %ul
+                %li=link_to annal.to_s, annal
 
-  - if can? :create, Annal
-    %p= link_to t('common.add'), new_annal_path
+    - if can? :create, Annal
+      %p= link_to t('common.add'), new_annal_path
 
   = render 'timesheets/schedule', schedule: @course.schedule
 
-  = render 'layouts/show_actions', ressource: @course
+  = render 'layouts/show_actions', resource: @course
 
 = render 'comments/list_and_add', {commentable: @course, comments: @comments}
