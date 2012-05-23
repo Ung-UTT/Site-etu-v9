@@ -17,7 +17,7 @@ class UserMailer < ActionMailer::Base
     mail(
       from: "ung+bug-site-etu@utt.fr",
       to: User.administrators.map(&:email),
-      subject: "[Site-etu] [Bug] #{@error.message}"
+      subject: "[Site-etu] [Bug] #{@error.message.truncate(60)}"
     )
   end
 end
