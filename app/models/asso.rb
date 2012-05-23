@@ -27,7 +27,7 @@ class Asso < ActiveRecord::Base
   end
 
   def has_user? user, role
-    Asso.with_role(role, user).include? self
+    user.has_role? role, self
   end
 
   def add_user user, role
