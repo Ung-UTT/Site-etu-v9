@@ -39,7 +39,7 @@ namespace :import do
                            ts['start'][0].hours + ts['start'][1].minutes,
               # Durée : fin - début (heures et minutes)
               duration: (ts['end'][0] - ts['start'][0])*60 +
-                            ts['end'][1] - ts['start'][0],
+                            ts['end'][1] - ts['start'][1],
               # Semaine A, semaine B ou rien
               week: ts['weekname'] == 'T' ? nil : ts['weekname'],
               room: ts['room'], # Salle
@@ -86,4 +86,3 @@ namespace :import do
     end
   end
 end
-
