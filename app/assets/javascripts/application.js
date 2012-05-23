@@ -18,7 +18,7 @@ $(function () {
   // des requêtes AJAX
   $('select.users-chosen').ajaxChosen({
       method: 'GET',
-      url: '/users.json',
+      url: ROOT_PATH + '/users.json',
       dataType: 'json',
       jsonTermKey: 'q', // Variable de recherches (?q=...)
     }, function (data) {

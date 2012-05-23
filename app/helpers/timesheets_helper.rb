@@ -57,7 +57,7 @@ module TimesheetsHelper
       agenda << object
     end
 
-    agenda.to_json.html_safe
+    agenda.compact.to_json.html_safe
   end
 
   def start_date_of_semester
