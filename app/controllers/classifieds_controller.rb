@@ -8,6 +8,7 @@ class ClassifiedsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @classifieds }
+      format.rss { render layout: false }
     end
   end
 

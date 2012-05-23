@@ -15,6 +15,13 @@ module ApplicationHelper
     content_tag(:title, content_for(:title).empty? ? t('helpers.title') : content_for(:title))
   end
 
+  # Current path to the RSS feed
+  def current_rss(controller)
+    controller = 'news' unless ['events', 'classifieds'].include?(controller)
+    link = {controller: controller, format: 'rss', only_path: false}
+    auto_discovery_link_tag(:rss, link)
+  end
+
   # Raccourcis pour les vues
 
   # <dd> à condition que ce qui est montré ne soit pas vide

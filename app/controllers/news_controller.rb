@@ -9,6 +9,7 @@ class NewsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @news }
+      format.rss { render layout: false }
     end
   end
 

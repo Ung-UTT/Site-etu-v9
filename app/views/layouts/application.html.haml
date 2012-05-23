@@ -6,6 +6,7 @@
     = title_tag
 
     = favicon_link_tag
+    = current_rss(params[:controller])
 
     - if mobile?
       %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
@@ -95,6 +96,7 @@
             %li= link_to 'UTT Arena', 'http://uttarena.org'
             %li= link_to 'Club Argentique UTT', 'http://etu.utt.fr/etu/argentique'
             %li= link_to "N'UTT", 'http://etu.utt.fr/journal'
+            %li= link_to "SecUTT", 'http://secutt.utt.fr'
 
     %section#contents
       - unless notice.nil?
