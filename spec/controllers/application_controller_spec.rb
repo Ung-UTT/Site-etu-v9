@@ -11,8 +11,9 @@ describe ApplicationController do
     end
 
     it "notifies admins when an unexpected error occurs" do
-      UserMailer.should_receive(:error).once
-      get :index
+      expect {
+        get :index
+      }.to change { UserMailer.deliveries.count }.by(1)
     end
   end
 end

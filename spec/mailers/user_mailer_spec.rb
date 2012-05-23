@@ -13,8 +13,9 @@ describe UserMailer do
     end
 
     it "sends the daymail correctly" do
-      deliver
-      ActionMailer::Base.deliveries.count.should == 1
+      expect {
+        deliver
+      }.to change { UserMailer.deliveries.count }.by(1)
     end
 
     it "contains expected information" do
@@ -49,8 +50,9 @@ describe UserMailer do
     end
 
     it "sends the email correctly" do
-      deliver
-      ActionMailer::Base.deliveries.count.should == 1
+      expect {
+        deliver
+      }.to change { UserMailer.deliveries.count }.by(1)
     end
 
     it "contains expected information" do
