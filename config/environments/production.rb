@@ -63,7 +63,6 @@ SiteEtu::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => 'smtp.utt.fr',
-    :port                 => 25,
-    :authentication       => 'plain'
+    :port                 => 25
   }
 end
