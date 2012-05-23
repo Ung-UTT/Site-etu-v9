@@ -1,3 +1,4 @@
+
 /* Partie contenu */
 
 @mixin columns($count, $gap) {
@@ -403,6 +404,7 @@
 
   .fc-event-inner {
     text-align: center;
-    /* TODO: aligner verticalement ce block, mais bugs via table-cell) */
+    font-weight: bold;
+    /* TODO: aligner verticalement ce bloc, mais bugs via table-cell) */
   }
 }
