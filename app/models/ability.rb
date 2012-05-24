@@ -32,10 +32,6 @@ class Ability
         end
         can :destroy, News, user: user
 
-        can [:read, :create, :update], Role do |role|
-          role.resource_type == 'Asso' and is_asso_owner?(role.resource_id, user)
-        end
-
         can [:read, :update, :destroy], Project do |project|
           project.users.include?(user)
         end
@@ -68,10 +64,5 @@ class Ability
 
       cannot :destroy, User, id: user.id # no suicide please
     end # / user?
-  end
-
-  private
-  def is_asso_owner?(asso_id, user)
-    asso = Asso.find(asso_id) and asso.owner == user
   end
 end
