@@ -30,7 +30,7 @@ $(function () {
     });
 
   // Pour pas charger ça tout le temps :
-  // (événements définis dans _schedule.html.erb)
+  // (événements définis dans _schedule.html.haml)
   if (typeof(fullcalendar_schedule) != 'undefined') {
     // Emploi du temps (horaires, vue semaine)
     $('.schedule').fullCalendar({
@@ -57,7 +57,7 @@ $(function () {
   }
 
   // Agenda complet
-  // (événements définis dans _agenda.html.erb)
+  // (événements définis dans _agenda.html.haml)
   if (typeof(fullcalendar_agenda) != 'undefined') {
     // Emploi du temps (horaires, vue semaine)
     $('.agenda').fullCalendar({
@@ -75,18 +75,11 @@ $(function () {
     });
   }
 
-  // Code Konami (suppprime éléments quand on clique dessus
-  // et "Echap" : met un BSOD
+  // Code Konami (suppprime éléments quand on clique dessus)
   var keys = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
   var progress = 0;
 
   $('body').keyup(function(event) {
-    if (event.keyCode == 27) {
-      $('body').html('Blue Screen Of Death').css({'background-color': 'blue',
-        'background-image': 'url()', 'font-size': '8em', 'text-weight': 'bolder',
-        'text-align': 'center', 'margin-top': '150px', 'box-shadow': 'none'});
-    }
-
     if (event.keyCode == keys[progress]) {
       progress += 1;
       console.log(progress);
