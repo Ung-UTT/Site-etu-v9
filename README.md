@@ -9,6 +9,7 @@ Si vous voulez reporter un bug, [vous pouvez](https://github.com/Ung-UTT/Site-et
 
 Vous pouvez aussi aller voir le [wiki](https://github.com/Ung-UTT/Site-etu-v9/wiki) (et le compléter).
 Si vous voulez corriger un bug, [vous pouvez](https://github.com/Ung-UTT/Site-etu-v9/issues).
+Si vous voulez installer le site en local pour développer, [c'est ici](https://github.com/Ung-UTT/Site-etu-v9/wiki/Installation).
 
 ## Licence
 
