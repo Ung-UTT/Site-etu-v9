@@ -14,12 +14,9 @@ module EventsHelper
 
   # Link to send the event by mail
   def mailto_link(event)
-    name = CGI::escape(event.name)
-    description = CGI::escape(event.description.to_s)
-    url = CGI::escape(request.url)
-    link_to image_tag("others/mailto.png"),
-      "mailto:?Subject=[#{t('helpers.utt_event')}] #{name}&body=%0A%0A" +
-      "#{description}%0A%0A#{t('helpers.event_content', url: url)}",
+    mail_to '', image_tag("others/mailto.png"),
+      subject: "[#{t('helpers.utt_event')}] #{event.name}",
+      body: "#{event.description}\n\n#{t('helpers.event_content', url: request.url)}",
       title: t('helpers.invite_people')
   end
 end

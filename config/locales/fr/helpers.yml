@@ -6,7 +6,7 @@ fr:
     noparent: "Pas de parent"
     add_agenda: "Ajouter à Google Agenda"
     utt_event: "Évènement UTT"
-    event_content: "Plus d'infos :"
+    event_content: "Plus d'infos : %{url}"
     invite_people: "Inviter des gens"
     rss_news: "Les news du Site Étu de l'UTT"
     rss_events: "Les événements du Site Étu de l'UTT"
