@@ -13,6 +13,6 @@
       - @users.each do |user|
         .image_frame
           .image= link_to_user user
-          %strong.name= user.real_name
+          %strong.name= user.to_s
 
     = paginate @users

@@ -3,8 +3,8 @@ module UsersHelper
     return nil if user.nil?
 
     image = user.image.nil? ? 'others/nophoto.png' : user.image.asset.url
-    content = image_tag(image, class: 'user', alt: user.real_name)
-    content = link_to(content, user, title: user.real_name) if can? :read, user
+    content = image_tag(image, class: 'user', alt: user.to_s)
+    content = link_to(content, user, title: user.to_s) if can? :read, user
     content
   end
 

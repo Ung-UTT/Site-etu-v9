@@ -103,16 +103,12 @@ class User < ActiveRecord::Base
     agenda += Event.make_agenda
   end
 
-  # Nom réel si on l'a (Prénom NOM) sinon login (nomprenom)
-  def real_name
+  # Real name if we have it (Prénom NOM) or login (nomprenom)
+  def to_s
     if firstname.nil? and lastname.nil?
       login
     else
       "#{firstname} #{lastname}"
     end
-  end
-
-  def to_s
-    real_name # TODO: Replace all occurences of real_name by to_s
   end
 end
