@@ -54,15 +54,14 @@ feature "It does not raise any errors while browsing as an administrator" do # w
 
       case action
       when 'index', 'new'
-        if is_associated_resource? controller
-          # create a comment/document from factory
-          associated_object = create model
+        object = create model if action == 'index' and controller != 'home'
 
+        if is_associated_resource? controller
           # the commentable/documentable class name (e.g. asso, course, etc.)
           base_object_name = path.match(/\A\/[^\/]+\/:(?<class>[^\/]+)_id\/#{controller}/)[:class]
 
           base_object = create base_object_name # Create the course, asso, ...
-          base_object.send(controller) << associated_object # Add the comment/document
+          base_object.send(controller) << object # Add the comment/document
 
           path = send("#{name}_path", base_object) # Get the right path
         else
@@ -123,7 +122,7 @@ feature "It does not raise any errors while browsing as an administrator" do # w
 
         check_page
       else
-        # Other actions : rules, about, ...
+        # Other actions: rules, about, ...
         visit_and_check path
       end
     end
