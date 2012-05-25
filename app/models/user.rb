@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   rolify
   devise :database_authenticatable, :recoverable, :rememberable, :trackable,
          :validatable
+  paginates_per 32
+  has_paper_trail
 
   attr_accessible :email, :login, :password, :password_confirmation,
                   :remember_me, :preference_attributes, :utt_address,
@@ -18,11 +20,7 @@ class User < ActiveRecord::Base
   validates_email_format_of :email
   validates_email_format_of :private_email, allow_blank: true
 
-  paginates_per 32
-
   default_scope order: 'firstname,lastname'
-
-  has_paper_trail
 
   has_one :image, dependent: :destroy, as: :documentable
   has_one :preference, dependent: :destroy
@@ -46,6 +44,9 @@ class User < ActiveRecord::Base
   has_many :timesheets_user, dependent: :destroy
   has_many :timesheets, through: :timesheets_user, uniq: true
 
+  include Extensions::Searchable
+  searchable_attributes :login, :firstname, :lastname, :level
+
   # FIXME: We should optimize SQL querie for users, so it avoid the lot of
   #        SQL queries for user's images (but we should preserve performance
   #        for others cases)
@@ -63,31 +64,14 @@ class User < ActiveRecord::Base
     student.nil? ? [] : student.users
   end
 
-  class << self
-    # Recherche parmi les utilisateurs via une chaîne
-    # Exemple : User.search("Emm Car") => [User (Emmanuel Carquin), ...]
-    def search(clues)
-      # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
-      clues = clues.downcase.to_ascii.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
-      User.select do |p|
-        # Le utilisateur fait parti des utilisateurs recherchés si il contient
-        # chacun des indices
-        string = [p.login, p.firstname, p.lastname, p.level].join(' ')
-        clues.all? do |clue|
-          string.downcase.to_ascii.include?(clue)
-        end
-      end
-    end
-
-    # Créer un utilisateur rapidement
-    def simple_create(login, password = nil)
-      password ||= Devise.friendly_token[0,20]
-      User.create!(
-        login: login,
-        email: "#{login}@utt.fr",
-        password: password
-      )
-    end
+  # Créer un utilisateur rapidement
+  def self.simple_create(login, password = nil)
+    password ||= Devise.friendly_token[0,20]
+    User.create!(
+      login: login,
+      email: "#{login}@utt.fr",
+      password: password
+    )
   end
 
   def hours_per_week
