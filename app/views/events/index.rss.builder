@@ -6,7 +6,7 @@ xml.rss version: "2.0" do
 
     for event in @events
       xml.item do
-        xml.title event.title
+        xml.title event.name
         xml.description event.description
         xml.pubDate event.created_at.to_s(:rfc822)
         xml.link event_url(event)
