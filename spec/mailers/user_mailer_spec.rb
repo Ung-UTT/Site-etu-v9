@@ -62,7 +62,7 @@ describe UserMailer do
       @email.to.should == User.administrators.map(&:email)
       @email.subject.starts_with?('[Site-etu] [Bug] ').should be_true
 
-      @email.encoded.should include @error.inspect
+      @email.encoded.should include @error.to_s
     end
   end
 end

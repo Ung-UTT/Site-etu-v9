@@ -1,5 +1,12 @@
 Oh no, that's a serious error! You gotta fix it asap.
+\
+= "Error: #{@error.to_s}"
 
-= raw @error.inspect
-= raw @error.backtrace.join("\n") if @error.backtrace
+- if @request
+  - %w[method url remote_ip].each do |key|
+    = "#{key.humanize}: #{@request.send(key)}"
+
+- if @error.backtrace
+  Backtrace:
+  = raw @error.backtrace.join("\n")
 

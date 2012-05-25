@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
     elsif exception.is_a?(CanCan::AccessDenied)
       render_access_denied(exception)
     else # Autre erreur
-      UserMailer.error(exception).deliver
+      UserMailer.error(exception, request).deliver
       render_error(exception)
     end
   end

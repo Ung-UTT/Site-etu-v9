@@ -11,8 +11,9 @@ class UserMailer < ActionMailer::Base
     end
   end
 
-  def error(error)
+  def error(error, request = nil)
     @error = error
+    @request = request
 
     mail(
       from: "ung+bug-site-etu@utt.fr",
