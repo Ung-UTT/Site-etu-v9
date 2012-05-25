@@ -3,7 +3,9 @@ class Document < ActiveRecord::Base
   validates_attachment_presence :asset
 
   has_paper_trail
-  has_attached_file :asset
+  has_attached_file :asset, url:
+    Rails.application.config.action_controller.relative_url_root.to_s +
+    "/system/:class/:attachment/:id_partition/:style/:filename"
 
   belongs_to :documentable, polymorphic: true
 

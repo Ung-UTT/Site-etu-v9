@@ -65,4 +65,6 @@ SiteEtu::Application.configure do
     :address              => 'smtp.utt.fr',
     :port                 => 25
   }
+
+  config.action_controller.relative_url_root = '/v9'
 end
