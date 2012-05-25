@@ -1,6 +1,7 @@
 class Asso < ActiveRecord::Base
   DEFAULT_ROLES = %w[member treasurer secretary]
   resourcify
+  paginates_per 32
 
   attr_accessible :name, :description, :image, :website, :email, :owner_id, :parent_id
   validates_presence_of :name, :owner
@@ -20,6 +21,20 @@ class Asso < ActiveRecord::Base
 
   has_many :assos_event, dependent: :destroy
   has_many :events, through: :assos_event, uniq: true
+
+  class << self
+    def search(clues)
+      # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
+      clues = clues.downcase.to_ascii.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
+      Asso.select do |asso|
+        # L'asso fait parti des assos recherchés si elle contient chaque indice
+        string = [asso.name, asso.description].join(' ')
+        clues.all? do |clue|
+          string.downcase.to_ascii.include?(clue)
+        end
+      end
+    end
+  end
 
   def users
     # Fetch all users with at least one role on this asso + the owner

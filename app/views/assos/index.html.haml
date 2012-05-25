@@ -1,11 +1,21 @@
 %section.content
   = title t('assos.list')
 
-  %ul
-    - @assos.each do |asso|
-      %li
-        %strong= link_to(asso.to_s, asso)
-        = asso.description.truncate(60) unless asso.description.nil?
+  = form_tag(assos_path, method: :get) do
+    %ul.fields
+      %li.field= text_field_tag :q, params[:q]
+      %li.field= submit_tag t('common.search')
+
+  - if @assos.empty?
+    %p= t('common.none')
+  - else
+    .profile
+      - @assos.each do |asso|
+        .user_frame
+          .image= image_tag_for_asso(asso)
+          %strong.name= link_to(asso.to_s, asso)
+
+    = paginate @assos
 
   - if can? :create, Asso
     %ul.actions

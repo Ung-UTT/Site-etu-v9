@@ -4,6 +4,15 @@ class AssosController < ApplicationController
   load_and_authorize_resource
 
   def index
+    if params[:q].nil?
+      @assos = @assos.page(params[:page])
+    else
+      # Recherche simple dans les assos
+      @assos = @assos.search(params[:q])
+      @assos = Kaminari::paginate_array(@assos).page(params[:page])
+      @assos = @assos.per(Asso.default_per_page)
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: @assos }
@@ -24,20 +33,20 @@ class AssosController < ApplicationController
 
   def join
     role = params[:asso][:roles]
-    if @asso.has_user? current_user, role
+    if @asso.has_asso? current_user, role
       redirect_to @asso, notice: t('c.assos.already_joined', role: t("model.role.roles.#{role}", default: role))
     else
-      @asso.add_user current_user, role
+      @asso.add_asso current_user, role
       redirect_to @asso, notice: t('c.assos.joined', role: t("model.role.roles.#{role}", default: role))
     end
   end
 
   def disjoin
     role = params[:asso][:roles]
-    unless @asso.has_user? current_user, role
+    unless @asso.has_asso? current_user, role
       redirect_to @asso, notice: t('c.assos.already_disjoined', role: t("model.role.roles.#{role}", default: role))
     else
-      @asso.remove_user current_user, role
+      @asso.remove_asso current_user, role
       redirect_to @asso, notice: t('c.assos.disjoined', role: t("model.role.roles.#{role}", default: role))
     end
   end

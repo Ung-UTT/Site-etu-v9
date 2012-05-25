@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
     def search(clues)
       # Prend la chaîne de recherche, la découpe selon les espaces, l'échappe et la joint
       clues = clues.downcase.to_ascii.split(' ').map{|n| Regexp.escape(n)} # [Emm, Car, ...]
-      users = User.select do |p|
+      User.select do |p|
         # Le utilisateur fait parti des utilisateurs recherchés si il contient
         # chacun des indices
         string = [p.login, p.firstname, p.lastname, p.level].join(' ')
