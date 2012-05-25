@@ -22,11 +22,14 @@ $(function () {
       dataType: 'json',
       jsonTermKey: 'q', // Variable de recherches (?q=...)
     }, function (data) {
-        var terms = {};
-        $.each(data, function (i, val) {
-            terms[val['id']] = val['login'];
-        });
-        return terms;
+      var terms = {};
+      $.each(data, function (i, val) {
+        terms[val['id']] = val['firstname'] + ' ' + val['lastname'];
+        if (terms[val['id']] == ' ') {
+          terms[val['id']] = val['login'];
+        }
+      });
+      return terms;
     });
 
   // Pour pas charger ça tout le temps :

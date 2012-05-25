@@ -9,11 +9,10 @@
   - if @assos.empty?
     %p= t('common.none')
   - else
-    .profile
-      - @assos.each do |asso|
-        .user_frame
-          .image= image_tag_for_asso(asso)
-          %strong.name= link_to(asso.to_s, asso)
+    - @assos.each do |asso|
+      .image_frame
+        .image= image_tag_for_asso(asso)
+        %strong.name= link_to(asso.to_s, asso)
 
     = paginate @assos
 

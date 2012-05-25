@@ -309,34 +309,30 @@
     margin: 5px 15px 0 0;
   }
 
-  .profile {
-    /* Photo d'utilisateur (dans le trombi) */
-    img.user {
-      max-width: 100px;
-    }
+  // Photo d'utilisateur (dans le trombi)
+  .profile img.user { max-width: 100px; }
 
-    .user_frame {
-      text-align: center;
+  .image_frame {
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    margin-bottom: 10px;
+
+    .image { margin: 5px; }
+
+    .name {
       display: inline-block;
-      margin: 5px;
-      margin-bottom: 10px;
-
-      .image { margin: 5px; }
-
-      .name {
-        display: inline-block;
-        font-size: 0.8em;
-        width: 130px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      font-size: 0.8em;
+      width: 130px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
+    img.asso { max-width: 100px; }
   }
 
-  .informations {
-    min-height: 140px;
-  }
+  .informations { min-height: 140px; }
 
   // For the courses#index
   .columns {
@@ -376,15 +372,11 @@
 }
 
 #contents .content form .chzn-container-multi {
-  min-width: 300px;
-
   ul {
     margin: 0;
     padding: 0;
 
-    .search-choice {
-      padding-right: 20px;
-    }
+    .search-choice { padding-right: 20px; }
   }
 }
 
