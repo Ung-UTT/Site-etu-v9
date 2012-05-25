@@ -19,7 +19,11 @@ require 'casclient/frameworks/rails/filter'
 
 module SiteEtu
   class Application < Rails::Application
-    config.version = `git log -1 --pretty='format:%h (%ci)'` rescue '[unknown]'
+    # Update at your convenience for every releases!
+    config.code_name = 'Saber-toothed Spitfire'
+
+    config.version = `git describe --abbrev=0 --tags` rescue '[unknown]'
+    config.commit = `git log -1 --pretty='format:%h (%ci)'` rescue '[unknown]'
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

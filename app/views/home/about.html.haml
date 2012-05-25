@@ -2,3 +2,8 @@
   = title t('home.about.title')
 
   = md t('home.about.content')
+
+  %h2 Version
+  %p
+    = "#{Rails.application.config.version} alias"
+    %span.italic= Rails.application.config.code_name
