@@ -1,6 +1,8 @@
 %section.content
   = title t('courses.list')
 
+  = search_form(courses_path)
+
   %ul.columns
     - @courses.each do |course|
       %li= link_to course.name, course

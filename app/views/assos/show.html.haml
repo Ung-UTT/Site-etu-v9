@@ -42,7 +42,7 @@
         %ul
         - @asso.roles.collect do |role|
           %li
-            %strong= role.to_s
+            %strong= role.name
             = links_to_users(role.users)
 
     - unless @asso.events.empty?

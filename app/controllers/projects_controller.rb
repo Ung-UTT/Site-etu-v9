@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
   before_filter :set_first_users, only: [:new, :edit]
 
   def index
+    @projects = search_and_paginate(@projects)
+
     respond_to do |format|
       format.html
       format.json { render json: @projects }

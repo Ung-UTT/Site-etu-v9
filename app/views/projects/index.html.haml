@@ -1,6 +1,8 @@
 %section.content
   = title t('projects.list')
 
+  = search_form(projects_path)
+
   = links_to_objects(@projects, true)
 
   - if can? :create, Project

@@ -3,6 +3,9 @@ class Annal < ActiveRecord::Base
   KINDS = %w[P M F A] # Partiel, Médian, Final ou Autre
 
   paginates_per 50
+  has_paper_trail
+  include Extensions::Searchable
+  searchable_attributes :semester, :year, :kind
 
   attr_accessible :course_id, :semester, :year, :kind, :documents_attributes
   validates_presence_of :course_id, :semester, :year, :kind, :documents
@@ -11,8 +14,6 @@ class Annal < ActiveRecord::Base
   validates_uniqueness_of :course_id, scope: [:year, :semester, :kind]
 
   default_scope order: 'year DESC'
-
-  has_paper_trail
 
   belongs_to :course
   has_many :documents, as: :documentable, dependent: :destroy

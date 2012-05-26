@@ -1,11 +1,13 @@
 class Asso < ActiveRecord::Base
   DEFAULT_ROLES = %w[member treasurer secretary]
+
   resourcify
   paginates_per 32
   has_paper_trail
-
   # Une asso peut avoir une asso fille (c'est un club)
   acts_as_nested_set dependent: :destroy
+  include Extensions::Searchable
+  searchable_attributes :name, :description, :website
 
   attr_accessible :name, :description, :image, :website, :email, :owner_id, :parent_id
   validates_presence_of :name, :owner
@@ -22,8 +24,6 @@ class Asso < ActiveRecord::Base
   has_many :assos_event, dependent: :destroy
   has_many :events, through: :assos_event, uniq: true
 
-  include Extensions::Searchable
-  searchable_attributes :name, :description
 
   def users
     # Fetch all users with at least one role on this asso + the owner

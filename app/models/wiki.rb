@@ -1,8 +1,9 @@
 class Wiki < ActiveRecord::Base
+  has_paper_trail
+
   attr_accessible :title, :content, :parent_id
   validates_presence_of :title
 
-  has_paper_trail
   # Arbre des pages du wiki
   acts_as_nested_set dependent: :destroy
 

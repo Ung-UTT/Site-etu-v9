@@ -1,8 +1,9 @@
 class Document < ActiveRecord::Base
+  has_paper_trail
+
   attr_accessible :asset, :documentable_id, :documentable_type
   validates_attachment_presence :asset
 
-  has_paper_trail
   has_attached_file :asset, url:
     Rails.application.config.action_controller.relative_url_root.to_s +
     "/system/:class/:attachment/:id_partition/:style/:filename"

@@ -1,10 +1,7 @@
 %section.content
   = title t('assos.list')
 
-  = form_tag(assos_path, method: :get) do
-    %ul.fields
-      %li.field= text_field_tag :q, params[:q]
-      %li.field= submit_tag t('common.search')
+  = search_form(assos_path)
 
   - if @assos.empty?
     %p= t('common.none')
@@ -14,7 +11,7 @@
         .image= image_tag_for_asso(asso)
         %strong.name= link_to(asso.to_s, asso)
 
-    = paginate @assos
+  = paginate @assos unless @assos.empty?
 
   - if can? :create, Asso
     %ul.actions

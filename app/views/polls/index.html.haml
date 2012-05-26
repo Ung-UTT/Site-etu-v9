@@ -1,6 +1,8 @@
 %section.content
   = title t('polls.list')
 
+  = search_form(polls_path)
+
   %ul
     - @polls.each do |poll|
       %li

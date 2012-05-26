@@ -5,6 +5,8 @@ class AnnalsController < ApplicationController
   before_filter :build_documents, only: [:new, :edit]
 
   def index
+    @annals = search_and_paginate(@annals)
+
     respond_to do |format|
       format.html
       format.json { render json: @annals }

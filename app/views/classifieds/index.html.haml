@@ -1,9 +1,11 @@
 %section.content
   = title t('classifieds.list')
 
+  = search_form(classifieds_path)
+
   = links_to_objects @classifieds, true
 
-  = paginate @classifieds
+  = paginate @classifieds unless @classifieds.empty?
 
   - if can? :create, Classified
     %ul.actions

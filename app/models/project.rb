@@ -1,12 +1,13 @@
 class Project < ActiveRecord::Base
   paginates_per 20
+  has_paper_trail
+  include Extensions::Searchable
+  searchable_attributes :name, :description
 
   attr_accessible :name, :description
   validates_presence_of :name
   validates_uniqueness_of :name
   validate :at_least_one_user
-
-  has_paper_trail
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :documents, as: :documentable, dependent: :destroy

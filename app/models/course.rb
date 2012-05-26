@@ -1,10 +1,12 @@
 class Course < ActiveRecord::Base
+  has_paper_trail
+  include Extensions::Searchable
+  searchable_attributes :name, :description
+
   attr_accessible :name, :description
   validates_presence_of :name
 
   default_scope order: 'name'
-
-  has_paper_trail
 
   has_many :annals, dependent: :destroy
   has_many :timesheets, dependent: :destroy

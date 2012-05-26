@@ -3,6 +3,8 @@ class CoursesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @courses = Course.search(params[:q]) unless params[:q].blank?
+
     respond_to do |format|
       format.html
       format.json { render json: @courses }

@@ -1,13 +1,12 @@
 class Event < ActiveRecord::Base
   paginates_per 20
+  has_paper_trail
 
   attr_accessible :name, :description, :location, :start_at, :end_at
   validates_presence_of :name
   validate :start_at_cannot_be_after_end_at
 
   default_scope order: 'start_at DESC'
-
-  has_paper_trail
 
   belongs_to :owner, :class_name => 'User'
 

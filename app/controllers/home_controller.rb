@@ -3,7 +3,7 @@
 class HomeController < ApplicationController
   skip_authorization_check
 
-  def index # Page d'accueil
+  def index
     @news = News.visible.page(params[:page])
   end
 

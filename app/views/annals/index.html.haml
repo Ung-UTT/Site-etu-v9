@@ -1,10 +1,11 @@
 %section.content
   = title t('annals.list')
 
-  %ul
-    - @annals.each do |annal|
-      %li
-        = link_to annal.to_s, annal
+  = search_form(annals_path)
+
+  = links_to_objects(@annals)
+
+  = paginate @annals unless @annals.empty?
 
   - if can? :create, Annal
     %ul.actions

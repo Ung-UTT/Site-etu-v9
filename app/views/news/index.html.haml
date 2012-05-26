@@ -8,7 +8,7 @@
     - @news.each do |news|
       = render 'news/one_news', {news: news}
 
-  = paginate @news
+  = paginate @news unless @news.empty?
 
   - if can? :create, News
     %ul.actions

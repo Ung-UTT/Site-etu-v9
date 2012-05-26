@@ -1,11 +1,15 @@
 %section.content
   = title t('carpools.list')
 
+  = search_form(carpools_path)
+
   %h2= t('carpools.drivers')
   = links_to_objects @drivers, true
 
   %h2= t('carpools.passengers')
   = links_to_objects @not_drivers, true
+
+  = paginate @carpools unless @carpools.empty?
 
   - if can? :create, Carpool
     %ul.actions

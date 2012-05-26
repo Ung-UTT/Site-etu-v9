@@ -2,11 +2,12 @@
 
 class Classified < ActiveRecord::Base
   paginates_per 50
+  has_paper_trail
+  include Extensions::Searchable
+  searchable_attributes :title, :description, :price, :location
 
   attr_accessible :title, :description, :price, :location
   validates_presence_of :title, :description
-
-  has_paper_trail
 
   belongs_to :user
   has_many :documents, as: :documentable, dependent: :destroy

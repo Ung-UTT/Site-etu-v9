@@ -1,10 +1,7 @@
 %section.content
   = title t('users.list')
 
-  = form_tag(users_path, method: :get) do
-    %ul.fields
-      %li.field= text_field_tag :q, params[:q]
-      %li.field= submit_tag t('common.search')
+  = search_form(users_path)
 
   - if @users.empty?
     %p= t('common.none')
@@ -13,6 +10,6 @@
       - @users.each do |user|
         .image_frame
           .image= link_to_user user
-          %strong.name= user.to_s
+          %strong.name= link_to user.to_s, user
 
-    = paginate @users
+    = paginate @users unless @users.empty?

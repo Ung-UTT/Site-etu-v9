@@ -3,7 +3,7 @@ class ClassifiedsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @classifieds = @classifieds.order('created_at desc').page(params[:page])
+    @classifieds = search_and_paginate(@classifieds)
 
     respond_to do |format|
       format.html

@@ -83,4 +83,11 @@ module ApplicationHelper
   def button_to_delete(label, link)
     button_to label, link, confirm: t('common.confirm'), method: :delete
   end
+
+  # Complete search form
+  def search_form(path)
+    form_tag(path, method: :get) do
+      text_field_tag(:q, params[:q]) + ' ' + submit_tag(t('common.search'))
+    end
+  end
 end

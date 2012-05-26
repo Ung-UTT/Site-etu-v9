@@ -5,7 +5,7 @@
     - @events.each do |event|
       = render 'events/one_event', {event: event}
 
-  = paginate @events
+  = paginate @events unless @events.empty?
 
   - if can? :create, Event
     %ul.actions

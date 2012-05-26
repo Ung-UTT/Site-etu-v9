@@ -1,14 +1,14 @@
 class Role < ActiveRecord::Base
+  has_paper_trail
+
   attr_accessible :name
   validates_presence_of :name
+
+  default_scope order: 'name'
 
   # Rolify
   has_and_belongs_to_many :users, join_table: :users_roles
   belongs_to :resource, polymorphic: true
-
-  default_scope order: 'name'
-
-  has_paper_trail
 
   def short_users_list
     users.first(20).map(&:login).join(', ').truncate(80)

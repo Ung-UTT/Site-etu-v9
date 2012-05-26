@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   rolify
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable,
-         :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   paginates_per 32
   has_paper_trail
+  include Extensions::Searchable
+  searchable_attributes :login, :firstname, :lastname, :level, :surname, :once
 
   attr_accessible :email, :login, :password, :password_confirmation,
                   :remember_me, :preference_attributes, :utt_address,
@@ -43,9 +44,6 @@ class User < ActiveRecord::Base
 
   has_many :timesheets_user, dependent: :destroy
   has_many :timesheets, through: :timesheets_user, uniq: true
-
-  include Extensions::Searchable
-  searchable_attributes :login, :firstname, :lastname, :level
 
   # FIXME: We should optimize SQL querie for users, so it avoid the lot of
   #        SQL queries for user's images (but we should preserve performance

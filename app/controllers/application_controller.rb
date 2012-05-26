@@ -178,6 +178,25 @@ class ApplicationController < ActionController::Base
     render 'layouts/_edit', locals: {resource: resource}
   end
 
+  # Shortcut to add search and pagination to a controller
+  def search_and_paginate(resources)
+    return [] if resources.nil? or resources.empty?
+
+    klass = resources.first.class
+
+    if params[:q].nil?
+      resources = resources.page(params[:page])
+    else
+      # Simple search via Searchable
+      resources = klass.search(params[:q])
+      # Pagination with Kaminari
+      resources = Kaminari::paginate_array(resources).page(params[:page])
+      resources = resources.per(klass.default_per_page)
+    end
+
+    resources
+  end
+
   # Détecte si l'utilisateur utilise son portable
   def detect_mobile?
     return false if request.user_agent.nil? || request.user_agent.length < 4

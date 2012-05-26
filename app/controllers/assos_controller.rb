@@ -4,14 +4,7 @@ class AssosController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if params[:q].nil?
-      @assos = @assos.page(params[:page])
-    else
-      # Recherche simple dans les assos
-      @assos = @assos.search(params[:q])
-      @assos = Kaminari::paginate_array(@assos).page(params[:page])
-      @assos = @assos.per(Asso.default_per_page)
-    end
+    @assos = search_and_paginate(@assos)
 
     respond_to do |format|
       format.html

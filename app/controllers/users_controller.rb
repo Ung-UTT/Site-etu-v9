@@ -3,14 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if params[:q].nil?
-      @users = @users.page(params[:page])
-    else
-      # Recherche simple dans le trombi
-      @users = @users.search(params[:q])
-      @users = Kaminari::paginate_array(@users).page(params[:page])
-      @users = @users.per(User.default_per_page)
-    end
+    @users = search_and_paginate(@users)
 
     respond_to do |format|
       format.html

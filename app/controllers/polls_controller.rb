@@ -3,6 +3,8 @@ class PollsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @polls = search_and_paginate(@polls)
+
     respond_to do |format|
       format.html
       format.json { render json: @polls }

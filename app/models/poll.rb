@@ -1,6 +1,9 @@
 class Poll < ActiveRecord::Base
   DEFAULT_ANSWERS = 5
 
+  include Extensions::Searchable
+  searchable_attributes :name, :description
+
   attr_accessible :name, :description, :answers_attributes
   validates_presence_of :name
 
