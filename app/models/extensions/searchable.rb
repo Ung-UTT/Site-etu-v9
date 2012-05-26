@@ -10,12 +10,16 @@ module Extensions
       end
 
       def search clues
-        clues = clues.downcase.to_ascii.split(' ').map{ |clue| Regexp.escape(clue) }
+        clues = clues.downcase.to_ascii.split(' ').map do |clue|
+          Regexp.escape(clue)
+        end
+
         select do |record|
-          string = @searchable_attributes.map { |attr| record.send(attr) }.join(' ')
-          clues.all? do |clue|
-            string.downcase.to_ascii.include?(clue)
-          end
+          string = @searchable_attributes.map do |attribute|
+            record.send(attribute)
+          end.join(' ').downcase.to_ascii
+
+          clues.all? { |clue| string.include?(clue) }
         end
       end
     end
