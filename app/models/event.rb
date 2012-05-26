@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_paper_trail
 
   attr_accessible :name, :description, :location, :start_at, :end_at
-  validates_presence_of :name
+  validates_presence_of :name, :start_at
   validate :start_at_cannot_be_after_end_at
 
   default_scope order: 'start_at DESC'
@@ -38,8 +38,12 @@ class Event < ActiveRecord::Base
        'alt' => name }
   end
 
+  # Events for FullCalendar
   def self.make_agenda
-    Event.all.map(&:to_fullcalendar)
+    # Don't get all events, only one month after and before now
+    events = Event.where(['start_at > ?', Time.now - 4.weeks])
+    events = events.where(['start_at < ?', Time.now + 4.weeks])
+    events.map(&:to_fullcalendar)
   end
 
   # Les images d'un événement sont les documents qui ont un format d'image
