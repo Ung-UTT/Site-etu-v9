@@ -8,7 +8,7 @@
     %ul.comments.list-with-delete
       - comments.each do |comment|
         %li
-          = link_to '#', [commentable, comment]
+          = link_to '#', [commentable, comment], title: l(comment.created_at)
           - if comment.user
             = link_to_user comment.user
           = comment.content
