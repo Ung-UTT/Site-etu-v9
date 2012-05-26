@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_paper_trail
 
   attr_accessible :name, :description, :location, :start_at, :end_at
-  validates_presence_of :name, :start_at
+  validates_presence_of :name
   validate :start_at_cannot_be_after_end_at
 
   default_scope order: 'start_at DESC'
