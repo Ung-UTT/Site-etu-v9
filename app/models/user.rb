@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def hours_per_week
-    schedule.map(&:duration).sum / 60
+    timesheets.map(&:duration).sum / 60
   end
 
   def ability

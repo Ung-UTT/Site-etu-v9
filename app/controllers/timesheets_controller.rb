@@ -5,17 +5,14 @@ class TimesheetsController < ApplicationController
 
   def index
     if params[:users].blank?
-      # Récupére aucun horaire
+      # The visitor have to choose users
       @timesheets = []
       @users = []
     else
-      # Récupére tous les horaires des utilisateurs passés en paramétres
+      # Cumulate timesheets of users
       @users = User.find(params[:users])
-      @timesheets = @users.map(&:timesheets).flatten.uniq
+      @timesheets = Timesheet.cumulate_schedules(@users)
     end
-
-    # Va trier les horaires pour prendre seulement ceux du semestre actuel
-    @schedule = Timesheet.make_schedule(@timesheets)
 
     respond_to do |format|
       format.html

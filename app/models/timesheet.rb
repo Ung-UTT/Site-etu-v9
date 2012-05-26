@@ -13,6 +13,19 @@ class Timesheet < ActiveRecord::Base
   has_many :timesheets_user, dependent: :destroy
   has_many :users, through: :timesheets_user, uniq: true
 
+  # Cumulate
+  def self.cumulate_schedules(users)
+    users.map do |user|
+      Timesheet.make_schedule(user.timesheets).map do |timesheet|
+        timesheet['title'] = user.to_s
+        timesheet['tag'] = user.to_s
+        timesheet['alt'] = user.to_s + ' : ' + timesheet['alt']
+
+        timesheet
+      end
+    end.flatten
+  end
+
   # Selectionne les horaires du semestre actuel
   def self.make_schedule(timesheets)
     timesheets = [timesheets].compact if timesheets.class != Array
@@ -86,7 +99,7 @@ class Timesheet < ActiveRecord::Base
       'end_at' => start_at + duration.minutes,
       'object' => self,
       'alt' => range,
-      'course' => course.name
+      'tag' => course.name
     }
   end
 

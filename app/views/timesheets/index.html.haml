@@ -10,7 +10,7 @@
       %li.field= submit_tag t('timesheets.cumulate')
 
   - if params[:users]
-    = render 'timesheets/schedule', schedule: @schedule
+    = render 'timesheets/schedule', schedule: @timesheets
 
   - if can? :create, Timesheet
     %ul.actions

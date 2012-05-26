@@ -18,9 +18,9 @@ module TimesheetsHelper
     }
   end
 
-  # Passe de ["MATH01", "LE08", ...] à :
+  # Passe de ["MATH01", "LE08", ...] (ou ["Dorian", "Cédric", ...]) à :
   # {"MATH01" => "#231233", "LE08" => "#981822", ...}
-  def map_courses_to_colors(courses)
+  def map_tags_to_colors(tags)
     # Couleurs différentes, foncées
     colors = ['#343D91', '#346F91', '#34916D', '#349143', '#599134', '#899134',
               '#916734', '#914034', '#913457', '#91347E', '#7B3491']
@@ -28,31 +28,29 @@ module TimesheetsHelper
     # On va associer à chaque cours une couleur
     i = 0
     hash = {'_default' => '#6579C5'} # Va contenir les couples "UV" => "#couleur"
-    courses.each do |name|
-      hash[name] = colors[i]
+    tags.each do |tag|
+      hash[tag] = colors[i]
       i = (i+1) % colors.size # Va au début si ya trop de cours différents
     end
     hash
   end
 
-  # Les horaires
-  def timesheets_to_json(timesheets)
-    agenda = []
-    agenda = timesheets.map {|ts| ts.to_fullcalendar}
-    agenda_to_json(agenda)
-  end
-
+  # Hash of timesheets/events/... to JSON (with color, etc...)
   def agenda_to_json(array_of_hash)
+    if array_of_hash.first.is_a? Timesheet
+      array_of_hash = array_of_hash.map(&:to_fullcalendar)
+    end
+
     agenda = []
 
     # Les cours
-    courses = array_of_hash.map {|hash| hash['course']}.compact.uniq
+    tags = array_of_hash.map { |hash| hash['tag'] }.compact.uniq
     # Une couleur est associée à chaque cours
-    colors = map_courses_to_colors(courses)
+    colors = map_tags_to_colors(tags)
 
     # On remplit l'emploi du temps selon les normes de FullCalendar
     array_of_hash.map do |hash|
-      hash['color'] = colors[hash['course'] || '_default']
+      hash['color'] = colors[hash['tag'] || '_default']
       object = event_to_json(hash)
       agenda << object
     end
