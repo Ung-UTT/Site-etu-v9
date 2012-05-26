@@ -69,7 +69,7 @@ namespace :import do
               next
             end
 
-            users = USERS.select {|user| ts['students'].include?(user.login)}
+            users = USERS.select {|user| user.login.in?(ts['students'])}
             if users.size != ts['students'].size
               # Ne devrait jamais arriver
               puts "\nSome students can't be found for #{timesheet.short_range}"

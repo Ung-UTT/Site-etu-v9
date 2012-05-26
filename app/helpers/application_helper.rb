@@ -17,7 +17,7 @@ module ApplicationHelper
 
   # Current path to the RSS feed
   def current_rss(controller)
-    controller = 'news' unless ['events', 'classifieds'].include?(controller)
+    controller = 'news' unless controller.in?(%w[events classifieds])
     link = {controller: controller, format: 'rss', only_path: false}
     auto_discovery_link_tag(:rss, link)
   end

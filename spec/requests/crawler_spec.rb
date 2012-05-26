@@ -14,7 +14,7 @@ end
 
 def is_associated_resource? controller
   # polymorphicable classes
-  %(comments documents).include? controller
+  controller.in?(%w[comments documents])
 end
 
 feature "It does not raise any errors while browsing as an administrator" do # what a cool feature, huh?
@@ -38,15 +38,15 @@ feature "It does not raise any errors while browsing as an administrator" do # w
     model = controller.singularize # Example: project
 
     # Remove Rails internal routes (assets, ...) and not tested routes
-    next if %w(rails/info cas).include?(controller) or
+    next if controller.in?(%w[rails/info cas]) or
       # Actions not tested
-      %w(update join disjoin render_not_found deploy).include?(action) or
-      (controller.start_with? 'devise/' and %w(create edit destroy).include?(action)) or
+      action.in?(%w[update join disjoin render_not_found deploy]) or
+      (controller.start_with? 'devise/' and action.in?(%w[create edit destroy])) or
       (controller == 'annals' and action == 'create') or # Already tested
       # FIXME: Special validation
-      (controller == 'projects' and %w(create destroy).include?(action)) or
+      (controller == 'projects' and action.in?(%w[create destroy])) or
       # FIXME: Test associated resources (comments and documents)
-      (is_associated_resource?(controller) and %(show create destroy).include?(action))
+      (is_associated_resource?(controller) and action.in?(%w[show create destroy]))
 
     scenario "#{controller}##{action} (path: #{path})" do
       # this also checks that every route has the controller and the action defined
@@ -71,12 +71,11 @@ feature "It does not raise any errors while browsing as an administrator" do # w
         visit_and_check path
 
         # white-list of paths that should redirect when signed in
-        if %w[
+        if path.in?(%w[
           /users/sign_in
           /users/password/new
           /users/unlock/new
-          /wikis
-        ].include?(path)
+          /wikis])
           current_path.should_not == path
         else
           current_path.should == path

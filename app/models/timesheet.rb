@@ -58,7 +58,7 @@ class Timesheet < ActiveRecord::Base
         day = semester['weeks'][index][ts.start_at.wday - 1, 1] # cf lib/semesters.rb
 
         if (!ts.week.nil? and ts.week == day) or # Semaine A ou semaine B
-           (ts.week.nil? and ['A', 'B'].include?(day)) # Il y a cours ce jour là ?
+           (ts.week.nil? and day.in?(%w[A B])) # Il y a cours ce jour là ?
           hash = ts.to_fullcalendar
           # Comme une répétition, on ajoute les semaines
           hash['start_at'] += index.weeks
