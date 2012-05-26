@@ -41,8 +41,11 @@ class Event < ActiveRecord::Base
   # Events for FullCalendar
   def self.make_agenda
     # Don't get all events, only one month after and before now
-    events = Event.where(['start_at > ?', Time.now - 4.weeks])
-    events = events.where(['start_at < ?', Time.now + 4.weeks])
+    events = Event.where(
+      'start_at > ? AND start_at < ?',
+      Time.now - 4.weeks,
+      Time.now + 4.weeks
+    )
     events.map(&:to_fullcalendar)
   end
 
