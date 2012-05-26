@@ -18,7 +18,7 @@ guard 'rspec', version: 2, all_after_pass: true, all_on_start: false, wait: 60 d
   watch('config/routes.rb')                           { "spec/requests/crawler_spec.rb" }
 end
 
-guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' }, wait: 40 do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})

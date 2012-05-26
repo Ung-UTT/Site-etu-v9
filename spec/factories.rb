@@ -51,6 +51,8 @@ FactoryGirl.define do
 
   factory :event do
     name "Big stuff!"
+    start_at { 1.day.from_now }
+    end_at { start_at + 4.hours }
   end
 
   factory :news do

@@ -1,9 +1,11 @@
 def page_should_have_notice
-  page.should have_selector(:css, "#contents > p.notice")
+  puts page.body unless valid = page.has_selector?(:css, "#contents > p.notice")
+  valid.should be_true
 end
 
 def page_should_have_alert
-  page.should have_selector(:css, "#contents > p.alert")
+  puts page.body unless valid = page.has_selector?(:css, "#contents > p.alert")
+  valid.should be_true
 end
 
 def submit_form
