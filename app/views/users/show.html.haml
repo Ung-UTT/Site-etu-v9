@@ -4,7 +4,7 @@
   - if @user.image
     %p.profile.alone= link_to_user @user
 
-  %div.informations
+  %div.information
     %dl
       = not_empty_dd(t('users.email'), mail_to(@user.email))
       = not_empty_dd(t('users.phone'), @user.phone)

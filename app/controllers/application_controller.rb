@@ -180,7 +180,7 @@ class ApplicationController < ActionController::Base
 
   # Shortcut to add search and pagination to a controller
   def search_and_paginate(resources)
-    return [] if resources.nil? or resources.empty?
+    return [] if resources.blank?
 
     klass = resources.first.class
 
