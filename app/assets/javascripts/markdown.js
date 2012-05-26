@@ -11,13 +11,10 @@
 // Feel free to add more tags
 // -------------------------------------------------------------------
 
-// Dorian : définit l'url vers la page d'accueil via la bannière (ou /)
-ROOT_URL = (typeof(ROOT_URL) == 'undefined') ? '/' : ROOT_URL.href;
-
 mySettings = {
   resizeHandle: false, // Dorian : Géré par le navigateur
   previewAutoRefresh: true, // Dorian : Met à jour automatiquement la preview
-  previewParserPath: ROOT_URL + '/preview', // Dorian : prévisualisation via l'application Rails
+  previewParserPath: ROOT_PATH + '/preview', // Dorian : prévisualisation via l'application Rails
   onShiftEnter: {keepDefault:false, openWith:'\n\n'},
   markupSet: [
     {name:'First Level Heading', key:'1', placeHolder:'Votre titre...', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '=') } },
@@ -41,7 +38,7 @@ mySettings = {
     {name:'Quotes', openWith:'> '},
     {name:'Code Block / Code', openWith:'(!(\t|!|`)!)', closeWith:'(!(`)!)'},
     {separator:'-'},
-    {name:'Preview', call:'preview', className:"preview"}
+    {name:'Preview', call:'preview', className:'preview'}
   ]
 }
 
