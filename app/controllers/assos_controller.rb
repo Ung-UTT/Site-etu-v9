@@ -5,6 +5,7 @@ class AssosController < ApplicationController
 
   def index
     @assos = search_and_paginate(@assos)
+    redirect_to(@assos.first) and return if @assos.size == 1
 
     respond_to do |format|
       format.html

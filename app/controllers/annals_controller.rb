@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 class AnnalsController < ApplicationController
   load_and_authorize_resource
 
@@ -6,6 +7,7 @@ class AnnalsController < ApplicationController
 
   def index
     @annals = search_and_paginate(@annals)
+    redirect_to(@annals.first) and return if @annals.size == 1
 
     respond_to do |format|
       format.html

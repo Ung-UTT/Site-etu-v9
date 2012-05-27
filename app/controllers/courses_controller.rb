@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.search(params[:q]) unless params[:q].blank?
+    redirect_to(@courses.first) and return if @courses.size == 1
 
     respond_to do |format|
       format.html

@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = search_and_paginate(@projects)
+    redirect_to(@projects.first) and return if @projects.size == 1
 
     respond_to do |format|
       format.html

@@ -54,7 +54,12 @@ feature "It does not raise any errors while browsing as an administrator" do # w
 
       case action
       when 'index', 'new'
-        object = create model if action == 'index' and controller != 'home'
+        # Create at least two objects (because some controllers redirect when
+        # there is only one object
+        if action == 'index' and controller != 'home'
+          create model
+          object = create model
+        end
 
         if is_associated_resource? controller
           # the commentable/documentable class name (e.g. asso, course, etc.)

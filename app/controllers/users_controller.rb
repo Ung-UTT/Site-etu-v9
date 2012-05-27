@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = search_and_paginate(@users)
+    redirect_to(@users.first) and return if @users.size == 1
 
     respond_to do |format|
       format.html

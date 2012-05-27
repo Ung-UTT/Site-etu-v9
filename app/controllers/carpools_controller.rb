@@ -4,6 +4,7 @@ class CarpoolsController < ApplicationController
 
   def index
     @carpools = search_and_paginate(@carpools)
+    redirect_to(@carpools.first) and return if @carpools.size == 1
 
     @drivers = @carpools.select { |car| car.is_driver }
     @not_drivers = @carpools.select { |car| !car.is_driver }
