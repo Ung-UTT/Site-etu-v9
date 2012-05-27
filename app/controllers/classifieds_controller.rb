@@ -4,7 +4,7 @@ class ClassifiedsController < ApplicationController
 
   def index
     @classifieds = search_and_paginate(@classifieds)
-    redirect_to(@classifieds.first) and return if @classifieds.size == 1
+    redirect_to(@classifieds.first) and return if @classifieds.one? and params[:q]
 
     respond_to do |format|
       format.html

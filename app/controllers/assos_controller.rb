@@ -5,7 +5,7 @@ class AssosController < ApplicationController
 
   def index
     @assos = search_and_paginate(@assos)
-    redirect_to(@assos.first) and return if @assos.size == 1
+    redirect_to(@assos.first) and return if @assos.one? and params[:q]
 
     respond_to do |format|
       format.html

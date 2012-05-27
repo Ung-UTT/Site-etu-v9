@@ -4,7 +4,7 @@ class PollsController < ApplicationController
 
   def index
     @polls = search_and_paginate(@polls)
-    redirect_to(@polls.first) and return if @polls.size == 1
+    redirect_to(@polls.first) and return if @polls.one? and params[:q]
 
     respond_to do |format|
       format.html
