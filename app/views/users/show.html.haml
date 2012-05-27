@@ -7,7 +7,13 @@
   %div.information
     %dl
       = not_empty_dd(t('users.email'), mail_to(@user.email))
-      = not_empty_dd(t('users.phone'), @user.phone)
+      - unless @user.phone.blank?
+        %dt= t('users.phone')
+        %dd
+          = @user.phone
+          - if mobile?
+            (#{link_to(t('users.call'), "tel:#{@user.phone}")},
+            #{link_to(t('users.sms'), "sms:#{@user.phone}")})
       = not_empty_dd(t('users.utt_address'), @user.utt_address)
       = not_empty_dd(t('users.parents_address'), @user.parents_address)
       = not_empty_dd(t('users.birth_date'), @user.birth_date ? l(@user.birth_date) : nil)

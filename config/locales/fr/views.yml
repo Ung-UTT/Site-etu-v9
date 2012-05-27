@@ -212,6 +212,8 @@ fr:
     description: "Description"
     timesheet:
       hours_per_week: "Nombre d'heures par semaine"
+    call: "Appeller"
+    sms: "SMS"
 
   user_sessions:
     logout: "Se déconnecter"
