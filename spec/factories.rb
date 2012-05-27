@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :asso, aliases: [:club] do
-    sequence(:name) {|n| "Asso #{n}" }
+    sequence(:name) { |n| "Asso #{n}" }
 
     association :owner, factory: :user
   end
@@ -56,7 +56,7 @@ FactoryGirl.define do
   end
 
   factory :news do
-    sequence(:title) {|n| "News #{n}" }
+    sequence(:title) { |n| "News #{n}" }
 
     content "What a news!"
     is_moderated true
@@ -69,42 +69,42 @@ FactoryGirl.define do
   end
 
   factory :user do
-    sequence(:login) {|n| "login#{n}" }
+    sequence(:login) { |n| "login#{n}" }
 
     email { "#{login}@utt.fr" }
     password { SecureRandom.base64 }
 
     factory :user_with_schedule do
-      after_create do |user|
+      after :create do |user|
         user.timesheets << FactoryGirl.create(:timesheet)
       end
     end
 
     factory :student do
-      after_create do |user|
+      after :create do |user|
         user.add_role :student
       end
     end
 
     factory :moderator do
-      after_create do |user|
+      after :create do |user|
         user.add_role :moderator
       end
     end
 
     factory :administrator do
-      after_create do |user|
+      after :create do |user|
         user.add_role :administrator
       end
     end
   end
 
   factory :poll do
-    sequence(:name) {|n| "Poll #{n}" }
+    sequence(:name) { |n| "Poll #{n}" }
 
     factory :poll_with_answers do
-      after_create do |poll|
-        FactoryGirl.create_list(:answer, 3, poll: poll, content: "Answer #{n}")
+      after :create do |poll|
+        FactoryGirl.create_list(:answer, 3, poll: poll, content: "Answer")
       end
     end
   end
@@ -115,7 +115,7 @@ FactoryGirl.define do
   end
 
   factory :project do
-    sequence(:name) {|n| "Project #{n}" }
+    sequence(:name) { |n| "Project #{n}" }
     users { [ create(:user) ] }
   end
 
