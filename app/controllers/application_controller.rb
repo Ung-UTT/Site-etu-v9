@@ -127,10 +127,8 @@ class ApplicationController < ActionController::Base
     if params[:mobile]
       if params[:mobile] == 'true'
         cookies[:force_mobile] = 'true'
-        return true
       else
         cookies[:force_mobile] = 'false'
-        return false
       end
     end
 
