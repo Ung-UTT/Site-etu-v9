@@ -17,9 +17,11 @@ class Timesheet < ActiveRecord::Base
   def self.cumulate_schedules(users)
     users.map do |user|
       Timesheet.make_schedule(user.timesheets).map do |timesheet|
+        timesheet = timesheet.to_fullcalendar
+
         timesheet['title'] = user.to_s
         timesheet['tag'] = user.to_s
-        timesheet['alt'] = user.to_s + ' : ' + timesheet['alt']
+        timesheet['alt'] = user.to_s + ' : ' + timesheet['alt'].to_s
 
         timesheet
       end
