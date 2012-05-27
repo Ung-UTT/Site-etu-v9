@@ -123,27 +123,21 @@ class ApplicationController < ActionController::Base
 
   # Mobile ou pas mobile ?
   def mobile?
-    # Si on a déjà définie si c'était un mobile ou pas, on utilise un pseudo-cache
-    return @is_mobile if defined?(@is_mobile)
-
     # Si l'utilisateur demande une version particulière, elle prévaut
     if params[:mobile]
       if params[:mobile] == 'true'
         cookies[:force_mobile] = 'true'
-        @is_mobile = true
+        return true
       else
         cookies[:force_mobile] = 'false'
-        @is_mobile = false
+        return false
       end
-      return @is_mobile
     end
 
-    # Sinon, on regarde si c'est un téléphone ou si il a déjà choisi une version
-    # (Mobile et pas forcé normal) ou force mobile
-    @is_mobile = (detect_mobile? and cookies[:force_mobile] != 'false') or
-                 (cookies[:force_mobile] == 'true')
+    return cookies[:force_mobile] if cookies[:force_mobile]
 
-    @is_mobile
+    # Sinon, on regarde si c'est un téléphone
+    detect_mobile?
   end
 
   # Méthode pratique dans certaines classes pour trouver l'objet associé
