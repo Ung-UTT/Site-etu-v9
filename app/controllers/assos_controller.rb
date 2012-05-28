@@ -1,12 +1,11 @@
 # encoding: utf-8
 class AssosController < ApplicationController
-  before_filter :process_image, only: [:create, :update]
   load_and_authorize_resource
 
-  def index
-    @assos = search_and_paginate(@assos)
-    redirect_to(@assos.first) and return if @assos.one? and params[:q]
+  before_filter :search_and_paginate, only: :index
+  before_filter :process_image, only: [:create, :update]
 
+  def index
     respond_to do |format|
       format.html
       format.json { render json: @assos }

@@ -171,22 +171,25 @@ class ApplicationController < ActionController::Base
   end
 
   # Shortcut to add search and pagination to a controller
-  def search_and_paginate(resources)
-    return [] if resources.blank?
-
-    klass = resources.first.class
+  def search_and_paginate
+    resources = instance_variable_get("@#{params[:controller]}")
+    return if resources.empty?
 
     if params[:q].nil?
       resources = resources.page(params[:page])
     else
+      klass = resources.first.class
+
       # Simple search via Searchable
       resources = klass.search(params[:q])
+      redirect_to resources.first if resources.one?
+
       # Pagination with Kaminari
       resources = Kaminari::paginate_array(resources).page(params[:page])
       resources = resources.per(klass.default_per_page)
     end
 
-    resources
+    instance_variable_set("@#{params[:controller]}", resources)
   end
 
   # Détecte si l'utilisateur utilise son portable

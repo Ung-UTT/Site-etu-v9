@@ -2,10 +2,9 @@
 class ClassifiedsController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    @classifieds = search_and_paginate(@classifieds)
-    redirect_to(@classifieds.first) and return if @classifieds.one? and params[:q]
+  before_filter :search_and_paginate, only: :index
 
+  def index
     respond_to do |format|
       format.html
       format.json { render json: @classifieds }

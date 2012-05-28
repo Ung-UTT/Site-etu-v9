@@ -3,12 +3,10 @@
 class AnnalsController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :search_and_paginate, only: :index
   before_filter :build_documents, only: [:new, :edit]
 
   def index
-    @annals = search_and_paginate(@annals)
-    redirect_to(@annals.first) and return if @annals.one? and params[:q]
-
     respond_to do |format|
       format.html
       format.json { render json: @annals }

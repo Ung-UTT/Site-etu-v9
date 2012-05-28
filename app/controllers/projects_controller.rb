@@ -1,12 +1,11 @@
 # encoding: utf-8
 class ProjectsController < ApplicationController
   load_and_authorize_resource
+
+  before_filter :search_and_paginate, only: :index
   before_filter :set_first_users, only: [:new, :edit]
 
   def index
-    @projects = search_and_paginate(@projects)
-    redirect_to(@projects.first) and return if @projects.one? and params[:q]
-
     respond_to do |format|
       format.html
       format.json { render json: @projects }

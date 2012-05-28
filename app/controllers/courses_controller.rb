@@ -2,10 +2,9 @@
 class CoursesController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    @courses = Course.search(params[:q]) unless params[:q].blank?
-    redirect_to(@courses.first) and return if @courses.one? and params[:q]
+  before_filter :search_and_paginate, only: :index
 
+  def index
     respond_to do |format|
       format.html
       format.json { render json: @courses }

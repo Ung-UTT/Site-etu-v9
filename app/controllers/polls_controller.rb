@@ -1,11 +1,11 @@
 # encoding: utf-8
+
 class PollsController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    @polls = search_and_paginate(@polls)
-    redirect_to(@polls.first) and return if @polls.one? and params[:q]
+  before_filter :search_and_paginate, only: :index
 
+  def index
     respond_to do |format|
       format.html
       format.json { render json: @polls }

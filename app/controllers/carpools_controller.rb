@@ -2,10 +2,9 @@
 class CarpoolsController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    @carpools = search_and_paginate(@carpools)
-    redirect_to(@carpools.first) and return if @carpools.one? and params[:q]
+  before_filter :search_and_paginate, only: :index
 
+  def index
     @drivers = @carpools.select { |car| car.is_driver }
     @not_drivers = @carpools.select { |car| !car.is_driver }
 
