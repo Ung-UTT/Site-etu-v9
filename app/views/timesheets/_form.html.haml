@@ -12,7 +12,7 @@
 
     %li.field
       = f.label :week, t('timesheets.week')
-      = f.select :week, options_for_select([[t('common.none'), nil], 'A', 'B'], @timesheet.week)
+      = f.select :week, options_for_select([[t('common.none'), nil]] + Timesheet::WEEKS, @timesheet.week)
 
     %li.field
       = f.label :room, t('timesheets.room')

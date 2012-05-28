@@ -1,5 +1,6 @@
 class Timesheet < ActiveRecord::Base
   CATEGORIES = %w(CM TD TP)
+  WEEKS = %w(A B)
 
   has_paper_trail
 
