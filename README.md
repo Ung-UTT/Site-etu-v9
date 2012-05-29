@@ -3,7 +3,7 @@
 ## Si vous êtes un étudiant
 
 Vous devriez aller voir le [wiki](https://github.com/Ung-UTT/Site-etu-v9/wiki).
-Si vous voulez reporter un bug, [vous pouvez](https://github.com/Ung-UTT/Site-etu-v9/issues/new).
+Si vous voulez signaler un bug, [vous pouvez](https://github.com/Ung-UTT/Site-etu-v9/issues/new).
 
 ## Pour les développeurs
 
