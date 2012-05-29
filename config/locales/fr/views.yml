@@ -212,7 +212,7 @@ fr:
     description: "Description"
     timesheet:
       hours_per_week: "Nombre d'heures par semaine"
-    call: "Appeller"
+    call: "Appeler"
     sms: "SMS"
 
   user_sessions:
