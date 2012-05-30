@@ -73,7 +73,12 @@ class User < ActiveRecord::Base
   end
 
   def hours_per_week
-    timesheets.map(&:duration).sum / 60
+    # Courses that are in week A or B count for the half
+    durations = timesheets.map do |ts|
+      ts.week ? ts.duration / 2 : ts.duration
+    end
+
+    durations.sum / 60
   end
 
   def ability

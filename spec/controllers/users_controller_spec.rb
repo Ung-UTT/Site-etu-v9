@@ -9,18 +9,25 @@ describe UsersController do
       end
 
       it "redirects to the user page if he/she is the only result" do
-        get :index, q: @user.lastname, format: 'html'
+        get :index, q: @user.lastname
         response.should redirect_to(@user)
       end
 
-      it "does not redirect if it's a JSON request" do
+      it "redirect only if the format is HTML" do
+        # Default format is HTML
+        get :index, q: @user.lastname, format: 'html'
+        response.should be_redirect
+
         get :index, q: @user.lastname, format: 'json'
+        response.should_not be_redirect
+
+        get :index, q: @user.lastname, format: 'xml'
         response.should_not be_redirect
       end
 
       it "does not redirect if there's more than one result" do
         create :user, lastname: @user.lastname
-        get :index, q: @user.lastname, format: 'html'
+        get :index, q: @user.lastname
         response.should_not be_redirect
       end
     end
