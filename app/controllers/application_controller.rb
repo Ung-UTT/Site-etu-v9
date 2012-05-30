@@ -173,7 +173,7 @@ class ApplicationController < ActionController::Base
   # Shortcut to add search and pagination to a controller
   def search_and_paginate
     resources = instance_variable_get("@#{params[:controller]}")
-    return if resources.empty?
+    return if resources.blank?
 
     if params[:q].nil?
       resources = resources.page(params[:page])
