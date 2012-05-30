@@ -6,7 +6,7 @@ class Timesheet < ActiveRecord::Base
 
   attr_accessible :start_at, :duration, :week, :category, :room, :course_id
   validates_presence_of :start_at, :duration, :category, :course
-  validates :category, inclusion: {in: Timesheet::CATEGORIES}
+  validates :category, inclusion: {in: CATEGORIES}
 
   default_scope order: 'start_at'
 
@@ -31,7 +31,7 @@ class Timesheet < ActiveRecord::Base
 
   # Selectionne les horaires du semestre actuel
   def self.make_schedule(timesheets)
-    timesheets = [timesheets].compact if timesheets.class != Array
+    timesheets = [timesheets].compact unless timesheets.is_a? Array
     timesheets = timesheets.uniq
 
     # Le semestre actuel est le dernier
@@ -61,7 +61,7 @@ class Timesheet < ActiveRecord::Base
         day = semester['weeks'][index][ts.start_at.wday - 1, 1] # cf lib/semesters.rb
 
         if (!ts.week.nil? and ts.week == day) or # Semaine A ou semaine B
-           (ts.week.nil? and day.in?(%w[A B])) # Il y a cours ce jour là ?
+           (ts.week.nil? and day.in?(WEEKS)) # Il y a cours ce jour là ?
           hash = ts.to_fullcalendar
           # Comme une répétition, on ajoute les semaines
           hash['start_at'] += index.weeks
@@ -82,10 +82,12 @@ class Timesheet < ActiveRecord::Base
     t_week_day = I18n.l(start_at, format: :week_day)
     t_start_at = I18n.l(start_at, format: :hour)
     t_end_at = I18n.l(start_at + duration.minutes, format: :hour)
-    t_week = (week and !week.empty?) ? " (#{I18n.t('model.timesheet.week')} #{week})" : ''
+    t_week = week.blank? ? '' : " (#{I18n.t('model.timesheet.week')} #{week})"
 
-    I18n.t('model.timesheet.range', short: short_range, :week_day => t_week_day,
-      start: t_start_at, end: t_end_at, week: t_week)
+    I18n.t('model.timesheet.range',
+      short: short_range, week_day: t_week_day,
+      start: t_start_at, end: t_end_at, week: t_week
+    )
   end
 
   # Description sans les heures
@@ -107,6 +109,6 @@ class Timesheet < ActiveRecord::Base
   end
 
   def to_s
-    range # TODO : Replace all occurences of range by to_s
+    range
   end
 end
