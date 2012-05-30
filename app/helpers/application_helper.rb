@@ -90,4 +90,10 @@ module ApplicationHelper
       text_field_tag(:q, params[:q]) + ' ' + submit_tag(t('common.search'))
     end
   end
+
+  # Check if the controller can respond to this action
+  def url_exists_for?(action)
+    controller = "#{params[:controller]}_controller".classify.constantize
+    controller.action_methods.include?(action)
+  end
 end

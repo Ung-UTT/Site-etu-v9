@@ -1,16 +1,13 @@
 %ul.actions
-  - if can? :update, resource
-    %li
-      = link_to t('common.edit'), {action: :edit, id: resource}
+  - if url_exists_for?('edit') and can? :update, resource
+    %li= link_to t('common.edit'), {action: :edit, id: resource}
 
-  - if can? :destroy, resource
-    %li
-      = button_to t('common.delete'), resource,      |
-        confirm: t('common.confirm'), method: :delete
+  - if url_exists_for?('destroy') and can? :destroy, resource
+    %li= button_to t('common.delete'), resource,        |
+          confirm: t('common.confirm'), method: :delete |
 
-  - unless url_for({action: :index}).include?('?')
+  - if url_exists_for?('index')
     %li= link_to t('common.list'), {action: :index}
 
-  - if can? :create, resource.class
-    %li
-      = link_to t('common.add'), {action: :new}
+  - if url_exists_for?('new') and can? :create, resource.class
+    %li= link_to t('common.add'), {action: :new}
