@@ -30,6 +30,7 @@ Spork.prefork do
   require 'factory_girl'
   require 'paperclip/matchers'
   require 'cancan/matchers'
+  require 'casclient/frameworks/rails/filter'
 
   RSpec.configure do |config|
     config.include FactoryGirl::Syntax::Methods

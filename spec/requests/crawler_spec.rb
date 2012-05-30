@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 def visit_and_check path
-  # visit will fail if there's an error in the view (e.g. AbstractController::DoubleRenderError)
+  # visit will fail if there's an error in the view (e.g. DoubleRenderError)
   visit path
 
   check_page
@@ -42,9 +42,8 @@ feature "It does not raise any errors while browsing as an administrator" do # w
       # Actions not tested
       action.in?(%w[update join disjoin render_not_found deploy]) or
       (controller.start_with? 'devise/' and action.in?(%w[create edit destroy])) or
-      (controller == 'annals' and action == 'create') or # Already tested
       # FIXME: Special validation
-      (controller == 'projects' and action.in?(%w[create destroy])) or
+      (controller.in?(%w[projects annals]) and action.in?(%w[create destroy])) or
       # FIXME: Test associated resources (comments and documents)
       (is_associated_resource?(controller) and action.in?(%w[show create destroy]))
 

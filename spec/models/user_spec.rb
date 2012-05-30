@@ -98,8 +98,7 @@ describe User do
   end
 
   it 'describe itself correctly' do
-    user = build :user
-    user.firstname = "#1"
+    user = build :user, firstname: "#1"
     user.to_s.should include user.firstname
   end
 end
