@@ -182,7 +182,7 @@ class ApplicationController < ActionController::Base
 
       # Simple search via Searchable
       resources = klass.search(params[:q])
-      redirect_to resources.first if resources.one?
+      redirect_to resources.first if resources.one? and params[:format] == 'html'
 
       # Pagination with Kaminari
       resources = Kaminari::paginate_array(resources).page(params[:page])
