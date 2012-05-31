@@ -2,7 +2,7 @@
   = title @user.to_s
 
   - if @user.image
-    %p.profile.alone= link_to_user @user
+    %p.profile.alone= link_to_user @user, link_to_asset: true
 
   %div.information
     %dl
