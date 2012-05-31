@@ -14,11 +14,10 @@ module ActiveRecordExtensions
     # Random record from a class (Quote.random, Course.random, ...)
     def random
       if (c = count) != 0
-        find(:first, offset: rand(c))
+        first(offset: rand(c))
       end
     end
   end
 end
 
 ActiveRecord::Base.send(:include, ActiveRecordExtensions)
-

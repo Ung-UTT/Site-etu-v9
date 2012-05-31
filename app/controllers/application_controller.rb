@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
 
   def deploy
     # Only Github and us are allowed to trigger the deploy script
-    return unless %w(
+    return unless request.env['REMOTE_ADDR'].in?(%w[
       207.97.227.253
       50.57.128.197
       108.171.174.178
       127.0.0.1
-    ).include? request.env['REMOTE_ADDR']
+    ])
 
     return unless payload = params[:payload]
     push = JSON.parse payload
