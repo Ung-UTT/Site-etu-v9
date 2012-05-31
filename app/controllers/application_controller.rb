@@ -132,7 +132,8 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    return cookies[:force_mobile] if cookies[:force_mobile]
+    return true if cookies[:force_mobile] == 'true'
+    return false if cookies[:force_mobile] == 'false'
 
     # Sinon, on regarde si c'est un téléphone
     detect_mobile?
