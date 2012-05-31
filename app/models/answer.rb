@@ -18,7 +18,7 @@ class Answer < ActiveRecord::Base
     if count_all == 0
       return 0
     else
-      return (100 * votes.size / count_all).round.to_i
+      return (100 * votes.size / count_all).round
     end
   end
 
