@@ -1,9 +1,3 @@
-- if current_user
-  %section.content
-    %h1.title= t('home.index.search')
-
-    = search_form(users_path)
-
 - unless mobile?
   %section.content
     - if current_user
