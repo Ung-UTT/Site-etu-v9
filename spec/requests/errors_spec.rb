@@ -10,8 +10,7 @@ feature "Doing nasty stuff" do
   scenario "Accessing users as an anonymous" do
     visit users_path
 
-    page_should_have_alert
-    current_path.should == new_user_session_path
+    current_path.should_not == users_path
   end
 
   scenario "Accessing annals as a non-student" do
@@ -20,8 +19,6 @@ feature "Doing nasty stuff" do
 
     visit annals_path
 
-    page_should_have_alert
-    current_path.should == root_path
+    current_path.should_not == annals_path
   end
 end
-

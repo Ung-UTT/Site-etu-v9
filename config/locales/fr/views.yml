@@ -214,6 +214,7 @@ fr:
       hours_per_week: "Nombre d'heures par semaine"
     call: "Appeler"
     sms: "SMS"
+    cumulate_schedules: "Cumuler des emplois du temps"
 
   user_sessions:
     logout: "Se déconnecter"

@@ -3,18 +3,6 @@ class DocumentsController < ApplicationController
   before_filter :find_documentable
   load_and_authorize_resource
 
-  def index
-    @documents = @documentable.documents
-
-    respond_to do |format|
-      format.html do
-        render '_list_and_add', locals:
-          {documentable: @documentable, documents: @documents}
-      end
-      format.json { render json: @documents }
-    end
-  end
-
   def create
     @document = @documentable.documents.build(params[:document])
 

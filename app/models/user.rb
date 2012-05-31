@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   validates_email_format_of :email
   validates_email_format_of :private_email, allow_blank: true
 
-  default_scope order: 'firstname,lastname'
+  # Users with empty firstname come last
+  default_scope order: 'case when firstname is null then 1 else 0 end,firstname,lastname'
 
   has_one :image, dependent: :destroy, as: :documentable
   has_one :preference, dependent: :destroy

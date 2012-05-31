@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     if current_user
       redirect_to root_url, alert: message
     else
-      # Redirige vers la page de login si l'utilisateur n'est pas déjà loggé
+      # Redirect to the CAS connexion page
       redirect_to new_cas_path, alert: message
     end
   end

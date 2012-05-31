@@ -43,9 +43,6 @@
             %li.logout.connected
               = button_to '', (session[:cas_user] ? :cas : :destroy_user_session), |
                 method: :delete, title: t('user_sessions.logout')                  |
-            %li.timesheets.connected
-              = link_to '', url_for(current_user) + '#schedule', |
-                title: t('layout.schedule')                      |
             %li.none.connected= link_to_user current_user
 
     - unless mobile?
@@ -66,7 +63,6 @@
             %li.news= link_to t('layout.news'), {controller: '/news'}
             %li.courses= link_to t('layout.course'), courses_path
             %li.wiki= link_to t('layout.wiki'), wikis_path
-            %li.timesheets= link_to t('layout.timesheets'), timesheets_path
 
         %li.box
           %h2= t('layout.services')
@@ -116,8 +112,10 @@
       %li= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new'
       %li= link_to t('layout.rules'), {controller: :home, action: :rules}
       %li= link_to t('layout.about'), {controller: :home, action: :about}
+
     %script{charset: "utf-8", type: "text/javascript"}
       var ROOT_PATH = "#{root_path(only_path: false)}";
+
     = javascript_include_tag :application
 
 /

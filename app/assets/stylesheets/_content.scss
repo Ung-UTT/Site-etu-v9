@@ -265,6 +265,15 @@
         }
       }
     }
+
+    .anchor {
+      color: #aaa;
+
+      &:hover {
+        color: #333;
+      }
+    }
+
   }
 
   /* Barre des sondages : inspiré de : http://www.alistapart.com/d/accessibledata/example-final.html */

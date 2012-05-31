@@ -7,6 +7,7 @@
   %div.information
     %dl
       = not_empty_dd(t('users.email'), mail_to(@user.email))
+
       - unless @user.phone.blank?
         %dt= t('users.phone')
         %dd
@@ -14,6 +15,7 @@
           - if mobile?
             (#{link_to(t('users.call'), "tel:#{@user.phone}")},
             #{link_to(t('users.sms'), "sms:#{@user.phone}")})
+
       = not_empty_dd(t('users.utt_address'), @user.utt_address)
       = not_empty_dd(t('users.parents_address'), @user.parents_address)
       = not_empty_dd(t('users.birth_date'), @user.birth_date ? l(@user.birth_date) : nil)
@@ -32,6 +34,7 @@
   - unless @user.timesheets.empty?
     #schedule
       = render('timesheets/schedule', schedule: @user.schedule)
+      %p= link_to t('users.cumulate_schedules'), timesheets_path
 
     %p= not_empty_inline(t('users.timesheet.hours_per_week'), @user.hours_per_week.to_s)
 
