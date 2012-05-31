@@ -34,7 +34,7 @@
           %li.logo
             = link_to image_tag('others/logo.png'), :root, title: t('layout.home')
           %li.users
-            = link_to t('layout.users'), User, title: t('layout.users_title')
+            = link_to t('layout.users'), users_path, title: t('layout.users_title')
           %li.events
             = link_to t('layout.events'), events_path, title: t('layout.events')
           %li.mails
@@ -54,23 +54,21 @@
     - unless mobile? and !current_page?(root_url)
       %ul#sidebar
         %li.box
-          %h2= t('layout.content')
+          %h2= t('layout.student_life')
           %ul.illustrated
-            %li.users= link_to t('layout.users'), users_path
-            %li.classifieds= link_to t('layout.classifieds'), classifieds_path
-            %li.assos= link_to t('layout.assos'), assos_path
-            %li.events= link_to t('layout.events'), events_path
-            %li.news= link_to t('layout.news'), {controller: '/news'}
             %li.courses= link_to t('layout.course'), courses_path
-            %li.wiki= link_to t('layout.wiki'), wikis_path
-
-        %li.box
-          %h2= t('layout.services')
-          %ul.illustrated
-            %li.carpools= link_to t('layout.carpools'), carpools_path
-            %li.polls= link_to t('layout.polls'), polls_path
             %li.projects= link_to t('layout.projects'), projects_path
             %li.buckutt= link_to t('layout.buckutt'), root_url
+            %li.carpools= link_to t('layout.carpools'), carpools_path
+            %li.classifieds= link_to t('layout.classifieds'), classifieds_path
+
+        %li.box
+          %h2= t('layout.assos_life')
+          %ul.illustrated
+            %li.assos= link_to t('layout.assos'), assos_path
+            %li.wiki= link_to t('layout.wiki'), wikis_path
+            %li.news= link_to t('layout.news'), {controller: '/news'}
+            %li.polls= link_to t('layout.polls'), polls_path
 
         - if can?(:manage, Role)
           %li.box
