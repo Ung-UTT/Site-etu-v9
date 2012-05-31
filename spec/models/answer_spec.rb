@@ -10,23 +10,23 @@ describe Answer do
     before do
       @answer = create :answer
       @user = create :user
-      @answer.votes << FactoryGirl.create(:vote, user: @user)
+      @answer.votes << create(:vote, user: @user)
     end
 
-    it 'return true if the user already voted for this answer' do
+    it "returns true if the user has already voted for this answer" do
       @answer.voted_by?(@user).should be_true
     end
 
-    it "return false if the user didn't vote for this answer" do
+    it "returns false if the user didn't vote for this answer" do
       @other_user = create :user
       @answer.voted_by?(@other_user).should be_false
     end
   end
 
   describe '#percent' do
-    it 'return the correct percentage' do
+    it "returns the correct percentage" do
       @answer = create :answer
-      @answer.votes << FactoryGirl.create(:vote)
+      @answer.votes << create(:vote)
       @answer.percent.should == 100
     end
 
@@ -36,7 +36,7 @@ describe Answer do
     end
   end
 
-  it 'describe itself correctly' do
+  it "describe itself correctly" do
     answer = build :answer
     answer.to_s.should include answer.content.first(10)
   end
