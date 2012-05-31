@@ -37,9 +37,9 @@
             = link_to t('layout.users'), users_path, title: t('layout.users_title')
           %li.events
             = link_to t('layout.events'), events_path, title: t('layout.events')
-          %li.mails
-            = link_to t('layout.mails'), :root, title: t('layout.mails_title')
           - if current_user
+            %li.mails
+              = link_to t('layout.mails'), :root, title: t('layout.mails_title')
             %li.logout.connected
               = button_to '', (session[:cas_user] ? :cas : :destroy_user_session), |
                 method: :delete, title: t('user_sessions.logout')                  |
@@ -56,10 +56,11 @@
         %li.box
           %h2= t('layout.student_life')
           %ul.illustrated
-            %li.courses= link_to t('layout.course'), courses_path
-            %li.projects= link_to t('layout.projects'), projects_path
-            %li.buckutt= link_to t('layout.buckutt'), root_url
-            %li.carpools= link_to t('layout.carpools'), carpools_path
+            - if current_user
+              %li.courses= link_to t('layout.course'), courses_path
+              %li.projects= link_to t('layout.projects'), projects_path
+              %li.buckutt= link_to t('layout.buckutt'), root_url
+              %li.carpools= link_to t('layout.carpools'), carpools_path
             %li.classifieds= link_to t('layout.classifieds'), classifieds_path
 
         %li.box
@@ -68,7 +69,7 @@
             %li.assos= link_to t('layout.assos'), assos_path
             %li.wiki= link_to t('layout.wiki'), wikis_path
             %li.news= link_to t('layout.news'), {controller: '/news'}
-            %li.polls= link_to t('layout.polls'), polls_path
+            %li.polls= link_to t('layout.polls'), polls_path if current_user
 
         - if can?(:manage, Role)
           %li.box
