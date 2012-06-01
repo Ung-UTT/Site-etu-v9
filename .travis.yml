@@ -4,7 +4,6 @@ script:
 after_script:
   - curl --silent https://etu.utt.fr/v9/deploy
 rvm:
-  - 1.9.2
   - 1.9.3
   - ruby-head
 matrix:
