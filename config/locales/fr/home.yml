@@ -4,7 +4,7 @@ fr:
       search: "Rechercher dans le trombi"
       title: "Bienvenue"
       content: |
-        "UTTien (ancien, actuel ou futur), ou curieux… l'UNG te souhaite la
+        UTTien (ancien, actuel ou futur), ou curieux… l'UNG te souhaite la
         bienvenue sur LE site des étudiants de l'Université de Technologie de
         Troyes…
 
@@ -15,12 +15,12 @@ fr:
 
         À très bientôt… à Troyes ou ailleurs…
 
-        L'_UTT Net Group_, association étudiante informatique de l'UTT."
+        L'_UTT Net Group_, association étudiante informatique de l'UTT.
 
     about:
       title: "À propos"
       content: |
-        "## Le site
+        ## Le site
 
         Voilà, tu y es, n'hésite pas à cliquer sur tous les liens ;).
 
@@ -43,12 +43,12 @@ fr:
 
         * Raison sociale : UTT NET GROUP (U.N.G.)
         * Siège social : Université de Technologie de Troyes, 12, rue Marie-Curie, 10000 Troyes.
-        * Mél. : ung@utt.fr"
+        * Mél. : ung@utt.fr
 
     rules:
       title: "Règles"
       content: |
-        "En utilisant ce site, tu acceptes les règles suivantes :
+        En utilisant ce site, tu acceptes les règles suivantes :
 
         * Tu es responsable de tout contenu que tu postes sur ce site.
         * Tout contenu illégal pourra être supprimé et ton compte bloqué sans
@@ -58,4 +58,4 @@ fr:
           plus poster/modifier/supprimer aucun contenu.
         * Tu as le droit de demander la suppression de contenu te concernant.
         * Tu peux demander toutes les informations que nous possédons sur toi
-          dans notre base de données."
+          dans notre base de données.
