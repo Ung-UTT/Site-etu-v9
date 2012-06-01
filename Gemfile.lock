@@ -262,7 +262,6 @@ DEPENDENCIES
   paperclip
   rails
   rails_best_practices
-  rake
   rb-inotify
   rdiscount
   redis-rails
