@@ -5,9 +5,3 @@
   - if url_exists_for?('destroy') and can? :destroy, resource
     %li= button_to t('common.delete'), resource,        |
           confirm: t('common.confirm'), method: :delete |
-
-  - if url_exists_for?('index')
-    %li= link_to t('common.list'), {action: :index}
-
-  - if url_exists_for?('new') and can? :create, resource.class
-    %li= link_to t('common.add'), {action: :new}

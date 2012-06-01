@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   before_filter :search_and_paginate, only: :index
   before_filter :set_first_users, only: [:new, :edit]
+  before_filter :add_users, only: [:create, :update]
 
   def index
     respond_to do |format|
@@ -23,8 +24,6 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project.users << current_user
-
     render_new projects_path
   end
 
@@ -33,8 +32,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project.users = params[:users] ? User.find(params[:users]) : []
-
     if @project.save
       redirect_to(@project, notice: t('c.created'))
     else
@@ -43,8 +40,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project.users = params[:users] ? User.find(params[:users]) : []
-
     if @project.update_attributes(params[:project])
       redirect_to(@project, notice: t('c.updated'))
     else
@@ -56,5 +51,11 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     redirect_to(projects_url)
+  end
+
+  private
+  def add_users
+    @project.users << current_user unless @project.users.include?(current_user)
+    @project.users = params[:users] ? User.find(params[:users]) : []
   end
 end

@@ -10,7 +10,7 @@
       - @poll.answers.each do |answer|
         %li
           %span.answer= answer.to_s
-          %span.count= answer.votes.size
+          %span.count #{answer.votes.size} (#{answer.percent}%)
           %span.index{:style => "width: #{answer.percent}%"}
 
   - elsif !@poll.answers.empty?

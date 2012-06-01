@@ -51,6 +51,7 @@ class Ability
         can [:create, :destroy], Document do |doc|
           doc.documentable and can?(:update, doc.documentable)
         end
+        can [:update, :destroy], Asso, owner: user
 
         can :manage, Wiki
       end # / student?

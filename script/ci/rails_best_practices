@@ -2,4 +2,3 @@
 
 cd $(dirname $0)/../../
 rails_best_practices -f html --spec --output-file tmp/rails_best_practices.html .
-

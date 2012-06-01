@@ -1,10 +1,12 @@
 module UsersHelper
-  def link_to_user(user)
+  def link_to_user(user, options = {})
     return nil if user.nil?
 
     image = user.image.nil? ? 'others/nophoto.png' : user.image.asset.url
     content = image_tag(image, class: 'user', alt: user.to_s)
-    content = link_to(content, user, title: user.to_s) if can? :read, user
+    link = user.image.asset.url if options[:link_to_asset] and user.image
+    link ||= user
+    content = link_to(content, link, title: user.to_s) if can? :read, user
     content
   end
 

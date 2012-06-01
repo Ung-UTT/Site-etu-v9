@@ -28,25 +28,37 @@
               {class: 'alternative', title: t('user_sessions.connection.alternative_title')} |
 
       - if mobile?
-        = link_to image_tag('others/logo.png'), :root, { title: t('layout.home'), id: 'logo' }
+        %p
+          = link_to image_tag('others/logo.png'), :root, { title: t('layout.home'), id: 'logo' }
       - else
         %ul.illustrated
           %li.logo
             = link_to image_tag('others/logo.png'), :root, title: t('layout.home')
-          %li.users
-            = link_to t('layout.users'), User, title: t('layout.users_title')
-          %li.events
-            = link_to t('layout.events'), events_path, title: t('layout.events')
-          %li.mails
-            = link_to t('layout.mails'), :root, title: t('layout.mails_title')
           - if current_user
+            %li.users
+              = link_to t('layout.users'), users_path, title: t('layout.users_title')
+            %li.mails
+              = link_to t('layout.mails'), :root, title: t('layout.mails_title')
+            %li.courses
+              = link_to t('layout.course'), courses_path
+            %li.timesheets
+              = link_to t('layout.schedule'), url_for(current_user) + '#schedule'
+            %li.buckutt
+              = link_to t('layout.buckutt'), root_url, title: t('layout.buckutt_title')
             %li.logout.connected
               = button_to '', (session[:cas_user] ? :cas : :destroy_user_session), |
                 method: :delete, title: t('user_sessions.logout')                  |
-            %li.timesheets.connected
-              = link_to '', url_for(current_user) + '#schedule', |
-                title: t('layout.schedule')                      |
             %li.none.connected= link_to_user current_user
+          - else
+            %li.events
+              = link_to t('layout.events'), events_path, title: t('layout.events_title')
+            %li.assos
+              = link_to t('layout.assos'), assos_path, title: t('layout.assos_title')
+            %li.wiki
+              = link_to t('layout.wiki'), wikis_path, title: t('layout.wiki_title')
+            %li.news
+              = link_to t('layout.news'), {controller: '/news'}, title: t('layout.news_title')
+
 
     - unless mobile?
       #quote
@@ -56,32 +68,40 @@
 
     - unless mobile? and !current_page?(root_url)
       %ul#sidebar
-        %li.box
-          %h2= t('layout.content')
-          %ul.illustrated
-            %li.users= link_to t('layout.users'), users_path
-            %li.classifieds= link_to t('layout.classifieds'), classifieds_path
-            %li.assos= link_to t('layout.assos'), assos_path
-            %li.events= link_to t('layout.events'), events_path
-            %li.news= link_to t('layout.news'), {controller: '/news'}
-            %li.courses= link_to t('layout.course'), courses_path
-            %li.wiki= link_to t('layout.wiki'), wikis_path
-            %li.timesheets= link_to t('layout.timesheets'), timesheets_path
-
-        %li.box
-          %h2= t('layout.services')
-          %ul.illustrated
-            %li.carpools= link_to t('layout.carpools'), carpools_path
-            %li.polls= link_to t('layout.polls'), polls_path
-            %li.projects= link_to t('layout.projects'), projects_path
-            %li.buckutt= link_to t('layout.buckutt'), root_url
-
-        - if can?(:manage, Role)
+        - if current_user
           %li.box
-            %h2= t('layout.admin')
-            %ul
-              %li= link_to t('layout.quotes'), quotes_path
-              %li= link_to t('layout.roles'), roles_path
+            %h2.title= link_to t('layout.users'), users_path
+
+            = search_form(users_path)
+
+          %li.box
+            %h2= t('layout.student_life')
+            %ul.illustrated
+              %li.events= link_to t('layout.events'), events_path
+              %li.projects= link_to t('layout.projects'), projects_path
+              %li.carpools= link_to t('layout.carpools'), carpools_path
+              %li.classifieds= link_to t('layout.classifieds'), classifieds_path
+
+          %li.box
+            %h2= t('layout.assos_life')
+            %ul.illustrated
+              %li.assos= link_to t('layout.assos'), assos_path
+              %li.wiki= link_to t('layout.wiki'), wikis_path
+              %li.news= link_to t('layout.news'), {controller: '/news'}
+              %li.polls= link_to t('layout.polls'), polls_path
+
+          - if can?(:manage, Role)
+            %li.box
+              %h2= t('layout.admin')
+              %ul
+                %li= link_to t('layout.quotes'), quotes_path
+                %li= link_to t('layout.roles'), roles_path
+        - else
+          %li.box
+            %p
+              = t('layout.more')
+              = link_to t('layout.more_connect'), new_cas_path
+              = t('layout.more_explain')
 
         %li.box
           %h2= t('layout.extern_links')
@@ -120,11 +140,13 @@
       - else
         %li
           %a{href: "?mobile=true"}= t('layout.mobile')
-      %li= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new'
+      %li= mail_to 'ung@utt.fr', t('layout.bug'), subject: "[Site étu] [Bug] "
       %li= link_to t('layout.rules'), {controller: :home, action: :rules}
       %li= link_to t('layout.about'), {controller: :home, action: :about}
+
     %script{charset: "utf-8", type: "text/javascript"}
       var ROOT_PATH = "#{root_path(only_path: false)}";
+
     = javascript_include_tag :application
 
 /

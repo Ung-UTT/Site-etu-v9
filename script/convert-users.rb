@@ -50,6 +50,8 @@ students.map! do |st|
 end
 
 # Ne garder que les personnes (pas les ordis, les comptes d'administrations, ... etc)
-students = students.reject {|st| st['supannetuid'].empty? }
+students = students.reject do |st|
+  st['supannetuid'].empty? || st['mail'] =~ /(scd|imp_)00[0-9]@utt.fr/
+end
 
 File.open(DB_FILE, 'w+') {|f| f.write(Marshal.dump(students))}

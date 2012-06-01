@@ -1,9 +1,6 @@
 - unless documents.empty? and cannot_create_doc?(documents)
   %section.content
-    - if params[:controller] == 'documents'
-      = title t('document', count: documents.count)
-    - else
-      %h1.title= link_to t('document', count: documents.count), [documentable, Document]
+    %h1.title= t('document', count: documents.count)
 
     %ul.documents.list-with-delete
       - documents.each do |document|
