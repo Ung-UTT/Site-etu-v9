@@ -5,7 +5,7 @@ set -u
 
 cd "$(dirname $0)/.."
 
-LOCK_FILE=tmp/deploying
+LOCK_FILE=deploying
 trap "rm -f $LOCK_FILE; echo exit $?; exit $?" INT TERM EXIT
 [ -f $LOCK_FILE ] && exit 1 || touch $LOCK_FILE
 
