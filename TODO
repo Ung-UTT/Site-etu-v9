@@ -1,0 +1,101 @@
+BUGS :
+
+* Sondage qui refuse la validation des réponses (???)
+
+RAPIDE À FAIRE :
+
+Fonctionnalités transversales :
+  * Undo/Redo
+  * Refaire join/disjoin
+  * Intégrations vidéos Youtube, Dailymotion, Vimeo
+  * Pouvoir ajouter des réponses aux sondages / documents aux annales / ... via JS
+  * Lecture seule
+  * Barre de titre avec "Ajouter un truc" embarqué dedans
+  * Accès profs au trombi
+  * Vérifier import des citations (&eacute)
+
+* Marquer les jours fériés / jours changés
+* Demande d'inscriptions
+* Proposition d'événement : modération par BDE, corrections assos (is_moderated)
+* Événements en privé
+* Envoyer des mails à partir de listes d'utilisateurs
+* Ne plus créer de compte via une connexion CAS réussie (pour empêcher les connexions en tant qu'asso)
+* Lien vers le profil (photo) sur la version mobile
+* Modération création assos
+
+PLUS LONG :
+
+* Asso :
+  * Accès aux mails asso
+  * passage relai d'un semestre a l'autre (asso qui meurt un semestre)
+
+* Événements :
+  * formulaire de demande d'événement :
+    évènement -> mail BDE avec lien site etu -> relecture -> envoi admin -> checkbox OK?
+
+* Personnalisation :
+  * choisir éléments de la barre de menu, ...
+  * interface différente selon le "type" d'utilisateur
+
+* Profil :
+  * liste des assos auxquelles tu participait, etc...
+  * Timeline perso
+  * UVs suivies, etc...
+  * Temporels (Timeline) et intemporels (liste (projets, ...))
+
+* Agenda :
+  * évènements sur l'agenda (évènements auxquels participe mis en évidence (CSS opacity?))
+  * calendrier de tous les évènements pour le BDE
+
+Page d'assos :
+  * Pouvoir ajouter des membres aux rôles dans la page d'assos
+  * Modérations (Assos, ...) par BDE
+  * Trésorier, Secrétaire... par le président d'asso
+  * Membres validés par assos
+  * Traduire rôles sur la page d'asso
+  * Clubs : asso contrôle ses clubs (dans quelle mesure ?)
+  * Ajouter des rôles
+
+* UV :
+  * Ajouter semestre aux commentaires
+  * cf. UTC
+
+* Wiki :
+  * Des pages peuvent être publiques (aucun rôle)
+  * Les personnes extérieures peuvent s'inscrire :
+    * (Peuvent être ajoutées à des rôles)
+  * Arbre des pages à droite
+  * Couplé aux projets (pour éviter Dropbox, GDocs, etc.)
+
+* Débugger chosen (et chosen-ajax) (limite faire un truc à la main)
+
+* Pourissage : tous les anciens (> TC1) peut modifier les fiches trombi pendant un moment
+  Puis les fiches sont dumpées et restorées.
+  Modifie : par rapport aux versions de référence
+
+* Faire une Timeline en page d'accueil
+  * La réutiliser pour le profil
+
+* Carte au covoiturage (OSM ou Google Maps, Geocoding, Cache, etc...)
+
+* Doc semi-automatique de l'API
+
+
+MAINTIENT DU CODE :
+
+* Trouver une solution technique plus jolie pour gérer les emploi du temps (+ cumul, + agenda)
+* Profiler le code (trouver les requêtes inutiles, ... etc)
+
+DÉBATS :
+
+* Largeur dynamique ?
+* Modération POST-postage ? (Lecture seule si ya un problème)
+
+FUTUR :
+
+* Carte des covoiturages (case à cocher "je propose du covoiturage")
+* Notifications à-la-facebook
+* Intégration Facebook
+* Chat ?
+* Stats
+
