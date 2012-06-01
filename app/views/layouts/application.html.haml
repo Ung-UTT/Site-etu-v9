@@ -118,7 +118,7 @@
             %li= link_to "SecUTT", 'http://secutt.utt.fr'
 
     %section#contents
-      - if Rails.env.production?
+      - if Rails.env.production? and !current_user
         %p.warning
           %a{href: "#", onclick: "$(this.parentNode).fadeOut()", |
             style: "float: right", title: "Cacher ce truc"} [X]  |
