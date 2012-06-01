@@ -44,7 +44,6 @@ class Ability
 
         # L'auteur peut mettre à jour et supprimer ses contenus
         can [:update, :destroy], [Carpool, Classified, Poll, Quote], user: user
-        can :update, User, id: user.id
         can [:create, :destroy], Answer do |answer|
           answer.poll and can?(:update, answer.poll)
         end
