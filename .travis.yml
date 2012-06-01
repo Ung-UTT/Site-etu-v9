@@ -2,7 +2,8 @@ language: ruby
 script:
   - ./script/ci/travis
 after_script:
-  - git status | head -1 | grep '^# On branch master$' > /dev/null && curl --head https://etu.utt.fr/v9/deploy
+  - git status
+  - true
 rvm:
   - 1.9.2
   - 1.9.3
