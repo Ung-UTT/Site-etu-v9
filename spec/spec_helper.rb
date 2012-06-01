@@ -18,7 +18,7 @@ Spork.prefork do
     end
     SimpleCov.at_exit do
       SimpleCov.result.format!
-      exit(2) if SimpleCov.result.covered_percent < 80 # Mwahaha! :P
+      exit(2) if SimpleCov.result.covered_percent < 90
     end
   end
 
