@@ -115,7 +115,7 @@
       - else
         %li
           %a{href: "?mobile=true"}= t('layout.mobile')
-      %li= link_to t('layout.bug'), 'https://github.com/Ung-UTT/Site-etu-v9/issues/new'
+      %li= mail_to 'ung+site-etu@utt.fr', t('layout.bug'), subject: "[Site étu] [Bug] "
       %li= link_to t('layout.rules'), {controller: :home, action: :rules}
       %li= link_to t('layout.about'), {controller: :home, action: :about}
 
