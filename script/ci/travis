@@ -4,6 +4,6 @@ set -e
 
 export RAILS_ENV=test
 cp -n config/database.yml{.example,}
-rake db:drop db:setup
+rake tmp:create db:drop db:setup
 COVERAGE=1 rake --trace
 
