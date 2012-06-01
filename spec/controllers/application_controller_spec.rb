@@ -16,5 +16,16 @@ describe ApplicationController do
       }.to change { UserMailer.deliveries.count }.by(1)
     end
   end
+
+  describe "#deploy" do
+    it "creates the deploy file" do
+      file = File.join(Rails.root, 'tmp', 'deploy')
+      File.delete file if File.exists? file
+
+      expect {
+        get :deploy
+      }.to change{File.exists?(file)}.from(false).to(true)
+    end
+  end
 end
 

@@ -17,20 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def deploy
-    # Only Github and us are allowed to trigger the deploy script
-    return unless request.env['REMOTE_ADDR'].in?(%w[
-      207.97.227.253
-      50.57.128.197
-      108.171.174.178
-      127.0.0.1
-    ])
-
-    return unless payload = params[:payload]
-    push = JSON.parse payload
-
-    if push["ref"] == "refs/heads/master"
-      system "#{Rails.root}/script/deploy 2>&1 >> #{Rails.root}/log/deploy.log &"
-    end
+    FileUtils.touch File.join(Rails.root, 'tmp', 'deploy')
 
     render text: 'OK'
   end
