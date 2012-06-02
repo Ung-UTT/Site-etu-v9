@@ -30,7 +30,7 @@ class PollsController < ApplicationController
 
   def edit
     # The user can type more answers than before (there is no limit)
-    (@poll.answers.size + Poll::DEFAULT_ANSWERS).times { @poll.answers.build }
+    (Poll::DEFAULT_ANSWERS/2).times { @poll.answers.build }
 
     render_edit @poll
   end

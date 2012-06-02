@@ -1,6 +1,6 @@
 BUGS :
 
-* Sondage qui refuse la validation des réponses (???)
+* Débugger chosen (et chosen-ajax) (limite faire un truc à la main)
 
 RAPIDE À FAIRE :
 
@@ -66,8 +66,6 @@ Page d'assos :
   * Arbre des pages à droite
   * Couplé aux projets (pour éviter Dropbox, GDocs, etc.)
 
-* Débugger chosen (et chosen-ajax) (limite faire un truc à la main)
-
 * Pourissage : tous les anciens (> TC1) peut modifier les fiches trombi pendant un moment
   Puis les fiches sont dumpées et restorées.
   Modifie : par rapport aux versions de référence
@@ -97,4 +95,3 @@ FUTUR :
 * Intégration Facebook
 * Chat ?
 * Stats
-
