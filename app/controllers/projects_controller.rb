@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 class ProjectsController < ApplicationController
   load_and_authorize_resource
 
@@ -32,6 +33,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project.users << current_user unless @project.users.include?(current_user)
+
     if @project.save
       redirect_to(@project, notice: t('c.created'))
     else
@@ -55,7 +58,6 @@ class ProjectsController < ApplicationController
 
   private
   def add_users
-    @project.users << current_user unless @project.users.include?(current_user)
     @project.users = params[:users] ? User.find(params[:users]) : []
   end
 end
