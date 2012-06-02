@@ -10,6 +10,7 @@ Si vous voulez signaler un bug, [vous pouvez](https://github.com/Ung-UTT/Site-et
 Vous pouvez aussi aller voir le [wiki](https://github.com/Ung-UTT/Site-etu-v9/wiki) (et le compléter).
 Si vous voulez corriger un bug, [vous pouvez](https://github.com/Ung-UTT/Site-etu-v9/issues).
 Si vous voulez installer le site en local pour développer, [c'est ici](https://github.com/Ung-UTT/Site-etu-v9/wiki/Installation).
+Une version en ligne de la documentation du code [est disponible](http://rubydoc.info/github/Ung-UTT/Site-etu-v9/master/frames).
 
 ## Licence
 

@@ -37,7 +37,7 @@ PLUS LONG :
   * interface différente selon le "type" d'utilisateur
 
 * Profil :
-  * liste des assos auxquelles tu participait, etc...
+  * liste des assos auxquelles tu participais, etc...
   * Timeline perso
   * UVs suivies, etc...
   * Temporels (Timeline) et intemporels (liste (projets, ...))
@@ -75,8 +75,7 @@ Page d'assos :
 
 * Carte au covoiturage (OSM ou Google Maps, Geocoding, Cache, etc...)
 
-* Doc semi-automatique de l'API
-
+* Documenter l'API JSON
 
 MAINTIENT DU CODE :
 
