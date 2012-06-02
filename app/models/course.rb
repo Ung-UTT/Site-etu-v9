@@ -1,6 +1,5 @@
 class Course < ActiveRecord::Base
   has_paper_trail
-  paginates_per 1000
   include Extensions::Searchable
   searchable_attributes :name, :description
 

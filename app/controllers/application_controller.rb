@@ -175,8 +175,10 @@ class ApplicationController < ActionController::Base
       end
 
       # Pagination with Kaminari
-      resources = Kaminari::paginate_array(resources).page(params[:page])
-      resources = resources.per(klass.default_per_page)
+      if klass != Course
+        resources = Kaminari::paginate_array(resources).page(params[:page])
+        resources = resources.per(klass.default_per_page)
+      end
     end
 
     instance_variable_set("@#{params[:controller]}", resources)
