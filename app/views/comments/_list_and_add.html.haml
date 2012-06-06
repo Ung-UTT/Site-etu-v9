@@ -11,6 +11,9 @@
           - if comment.user
             = link_to_user comment.user
 
+          - if commentable.is_a? Course
+            = "(#{semester_of(comment.created_at)})"
+
           = comment.content
 
           - if can? :destroy, comment

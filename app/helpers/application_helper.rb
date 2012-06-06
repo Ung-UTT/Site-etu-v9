@@ -96,4 +96,12 @@ module ApplicationHelper
     controller = "#{params[:controller]}_controller".classify.constantize
     controller.action_methods.include?(action)
   end
+
+  # Find the current semester and return its name
+  def semester_of(date)
+    semester = SEMESTERS.detect do |semester|
+      date > semester['start_at'] and date < semester['end_at']
+    end
+    semester ? semester['name'] : '?'
+  end
 end
