@@ -27,7 +27,7 @@ class Asso < ActiveRecord::Base
 
   def users
     # Fetch all users with at least one role on this asso + the owner
-    roles.map(&:users).flatten.uniq | [owner]
+    roles.includes(:users).map(&:users).flatten.uniq | [owner]
   end
 
   def has_user? user, role
