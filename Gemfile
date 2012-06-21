@@ -23,6 +23,7 @@ group :development do
   gem 'guard-spork'
   gem 'rb-inotify'
   gem 'libnotify'
+  gem 'rails-footnotes'
 end
 
 group :assets do
