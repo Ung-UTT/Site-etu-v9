@@ -158,30 +158,39 @@ class ApplicationController < ActionController::Base
     render 'layouts/_edit', locals: {resource: resource}
   end
 
-  # Shortcut to add search and pagination to a controller
-  def search_and_paginate
-    resources = instance_variable_get("@#{params[:controller]}")
-    return if resources.blank?
+  def resources
+    instance_variable_get("@#{params[:controller]}")
+  end
+
+  def model
+    resources.first.class
+  end
+
+  # Shortcut to add search to a controller
+  def search
+    results = resources
+    return if results.blank?
 
     if params[:q].nil?
-      resources = resources.page(params[:page])
+      results = results.page(params[:page])
     else
-      klass = resources.first.class
-
-      # Simple search via Searchable
-      resources = klass.search(params[:q])
-      if resources.one? and (params[:format].in?(nil, 'html'))
-        redirect_to resources.first
-      end
-
-      # Pagination with Kaminari
-      if klass != Course
-        resources = Kaminari::paginate_array(resources).page(params[:page])
-        resources = resources.per(klass.default_per_page)
+      # Simple search with Searchable
+      results = model.search(params[:q])
+      if results.one? and (params[:format].in?(nil, 'html'))
+        redirect_to results.first
       end
     end
 
-    instance_variable_set("@#{params[:controller]}", resources)
+    instance_variable_set("@#{params[:controller]}", results)
+  end
+
+  # Shortcut to add search and pagination to a controller
+  def search_and_paginate
+    results = Kaminari::paginate_array(search)
+              .page(params[:page])
+              .per(model.default_per_page)
+
+    instance_variable_set("@#{params[:controller]}", results)
   end
 
   # Détecte si l'utilisateur utilise son portable

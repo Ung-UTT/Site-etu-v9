@@ -2,7 +2,7 @@
 class CoursesController < ApplicationController
   load_and_authorize_resource
 
-  before_filter :search_and_paginate, only: :index
+  before_filter :search, only: :index
 
   def index
     respond_to do |format|

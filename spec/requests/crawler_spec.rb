@@ -9,7 +9,8 @@ end
 
 def check_page
   # assert there's no 404.png, 500.png or the like
-  page.body.should_not have_xpath("//img[starts-with(@src, '/assets/errors/')]")
+  puts page.body unless valid = page.has_no_xpath?("//img[starts-with(@src, '/assets/errors/')]")
+  valid.should be_true
 end
 
 def is_associated_resource? controller
