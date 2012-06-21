@@ -4,4 +4,4 @@
 
   - if url_exists_for?('destroy') and can? :destroy, resource
     %li= button_to t('common.delete'), resource,        |
-          confirm: t('common.confirm'), method: :delete |
+         data: {confirm: t('common.confirm')}, method: :delete |

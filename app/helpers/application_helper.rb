@@ -81,7 +81,7 @@ module ApplicationHelper
 
   # Button to delete a resource (with confirmation)
   def button_to_delete(label, link)
-    button_to label, link, confirm: t('common.confirm'), method: :delete
+    button_to label, link, data: {confirm: t('common.confirm')}, method: :delete
   end
 
   # Complete search form
