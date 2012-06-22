@@ -168,8 +168,7 @@ class ApplicationController < ActionController::Base
 
   # Shortcut to add search to a controller
   def search
-    results = resources
-    return if results.blank?
+    return if (results = resources).blank?
 
     if params[:q].nil?
       results = results.page(params[:page])
@@ -186,7 +185,9 @@ class ApplicationController < ActionController::Base
 
   # Shortcut to add search and pagination to a controller
   def search_and_paginate
-    results = Kaminari::paginate_array(search)
+    return if (results = search).blank?
+
+    results = Kaminari::paginate_array(results)
               .page(params[:page])
               .per(model.default_per_page)
 
