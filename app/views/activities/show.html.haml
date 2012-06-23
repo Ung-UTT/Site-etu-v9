@@ -1,7 +1,7 @@
 %section.content
   = title t('activities.list')
 
-  = if @activities.empty?
+  - if @activities.empty?
     %p #{t('activities.none')}
 
   %ul
