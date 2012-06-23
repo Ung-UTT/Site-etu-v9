@@ -17,7 +17,6 @@ class ActivitiesController < ApplicationController
       end
 
       if current_ability.can?(:read, activity['resource'])
-        next if activity['who'].nil? # Update made by the website itself
         activity['user'] = User.find(activity['who'])
 
         # just some grammar...
