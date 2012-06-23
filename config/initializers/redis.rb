@@ -1,6 +1,6 @@
 $redis = Redis.new(
-  host: 'localhost', # TODO: extract these settings
-  port: 6379,
+  host: Omniconf.conf.redis.host,
+  port: Omniconf.conf.redis.port,
   db: Rails.env.test? ? 1 : 0 # use a different DB for testing environment
 )
 

@@ -6,6 +6,7 @@
 /Session.vim
 /config/initializers/secret_token.rb
 /config/database.yml
+/config/settings.yml
 /coverage/
 /db/*.sqlite3*
 /log/*.log

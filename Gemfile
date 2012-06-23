@@ -8,6 +8,7 @@ gem 'rubycas-client-rails', :git => 'https://github.com/rubycas/rubycas-client-r
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
+gem 'omniconf'
 
 gem 'dynamic_form' # Rend les formulaires plus lisibles
 gem 'paperclip'   # Gestion de fichier

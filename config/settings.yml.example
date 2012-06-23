@@ -1,0 +1,14 @@
+common: &common
+  redis:
+    host: localhost
+    port: 6379
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+
+production:
+  <<: *common
+
