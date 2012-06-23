@@ -9,13 +9,10 @@ end
 
 def check_page
   # assert there's no 404.png, 500.png or the like
-  puts page.body unless valid = page.has_no_xpath?("//img[starts-with(@src, '/assets/errors/')]")
+  puts page.body unless valid = page.has_no_xpath?(
+    "//img[starts-with(@src, '/assets/errors/')]"
+  )
   valid.should be_true
-end
-
-def is_associated_resource? controller
-  # polymorphicable classes
-  controller.in?(%w[comments documents])
 end
 
 feature "It does not raise any errors while browsing as an administrator" do # what a cool feature, huh?
@@ -46,7 +43,7 @@ feature "It does not raise any errors while browsing as an administrator" do # w
       # FIXME: Special validation
       (controller.in?(%w[projects annals]) and action.in?(%w[create destroy])) or
       # FIXME: Test associated resources (comments and documents)
-      (is_associated_resource?(controller) and action.in?(%w[show create destroy]))
+      (controller.in?(%w[comments documents]) and action.in?(%w[show create destroy]))
 
     scenario "#{controller}##{action} (path: #{path})" do
       # this also checks that every route has the controller and the action defined
@@ -61,10 +58,9 @@ feature "It does not raise any errors while browsing as an administrator" do # w
           object = create model
         end
 
-        if is_associated_resource? controller
-          # the commentable/documentable class name (e.g. asso, course, etc.)
-          base_object_name = path.match(/\A\/[^\/]+\/:(?<class>[^\/]+)_id\/#{controller}/)[:class]
-
+        # the commentable/documentable class name (e.g. asso, course, etc.)
+        polymorphicable = /\A\/[^\/]+\/:(?<class>[^\/]+)_id\/#{controller}/
+        if (base_object_name = path.match(polymorphicable).try(:[], :class))
           base_object = create base_object_name # Create the course, asso, ...
           base_object.send(controller) << object # Add the comment/document
 
