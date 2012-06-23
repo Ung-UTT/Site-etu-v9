@@ -17,7 +17,8 @@ class ActivitiesController < ApplicationController
       end
 
       if current_ability.can?(:read, activity['resource'])
-        activity['user'] = activity['who'] ? User.find(activity['who']) : nil
+        next if activity['who'].nil? # Update made by the website itself
+        activity['user'] = User.find(activity['who'])
 
         # just some grammar...
         activity['what'] << 'e' unless activity['what'].end_with? 'e'

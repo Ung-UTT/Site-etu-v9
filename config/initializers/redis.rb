@@ -9,6 +9,5 @@ begin
 rescue Errno::ECONNREFUSED
   $stderr.puts "Oops, I cannot connect to Redis."
   $stderr.puts "You can start it with `foreman start redis`." if Rails.env.test?
-  raise
+  exit
 end
-
