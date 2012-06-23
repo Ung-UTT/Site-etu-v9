@@ -1,9 +1,14 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 export RAILS_ENV=test
-cp -n config/database.yml{.example,}
+
+for file in database settings; do
+    cp -n config/$file.yml{.example,}
+done
+
 rake tmp:create db:drop db:setup
+
 COVERAGE=1 rake --trace
 

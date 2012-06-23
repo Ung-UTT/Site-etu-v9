@@ -36,7 +36,7 @@ feature "It does not raise any errors while browsing as an administrator" do # w
     model = controller.singularize # Example: project
 
     # Remove Rails internal routes (assets, ...) and not tested routes
-    next if controller.in?(%w[rails/info cas]) or
+    next if controller.in?(%w[rails/info activities cas]) or
       # Actions not tested
       action.in?(%w[update join disjoin render_not_found deploy]) or
       (controller.start_with? 'devise/' and action.in?(%w[create edit destroy])) or

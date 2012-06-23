@@ -59,6 +59,12 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
 
+    config.before(:each) do
+      # reset PaperTrail so data from one test doesn't spill over another
+      PaperTrail.controller_info = {}
+      PaperTrail.whodunnit = nil
+    end
+
     config.after(:suite) do
       warn I18n.missing_translations.join("\n") unless I18n.missing_translations.nil?
     end

@@ -8,6 +8,7 @@ fr:
     utt_event: "Évènement UTT"
     event_content: "Plus d'infos : %{url}"
     invite_people: "Inviter des gens"
+    rss_activity: "L'activité récente du Site Étu de l'UTT"
     rss_news: "Les news du Site Étu de l'UTT"
     rss_events: "Les événements du Site Étu de l'UTT"
     rss_classifieds: "Les petites annonces du Site Étu de l'UTT"

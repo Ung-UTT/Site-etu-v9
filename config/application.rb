@@ -51,5 +51,11 @@ module SiteEtu
 
     # Protect mass assignment
     config.active_record.whitelist_attributes = true
+
+    # Custom directories with classes and modules you want to be autoloadable.
+    config.autoload_paths += ["#{Rails.root}/app/models/observers"]
+
+    # Observers that should always be running.
+    config.active_record.observers = [:activity_observer]
   end
 end

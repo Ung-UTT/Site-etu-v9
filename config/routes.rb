@@ -2,6 +2,7 @@ SiteEtu::Application.routes.draw do
   devise_for :users
 
   # Ressources
+  resource :activity, only: :show
   resource :cas, only: [:new, :destroy]
 
   resources :votes, only: [:create, :destroy]

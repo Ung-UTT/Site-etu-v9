@@ -38,6 +38,16 @@ fr:
   user: "Utilisateur"
   user_session: "Connexion"
 
+  activities:
+    list: "Activité récente"
+    none: "Doh ! Aucune activité récente sur le site."
+    when: "il y a %{date}"
+    actions:
+      created: "a créé"
+      updated: "a modifié"
+      commented: "a commenté"
+      docummented: "a docummenté"
+
   annals:
     list: "Annales"
     semester: "Semestre"

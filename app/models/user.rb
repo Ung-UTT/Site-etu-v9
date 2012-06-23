@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   rolify
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   paginates_per 32
-  has_paper_trail
+  has_paper_trail ignore: [:reset_password_token, :remember_created_at, :sign_in_count,
+                          :last_sign_in_at, :last_sign_in_ip]
   include Extensions::Searchable
   searchable_attributes :login, :firstname, :lastname, :level, :surname, :once
 

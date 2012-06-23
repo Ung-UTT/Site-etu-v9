@@ -2,11 +2,13 @@ source 'http://rubygems.org'
 
 gem 'rails'
 gem 'sqlite3'
+gem 'redis'
 
 gem 'rubycas-client-rails', :git => 'https://github.com/rubycas/rubycas-client-rails.git', :ref => '7770e761'
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
+gem 'omniconf'
 
 gem 'dynamic_form' # Rend les formulaires plus lisibles
 gem 'paperclip'   # Gestion de fichier
@@ -24,6 +26,7 @@ group :development do
   gem 'rb-inotify'
   gem 'libnotify'
   gem 'rails-footnotes'
+  gem 'foreman'
 end
 
 group :assets do
