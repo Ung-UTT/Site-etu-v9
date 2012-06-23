@@ -10,6 +10,14 @@ class Document < ActiveRecord::Base
 
   belongs_to :documentable, polymorphic: true
 
+  def polymorphic?
+    true
+  end
+
+  def parent
+    documentable
+  end
+
   # Est-ce une image ?
   def image?
     !(asset_file_name =~ /\.(png|jpe?g|gif)\Z/).nil?

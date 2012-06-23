@@ -7,6 +7,14 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :commentable, polymorphic: true
 
+  def polymorphic?
+    true
+  end
+
+  def parent
+    commentable
+  end
+
   def to_s
     content
   end
