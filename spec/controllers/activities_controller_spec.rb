@@ -12,6 +12,8 @@ describe ActivitiesController do
     end
 
     it "returns the last #{ActivitiesController::MAX_ACTIVITIES} activities" do
+      PaperTrail.whodunnit = create(:user).id # user for 'whodunnit'
+
       N = ActivitiesController::MAX_ACTIVITIES
       N.times do |n|
         create :classified, title: "Classfied #{n}"
