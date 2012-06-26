@@ -83,6 +83,10 @@ class User < ActiveRecord::Base
     durations.sum / 60
   end
 
+  def age
+    ((Time.now - birth_date.to_time) / 1.year).floor
+  end
+
   def ability
     @ability ||= Ability.new(self)
   end

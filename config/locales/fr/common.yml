@@ -3,6 +3,7 @@ fr:
   'no': "Non"
   of: "de"
   unknown: "inconnu"
+  years_old: "ans"
 
   locales:
     en: "English"

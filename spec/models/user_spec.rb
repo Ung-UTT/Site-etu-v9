@@ -28,6 +28,16 @@ describe User do
     end
   end
 
+  describe "#age" do
+    it "computes the correct age" do
+      user = build :user, birth_date: 1.second.ago
+      user.age.should == 0
+
+      user.birth_date = 42.years.ago - 1.second
+      user.age.should == 42
+    end
+  end
+
   describe "#students" do
     it "returns all students" do
       students = [ create(:student), create(:student) ]
@@ -59,9 +69,10 @@ describe User do
 
     it "ignores the case" do
       camel = create :user, firstname: 'STranGeCAse'
-      User.search('strangecase').should include camel
-      User.search('STRANGECASE').should include camel
-      User.search('StrangeCase').should include camel
+
+      %w(strangecase STRANGECASE StrangeCase).each do |query|
+        User.search(query).should include camel
+      end
     end
   end
 
