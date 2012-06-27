@@ -28,6 +28,7 @@ group :development do
   gem 'rails-footnotes'
   gem 'foreman'
   gem 'rspec-rails'
+  gem 'brakeman'
 end
 
 group :assets do
@@ -45,6 +46,7 @@ group :test do
   gem 'capybara'
   gem 'simplecov'
   gem 'rails_best_practices'
+  gem 'brakeman'
 end
 
 # Nécessaires pour l'import de données
