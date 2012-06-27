@@ -27,6 +27,7 @@ group :development do
   gem 'libnotify'
   gem 'rails-footnotes'
   gem 'foreman'
+  gem 'rspec-rails'
 end
 
 group :assets do
