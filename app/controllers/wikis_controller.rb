@@ -5,7 +5,7 @@ class WikisController < ApplicationController
   def index
     @wiki = Wiki.homepage
 
-    redirect_to @wiki
+    redirect_to @wiki, only_path: true
   end
 
   def show
