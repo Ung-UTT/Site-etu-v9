@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
                   :parents_address, :surname, :once, :phone, :description,
                   :private_email, :website
 
-  delegate :can?, :cannot?, to: :ability
-
   after_create :create_preferences
 
   validates_presence_of :login
@@ -24,6 +22,10 @@ class User < ActiveRecord::Base
 
   # Users with empty firstname come last
   default_scope order: 'case when firstname is null then 1 else 0 end,firstname,lastname'
+  # FIXME: We should optimize SQL querie for users, so it avoid the lot of
+  #        SQL queries for user's images (but we should preserve performance
+  #        for others cases)
+  # default_scope include: :image
 
   has_one :image, dependent: :destroy, as: :documentable
   has_one :preference, dependent: :destroy
@@ -47,10 +49,8 @@ class User < ActiveRecord::Base
   has_many :timesheets_user, dependent: :destroy
   has_many :timesheets, through: :timesheets_user, uniq: true
 
-  # FIXME: We should optimize SQL querie for users, so it avoid the lot of
-  #        SQL queries for user's images (but we should preserve performance
-  #        for others cases)
-  # default_scope include: :image
+  delegate :can?, :cannot?, to: :ability
+  delegate :to_s, to: :decorator
 
   # Return all administrators
   def self.administrators
@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
   end
 
   def age
-    ((Time.now - birth_date.to_time) / 1.year).floor
+    ((Time.now - birth_date.to_time) / 1.year).floor if birth_date
   end
 
   def ability
@@ -110,14 +110,5 @@ class User < ActiveRecord::Base
   def agenda
     agenda = Timesheet.make_agenda(self.timesheets)
     agenda += Event.make_agenda
-  end
-
-  # Real name if we have it (Prénom NOM) or login (nomprenom)
-  def to_s
-    if firstname.nil? and lastname.nil?
-      login
-    else
-      "#{firstname} #{lastname}"
-    end
   end
 end

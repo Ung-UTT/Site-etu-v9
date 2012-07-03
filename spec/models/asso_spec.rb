@@ -54,10 +54,5 @@ describe Asso do
     club.parent.should == @asso
     @asso.children.should include club
   end
-
-  it 'describe itself correctly' do
-    asso = build :asso
-    asso.to_s.should include asso.name
-  end
 end
 

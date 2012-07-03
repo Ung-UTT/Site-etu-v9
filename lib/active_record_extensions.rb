@@ -10,6 +10,10 @@ module ActiveRecordExtensions
     "#{id}-#{param_string}"
   end
 
+  def decorator
+    @decorator ||= "#{self.class.name}Decorator".constantize.decorate(self)
+  end
+
   module ClassMethods
     # Random record from a class (Quote.random, Course.random, ...)
     def random

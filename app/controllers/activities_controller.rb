@@ -17,15 +17,13 @@ class ActivitiesController < ApplicationController
       end
 
       if current_ability.can?(:read, activity['resource'])
-        activity['user'] = User.find(activity['who'])
-
-        # just some grammar...
-        activity['what'] << 'e' unless activity['what'].end_with? 'e'
-        activity['what'] << 'd'
+        activity['user'] = UserDecorator.find(activity['who'])
 
         @activities << OpenStruct.new(activity)
       end
     end
+
+    @activities = ActivityDecorator.decorate(@activities)
 
     respond_to do |format|
       format.html

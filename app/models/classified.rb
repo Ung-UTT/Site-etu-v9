@@ -14,6 +14,6 @@ class Classified < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   def to_s
-    "#{price}€ : #{title}"
+    title
   end
 end

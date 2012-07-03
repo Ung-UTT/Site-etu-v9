@@ -79,6 +79,8 @@
     }
 
     dl {
+      .inline { display: inline-block }
+
       dt {
         font-weight: bold;
         padding: 16px 0 8px;

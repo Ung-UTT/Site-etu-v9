@@ -42,11 +42,12 @@ fr:
     list: "Activité récente"
     none: "Doh ! Aucune activité récente sur le site."
     when: "il y a %{date}"
+    his_profile: "son profil"
     actions:
-      created: "a créé"
-      updated: "a modifié"
-      commented: "a commenté"
-      docummented: "a docummenté"
+      create: "a créé"
+      update: "a modifié"
+      comment: "a commenté"
+      documment: "a docummenté"
 
   annals:
     list: "Annales"

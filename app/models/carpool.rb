@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class Carpool < ActiveRecord::Base
   has_paper_trail
   paginates_per 30
@@ -15,7 +13,5 @@ class Carpool < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :documents, as: :documentable, dependent: :destroy
 
-  def to_s
-    "#{departure} → #{arrival} (#{I18n.l(date, format: :short)})"
-  end
+  delegate :to_s, to: :decorator
 end

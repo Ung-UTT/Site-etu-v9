@@ -6,9 +6,5 @@
 
   %ul
     - @activities.each do |activity|
-      %li= raw |
-        "#{link_to_user(activity.user)} " + |
-        "#{t('activities.actions.' + activity.what)} " + |
-        "#{link_to(activity.resource, activity.resource)} " + |
-        "#{t('activities.when', date: time_ago_in_words(activity.when))}" |
+      %li= activity.event.html_safe
 

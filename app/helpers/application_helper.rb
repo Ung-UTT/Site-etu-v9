@@ -1,11 +1,10 @@
 # encoding: UTF-8
 
 module ApplicationHelper
-  # Titre de la page
 
   # Définit quel va être le titre de la page
   # Retourne un titre <h1> qui peut être affiché
-  def title(page_title, options={})
+  def title(page_title, options = {})
     content_for(:title, page_title.to_s)
     content_tag(:h1, page_title, options.merge(class: 'title'))
   end
@@ -23,15 +22,35 @@ module ApplicationHelper
   end
 
   # Raccourcis pour les vues
+  def dl(resource, attributes, options = {})
+    # resource = resource.model unless resource.is_a? ActiveRecord::Base
+    translations = params[:controller] # e.g. users, courses, etc.
 
-  # <dd> à condition que ce qui est montré ne soit pas vide
-  def not_empty_dd(descr, value)
-    return nil if value.blank?
-    content_tag(:dt, descr) + content_tag(:dd, value)
+    content_tag(:dl,
+      attributes.map do |attribute|
+        unless (value = resource.__send__(attribute)).blank?
+          if value.respond_to?(:link)
+            value = value.link
+          elsif value.is_a? ActiveRecord::Base
+            value = link_to(value.decorator, value)
+          elsif value =~ /^https?:\/\//
+            value = link_to(value, value)
+          end
+
+          content_tag(:dt, t("#{translations}.#{attribute}"), options) <<
+          content_tag(:dd, value, options)
+        end
+      end.join.html_safe
+    )
+  end
+
+  def dl_inline(resource, attributes, options = {})
+    dl resource, attributes, options.merge(class: 'inline')
   end
 
   # <strong> à condition que ce qui est montré ne soit pas vide
   def not_empty_inline(descr, value, paragraph = false)
+    ActiveSupport::Deprecation.warn "ApplicationHelper#not_empty_inline is deprecated, use #dl_inline instead.", caller
     return nil if value.blank?
     res = content_tag(:strong, descr) + " : #{h(value)} ".html_safe
     paragraph ? content_tag(:p, res) : res
@@ -61,21 +80,27 @@ module ApplicationHelper
     options_for_select(objects, selected)
   end
 
-  # List of objects (use the #to_s method)
+  # List of objects
   # Can be inline or in a list
   def links_to_objects(objects, list = false)
-    if objects.blank?
-      content_tag(:p, t('common.none'))
-    else
-      if list
-        content_tag(:ul) do
-          objects.map do |object|
-            content_tag(:li, link_to(object.to_s, object))
-          end.join.html_safe
-        end
+    return content_tag(:p, t('common.none')) if objects.blank?
+
+    links = objects.map do |object|
+      if object.respond_to?(:link)
+        object.link
       else
-        objects.map { |object| link_to(object.to_s, object) }.join(', ').html_safe
+        link_to(object.to_s, object)
       end
+    end
+
+    if list
+      content_tag(:ul) do
+        links.map do |link|
+          content_tag(:li, link)
+        end.join.html_safe
+      end
+    else
+      links.join(', ').html_safe
     end
   end
 

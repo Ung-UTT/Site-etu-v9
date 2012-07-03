@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(params[:comment])
     # Commentaires anonymes sur les UVs
-    @comment.user = current_user unless @commentable.is_a? Course
+    @comment.user = current_user unless @commentable.is_a? Course # FIXME models should be independents
     if @comment.save
       flash[:notice] = t('c.created')
     end

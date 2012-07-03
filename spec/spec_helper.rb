@@ -18,7 +18,7 @@ Spork.prefork do
     end
     SimpleCov.at_exit do
       SimpleCov.result.format!
-      exit(2) if SimpleCov.result.covered_percent < 90
+      exit(2) if SimpleCov.result.covered_percent < 90 # minimal threshold
     end
   end
 
@@ -31,6 +31,7 @@ Spork.prefork do
   require 'paperclip/matchers'
   require 'cancan/matchers'
   require 'casclient/frameworks/rails/filter'
+  require 'draper/rspec_integration'
 
   RSpec.configure do |config|
     config.include FactoryGirl::Syntax::Methods

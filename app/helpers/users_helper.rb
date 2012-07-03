@@ -1,13 +1,10 @@
 module UsersHelper
   def link_to_user(user, options = {})
+    ActiveSupport::Deprecation.warn "UsersHelper#link_to_user is deprecated, use UserDecorator#link instead.", caller
+
     return nil if user.nil?
 
-    image = user.image.nil? ? 'others/nophoto.png' : user.image.asset.url
-    content = image_tag(image, class: 'user', alt: user.to_s)
-    link = user.image.asset.url if options[:link_to_asset] and user.image
-    link ||= user
-    content = link_to(content, link, title: user.to_s) if can? :read, user
-    content
+    UserDecorator.new(user).link
   end
 
   def links_to_users(users)

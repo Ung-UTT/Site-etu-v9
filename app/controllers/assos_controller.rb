@@ -3,6 +3,7 @@ class AssosController < ApplicationController
   load_and_authorize_resource
 
   before_filter :search_and_paginate, only: :index
+  before_filter :decorate, only: [:index, :show]
   before_filter :process_image, only: [:create, :update]
 
   def index

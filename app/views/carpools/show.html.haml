@@ -3,9 +3,11 @@
 
   %p
     %strong= t('carpools.user')
-    = link_to_user @carpool.user
+    = @carpool.user.link
 
-  = md @carpool.description
+  = dl(@carpool, %w(user))
+
+  = @carpool.description
 
   = render 'layouts/show_actions', resource: @carpool
 

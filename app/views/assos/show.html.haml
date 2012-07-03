@@ -1,25 +1,13 @@
 %section.content
   = title(t('asso') + ' : ' + @asso.to_s)
 
-  %p= image_tag(@asso.image.asset.url) if @asso.image
+  %p= @asso.logo
+  %p= @asso.description
 
-  %p= md(@asso.description)
+  = dl @asso, %w(website parent children owner)
 
+  -# FIXME extract forms to a partial
   %dl
-    - unless @asso.website.blank?
-      %dt= t('assos.website')
-      %dd= link_to(@asso.website, @asso.website)
-
-    - unless @asso.parent.nil?
-      %dt= t('assos.parent')
-      %dd= link_to(@asso.parent, @asso.parent)
-
-    - unless @asso.children.empty?
-      %dt= t('assos.children')
-      %dd= raw(@asso.children.collect { |asso| link_to(asso, asso) }.join(', '))
-
-    = not_empty_dd(t('assos.owner'), link_to_user(@asso.owner))
-
     - unless @disjoinable_roles.empty?
       %dt= t('assos.your_roles')
       %dd
@@ -36,17 +24,7 @@
           = f.select :roles, @joinable_roles
           = f.submit t('c.roles.grant')
 
-    - unless @asso.roles.empty?
-      %dt= t('assos.members')
-      %dd
-        %ul
-        - @asso.roles.collect do |role|
-          %li
-            %strong= role.name
-            = links_to_users(role.users)
-
-    - unless @asso.events.empty?
-      = not_empty_dd(t('assos.events'), links_to_objects(@asso.events))
+  = dl @asso, %w(members events)
 
   = render 'layouts/show_actions', resource: @asso
 

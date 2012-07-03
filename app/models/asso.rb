@@ -24,6 +24,7 @@ class Asso < ActiveRecord::Base
   has_many :assos_event, dependent: :destroy
   has_many :events, through: :assos_event, uniq: true
 
+  delegate :to_s, to: :decorator
 
   def users
     # Fetch all users with at least one role on this asso + the owner
@@ -58,9 +59,5 @@ class Asso < ActiveRecord::Base
         [I18n.t("model.role.roles.#{role}", default: role), role]
       end
     end.compact
-  end
-
-  def to_s
-    name
   end
 end

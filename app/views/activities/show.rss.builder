@@ -6,10 +6,10 @@ xml.rss version: "2.0" do
 
     @activities.each do |activity|
       xml.item do
-        xml.title "#{activity.user} #{t("activities.actions.#{activity.what}")} #{activity.resource}"
-        xml.description "#{link_to_user(activity.user)} #{t("activities.actions.#{activity.what}")} #{link_to(activity.resource, activity.resource)}."
+        xml.title strip_tags(activity.event)
+        xml.description activity.event
         xml.pubDate activity.when
-        xml.link link_to(activity.resource, activity.resource)
+        xml.link activity.link
       end
     end
   end

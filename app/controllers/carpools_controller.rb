@@ -3,6 +3,7 @@ class CarpoolsController < ApplicationController
   load_and_authorize_resource
 
   before_filter :search_and_paginate, only: :index
+  before_filter :decorate, only: [:index, :show]
 
   def index
     @drivers = @carpools.select { |car| car.is_driver }

@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
     render text: md(params[:data])
   end
 
-  private
+private
+
   # Gére les accès refusés
   def render_access_denied(exception)
     message = t('c.application.denied')
@@ -158,12 +159,32 @@ class ApplicationController < ActionController::Base
     render 'layouts/_edit', locals: {resource: resource}
   end
 
-  def resources
-    instance_variable_get("@#{params[:controller]}")
+  def resource_name
+    name = params[:controller]
+    name = name.singularize if params[:id]
+    name
+  end
+
+  def resource
+    instance_variable_get("@#{resource_name}")
+  end
+  alias_method :resources, :resource
+
+  def model_class
+    params[:controller].classify
   end
 
   def model
-    resources.first.class
+    model_class.constantize
+  end
+
+  def decorator
+    "#{model_class}Decorator".constantize
+  end
+
+  # Decorates a single resource or a collection of resources
+  def decorate
+    instance_variable_set("@#{resource_name}", decorator.decorate(resource))
   end
 
   # Shortcut to add search to a controller
