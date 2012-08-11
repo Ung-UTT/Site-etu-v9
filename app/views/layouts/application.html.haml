@@ -140,8 +140,8 @@
         %li
           %a{href: "?mobile=true"}= t('layout.mobile')
       %li= mail_to 'ung@utt.fr', t('layout.bug'), subject: "[Site étu] [Bug] "
-      %li= link_to t('layout.rules'), {controller: :home, action: :rules}
-      %li= link_to t('layout.about'), {controller: :home, action: :about}
+      %li= link_to t('layout.rules'), rules_path
+      %li= link_to t('layout.about'), about_path
 
     %script{charset: "utf-8", type: "text/javascript"}
       var ROOT_PATH = "#{root_path(only_path: false)}";
