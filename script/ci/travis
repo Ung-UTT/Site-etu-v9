@@ -14,3 +14,5 @@ COVERAGE=1 rake --trace
 
 brakeman -qz --except Redirect
 
+rails_best_practices --spec || true
+
