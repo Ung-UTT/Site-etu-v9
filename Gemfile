@@ -4,7 +4,7 @@ gem 'rails'
 gem 'sqlite3'
 gem 'redis'
 
-gem 'rubycas-client-rails', :git => 'https://github.com/rubycas/rubycas-client-rails.git', :ref => '7770e761'
+gem 'rubycas-client-rails', github: 'rubycas/rubycas-client-rails', ref: '7770e761'
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
@@ -44,7 +44,7 @@ group :test do
   gem 'shoulda-matchers' # Fonctions des tests
   gem 'factory_girl_rails' # Fixtures suck
   gem 'capybara'
-  gem 'simplecov'
+  gem 'simplecov', github: 'colszowka/simplecov'
   gem 'rails_best_practices'
   gem 'brakeman'
 end

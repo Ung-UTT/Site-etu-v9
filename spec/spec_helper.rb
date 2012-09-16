@@ -12,13 +12,12 @@ Spork.prefork do
   if ENV["COVERAGE"]
     require 'simplecov'
     SimpleCov.start 'rails' do
+      minimum_coverage 90
+      maximum_coverage_drop 3
+
       add_group "Long files" do |src_file|
         src_file.lines.count > 100
       end
-    end
-    SimpleCov.at_exit do
-      SimpleCov.result.format!
-      exit(2) if SimpleCov.result.covered_percent < 90
     end
   end
 
