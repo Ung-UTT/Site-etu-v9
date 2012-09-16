@@ -12,5 +12,5 @@ rake tmp:create db:drop db:setup
 
 COVERAGE=1 rake --trace
 
-brakeman -qz
+brakeman -qz --except Redirect
 
