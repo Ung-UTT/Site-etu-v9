@@ -50,12 +50,7 @@ module SiteEtu
     config.rubycas.cas_base_url = 'https://cas.utt.fr/cas'
 
     # Protect mass assignment
-    config.active_record.whitelist_attributes = true
 
-    # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += ["#{Rails.root}/app/models/observers"]
-
-    # Observers that should always be running.
-    config.active_record.observers = [:activity_observer]
+    Devise.secret_key = 'e47a72e784a8666ec8b6c6c7a15bd86ab1adcb1ee340d213de7f303fde6e634c2df7b128cc030415aec6e5b3941908c365421bbb69ed25a89021bc38e559e6ae'
   end
 end

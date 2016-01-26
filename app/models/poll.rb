@@ -4,7 +4,6 @@ class Poll < ActiveRecord::Base
   include Extensions::Searchable
   searchable_attributes :name, :description
 
-  attr_accessible :name, :description, :answers_attributes
   validates_presence_of :name
 
   belongs_to :user

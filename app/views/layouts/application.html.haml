@@ -62,9 +62,8 @@
 
     - unless mobile?
       #quote
-        %blockquote= @random_quote
-        - unless @random_quote.author.blank?
-          %span.author —&nbsp;#{@random_quote.author}
+        %blockquote= "Today is a new day"
+        %span.author —&nbsp;Somebody
 
     - unless mobile? and !current_page?(root_url)
       %ul#sidebar

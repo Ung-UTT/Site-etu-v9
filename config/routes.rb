@@ -28,9 +28,9 @@ SiteEtu::Application.routes.draw do
   root to: 'home#index'
 
   # Routes spéciales
-  match 'about' => 'home#about', via: :get
-  match 'rules' => 'home#rules', via: :get
-  match 'deploy' => 'application#deploy', via: :get
-  match 'preview' => 'application#preview' # Prévisualisation Markdown
-  match '*path' => 'application#render_not_found'
+  get 'about' => 'home#about', via: :get
+  get 'rules' => 'home#rules', via: :get
+  get 'deploy' => 'application#deploy', via: :get
+  get 'preview' => 'application#preview' # Prévisualisation Markdown
+  get '*path' => 'application#render_not_found'
 end

@@ -1,7 +1,6 @@
 class Wiki < ActiveRecord::Base
   has_paper_trail
 
-  attr_accessible :title, :content, :parent_id
   validates_presence_of :title
 
   # Arbre des pages du wiki

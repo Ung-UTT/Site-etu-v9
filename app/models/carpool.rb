@@ -6,10 +6,8 @@ class Carpool < ActiveRecord::Base
   include Extensions::Searchable
   searchable_attributes :description, :departure, :arrival
 
-  attr_accessible :description, :departure, :arrival, :date, :is_driver
   validates_presence_of :description, :departure, :arrival, :date, :user
 
-  default_scope order: 'date DESC'
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy

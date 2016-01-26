@@ -9,11 +9,9 @@ class Asso < ActiveRecord::Base
   include Extensions::Searchable
   searchable_attributes :name, :description, :website
 
-  attr_accessible :name, :description, :image, :website, :email, :owner_id, :parent_id
   validates_presence_of :name, :owner
   validates_uniqueness_of :name
 
-  default_scope order: 'name'
 
   belongs_to :image
   belongs_to :owner, :class_name => 'User'

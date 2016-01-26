@@ -7,10 +7,6 @@ class User < ActiveRecord::Base
   include Extensions::Searchable
   searchable_attributes :login, :firstname, :lastname, :level, :surname, :once
 
-  attr_accessible :email, :login, :password, :password_confirmation,
-                  :remember_me, :preference_attributes, :utt_address,
-                  :parents_address, :surname, :once, :phone, :description,
-                  :private_email, :website
 
   delegate :can?, :cannot?, to: :ability
 
@@ -23,7 +19,6 @@ class User < ActiveRecord::Base
   validates_email_format_of :private_email, allow_blank: true
 
   # Users with empty firstname come last
-  default_scope order: 'case when firstname is null then 1 else 0 end,firstname,lastname'
 
   has_one :image, dependent: :destroy, as: :documentable
   has_one :preference, dependent: :destroy
@@ -39,13 +34,10 @@ class User < ActiveRecord::Base
   has_many :created_events, :foreign_key => 'owner_id', :class_name => 'Event', dependent: :destroy
 
   has_many :events_user, dependent: :destroy
-  has_many :events, through: :events_user, uniq: true
 
   has_many :projects_user, dependent: :destroy
-  has_many :projects, through: :projects_user, uniq: true
 
   has_many :timesheets_user, dependent: :destroy
-  has_many :timesheets, through: :timesheets_user, uniq: true
 
   # FIXME: We should optimize SQL querie for users, so it avoid the lot of
   #        SQL queries for user's images (but we should preserve performance

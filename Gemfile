@@ -23,8 +23,6 @@ group :development do
   gem 'guard-rspec'
   gem 'spork'
   gem 'guard-spork'
-  gem 'rb-inotify'
-  gem 'libnotify'
   gem 'rails-footnotes'
   gem 'foreman'
   gem 'rspec-rails'

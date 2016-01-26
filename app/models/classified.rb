@@ -6,7 +6,6 @@ class Classified < ActiveRecord::Base
   include Extensions::Searchable
   searchable_attributes :title, :description, :price, :location
 
-  attr_accessible :title, :description, :price, :location
   validates_presence_of :title, :description
 
   belongs_to :user

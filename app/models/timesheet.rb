@@ -4,11 +4,9 @@ class Timesheet < ActiveRecord::Base
 
   has_paper_trail
 
-  attr_accessible :start_at, :duration, :week, :category, :room, :course_id
   validates_presence_of :start_at, :duration, :category, :course
   validates :category, inclusion: {in: CATEGORIES}
 
-  default_scope order: 'start_at'
 
   belongs_to :course
   has_many :timesheets_user, dependent: :destroy

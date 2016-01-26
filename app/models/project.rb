@@ -4,7 +4,6 @@ class Project < ActiveRecord::Base
   include Extensions::Searchable
   searchable_attributes :name, :description
 
-  attr_accessible :name, :description
   validates_presence_of :name
   validates_uniqueness_of :name
   validate :at_least_one_user
